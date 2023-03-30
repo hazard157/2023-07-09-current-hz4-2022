@@ -21,7 +21,9 @@ Require-Bundle: javax.annotation,
  org.toxsoft.core.txtproj.lib,
  com.hazard157.lib.core,
  com.hazard157.psx.common,
- com.hazard157.psx.proj3
+ com.hazard157.psx.proj3,
+ com.hazard157.psx24.catnote,
+ com.hazard157.psx24.explorer
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.psx.proj3export
 Bundle-ActivationPolicy: lazy

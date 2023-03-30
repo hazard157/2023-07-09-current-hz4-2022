@@ -12,6 +12,7 @@ import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.av.utils.*;
+import org.toxsoft.core.tslib.bricks.filter.*;
 import org.toxsoft.core.tslib.bricks.keeper.*;
 import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.bricks.strio.*;
@@ -28,14 +29,18 @@ import org.toxsoft.core.txtproj.lib.*;
 import org.toxsoft.core.txtproj.lib.bound.*;
 import org.toxsoft.core.txtproj.lib.impl.*;
 
+import com.hazard157.lib.core.bricks.kwmark.*;
+import com.hazard157.lib.core.bricks.kwmark.manager.*;
 import com.hazard157.lib.core.quants.rating.*;
 import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.quants.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.proj3.cameras.*;
 import com.hazard157.psx.proj3.cameras.impl.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.impl.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
+import com.hazard157.psx.proj3.episodes.story.*;
 import com.hazard157.psx.proj3.gaze.*;
 import com.hazard157.psx.proj3.gaze.impl.*;
 import com.hazard157.psx.proj3.movies.*;
@@ -51,11 +56,18 @@ import com.hazard157.psx.proj3.todos.*;
 import com.hazard157.psx.proj3.todos.impl.*;
 import com.hazard157.psx.proj3.trailers.*;
 import com.hazard157.psx.proj3.trailers.impl.*;
+import com.hazard157.psx24.catnote.e4.addons.*;
+import com.hazard157.psx24.catnote.main.*;
+import com.hazard157.psx24.catnote.main.impl.*;
+import com.hazard157.psx24.explorer.e4.addons.*;
+import com.hazard157.psx24.explorer.filters.*;
+import com.hazard157.psx24.explorer.unit.*;
+import com.hazard157.psx24.explorer.unit.impl.*;
 
 /**
  * Exporter CLI runner.
  * <p>
- * Exported file is a sectioned file. Each section is a list of option sets. TODO Thats all yet...
+ * Exported file is a sectioned file. Each section is a list of option sets. Thats all yet...
  *
  * @author hazard157
  */
@@ -83,7 +95,6 @@ public class Proj3ExporterMain {
   }
 
   private static <T extends IStridable & IParameterized> void utilCopyStripar( IOptionSetEdit aOps, T aItem ) {
-    // first time copy known params to establish order in exported file
     utilCopyStridable( aOps, aItem );
     String iconId;
     if( aItem instanceof IStridableParameterized stripar ) {
@@ -95,6 +106,12 @@ public class Proj3ExporterMain {
     if( iconId != null ) {
       aOps.setStr( TSID_ICON_ID, iconId );
     }
+  }
+
+  private static <T extends IStridable & IParameterized> void utilFullCopyStripar( IOptionSetEdit aOps, T aItem ) {
+    utilCopyStripar( aOps, aItem );
+    aOps.addAll( aItem.params() );
+    utilCopyStripar( aOps, aItem );
   }
 
   private static void exportCameras( ITsProject aProj3, IStrioWriter aSw ) {
@@ -167,6 +184,20 @@ public class Proj3ExporterMain {
     pl( "Done %d", Integer.valueOf( llItems.size() ) );
   }
 
+  private static IOptionSet makeScene( IScene aScene ) {
+    IOptionSetEdit p = new OptionSet();
+    p.setStr( "name", aScene.info().name() );
+    p.setStr( "s", HmsUtils.mmss( aScene.interval().start() ) );
+    p.setStr( "e", HmsUtils.mmss( aScene.interval().end() ) );
+    p.setStr( "frame", FrameKeeper.KEEPER.ent2str( aScene.frame() ) );
+    for( int i = 1; i <= aScene.childScenes().size(); i++ ) {
+      IScene s = aScene.childScenes().values().get( i - 1 );
+      IOptionSet ops = makeScene( s );
+      p.setValobj( "Scene_" + i, ops );
+    }
+    return p;
+  }
+
   private static void exportEpisodes( ITsProject aProj3, IStrioWriter aSw ) {
     p( "Exporting episodes... " );
     // read unit
@@ -176,7 +207,6 @@ public class Proj3ExporterMain {
     IListEdit<IOptionSetEdit> llItems = new ElemArrayList<>();
     for( IEpisode item : unitEpisodes.items() ) {
       IOptionSetEdit p = new OptionSet();
-
       // ======
       utilCopyStridable( p, item );
       p.setStr( "frame", FrameKeeper.KEEPER.ent2str( item.frame() ) );
@@ -231,8 +261,9 @@ public class Proj3ExporterMain {
         ops.setStr( "frame", FrameKeeper.KEEPER.ent2str( g.frame() ) );
         p.setValobj( "PlanesLineMark_" + i, ops );
       }
-      // TODO story
-
+      // story
+      IOptionSet ops = makeScene( item.story() );
+      p.setValobj( "Story", ops );
       // ======
       llItems.add( p );
     }
@@ -287,15 +318,24 @@ public class Proj3ExporterMain {
     pl( "Done %d", Integer.valueOf( llItems.size() ) );
   }
 
+  private static IOptionSet makeVisumple( Visumple aVisumple ) {
+    IOptionSetEdit p = new OptionSet();
+    p.setStr( "filePath", aVisumple.filePath() );
+    p.setValobj( "params", aVisumple.params() );
+    return p;
+  }
+
   private static IOptionSet makeStir( IStir aStir ) {
     IOptionSetEdit p = new OptionSet();
     p.setStr( TSID_NAME, aStir.name() );
     p.setStr( TSID_DESCRIPTION, aStir.description() );
     p.setStr( "duration", HmsUtils.mmmss( aStir.duration() ) );
     p.setStr( "thumbFilePath", aStir.thumbFilePath() );
-
-    // TODO visumples
-    // TODO реализовать Proj3ExporterMain.makeStir()
+    for( int i = 1; i <= aStir.visumples().size(); i++ ) {
+      Visumple v = aStir.visumples().get( i - 1 );
+      IOptionSet ops = makeVisumple( v );
+      p.setValobj( "Visumple_" + i, ops );
+    }
     return p;
   }
 
@@ -424,6 +464,96 @@ public class Proj3ExporterMain {
     pl( "Done %d", Integer.valueOf( llItems.size() ) );
   }
 
+  private static IOptionSet makeInquiryItem( InquiryItem aItem ) {
+    IOptionSetEdit p = new OptionSet();
+    for( EPqSingleFilterKind k : aItem.fpMap().keys() ) {
+      ITsSingleFilterParams sfp = aItem.fpMap().getByKey( k );
+      p.setBool( k.id() + "_isInverted", aItem.isInverted( k ) );
+      p.setStr( k.id() + "_filterTypeId", sfp.typeId() );
+      p.setValobj( k.id() + "_filterParams", sfp.params() );
+    }
+    return p;
+  }
+
+  private static void exportUnitExplorer( ITsProject aProj3, IStrioWriter aSw ) {
+    p( "Exporting explorer inquiries... " );
+    // read unit
+    IUnitExplorer unit = new UnitExplorer();
+    aProj3.registerUnit( AddonPsx24Explorer.UNITID_EXPLORER, unit, true );
+    // prepare data
+    IListEdit<IOptionSetEdit> llItems = new ElemArrayList<>();
+    for( Inquiry item : unit.items() ) {
+      IOptionSetEdit p = new OptionSet();
+      // ======
+      utilCopyStridable( p, item );
+      for( int i = 1; i <= item.items().size(); i++ ) {
+        InquiryItem inqit = item.items().get( i - 1 );
+        IOptionSet ops = makeInquiryItem( inqit );
+        p.setValobj( "InquiryItem_" + i, ops );
+      }
+      // ======
+      llItems.add( p );
+    }
+    // write data
+    writeKeywordHeader( aSw, "Keywords", true );
+    writeOpSetList( aSw, llItems );
+    pl( "Done %d", Integer.valueOf( llItems.size() ) );
+  }
+
+  private static void exportKeywordManager( ITsProject aProj3, IStrioWriter aSw ) {
+    p( "Exporting keywords... " );
+    // read unit
+    IKeywordManager unitKwMan = new KeywordManager();
+    aProj3.registerUnit( QuantKeywordManager.UNITID_KEYWORDS, unitKwMan, true );
+    // prepare data
+    IListEdit<IOptionSetEdit> llItems = new ElemArrayList<>();
+    for( String item : unitKwMan.listAll() ) {
+      IOptionSetEdit p = new OptionSet();
+      // ======
+      p.setStr( "keyword", item );
+      // ======
+      llItems.add( p );
+    }
+    // write data
+    writeKeywordHeader( aSw, "Keywords", true );
+    writeOpSetList( aSw, llItems );
+    pl( "Done %d", Integer.valueOf( llItems.size() ) );
+  }
+
+  private static void exportNbNotebook( ITsProject aProj3, IStrioWriter aSw ) {
+    p( "Exporting NbNotebookCategories... " );
+    // read unit
+    INbNotebook unit = new NbNotebook();
+    aProj3.registerUnit( AddonPsx24Catnote.UNITID_NOTEBOOK, unit, true );
+    IListEdit<IOptionSetEdit> llItems = new ElemArrayList<>();
+    // categories
+    for( INbCategory item : unit.rootCategory().items() ) {
+      IOptionSetEdit p = new OptionSet();
+      // ======
+      utilFullCopyStripar( p, item );
+      // ======
+      llItems.add( p );
+    }
+    // write data
+    writeKeywordHeader( aSw, "NbNotebookCategories", true );
+    writeOpSetList( aSw, llItems );
+    pl( "Done %d", Integer.valueOf( llItems.size() ) );
+    // notes
+    p( "Exporting NbNotebookNotes... " );
+    llItems.clear();
+    for( INbNote item : unit.notes().items() ) {
+      IOptionSetEdit p = new OptionSet();
+      // ======
+      utilFullCopyStripar( p, item );
+      // ======
+      llItems.add( p );
+    }
+    // write data
+    writeKeywordHeader( aSw, "NbNotebookNotes", true );
+    writeOpSetList( aSw, llItems );
+    pl( "Done %d", Integer.valueOf( llItems.size() ) );
+  }
+
   private static void exportProj3( ITsProject aProj3, IStrioWriter aSw ) {
     //// units from QuantPsx3Project
     // cameras
@@ -444,7 +574,7 @@ public class Proj3ExporterMain {
     // songs
     exportSongs( aProj3, aSw );
     aSw.writeEol();
-    // TODO 07 pleps
+    // 07 pleps
     exportPleps( aProj3, aSw );
     aSw.writeEol();
     // todos
@@ -453,14 +583,16 @@ public class Proj3ExporterMain {
     // trailers
     exportTrailers( aProj3, aSw );
     aSw.writeEol();
-
-    // units not listed in QuantPsx3Project
-    // TODO IUnitExplorer
-    pl( "========>>> unit to export - IUnitExplorer" );
-    // TODO IKeywordManager
-    pl( "========>>> unit to export - IKeywordManager" );
-    // TODO INbNotebook
-    pl( "========>>> unit to export - INbNotebook" );
+    //// units not listed in QuantPsx3Project
+    // IUnitExplorer
+    exportUnitExplorer( aProj3, aSw );
+    aSw.writeEol();
+    // IKeywordManager
+    exportKeywordManager( aProj3, aSw );
+    aSw.writeEol();
+    // INbNotebook
+    exportNbNotebook( aProj3, aSw );
+    aSw.writeEol();
     aSw.writeEol();
   }
 
