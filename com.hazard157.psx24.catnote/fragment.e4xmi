@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_qrE9oOmEEeyMxqwCkObSlw">
+  <imports xsi:type="commands:Category" xmi:id="_uEaQ8OmEEeyMxqwCkObSlw" elementId="org.toxsoft.mws.cmdcategory.global"/>
+  <imports xsi:type="commands:Command" xmi:id="_3gi6kOmMEeyMxqwCkObSlw" elementId="org.toxsoft.mws.cmd.switch_persp">
+    <parameters xmi:id="_4vOUMOmMEeyMxqwCkObSlw" elementId="org.toxsoft.mws.cmd.switch_persp.arg.perspId" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId"/>
+  </imports>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_7GSSMOmMEeyMxqwCkObSlw" featurename="addons" parentElementId="org.toxsoft.mws.app.main">
+    <elements xsi:type="application:Addon" xmi:id="_8vu8QOmMEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.addon.0" contributionURI="bundleclass://com.hazard157.psx24.catnote/com.hazard157.psx24.catnote.e4.addons.AddonPsx24Catnote"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_EBv74OmOEeyMxqwCkObSlw" featurename="children" parentElementId="org.toxsoft.mws.perspectivestack.main">
+    <elements xsi:type="advanced:Perspective" xmi:id="_HH830OmOEeyMxqwCkObSlw" elementId="com.hazard157.prisex.persp.notebook" label="&#x417;&#x430;&#x43c;&#x435;&#x442;&#x43e;&#x447;&#x43d;&#x438;&#x446;&#x430;" iconURI="platform:/plugin/com.hazard157.psx24.catnote/icons/is24x24/notebook.png" tooltip="&#x417;&#x430;&#x43c;&#x435;&#x442;&#x43a;&#x438; &#x438; &#x437;&#x430;&#x434;&#x430;&#x447;&#x438; &#x43f;&#x43e; &#x43a;&#x430;&#x442;&#x435;&#x433;&#x43e;&#x440;&#x438;&#x44f;&#x43c;">
+      <children xsi:type="basic:PartSashContainer" xmi:id="_NqYDAOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.partsashcontainer.0" horizontal="true">
+        <children xsi:type="basic:PartStack" xmi:id="_PANNgOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.partstack.0" containerData="6000">
+          <children xsi:type="basic:Part" xmi:id="_SuYvcOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.part.notebook_notes" contributionURI="bundleclass://com.hazard157.psx24.catnote/com.hazard157.psx24.catnote.e4.uiparts.UipartNbNoteEditor" label="&#x417;&#x430;&#x43c;&#x43a;&#x442;&#x43a;&#x438; &#x438; &#x437;&#x430;&#x434;&#x430;&#x447;&#x438;" iconURI="platform:/plugin/com.hazard157.psx24.catnote/icons/is24x24/notebook.png" tooltip="&#x423;&#x43f;&#x440;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x441;&#x43f;&#x438;&#x441;&#x43e;&#x43a; &#x437;&#x430;&#x43c;&#x435;&#x442;&#x43e;&#x43a; &#x438; &#x437;&#x430;&#x434;&#x430;&#x447;"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_QmICcOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.partstack.1" containerData="4000">
+          <children xsi:type="basic:Part" xmi:id="_ScNaUOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.part.notebook_categories" contributionURI="bundleclass://com.hazard157.psx24.catnote/com.hazard157.psx24.catnote.e4.uiparts.UipartNbCategoryEditor" label="&#x41a;&#x430;&#x442;&#x435;&#x433;&#x43e;&#x440;&#x438;&#x438;" iconURI="platform:/plugin/com.hazard157.psx24.catnote/icons/is24x24/note-category.png" tooltip="&#x423;&#x43f;&#x440;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x441;&#x43f;&#x438;&#x441;&#x43e;&#x43a;&#x43c; &#x43a;&#x430;&#x442;&#x435;&#x433;&#x43e;&#x440;&#x438;&#x438;"/>
+        </children>
+      </children>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_EMi2oOmOEeyMxqwCkObSlw" featurename="children" parentElementId="org.toxsoft.mws.menu.main.perspectives">
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_pRoS4OmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.handledmenuitem." label="&#x417;&#x430;&#x43c;&#x435;&#x442;&#x43e;&#x447;&#x43d;&#x438;&#x446;&#x430;" iconURI="platform:/plugin/com.hazard157.psx24.catnote/icons/is24x24/notebook.png" tooltip="&#x417;&#x430;&#x43c;&#x435;&#x442;&#x43a;&#x438; &#x438; &#x437;&#x430;&#x434;&#x430;&#x447;&#x438; &#x43f;&#x43e; &#x43a;&#x430;&#x442;&#x435;&#x433;&#x43e;&#x440;&#x438;&#x44f;&#x43c;" type="Radio" command="_3gi6kOmMEeyMxqwCkObSlw">
+      <parameters xmi:id="_yJ-zoOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.parameter.0" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex.persp.notebook"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_EXRf8OmOEeyMxqwCkObSlw" featurename="children" parentElementId="org.toxsoft.mws.toolbar.perspectives">
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_sS-kAOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.handledtoolitem." label="&#x417;&#x430;&#x43c;&#x435;&#x442;&#x43e;&#x447;&#x43d;&#x438;&#x446;&#x430;" iconURI="platform:/plugin/com.hazard157.psx24.catnote/icons/is24x24/notebook.png" tooltip="&#x417;&#x430;&#x43c;&#x435;&#x442;&#x43a;&#x438; &#x438; &#x437;&#x430;&#x434;&#x430;&#x447;&#x438; &#x43f;&#x43e; &#x43a;&#x430;&#x442;&#x435;&#x433;&#x43e;&#x440;&#x438;&#x44f;&#x43c;" type="Radio" command="_3gi6kOmMEeyMxqwCkObSlw">
+      <parameters xmi:id="_zPxXAOmOEeyMxqwCkObSlw" elementId="com.hazard157.psx24.catnote.parameter.1" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex.persp.notebook"/>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

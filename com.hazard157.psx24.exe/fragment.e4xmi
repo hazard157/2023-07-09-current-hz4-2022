@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_CP0poOUMEey-F798x_a69Q">
+  <imports xsi:type="commands:Category" xmi:id="_SzHAUOUNEey-F798x_a69Q" elementId="org.toxsoft.mws.cmdcategory.global"/>
+  <imports xsi:type="commands:Command" xmi:id="_UniLUOUNEey-F798x_a69Q" elementId="org.toxsoft.mws.cmd.switch_persp">
+    <parameters xmi:id="_Yt3HgOUNEey-F798x_a69Q" elementId="org.toxsoft.mws.cmd.switch_persp.arg.perspId" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId"/>
+  </imports>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_c65IoOUNEey-F798x_a69Q" featurename="addons" parentElementId="org.toxsoft.mws.app.main">
+    <elements xsi:type="application:Addon" xmi:id="_es540OUNEey-F798x_a69Q" elementId="com.hazard157.psx24.exe.addon.0" contributionURI="bundleclass://com.hazard157.psx24.exe/com.hazard157.psx24.exe.e4.addons.AddonPsx24Exe"/>
+  </fragments>
+</fragment:ModelFragments>

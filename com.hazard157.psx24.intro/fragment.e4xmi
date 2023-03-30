@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_8w4_UOVZEey-F798x_a69Q">
+  <imports xsi:type="commands:Category" xmi:id="_EyZFsOVcEey-F798x_a69Q" elementId="org.toxsoft.mws.cmdcategory.global"/>
+  <imports xsi:type="commands:Command" xmi:id="_JIbR0OVcEey-F798x_a69Q" elementId="org.toxsoft.mws.cmd.switch_persp">
+    <parameters xmi:id="_GXy9QOVcEey-F798x_a69Q" elementId="org.toxsoft.mws.cmd.switch_persp.arg.perspId" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId"/>
+  </imports>
+  <imports xsi:type="basic:Part" xmi:id="_aMUFEOVmEey-F798x_a69Q" elementId="com.hazard157.psx24.sharedpart.curr_frames_list"/>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_9k1kwOVZEey-F798x_a69Q" featurename="addons" parentElementId="org.toxsoft.mws.app.main">
+    <elements xsi:type="application:Addon" xmi:id="_-7Yg8OVZEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.addon.0" contributionURI="bundleclass://com.hazard157.psx24.intro/com.hazard157.psx24.intro.e4.addons.AddonPsx24Intro"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yxK78OVbEey-F798x_a69Q" featurename="children" parentElementId="org.toxsoft.mws.perspectivestack.main">
+    <elements xsi:type="advanced:Perspective" xmi:id="_1Rj1EOVbEey-F798x_a69Q" elementId="com.hazard157.psx24.persp.intro" label="%Persp_Intro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png" tooltip="%Persp_Intro_D">
+      <children xsi:type="basic:PartSashContainer" xmi:id="_BqUFAOVdEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.partsashcontainer.0" horizontal="true">
+        <children xsi:type="basic:Part" xmi:id="_DgZc4OVdEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.part.0" containerData="7500" contributionURI="bundleclass://com.hazard157.psx24.intro/com.hazard157.psx24.intro.e4.uiparts.UipartIntro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png"/>
+        <children xsi:type="basic:PartStack" xmi:id="_HUHmIOVdEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.partstack.0" containerData="2500">
+          <children xsi:type="advanced:Placeholder" xmi:id="_Xg0vMOVmEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.placeholder.0" ref="_aMUFEOVmEey-F798x_a69Q"/>
+        </children>
+      </children>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_y9Oa8OVbEey-F798x_a69Q" featurename="children" parentElementId="org.toxsoft.mws.menu.main.perspectives" positionInList="index:0">
+    <elements xsi:type="menu:MenuSeparator" xmi:id="_A-RT0OVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.menuseparator.0"/>
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_D6SZAOVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.handledmenuitem.persp_intro" label="%Persp_Intro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png" tooltip="%Persp_Intro_D" type="Radio" command="_JIbR0OVcEey-F798x_a69Q">
+      <parameters xmi:id="_Yl6TgOVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.parameter.0" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.psx24.persp.intro"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_zKwgoOVbEey-F798x_a69Q" featurename="children" parentElementId="org.toxsoft.mws.toolbar.perspectives" positionInList="index:0">
+    <elements xsi:type="menu:ToolBarSeparator" xmi:id="_TC1FcOVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.toolbarseparator.0"/>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_TpI3gOVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.handledtoolitem.persp_intro" label="%Persp_Intro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png" tooltip="%Persp_Intro_D" type="Radio" command="_JIbR0OVcEey-F798x_a69Q">
+      <parameters xmi:id="_Y0s9cOVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.parameter.1" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.psx24.persp.intro"/>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

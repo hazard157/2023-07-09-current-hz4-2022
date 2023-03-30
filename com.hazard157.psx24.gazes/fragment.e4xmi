@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_nv42AOrQEeywUew_jhVnUA">
+  <imports xsi:type="commands:Category" xmi:id="_rRLygOrQEeywUew_jhVnUA" elementId="org.toxsoft.mws.cmdcategory.global"/>
+  <imports xsi:type="commands:Command" xmi:id="_ssmAkOrQEeywUew_jhVnUA" elementId="org.toxsoft.mws.cmd.switch_persp">
+    <parameters xmi:id="_tmLT8OrQEeywUew_jhVnUA" elementId="org.toxsoft.mws.cmd.switch_persp.arg.perspId" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId"/>
+  </imports>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_wrzBEOrQEeywUew_jhVnUA" featurename="addons" parentElementId="org.toxsoft.mws.app.main">
+    <elements xsi:type="application:Addon" xmi:id="_ykUB4OrQEeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.addon.0" contributionURI="bundleclass://com.hazard157.psx24.gazes/com.hazard157.psx24.gazes.e4.addons.AddonPsx24Gazes"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_w48sQOrQEeywUew_jhVnUA" featurename="children" parentElementId="org.toxsoft.mws.perspectivestack.main">
+    <elements xsi:type="advanced:Perspective" xmi:id="_1i7vIOrQEeywUew_jhVnUA" elementId="com.hazard157.psx24.persp.gazes" label="%Persp_Gazes" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incident-gaze.png" tooltip="%Persp_Gazes_D">
+      <children xsi:type="basic:PartSashContainer" xmi:id="_f00AYOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.partsashcontainer.0" horizontal="true">
+        <children xsi:type="basic:PartStack" xmi:id="_iHplsOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.partstack.0" containerData="2500">
+          <children xsi:type="basic:Part" xmi:id="_kjIwsOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.part.part_gazeslist" contributionURI="bundleclass://com.hazard157.psx24.gazes/com.hazard157.psx24.gazes.e4.uiparts.UipartGazesList" label="%Part_GazesList" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incident-gaze.png" tooltip="%Part_GazesList_D"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_iaQYoOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.partstack.1" containerData="7500">
+          <children xsi:type="basic:Part" xmi:id="_k0PHwOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.part.part_gazemedia" contributionURI="bundleclass://com.hazard157.psx24.gazes/com.hazard157.psx24.gazes.e4.uiparts.UipartGazeMedia" label="%Part_GazeMedia" iconURI="platform:/plugin/com.hazard157.psx24.core/icons/is24x24/image-x-generic.png" tooltip="%Part_GazeMedia_D"/>
+        </children>
+      </children>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_xEd_wOrQEeywUew_jhVnUA" featurename="children" parentElementId="org.toxsoft.mws.menu.main.perspectives">
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_SNtRgOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.handledmenuitem.persp_gazes" label="%Persp_Gazes" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incident-gaze.png" tooltip="%Persp_Gazes_D" type="Radio" command="_ssmAkOrQEeywUew_jhVnUA">
+      <parameters xmi:id="_ZNK-AOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.parameter.0" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.psx24.persp.gazes"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_xRUwAOrQEeywUew_jhVnUA" featurename="children" parentElementId="org.toxsoft.mws.toolbar.perspectives">
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_Uj1bYOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.handledtoolitem.persp_gazes" label="%Persp_Gazes" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incident-gaze.png" tooltip="%Persp_Gazes_D" command="_ssmAkOrQEeywUew_jhVnUA">
+      <parameters xmi:id="_awApwOrREeywUew_jhVnUA" elementId="com.hazard157.psx24.gazes.parameter.1" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.psx24.persp.gazes"/>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>
