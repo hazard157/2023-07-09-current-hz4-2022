@@ -79,7 +79,11 @@ public class PfsUtils {
 
   public static File pfsFindNonSecFramesEpisodeDir( String aEpisodeId ) {
     LocalDate epDate = EpisodeUtils.episodeId2LocalDate( aEpisodeId );
-    return new File( EPISODE_NONSEC_FRAMES_ROOT_DIR, epDate.toString() );
+    File dir = new File( EPISODE_NONSEC_FRAMES_ROOT_DIR, epDate.toString() );
+    if( TsFileUtils.isDirReadable( dir ) ) {
+      return dir;
+    }
+    return null;
   }
 
   public static File pfsFindSourceEpisodeDir( String aEpisodeId ) {

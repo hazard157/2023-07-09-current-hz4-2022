@@ -35,7 +35,7 @@ public class UipartSvinsFrames
     viewer.setSvins( psxSelectedSvinsService.svins() );
 
     // DEBUG ---
-    viewer.setOnlySvinCamsShown( true );
+    viewer.setOnlySvinCamsShown( false );
     // ---
 
     psxSelectedSvinsService.eventer().addListener( svinsListChangeListener );
