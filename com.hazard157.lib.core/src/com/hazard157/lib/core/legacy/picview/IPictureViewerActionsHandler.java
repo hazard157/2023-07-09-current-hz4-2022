@@ -5,7 +5,7 @@ import org.toxsoft.core.tsgui.panels.toolbar.*;
 /**
  * Обработчик пользовательских дйествий, заданных при созданиий {@link PictureViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPictureViewerActionsHandler {
 

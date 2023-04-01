@@ -5,7 +5,7 @@ import com.hazard157.lib.core.bricks.kwmark.manager.*;
 /**
  * Uipart to edit {@link IKeywordManager} found in windows context.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartContextKeywordManager
     extends UipartAbstractKeywordManager {

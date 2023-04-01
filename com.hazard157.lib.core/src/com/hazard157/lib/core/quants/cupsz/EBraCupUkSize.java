@@ -13,7 +13,7 @@ import com.hazard157.lib.core.utils.*;
 /**
  * The enumeration of XXX.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public enum EBraCupUkSize

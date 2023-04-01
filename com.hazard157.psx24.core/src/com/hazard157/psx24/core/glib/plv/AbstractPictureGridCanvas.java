@@ -21,7 +21,7 @@ import com.hazard157.lib.core.legacy.picview.*;
 /**
  * Базовый класс собственно рисовальщиков изображения для {@link PicturesListViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 abstract class AbstractPictureGridCanvas
     extends Canvas
@@ -30,7 +30,7 @@ abstract class AbstractPictureGridCanvas
   /**
    * Вспомгательный класс для обеспечения анимации {@link TsImage} в {@link AbstractPictureGridCanvas}.
    *
-   * @author goga
+   * @author hazard157
    */
   class GifAnimator
       implements ICloseable {

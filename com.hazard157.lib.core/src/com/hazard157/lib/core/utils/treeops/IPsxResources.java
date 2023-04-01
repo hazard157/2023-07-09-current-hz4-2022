@@ -3,7 +3,7 @@ package com.hazard157.lib.core.utils.treeops;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

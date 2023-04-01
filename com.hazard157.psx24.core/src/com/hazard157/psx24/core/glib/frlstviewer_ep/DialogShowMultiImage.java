@@ -16,7 +16,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Диалог показа заданного {@link TsImage}.
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogShowMultiImage {
 

@@ -14,7 +14,7 @@ import com.hazard157.lib.core.quants.visumple.*;
 /**
  * Создатель панелей для модели {@link VisumpleM5Model}.
  *
- * @author goga
+ * @author hazard157
  */
 public class VisumpleM5PanelCreator
     extends M5DefaultPanelCreator<Visumple> {

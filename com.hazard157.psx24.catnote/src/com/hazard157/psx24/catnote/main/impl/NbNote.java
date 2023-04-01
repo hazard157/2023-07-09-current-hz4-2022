@@ -15,7 +15,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * {@link INbNote} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 class NbNote
     extends StridableParameterized

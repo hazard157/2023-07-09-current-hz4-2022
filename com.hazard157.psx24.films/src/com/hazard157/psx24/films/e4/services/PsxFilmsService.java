@@ -33,7 +33,7 @@ import com.hazard157.psx24.films.glib.*;
 /**
  * Реализация {@link IPsxFilmsService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PsxFilmsService
     implements IPsxFilmsService {

@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Критерий выборки по типу анимированности изображения.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "javadoc", "nls" } )
 public enum EAnimationKind

@@ -23,7 +23,7 @@ import com.hazard157.psx.proj3.songs.*;
 /**
  * M5-модель сущности {@link ISong}.
  *
- * @author goga
+ * @author hazard157
  */
 public class SongM5Model
     extends M5Model<ISong> {

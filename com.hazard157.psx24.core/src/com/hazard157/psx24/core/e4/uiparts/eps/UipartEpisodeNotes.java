@@ -28,7 +28,7 @@ import com.hazard157.psx24.core.m5.note.*;
 /**
  * Вью работы с {@link IEpisode#noteLine()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodeNotes
     extends AbstractEpisodeUipart {

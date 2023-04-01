@@ -3,7 +3,7 @@ package com.hazard157.psx24.films.m5;
 /**
  * уЛокализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

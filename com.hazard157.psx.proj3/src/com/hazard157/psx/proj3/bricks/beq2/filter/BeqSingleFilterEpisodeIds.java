@@ -14,7 +14,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Фильтр по идентификаторам ярлыков.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public class BeqSingleFilterEpisodeIds

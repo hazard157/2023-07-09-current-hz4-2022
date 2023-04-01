@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Набор методов общего назначения, никак не попадающие в другие разделы.
  *
- * @author goga
+ * @author hazard157
  */
 public final class HzMiscUtils {
 

@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Узел сущности {@link ISourceVideo} в {@link ISourceVideo}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnSourceVideo
     extends LeafTsNode<ISourceVideo> {

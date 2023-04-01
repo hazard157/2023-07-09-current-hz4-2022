@@ -6,7 +6,7 @@ import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
 /**
  * Редактируемая реализация {@link IGridMargins}.
  *
- * @author goga
+ * @author hazard157
  */
 public class GridMargins
     implements IGridMargins {

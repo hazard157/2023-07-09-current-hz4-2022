@@ -12,7 +12,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
 /**
  * {@link ISingleCriterion} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class SingleCriterion
     implements ISingleCriterion {

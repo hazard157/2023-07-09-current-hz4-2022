@@ -63,7 +63,7 @@ import com.hazard157.psx24.core.utils.ftstep.*;
 /**
  * {@link IPanelSvinFramesViewer} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelSvinFramesViewer
     extends AbstractLazyPanel<Control>

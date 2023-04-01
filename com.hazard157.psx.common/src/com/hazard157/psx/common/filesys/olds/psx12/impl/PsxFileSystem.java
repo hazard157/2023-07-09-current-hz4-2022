@@ -14,7 +14,7 @@ import com.hazard157.psx.common.filesys.olds.psx12.frames.*;
 /**
  * Implementation of the {@link IPsxFileSystem}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PsxFileSystem
     implements IPsxFileSystem {

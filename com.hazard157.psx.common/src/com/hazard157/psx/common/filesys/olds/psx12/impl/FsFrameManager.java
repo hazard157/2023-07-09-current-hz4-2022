@@ -30,7 +30,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
  * Данная реализация предполагает, что изображения кадров эпизодов в общем случае находятся <b>вне</b> общего корня
  * ресурсов приложения PRISEX. Скорее всего, где-то рядом с местом кеширования службы {@link ITsImageManager}.
  *
- * @author goga
+ * @author hazard157
  */
 class FsFrameManager
     implements IFsFrameManager {

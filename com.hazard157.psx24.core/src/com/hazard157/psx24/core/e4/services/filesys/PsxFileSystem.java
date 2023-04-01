@@ -56,7 +56,7 @@ import com.hazard157.psx.common.utils.*;
  * вызова внешней утилитыф graphicsmagick.</li>
  * </ul>
  *
- * @author goga
+ * @author hazard157
  */
 public class PsxFileSystem
     implements IPsxFileSystem {
@@ -64,7 +64,7 @@ public class PsxFileSystem
   /**
    * Поток загрузки изображений кадров.
    *
-   * @author goga
+   * @author hazard157
    */
   public class FrameLoaderThread
       implements Runnable, IFrameLoaderThread {

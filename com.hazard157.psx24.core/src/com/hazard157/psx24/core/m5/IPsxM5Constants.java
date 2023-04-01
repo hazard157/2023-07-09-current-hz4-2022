@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 /**
  * Константы M5-моделирования сущностей PSX.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IPsxM5Constants {

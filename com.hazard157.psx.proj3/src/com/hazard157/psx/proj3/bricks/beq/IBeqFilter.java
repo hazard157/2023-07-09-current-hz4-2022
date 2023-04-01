@@ -11,7 +11,7 @@ import com.hazard157.psx.proj3.bricks.beq.filters.*;
  * Представляет собой набор из фильтров {@link EBeqSingleFilterKind}, по одному фильтру каждого типа, объединенных по
  * AND и опционально иневртирует, в зависимости от згачения {@link #isInverted()}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IBeqFilter {
 

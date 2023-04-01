@@ -42,7 +42,7 @@ import org.toxsoft.core.tslib.utils.logs.impl.*;
  * Просмотрщик сам не является композитом, а создает в конструеторе контроль {@link #getControl()} для отображения
  * картинки.
  *
- * @author goga
+ * @author hazard157
  */
 public class PictureViewer
     implements Picture.IMouseEventShooter, ITsGuiContextable {

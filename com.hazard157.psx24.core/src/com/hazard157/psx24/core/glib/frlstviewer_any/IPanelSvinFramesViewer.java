@@ -28,7 +28,7 @@ import com.hazard157.psx24.core.utils.ftstep.*;
  * </ul>
  * Note: only seconds boundary related still frames are shown by this panel.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IPanelSvinFramesViewer

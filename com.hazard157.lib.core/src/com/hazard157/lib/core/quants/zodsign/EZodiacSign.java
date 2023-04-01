@@ -15,7 +15,7 @@ import com.hazard157.lib.core.utils.*;
 /**
  * Zodiac sign.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public enum EZodiacSign

@@ -1,14 +1,12 @@
 package com.hazard157.lib.core.quants.secint;
 
-import java.util.Iterator;
+import java.util.*;
 
-import org.toxsoft.core.tslib.bricks.events.change.GenericChangeEventer;
-import org.toxsoft.core.tslib.bricks.events.change.IGenericChangeEventer;
+import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.coll.basis.ITsCollection;
-import org.toxsoft.core.tslib.coll.impl.ElemLinkedBundleList;
-import org.toxsoft.core.tslib.coll.impl.SortedElemLinkedBundleList;
-import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
+import org.toxsoft.core.tslib.coll.basis.*;
+import org.toxsoft.core.tslib.coll.impl.*;
+import org.toxsoft.core.tslib.utils.errors.*;
 
 /**
  * Сортированный список интервалов, поддерживающий добавление с объединением.
@@ -260,7 +258,7 @@ public class SecintsList
   }
 
   @Override
-  public boolean add( ITsCollection<Secint> aList ) {
+  public boolean add( IList<Secint> aList ) {
     TsNullArgumentRtException.checkNull( aList );
     boolean retval = false;
     for( Secint in : aList ) {

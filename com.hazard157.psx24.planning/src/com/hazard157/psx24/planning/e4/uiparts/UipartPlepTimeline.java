@@ -15,7 +15,7 @@ import com.hazard157.psx24.planning.glib.*;
 /**
  * Вью просмотра графика планируемого эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartPlepTimeline
     extends MwsAbstractPart {

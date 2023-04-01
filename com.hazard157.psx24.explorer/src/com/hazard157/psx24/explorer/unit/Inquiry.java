@@ -13,7 +13,7 @@ import org.toxsoft.core.txtproj.lib.sinent.*;
 /**
  * Выборка обозревателя - последовательность фильтров, применяемых к эпизодам.
  *
- * @author goga
+ * @author hazard157
  */
 public class Inquiry
     extends AbstractSinentity<InquiryInfo> {

@@ -21,7 +21,7 @@ import com.hazard157.psx24.core.valeds.frames.*;
 /**
  * Контроллер панели редактирования сцены.
  *
- * @author goga
+ * @author hazard157
  */
 public class SceneEditPanelController
     extends M5EntityPanelWithValedsController<IScene> {

@@ -3,7 +3,7 @@ package com.hazard157.lib.core.legacy.hms;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 interface ITsResources {
 

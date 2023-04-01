@@ -3,7 +3,7 @@ package com.hazard157.psx24.gazes.m5;
 /**
  * Localizable resources.
  *
- * @author goga
+ * @author hazard157
  */
 interface IPsxResources {
 

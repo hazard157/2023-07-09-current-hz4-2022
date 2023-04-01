@@ -23,7 +23,7 @@ import com.hazard157.psx24.core.m5.trailer.*;
 /**
  * Вью правки камер.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartRefbookTrailers
     extends MwsAbstractPart {

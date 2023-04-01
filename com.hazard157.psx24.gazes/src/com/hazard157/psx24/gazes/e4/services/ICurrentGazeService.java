@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.gaze.*;
 /**
  * Introduces "Current selected gaze" concept.
  *
- * @author goga
+ * @author hazard157
  */
 public interface ICurrentGazeService
     extends ICurrentEntityService<IGaze> {

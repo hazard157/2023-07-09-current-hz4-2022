@@ -11,7 +11,7 @@ import com.hazard157.psx24.core.utils.ftstep.*;
  * <p>
  * Canvas has fixed length, depending on frame image size, episode duration and step seconds.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface ITimelineCanvas

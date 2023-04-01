@@ -3,7 +3,7 @@ package com.hazard157.psx.proj3.gaze.impl;
 /**
  * Localizable resources.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IHzResources {

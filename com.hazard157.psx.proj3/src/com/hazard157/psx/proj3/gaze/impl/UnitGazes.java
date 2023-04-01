@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.ng.incident.*;
 /**
  * {@link IUnitGazes} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class UnitGazes
     extends StriparManager<IGaze>

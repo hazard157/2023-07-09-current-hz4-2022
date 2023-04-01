@@ -16,7 +16,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Поле {@link IEpisodeIdable#episodeId()}.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - конкретный тип, реализующмй {@link IEpisodeIdable}
  */
 public class PsxM5EpisodeIdFieldDef<T extends IEpisodeIdable>

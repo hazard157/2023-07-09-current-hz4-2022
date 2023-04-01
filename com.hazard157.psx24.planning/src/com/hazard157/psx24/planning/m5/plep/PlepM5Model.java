@@ -22,7 +22,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Модель сущностей типа {@link IPlep}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PlepM5Model
     extends M5Model<IPlep> {

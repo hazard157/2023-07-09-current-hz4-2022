@@ -15,7 +15,7 @@ import com.hazard157.psx24.explorer.pq.*;
 /**
  * Базовый класс панели отображения наследниками в разных видах.
  *
- * @author goga
+ * @author hazard157
  */
 abstract class AbstractResultsPanel
     extends TsPanel

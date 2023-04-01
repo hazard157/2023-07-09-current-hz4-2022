@@ -26,7 +26,7 @@ import com.hazard157.psx24.timeline.main.stripes.*;
 /**
  * Рисовальщик
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 class EpisodeTimelineCanvas

@@ -20,7 +20,7 @@ import com.hazard157.psx24.core.m5.svin.*;
 /**
  * Отображение результатов как простого списка (таблицы) элементов типа {@link Svin}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ResultsPanelAsSimpleList
     extends AbstractResultsPanel {

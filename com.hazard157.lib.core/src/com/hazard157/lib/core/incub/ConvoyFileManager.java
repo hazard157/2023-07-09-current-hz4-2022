@@ -16,7 +16,7 @@ import org.toxsoft.core.tslib.utils.logs.impl.LoggerUtils;
  * <p>
  * TODO описать использование ConvoyFileManager
  *
- * @author goga
+ * @author hazard157
  */
 public class ConvoyFileManager {
 

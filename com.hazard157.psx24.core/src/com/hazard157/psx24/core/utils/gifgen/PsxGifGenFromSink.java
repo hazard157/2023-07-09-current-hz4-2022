@@ -24,7 +24,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Создает анимированный gif из списка {@link Svin}-ов с заданными в {@link PsxGifGenParams}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PsxGifGenFromSink {
 

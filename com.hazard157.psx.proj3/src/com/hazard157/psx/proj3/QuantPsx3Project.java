@@ -67,7 +67,7 @@ public class QuantPsx3Project
   private static final String PROJ_FILE_APP_ID          = "ru.tsdev.goga.prisex"; //$NON-NLS-1$
 
   /**
-   * Информация о формате файла проекта v3.
+   * Information about project file v31.
    */
   public static final TsProjectFileFormatInfo PROJECT_FILE_FORMAT_INFO =
       new TsProjectFileFormatInfo( PROJ_FILE_APP_ID, PROJ_FILE_FORMAT_VERSTION );

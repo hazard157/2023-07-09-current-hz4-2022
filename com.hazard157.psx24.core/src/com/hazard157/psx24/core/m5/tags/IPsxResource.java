@@ -5,7 +5,7 @@ import com.hazard157.psx.proj3.tags.*;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResource {

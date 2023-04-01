@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * Данный набор включает в себя методы конвертации изображения из "SWT" в "AWT" представление и обратно.
  *
  * @author vs
- * @author goga
+ * @author hazard157
  */
 public class HzImageUtils {
 

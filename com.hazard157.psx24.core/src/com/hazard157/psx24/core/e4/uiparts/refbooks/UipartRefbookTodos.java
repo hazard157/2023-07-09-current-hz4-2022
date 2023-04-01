@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.todos.*;
 /**
  * Вью правки камер.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartRefbookTodos
     extends MwsAbstractPart {

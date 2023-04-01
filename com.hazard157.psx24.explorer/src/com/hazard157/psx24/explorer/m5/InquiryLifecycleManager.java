@@ -12,7 +12,7 @@ import com.hazard157.psx24.explorer.unit.*;
 /**
  * Менеджер ЖЦ сущностей {@link Inquiry}.
  *
- * @author goga
+ * @author hazard157
  */
 class InquiryLifecycleManager
     extends M5LifecycleManager<Inquiry, IUnitExplorer> {

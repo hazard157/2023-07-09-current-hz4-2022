@@ -12,7 +12,7 @@ import com.hazard157.lib.core.incub.optedfile.*;
 /**
  * Working with films resource files.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFsFilmFilesManager {
 

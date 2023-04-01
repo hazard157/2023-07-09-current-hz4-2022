@@ -26,7 +26,7 @@ import com.hazard157.psx.proj3.bricks.beq.filters.*;
  * <p>
  * Фактически, объединяет {@link IBeqFilter} по AND.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IBeqInquiry
     extends IGenericChangeEventCapable {

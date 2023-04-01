@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.trailers.*;
 /**
  * Модель объектов типа {@link Trailer}.
  *
- * @author goga
+ * @author hazard157
  */
 public class EpisodeTrailerM5Model
     extends TrailerM5ModelBase {

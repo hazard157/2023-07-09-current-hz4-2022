@@ -28,7 +28,7 @@ import com.hazard157.psx24.explorer.unit.*;
 /**
  * Вью просмотра и редакттирования выборок обозревателя.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartsInquiries
     extends MwsAbstractPart {

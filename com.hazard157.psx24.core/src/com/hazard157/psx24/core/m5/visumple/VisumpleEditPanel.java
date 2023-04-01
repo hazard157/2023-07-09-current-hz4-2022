@@ -46,7 +46,7 @@ import com.hazard157.psx24.core.glib.dialogs.imgs.*;
 /**
  * Панель редактирования сущностей {@link Visumple}.
  *
- * @author goga
+ * @author hazard157
  */
 final class VisumpleEditPanel
     extends M5AbstractEntityPanel<Visumple> {

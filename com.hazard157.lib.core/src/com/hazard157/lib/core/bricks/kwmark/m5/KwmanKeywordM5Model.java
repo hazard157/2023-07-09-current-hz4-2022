@@ -14,7 +14,7 @@ import com.hazard157.lib.core.bricks.kwmark.manager.*;
 /**
  * {@link IKeywordManager} keywords M5-model.
  *
- * @author goga
+ * @author hazard157
  */
 public class KwmanKeywordM5Model
     extends M5Model<String> {

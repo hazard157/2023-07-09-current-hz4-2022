@@ -31,7 +31,7 @@ import com.hazard157.psx24.core.glib.plv.*;
 /**
  * Просмотрщик коллекции {@link Visumple} в таблицы миниатюр.
  *
- * @author goga
+ * @author hazard157
  */
 public class VisumpleCollViewerPanel
     extends M5AbstractCollectionPanel<Visumple> {

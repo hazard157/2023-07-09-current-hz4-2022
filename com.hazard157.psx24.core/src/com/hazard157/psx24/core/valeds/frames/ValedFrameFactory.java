@@ -17,7 +17,7 @@ import com.hazard157.psx.common.stuff.frame.*;
 /**
  * Фабрика редактора полей {@link IFrameable#frame()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedFrameFactory
     extends AbstractValedControlFactory {

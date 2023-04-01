@@ -7,7 +7,7 @@ import org.toxsoft.core.tsgui.mws.services.currentity.*;
 /**
  * Реализация {@link ICurrentFilmService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class CurrentFilmService
     extends CurrentEntityService<File>

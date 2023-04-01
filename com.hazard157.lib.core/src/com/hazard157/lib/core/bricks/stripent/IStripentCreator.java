@@ -5,7 +5,7 @@ import org.toxsoft.core.tslib.av.opset.*;
 /**
  * {@link IStripent} entities creation factory.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - the entity type
  */
 public interface IStripentCreator<T extends IStripent> {

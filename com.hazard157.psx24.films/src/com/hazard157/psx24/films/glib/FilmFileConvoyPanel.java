@@ -26,7 +26,7 @@ import com.hazard157.psx24.films.glib.valeds.*;
  * <p>
  * Свойства файла порнилаа перечислены в {@link IFilmPropsConstants}.
  *
- * @author goga
+ * @author hazard157
  */
 public class FilmFileConvoyPanel
     extends AbstractTsDialogPanel<IOptionSet, ITsGuiContext> {

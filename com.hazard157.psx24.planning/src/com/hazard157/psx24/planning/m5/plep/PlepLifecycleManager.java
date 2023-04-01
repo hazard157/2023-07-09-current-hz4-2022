@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Менеджер ЖЦ сущностей {@link IPlep}.
  *
- * @author goga
+ * @author hazard157
  */
 class PlepLifecycleManager
     extends M5LifecycleManager<IPlep, IUnitPleps> {

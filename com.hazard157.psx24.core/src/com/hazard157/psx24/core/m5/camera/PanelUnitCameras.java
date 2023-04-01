@@ -18,7 +18,7 @@ import com.hazard157.psx.proj3.sourcevids.*;
 /**
  * Панель работы с менеджером камер {@link IUnitCameras}, который находится в контексте приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelUnitCameras
     extends MultiPaneComponentModown<Camera> {

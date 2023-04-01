@@ -6,7 +6,7 @@ import org.toxsoft.core.tsgui.m5.std.models.enums.*;
 /**
  * Модель сущностей типа {@link EThumbSize}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ThumbSizeM5Model
     extends M5StridableEnumModelBase<EThumbSize> {

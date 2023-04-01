@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Incident utility methods.
  *
- * @author goga
+ * @author hazard157
  */
 
 public class PsxIncidentUtils {

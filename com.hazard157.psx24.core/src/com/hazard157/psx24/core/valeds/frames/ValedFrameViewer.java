@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Просмотрщик поля {@link IFrameable#frame()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedFrameViewer
     extends AbstractValedControl<IFrame, Control> {

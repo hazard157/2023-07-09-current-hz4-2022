@@ -17,7 +17,7 @@ import com.hazard157.psx.proj3.episodes.*;
  * <p>
  * Использует {@link PanelAnyFrameSelector} для выбора кадра.
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogAnyFrameSelector {
 

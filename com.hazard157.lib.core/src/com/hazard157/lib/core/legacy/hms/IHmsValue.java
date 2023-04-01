@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * <p>
  * Сравнение всех реализации происходит только по значению {@link #getValue()}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IHmsValue
     extends IGenericChangeEventCapable, Comparable<IHmsValue> {

@@ -14,7 +14,7 @@ import com.hazard157.psx24.timeline.main.*;
 /**
  * Базовый класс полосы, отображаемой на диаграмме эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public abstract class AbstractStripe

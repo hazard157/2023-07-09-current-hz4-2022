@@ -11,7 +11,7 @@ import com.hazard157.psx24.core.*;
  * <p>
  * Экземпляр должен быть в контексте приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPlayMenuSupport {
 

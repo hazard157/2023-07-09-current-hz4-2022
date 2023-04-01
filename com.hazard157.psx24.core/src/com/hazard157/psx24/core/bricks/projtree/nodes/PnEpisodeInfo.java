@@ -14,7 +14,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Узел сущности {@link EpisodeInfo} в {@link EpisodeInfo}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodeInfo
     extends LeafTsNode<EpisodeInfo> {

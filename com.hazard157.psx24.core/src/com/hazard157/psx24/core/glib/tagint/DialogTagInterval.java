@@ -29,7 +29,7 @@ import com.hazard157.psx24.core.m5.tags.*;
 /**
  * Диалог выбора ярлыка и интервала.
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogTagInterval {
 

@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Базовый класс виджетов ввода даты/времени, которые справа имеют две кнопки изменения "вверх"/"вниз".
  *
- * @author goga
+ * @author hazard157
  */
 public abstract class AbstractNnnWidget
     extends Composite
@@ -82,7 +82,7 @@ public abstract class AbstractNnnWidget
   /**
    * Раскладка этого контроля.
    *
-   * @author goga
+   * @author hazard157
    */
   protected class SelfLayout
       extends Layout {

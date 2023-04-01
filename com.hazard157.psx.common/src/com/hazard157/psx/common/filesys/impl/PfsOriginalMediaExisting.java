@@ -20,7 +20,7 @@ import com.hazard157.psx.common.filesys.*;
 /**
  * {@link IPfsOriginalMedia} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class PfsOriginalMediaExisting
     implements IPfsOriginalMedia {

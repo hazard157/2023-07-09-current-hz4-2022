@@ -12,7 +12,7 @@ import com.hazard157.psx.common.stuff.sc.*;
 /**
  * Менеджер управления файлами кадров эпизодов.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFsFrameManager {
 

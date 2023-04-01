@@ -13,7 +13,7 @@ import com.hazard157.psx.common.stuff.*;
 /**
  * Поле {@link IEpisodeIntervalable#interval()}.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - конкретный тип, реализующмй {@link IEpisodeIntervalable}
  */
 public class PsxM5IntervalFieldDef<T extends IEpisodeIntervalable>

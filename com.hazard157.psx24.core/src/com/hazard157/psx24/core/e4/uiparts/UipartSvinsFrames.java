@@ -14,7 +14,7 @@ import com.hazard157.psx24.core.glib.frlstviewer_any.*;
 /**
  * UI part to view
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartSvinsFrames
     extends MwsAbstractPart {

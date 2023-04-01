@@ -16,7 +16,7 @@ import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 /**
  * Константы GUI плагина.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "javadoc" } )
 public interface IPsx24GazesConstants {

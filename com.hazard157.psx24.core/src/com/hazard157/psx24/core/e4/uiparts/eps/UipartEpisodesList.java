@@ -25,7 +25,7 @@ import com.hazard157.psx24.core.e4.services.currep.*;
 /**
  * Вью списка эпизодов.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodesList
     extends MwsAbstractPart {

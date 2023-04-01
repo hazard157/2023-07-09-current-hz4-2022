@@ -12,7 +12,7 @@ import com.hazard157.psx24.core.e4.services.currep.*;
 /**
  * Базовый класс всех вью, связанных с просмотром/редактированием свойств эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public abstract class AbstractEpisodeUipart
     extends MwsAbstractPart {

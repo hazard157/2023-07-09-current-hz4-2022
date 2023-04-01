@@ -19,7 +19,7 @@ import com.hazard157.psx.common.stuff.fsc.*;
  * <li>изображение кадра - справа, содержит изображение выбранного в таблице кадра.</li>
  * </ul>
  *
- * @author goga
+ * @author hazard157
  */
 public interface IEpisodeFramesListViewer
     extends ILazyControl<TsComposite>, ITsSelectionProvider<IFrame>, ITsDoubleClickEventProducer<IFrame> {

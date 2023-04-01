@@ -31,7 +31,7 @@ import com.hazard157.psx24.core.utils.gifgen.PsxGifGenParams.*;
 /**
  * Реализация {@link IPrisexService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PrisexService
     implements IPrisexService {

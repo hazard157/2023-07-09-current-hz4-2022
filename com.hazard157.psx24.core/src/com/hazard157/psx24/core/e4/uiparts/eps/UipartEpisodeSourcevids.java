@@ -20,7 +20,7 @@ import com.hazard157.psx24.core.m5.srcvids.*;
 /**
  * Вью просмотра списка исходников эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodeSourcevids
     extends AbstractEpisodeUipart {

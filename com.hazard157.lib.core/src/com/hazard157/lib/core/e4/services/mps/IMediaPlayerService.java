@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Служба общего назначения для воспроизведения медия файлов.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IMediaPlayerService {
 

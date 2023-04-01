@@ -11,7 +11,7 @@ import com.hazard157.psx.common.stuff.frame.*;
 /**
  * Элемент очереди потка загрузки изображений {@link FrameLoaderThread}.
  *
- * @author goga
+ * @author hazard157
  */
 class Item {
 

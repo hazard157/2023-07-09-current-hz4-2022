@@ -42,7 +42,7 @@ import com.hazard157.psx24.core.m5.std.*;
 /**
  * Панель работы с менеджером камер {@link IUnitSourceVideos}, который находится в контексте приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelUnitSourceVideos
     extends MultiPaneComponentModown<ISourceVideo> {

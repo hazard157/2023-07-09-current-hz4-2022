@@ -18,7 +18,7 @@ import com.hazard157.psx24.explorer.pq.*;
 /**
  * Вью простого запроса, содержит фильтры по И, изменение любого немедленно отображает результат.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartsSimpleQuery
     extends MwsAbstractPart {

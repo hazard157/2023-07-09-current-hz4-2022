@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.av.metainfo.*;
 /**
  * Опции хранения PSX-сецифичной мета-информации в узлах проекта.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "javadoc", "nls" } )
 public interface IPsxTreeMetaInfo {

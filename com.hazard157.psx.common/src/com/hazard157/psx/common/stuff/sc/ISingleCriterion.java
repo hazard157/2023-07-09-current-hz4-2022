@@ -14,7 +14,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
 /**
  * Single criteria to select frames.
  *
- * @author goga
+ * @author hazard157
  */
 public interface ISingleCriterion
     extends ITsFilter<IFrame> {

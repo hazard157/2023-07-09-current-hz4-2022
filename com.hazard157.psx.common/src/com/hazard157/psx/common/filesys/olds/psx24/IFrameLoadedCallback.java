@@ -10,7 +10,7 @@ import com.hazard157.psx.common.stuff.frame.*;
  * <p>
  * Этот метод вызывается в основном GUI-потоке выполнения с помощью {@link Display#asyncExec(Runnable)}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFrameLoadedCallback {
 

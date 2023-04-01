@@ -5,7 +5,7 @@ import org.eclipse.swt.events.*;
 /**
  * Слушатель щелчков на {@link PictureViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPictureViewerMouseListener {
 

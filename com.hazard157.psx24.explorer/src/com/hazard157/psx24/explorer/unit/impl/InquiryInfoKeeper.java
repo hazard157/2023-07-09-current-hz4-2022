@@ -10,7 +10,7 @@ import com.hazard157.psx24.explorer.unit.*;
 /**
  * Хранитель объектов типа {@link InquiryInfo}.
  *
- * @author goga
+ * @author hazard157
  */
 public class InquiryInfoKeeper
     extends AbstractEntityKeeper<InquiryInfo> {

@@ -26,7 +26,7 @@ import com.hazard157.psx24.core.m5.trailer.TrailerTreeMakerUtils.*;
 /**
  * Создание панелей.
  *
- * @author goga
+ * @author hazard157
  */
 class PanelCreator
     extends M5DefaultPanelCreator<Trailer> {

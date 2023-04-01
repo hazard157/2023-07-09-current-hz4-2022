@@ -50,7 +50,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
  * Например, если интервал по умолчанию меньше минимально допустимого, то уменьшение интервала приведет к его увеличению
  * (до наименьшего из {@link #getAvailableFrameTimeSteps()}).
  *
- * @author goga
+ * @author hazard157
  */
 public class FrameTimeSteppableDropDownMenuCreator
     extends AbstractMenuCreator {

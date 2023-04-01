@@ -11,7 +11,7 @@ import com.hazard157.lib.core.quants.secint.*;
 /**
  * Range selection stripe.
  *
- * @author goga
+ * @author hazard157
  */
 public class RangeScale
     extends AbstractStripe {

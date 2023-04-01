@@ -19,7 +19,7 @@ import com.hazard157.psx24.explorer.unit.*;
 /**
  * Модель элементов {@link Inquiry#items()} типа {@link InquiryItem}.
  *
- * @author goga
+ * @author hazard157
  */
 public class InquiryItemM5Model
     extends M5Model<InquiryItem> {

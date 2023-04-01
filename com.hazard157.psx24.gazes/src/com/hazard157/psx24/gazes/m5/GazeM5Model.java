@@ -20,7 +20,7 @@ import com.hazard157.psx.proj3.gaze.*;
 /**
  * M5-model of {@link IGaze}.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public class GazeM5Model

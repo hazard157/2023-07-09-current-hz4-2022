@@ -28,7 +28,7 @@ import com.hazard157.psx24.explorer.unit.*;
  * <p>
  * При изменении параметров генерирует сообщение {@link IGenericChangeListener#onGenericChangeEvent(Object)}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelAllFiltersSetLadder
     extends TsPanel

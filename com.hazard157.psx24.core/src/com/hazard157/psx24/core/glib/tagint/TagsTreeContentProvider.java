@@ -13,7 +13,7 @@ import com.hazard157.psx.proj3.tags.*;
  * <p>
  * Корневой элемент и все узлы дерева имеют тип {@link ITag}.
  *
- * @author goga
+ * @author hazard157
  */
 public class TagsTreeContentProvider
     implements ITreeContentProvider {

@@ -20,7 +20,7 @@ import com.hazard157.psx24.core.e4.services.selsvins.*;
 /**
  * Mixin interface for PSX standard references access from context.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IPsxStdReferences

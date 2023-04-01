@@ -5,7 +5,7 @@ import org.toxsoft.core.txtproj.lib.sinent.*;
 /**
  * Компонента файла проекта - данные обозревателя.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IUnitExplorer
     extends ISinentManager<Inquiry, InquiryInfo> {

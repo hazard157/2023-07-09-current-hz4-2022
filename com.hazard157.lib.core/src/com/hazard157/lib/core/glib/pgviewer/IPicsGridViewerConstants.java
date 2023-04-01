@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.av.metainfo.*;
 /**
  * Константы настройки просмотрщика {@link IPicsGridViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPicsGridViewerConstants {
 

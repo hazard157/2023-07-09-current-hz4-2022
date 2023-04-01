@@ -23,7 +23,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * {@link INbNote} M5 model.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public class NbNoteM5Model

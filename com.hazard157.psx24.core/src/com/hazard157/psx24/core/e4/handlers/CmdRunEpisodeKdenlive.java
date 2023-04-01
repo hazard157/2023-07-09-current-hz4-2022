@@ -20,7 +20,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Команда "Запуск одного из проектов kdelive эпизода".
  *
- * @author goga
+ * @author hazard157
  */
 public class CmdRunEpisodeKdenlive {
 

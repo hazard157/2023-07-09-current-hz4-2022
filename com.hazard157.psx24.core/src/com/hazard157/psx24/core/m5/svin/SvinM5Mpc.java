@@ -39,7 +39,7 @@ import com.hazard157.psx24.core.e4.services.selsvins.*;
 /**
  * Реализация {@link IM5CollectionPanel} для {@link SvinM5Model}.
  *
- * @author goga
+ * @author hazard157
  */
 public class SvinM5Mpc
     extends MultiPaneComponentModown<Svin> {

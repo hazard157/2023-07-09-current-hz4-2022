@@ -10,7 +10,7 @@ import com.hazard157.psx.common.stuff.svin.*;
 /**
  * {@link IPsxSelectedSvinsService} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class PsxSelectedSvinsService
     implements IPsxSelectedSvinsService {

@@ -7,7 +7,7 @@ import com.hazard157.psx24.explorer.pq.*;
 /**
  * Понятие "текущай результат выборки".
  * 
- * @author goga
+ * @author hazard157
  */
 public interface ICurrentPqResultService
     extends ICurrentEntityService<PqResultSet> {

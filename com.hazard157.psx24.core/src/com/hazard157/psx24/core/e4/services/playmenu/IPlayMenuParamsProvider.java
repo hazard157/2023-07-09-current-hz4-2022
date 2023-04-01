@@ -6,7 +6,7 @@ import com.hazard157.psx24.core.*;
 /**
  * Интерфейс предоставления начальных параметров просмотра для меню кнопки {@link IPsxAppActions#AI_PLAY_MENU}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPlayMenuParamsProvider {
 

@@ -17,7 +17,7 @@ import com.hazard157.psx.proj3.bricks.beq.*;
 /**
  * Выборка обозревателя - последовательность фильтров, применяемых к эпизодам.
  *
- * @author goga
+ * @author hazard157
  */
 public class BeqInquiry
     implements IBeqInquiry {

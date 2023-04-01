@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.av.utils.*;
 /**
  * Entity with {@link IHzOptionsConstants#OPDEF_AUDIO_FILE} parameter in {@link #params()}.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IAudioFileOptionCapable

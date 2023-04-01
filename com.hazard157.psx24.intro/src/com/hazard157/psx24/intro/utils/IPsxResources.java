@@ -3,7 +3,7 @@ package com.hazard157.psx24.intro.utils;
 /**
  * Локализуемые русурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

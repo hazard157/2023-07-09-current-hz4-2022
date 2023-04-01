@@ -6,7 +6,7 @@ import org.toxsoft.core.tslib.coll.primtypes.IStringMap;
 /**
  * Mixin interface of some (usually GUI) entity supporting {@link ITsActionDef} actions.
  *
- * @author goga
+ * @author hazard157
  */
 public interface ITsActionsSupporter
     extends ITsActionProcessor {

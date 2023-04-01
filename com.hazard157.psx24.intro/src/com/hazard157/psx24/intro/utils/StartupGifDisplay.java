@@ -34,7 +34,7 @@ import com.hazard157.psx24.core.glib.dialogs.imgs.*;
 /**
  * Показывает произвольный GIF анимированный кадр в тодельном окне.
  *
- * @author goga
+ * @author hazard157
  */
 public class StartupGifDisplay {
 

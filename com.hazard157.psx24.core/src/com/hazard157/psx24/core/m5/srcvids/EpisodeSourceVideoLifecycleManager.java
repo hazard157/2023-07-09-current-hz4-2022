@@ -18,7 +18,7 @@ import com.hazard157.psx24.core.m5.std.*;
 /**
  * Менеджер ЖЦ {@link ISourceVideo} для правки и просмтора исходников одного эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class EpisodeSourceVideoLifecycleManager
     extends M5LifecycleManager<ISourceVideo, IUnitSourceVideos> {

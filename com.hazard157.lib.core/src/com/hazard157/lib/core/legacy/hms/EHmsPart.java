@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Компонента текстового представления времени/интервала вида "ЧЧ:ММ:СС".
  *
- * @author goga
+ * @author hazard157
  */
 public enum EHmsPart
     implements IStridable {

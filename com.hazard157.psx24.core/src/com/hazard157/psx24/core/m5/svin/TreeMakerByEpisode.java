@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.*;
 /**
  * Построитель дерева {@link Svin}-ов по эпизодам.
  *
- * @author goga
+ * @author hazard157
  */
 class TreeMakerByEpisode
     implements ITsTreeMaker<Svin>, IPsxStdReferences {

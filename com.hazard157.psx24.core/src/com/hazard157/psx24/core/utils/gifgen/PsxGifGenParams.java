@@ -11,14 +11,14 @@ import com.hazard157.psx.common.stuff.svin.*;
 /**
  * Панаметры генерации анимированной минатюры видеоряда методом {@link PsxGifGenFromSink#createThumb(File, IList)}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PsxGifGenParams {
 
   /**
    * Режимы генерации.
    *
-   * @author goga
+   * @author hazard157
    */
   public enum EMode {
 

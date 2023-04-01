@@ -28,7 +28,7 @@ import com.hazard157.psx24.planning.m5.*;
 /**
  * Вью просмотра и правки свойств текущего {@link ICurrentStirService#current()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartCurrentStir
     extends MwsAbstractPart {

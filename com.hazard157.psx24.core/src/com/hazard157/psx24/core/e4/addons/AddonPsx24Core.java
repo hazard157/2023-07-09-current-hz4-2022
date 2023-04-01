@@ -39,7 +39,7 @@ import com.hazard157.psx24.core.valeds.frames.*;
 /**
  * Адон приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public class AddonPsx24Core
     extends MwsAbstractAddon {

@@ -41,7 +41,7 @@ import com.hazard157.psx24.gazes.utils.*;
 /**
  * Displays content of selected gaze media files.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartGazeMedia
     extends MwsAbstractPart

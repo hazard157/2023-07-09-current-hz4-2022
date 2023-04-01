@@ -8,7 +8,7 @@ import com.hazard157.psx24.core.e4.services.currep.*;
 /**
  * Выбрать предыдущий эпизод.
  *
- * @author goga
+ * @author hazard157
  */
 public class CmdEpisodePrev {
 

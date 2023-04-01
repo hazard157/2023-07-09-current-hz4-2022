@@ -68,7 +68,7 @@ import com.hazard157.psx24.core.m5.episode.*;
 /**
  * Вью просмотра и редактирования сюжета {@link IEpisode#story()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodeStory
     extends AbstractEpisodeUipart

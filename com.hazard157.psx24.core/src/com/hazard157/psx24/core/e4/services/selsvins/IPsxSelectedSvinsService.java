@@ -10,7 +10,7 @@ import com.hazard157.psx.common.stuff.svin.*;
 /**
  * Service introduces concept of "selectted svins to be viewed as frames".
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPsxSelectedSvinsService {
 

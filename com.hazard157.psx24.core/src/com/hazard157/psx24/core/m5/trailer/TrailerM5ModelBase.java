@@ -22,7 +22,7 @@ import com.hazard157.psx24.core.m5.std.*;
 /**
  * Базовая модель объектов типа {@link Trailer}, и для трейлеров одного эпизода, и для справочника трейлеров.
  *
- * @author goga
+ * @author hazard157
  */
 public class TrailerM5ModelBase
     extends M5Model<Trailer> {

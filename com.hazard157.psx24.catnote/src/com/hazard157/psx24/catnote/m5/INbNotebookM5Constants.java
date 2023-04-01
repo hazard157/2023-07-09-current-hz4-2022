@@ -3,7 +3,7 @@ package com.hazard157.psx24.catnote.m5;
 /**
  * Library entities M5 modelling constants.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface INbNotebookM5Constants {

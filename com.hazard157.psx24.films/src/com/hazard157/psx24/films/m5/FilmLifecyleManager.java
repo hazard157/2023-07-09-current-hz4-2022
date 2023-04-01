@@ -11,7 +11,7 @@ import com.hazard157.psx24.films.e4.services.*;
 /**
  * уМенеджер ЖЦ модели {@link FilmM5Model}.
  *
- * @author goga
+ * @author hazard157
  */
 class FilmLifecyleManager
     extends M5LifecycleManager<File, IPsxFilmsService> {

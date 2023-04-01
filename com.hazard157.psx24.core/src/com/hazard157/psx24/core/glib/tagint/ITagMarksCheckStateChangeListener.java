@@ -6,7 +6,7 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 /**
  * Слушатель изменений в состоянии пометок в дереве {@link TagMarksTreePanel}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface ITagMarksCheckStateChangeListener {
 

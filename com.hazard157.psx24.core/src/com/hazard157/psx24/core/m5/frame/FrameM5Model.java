@@ -24,7 +24,7 @@ import com.hazard157.psx24.core.valeds.frames.*;
 /**
  * Модель сущностей типа {@link IFrame}.
  *
- * @author goga
+ * @author hazard157
  */
 public class FrameM5Model
     extends M5Model<IFrame> {

@@ -23,7 +23,7 @@ import com.hazard157.psx.proj3.episodes.*;
  * Процессор выдает результат запроса {@link #queryData(ITsCombiFilterParams)} над входными данными
  * {@link #inputData()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class BeqProcessor
     implements IBeqProcessor {

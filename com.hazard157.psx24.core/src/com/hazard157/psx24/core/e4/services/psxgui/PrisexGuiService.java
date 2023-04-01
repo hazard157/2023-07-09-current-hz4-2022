@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * {@link IPrisexGuiService} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class PrisexGuiService
     implements IPrisexGuiService, ITsGuiContextable {

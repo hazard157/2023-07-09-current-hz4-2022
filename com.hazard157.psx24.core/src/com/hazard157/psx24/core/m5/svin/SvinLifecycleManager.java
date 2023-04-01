@@ -9,7 +9,7 @@ import com.hazard157.psx.common.stuff.svin.*;
 /**
  * Менедже ЖЦ сущнстей {@link Svin}.
  *
- * @author goga
+ * @author hazard157
  */
 class SvinLifecycleManager
     extends M5LifecycleManager<Svin, Object> {

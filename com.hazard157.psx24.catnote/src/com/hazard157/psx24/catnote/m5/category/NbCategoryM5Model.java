@@ -13,7 +13,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * {@link INbCategory} M5 model.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public class NbCategoryM5Model

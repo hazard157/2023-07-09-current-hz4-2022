@@ -13,7 +13,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Вью просмотра свойств эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodeProps
     extends AbstractEpisodeUipart {

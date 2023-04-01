@@ -25,7 +25,7 @@ import com.hazard157.psx24.core.glib.frlstviewer_ep.*;
 /**
  * Диалог просмотра и работы с изображениями кадров эпизодов.
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogWorkWithFrames
     extends AbstractTsDialogPanel<IFrame, IEclipseContext> {

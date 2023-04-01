@@ -18,7 +18,7 @@ import com.hazard157.psx24.planning.m5.plep.*;
 /**
  * Вью просмотра и правки {@link IUnitPleps#items()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartUnitPleps
     extends MwsAbstractPart {

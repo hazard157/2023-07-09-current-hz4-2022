@@ -24,7 +24,7 @@ import com.hazard157.psx24.core.m5.std.*;
 /**
  * Модель сущностей {@link MarkPlaneGuide}.
  *
- * @author goga
+ * @author hazard157
  */
 public class MarkPlaneGuideM5Model
     extends M5Model<MarkPlaneGuide> {

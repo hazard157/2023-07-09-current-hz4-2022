@@ -10,7 +10,7 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 /**
  * Узел элемента интервалов ярлыка теглайна {@link ITagLine#marks(String)}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodeTaglineTagInterval
     extends LeafTsNode<Secint> {

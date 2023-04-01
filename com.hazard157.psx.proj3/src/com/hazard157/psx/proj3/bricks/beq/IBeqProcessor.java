@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * Процессор выдает результат запроса {@link #queryData(ITsCombiFilterParams)} над входными данными
  * {@link #inputData()}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IBeqProcessor {
 

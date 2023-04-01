@@ -11,7 +11,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Узел списка {@link IEpisode#getIllustrations(boolean)}.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "rawtypes" )
 public class PnEpisodeIlls

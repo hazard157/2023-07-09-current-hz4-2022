@@ -15,7 +15,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * View: {@link INbNotebook#notes()} editor.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartNbNoteEditor
     extends MwsAbstractPart {

@@ -15,7 +15,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Реализация {@link IFramesList}.
  *
- * @author goga
+ * @author hazard157
  */
 public class FramesList
     extends ElemArrayList<IFrame>

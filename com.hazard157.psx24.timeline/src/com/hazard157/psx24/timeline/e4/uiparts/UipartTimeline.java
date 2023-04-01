@@ -15,7 +15,7 @@ import com.hazard157.psx24.timeline.main.*;
 /**
  * View: timeline.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartTimeline
     extends MwsAbstractPart {

@@ -13,7 +13,7 @@ import com.hazard157.psx.proj3.todos.*;
 /**
  * Создатель контроллера жизненного цикала объектов типа {@link ITodo}.
  *
- * @author goga
+ * @author hazard157
  */
 class TodoM5LifecycleManager
     extends M5LifecycleManager<ITodo, IUnitTodos> {

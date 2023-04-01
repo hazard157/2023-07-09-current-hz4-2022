@@ -18,7 +18,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Вертикальный грфик плана.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelPlepTimeline
     extends TsPanel {

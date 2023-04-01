@@ -5,7 +5,7 @@ package com.hazard157.lib.core.glib.cellsgrid;
  * <p>
  * Реализован как паттерн "интерфейс только-для-чтения и редактируемый класс".
  *
- * @author goga
+ * @author hazard157
  */
 public interface IGridMargins {
 

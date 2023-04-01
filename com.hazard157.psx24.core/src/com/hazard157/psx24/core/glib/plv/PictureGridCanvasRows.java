@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.bricks.geometry.impl.*;
 /**
  * Рисовальщик типа {@link EPlvLayoutMode#ROWS}.
  *
- * @author goga
+ * @author hazard157
  */
 class PictureGridCanvasRows
     extends AbstractPictureGridCanvas {

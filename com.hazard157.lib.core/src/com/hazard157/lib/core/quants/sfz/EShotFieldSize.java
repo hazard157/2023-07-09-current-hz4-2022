@@ -16,7 +16,7 @@ import com.hazard157.lib.core.utils.IRadioPropEnum;
 /**
  * План — «крупность» изображения, пойманная объективом, условное деление для приложений SX.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public enum EShotFieldSize

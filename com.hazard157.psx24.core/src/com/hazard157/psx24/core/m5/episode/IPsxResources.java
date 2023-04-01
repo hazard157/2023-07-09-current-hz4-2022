@@ -3,7 +3,7 @@ package com.hazard157.psx24.core.m5.episode;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

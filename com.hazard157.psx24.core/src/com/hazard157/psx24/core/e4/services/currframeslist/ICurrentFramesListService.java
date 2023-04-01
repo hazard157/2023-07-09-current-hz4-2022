@@ -10,7 +10,7 @@ import com.hazard157.psx.common.stuff.svin.*;
 /**
  * Служба реализации понятия "текущеий список кадров для просмотра в вью".
  *
- * @author goga
+ * @author hazard157
  */
 public interface ICurrentFramesListService
     extends ICurrentEntityService<IList<IFrame>>, ITsSelectionProvider<IFrame> {

@@ -74,8 +74,8 @@ import com.hazard157.psx24.explorer.unit.impl.*;
 @SuppressWarnings( { "nls", "javadoc" } )
 public class Proj3ExporterMain {
 
-  public static final String DEFAULT_PROJ3_FILE_PATH = "/home/hmade/data/projects/ver3/prisex.txt";
-  public static final String DEFAULT_OUT_FILE_PATH   = "/home/hmade/data/projects/ver3/proj3_exported.txt";
+  public static final String DEFAULT_PROJ3_FILE_PATH    = "/home/hmade/data/projects/ver3/prisex.txt";
+  public static final String DEFAULT_EXPORTED_FILE_PATH = "/home/hmade/data/projects/ver3/proj3_exported.txt";
 
   public static final String CMDLINE_ARG_PROJ3_FILE_PATH = "proj3";
   public static final String CMDLINE_ARG_OUT_FILE_PATH   = "output";
@@ -148,7 +148,8 @@ public class Proj3ExporterMain {
       // ======
       utilCopyStridable( p, item );
       p.setStr( "duration", HmsUtils.hhhmmss( item.duration() ) );
-      p.setStr( "location", item.location() );
+      // no need for following - item.nmName() is the same as a location
+      // p.setStr( "location", item.location() );
       p.setStr( "frame", FrameKeeper.KEEPER.ent2str( item.frame() ) );
       // ======
       llItems.add( p );
@@ -598,9 +599,9 @@ public class Proj3ExporterMain {
 
   // written list may be read by OptionSetKeeper.KEEPER.readColl( sr )
   private static void writeOpSetList( IStrioWriter aSw, IList<IOptionSetEdit> aOpSetList ) {
-    aSw.writeChar( CHAR_SET_BEGIN );
+    aSw.writeChar( CHAR_ARRAY_BEGIN );
     if( aOpSetList.isEmpty() ) {
-      aSw.writeChar( CHAR_SET_END );
+      aSw.writeChar( CHAR_ARRAY_END );
       return;
     }
     aSw.incNewLine();
@@ -612,7 +613,7 @@ public class Proj3ExporterMain {
       }
     }
     aSw.decNewLine();
-    aSw.writeChar( CHAR_SET_END );
+    aSw.writeChar( CHAR_ARRAY_END );
   }
 
   private static void initKeepers() {
@@ -631,12 +632,12 @@ public class Proj3ExporterMain {
     initKeepers();
     ProgramArgs progArgs = new ProgramArgs( args );
     String proj3FilePath = progArgs.getArgValue( CMDLINE_ARG_PROJ3_FILE_PATH, DEFAULT_PROJ3_FILE_PATH );
-    String outFilePath = progArgs.getArgValue( CMDLINE_ARG_OUT_FILE_PATH, DEFAULT_OUT_FILE_PATH );
+    String outFilePath = progArgs.getArgValue( CMDLINE_ARG_OUT_FILE_PATH, DEFAULT_EXPORTED_FILE_PATH );
     File proj3File = new File( proj3FilePath );
     File outFile = new File( outFilePath );
     pl( "Project 3 file: %s", proj3File.getAbsolutePath() );
     pl( "Output file:    %s", outFile.getAbsolutePath() );
-    // open project
+    // open project 3
     ITsProject proj3 = new TsProject( PROJECT_FILE_FORMAT_INFO );
     ITsProjectFileBound bound = new TsProjectFileBound( proj3, IOptionSet.NULL );
     bound.open( proj3File );

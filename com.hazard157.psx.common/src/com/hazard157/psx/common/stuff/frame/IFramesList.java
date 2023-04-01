@@ -6,7 +6,7 @@ import org.toxsoft.core.tslib.coll.*;
 /**
  * Список кадров.
  *
- * @author goga
+ * @author hazard157
  */
 
 public interface IFramesList

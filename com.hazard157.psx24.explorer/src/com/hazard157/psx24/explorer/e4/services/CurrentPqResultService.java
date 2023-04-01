@@ -7,7 +7,7 @@ import com.hazard157.psx24.explorer.pq.*;
 /**
  * Реализация {@link ICurrentPqResultService}.
  * 
- * @author goga
+ * @author hazard157
  */
 public class CurrentPqResultService
     extends CurrentEntityService<PqResultSet>

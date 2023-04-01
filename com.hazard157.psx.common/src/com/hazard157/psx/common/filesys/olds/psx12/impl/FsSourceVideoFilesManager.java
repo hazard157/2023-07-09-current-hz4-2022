@@ -15,7 +15,7 @@ import com.hazard157.psx.common.utils.*;
 /**
  * {@link IFsSourceVideoFilesManager} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 class FsSourceVideoFilesManager
     implements IFsSourceVideoFilesManager {

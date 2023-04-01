@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Вспомогательные методы работы с деревьями.
  *
- * @author goga
+ * @author hazard157
  */
 public class TreeOpUtils {
 

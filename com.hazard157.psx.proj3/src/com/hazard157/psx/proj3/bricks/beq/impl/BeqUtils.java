@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Методы работы с подсистемой BEQ.
  *
- * @author goga
+ * @author hazard157
  */
 public class BeqUtils {
 

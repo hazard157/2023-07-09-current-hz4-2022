@@ -5,7 +5,7 @@ import org.toxsoft.core.tsgui.bricks.actions.ITsActionDef;
 /**
  * The handler of action wich has an ID {@link ITsActionDef#id()}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface ITsActionProcessor {
 

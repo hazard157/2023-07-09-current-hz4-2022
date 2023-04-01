@@ -40,7 +40,7 @@ import com.hazard157.psx24.core.valeds.frames.*;
 /**
  * Модель сущностей типа {@link IEpisode}.
  *
- * @author goga
+ * @author hazard157
  */
 public class EpisodeM5Model
     extends M5Model<IEpisode> {

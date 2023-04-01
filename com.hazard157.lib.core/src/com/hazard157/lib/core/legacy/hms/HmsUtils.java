@@ -21,7 +21,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * <li>"ММ:СС" - ММ=0..99, СС=0..59, два разряда или более, одноразрядные числа дополнены слева нулем;</li>
  * </ul>
  *
- * @author goga
+ * @author hazard157
  */
 public class HmsUtils {
 

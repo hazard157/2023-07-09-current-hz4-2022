@@ -20,7 +20,7 @@ import com.hazard157.psx24.films.e4.services.*;
 /**
  * Вью миниатюры текущего фильма.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartFilmThumb
     extends MwsAbstractPart {

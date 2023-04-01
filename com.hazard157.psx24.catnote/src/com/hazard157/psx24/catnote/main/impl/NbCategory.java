@@ -9,7 +9,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * {@link INbCategory} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 class NbCategory
     extends StridableParameterized

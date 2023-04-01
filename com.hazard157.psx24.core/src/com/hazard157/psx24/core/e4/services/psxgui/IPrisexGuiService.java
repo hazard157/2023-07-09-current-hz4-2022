@@ -6,7 +6,7 @@ package com.hazard157.psx24.core.e4.services.psxgui;
  * Это общий интерфейс, ссылка на который должна находится в контексте окна. Имплементация сервиса в каждой версии
  * PRISEX - своя.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPrisexGuiService {
 

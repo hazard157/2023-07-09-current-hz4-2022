@@ -16,7 +16,7 @@ import com.hazard157.psx.common.stuff.frame.*;
 /**
  * Статические методы (они же правила) именования и работы с файловыми ресурсами приложения PSX.
  *
- * @author goga
+ * @author hazard157
  */
 public class PsxFileSystemUtils {
 

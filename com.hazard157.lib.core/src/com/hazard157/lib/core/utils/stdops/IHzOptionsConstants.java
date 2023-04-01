@@ -16,7 +16,7 @@ import org.toxsoft.core.tslib.bricks.keeper.std.*;
 /**
  * Package constants.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "javadoc", "nls" } )
 public interface IHzOptionsConstants {

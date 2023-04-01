@@ -3,7 +3,7 @@ package com.hazard157.psx24.core.glib.dialogs.epsel;
 /**
  * Локализуемые ресурсы общей библиотеки.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

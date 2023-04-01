@@ -30,7 +30,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
 /**
  * Управление режимом просмотра в виде дерева в {@link EpisodeFramesListViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 class EflvTreeModeManager
     extends TreeModeManager<IFrame>

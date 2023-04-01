@@ -52,7 +52,7 @@ import com.hazard157.psx24.core.legacy.*;
 /**
  * Вью промотра и правки {@link IEpisode#tagLine()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodeTags
     extends AbstractEpisodeUipart

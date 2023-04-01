@@ -28,7 +28,7 @@ import com.hazard157.psx.common.filesys.olds.psx12.films.*;
 /**
  * {@link IFsMediaPlayer} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 class FsFilmFilesManager
     implements IFsFilmFilesManager {

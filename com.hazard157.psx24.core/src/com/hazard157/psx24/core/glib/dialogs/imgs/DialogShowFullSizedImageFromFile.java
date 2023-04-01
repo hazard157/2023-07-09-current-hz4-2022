@@ -29,7 +29,7 @@ import com.hazard157.lib.core.legacy.picview.*;
 /**
  * Простой диалог показа изображения в оригинальном масштабе (прямо из файла).
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogShowFullSizedImageFromFile {
 

@@ -34,7 +34,7 @@ import com.hazard157.lib.core.bricks.kwmark.manager.*;
  * Представляет соббой список ключевых слов с редактируемым ComboBox сверху. Можно выбрать один из
  * {@link IKeywordManager#listKeywords()} в выпадающем списке или ввести новый и нажать "Добавить".
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedAvContextKeywords
     extends AbstractValedControl<IAtomicValue, Control> {

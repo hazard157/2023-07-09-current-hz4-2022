@@ -30,7 +30,7 @@ import com.hazard157.lib.core.glib.pgviewer.*;
  * <p>
  * Точнее, ристуес строки ячеек, с переносом, в порядке слева-направо, сверху-внизю
  *
- * @author goga
+ * @author hazard157
  * @param <V> - тип ображаемых сущностей
  */
 class PgvCanvas<V>
@@ -40,7 +40,7 @@ class PgvCanvas<V>
   /**
    * Элемент, содержащий сущность и его миниатюру для отрисовки.
    *
-   * @author goga
+   * @author hazard157
    */
   class PgvItem
       implements IImageAnimationCallback, ICloseable {
@@ -145,7 +145,7 @@ class PgvCanvas<V>
   /**
    * Класс всплывающей подсказки.
    *
-   * @author goga
+   * @author hazard157
    */
   class EntityTooltip
       extends ToolTip {

@@ -8,7 +8,7 @@ import com.hazard157.psx24.planning.e4.uiparts.*;
 /**
  * Понятие текущий {@link IPlep}, выбранный в {@link UipartUnitPleps}.
  *
- * @author gogaq
+ * @author hazard157q
  */
 public interface ICurrentPlepService
     extends ICurrentEntityService<IPlep> {

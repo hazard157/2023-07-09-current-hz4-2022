@@ -23,7 +23,7 @@ import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 /**
  * Константы GUI плагина.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "nls", "javadoc" } )
 public interface IPsx24FilmsConstants {

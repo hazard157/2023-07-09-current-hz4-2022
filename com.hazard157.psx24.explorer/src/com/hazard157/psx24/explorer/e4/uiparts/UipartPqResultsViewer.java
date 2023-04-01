@@ -34,7 +34,7 @@ import com.hazard157.psx24.explorer.pq.*;
 /**
  * Вью отображения результатов выборки.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartPqResultsViewer
     extends MwsAbstractPart {

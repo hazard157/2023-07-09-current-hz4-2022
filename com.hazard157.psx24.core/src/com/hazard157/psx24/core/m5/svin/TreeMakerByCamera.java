@@ -14,7 +14,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
 /**
  * Построитель дерева {@link Svin}-ов по камерам.
  *
- * @author goga
+ * @author hazard157
  */
 class TreeMakerByCamera
     implements ITsTreeMaker<Svin> {

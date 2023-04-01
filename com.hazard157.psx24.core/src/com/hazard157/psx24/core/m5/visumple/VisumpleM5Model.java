@@ -20,7 +20,7 @@ import com.hazard157.lib.core.quants.visumple.*;
 /**
  * Модель объектов типа {@link Visumple}.
  *
- * @author goga
+ * @author hazard157
  */
 public class VisumpleM5Model
     extends M5Model<Visumple> {
@@ -108,7 +108,7 @@ public class VisumpleM5Model
   /**
    * Управление жизненным циклом сущностей {@link Visumple}.
    *
-   * @author goga
+   * @author hazard157
    */
   private static class DefaultLifecycleManager
       extends M5LifecycleManager<Visumple, Object> {

@@ -14,7 +14,7 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 /**
  * Узел елемента списка {@link IEpisode#planesLine()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodePlanesPlane
     extends LeafTsNode<MarkPlaneGuide> {

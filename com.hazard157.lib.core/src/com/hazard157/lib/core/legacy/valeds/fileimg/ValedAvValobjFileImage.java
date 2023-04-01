@@ -33,7 +33,7 @@ import com.hazard157.lib.core.legacy.picview.*;
  * <p>
  * Использует кеш {@link ITsImageManager} из контекст приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedAvValobjFileImage
     extends AbstractValedControl<IAtomicValue, Control> {

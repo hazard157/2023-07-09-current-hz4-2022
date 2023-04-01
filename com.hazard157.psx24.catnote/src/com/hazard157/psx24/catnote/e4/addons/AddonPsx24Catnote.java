@@ -17,7 +17,7 @@ import com.hazard157.psx24.catnote.main.impl.*;
 /**
  * Module addon.
  *
- * @author goga
+ * @author hazard157
  */
 public class AddonPsx24Catnote
     extends MwsAbstractAddon {

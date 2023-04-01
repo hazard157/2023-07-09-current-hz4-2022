@@ -8,7 +8,7 @@ import com.hazard157.psx24.explorer.unit.*;
 /**
  * Реализация {@link IUnitExplorer}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UnitExplorer
     extends AbstractSinentManager<Inquiry, InquiryInfo>

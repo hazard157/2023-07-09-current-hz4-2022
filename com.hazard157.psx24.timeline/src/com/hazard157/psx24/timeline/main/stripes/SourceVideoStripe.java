@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Source video frames stripe.
  *
- * @author goga
+ * @author hazard157
  */
 public class SourceVideoStripe
     extends AbstractStripe {

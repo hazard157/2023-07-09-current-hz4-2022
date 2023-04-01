@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Note kind.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public enum ENbNoteKind

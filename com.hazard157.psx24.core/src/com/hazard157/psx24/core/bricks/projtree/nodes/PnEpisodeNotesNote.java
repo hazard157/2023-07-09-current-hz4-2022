@@ -13,7 +13,7 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 /**
  * Узел елемента списка {@link IEpisode#noteLine()}.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "rawtypes" )
 public class PnEpisodeNotesNote

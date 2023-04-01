@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.bricks.strid.*;
 /**
  * {@link IStridableParameterized} editable entity holding <b>all</b> data in {@link #params()}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IStripent
     extends IStridableParameterized, IParameterizedEdit, IGenericChangeEventCapable {

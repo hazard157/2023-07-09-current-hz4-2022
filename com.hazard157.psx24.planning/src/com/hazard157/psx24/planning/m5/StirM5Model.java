@@ -33,7 +33,7 @@ import com.hazard157.psx24.core.m5.visumple.*;
 /**
  * Модель сущностей типа {@link IStir}.
  *
- * @author goga
+ * @author hazard157
  */
 public class StirM5Model
     extends M5Model<IStir> {

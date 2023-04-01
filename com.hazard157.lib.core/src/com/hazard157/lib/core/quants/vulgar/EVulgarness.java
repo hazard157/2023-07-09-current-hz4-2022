@@ -15,7 +15,7 @@ import com.hazard157.lib.core.utils.IRadioPropEnum;
  * <p>
  * Константы объявлены по степени повышения степени эротичности.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "nls", "javadoc" } )
 public enum EVulgarness

@@ -24,7 +24,7 @@ import com.hazard157.lib.core.incub.ConvoyFileManager;
  * Each editing of parameters {@link #params()} is immediately wriiten to the convoy file. If {@link #params()} can not
  * be written (eg. file is on read-only drive) the warning is logged but no exception is thrown.
  *
- * @author goga
+ * @author hazard157
  * @see ConvoyFileManager
  */
 public class OptedFile

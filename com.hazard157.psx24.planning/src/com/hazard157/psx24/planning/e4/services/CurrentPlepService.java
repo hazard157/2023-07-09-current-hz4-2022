@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Реализация {@link ICurrentPlepService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class CurrentPlepService
     extends CurrentEntityService<IPlep>

@@ -5,7 +5,7 @@ import org.toxsoft.core.tsgui.graphics.image.*;
 /**
  * Локализуемые ресурсы компоненты просмотра изображения.
  *
- * @author goga
+ * @author hazard157
  */
 interface ITsResources {
 

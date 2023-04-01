@@ -12,7 +12,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * {@link INbNotebook} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class NbNotebook
     extends AbstractProjDataUnit

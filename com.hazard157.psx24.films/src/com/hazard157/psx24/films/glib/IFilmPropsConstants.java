@@ -21,7 +21,7 @@ import com.hazard157.psx24.films.glib.valeds.*;
  * Конфой-файлы сохраняются/загружаются средствами {@link PornillConvoyFileManager}. И для директорий, и для файлов в
  * качестве содержимого конвоя используется {@link IOptionSet}.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "javadoc", "nls" } )
 public interface IFilmPropsConstants {

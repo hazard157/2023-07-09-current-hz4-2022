@@ -5,7 +5,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
 /**
  * Mixin interace for mostly for visual elements with changeable frame time step.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IFrameTimeSteppable {

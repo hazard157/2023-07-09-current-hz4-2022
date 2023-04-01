@@ -5,7 +5,7 @@ import org.toxsoft.core.tslib.bricks.strid.*;
 /**
  * Note category.
  *
- * @author goga
+ * @author hazard157
  */
 public interface INbCategory
     extends IStridableParameterized {

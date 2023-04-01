@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.utils.*;
  * Запускается методом {@link IPsxFileSystem#startThumbsLoading(IList, EThumbSize, IFrameLoadedCallback, boolean)}.
  * Завершается либо после загрузки всех кадров, либо пользователем методом {@link #close()}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFrameLoaderThread
     extends ICloseable {

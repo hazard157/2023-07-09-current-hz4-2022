@@ -16,7 +16,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Time scale display.
  *
- * @author goga
+ * @author hazard157
  */
 public class ScaleStripe
     extends AbstractStripe {

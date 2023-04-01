@@ -20,7 +20,7 @@ import com.hazard157.psx24.films.glib.*;
 /**
  * Вью своств текущего фильма.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartFilmProps
     extends MwsAbstractPart {

@@ -3,7 +3,7 @@ package com.hazard157.psx.proj3.bricks.beq2.filter;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

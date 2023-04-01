@@ -1,7 +1,5 @@
 package com.hazard157.lib.core.quants.secint.glib;
 
-import static com.hazard157.lib.core.quants.secint.glib.IPsxResources.*;
-
 import org.eclipse.swt.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
@@ -15,10 +13,13 @@ import com.hazard157.lib.core.quants.secint.*;
 /**
  * Реализация {@link ISecintEditWidget}.
  *
- * @author goga
+ * @author hazard157
  */
 public class SecintEditWidget
     implements ISecintEditWidget {
+
+  private static final String STR_LABEL_MIDDLE   = " - ";   //$NON-NLS-1$
+  private static final String STR_LABEL_DURATION = "⁢   ↹"; //$NON-NLS-1$
 
   private final IGenericChangeListener startChangeListsner = aSource -> {
     if( !this.isInternalEdit ) {
@@ -49,6 +50,7 @@ public class SecintEditWidget
   private HmsWidget startWidget    = null;
   private HmsWidget endWidget      = null;
   private HmsWidget durationWidget = null;
+  private Label     labelMiddle    = null;
   private Label     labelDur       = null;
 
   /**
@@ -150,9 +152,12 @@ public class SecintEditWidget
     rowLayout.marginBottom = 0;
     rowLayout.pack = true;
     rowLayout.justify = false;
+    rowLayout.center = true;
     board.setLayout( rowLayout );
     int style = HmsWidget.makeStyle( !onlyMmSs, !editable, false );
     startWidget = new HmsWidget( board, style );
+    labelMiddle = new Label( board, SWT.RIGHT );
+    labelMiddle.setText( STR_LABEL_MIDDLE );
     endWidget = new HmsWidget( board, style );
     labelDur = new Label( board, SWT.RIGHT );
     labelDur.setText( STR_LABEL_DURATION );

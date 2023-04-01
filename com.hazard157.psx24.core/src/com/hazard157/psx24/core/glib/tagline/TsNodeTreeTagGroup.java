@@ -18,7 +18,7 @@ import com.hazard157.psx.proj3.tags.*;
  * <p>
  * Узел для режима дерева.
  *
- * @author goga
+ * @author hazard157
  */
 public class TsNodeTreeTagGroup
     extends AbstractTsNode<ITag> {

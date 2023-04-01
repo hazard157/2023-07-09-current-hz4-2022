@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.av.metainfo.*;
 /**
  * {@link IFsFilmFilesManager} constants.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IFsFilmFilesManagerConstants {

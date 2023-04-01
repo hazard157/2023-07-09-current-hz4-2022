@@ -14,7 +14,7 @@ import com.hazard157.psx24.explorer.unit.impl.*;
 /**
  * Адон плагина.
  *
- * @author goga
+ * @author hazard157
  */
 public class AddonPsx24Explorer
     extends MwsAbstractAddon {

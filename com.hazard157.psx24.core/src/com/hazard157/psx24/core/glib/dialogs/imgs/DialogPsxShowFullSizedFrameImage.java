@@ -38,7 +38,7 @@ import com.hazard157.psx24.core.e4.services.prisex.*;
 /**
  * Версия DialogShowFullSizedImageFromFile для PSX {@link IFrame}.
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogPsxShowFullSizedFrameImage {
 

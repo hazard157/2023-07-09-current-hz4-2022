@@ -21,7 +21,7 @@ import com.hazard157.lib.core.glib.pgviewer.*;
 /**
  * Реализация {@link IPicsGridViewer}.
  *
- * @author goga
+ * @author hazard157
  * @param <V> - тип ображаемых сущностей
  */
 public class PicsGridViewer<V>

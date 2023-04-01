@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.ng.incident.*;
 /**
  * Helper methods to work with gaze data.
  *
- * @author goga
+ * @author hazard157
  */
 public class GazeUtils {
 

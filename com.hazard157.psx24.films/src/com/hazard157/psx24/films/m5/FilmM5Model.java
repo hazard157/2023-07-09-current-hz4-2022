@@ -19,7 +19,7 @@ import com.hazard157.psx24.films.e4.services.*;
 /**
  * Модель объектов типа {@link File}.
  *
- * @author goga
+ * @author hazard157
  */
 public class FilmM5Model
     extends M5Model<File> {

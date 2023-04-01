@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.gaze.*;
 /**
  * {@link ICurrentGazeService} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class CurrentGazeService
     extends CurrentEntityService<IGaze>

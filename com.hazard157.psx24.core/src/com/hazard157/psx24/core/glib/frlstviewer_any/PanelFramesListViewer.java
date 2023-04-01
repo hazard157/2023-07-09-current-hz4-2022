@@ -40,7 +40,7 @@ import com.hazard157.psx24.core.glib.plv.*;
 /**
  * Панель просмотра произвольного списка кадров.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelFramesListViewer
     extends TsPanel {

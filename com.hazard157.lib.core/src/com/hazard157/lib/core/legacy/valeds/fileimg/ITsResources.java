@@ -3,7 +3,7 @@ package com.hazard157.lib.core.legacy.valeds.fileimg;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface ITsResources {

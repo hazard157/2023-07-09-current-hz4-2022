@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Понятие текущий {@link ITrack}, выбранный в {@link IPlep#tracks()}.
  *
- * @author gogaq
+ * @author hazard157q
  */
 public interface ICurrentTrackService
     extends ICurrentEntityService<ITrack> {

@@ -5,7 +5,7 @@ import static com.hazard157.psx.common.IPsxHardConstants.*;
 /**
  * Localizable resources.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

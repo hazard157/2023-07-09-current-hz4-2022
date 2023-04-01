@@ -16,7 +16,7 @@ import com.hazard157.psx.proj3.gaze.impl.*;
 /**
  * Incident kind.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public enum EPsxIncidentKind

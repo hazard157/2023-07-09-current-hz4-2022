@@ -3,7 +3,7 @@ package com.hazard157.psx24.catnote.m5.category;
 /**
  * Localaizable resources.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

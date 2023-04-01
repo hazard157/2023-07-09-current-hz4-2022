@@ -15,7 +15,7 @@ import com.hazard157.psx.common.utils.*;
 /**
  * {@link IFsTrailerFilesManager} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 class FsTrailerFilesManager
     implements IFsTrailerFilesManager {

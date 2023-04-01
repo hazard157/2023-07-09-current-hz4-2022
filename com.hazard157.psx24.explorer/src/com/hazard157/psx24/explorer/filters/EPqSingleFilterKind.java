@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Вид единицного фильтра выборки из PSX.
  *
- * @author goga
+ * @author hazard157
  */
 public enum EPqSingleFilterKind
     implements IStridable {

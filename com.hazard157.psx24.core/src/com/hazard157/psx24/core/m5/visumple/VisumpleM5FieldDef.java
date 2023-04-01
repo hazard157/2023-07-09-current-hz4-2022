@@ -17,7 +17,7 @@ import com.hazard157.lib.core.quants.visumple.*;
 /**
  * Описание поля {@link IVisumplable#visumples()}.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - тип моделированного объекта
  */
 public class VisumpleM5FieldDef<T extends IVisumplable>

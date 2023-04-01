@@ -22,7 +22,7 @@ import com.hazard157.psx24.gazes.m5.*;
 /**
  * Lists and manages all the gazes from {@link IUnitGazes#items()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartGazesList
     extends MwsAbstractPart {

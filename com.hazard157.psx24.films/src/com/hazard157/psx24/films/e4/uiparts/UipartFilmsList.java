@@ -34,7 +34,7 @@ import com.hazard157.psx24.films.m5.*;
 /**
  * Вью списка фильмов.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartFilmsList
     extends MwsAbstractPart {

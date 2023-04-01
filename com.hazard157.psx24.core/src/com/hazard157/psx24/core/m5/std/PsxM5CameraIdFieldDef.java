@@ -17,7 +17,7 @@ import com.hazard157.psx.proj3.cameras.*;
 /**
  * Поле {@link ICameraIdable#cameraId()}.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - конкретный тип, реализующмй {@link ICameraIdable}
  */
 public class PsxM5CameraIdFieldDef<T extends ICameraIdable>

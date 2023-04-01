@@ -6,7 +6,7 @@ import org.toxsoft.core.tsgui.graphics.icons.*;
 /**
  * Константы GUI плагина.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "nls", "javadoc" } )
 public interface IPsx42PlaningConstants {

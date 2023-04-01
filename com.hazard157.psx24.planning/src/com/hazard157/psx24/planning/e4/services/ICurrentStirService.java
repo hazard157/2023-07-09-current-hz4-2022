@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Понятие текущий {@link IStir}, выбранный в {@link IPlep#stirs()}.
  *
- * @author gogaq
+ * @author hazard157q
  */
 public interface ICurrentStirService
     extends ICurrentEntityService<IStir> {

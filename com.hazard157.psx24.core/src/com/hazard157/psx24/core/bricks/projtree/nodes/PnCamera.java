@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.cameras.*;
 /**
  * Узел сущности {@link Camera} в {@link Camera}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnCamera
     extends LeafTsNode<Camera> {

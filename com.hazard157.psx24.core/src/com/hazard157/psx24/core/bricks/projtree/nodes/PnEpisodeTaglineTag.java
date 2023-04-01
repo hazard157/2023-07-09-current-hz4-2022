@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.tags.*;
 /**
  * Узел дерева ярлыков {@link IEpisode#tagLine()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodeTaglineTag
     extends ChildedTsNode<ITag> {

@@ -3,7 +3,7 @@ package com.hazard157.psx24.core.glib.tagline;
 /**
  * Локализуемые ресусры.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

@@ -24,7 +24,7 @@ import com.hazard157.psx24.core.utils.ftstep.*;
 /**
  * Вертикальный грфик плана.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelEpisodeTimeline
     extends TsPanel {

@@ -5,7 +5,7 @@ import static com.hazard157.psx.common.IPsxHardConstants.*;
 /**
  * M5-modelling conastants of gazes entities.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IGazeM5Constant {

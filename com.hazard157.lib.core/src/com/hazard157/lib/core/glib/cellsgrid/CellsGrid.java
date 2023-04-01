@@ -19,7 +19,7 @@ import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
  * <p>
  * При изменении параметров генерирует сообщение {@link IGenericChangeListener#onGenericChangeEvent(Object)}.
  *
- * @author goga
+ * @author hazard157
  */
 public class CellsGrid
     implements ICellsGrid {

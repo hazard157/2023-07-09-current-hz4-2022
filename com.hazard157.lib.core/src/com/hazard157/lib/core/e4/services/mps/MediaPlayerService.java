@@ -13,7 +13,7 @@ import org.toxsoft.core.tslib.utils.logs.impl.*;
 /**
  * Реализация {@link IMediaPlayerService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class MediaPlayerService
     implements IMediaPlayerService {

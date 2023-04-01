@@ -9,7 +9,7 @@ import com.hazard157.psx.common.filesys.olds.psx12.frames.*;
 /**
  * Access to PRISEX files.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPsxFileSystem {
 

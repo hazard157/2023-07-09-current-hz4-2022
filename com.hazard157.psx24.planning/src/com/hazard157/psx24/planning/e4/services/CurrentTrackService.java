@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Реализация {@link ICurrentTrackService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class CurrentTrackService
     extends CurrentEntityService<ITrack>

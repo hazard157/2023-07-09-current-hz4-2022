@@ -26,7 +26,7 @@ import com.hazard157.psx24.core.m5.*;
 /**
  * Модель объектов типа {@link ITag}.
  *
- * @author goga
+ * @author hazard157
  */
 public class TagM5Model
     extends M5Model<ITag> {

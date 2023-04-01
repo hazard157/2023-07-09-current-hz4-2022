@@ -13,7 +13,7 @@ import com.hazard157.psx.common.stuff.frame.*;
 /**
  * Стратегия расположения файлов изображений кдров эпизодов.
  *
- * @author goga
+ * @author hazard157
  */
 enum EFrameFileLocation {
 

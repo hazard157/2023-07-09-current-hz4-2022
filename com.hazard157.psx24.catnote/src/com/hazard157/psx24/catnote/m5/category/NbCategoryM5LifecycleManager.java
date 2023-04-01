@@ -16,7 +16,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * Lifecycle manager for {@link NbCategoryM5Model}.
  *
- * @author goga
+ * @author hazard157
  */
 class NbCategoryM5LifecycleManager
     extends M5LifecycleManager<INbCategory, INbNotebook> {

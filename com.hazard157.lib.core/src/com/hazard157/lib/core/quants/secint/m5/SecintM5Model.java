@@ -29,7 +29,7 @@ import com.hazard157.lib.core.quants.secint.*;
 /**
  * Модель объектов типа {@link Secint}.
  *
- * @author goga
+ * @author hazard157
  */
 public class SecintM5Model
     extends M5Model<Secint> {
@@ -238,7 +238,7 @@ public class SecintM5Model
   /**
    * Управление жизненным циклом {@link Secint}.
    *
-   * @author goga
+   * @author hazard157
    */
   private static class DefaultLifecycleManager
       extends M5LifecycleManager<Secint, Object> {

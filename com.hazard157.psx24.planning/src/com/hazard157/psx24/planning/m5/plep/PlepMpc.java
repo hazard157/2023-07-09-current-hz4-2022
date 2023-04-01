@@ -26,7 +26,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Реализация {@link MultiPaneComponentModown} для {@link PlepM5Model}.
  *
- * @author goga
+ * @author hazard157
  */
 class PlepMpc
     extends MultiPaneComponentModown<IPlep> {

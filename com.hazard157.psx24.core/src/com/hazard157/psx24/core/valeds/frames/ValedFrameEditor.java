@@ -14,7 +14,7 @@ import com.hazard157.psx24.core.glib.frlstviewer_ep.*;
 /**
  * Редактор поля {@link IFrameable#frame()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedFrameEditor
     extends AbstractValedControl<IFrame, Control> {

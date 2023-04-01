@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.*;
 /**
  * Панель с двумя "виртуальными" кнопками для {@link HmsWidget}.
  *
- * @author goga
+ * @author hazard157
  */
 public class VertTwoButtonsPane
     extends Canvas {
@@ -16,7 +16,7 @@ public class VertTwoButtonsPane
   /**
    * Положение точки относительно этого контроля для метода {@link VertTwoButtonsPane#whereIsPoint(int, int)}.
    *
-   * @author goga
+   * @author hazard157
    */
   public enum EPointLocation {
     /**

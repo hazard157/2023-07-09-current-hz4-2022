@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.tags.*;
 /**
  * Базовый класс панели настройки (создания параметров) единичного фильтра заданного типа.
  *
- * @author goga
+ * @author hazard157
  */
 public abstract class AbstractFilterPanel
     extends AbstractTsDialogPanel<ITsSingleFilterParams, ITsGuiContext> {

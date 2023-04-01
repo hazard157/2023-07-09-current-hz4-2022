@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.utils.errors.TsIllegalArgumentRtException;
  * все ячейки в строке вместились в ширину. Только если ширина меньше одного столюца, единственный столбец будет обрезан
  * справа.
  *
- * @author goga
+ * @author hazard157
  */
 public interface ICellsGrid {
 

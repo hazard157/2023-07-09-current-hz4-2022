@@ -3,7 +3,7 @@ package com.hazard157.psx.common.filesys.olds.psx12.impl;
 /**
  * Localizable resources.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

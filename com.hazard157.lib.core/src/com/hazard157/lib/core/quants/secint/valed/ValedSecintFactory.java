@@ -11,7 +11,7 @@ import com.hazard157.lib.core.quants.secint.*;
 /**
  * Фабрика редакторов объектов типа {@link Secint}.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "unchecked" )
 public class ValedSecintFactory

@@ -25,7 +25,7 @@ import com.hazard157.lib.core.quants.visumple.*;
 /**
  * Панель детальной информации сущностей {@link Visumple}.
  *
- * @author goga
+ * @author hazard157
  */
 final class VisumpleDetailsPanel
     extends M5AbstractEntityPanel<Visumple> {

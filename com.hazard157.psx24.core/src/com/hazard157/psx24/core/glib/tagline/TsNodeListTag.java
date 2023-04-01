@@ -17,7 +17,7 @@ import com.hazard157.psx.proj3.tags.*;
  * <p>
  * Узел для режима списка.
  *
- * @author goga
+ * @author hazard157
  */
 public class TsNodeListTag
     extends AbstractTsNode<ITag> {

@@ -35,7 +35,7 @@ import com.hazard157.psx.proj3.todos.*;
 /**
  * Создатель панелей модели сущностей типа {@link ITodo}.
  *
- * @author goga
+ * @author hazard157
  */
 public class TodoM5ModelPanelCreator
     extends M5DefaultPanelCreator<ITodo> {

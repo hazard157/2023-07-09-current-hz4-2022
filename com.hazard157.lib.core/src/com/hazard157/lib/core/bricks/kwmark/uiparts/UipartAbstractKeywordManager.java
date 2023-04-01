@@ -15,7 +15,7 @@ import com.hazard157.lib.core.bricks.kwmark.manager.*;
 /**
  * Refbook "SexToys".
  *
- * @author goga
+ * @author hazard157
  */
 public abstract class UipartAbstractKeywordManager
     extends MwsAbstractPart {

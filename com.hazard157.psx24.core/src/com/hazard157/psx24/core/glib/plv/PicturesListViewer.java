@@ -19,7 +19,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * Просматриваемые изображения с сопутствующей информацией передаются в виде списка (или отдельных) элементов
  * {@link PlvItem}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PicturesListViewer
     implements ITsDoubleClickEventProducer<PlvItem>, ITsSelectionProvider<PlvItem>, IThumbSizeable {

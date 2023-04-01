@@ -42,7 +42,7 @@ import com.hazard157.psx24.core.m5.songs.*;
 /**
  * Модель сущностей типа {@link ITrack}.
  *
- * @author goga
+ * @author hazard157
  */
 public class TrackM5Model
     extends M5Model<ITrack> {

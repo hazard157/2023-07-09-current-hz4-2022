@@ -9,7 +9,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
 /**
  * Stripes painter component API for stripes implementations.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IStripeOwner {

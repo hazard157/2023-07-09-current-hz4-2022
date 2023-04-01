@@ -11,7 +11,7 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 /**
  * Узел списка {@link IEpisode#noteLine()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodeNotes
     extends ChildedTsNode<INoteLine> {

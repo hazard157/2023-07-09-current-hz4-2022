@@ -28,7 +28,7 @@ import com.hazard157.psx24.core.m5.srcvids.*;
 /**
  * Вью правки камер.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartRefbookCameras
     extends MwsAbstractPart {

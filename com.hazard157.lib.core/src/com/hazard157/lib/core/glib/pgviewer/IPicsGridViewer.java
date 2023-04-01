@@ -16,7 +16,7 @@ import com.hazard157.lib.core.glib.cellsgrid.*;
  * <p>
  * Viewer may be configured at creation time by the constants listed in {@link IPicsGridViewerConstants}.
  *
- * @author goga
+ * @author hazard157
  * @param <V> - тип ображаемых сущностей
  */
 public interface IPicsGridViewer<V>

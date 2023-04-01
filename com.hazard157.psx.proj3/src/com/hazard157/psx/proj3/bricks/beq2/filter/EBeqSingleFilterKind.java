@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Вид единицного фильтра выборки интервалов из эпизодов.
  *
- * @author goga
+ * @author hazard157
  */
 public enum EBeqSingleFilterKind
     implements IStridable {

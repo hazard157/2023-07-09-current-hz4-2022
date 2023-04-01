@@ -6,7 +6,7 @@ import com.hazard157.psx.common.filesys.impl.*;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

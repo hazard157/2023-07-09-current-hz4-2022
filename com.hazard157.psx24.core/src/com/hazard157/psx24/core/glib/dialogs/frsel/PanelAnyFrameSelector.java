@@ -34,7 +34,7 @@ import com.hazard157.psx24.core.glib.frlstviewer_ep.*;
  * <p>
  * Слева в панели - список эпизодов, справа - панель выбора кадра эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class PanelAnyFrameSelector
     extends AbstractTsDialogPanel<IFrame, ITsGuiContext> {

@@ -15,7 +15,7 @@ import org.toxsoft.core.tslib.utils.logs.impl.*;
 /**
  * Визитор, просто выводящий в консоль или файл тип и имя узлов.
  *
- * @author goga
+ * @author hazard157
  */
 public class BasicPrintingVisitor
     extends AbstractTsNodeVisitor {

@@ -16,7 +16,7 @@ import com.hazard157.psx.proj3.trailers.*;
 /**
  * Управление жизненным циклом сущностей {@link Trailer} для конкретного эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class EpisodeTrailerLifecycleManager
     extends M5LifecycleManager<Trailer, IUnitTrailers> {

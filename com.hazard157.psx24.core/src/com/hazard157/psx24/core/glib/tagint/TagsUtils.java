@@ -9,7 +9,7 @@ import com.hazard157.psx.proj3.tags.*;
 /**
  * Вспомогательные методы работы с ярлыками.
  *
- * @author goga
+ * @author hazard157
  */
 public class TagsUtils {
 

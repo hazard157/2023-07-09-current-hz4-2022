@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * <p>
  * Кто является владельцем возвращаемых ресурсов определяется конкретной реализацией интерфейса.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFsIconProvider {
 

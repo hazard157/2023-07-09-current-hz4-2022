@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Место добавления нового узла в дереве относительно текущего узла.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "nls", "javadoc" } )
 public enum ENodeAddPlace

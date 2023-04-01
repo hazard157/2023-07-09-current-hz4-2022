@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Узел сцены сюжета {@link IScene}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodeScene
     extends ChildedTsNode<IScene> {

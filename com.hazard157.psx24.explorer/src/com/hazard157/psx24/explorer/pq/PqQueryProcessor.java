@@ -22,7 +22,7 @@ import com.hazard157.psx24.explorer.filters.*;
  * Процессор выдает результат запроса {@link #queryData(ITsCombiFilterParams)} над входными данными
  * {@link #inputData()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PqQueryProcessor {
 

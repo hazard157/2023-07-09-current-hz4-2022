@@ -3,7 +3,7 @@ package com.hazard157.psx24.core.e4.services.playmenu;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IPsxResources {

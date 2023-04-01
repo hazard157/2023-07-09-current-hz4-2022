@@ -9,7 +9,7 @@ import com.hazard157.psx24.catnote.main.*;
 /**
  * {@link ENbNoteKind} M5 model.
  *
- * @author goga
+ * @author hazard157
  */
 public class NoteKindM5Model
     extends M5StridableEnumModelBase<ENbNoteKind> {

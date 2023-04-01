@@ -119,7 +119,7 @@ public class EpisodeUtils {
    */
   public static LocalDate episodeId2LocalDate( String aEpisodeId ) {
     EPISODE_ID_VALIDATOR.checkValid( aEpisodeId );
-    return doGetEpisodeLocalDate( aEpisodeId );
+    return internalGetEpisodeLocalDate( aEpisodeId );
   }
 
   /**
@@ -255,7 +255,7 @@ public class EpisodeUtils {
     return LocalDate.of( year, month, day );
   }
 
-  private static LocalDate doGetEpisodeLocalDate( String aEpisodeId ) {
+  private static LocalDate internalGetEpisodeLocalDate( String aEpisodeId ) {
     int year = Integer.parseInt( aEpisodeId.substring( 1, 5 ) );
     int month = Integer.parseInt( aEpisodeId.substring( 6, 8 ) );
     int day = Integer.parseInt( aEpisodeId.substring( 9 ) );

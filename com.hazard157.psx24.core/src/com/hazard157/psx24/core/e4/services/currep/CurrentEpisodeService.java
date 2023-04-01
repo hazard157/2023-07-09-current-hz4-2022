@@ -17,7 +17,7 @@ import com.hazard157.psx24.core.e4.services.selsvins.*;
 /**
  * Реализаци {@link ICurrentEpisodeService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class CurrentEpisodeService
     extends CurrentEntityService<IEpisode>

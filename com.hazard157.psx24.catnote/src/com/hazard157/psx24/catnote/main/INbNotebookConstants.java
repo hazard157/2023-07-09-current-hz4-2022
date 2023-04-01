@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.av.metainfo.*;
 /**
  * Package constants.
  *
- * @author goga
+ * @author hazard157
  */
 public interface INbNotebookConstants {
 

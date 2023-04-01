@@ -10,7 +10,7 @@ import com.hazard157.psx24.explorer.gui.resview.*;
 /**
  * Выборки для конкретного эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodeExplorer
     extends MwsAbstractPart {

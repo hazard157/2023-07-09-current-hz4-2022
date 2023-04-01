@@ -30,7 +30,7 @@ import com.hazard157.psx24.core.e4.services.prisex.*;
 /**
  * Для {@link IM5CollectionPanel} к модели {@link MarkNoteM5Model}.
  *
- * @author goga
+ * @author hazard157
  */
 class MarkNoteMpc
     extends MultiPaneComponentModown<MarkNote> {

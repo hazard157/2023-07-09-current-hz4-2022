@@ -17,7 +17,7 @@ import com.hazard157.psx.common.stuff.svin.*;
  * <p>
  * Ссылка лежит в контексте приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPsxFileSystem {
 

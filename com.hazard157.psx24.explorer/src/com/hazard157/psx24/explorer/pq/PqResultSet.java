@@ -22,7 +22,7 @@ import com.hazard157.psx.proj3.episodes.*;
  * <p>
  * Это неизменяемый класс.
  *
- * @author goga
+ * @author hazard157
  */
 public class PqResultSet {
 

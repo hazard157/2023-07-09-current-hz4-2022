@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Просмотрщик, соответствующий редактору {@link ValedAvIntHhmmss}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedAvIntHhmmssReadOnly
     extends AbstractValedControl<IAtomicValue, Control> {

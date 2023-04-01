@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Узел елемента списка {@link IEpisode#getIllustrations(boolean)}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodeIllsFrame
     extends LeafTsNode<IFrame> {

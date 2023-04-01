@@ -6,7 +6,7 @@ import org.toxsoft.core.tslib.utils.*;
 /**
  * Поставщик отображаемого изображения текстов для просмотрщика {@link IPicsGridViewer}.
  *
- * @author goga
+ * @author hazard157
  * @param <V> - тип ображаемых сущностей
  */
 public interface IPgvVisualsProvider<V> {

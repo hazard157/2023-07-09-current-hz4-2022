@@ -3,7 +3,7 @@ package com.hazard157.psx.proj3.gaze;
 /**
  * Локализуемые ресурсы.
  *
- * @author goga
+ * @author hazard157
  */
 interface IPsxResources {
 

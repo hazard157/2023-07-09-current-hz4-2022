@@ -27,7 +27,7 @@ import com.hazard157.psx24.core.m5.plane.*;
 /**
  * Вью просмотра планов эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartEpisodePlanes
     extends AbstractEpisodeUipart {

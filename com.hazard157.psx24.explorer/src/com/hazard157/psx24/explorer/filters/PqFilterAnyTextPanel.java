@@ -24,7 +24,7 @@ import com.hazard157.psx24.explorer.gui.filters.*;
 /**
  * Панель настройки фильтра {@link PqFilterAnyText}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PqFilterAnyTextPanel
     extends AbstractFilterPanel {

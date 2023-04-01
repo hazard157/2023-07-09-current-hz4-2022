@@ -24,7 +24,7 @@ import com.hazard157.psx24.core.valeds.frames.*;
 /**
  * Контроллер панели редактирования эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class EpisodeEditPanelController
     extends EpisodeViewerPanelController {

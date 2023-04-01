@@ -16,7 +16,7 @@ import com.hazard157.psx.proj3.bricks.beq2.filter.*;
 /**
  * Реализация {@link IBeqFilter}.
  *
- * @author goga
+ * @author hazard157
  */
 public final class BeqFilter
     implements IBeqFilter {

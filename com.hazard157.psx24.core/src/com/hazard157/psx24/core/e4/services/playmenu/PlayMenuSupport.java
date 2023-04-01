@@ -32,7 +32,7 @@ import com.hazard157.psx24.core.glib.dialogs.imgs.*;
 /**
  * Реализация {@link IPlayMenuSupport}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PlayMenuSupport
     implements IPlayMenuSupport {

@@ -15,7 +15,7 @@ import com.hazard157.lib.core.bricks.stripent.*;
 /**
  * {@link IStripent} base implementation.
  *
- * @author goga
+ * @author hazard157
  */
 public class Stripent
     implements IStripent {

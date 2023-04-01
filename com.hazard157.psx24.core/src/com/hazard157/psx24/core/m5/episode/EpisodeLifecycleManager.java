@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.episodes.*;
 /**
  * Менеджер ЖЦ сущностей {@link IEpisode}.
  *
- * @author goga
+ * @author hazard157
  */
 class EpisodeLifecycleManager
     extends M5LifecycleManager<IEpisode, IUnitEpisodes> {

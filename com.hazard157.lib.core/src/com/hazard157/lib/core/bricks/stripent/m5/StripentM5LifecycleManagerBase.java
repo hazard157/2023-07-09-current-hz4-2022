@@ -21,7 +21,7 @@ import com.hazard157.lib.core.bricks.stripent.IStripentManager;
 /**
  * {@link IM5LifecycleManager} implementation base for {@link StripentM5ModelBase}.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - modelled entity type
  */
 public class StripentM5LifecycleManagerBase<T extends IStripent>

@@ -13,7 +13,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * (ярлыки - не группы), которые перечислены в списоке дозволенных. И только те группы, у которых хотя бы одна ветка
  * имеет разрешенный лист.
  *
- * @author goga
+ * @author hazard157
  */
 public class TagIdsFilter
     implements ITsFilter<String> {

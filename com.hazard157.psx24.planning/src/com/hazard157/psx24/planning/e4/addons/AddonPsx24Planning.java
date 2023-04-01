@@ -12,7 +12,7 @@ import com.hazard157.psx24.planning.m5.plep.*;
 /**
  * Адон приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public class AddonPsx24Planning
     extends MwsAbstractAddon {

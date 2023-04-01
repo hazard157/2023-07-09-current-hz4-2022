@@ -3,7 +3,7 @@ package com.hazard157.lib.core.legacy.picview;
 /**
  * Слушатель изменения параметров просмотра {@link PictureViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPictureViewerChangeListener {
 

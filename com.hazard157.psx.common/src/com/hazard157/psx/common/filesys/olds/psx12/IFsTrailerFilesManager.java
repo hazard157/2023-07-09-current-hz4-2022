@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Trailer files management.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFsTrailerFilesManager {
 

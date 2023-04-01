@@ -27,7 +27,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
  * <p>
  * Это неизменяемый класс.
  *
- * @author goga
+ * @author hazard157
  */
 public class FrameSelectionCriteria {
 

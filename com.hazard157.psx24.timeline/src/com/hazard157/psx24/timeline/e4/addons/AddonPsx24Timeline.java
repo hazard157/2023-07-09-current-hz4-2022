@@ -8,7 +8,7 @@ import com.hazard157.psx24.timeline.*;
 /**
  * Module addon.
  *
- * @author goga
+ * @author hazard157
  */
 public class AddonPsx24Timeline
     extends MwsAbstractAddon {

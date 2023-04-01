@@ -31,7 +31,7 @@ import com.hazard157.psx24.core.valeds.frames.*;
 /**
  * Модель объектов типа {@link ISourceVideo}.
  *
- * @author goga
+ * @author hazard157
  */
 public class SourceVideoM5Model
     extends M5Model<ISourceVideo> {

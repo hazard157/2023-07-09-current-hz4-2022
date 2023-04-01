@@ -13,7 +13,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
 /**
  * Фильтр по текстовой строке.
  *
- * @author goga
+ * @author hazard157
  */
 class PqFilterAnyText
     implements ITsFilter<SecondSlice> {

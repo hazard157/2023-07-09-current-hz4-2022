@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.coll.*;
 /**
  * Просмотрщик списка файлов (не директорий) в виде миниатюр.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFsListThumbViewer
     extends ITsSelectionProvider<File>, ITsDoubleClickEventProducer<File>, IThumbSizeable {

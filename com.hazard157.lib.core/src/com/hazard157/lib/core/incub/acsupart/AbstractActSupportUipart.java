@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
 /**
  * Base class for UI parts implementing {@link ITsActionsSupporter}.
  *
- * @author goga
+ * @author hazard157
  */
 public abstract class AbstractActSupportUipart
     extends MwsAbstractPart

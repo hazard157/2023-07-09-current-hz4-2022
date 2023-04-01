@@ -34,7 +34,7 @@ import com.hazard157.psx24.films.e4.services.*;
  * Представляет соббой список ключевых слов с редактируемым ComboBox сверху. Можно выбрать один из
  * {@link IPsxFilmsService#listExistingKeywords()} в выпадающем списке или ввести новый и нажать "Добавить".
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedAvPsxKeywords
     extends AbstractValedControl<IAtomicValue, Control> {

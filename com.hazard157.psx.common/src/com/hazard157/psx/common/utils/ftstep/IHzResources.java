@@ -3,7 +3,7 @@ package com.hazard157.psx.common.utils.ftstep;
 /**
  * Localizable resources.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 interface IHzResources {

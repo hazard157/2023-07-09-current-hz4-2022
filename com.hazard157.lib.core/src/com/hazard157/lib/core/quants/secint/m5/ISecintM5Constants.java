@@ -19,7 +19,7 @@ import com.hazard157.lib.core.quants.secint.valed.*;
 /**
  * Константы M3-моделирования библиотеки MP.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( { "nls" } )
 public interface ISecintM5Constants {

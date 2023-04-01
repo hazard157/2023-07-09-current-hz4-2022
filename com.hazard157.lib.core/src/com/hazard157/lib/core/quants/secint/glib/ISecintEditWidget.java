@@ -12,7 +12,7 @@ import com.hazard157.lib.core.quants.secint.*;
 /**
  * Виджет редактирования значений типа {@link Secint}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface ISecintEditWidget
     extends IGenericChangeEventCapable, ILazyControl<Control> {

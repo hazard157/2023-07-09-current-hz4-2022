@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.tags.*;
 /**
  * Узел сущности {@link ITag} в {@link ITag}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnUnitTagsTag
     extends ChildedTsNode<ITag> {

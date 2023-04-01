@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Режимы заполнения просмотрщика {@link PicturesListViewer} значками изображении.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "nls" )
 public enum EPlvLayoutMode

@@ -3,7 +3,7 @@ package com.hazard157.psx24.core.glib.plv;
 /**
  * Настройка границ и интервалов рисования сетки значков.
  *
- * @author goga
+ * @author hazard157
  */
 class PgMargins {
 

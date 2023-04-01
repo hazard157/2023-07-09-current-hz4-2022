@@ -6,7 +6,7 @@ import org.toxsoft.core.txtproj.lib.stripar.*;
 /**
  * Notebook.
  *
- * @author goga
+ * @author hazard157
  */
 public interface INbNotebook
     extends IProjDataUnit {

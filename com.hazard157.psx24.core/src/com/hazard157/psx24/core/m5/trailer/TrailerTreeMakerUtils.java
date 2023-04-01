@@ -17,7 +17,7 @@ import com.hazard157.psx.proj3.trailers.*;
 /**
  * Построители дерева (группираторы) трейлеров.
  *
- * @author goga
+ * @author hazard157
  */
 class TrailerTreeMakerUtils {
 
@@ -28,7 +28,7 @@ class TrailerTreeMakerUtils {
   /**
    * Группиратор трейлеров по эпизодам.
    *
-   * @author goga
+   * @author hazard157
    */
   static class GroupByEpisode
       implements ITsTreeMaker<Trailer> {
@@ -76,7 +76,7 @@ class TrailerTreeMakerUtils {
   /**
    * Группиратор трейлеров по имени (локальному идентификатору).
    *
-   * @author goga
+   * @author hazard157
    */
   static class GroupByName
       implements ITsTreeMaker<Trailer> {

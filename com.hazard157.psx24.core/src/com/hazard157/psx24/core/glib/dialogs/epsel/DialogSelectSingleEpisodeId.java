@@ -31,7 +31,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Dialog to select an episode.
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogSelectSingleEpisodeId {
 

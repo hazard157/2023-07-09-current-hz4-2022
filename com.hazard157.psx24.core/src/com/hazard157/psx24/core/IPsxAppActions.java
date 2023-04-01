@@ -12,7 +12,7 @@ import org.toxsoft.core.tsgui.bricks.actions.*;
 /**
  * Общие действия приложения.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public interface IPsxAppActions {

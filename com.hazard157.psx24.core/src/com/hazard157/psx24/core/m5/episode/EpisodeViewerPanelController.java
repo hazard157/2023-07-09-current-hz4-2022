@@ -19,7 +19,7 @@ import com.hazard157.psx24.core.m5.std.*;
 /**
  * Контроллер панели редактирования эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 public class EpisodeViewerPanelController
     extends M5EntityPanelWithValedsController<IEpisode> {

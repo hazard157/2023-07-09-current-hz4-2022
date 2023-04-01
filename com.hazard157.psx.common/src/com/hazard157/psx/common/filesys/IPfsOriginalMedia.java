@@ -13,7 +13,7 @@ import com.hazard157.lib.core.incub.optedfile.*;
  * <p>
  * Original media directory imay be inaccessible hence this interface methods does nothing.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPfsOriginalMedia {
 

@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Validator of the incident starting timestamp as {@link LocalDate}.
  *
- * @author goga
+ * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
 public class IncidentWhenValidator

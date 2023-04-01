@@ -14,7 +14,7 @@ import com.hazard157.lib.core.incub.*;
 /**
  * Служба работы с фильмами.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPsxFilmsService {
 

@@ -16,7 +16,7 @@ import com.hazard157.lib.core.utils.*;
 /**
  * Визуальный контроль с полосками прокрутки, в котором отображается картинка.
  *
- * @author goga
+ * @author hazard157
  */
 class Picture
     extends ScrolledComposite {
@@ -34,7 +34,7 @@ class Picture
   /**
    * Простой виджет, с заданными размерами, на которой рисуется изображение.
    *
-   * @author goga
+   * @author hazard157
    */
   class ImageWidget
       extends Canvas {

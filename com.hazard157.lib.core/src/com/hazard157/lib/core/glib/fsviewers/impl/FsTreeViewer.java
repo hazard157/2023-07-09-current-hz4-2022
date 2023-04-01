@@ -40,7 +40,7 @@ public class FsTreeViewer<T extends OptedFile>
   /**
    * Поставщие элементов для {@link TreeViewer} на базе {@link IKofFileSystem}.
    *
-   * @author goga
+   * @author hazard157
    */
   class ContentProvider
       implements ITreeContentProvider {
@@ -85,7 +85,7 @@ public class FsTreeViewer<T extends OptedFile>
    * <p>
    * Текст поставляет {@link FsTreeViewer#labelProvider}, а значки - {@link FsTreeViewer#fileIconProvider()}.
    *
-   * @author goga
+   * @author hazard157
    */
   class PaintHelper
       extends ViewerPaintHelper<Tree> {
@@ -144,7 +144,7 @@ public class FsTreeViewer<T extends OptedFile>
    * Поставщик текста для ячеек таблицы, а изображения поставляются и рисуются отрисовщиком
    * {@link FsTreeViewer.PaintHelper}.
    *
-   * @author goga
+   * @author hazard157
    */
   static class LabelProvider
       extends TableLabelProviderAdapter {

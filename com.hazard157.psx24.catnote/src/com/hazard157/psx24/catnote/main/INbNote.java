@@ -5,7 +5,7 @@ import org.toxsoft.core.tslib.bricks.strid.*;
 /**
  * Notebook note.
  *
- * @author goga
+ * @author hazard157
  */
 public interface INbNote
     extends IStridableParameterized {

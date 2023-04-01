@@ -15,7 +15,7 @@ import com.hazard157.lib.core.bricks.stripent.IStripentManager;
  * <p>
  * Warning: model does <b>not</b> adds any declared field definition to the {@link #fieldDefs()}.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - modelled entity type
  */
 public class StripentM5ModelBase<T extends IStripent>

@@ -27,7 +27,7 @@ import com.hazard157.psx.proj3.tags.*;
 /**
  * Компонента - дерево, редактор пометки ярлыками с поддержкой {@link ECheckState#GRAYED}.
  *
- * @author goga
+ * @author hazard157
  */
 public class TagMarksTreePanel
     extends TsComposite

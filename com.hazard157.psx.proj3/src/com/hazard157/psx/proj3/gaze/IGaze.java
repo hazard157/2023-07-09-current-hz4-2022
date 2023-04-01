@@ -10,7 +10,7 @@ import com.hazard157.psx.proj3.ng.incident.*;
 /**
  * Incident of type {@link EPsxIncidentKind#INC_GAZE}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IGaze
     extends IRatingable, IStridableParameterized {

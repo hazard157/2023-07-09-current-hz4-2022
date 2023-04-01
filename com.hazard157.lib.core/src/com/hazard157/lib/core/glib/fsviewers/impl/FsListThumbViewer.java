@@ -22,7 +22,7 @@ import com.hazard157.lib.core.glib.pgviewer.impl.*;
 /**
  * Реализация {@link IFsListThumbViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 public class FsListThumbViewer
     implements IFsListThumbViewer, ITsGuiContextable {

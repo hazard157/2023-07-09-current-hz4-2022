@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * <p>
  * Это неизменяемый класс.
  *
- * @author goga
+ * @author hazard157
  */
 public final class InquiryInfo {
 

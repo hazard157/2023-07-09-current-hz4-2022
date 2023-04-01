@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.tags.*;
  * Поставщик ожидает, что все узлы дерева имеют тип {@link ITag}, и что в дереве два столбца, соответсвующие
  * {@link ITag#nmName()} и {@link ITag#description()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class TagsTreeLabelProvider
     extends TableLabelProviderAdapter {

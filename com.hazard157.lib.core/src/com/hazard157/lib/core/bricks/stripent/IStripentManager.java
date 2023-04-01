@@ -8,7 +8,7 @@ import org.toxsoft.core.txtproj.lib.*;
 /**
  * Changeable {@link IStripent} entities manager.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - the entity type
  */
 public interface IStripentManager<T extends IStripent>

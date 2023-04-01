@@ -13,7 +13,7 @@ import com.hazard157.psx24.films.m5.*;
 /**
  * Адон приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public class AddonPsx24Films
     extends MwsAbstractAddon {

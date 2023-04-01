@@ -10,7 +10,7 @@ import com.hazard157.psx.common.stuff.svin.*;
  * <p>
  * Uses {@link IMediaPlayerService} for media play.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IFsMediaPlayer {
 

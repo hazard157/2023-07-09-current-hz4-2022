@@ -16,7 +16,7 @@ import com.hazard157.psx.proj3.episodes.*;
  * Для создания начального набора (сождержащего все интерваы всех эпизодов) используйте
  * {@link BeqUtils#createFull(IUnitEpisodes)}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IBeqResult {
 

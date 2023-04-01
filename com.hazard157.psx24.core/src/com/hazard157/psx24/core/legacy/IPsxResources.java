@@ -3,7 +3,7 @@ package com.hazard157.psx24.core.legacy;
 /**
  * Локализуемые ресусры.
  *
- * @author goga
+ * @author hazard157
  */
 interface IPsxResources {
 

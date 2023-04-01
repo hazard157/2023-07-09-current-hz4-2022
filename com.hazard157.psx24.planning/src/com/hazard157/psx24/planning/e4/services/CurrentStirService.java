@@ -7,7 +7,7 @@ import com.hazard157.psx.proj3.pleps.*;
 /**
  * Реализация {@link ICurrentStirService}.
  *
- * @author goga
+ * @author hazard157
  */
 public class CurrentStirService
     extends CurrentEntityService<IStir>

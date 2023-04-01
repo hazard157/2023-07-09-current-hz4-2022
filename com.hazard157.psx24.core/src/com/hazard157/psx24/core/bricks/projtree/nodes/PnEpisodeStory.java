@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
 /**
  * Узел списка {@link IEpisode#story()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class PnEpisodeStory
     extends ChildedTsNode<IStory> {

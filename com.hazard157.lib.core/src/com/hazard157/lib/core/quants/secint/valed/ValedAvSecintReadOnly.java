@@ -12,7 +12,7 @@ import com.hazard157.lib.core.quants.secint.*;
 /**
  * Просмотрщик {@link EAtomicType#VALOBJ}, содержащий {@link Secint}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedAvSecintReadOnly
     extends AbstractValedControl<IAtomicValue, Control> {

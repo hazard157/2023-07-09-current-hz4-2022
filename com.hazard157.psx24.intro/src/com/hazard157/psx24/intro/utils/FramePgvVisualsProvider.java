@@ -14,7 +14,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 /**
  * Реализация {@link IPgvVisualsProvider} для сущнстей типа {@link IFrame}
  *
- * @author goga
+ * @author hazard157
  */
 public class FramePgvVisualsProvider
     implements IPgvVisualsProvider<IFrame> {

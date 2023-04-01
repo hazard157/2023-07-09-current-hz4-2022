@@ -31,7 +31,7 @@ import com.hazard157.lib.core.legacy.widgets.hhmmss.*;
  * <p>
  * В режиме {@link #isEditable()} = <code>false</code> виджет переключается в нередактируемый {@link Text}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedAvIntHhmmss
     extends AbstractValedControl<IAtomicValue, Control> {

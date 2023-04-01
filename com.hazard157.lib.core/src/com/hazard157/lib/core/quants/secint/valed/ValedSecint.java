@@ -23,7 +23,7 @@ import com.hazard157.lib.core.quants.secint.glib.*;
 /**
  * Редактор (и просмотрщик) поля типа {@link Secint}.
  *
- * @author goga
+ * @author hazard157
  */
 public class ValedSecint
     extends AbstractValedControl<Secint, Control> {

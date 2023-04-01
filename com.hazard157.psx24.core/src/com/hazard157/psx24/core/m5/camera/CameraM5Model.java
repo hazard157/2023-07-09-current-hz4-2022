@@ -27,7 +27,7 @@ import com.hazard157.psx.proj3.sourcevids.*;
 /**
  * Модель сущностей типа {@link Camera}.
  *
- * @author goga
+ * @author hazard157
  */
 public class CameraM5Model
     extends M5Model<Camera> {

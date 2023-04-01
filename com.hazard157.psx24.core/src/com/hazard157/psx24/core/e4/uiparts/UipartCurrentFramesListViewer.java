@@ -40,7 +40,7 @@ import com.hazard157.psx24.core.glib.plv.*;
 /**
  * Разделяемое вью, отображающее список {@link ICurrentFramesListService#current()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartCurrentFramesListViewer
     extends MwsAbstractPart {

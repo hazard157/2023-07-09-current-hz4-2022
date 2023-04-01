@@ -18,7 +18,7 @@ import com.hazard157.psx.common.stuff.frame.*;
  * <p>
  * 2021-03-14 Не-секундные изображения кадров начинаем выносить ВНЕ облачное хранилище.
  *
- * @author goga
+ * @author hazard157
  */
 class FramesCache {
 

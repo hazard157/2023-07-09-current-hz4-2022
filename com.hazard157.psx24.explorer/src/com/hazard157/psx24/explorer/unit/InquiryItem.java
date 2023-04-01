@@ -17,7 +17,7 @@ import com.hazard157.psx24.explorer.filters.*;
  * <p>
  * Это параметры по одному фильтру всех видов, объединенные по И.
  *
- * @author goga
+ * @author hazard157
  */
 public final class InquiryItem {
 

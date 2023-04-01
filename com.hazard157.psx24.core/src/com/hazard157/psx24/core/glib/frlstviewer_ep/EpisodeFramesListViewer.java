@@ -64,7 +64,7 @@ import com.hazard157.psx24.core.glib.dialogs.imgs.*;
 /**
  * Реализация {@link IEpisodeFramesListViewer}.
  *
- * @author goga
+ * @author hazard157
  */
 public class EpisodeFramesListViewer
     extends AbstractLazyPanel<TsComposite>

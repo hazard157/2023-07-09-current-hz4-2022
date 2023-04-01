@@ -15,7 +15,7 @@ import org.toxsoft.core.tslib.utils.logs.impl.*;
  * <p>
  * Ссылка на экземпляр должен находится в контексте уровня приложения.
  *
- * @author goga
+ * @author hazard157
  */
 public class VideoFileDurationCache {
 

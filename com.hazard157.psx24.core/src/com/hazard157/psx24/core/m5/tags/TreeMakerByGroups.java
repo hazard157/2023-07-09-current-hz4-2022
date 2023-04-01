@@ -13,7 +13,7 @@ import com.hazard157.psx.proj3.tags.*;
 /**
  * Группиратор по группам ярлыков {@link ITag}
  *
- * @author goga
+ * @author hazard157
  */
 class TreeMakerByGroups
     implements ITsTreeMaker<ITag> {

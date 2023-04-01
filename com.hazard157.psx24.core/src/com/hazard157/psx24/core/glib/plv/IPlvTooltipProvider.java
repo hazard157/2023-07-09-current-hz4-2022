@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.*;
 /**
  * Поставщик данных для формирования всплывающей подсказки к элементам {@link PlvItem}.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPlvTooltipProvider {
 

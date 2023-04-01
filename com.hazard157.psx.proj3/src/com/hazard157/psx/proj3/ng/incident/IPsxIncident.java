@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.bricks.strid.*;
 /**
  * Base interface for all PSX incidents.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IPsxIncident
     extends IStridable {

@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.songs.*;
 /**
  * Холст отрисовки планируемого эпизода.
  *
- * @author goga
+ * @author hazard157
  */
 class PlepTimelineCanvas
     extends AbstractLazyPanel<Control> {

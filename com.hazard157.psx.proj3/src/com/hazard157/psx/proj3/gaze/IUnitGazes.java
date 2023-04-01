@@ -5,7 +5,7 @@ import org.toxsoft.core.txtproj.lib.stripar.*;
 /**
  * {@link IGaze} incidents manager.
  *
- * @author goga
+ * @author hazard157
  */
 public interface IUnitGazes
     extends IStriparManager<IGaze> {

@@ -29,7 +29,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
  * Выводит список всех эпизодов с возможностью пометить (check)отдельные эпизоды. Возвращает список идентификаторов
  * помеченных эпизодов.
  *
- * @author goga
+ * @author hazard157
  */
 public class DialogSelectEpisodeIds {
 

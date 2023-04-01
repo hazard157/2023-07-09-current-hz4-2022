@@ -23,7 +23,7 @@ import com.hazard157.psx24.planning.m5.*;
 /**
  * Вью просмотра и правки {@link IPlep#stirs()} текущего {@link ICurrentPlepService#current()}.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartUnitPlepStirs
     extends MwsAbstractPart {

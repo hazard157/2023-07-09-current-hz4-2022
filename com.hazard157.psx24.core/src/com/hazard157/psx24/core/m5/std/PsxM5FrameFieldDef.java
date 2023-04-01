@@ -21,7 +21,7 @@ import com.hazard157.psx24.core.valeds.frames.*;
 /**
  * Поле {@link IFrameable#frame()}.
  *
- * @author goga
+ * @author hazard157
  * @param <T> - тип сущности, реализующий {@link IFrameable}
  */
 public class PsxM5FrameFieldDef<T extends IFrameable>

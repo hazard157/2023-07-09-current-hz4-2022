@@ -8,7 +8,7 @@ import com.hazard157.psx.common.stuff.svin.*;
 /**
  * {@link IFsMediaPlayer} implementation.
  *
- * @author goga
+ * @author hazard157
  */
 class FsMediaPlayer
     implements IFsMediaPlayer {

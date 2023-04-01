@@ -13,7 +13,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 /**
  * Реализация {@link IHmsValue}.
  *
- * @author goga
+ * @author hazard157
  */
 public final class HmsValue
     implements IHmsValue {

@@ -24,7 +24,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
  * Программное задание состояния включения фильтра {@link #setFilterOn(boolean)} и текста {@link #setFilterText(String)}
  * не приводит к генерации сообщений.
  *
- * @author goga
+ * @author hazard157
  */
 public class TextFilterContribution
     implements IGenericChangeEventCapable {

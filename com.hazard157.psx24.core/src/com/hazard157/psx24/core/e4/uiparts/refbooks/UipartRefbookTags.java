@@ -16,7 +16,7 @@ import com.hazard157.psx24.core.m5.tags.*;
 /**
  * Вью справочника ярлыков.
  *
- * @author goga
+ * @author hazard157
  */
 public class UipartRefbookTags
     extends MwsAbstractPart {
