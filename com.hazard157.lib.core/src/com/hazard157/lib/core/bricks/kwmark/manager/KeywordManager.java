@@ -115,7 +115,7 @@ public class KeywordManager
     IStringList sl = StringListKeeper.KEEPER.read( aSr );
     if( !TsCollectionsUtils.isListsEqual( sl, allItems ) ) {
       allItems.setAll( sl );
-      genericChangeEventer.fireChangeEvent();
+      genericChangeEventer().fireChangeEvent();
     }
     aSr.ensureChar( CHAR_SET_END );
   }
@@ -124,7 +124,7 @@ public class KeywordManager
   protected void doClear() {
     if( !allItems.isEmpty() ) {
       allItems.clear();
-      genericChangeEventer.fireChangeEvent();
+      genericChangeEventer().fireChangeEvent();
     }
   }
 
@@ -179,7 +179,7 @@ public class KeywordManager
         throw new TsNotAllEnumsUsedRtException();
     }
     allItems.add( aName );
-    genericChangeEventer.fireChangeEvent();
+    genericChangeEventer().fireChangeEvent();
     return aName;
   }
 

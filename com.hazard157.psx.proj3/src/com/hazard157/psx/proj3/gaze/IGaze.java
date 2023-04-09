@@ -13,7 +13,7 @@ import com.hazard157.psx.proj3.ng.incident.*;
  * @author hazard157
  */
 public interface IGaze
-    extends IRatingable, IStridableParameterized {
+    extends IStridableParameterized, IRatingable {
 
   /**
    * Returns the incident kind.

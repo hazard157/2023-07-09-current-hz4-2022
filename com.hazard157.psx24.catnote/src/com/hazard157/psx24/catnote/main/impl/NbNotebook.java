@@ -28,8 +28,8 @@ public class NbNotebook
    * Constructor.
    */
   public NbNotebook() {
-    categoryManager.genericChangeEventer().addListener( genericChangeEventer );
-    noteManager.genericChangeEventer().addListener( genericChangeEventer );
+    categoryManager.genericChangeEventer().addListener( genericChangeEventer() );
+    noteManager.genericChangeEventer().addListener( genericChangeEventer() );
   }
 
   // ------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ public class NbNotebook
 
   @Override
   protected void doRead( IStrioReader aSr ) {
-    genericChangeEventer.pauseFiring();
+    genericChangeEventer().pauseFiring();
     try {
       aSr.ensureChar( CHAR_SET_BEGIN );
       // categories
@@ -65,19 +65,19 @@ public class NbNotebook
       aSr.ensureChar( CHAR_SET_END );
     }
     finally {
-      genericChangeEventer.resumeFiring( true );
+      genericChangeEventer().resumeFiring( true );
     }
   }
 
   @Override
   protected void doClear() {
-    genericChangeEventer.pauseFiring();
+    genericChangeEventer().pauseFiring();
     try {
       categoryManager.clear();
       noteManager.clear();
     }
     finally {
-      genericChangeEventer.resumeFiring( true );
+      genericChangeEventer().resumeFiring( true );
     }
   }
 

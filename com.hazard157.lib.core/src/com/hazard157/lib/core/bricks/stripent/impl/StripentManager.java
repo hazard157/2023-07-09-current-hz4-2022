@@ -113,7 +113,7 @@ public class StripentManager<T extends IStripent>
 
   @Override
   protected final void doRead( IStrioReader aSr ) {
-    genericChangeEventer.pauseFiring();
+    genericChangeEventer().pauseFiring();
     aSr.ensureChar( CHAR_SET_BEGIN );
     StrioUtils.ensureKeywordHeader( aSr, KW_PARAMS );
     params.setAll( OptionSetKeeper.KEEPER.read( aSr ) );
@@ -131,19 +131,19 @@ public class StripentManager<T extends IStripent>
     }
     doReadAfterStripents( aSr );
     aSr.ensureChar( CHAR_SET_END );
-    genericChangeEventer.resumeFiring( true );
+    genericChangeEventer().resumeFiring( true );
   }
 
   @Override
   protected void doClear() {
     items.pauseFiring();
-    genericChangeEventer.pauseFiring();
+    genericChangeEventer().pauseFiring();
     while( !items.isEmpty() ) {
       T e = items.removeByIndex( 0 );
       e.genericChangeEventer().removeListener( itemPropsChangeListener );
     }
     items.resumeFiring( true );
-    genericChangeEventer.resumeFiring( true );
+    genericChangeEventer().resumeFiring( true );
   }
 
   // ------------------------------------------------------------------------------------

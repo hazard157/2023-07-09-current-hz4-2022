@@ -253,14 +253,14 @@ public class Proj3ExporterMain {
       for( int i = 1; i <= item.planesLine().marksList().size(); i++ ) {
         IOptionSetEdit ops = new OptionSet();
         MarkPlaneGuide k = item.planesLine().marksList().get( i - 1 );
-        ops.setStr( "inStart", HmsUtils.hhhmmss( k.in().start() ) );
-        ops.setStr( "inEnd", HmsUtils.hhhmmss( k.in().end() ) );
+        ops.setStr( "secs", HmsUtils.autoHms( k.in().start() ) );
+        // ops.setStr( "inEnd", HmsUtils.hhhmmss( k.in().end() ) );
         PlaneGuide g = k.marker();
         ops.setStr( "camId", g.cameraId() );
         ops.setStr( "name", g.name() );
         ops.setBool( "isNaturallyLong", g.isNaturallyLong() );
         ops.setStr( "frame", FrameKeeper.KEEPER.ent2str( g.frame() ) );
-        p.setValobj( "PlanesLineMark_" + i, ops );
+        p.setValobj( "PlaneLineMark_" + i, ops );
       }
       // story
       IOptionSet ops = makeScene( item.story() );

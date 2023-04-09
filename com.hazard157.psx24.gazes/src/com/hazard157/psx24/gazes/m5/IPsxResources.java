@@ -22,5 +22,7 @@ interface IPsxResources {
   String STR_D_TMI_BY_YEAR   = Messages.getString( "STR_D_TMI_BY_YEAR" );   //$NON-NLS-1$
   String STR_N_TMI_BY_MONTH  = Messages.getString( "STR_N_TMI_BY_MONTH" );  //$NON-NLS-1$
   String STR_D_TMI_BY_MONTH  = Messages.getString( "STR_D_TMI_BY_MONTH" );  //$NON-NLS-1$
+  String STR_N_TMI_BY_HH     = Messages.getString( "STR_N_TMI_BY_HH" );     //$NON-NLS-1$
+  String STR_D_TMI_BY_HH     = Messages.getString( "STR_D_TMI_BY_HH" );     //$NON-NLS-1$
 
 }

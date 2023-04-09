@@ -12,6 +12,9 @@ import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.m5.valeds.singlemodown.*;
+import org.toxsoft.core.tsgui.valed.api.*;
+import org.toxsoft.core.tsgui.valed.controls.av.*;
+import org.toxsoft.core.tsgui.valed.controls.basic.*;
 import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
@@ -98,8 +101,16 @@ public class TodoM5Model
    */
   public static final IM5AttributeFieldDef<ITodo> NOTE = new M5AttributeFieldDef<>( FID_NOTE, STRING, //
       TSID_NAME, STR_N_TD_NOTE, //
-      TSID_DESCRIPTION, STR_N_TD_NOTE //
+      TSID_DESCRIPTION, STR_N_TD_NOTE, //
+      IValedControlConstants.OPID_EDITOR_FACTORY_NAME, ValedAvStringText.FACTORY_NAME, //
+      ValedStringText.OPDEF_IS_MULTI_LINE, AV_TRUE, //
+      IValedControlConstants.OPID_VERTICAL_SPAN, avInt( 3 ) //
   ) {
+
+    @Override
+    protected void doInit() {
+      addFlags( M5FF_DETAIL );
+    }
 
     protected IAtomicValue doGetFieldValue( ITodo aEntity ) {
       return avStr( aEntity.note() );

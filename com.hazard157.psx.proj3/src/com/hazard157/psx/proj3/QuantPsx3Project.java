@@ -111,7 +111,7 @@ public class QuantPsx3Project
   }
 
   /**
-   * Converts exsiting episode's {@link IEpisode#when()} to the {@link LocalDateTime}.
+   * Converts existing episode's {@link IEpisode#when()} to the {@link LocalDateTime}.
    * <p>
    * Direct conversion from epoch milliseconds does not works because <code><b>long</b></code> timestamps are created
    * with different time zones.

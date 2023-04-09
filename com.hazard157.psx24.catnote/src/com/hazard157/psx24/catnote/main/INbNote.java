@@ -11,7 +11,7 @@ public interface INbNote
     extends IStridableParameterized {
 
   /**
-   * Retunr the note kind.
+   * Returns the note kind.
    *
    * @return {@link ENbNoteKind} - the note kind
    */

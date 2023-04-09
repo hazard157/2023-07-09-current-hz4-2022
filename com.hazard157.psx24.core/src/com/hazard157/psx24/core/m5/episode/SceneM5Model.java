@@ -197,7 +197,9 @@ public class SceneM5Model
    */
   public SceneM5Model() {
     super( MID_SCENE, IScene.class );
-    addFieldDefs( SEQ_NO, INTERVAL, DUR_PERC_STR, NAME, FRAME, FRAME_IMAGE );
+    addFieldDefs( SEQ_NO, INTERVAL,
+        // DUR_PERC_STR,
+        NAME, FRAME, FRAME_IMAGE );
     setPanelCreator( new M5DefaultPanelCreator<IScene>() {
 
       @Override

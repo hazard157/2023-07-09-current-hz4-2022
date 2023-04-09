@@ -71,6 +71,7 @@ public class TagM5Model
     @Override
     protected void doInit() {
       setFlags( M5FF_DETAIL );
+      // params().setValueIfNull( IValedControlConstants.OPID_VERTICAL_SPAN, avInt( 3 ) );
     }
 
     @Override

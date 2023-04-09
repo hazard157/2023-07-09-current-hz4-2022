@@ -6,7 +6,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
- * Неизменяемый класс - описание сцены {@link IScene}.
+ * Immutable class - information about {@link IScene}.
  *
  * @author hazard157
  */
@@ -14,19 +14,19 @@ public final class SceneInfo
     implements IFrameable {
 
   /**
-   * "Нулевое" описание сцены.
+   * The singleton of the non-existing scene.
    */
-  public static SceneInfo NULL = new SceneInfo( TsLibUtils.EMPTY_STRING, IFrame.NONE );
+  // public static SceneInfo NULL = new SceneInfo( TsLibUtils.EMPTY_STRING, IFrame.NONE );
 
   private final String name;
   private final IFrame frame;
 
   /**
-   * Конструктор со всеми инвариантами.
+   * Constructor.
    *
-   * @param aName String - название сцены
-   * @param aFrame {@link IFrame} - иллюстрация
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aName String - the scene name
+   * @param aFrame {@link IFrame} - illustrative frame
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public SceneInfo( String aName, IFrame aFrame ) {
     TsNullArgumentRtException.checkNulls( aName, aFrame );
@@ -35,34 +35,29 @@ public final class SceneInfo
   }
 
   // ------------------------------------------------------------------------------------
-  // API класса
+  // API
   //
 
   /**
-   * Возвращает название сцены.
+   * Returns the scene name.
    *
-   * @return String - название сцены
+   * @return String - the scene name
    */
   public String name() {
     return name;
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IFrameable
+  // IFrameable
   //
 
-  /**
-   * Возвращает иллюстрацию.
-   *
-   * @return {@link IFrame} - иллюстрация
-   */
   @Override
   public IFrame frame() {
     return frame;
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация методов класса Object
+  // Object
   //
 
   @Override
@@ -75,8 +70,7 @@ public final class SceneInfo
     if( aObj == this ) {
       return true;
     }
-    if( aObj instanceof SceneInfo ) {
-      SceneInfo obj = (SceneInfo)aObj;
+    if( aObj instanceof SceneInfo obj ) {
       return name.equals( obj.name ) && frame.equals( obj.frame );
     }
     return false;
