@@ -21,6 +21,8 @@ interface IPsxResources {
    */
   String STR_N_TMM_BY_EPISODE                = "По эпизодам";
   String STR_D_TMM_BY_EPISODE                = "Группировка интервалов по эпизодам";
+  String STR_N_TMM_BY_EP_SECINT              = "По интервалам";
+  String STR_D_TMM_BY_EP_SECINT              = "Группировка интервалов по интервалам эпизодов";
   String STR_N_TMM_BY_CAMERA                 = "По камерам";
   String STR_D_TMM_BY_CAMERA                 = "Группировка интервалов по камрам характерных кадров";
   String STR_N_SHOW_ALL_SVINS_IN_FRAMES_LIST = "Все в списке";

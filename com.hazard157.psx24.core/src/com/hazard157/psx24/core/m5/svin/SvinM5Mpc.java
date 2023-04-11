@@ -5,6 +5,7 @@ import static com.hazard157.psx24.core.IPsx24CoreConstants.*;
 import static com.hazard157.psx24.core.IPsxAppActions.*;
 import static com.hazard157.psx24.core.m5.svin.IPsxResources.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
+import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
 import java.util.*;
@@ -25,8 +26,10 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
+import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
@@ -35,6 +38,7 @@ import com.hazard157.psx24.core.e4.services.currframeslist.*;
 import com.hazard157.psx24.core.e4.services.playmenu.*;
 import com.hazard157.psx24.core.e4.services.prisex.*;
 import com.hazard157.psx24.core.e4.services.selsvins.*;
+import com.hazard157.psx24.core.m5.std.*;
 
 /**
  * Реализация {@link IM5CollectionPanel} для {@link SvinM5Model}.
@@ -51,13 +55,17 @@ public class SvinM5Mpc
 
   final IPlayMenuSupport playMenuSupport;
 
-  static final String NKID_SVIN   = "Svin";  //$NON-NLS-1$
-  static final String NKID_EP_ID  = "EpId";  //$NON-NLS-1$
-  static final String NKID_CAM_ID = "CamId"; //$NON-NLS-1$
+  static final String NKID_SVIN      = "Svin";     //$NON-NLS-1$
+  static final String NKID_EP_ID     = "EpId";     //$NON-NLS-1$
+  static final String NKID_CAM_ID    = "CamId";    //$NON-NLS-1$
+  static final String NKID_EP_SECINT = "EpSecint"; //$NON-NLS-1$
 
   static final ITsNodeKind<Svin>   NK_SVIN   = new TsNodeKind<>( NKID_SVIN, Svin.class, false );
   static final ITsNodeKind<String> NK_EP_ID  = new TsNodeKind<>( NKID_EP_ID, String.class, true );
   static final ITsNodeKind<String> NK_CAM_ID = new TsNodeKind<>( NKID_CAM_ID, String.class, true );
+
+  static final ITsNodeKind<Svin> NK_EP_SECINT                 = new TsNodeKind<>( NKID_EP_SECINT, Svin.class, true );
+  static final String            EP_SECINT_ENTITY_SVIN_CAM_ID = "EpSecintEntityCameraId";                            //$NON-NLS-1$
 
   /**
    * Конструктор.
@@ -75,6 +83,11 @@ public class SvinM5Mpc
     TreeModeInfo<Svin> tmiByEpisode = new TreeModeInfo<>( TreeMakerByEpisode.MODE_ID, STR_N_TMM_BY_EPISODE,
         STR_D_TMM_BY_EPISODE, null, new TreeMakerByEpisode( tsContext() ) );
     treeModeManager().addTreeMode( tmiByEpisode );
+    //
+    TreeModeInfo<Svin> tmiByEpSecint = new TreeModeInfo<>( TreeMakerByEpSecint.MODE_ID, STR_N_TMM_BY_EP_SECINT,
+        STR_D_TMM_BY_EP_SECINT, null, new TreeMakerByEpSecint( tsContext() ) );
+    treeModeManager().addTreeMode( tmiByEpSecint );
+    //
     IUnitEpisodes ue = aContext.get( IUnitEpisodes.class );
     TreeModeInfo<Svin> tmiByCamera = new TreeModeInfo<>( TreeMakerByCamera.MODE_ID, STR_N_TMM_BY_CAMERA,
         STR_D_TMM_BY_CAMERA, null, new TreeMakerByCamera( ue ) );
@@ -91,6 +104,58 @@ public class SvinM5Mpc
     aActs.add( ACDEF_SEPARATOR );
     aActs.add( AI_SHOW_ALL_SVINS_IN_FRAMES_LIST );
     return super.doCreateToolbar( aContext, aName, aIconSize, aActs );
+  }
+
+  @Override
+  protected void doCreateTreeColumns() {
+    for( IM5FieldDef<Svin, ?> fdef : model().fieldDefs() ) {
+      if( (fdef.flags() & M5FF_COLUMN) != 0 ) {
+        switch( fdef.id() ) {
+          case PsxM5IntervalFieldDef.FID_INTERVAL: {
+            IM5Getter<Svin, Secint> getter = new IM5Getter<>() {
+
+              @Override
+              public String getName( Svin aItem ) {
+                if( aItem == null || aItem.cameraId().equals( EP_SECINT_ENTITY_SVIN_CAM_ID ) ) {
+                  return TsLibUtils.EMPTY_STRING;
+                }
+                return aItem.interval().toString();
+              }
+
+              @Override
+              public Secint getValue( Svin aEntity ) {
+                return aEntity.interval();
+              }
+            };
+            tree().columnManager().add( fdef.id(), getter );
+            break;
+          }
+          case PsxM5CameraIdFieldDef.FID_CAMERA_ID: {
+            IM5Getter<Svin, String> getter = new IM5Getter<>() {
+
+              @Override
+              public String getName( Svin aItem ) {
+                if( aItem == null || aItem.cameraId().equals( EP_SECINT_ENTITY_SVIN_CAM_ID ) ) {
+                  return TsLibUtils.EMPTY_STRING;
+                }
+                return aItem.cameraId();
+              }
+
+              @Override
+              public String getValue( Svin aEntity ) {
+                return aEntity.cameraId();
+              }
+            };
+            tree().columnManager().add( fdef.id(), getter );
+            break;
+          }
+          default: {
+            tree().columnManager().add( fdef.id() );
+            break;
+          }
+        }
+      }
+    }
   }
 
   @Override
@@ -301,10 +366,10 @@ public class SvinM5Mpc
    * @return {@link IList}&lt;{@link Svin}&gt; - список интервалов, не бывает <code>null</code>
    */
   public IList<Svin> getSelectedNodeSvins() {
-    Svin sel = selectedItem();
-    if( sel != null ) {
-      return new SingleItemList<>( sel );
-    }
+    // Svin sel = selectedItem();
+    // if( sel != null ) {
+    // return new SingleItemList<>( sel );
+    // }
     ITsNode selNode = (ITsNode)tree().console().selectedNode();
     if( selNode == null ) {
       return IList.EMPTY;
@@ -313,6 +378,15 @@ public class SvinM5Mpc
       case NKID_SVIN:
         return new SingleItemList<>( (Svin)selNode.entity() );
       case NKID_EP_ID: {
+        IListEdit<Svin> ll = new ElemArrayList<>();
+        for( ITsNode n : selNode.childs() ) {
+          if( n.kind() == NK_SVIN ) {
+            ll.add( (Svin)n.entity() );
+          }
+        }
+        return ll;
+      }
+      case NKID_EP_SECINT: {
         IListEdit<Svin> ll = new ElemArrayList<>();
         for( ITsNode n : selNode.childs() ) {
           if( n.kind() == NK_SVIN ) {
