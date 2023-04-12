@@ -21,6 +21,7 @@ import org.toxsoft.core.tsgui.mws.services.e4helper.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
+import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.coll.notifier.basis.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.logs.impl.*;
@@ -50,6 +51,8 @@ public class UipartIntro
     }
   };
 
+  private final IGenericChangeListener episodesUnitChangeListener = aSource -> initViewerContent();
+
   private final ITsActionHandler toolbarListener = this::processAction;
 
   @Inject
@@ -75,6 +78,7 @@ public class UipartIntro
     IAppPreferences apprefs = tsContext().get( IAppPreferences.class );
     prefBundle = apprefs.getBundle( PSX_INTRO_APREF_BUNDLE_ID );
     prefBundle.prefs().addCollectionChangeListener( appSettingsChangeListener );
+    unitEpisodes.genericChangeEventer().addListener( episodesUnitChangeListener );
     playMenuSupport = tsContext().get( IPlayMenuSupport.class );
     currentEpisodeService = tsContext().get( ICurrentEpisodeService.class );
     fileSystem = tsContext().get( IPsxFileSystem.class );
@@ -208,6 +212,7 @@ public class UipartIntro
     EThumbSize thumbSize = APPRM_THUMB_SIZE.getValue( prefBundle.prefs() ).asValobj();
     plViewer.setThumbSize( thumbSize );
     plViewer.clearItems();
+    boolean isStillForced = APPRM_IS_FORCE_STILL_FRAME.getValue( prefBundle.prefs() ).asBool();
     for( IEpisode e : unitEpisodes.items() ) {
       File ff = fileSystem.findFrameFile( e.frame() );
       TsImage mi = null;
@@ -216,6 +221,9 @@ public class UipartIntro
       }
       if( mi == null ) {
         mi = getNoneImageForEpisode( thumbSize );
+      }
+      if( mi.isAnimated() && isStillForced ) {
+        mi = TsImage.create( mi.image() ); // SWT image will be disposed when anumated mi disposes
       }
       TsInternalErrorRtException.checkNull( mi );
       String fmtStr = "%1$te %1$tB %1$tY"; //$NON-NLS-1$

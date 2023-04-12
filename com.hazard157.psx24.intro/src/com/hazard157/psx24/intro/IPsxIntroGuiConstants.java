@@ -76,6 +76,12 @@ public interface IPsxIntroGuiConstants {
       TSID_DESCRIPTION, STR_D_IS_STARTUP_GIF_SHOWN //
   );
 
+  IDataDef APPRM_IS_FORCE_STILL_FRAME = DataDef.create( PSX_ID + "intro.ForceStillFrame", BOOLEAN, //$NON-NLS-1$
+      TSID_DEFAULT_VALUE, AV_TRUE, //
+      TSID_NAME, STR_N_IS_FORCE_STILL_FRAME, //
+      TSID_DESCRIPTION, STR_D_IS_FORCE_STILL_FRAME //
+  );
+
   // ------------------------------------------------------------------------------------
   // Действия
 
@@ -97,6 +103,7 @@ public interface IPsxIntroGuiConstants {
     pb.defineOption( APPRM_THUMB_SIZE );
     pb.defineOption( APPRM_IS_LABEL_AS_YMD );
     pb.defineOption( APPRM_IS_STARTUP_GIF_SHOWN );
+    pb.defineOption( APPRM_IS_FORCE_STILL_FRAME );
   }
 
 }

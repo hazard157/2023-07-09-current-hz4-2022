@@ -24,26 +24,28 @@ import com.hazard157.psx24.core.m5.std.*;
 public class EpisodeViewerPanelController
     extends M5EntityPanelWithValedsController<IEpisode> {
 
+  private static final IList<IAtomicValue> EMPTY_IDS_LIST = new SingleItemList<>( AV_STR_NONE_ID );
+
   /**
-   * Конструктор.
+   * Constructor.
    */
   public EpisodeViewerPanelController() {
     // nop
   }
 
   // ------------------------------------------------------------------------------------
-  // Внутренние методы
+  // implementation
   //
 
   private void updateDefaultTrailerSelectionCombo( String aEpisodeId ) {
     ValedComboSelector<IAtomicValue> trailerIdCombo = getEditor( FID_DEF_TRAILER_ID, ValedComboSelector.class );
     if( aEpisodeId == null || !EpisodeUtils.EPISODE_ID_VALIDATOR.isValid( aEpisodeId ) ) {
-      trailerIdCombo.setItems( IList.EMPTY );
+      trailerIdCombo.setItems( EMPTY_IDS_LIST );
       return;
     }
     IEpisode e = tsContext().get( IUnitEpisodes.class ).items().findByKey( aEpisodeId );
     if( e == null ) {
-      trailerIdCombo.setItems( IList.EMPTY );
+      trailerIdCombo.setItems( EMPTY_IDS_LIST );
       return;
     }
     IStringList traIds = tsContext().get( IUnitTrailers.class ).listTrailersByEpisode( aEpisodeId ).ids();
@@ -51,11 +53,14 @@ public class EpisodeViewerPanelController
     for( String tid : traIds ) {
       avTraIds.add( avStr( TrailerUtils.extractLocalId( tid ) ) );
     }
+    if( avTraIds.isEmpty() ) {
+      avTraIds.add( AV_STR_NONE_ID );
+    }
     trailerIdCombo.setItems( avTraIds );
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IM5EntityPanelWithValedsController
+  // IM5EntityPanelWithValedsController
   //
 
   @Override

@@ -59,6 +59,9 @@ public class EpisodeEditPanelController
       avTraIds.add( avStr( TrailerUtils.extractLocalId( tid ) ) );
     }
     ValedComboSelector<IAtomicValue> trailerIdCombo = getEditor( FID_DEF_TRAILER_ID, ValedComboSelector.class );
+    if( avTraIds.isEmpty() ) {
+      avTraIds.add( AV_STR_NONE_ID );
+    }
     trailerIdCombo.setItems( avTraIds );
   }
 
