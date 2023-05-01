@@ -5,7 +5,7 @@ import org.eclipse.swt.custom.*;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
-import org.toxsoft.core.singlesrc.rcp.*;
+import org.toxsoft.core.singlesrc.*;
 import org.toxsoft.core.tsgui.graphics.colors.*;
 import org.toxsoft.core.tslib.bricks.geometry.*;
 import org.toxsoft.core.tslib.coll.helpers.*;

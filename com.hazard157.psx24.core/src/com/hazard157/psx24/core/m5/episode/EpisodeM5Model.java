@@ -38,7 +38,7 @@ import com.hazard157.psx24.core.m5.std.*;
 import com.hazard157.psx24.core.valeds.frames.*;
 
 /**
- * Модель сущностей типа {@link IEpisode}.
+ * M5-model of {@link IEpisode}.
  *
  * @author hazard157
  */
@@ -59,7 +59,7 @@ public class EpisodeM5Model
   };
 
   /**
-   * Атрибут {@link EpisodeInfo#when()}
+   * Field {@link EpisodeInfo#when()}
    */
   public static final M5AttributeFieldDef<IEpisode> WHEN = new M5AttributeFieldDef<>( FID_WHEN, DT_DATE_DMY ) {
 
@@ -107,17 +107,17 @@ public class EpisodeM5Model
   };
 
   /**
-   * Атрибут {@link IEpisode#nmName()}
+   * Field {@link IEpisode#nmName()}
    */
   public static final M5AttributeFieldDef<IEpisode> NAME = new M5StdFieldDefName<>();
 
   /**
-   * Атрибут {@link IEpisode#description()}
+   * Field {@link IEpisode#description()}
    */
   public static final M5AttributeFieldDef<IEpisode> DESCRIPTION = new M5StdFieldDefDescription<>();
 
   /**
-   * Атрибут {@link EpisodeInfo#duration()}.
+   * Field {@link EpisodeInfo#duration()}.
    */
   public static final M5AttributeFieldDef<IEpisode> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -183,7 +183,7 @@ public class EpisodeM5Model
       };
 
   /**
-   * Атрибут {@link EpisodeInfo#place()}.
+   * Field {@link EpisodeInfo#place()}.
    */
   public static final M5AttributeFieldDef<IEpisode> PLACE = new M5AttributeFieldDef<>( FID_PLACE, DDEF_STRING ) {
 
@@ -200,7 +200,7 @@ public class EpisodeM5Model
   };
 
   /**
-   * Атрибут {@link EpisodeInfo#notes()}.
+   * Field {@link EpisodeInfo#notes()}.
    */
   public static final M5AttributeFieldDef<IEpisode> DEF_TRAILER_ID =
       new M5AttributeFieldDef<>( FID_DEF_TRAILER_ID, DDEF_STRING ) {
@@ -218,7 +218,7 @@ public class EpisodeM5Model
       };
 
   /**
-   * Атрибут {@link EpisodeInfo#notes()}.
+   * Field {@link EpisodeInfo#notes()}.
    */
   public static final M5AttributeFieldDef<IEpisode> NOTES = new M5AttributeFieldDef<>( FID_NOTE, DDEF_STRING ) {
 

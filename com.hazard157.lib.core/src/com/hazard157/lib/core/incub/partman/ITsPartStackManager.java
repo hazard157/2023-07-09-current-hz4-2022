@@ -38,7 +38,7 @@ public interface ITsPartStackManager {
   IStringMap<MPart> listManagedParts();
 
   /**
-   * Creates new part in {@link #getPartStack()}.
+   * Creates new managed part in {@link #getPartStack()}.
    * <p>
    * Created part becames the active one.
    * <p>

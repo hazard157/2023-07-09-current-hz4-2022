@@ -20,10 +20,10 @@ import com.hazard157.psx24.core.utils.ftstep.*;
  * <p>
  * Panel has toolbar with following functions:
  * <ul>
- * <li><b>Zoom</b> buttons - controls displayed thumnails size;</li>
+ * <li><b>Zoom</b> buttons - controls displayed thumbnails size;</li>
  * <li><b>Camera</b> selector - may be shown frames from all or any subset of episode cameras;</li>
  * <li><b>Animation</b> control allows to show animated, still or all frames;</li>
- * <li><b>Density</b> controls - how many secons per show frames ({@link ESecondsStep});</li>
+ * <li><b>Density</b> controls - how many seconds per show frames ({@link ESecondsStep});</li>
  * <li><b>Play</b> button to play short clip ear selected frame.</li>
  * </ul>
  * Note: only seconds boundary related still frames are shown by this panel.
