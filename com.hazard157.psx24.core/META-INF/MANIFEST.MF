@@ -22,7 +22,8 @@ Require-Bundle: javax.annotation,
  org.toxsoft.core.txtproj.lib,
  com.hazard157.lib.core,
  com.hazard157.psx.common,
- com.hazard157.psx.proj3
+ com.hazard157.psx.proj3,
+ com.hazard157.common;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.psx24.core
 Bundle-ActivationPolicy: lazy
@@ -48,6 +49,7 @@ Export-Package: com.hazard157.psx24.core,
  com.hazard157.psx24.core.glib.frlstviewer_any,
  com.hazard157.psx24.core.glib.frlstviewer_ep,
  com.hazard157.psx24.core.glib.plv,
+ com.hazard157.psx24.core.glib.svinaf,
  com.hazard157.psx24.core.glib.tagint,
  com.hazard157.psx24.core.glib.tagline,
  com.hazard157.psx24.core.glib.visumples,

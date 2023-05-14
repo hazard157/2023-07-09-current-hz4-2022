@@ -641,21 +641,17 @@ public class UipartEpisodeStory
 
   @Override
   public boolean onKeyDown( Object aSource, int aCode, char aChar, int aState ) {
-    switch( aCode ) {
-      case SWT.INSERT:
+    return switch( aCode ) {
+      case SWT.INSERT -> {
         processAction( ACTID_ADD );
-        return true;
-      // обрабатывается в SWT - Enter = double click
-      // case SWT.CR:
-      // case SWT.KEYPAD_CR:
-      // processAction( ACTID_EDIT );
-      // return true;
-      case SWT.DEL:
+        yield true;
+      }
+      case SWT.DEL -> {
         processAction( ACTID_REMOVE );
-        return true;
-      default:
-        return false;
-    }
+        yield true;
+      }
+      default -> false;
+    };
   }
 
 }

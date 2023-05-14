@@ -65,6 +65,7 @@ public class PqFilterTagIdsPanel
     panel.createControl( this );
     panel.getControl().setLayoutData( BorderLayout.CENTER );
     panel.checkSupport().checksChangeEventer().addListener( notificationGenericChangeListener );
+    setMinHeightDisplayRelative( 60 );
   }
 
   /**

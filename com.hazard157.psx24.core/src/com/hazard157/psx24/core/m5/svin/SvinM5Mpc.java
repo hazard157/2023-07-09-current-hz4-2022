@@ -19,6 +19,7 @@ import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
+import org.toxsoft.core.tsgui.m5.gui.viewers.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.*;
@@ -376,6 +377,7 @@ public class SvinM5Mpc
     }
     switch( selNode.kind().id() ) {
       case NKID_SVIN:
+      case M5DefaultTreeMaker.KIND_ID:
         return new SingleItemList<>( (Svin)selNode.entity() );
       case NKID_EP_ID: {
         IListEdit<Svin> ll = new ElemArrayList<>();
