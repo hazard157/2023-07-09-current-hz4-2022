@@ -6,14 +6,10 @@ import static com.hazard157.psx24.core.glib.frlstviewer_ep.IPsxResources.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 
 import java.io.*;
-import java.lang.reflect.*;
 
-import org.eclipse.core.runtime.*;
 import org.eclipse.jface.dialogs.*;
-import org.eclipse.jface.operation.*;
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
-import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
@@ -39,53 +35,51 @@ abstract class AbstractGifManagemntDropDownMenuCreator
   // TODO вынести эти контсанты в настройки программы
   static final EThumbSize TEST_GIF_SIZE = EThumbSize.SZ724;
 
-  static final int BYPASS_FRAMES = 1; // ОПТИМИЗАЦИЯ: (1..FPS) каждый какой кадр используется при создании тестового GIF
-
-  static class TestGifFileCreator
-      implements IRunnableWithProgress {
-
-    // private static final Image[] EMPTY_IMAGE_ARRAY = {};
-
-    final IFrame         frame;
-    final IPsxFileSystem fileSystem;
-
-    TsImage generatedImage = null;
-
-    public TestGifFileCreator( IFrame aFrame, IPsxFileSystem aFileSystem ) {
-      frame = aFrame;
-      fileSystem = aFileSystem;
-    }
-
-    @Override
-    public void run( IProgressMonitor aMonitor )
-        throws InvocationTargetException,
-        InterruptedException {
-      int animFramesCount = ANIMATED_GIF_SECS * FPS;
-      aMonitor.beginTask( MSG_CREATING_GIF_FRAMES, animFramesCount );
-      int sec = frame.secNo();
-      IListEdit<Image> frameImages = new ElemArrayList<>();
-      int frameNo1 = sec * FPS;
-      int frameNo2 = frameNo1 + animFramesCount - 1;
-      for( int fno = frameNo1; fno <= frameNo2; fno += BYPASS_FRAMES ) {
-        IFrame tmpFrame = new Frame( frame.episodeId(), frame.cameraId(), fno, false );
-        TsImage mi = fileSystem.findThumb( tmpFrame, TEST_GIF_SIZE );
-        if( mi == null ) {
-          break;
-        }
-        frameImages.add( mi.image() );
-        aMonitor.worked( BYPASS_FRAMES );
-      }
-      aMonitor.beginTask( MSG_CREATING_GIF_IMAGE, animFramesCount );
-      long delay = 1000 / FPS * BYPASS_FRAMES;
-      generatedImage = TsImage.create( frameImages, delay );
-      aMonitor.done();
-    }
-
-    public TsImage getGeneratedImage() {
-      return generatedImage;
-    }
-
-  }
+  // static class TestGifFileCreator
+  // implements IRunnableWithProgress {
+  //
+  // // private static final Image[] EMPTY_IMAGE_ARRAY = {};
+  //
+  // final IFrame frame;
+  // final IPsxFileSystem fileSystem;
+  //
+  // TsImage generatedImage = null;
+  //
+  // public TestGifFileCreator( IFrame aFrame, IPsxFileSystem aFileSystem ) {
+  // frame = aFrame;
+  // fileSystem = aFileSystem;
+  // }
+  //
+  // @Override
+  // public void run( IProgressMonitor aMonitor )
+  // throws InvocationTargetException,
+  // InterruptedException {
+  // int animFramesCount = ANIMATED_GIF_SECS * FPS;
+  // aMonitor.beginTask( MSG_CREATING_GIF_FRAMES, animFramesCount );
+  // int sec = frame.secNo();
+  // IListEdit<Image> frameImages = new ElemArrayList<>();
+  // int frameNo1 = sec * FPS;
+  // int frameNo2 = frameNo1 + animFramesCount - 1;
+  // for( int fno = frameNo1; fno <= frameNo2; fno += BYPASS_FRAMES ) {
+  // IFrame tmpFrame = new Frame( frame.episodeId(), frame.cameraId(), fno, false );
+  // TsImage mi = fileSystem.findThumb( tmpFrame, TEST_GIF_SIZE );
+  // if( mi == null ) {
+  // break;
+  // }
+  // frameImages.add( mi.image() );
+  // aMonitor.worked( BYPASS_FRAMES );
+  // }
+  // aMonitor.beginTask( MSG_CREATING_GIF_IMAGE, animFramesCount );
+  // long delay = 1000 / FPS * BYPASS_FRAMES;
+  // generatedImage = TsImage.create( frameImages, delay );
+  // aMonitor.done();
+  // }
+  //
+  // public TsImage getGeneratedImage() {
+  // return generatedImage;
+  // }
+  //
+  // }
 
   final ITsGuiContext    tsContext;
   final ITsActionHandler listener;
@@ -109,7 +103,7 @@ abstract class AbstractGifManagemntDropDownMenuCreator
         if( sel == null ) {
           break;
         }
-        TestGifFileCreator gc = new TestGifFileCreator( sel, fileSystem );
+        TestGifFileCreator gc = new TestGifFileCreator( sel, tsContext );
         ProgressMonitorDialog d = new ProgressMonitorDialog( shell );
         try {
           d.run( true, false, gc );
