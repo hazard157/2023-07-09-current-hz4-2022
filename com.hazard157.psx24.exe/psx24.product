@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="PSX24" uid="psx24" id="com.hazard157.psx24.exe.prisex24" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="PSX24" uid="psx24" id="com.hazard157.psx24.exe.prisex24" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true" autoIncludeRequirements="true">
 
    <configIni use="default">
    </configIni>
@@ -27,10 +27,10 @@
    </vm>
 
    <plugins>
+      <plugin id="com.hazard157.common"/>
       <plugin id="com.hazard157.lib.core"/>
       <plugin id="com.hazard157.psx.common"/>
       <plugin id="com.hazard157.psx.proj3"/>
-      <plugin id="com.hazard157.psx12.core"/>
       <plugin id="com.hazard157.psx24.catnote"/>
       <plugin id="com.hazard157.psx24.core"/>
       <plugin id="com.hazard157.psx24.exe"/>
@@ -50,7 +50,6 @@
       <plugin id="org.apache.batik.i18n"/>
       <plugin id="org.apache.batik.util"/>
       <plugin id="org.apache.commons.io"/>
-      <plugin id="org.apache.commons.jexl"/>
       <plugin id="org.apache.commons.jxpath"/>
       <plugin id="org.apache.commons.logging"/>
       <plugin id="org.apache.felix.scr"/>

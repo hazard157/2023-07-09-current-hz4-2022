@@ -16,13 +16,13 @@ interface IPsxResources {
   /**
    * {@link TreeMakers}
    */
-  String STR_N_TMI_BY_RATING = Messages.getString( "STR_N_TMI_BY_RATING" ); //$NON-NLS-1$
-  String STR_D_TMI_BY_RATING = Messages.getString( "STR_D_TMI_BY_RATING" ); //$NON-NLS-1$
-  String STR_N_TMI_BY_YEAR   = Messages.getString( "STR_N_TMI_BY_YEAR" );   //$NON-NLS-1$
-  String STR_D_TMI_BY_YEAR   = Messages.getString( "STR_D_TMI_BY_YEAR" );   //$NON-NLS-1$
-  String STR_N_TMI_BY_MONTH  = Messages.getString( "STR_N_TMI_BY_MONTH" );  //$NON-NLS-1$
-  String STR_D_TMI_BY_MONTH  = Messages.getString( "STR_D_TMI_BY_MONTH" );  //$NON-NLS-1$
-  String STR_N_TMI_BY_HH     = Messages.getString( "STR_N_TMI_BY_HH" );     //$NON-NLS-1$
-  String STR_D_TMI_BY_HH     = Messages.getString( "STR_D_TMI_BY_HH" );     //$NON-NLS-1$
+  String STR_TMI_BY_RATING   = Messages.getString( "STR_TMI_BY_RATING" );   //$NON-NLS-1$
+  String STR_TMI_BY_RATING_D = Messages.getString( "STR_TMI_BY_RATING_D" ); //$NON-NLS-1$
+  String STR_TMI_BY_YEAR     = Messages.getString( "STR_TMI_BY_YEAR" );     //$NON-NLS-1$
+  String STR_TMI_BY_YEAR_D   = Messages.getString( "STR_TMI_BY_YEAR_D" );   //$NON-NLS-1$
+  String STR_TMI_BY_MONTH    = Messages.getString( "STR_TMI_BY_MONTH" );    //$NON-NLS-1$
+  String STR_TMI_BY_MONTH_D  = Messages.getString( "STR_TMI_BY_MONTH_D" );  //$NON-NLS-1$
+  String STR_TMI_BY_HH       = Messages.getString( "STR_TMI_BY_HH" );       //$NON-NLS-1$
+  String STR_TMI_BY_HH_D     = Messages.getString( "STR_TMI_BY_HH_D" );     //$NON-NLS-1$
 
 }

@@ -12,6 +12,7 @@ import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.m5.std.fields.*;
+import org.toxsoft.core.tslib.bricks.strid.impl.*;
 
 import com.hazard157.psx24.explorer.unit.*;
 
@@ -24,17 +25,23 @@ public class InquiryM5Model
     extends M5Model<Inquiry> {
 
   /**
-   * Идентификатор модели.
+   * The model ID.
    */
   public static final String MODEL_ID = PSX_ID_PREFIX + "Inquiry"; //$NON-NLS-1$
 
   /**
-   * Атрибут {@link Inquiry#id()}
+   * Field {@link Inquiry#id()}
    */
-  public static final M5AttributeFieldDef<Inquiry> ID = new M5StdFieldDefId<>();
+  public static final M5AttributeFieldDef<Inquiry> ID = new M5StdFieldDefId<>() {
+
+    protected String doGetFieldValueName( Inquiry aEntity ) {
+      return StridUtils.getLast( aEntity.id() );
+    }
+
+  };
 
   /**
-   * Атрибут {@link Inquiry#nmName()}
+   * Field {@link Inquiry#nmName()}
    */
   public static final M5AttributeFieldDef<Inquiry> NAME = new M5StdFieldDefName<>() {
 
@@ -47,7 +54,7 @@ public class InquiryM5Model
   };
 
   /**
-   * Атрибут {@link Inquiry#description()}
+   * Field {@link Inquiry#description()}
    */
   public static final M5AttributeFieldDef<Inquiry> DESCRIPTION = new M5StdFieldDefDescription<>() {
 

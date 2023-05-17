@@ -34,16 +34,17 @@ class TreeMakers {
       Integer.class, true, null );
 
   static final TreeModeInfo<IGaze> TMI_BY_RATING = new TreeModeInfo<>( "ByRating", //$NON-NLS-1$
-      STR_N_TMI_BY_RATING, STR_D_TMI_BY_RATING, null, new TmByRating() );
+      STR_TMI_BY_RATING, STR_TMI_BY_RATING_D, null, new TmByRating() );
 
   static final TreeModeInfo<IGaze> TMI_BY_YEAR = new TreeModeInfo<>( "ByYear", //$NON-NLS-1$
-      STR_N_TMI_BY_YEAR, STR_D_TMI_BY_YEAR, null, new TmByYear() );
+      STR_TMI_BY_YEAR, STR_TMI_BY_YEAR_D, null, new TmByYear() );
 
   static final TreeModeInfo<IGaze> TMI_BY_MONTH = new TreeModeInfo<>( "ByMonth", //$NON-NLS-1$
-      STR_N_TMI_BY_MONTH, STR_D_TMI_BY_MONTH, null, new TmByMonth() );
+      STR_TMI_BY_MONTH, STR_TMI_BY_MONTH_D, null, new TmByMonth() );
 
+  // TODO ooh... time of day is NOT supported in project v3
   static final TreeModeInfo<IGaze> TMI_BY_HH = new TreeModeInfo<>( "ByHh", //$NON-NLS-1$
-      STR_N_TMI_BY_HH, STR_D_TMI_BY_HH, null, new TmByHh() );
+      STR_TMI_BY_HH, STR_TMI_BY_HH_D, null, new TmByHh() );
 
   static class TmByRating
       implements ITsTreeMaker<IGaze> {

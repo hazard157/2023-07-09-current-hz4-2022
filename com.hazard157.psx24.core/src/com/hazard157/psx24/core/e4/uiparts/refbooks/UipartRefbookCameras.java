@@ -58,6 +58,7 @@ public class UipartRefbookCameras
     IM5LifecycleManager<ISourceVideo> lm0 = new CameraSourceVideoLifecycleManager( svModel, null, unitSourceVideos );
     OPDEF_NODE_THUMB_SIZE.setValue( ctx.params(), avValobj( EThumbSize.SZ180 ) );
     svPanel = svModel.panelCreator().createCollEditPanel( ctx, lm0.itemsProvider(), lm0 );
+    OPDEF_IS_SUPPORTS_TREE.setValue( ctx.params(), AV_FALSE );
     svPanel.createControl( sfMain );
     // svPanel.addTsSelectionListener( soureceVideoSelectionChangeListener );
     // frames list
