@@ -63,6 +63,7 @@ class InquiryMpc
       }
       else { // создаем группирующий узел со строкой идентификатора
         gn = new DefaultTsNode<>( NK_GROUP, parent, aId );
+        gn.setName( StridUtils.getLast( aId ) );
       }
       if( parent == aRootNode ) {
         aTopLevelNodes.add( gn );
