@@ -38,6 +38,11 @@ public class AddonPsx24Intro
     Display display = aWinContext.get( Display.class );
     // жестко зададим начальный вью - экран приветствия
     display.asyncExec( () -> helper.switchToPerspective( PERSPID_PRISEX_INTRO, PARTID_PRISEX_INTRO_EPISODE_THUMBS ) );
+
+    // предзагрузка изображений
+    // TODO собирает только 1 кадр на эпизод,а нужно те кадры, которые в иллюстрациях
+    // UipartIntro.preloadNeededImages( aWinContext );
+
     // покажем, если нужно приветственный GIF
     IAppPreferences aprefs = aWinContext.get( IAppPreferences.class );
     IPrefBundle prefBundle = aprefs.getBundle( PSX_INTRO_APREF_BUNDLE_ID );

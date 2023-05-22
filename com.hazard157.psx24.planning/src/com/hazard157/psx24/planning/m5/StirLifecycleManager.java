@@ -11,6 +11,7 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
 
+import com.hazard157.lib.core.quants.visumple.*;
 import com.hazard157.psx.proj3.pleps.*;
 
 class StirLifecycleManager
@@ -23,8 +24,14 @@ class StirLifecycleManager
   private static IOptionSet makeStirParams( IM5Bunch<IStir> aValues ) {
     IOptionSetEdit ops = new OptionSet();
     for( IDataDef op : ALL_STIR_OPS ) {
-      IAtomicValue av = aValues.getAsAv( op.id() );
-      ops.setValue( op, av );
+      if( op.id().equals( IVisumpleConstants.FID_VISUMPLES ) ) {
+        IList<Visumple> ll = aValues.getAs( op.id(), IList.class );
+        ops.setStr( op.id(), VisumpleKeeper.KEEPER.coll2str( ll ) );
+      }
+      else {
+        IAtomicValue av = aValues.getAsAv( op.id() );
+        ops.setValue( op, av );
+      }
     }
     return ops;
   }

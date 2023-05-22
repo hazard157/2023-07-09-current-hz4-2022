@@ -1,7 +1,7 @@
 package com.hazard157.psx24.intro;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
-import static com.hazard157.psx24.intro.IPsxResources.*;
+import static com.hazard157.psx24.intro.IPsxIntroSharedResources.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
@@ -14,6 +14,8 @@ import org.toxsoft.core.tslib.av.impl.*;
 import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
+import org.toxsoft.core.tslib.bricks.strid.coll.*;
+import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 
 import com.hazard157.psx24.intro.utils.*;
 
@@ -30,6 +32,8 @@ public interface IPsxIntroGuiConstants {
 
   String PERSPID_PRISEX_INTRO               = "com.hazard157.psx24.persp.intro";                //$NON-NLS-1$
   String PARTID_PRISEX_INTRO_EPISODE_THUMBS = "com.hazard157.psx24.persp.intro_episode_thumbs"; //$NON-NLS-1$
+  String CMDID_TOGGLE_FORCE_STILL           = "com.hazard157.psx31.cmd.toggle_force_still";     //$NON-NLS-1$
+  String TOOLBTNID_TOGGLE_FORCE_STILL       = "com.hazard157.psx31.toolbtn.toggle_force_still"; //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Icons
@@ -78,8 +82,15 @@ public interface IPsxIntroGuiConstants {
 
   IDataDef APPRM_IS_FORCE_STILL_FRAME = DataDef.create( PSX_ID + "intro.ForceStillFrame", BOOLEAN, //$NON-NLS-1$
       TSID_DEFAULT_VALUE, AV_TRUE, //
-      TSID_NAME, STR_N_IS_FORCE_STILL_FRAME, //
-      TSID_DESCRIPTION, STR_D_IS_FORCE_STILL_FRAME //
+      TSID_NAME, STR_IS_FORCE_STILL_FRAME, //
+      TSID_DESCRIPTION, STR_IS_FORCE_STILL_FRAME_D //
+  );
+
+  IStridablesList<IDataDef> ALL_APREFS = new StridablesList<>( //
+      APPRM_THUMB_SIZE, //
+      APPRM_IS_LABEL_AS_YMD, //
+      APPRM_IS_STARTUP_GIF_SHOWN, //
+      APPRM_IS_FORCE_STILL_FRAME //
   );
 
   // ------------------------------------------------------------------------------------
@@ -100,10 +111,9 @@ public interface IPsxIntroGuiConstants {
         TSID_DESCRIPTION, STR_D_PB_INTRO, //
         TSID_ICON_ID, ICON_PSX_INTRO //
     ) );
-    pb.defineOption( APPRM_THUMB_SIZE );
-    pb.defineOption( APPRM_IS_LABEL_AS_YMD );
-    pb.defineOption( APPRM_IS_STARTUP_GIF_SHOWN );
-    pb.defineOption( APPRM_IS_FORCE_STILL_FRAME );
+    for( IDataDef dd : ALL_APREFS ) {
+      pb.defineOption( dd );
+    }
   }
 
 }

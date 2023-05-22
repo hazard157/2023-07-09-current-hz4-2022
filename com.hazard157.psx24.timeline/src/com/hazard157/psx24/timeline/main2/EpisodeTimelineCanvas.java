@@ -1,4 +1,4 @@
-package com.hazard157.psx24.timeline.main;
+package com.hazard157.psx24.timeline.main2;
 
 import java.util.*;
 
@@ -6,6 +6,7 @@ import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.bricks.uievents.*;
 import org.toxsoft.core.tsgui.graphics.colors.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.panels.lazy.*;
@@ -21,17 +22,17 @@ import com.hazard157.psx.common.utils.ftstep.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 import com.hazard157.psx24.core.utils.ftstep.*;
-import com.hazard157.psx24.timeline.main.stripes.*;
+import com.hazard157.psx24.timeline.main2.stripes.*;
 
 /**
- * Рисовальщик
+ * Canvas to draw episode timeline.
  *
  * @author hazard157
  */
 @SuppressWarnings( "nls" )
 class EpisodeTimelineCanvas
     extends AbstractLazyPanel<Control>
-    implements IThumbSizeableEx, IFrameTimeSteppable {
+    implements IThumbSizeableEx, IFrameTimeSteppable, ITsUserInputListener {
 
   private static final int DEFAULT_NULL_EPISODE_DURATION_SECS = 3 * 60;
   private static final int MIN_DURATION_SECS                  = 2 * 60;

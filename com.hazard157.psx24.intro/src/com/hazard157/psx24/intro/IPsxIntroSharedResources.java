@@ -1,12 +1,12 @@
 package com.hazard157.psx24.intro;
 
 /**
- * Локализуемые русурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */
-@SuppressWarnings( "nls" )
-interface IPsxResources {
+@SuppressWarnings( "javadoc" )
+public interface IPsxIntroSharedResources {
 
   String STR_N_INTRP_PREF_BUNDLE    = "Intro";
   String STR_D_INTRP_PREF_BUNDLE    = "Welcome perspective settings";
@@ -16,11 +16,11 @@ interface IPsxResources {
   String STR_D_INTRO_LABEL_AS_YMD   = "Show episode date as 'YYYY-MM_DD' rather than 'DD mmm YYYY'";
   String STR_N_IS_STARTUP_GIF_SHOWN = "Startup GIF?";
   String STR_D_IS_STARTUP_GIF_SHOWN = "Show welcome GIF frame from list of frames selected for random episode";
-  String STR_N_IS_FORCE_STILL_FRAME = "Force still?";
-  String STR_D_IS_FORCE_STILL_FRAME = "Force to show still frames even if episode frame is animated one";
   String STR_T_EXPLORE              = "Explore";
   String STR_P_EXPLORE              = "Explore episodes content";
   String STR_N_PB_INTRO             = "Intro";
   String STR_D_PB_INTRO             = "Welcome perspective preferences";
+  String STR_IS_FORCE_STILL_FRAME   = Messages.getString( "STR_IS_FORCE_STILL_FRAME" );                        //$NON-NLS-1$
+  String STR_IS_FORCE_STILL_FRAME_D = Messages.getString( "STR_IS_FORCE_STILL_FRAME_D" );                      //$NON-NLS-1$
 
 }

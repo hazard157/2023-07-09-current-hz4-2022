@@ -1,4 +1,4 @@
-package com.hazard157.psx24.timeline.main.stripes;
+package com.hazard157.psx24.timeline.main2.stripes;
 
 import org.eclipse.swt.graphics.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.logs.impl.*;
 
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx24.timeline.main.*;
+import com.hazard157.psx24.timeline.main2.*;
 
 /**
  * Базовый класс полосы, отображаемой на диаграмме эпизода.

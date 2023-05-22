@@ -8,8 +8,7 @@ Bundle-Vendor: HAZARD157
 Export-Package: com.hazard157.psx24.timeline,
  com.hazard157.psx24.timeline.e4.addons,
  com.hazard157.psx24.timeline.e4.uiparts,
- com.hazard157.psx24.timeline.main,
- com.hazard157.psx24.timeline.main.stripes
+ com.hazard157.psx24.timeline.main
 Require-Bundle: javax.annotation,
  javax.inject,
  org.eclipse.core.runtime,

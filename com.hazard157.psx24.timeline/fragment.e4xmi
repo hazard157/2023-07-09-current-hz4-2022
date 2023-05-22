@@ -11,6 +11,7 @@
     <elements xsi:type="advanced:Perspective" xmi:id="_kXUTMOnJEeyMxqwCkObSlw" elementId="com.hazard157.psx24.persp.timeline" label="Timeline" iconURI="platform:/plugin/com.hazard157.psx24.timeline/icons/is24x24/timeline.png" tooltip="View and edit episodes as timeline">
       <children xsi:type="basic:PartStack" xmi:id="_fe_K8OnMEeyMxqwCkObSlw" elementId="com.hazard157.psx24.timeline.partstack.0">
         <children xsi:type="basic:Part" xmi:id="_fyFtIOnMEeyMxqwCkObSlw" elementId="com.hazard157.psx24.part.timeline" contributionURI="bundleclass://com.hazard157.psx24.timeline/com.hazard157.psx24.timeline.e4.uiparts.UipartTimeline" label="Timeline" iconURI="platform:/plugin/com.hazard157.psx24.timeline/icons/is24x24/timeline.png" tooltip="View and edit episodes as timeline"/>
+        <children xsi:type="basic:Part" xmi:id="_II2CcPfwEe2sE-POxL4xSQ" elementId="com.hazard157.psx24.timeline.part.timeline2" contributionURI="bundleclass://com.hazard157.psx24.timeline/com.hazard157.psx24.timeline.e4.uiparts.UipartTimeline2" label="Timeline2" iconURI="platform:/plugin/com.hazard157.psx24.timeline/icons/is24x24/timeline.png" tooltip="View and edit episodes as timeline2"/>
       </children>
     </elements>
   </fragments>

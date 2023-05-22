@@ -11,7 +11,11 @@
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yxK78OVbEey-F798x_a69Q" featurename="children" parentElementId="org.toxsoft.mws.perspectivestack.main">
     <elements xsi:type="advanced:Perspective" xmi:id="_1Rj1EOVbEey-F798x_a69Q" elementId="com.hazard157.psx24.persp.intro" label="%Persp_Intro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png" tooltip="%Persp_Intro_D">
       <children xsi:type="basic:PartSashContainer" xmi:id="_BqUFAOVdEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.partsashcontainer.0" horizontal="true">
-        <children xsi:type="basic:Part" xmi:id="_DgZc4OVdEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.part.0" containerData="7500" contributionURI="bundleclass://com.hazard157.psx24.intro/com.hazard157.psx24.intro.e4.uiparts.UipartIntro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png"/>
+        <children xsi:type="basic:Part" xmi:id="_DgZc4OVdEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.part.0" containerData="7500" contributionURI="bundleclass://com.hazard157.psx24.intro/com.hazard157.psx24.intro.e4.uiparts.UipartIntro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png">
+          <toolbar xmi:id="_BPhTAPgYEe2OAq0OKQHM5w" elementId="com.hazard157.psx24.intro.toolbar.0">
+            <children xsi:type="menu:HandledToolItem" xmi:id="_CKsh0PgYEe2OAq0OKQHM5w" elementId="com.hazard157.psx24.intro.handledtoolitem.0" iconURI="platform:/plugin/com.hazard157.lib.core/icons/is16x16/ak-single.png" command="_orI-QPgXEe2OAq0OKQHM5w"/>
+          </toolbar>
+        </children>
         <children xsi:type="basic:PartStack" xmi:id="_HUHmIOVdEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.partstack.0" containerData="2500">
           <children xsi:type="advanced:Placeholder" xmi:id="_Xg0vMOVmEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.placeholder.0" ref="_aMUFEOVmEey-F798x_a69Q"/>
         </children>
@@ -29,5 +33,11 @@
     <elements xsi:type="menu:HandledToolItem" xmi:id="_TpI3gOVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.handledtoolitem.persp_intro" label="%Persp_Intro" iconURI="platform:/plugin/com.hazard157.psx24.intro/icons/is24x24/intro.png" tooltip="%Persp_Intro_D" type="Radio" command="_JIbR0OVcEey-F798x_a69Q">
       <parameters xmi:id="_Y0s9cOVcEey-F798x_a69Q" elementId="com.hazard157.psx24.intro.parameter.1" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.psx24.persp.intro"/>
     </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_c_R0EPgXEe2OAq0OKQHM5w" featurename="commands" parentElementId="org.toxsoft.mws.app.main">
+    <elements xsi:type="commands:Command" xmi:id="_orI-QPgXEe2OAq0OKQHM5w" elementId="com.hazard157.psx31.cmd.toggle_force_still" commandName="%Cmd_ForceStill" description="%Cmd_ForceStill_D" category="_EyZFsOVcEey-F798x_a69Q"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_3m82QPgXEe2OAq0OKQHM5w" featurename="handlers" parentElementId="org.toxsoft.mws.window.main">
+    <elements xsi:type="commands:Handler" xmi:id="_8WEQwPgXEe2OAq0OKQHM5w" elementId="com.hazard157.psx24.intro.handler.0" contributionURI="bundleclass://com.hazard157.psx24.intro/com.hazard157.psx24.intro.e4.handlers.CmdToggleStillEpisodeThumbs" command="_orI-QPgXEe2OAq0OKQHM5w"/>
   </fragments>
 </fragment:ModelFragments>

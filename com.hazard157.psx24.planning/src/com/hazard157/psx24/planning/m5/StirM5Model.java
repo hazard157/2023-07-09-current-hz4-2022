@@ -215,15 +215,7 @@ public class StirM5Model
   /**
    * Поле {@link IStir#visumples()}.
    */
-  public static VisumpleM5FieldDef<IStir> VISUMPLES = new VisumpleM5FieldDef<>() {
-
-    @Override
-    protected void doInit() {
-      super.doInit();
-      // removeFlags( M5FF_DETAIL );
-    }
-
-  };
+  public static VisumpleM5FieldDef<IStir> VISUMPLES = new VisumpleM5FieldDef<>();
 
   /**
    * Конструктор.

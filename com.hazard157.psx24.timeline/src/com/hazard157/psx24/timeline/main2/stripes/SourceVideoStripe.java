@@ -1,4 +1,4 @@
-package com.hazard157.psx24.timeline.main.stripes;
+package com.hazard157.psx24.timeline.main2.stripes;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 

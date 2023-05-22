@@ -15,7 +15,7 @@ import org.toxsoft.core.tslib.coll.*;
 import com.hazard157.lib.core.quants.visumple.*;
 
 /**
- * Описание поля {@link IVisumplable#visumples()}.
+ * M5 field definition of {@link IVisumplable#visumples()}.
  *
  * @author hazard157
  * @param <T> - тип моделированного объекта
@@ -24,7 +24,7 @@ public class VisumpleM5FieldDef<T extends IVisumplable>
     extends M5MultiModownFieldDef<T, Visumple> {
 
   /**
-   * Конструктор.
+   * Constructor.
    */
   public VisumpleM5FieldDef() {
     super( IVisumpleConstants.FID_VISUMPLES, VisumpleM5Model.MODEL_ID );

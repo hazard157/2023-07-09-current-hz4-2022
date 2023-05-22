@@ -33,22 +33,48 @@ public class PlepM5Model
   public static final String MODEL_ID = PSX_ID_PREFIX + "Plep"; //$NON-NLS-1$
 
   /**
-   * Идентификатор поля {@link #PLACE}.
+   * ID of field {@link #PLACE}.
    */
   public static final String FID_PLACE = "Place"; //$NON-NLS-1$
 
   /**
-   * Атрибут {@link IPlep#id()}
+   * ID of field {@link #STIRS_COUNT}.
+   */
+  public static final String FID_STIRS_COUNT = "StirsCount"; //$NON-NLS-1$
+
+  /**
+   * Field {@link IPlep#id()}
    */
   public static final M5AttributeFieldDef<IPlep> ID = new M5StdFieldDefId<>();
 
   /**
-   * Атрибут {@link IPlep#nmName()}
+   * Field shows number of STIRs in {@link IPlep#stirs()}
+   */
+  public static final M5AttributeFieldDef<IPlep> STIRS_COUNT =
+      new M5AttributeFieldDef<>( FID_STIRS_COUNT, EAtomicType.INTEGER, //
+          TSID_NAME, STR_PLEP_STIRS_COUNT, //
+          TSID_DESCRIPTION, STR_PLEP_STIRS_COUNT_D, //
+          TSID_DEFAULT_VALUE, AV_0 //
+      ) {
+
+        @Override
+        protected void doInit() {
+          setFlags( M5FF_COLUMN );
+        }
+
+        protected IAtomicValue doGetFieldValue( IPlep aEntity ) {
+          return avInt( aEntity.stirs().size() );
+        }
+
+      };
+
+  /**
+   * Field {@link IPlep#nmName()}
    */
   public static final M5AttributeFieldDef<IPlep> NAME = new M5StdFieldDefName<>();
 
   /**
-   * Атрибут {@link IPlep#description()}
+   * Field {@link IPlep#description()}
    */
   public static final M5AttributeFieldDef<IPlep> DESCRIPTION = new M5StdFieldDefDescription<>() {
 
@@ -62,7 +88,7 @@ public class PlepM5Model
   };
 
   /**
-   * Атрибут {@link PlepInfo#place()}.
+   * Field {@link PlepInfo#place()}.
    */
   public static final M5AttributeFieldDef<IPlep> PLACE = new M5AttributeFieldDef<>( FID_PLACE, DDEF_STRING ) {
 
@@ -83,7 +109,7 @@ public class PlepM5Model
    */
   public PlepM5Model() {
     super( MODEL_ID, IPlep.class );
-    addFieldDefs( ID, NAME, PLACE, DESCRIPTION );
+    addFieldDefs( ID, STIRS_COUNT, NAME, PLACE, DESCRIPTION );
     setPanelCreator( new M5DefaultPanelCreator<IPlep>() {
 
       @Override

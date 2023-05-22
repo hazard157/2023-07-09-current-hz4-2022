@@ -8,9 +8,9 @@ package com.hazard157.lib.core.quants.visumple;
 public interface IVisumplable {
 
   /**
-   * Returns Vvisumples of the entity.
+   * Returns VISUMPLEs of the entity.
    *
-   * @return {@link IVisumplesList} - list of visumples
+   * @return {@link IVisumplesList} - list of VISUMPLEs
    */
   IVisumplesList visumples();
 

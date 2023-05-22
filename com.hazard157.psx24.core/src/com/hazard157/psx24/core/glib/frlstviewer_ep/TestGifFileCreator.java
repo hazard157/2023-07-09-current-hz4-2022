@@ -26,9 +26,10 @@ import com.hazard157.psx24.core.*;
 class TestGifFileCreator
     implements IRunnableWithProgress, IPsxStdReferences {
 
-  private static final String TMP_DIR_PREFIX = "psxTesGifCreation_"; //$NON-NLS-1$
-
-  static final int BYPASS_FRAMES = 1; // ОПТИМИЗАЦИЯ: (1..FPS) каждый какой кадр используется при создании тестового GIF
+  /**
+   * In range (1..FPS), used to optimize: each Nth frame will be used to create GIF
+   */
+  static final int BYPASS_FRAMES = 2;
 
   final IFrame        frame;
   final ITsGuiContext tsContext;

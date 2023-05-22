@@ -30,3 +30,4 @@ Export-Package: com.hazard157.psx24.intro,
  com.hazard157.psx24.intro.e4.addons,
  com.hazard157.psx24.intro.e4.uiparts,
  com.hazard157.psx24.intro.utils
+Bundle-Localization: OSGI-INF/l10n/bundle

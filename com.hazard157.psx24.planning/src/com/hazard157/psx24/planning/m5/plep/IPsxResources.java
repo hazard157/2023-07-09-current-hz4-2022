@@ -10,6 +10,8 @@ interface IPsxResources {
 
   String STR_N_M5M_PLEP         = "План";
   String STR_D_M5M_PLEP         = "Планируемый эпизод";
+  String STR_PLEP_STIRS_COUNT   = "Count";
+  String STR_PLEP_STIRS_COUNT_D = "Number of STIRs in the planned episode";
   String STR_N_PLEP_NAME        = "Название";
   String STR_D_PLEP_NAME        = "Название эпизода";
   String STR_N_PLEP_DESCRIPTION = "Описание";

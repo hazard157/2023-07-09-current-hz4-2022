@@ -1,8 +1,10 @@
 package com.hazard157.psx24.intro.e4.uiparts;
 
+import static com.hazard157.lib.core.IHzLibConstants.*;
 import static com.hazard157.psx24.core.IPsx24CoreConstants.*;
 import static com.hazard157.psx24.core.IPsxAppActions.*;
 import static com.hazard157.psx24.intro.IPsxIntroGuiConstants.*;
+import static com.hazard157.psx24.intro.IPsxIntroSharedResources.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
@@ -14,14 +16,16 @@ import org.eclipse.e4.core.contexts.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.actions.*;
+import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
-import org.toxsoft.core.tsgui.mws.services.e4helper.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
+import org.toxsoft.core.tslib.coll.*;
+import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.notifier.basis.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.logs.impl.*;
@@ -44,21 +48,22 @@ import com.hazard157.psx24.core.glib.plv.*;
 public class UipartIntro
     extends MwsAbstractPart {
 
+  private static final String ACTID_TOGGLE_FORCE_STILL = "act.force_toggle_still"; //$NON-NLS-1$
+
+  private static final ITsActionDef ACTDEF_TOGGLE_FORCE_STILL = TsActionDef.ofCheck2( ACTID_TOGGLE_FORCE_STILL, //
+      STR_IS_FORCE_STILL_FRAME, STR_IS_FORCE_STILL_FRAME_D, ICONID_AK_SINGLE );
+
   private final ITsCollectionChangeListener appSettingsChangeListener = ( aSource, aOp, aItem ) -> {
-    String opId = (String)aItem;
-    if( opId == null || opId.equals( APPRM_THUMB_SIZE.id() ) || opId.equals( APPRM_IS_LABEL_AS_YMD.id() ) ) {
-      initViewerContent();
-    }
+    // String opId = (String)aItem;
+    // if( opId == null || opId.equals( APPRM_THUMB_SIZE.id() ) || opId.equals( APPRM_IS_LABEL_AS_YMD.id() ) ) {
+    initViewerContent();
+    // }
   };
 
   private final IGenericChangeListener episodesUnitChangeListener = aSource -> initViewerContent();
 
   private final ITsActionHandler toolbarListener = this::processAction;
 
-  @Inject
-  ITsE4Helper e4Helper;
-
-  @Inject
   IPrefBundle prefBundle;
 
   @Inject
@@ -84,7 +89,8 @@ public class UipartIntro
     fileSystem = tsContext().get( IPsxFileSystem.class );
     aParent.setLayout( new BorderLayout() );
     toolbar = TsToolbar.create( aParent, tsContext(), EIconSize.IS_16X16, new TsActionDef( AI_PLAY_MENU ),
-        ACDEF_SEPARATOR, ACDEF_ZOOM_IN, ACDEF_ZOOM_ORIGINAL, ACDEF_ZOOM_OUT );
+        ACDEF_SEPARATOR, ACDEF_ZOOM_IN, ACDEF_ZOOM_ORIGINAL, ACDEF_ZOOM_OUT, ACDEF_SEPARATOR, //
+        ACTDEF_TOGGLE_FORCE_STILL );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
     toolbar.addListener( toolbarListener );
     plViewer = new PicturesListViewer( aParent, EPlvLayoutMode.ROWS );
@@ -131,6 +137,11 @@ public class UipartIntro
         }
         break;
       }
+      case ACTID_TOGGLE_FORCE_STILL: {
+        e4Helper().execCmd( CMDID_TOGGLE_FORCE_STILL );
+        updateActionsState();
+        break;
+      }
       default:
         throw new TsNotAllEnumsUsedRtException();
     }
@@ -141,6 +152,8 @@ public class UipartIntro
     IEpisode selEpisode = getSelectedEpisode();
     boolean isSel = selEpisode != null;
     toolbar.setActionEnabled( AID_PLAY, isSel );
+    boolean isStillForced = APPRM_IS_FORCE_STILL_FRAME.getValue( prefBundle.prefs() ).asBool();
+    toolbar.setActionChecked( ACTID_TOGGLE_FORCE_STILL, isStillForced );
     updatePlayMenu();
   }
 
@@ -261,14 +274,18 @@ public class UipartIntro
     IPrefBundle prefBundle = aWinContext.get( IPrefBundle.class );
     IUnitEpisodes unitEpisodes = aWinContext.get( IUnitEpisodes.class );
     IPsxFileSystem fileSystem = aWinContext.get( IPsxFileSystem.class );
-    ITsImageManager imageManager = aWinContext.get( ITsImageManager.class );
     EThumbSize thumbSize = APPRM_THUMB_SIZE.getValue( prefBundle.prefs() ).asValobj();
+    IListEdit<File> ll = new ElemArrayList<>( 256 );
     for( IEpisode e : unitEpisodes.items() ) {
       File ff = fileSystem.findFrameFile( e.frame() );
       if( ff != null ) {
-        imageManager.findThumb( ff, thumbSize );
+        ll.add( ff );
       }
     }
+    ImageThumbsPreloader runner = new ImageThumbsPreloader( new TsGuiContext( aWinContext ), thumbSize, ll );
+    Display display = aWinContext.get( Display.class );
+    display.asyncExec( runner );
+
   }
 
 }

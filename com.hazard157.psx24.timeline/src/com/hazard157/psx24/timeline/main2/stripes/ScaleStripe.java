@@ -1,4 +1,4 @@
-package com.hazard157.psx24.timeline.main.stripes;
+package com.hazard157.psx24.timeline.main2.stripes;
 
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
