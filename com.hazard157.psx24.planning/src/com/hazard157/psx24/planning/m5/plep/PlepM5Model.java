@@ -9,6 +9,7 @@ import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.graphics.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
@@ -54,6 +55,7 @@ public class PlepM5Model
       new M5AttributeFieldDef<>( FID_STIRS_COUNT, EAtomicType.INTEGER, //
           TSID_NAME, STR_PLEP_STIRS_COUNT, //
           TSID_DESCRIPTION, STR_PLEP_STIRS_COUNT_D, //
+          M5_OPDEF_COLUMN_ALIGN, avValobj( EHorAlignment.CENTER ), //
           TSID_DEFAULT_VALUE, AV_0 //
       ) {
 
@@ -117,6 +119,7 @@ public class PlepM5Model
           IM5ItemsProvider<IPlep> aItemsProvider, IM5LifecycleManager<IPlep> aLifecycleManager ) {
         OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
+        OPDEF_IS_ACTIONS_REFRESH.setValue( aContext.params(), AV_TRUE );
         MultiPaneComponentModown<IPlep> mpc = new PlepMpc( aContext, model(), aItemsProvider, aLifecycleManager );
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }

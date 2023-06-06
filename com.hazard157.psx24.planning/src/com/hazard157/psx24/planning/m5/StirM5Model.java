@@ -6,7 +6,6 @@ import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static com.hazard157.psx.proj3.pleps.IUnitPlepsConstants.*;
 import static com.hazard157.psx24.planning.m5.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
-import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
@@ -23,7 +22,6 @@ import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
-import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.av.*;
 
 import com.hazard157.lib.core.legacy.valeds.fileimg.*;
@@ -228,18 +226,7 @@ public class StirM5Model
       @Override
       protected IM5CollectionPanel<IStir> doCreateCollEditPanel( ITsGuiContext aContext,
           IM5ItemsProvider<IStir> aItemsProvider, IM5LifecycleManager<IStir> aLifecycleManager ) {
-        OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
-        OPDEF_IS_ACTIONS_REORDER.setValue( aContext.params(), AV_TRUE );
-        OPDEF_IS_SUMMARY_PANE.setValue( aContext.params(), AV_TRUE );
-        OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(), avValobj( EBorderLayoutPlacement.EAST ) );
-        MultiPaneComponentModown<IStir> mpc =
-            new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager ) {
-
-              @Override
-              protected IMpcSummaryPane<IStir> doCreateSummaryPane() {
-                return new StirSummaryPane( this );
-              }
-            };
+        MultiPaneComponentModown<IStir> mpc = new StirMpc( aContext, model(), aItemsProvider, aLifecycleManager );
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }
 

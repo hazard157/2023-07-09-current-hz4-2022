@@ -40,7 +40,7 @@ public interface ITsPartStackManager {
   /**
    * Creates new managed part in {@link #getPartStack()}.
    * <p>
-   * Created part becames the active one.
+   * Created part becomes the active one.
    * <p>
    * Part is created with {@link EPartService#REMOVE_ON_HIDE_TAG} tag so when close part will be disposed.
    *

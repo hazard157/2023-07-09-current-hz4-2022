@@ -5,9 +5,9 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.txtproj.lib.*;
 
 /**
- * Manage keywords for compicated entities tagging.
+ * Manage keywords for any entities marking.
  * <p>
- * Keywords are IDpaths consisting of tho components - group name and local name. By definition groups are IDnames.
+ * Keywords are IDpaths consisting of the components - group name and local name. By definition groups are IDnames.
  *
  * @author hazard157
  */
@@ -15,7 +15,7 @@ public interface IKeywordManager
     extends IProjDataUnit {
 
   /**
-   * Returns all keywrods and groups.
+   * Returns all keywords and groups.
    *
    * @return {@link IStringList} - alphabetically sorted list of groups and keywords
    */
@@ -52,7 +52,7 @@ public interface IKeywordManager
    * Creates now keyword/group or does nothing if keyword already exists.
    * <p>
    * If aName is IDname, it is considered as group name. Two component IDpaths are considered as keyword name. If group
-   * nae in keyword does not exists it will be created.
+   * name in keyword does not exists it will be created.
    *
    * @param aName String - the keyword/group name (IDpath)
    * @return String - always returns argument
