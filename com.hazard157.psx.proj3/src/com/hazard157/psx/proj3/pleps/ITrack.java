@@ -40,4 +40,11 @@ public interface ITrack {
     return interval().duration();
   }
 
+  /**
+   * Calculates interval of this TRACK in the PLEP.
+   *
+   * @return {@link Secint} - TRACK interval
+   */
+  Secint getIntervalInPlep();
+
 }

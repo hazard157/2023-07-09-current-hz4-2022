@@ -40,6 +40,7 @@ public class UipartUnitPlepTracks
   @Override
   protected void doInit( Composite aParent ) {
     currentPlepService.addCurrentEntityChangeListener( currentPlepChangeListener );
+    currentTrackService.addCurrentEntityChangeListener( c -> tracksPanel.setSelectedItem( c ) );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     IM5Model<ITrack> tracksModel = m5().getModel( TrackM5Model.MODEL_ID, ITrack.class );
     tracksPanel = tracksModel.panelCreator().createCollEditPanel( ctx, null, null );

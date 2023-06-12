@@ -37,7 +37,7 @@ public class VisumpleM5FieldDef<T extends IVisumplable>
     OPDEF_NO_FIELD_LABEL.setValue( params(), AV_TRUE );
     setValedEditor( ValedMultiModownEditor.FACTORY_NAME );
     M5_VALED_OPDEF_WIDGET_TYPE_ID.setValue( params(), avStr( M5VWTID_TABLE ) );
-    OPDEF_DETAILS_PANE_PLACE.setValue( params(), avValobj( EBorderLayoutPlacement.EAST ) );
+    OPDEF_DETAILS_PANE_PLACE.setValue( params(), avValobj( EBorderLayoutPlacement.SOUTH ) );
     OPDEF_IS_ACTIONS_REORDER.setValue( params(), AV_TRUE );
   }
 

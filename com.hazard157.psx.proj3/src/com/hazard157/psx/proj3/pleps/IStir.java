@@ -6,6 +6,7 @@ import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.utils.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 
+import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.visumple.*;
 
 /**
@@ -44,5 +45,12 @@ public interface IStir
    * @return {@link IPlep} - родительский планируемый эпизод
    */
   IPlep plep();
+
+  /**
+   * Calculates interval of this STIR in the PLEP.
+   *
+   * @return {@link Secint} - STIR interval
+   */
+  Secint getIntervalInPlep();
 
 }

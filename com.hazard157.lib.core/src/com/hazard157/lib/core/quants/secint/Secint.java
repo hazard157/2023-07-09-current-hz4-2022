@@ -3,13 +3,11 @@ package com.hazard157.lib.core.quants.secint;
 import static com.hazard157.lib.core.quants.secint.IPsxResources.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 
-import org.toxsoft.core.tsgui.utils.HmsUtils;
-import org.toxsoft.core.tslib.bricks.validator.EValidationResultType;
-import org.toxsoft.core.tslib.bricks.validator.ValidationResult;
-import org.toxsoft.core.tslib.bricks.validator.impl.TsValidationFailedRtException;
-import org.toxsoft.core.tslib.utils.TsLibUtils;
-import org.toxsoft.core.tslib.utils.errors.TsIllegalArgumentRtException;
-import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
+import org.toxsoft.core.tsgui.utils.*;
+import org.toxsoft.core.tslib.bricks.validator.*;
+import org.toxsoft.core.tslib.bricks.validator.impl.*;
+import org.toxsoft.core.tslib.utils.*;
+import org.toxsoft.core.tslib.utils.errors.*;
 
 /**
  * Интервал времени в видеоклипе, исчисляемый в секундах.
@@ -108,6 +106,15 @@ public class Secint
   }
 
   /**
+   * Returns the middle second of this interval.
+   *
+   * @return int - middle second
+   */
+  public int middle() {
+    return start + duration() / 2;
+  }
+
+  /**
    * Определяет, находится ли момент времени внутри интервала (включая обе границы интервала).
    *
    * @param aSecs int - секунда с начала эпизода
@@ -156,7 +163,7 @@ public class Secint
    */
   public boolean intersects( int aStart, int aEnd ) {
     TsIllegalArgumentRtException.checkTrue( aEnd < aStart );
-    return !(aEnd < start || aStart > end);
+    return ((aEnd >= start) && (aStart <= end));
   }
 
   /**
@@ -381,8 +388,7 @@ public class Secint
     if( aObj == this ) {
       return true;
     }
-    if( aObj instanceof Secint ) {
-      Secint obj = (Secint)aObj;
+    if( aObj instanceof Secint obj ) {
       return start == obj.start && end == obj.end;
     }
     return false;

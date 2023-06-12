@@ -22,6 +22,7 @@ Require-Bundle: javax.annotation,
  org.toxsoft.core.txtproj.lib,
  org.toxsoft.core.txtproj.mws,
  com.hazard157.lib.core,
+ com.hazard157.common,
  com.hazard157.psx.common,
  com.hazard157.psx.proj3,
  com.hazard157.psx24.core

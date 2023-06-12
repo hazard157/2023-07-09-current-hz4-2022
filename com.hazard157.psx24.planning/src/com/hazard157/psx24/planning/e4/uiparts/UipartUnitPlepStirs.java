@@ -44,6 +44,7 @@ public class UipartUnitPlepStirs
   @Override
   protected void doInit( Composite aParent ) {
     currentPlepService.addCurrentEntityChangeListener( currentPlepChangeListener );
+    currentStirService.addCurrentEntityChangeListener( c -> stirsPanel.setSelectedItem( c ) );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     IM5Model<IStir> stirsModel = m5().getModel( StirM5Model.MODEL_ID, IStir.class );
     OPDEF_NODE_ICON_SIZE.setValue( ctx.params(), avValobj( EIconSize.IS_64X64 ) );

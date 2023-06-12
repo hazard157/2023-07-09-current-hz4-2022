@@ -7,8 +7,6 @@ import org.eclipse.e4.core.contexts.*;
 import org.eclipse.e4.ui.model.application.*;
 import org.eclipse.e4.ui.model.application.ui.basic.*;
 import org.eclipse.e4.ui.workbench.modeling.*;
-import org.eclipse.swt.graphics.*;
-import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;
 import org.toxsoft.core.tsgui.graphics.icons.impl.*;
 import org.toxsoft.core.tsgui.mws.*;
@@ -51,13 +49,6 @@ public class AddonPsx24Exe
     // mainWindow.setIconURI( TsIconManagerUtils.makeStdIconUriString( com.hazard157.psx24.core.Activator.PLUGIN_ID,
     // ICONID_APP_ICON, IS_48X48 ) );
     mainWindow.setIconURI( TsIconManagerUtils.makeStdIconUriString( Activator.PLUGIN_ID, ICONID_APP_ICON, IS_48X48 ) );
-    // начальные размеры окна
-    Display display = aAppContext.get( Display.class );
-    Rectangle dBounds = display.getBounds();
-    mainWindow.setX( dBounds.x + 8 );
-    mainWindow.setY( 0 );
-    mainWindow.setWidth( dBounds.width - 4 * 8 );
-    mainWindow.setHeight( dBounds.height );
   }
 
   @Override

@@ -4,6 +4,7 @@ import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.bricks.uievents.*;
 import org.toxsoft.core.tsgui.graphics.colors.*;
 import org.toxsoft.core.tsgui.panels.lazy.*;
 import org.toxsoft.core.tsgui.utils.*;
@@ -14,12 +15,13 @@ import com.hazard157.psx.proj3.songs.*;
 import com.hazard157.psx24.planning.e4.services.*;
 
 /**
- * Холст отрисовки планируемого эпизода.
+ * The rendering canvas for the planned episode.
  *
  * @author hazard157
  */
 class PlepTimelineCanvas
-    extends AbstractLazyPanel<Control> {
+    extends AbstractLazyPanel<Control>
+    implements ITsUserInputProducer {
 
   private static final ETsColor STIR_BKG_NORM = ETsColor.CYAN;
   private static final ETsColor STIR_BKG_SEL  = ETsColor.GREEN;
@@ -29,17 +31,18 @@ class PlepTimelineCanvas
 
   private static final int SMALL_TICK_SECS        = 30;
   private static final int TICK_TEXT_MAGRIN       = 3;
-  private static final int STRIS_START_X          = 50;
+  private static final int STIRS_START_X          = 50;
   private static final int STIR_TEXT_X            = 5;
   private static final int DUR_TEXT_RIGHT_MARGIN  = 5;
   private static final int DUR_TEXT_BOTTOM_MARGIN = 3;
-  private static final int STRIS_TRACK_DIST       = 20;
+  private static final int STRIS_TRACK_DIST_X     = 20; // gap after STRI and before TRACK
   private static final int TRACKS_START_X         = 320;
   private static final int TRACKS_WIDTH           = 150;
   private static final int AFTER_TRACKS_DELTA     = 20;
-  private static final int CANVAS_WIDTH           = TRACKS_START_X + TRACKS_WIDTH + AFTER_TRACKS_DELTA;
 
-  private static final int EXTRA_DURATION = 300; // свободный таймлайн ПОСЛЕ окончания плана
+  private static final int CANVAS_WIDTH = TRACKS_START_X + TRACKS_WIDTH + AFTER_TRACKS_DELTA;
+
+  private static final int EXTRA_DURATION = 300; // free timeline AFTER the end of the plan
 
   private final IGenericChangeListener plepChangeListener = aSource -> whenPlepChanged();
 
@@ -51,17 +54,65 @@ class PlepTimelineCanvas
   final ICurrentStirService  currentStirService;
   final ICurrentTrackService currentTrackService;
 
+  final TsUserInputEventsBinder userInputEventsBinder;
+
   public PlepTimelineCanvas( ITsGuiContext aContext ) {
     super( aContext );
     currentStirService = tsContext().get( ICurrentStirService.class );
     currentTrackService = tsContext().get( ICurrentTrackService.class );
-    currentStirService.addCurrentEntityChangeListener( c -> refresh() );
-    currentTrackService.addCurrentEntityChangeListener( c -> refresh() );
+    currentStirService.addCurrentEntityChangeListener( c -> whenSelectedStirChanges() );
+    currentTrackService.addCurrentEntityChangeListener( c -> whenSelectedTrackChanges() );
+    userInputEventsBinder = new TsUserInputEventsBinder( this );
   }
 
   // ------------------------------------------------------------------------------------
   // implementation
   //
+
+  /**
+   * Makes visible the specified second.
+   * <p>
+   * Out of range values are "fitten" in the plep range.
+   *
+   * @param aSecs int - the second
+   */
+  void revealSecond( int aSecs ) {
+    if( plep == null ) {
+      return;
+    }
+    int sec = aSecs;
+    int dur = plep.computeDuration();
+    if( sec >= dur ) {
+      sec = dur - 1;
+    }
+    if( sec < 0 ) {
+      sec = 0;
+    }
+
+    // TODO PlepTimelineCanvas.revealSecond()
+  }
+
+  void whenSelectedStirChanges() {
+    if( canvas != null ) {
+      IStir sel = currentStirService.current();
+      if( sel != null ) {
+        int sec = sel.getIntervalInPlep().middle();
+        revealSecond( sec );
+      }
+      canvas.redraw();
+    }
+  }
+
+  void whenSelectedTrackChanges() {
+    if( canvas != null ) {
+      ITrack sel = currentTrackService.current();
+      if( sel != null ) {
+        int sec = sel.getIntervalInPlep().middle();
+        revealSecond( sec );
+      }
+      canvas.redraw();
+    }
+  }
 
   void refresh() {
     if( canvas == null ) {
@@ -70,14 +121,14 @@ class PlepTimelineCanvas
     canvas.redraw();
   }
 
-  int yCoor( int aY ) {
-    return (int)(aY * zoomFactor);
+  int sec2y( int aSec ) {
+    return (int)(aSec * zoomFactor);
   }
 
   /**
-   * Рисует шкалу времени
+   * Draws a time scale.
    *
-   * @param aGc {@link GC} - холст рисования
+   * @param aGc {@link GC} - the canvas
    */
   private void paintScale( GC aGc ) {
     aGc.setForeground( colorManager().getColor( ETsColor.BLACK ) );
@@ -85,7 +136,7 @@ class PlepTimelineCanvas
     Point tp = aGc.textExtent( "00:00" ); //$NON-NLS-1$
     int lastY = -2 * tp.y;
     for( int sec = 0; sec <= maxSecs; sec += SMALL_TICK_SECS ) {
-      int y = yCoor( sec );
+      int y = sec2y( sec );
       if( y - lastY < tp.y ) {
         continue;
       }
@@ -108,6 +159,11 @@ class PlepTimelineCanvas
     aGc.setLineStyle( SWT.LINE_SOLID );
   }
 
+  /**
+   * Draws the STIRs.
+   *
+   * @param aGc {@link GC} - the canvas
+   */
   private void paintStirs( GC aGc ) {
     if( plep == null ) {
       return;
@@ -115,13 +171,13 @@ class PlepTimelineCanvas
     IStir selStir = currentStirService.current();
     aGc.setForeground( colorManager().getColor( ETsColor.BLACK ) );
     int startSec = 0;
-    int x1 = STRIS_START_X;
-    int width = TRACKS_START_X - STRIS_TRACK_DIST - STRIS_START_X;
+    int x1 = STIRS_START_X;
+    int width = TRACKS_START_X - STRIS_TRACK_DIST_X - STIRS_START_X;
     for( int i = 0; i < plep.stirs().size(); i++ ) {
       IStir stir = plep.stirs().get( i );
       // background
-      int y1 = yCoor( startSec );
-      int height = yCoor( stir.duration() ) - 2;
+      int y1 = sec2y( startSec );
+      int height = sec2y( stir.duration() ) - 2;
       ETsColor bkg = STIR_BKG_NORM;
       if( stir == selStir ) {
         bkg = STIR_BKG_SEL;
@@ -144,6 +200,11 @@ class PlepTimelineCanvas
     }
   }
 
+  /**
+   * Draws the TRACKs.
+   *
+   * @param aGc {@link GC} - the canvas
+   */
   private void paintTracks( GC aGc ) {
     if( plep == null ) {
       return;
@@ -154,8 +215,8 @@ class PlepTimelineCanvas
     int width = TRACKS_WIDTH;
     ITrack selTrack = currentTrackService.current();
     for( ITrack track : plep.tracks() ) {
-      int y1 = yCoor( startSec );
-      int height = yCoor( track.duration() ) - 2;
+      int y1 = sec2y( startSec );
+      int height = sec2y( track.duration() ) - 2;
       // background
       ETsColor bkg = TRACK_BKG_NORM;
       if( track == selTrack ) {
@@ -190,7 +251,7 @@ class PlepTimelineCanvas
 
   void whenPlepChanged() {
     int duration = calcTimelineDuration();
-    int height = yCoor( duration );
+    int height = sec2y( duration );
     if( height < 100 ) {
       height = 100;
     }
@@ -200,7 +261,7 @@ class PlepTimelineCanvas
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация AbstractE4LazyPanel
+  // AbstractE4LazyPanel
   //
 
   @Override
@@ -208,6 +269,7 @@ class PlepTimelineCanvas
     canvas = new Canvas( aParent, SWT.BORDER );
     canvas.setBackground( colorManager().getColor( ETsColor.WHITE ) );
     canvas.addPaintListener( e -> paint( e.gc ) );
+    userInputEventsBinder.bindToControl( canvas, TsUserInputEventsBinder.BIND_ALL_INPUT_EVENTS );
     refresh();
     return canvas;
   }
@@ -254,6 +316,25 @@ class PlepTimelineCanvas
     refresh();
   }
 
+  /**
+   * Returns the seconds value on vertical scale for the Y coordinate.
+   * <p>
+   * If YCoordinate is out of PLEP duration, returns either -1 or {@link Integer#MAX_VALUE}.
+   *
+   * @param aYCoor int - Y coordinate relative to the canvas widget
+   * @return int - seconds of time or -1 or {@link Integer#MAX_VALUE}
+   */
+  public int y2sec( int aYCoor ) {
+    int sec = (int)(aYCoor / zoomFactor);
+    if( sec < 0 ) {
+      return -1;
+    }
+    if( sec >= plep.computeDuration() ) {
+      return Integer.MAX_VALUE;
+    }
+    return sec;
+  }
+
   public int calcTimelineDuration() {
     int duration = EXTRA_DURATION;
     if( plep != null ) {
@@ -262,8 +343,18 @@ class PlepTimelineCanvas
     return duration;
   }
 
-  // public ITsSelectionProvider<IStir> stirSelectionProvider() {
+  // ------------------------------------------------------------------------------------
+  // ITsUserInputProducer
   //
-  // }
+
+  @Override
+  public void addTsUserInputListener( ITsUserInputListener aListener ) {
+    userInputEventsBinder.addTsUserInputListener( aListener );
+  }
+
+  @Override
+  public void removeTsUserInputListener( ITsUserInputListener aListener ) {
+    userInputEventsBinder.removeTsUserInputListener( aListener );
+  }
 
 }

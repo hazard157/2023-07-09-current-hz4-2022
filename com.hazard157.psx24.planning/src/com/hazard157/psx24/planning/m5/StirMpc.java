@@ -34,7 +34,7 @@ class StirMpc
     OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
     OPDEF_IS_ACTIONS_REORDER.setValue( aContext.params(), AV_TRUE );
     OPDEF_IS_SUMMARY_PANE.setValue( aContext.params(), AV_TRUE );
-    OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(), avValobj( EBorderLayoutPlacement.EAST ) );
+    OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(), avValobj( EBorderLayoutPlacement.SOUTH ) );
     return aContext;
   }
 

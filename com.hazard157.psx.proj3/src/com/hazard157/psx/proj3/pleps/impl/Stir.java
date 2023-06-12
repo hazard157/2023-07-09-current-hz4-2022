@@ -13,6 +13,7 @@ import org.toxsoft.core.tslib.bricks.strio.*;
 import org.toxsoft.core.tslib.coll.notifier.basis.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.visumple.*;
 import com.hazard157.psx.proj3.pleps.*;
 
@@ -120,6 +121,18 @@ class Stir
   public IPlep plep() {
     TsIllegalStateRtException.checkNull( plep );
     return plep;
+  }
+
+  @Override
+  public Secint getIntervalInPlep() {
+    int start = 0;
+    for( IStir s : plep().stirs() ) {
+      if( s == this ) {
+        return new Secint( start, start + duration() - 1 );
+      }
+      start += s.duration();
+    }
+    throw new TsInternalErrorRtException();
   }
 
 }

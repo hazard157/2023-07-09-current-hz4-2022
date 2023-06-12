@@ -288,8 +288,8 @@ abstract class AbstractPictureGridCanvas
   public Point computeSize( int aWHint, int aHHint, boolean aChanged ) {
     // TODO ??? how to compute size?
     Point p = super.computeSize( aWHint, aHHint, aChanged );
-    if( p.x < 2 * thumbSize.pointSize().x() ) {
-      p.x = 2 * thumbSize.pointSize().x();
+    if( p.x < thumbSize.pointSize().x() ) {
+      p.x = thumbSize.pointSize().x();
     }
     if( p.y < thumbSize.pointSize().y() ) {
       p.y = thumbSize.pointSize().y();

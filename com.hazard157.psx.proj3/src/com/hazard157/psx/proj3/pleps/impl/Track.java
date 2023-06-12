@@ -85,4 +85,16 @@ class Track
     return plep;
   }
 
+  @Override
+  public Secint getIntervalInPlep() {
+    int start = 0;
+    for( ITrack t : plep().tracks() ) {
+      if( t == this ) {
+        return new Secint( start, start + duration() - 1 );
+      }
+      start += t.duration();
+    }
+    throw new TsInternalErrorRtException();
+  }
+
 }
