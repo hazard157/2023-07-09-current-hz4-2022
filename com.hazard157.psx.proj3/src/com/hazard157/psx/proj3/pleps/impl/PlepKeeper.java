@@ -1,6 +1,7 @@
 package com.hazard157.psx.proj3.pleps.impl;
 
 import org.toxsoft.core.tslib.bricks.keeper.*;
+import org.toxsoft.core.tslib.bricks.keeper.std.*;
 import org.toxsoft.core.tslib.bricks.strio.*;
 import org.toxsoft.core.tslib.bricks.strio.impl.*;
 import org.toxsoft.core.tslib.coll.*;
@@ -22,6 +23,7 @@ public class PlepKeeper
 
   private static final String KW_STIRS  = "Stirs";  //$NON-NLS-1$
   private static final String KW_TRACKS = "Tracks"; //$NON-NLS-1$
+  private static final String KW_STEPS  = "Steps";  //$NON-NLS-1$
 
   private PlepKeeper() {
     super( IPlep.class, EEncloseMode.ENCLOSES_BASE_CLASS, null );
@@ -45,6 +47,8 @@ public class PlepKeeper
     StrioUtils.writeCollection( aSw, KW_STIRS, aEntity.stirs(), Stir.KEEPER, true );
     // tracks
     StrioUtils.writeCollection( aSw, KW_TRACKS, aEntity.tracks(), Track.KEEPER, true );
+    // steps
+    StrioUtils.writeCollection( aSw, KW_STEPS, aEntity.preparationSteps(), StringKeeper.KEEPER, true );
     aSw.decNewLine();
   }
 
@@ -63,6 +67,11 @@ public class PlepKeeper
     IList<ITrack> ll2 = StrioUtils.readCollection( aSr, KW_TRACKS, Track.KEEPER );
     for( ITrack t : ll2 ) {
       p.newTrack( -1, t.songId(), t.interval() );
+    }
+    // steps
+    if( aSr.peekChar() == KW_STEPS.charAt( 0 ) ) { // to read old project, written before steps were added
+      IList<String> ll3 = StrioUtils.readCollection( aSr, KW_STEPS, StringKeeper.KEEPER );
+      p.preparationSteps().setAll( ll3 );
     }
     return p;
   }

@@ -11,6 +11,7 @@ import org.toxsoft.core.tslib.bricks.events.change.*;
 
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx.proj3.songs.*;
+import com.hazard157.psx24.planning.e4.services.*;
 
 /**
  * Холст отрисовки планируемого эпизода.
@@ -20,17 +21,23 @@ import com.hazard157.psx.proj3.songs.*;
 class PlepTimelineCanvas
     extends AbstractLazyPanel<Control> {
 
-  private static final int SMALL_TICK_SECS = 30;
-  // private static final int BIG_TICK_WIDTH = 20;
-  // private static final int SMALL_TICK_WIDTH = 10;
-  private static final int TICK_TEXT_MAGRIN   = 3;
-  private static final int STRIS_START_X      = 50;
-  private static final int STIR_TEXT_X        = 5;
-  private static final int STRIS_TRACK_DIST   = 20;
-  private static final int TRACKS_START_X     = 320;
-  private static final int TRACKS_WIDTH       = 150;
-  private static final int AFTER_TRACKS_DELTA = 20;
-  private static final int CANVAS_WIDTH       = TRACKS_START_X + TRACKS_WIDTH + AFTER_TRACKS_DELTA;
+  private static final ETsColor STIR_BKG_NORM = ETsColor.CYAN;
+  private static final ETsColor STIR_BKG_SEL  = ETsColor.GREEN;
+
+  private static final ETsColor TRACK_BKG_NORM = ETsColor.YELLOW;
+  private static final ETsColor TRACK_BKG_SEL  = ETsColor.GREEN;
+
+  private static final int SMALL_TICK_SECS        = 30;
+  private static final int TICK_TEXT_MAGRIN       = 3;
+  private static final int STRIS_START_X          = 50;
+  private static final int STIR_TEXT_X            = 5;
+  private static final int DUR_TEXT_RIGHT_MARGIN  = 5;
+  private static final int DUR_TEXT_BOTTOM_MARGIN = 3;
+  private static final int STRIS_TRACK_DIST       = 20;
+  private static final int TRACKS_START_X         = 320;
+  private static final int TRACKS_WIDTH           = 150;
+  private static final int AFTER_TRACKS_DELTA     = 20;
+  private static final int CANVAS_WIDTH           = TRACKS_START_X + TRACKS_WIDTH + AFTER_TRACKS_DELTA;
 
   private static final int EXTRA_DURATION = 300; // свободный таймлайн ПОСЛЕ окончания плана
 
@@ -41,12 +48,19 @@ class PlepTimelineCanvas
 
   double zoomFactor = 1.0;
 
+  final ICurrentStirService  currentStirService;
+  final ICurrentTrackService currentTrackService;
+
   public PlepTimelineCanvas( ITsGuiContext aContext ) {
     super( aContext );
+    currentStirService = tsContext().get( ICurrentStirService.class );
+    currentTrackService = tsContext().get( ICurrentTrackService.class );
+    currentStirService.addCurrentEntityChangeListener( c -> refresh() );
+    currentTrackService.addCurrentEntityChangeListener( c -> refresh() );
   }
 
   // ------------------------------------------------------------------------------------
-  // Внутренние методы
+  // implementation
   //
 
   void refresh() {
@@ -98,19 +112,33 @@ class PlepTimelineCanvas
     if( plep == null ) {
       return;
     }
-    aGc.setBackground( colorManager().getColor( ETsColor.CYAN ) );
+    IStir selStir = currentStirService.current();
     aGc.setForeground( colorManager().getColor( ETsColor.BLACK ) );
     int startSec = 0;
     int x1 = STRIS_START_X;
     int width = TRACKS_START_X - STRIS_TRACK_DIST - STRIS_START_X;
     for( int i = 0; i < plep.stirs().size(); i++ ) {
       IStir stir = plep.stirs().get( i );
+      // background
       int y1 = yCoor( startSec );
       int height = yCoor( stir.duration() ) - 2;
+      ETsColor bkg = STIR_BKG_NORM;
+      if( stir == selStir ) {
+        bkg = STIR_BKG_SEL;
+      }
+      aGc.setBackground( colorManager().getColor( bkg ) );
       aGc.fillRectangle( x1, y1, width, height );
+      // text
       Point tp = aGc.textExtent( stir.name() );
       String text = String.format( "%02d. %s", Integer.valueOf( i + 1 ), stir.name() ); //$NON-NLS-1$
       aGc.drawText( text, x1 + STIR_TEXT_X, y1 + (height - tp.y) / 2 );
+      // duration text
+      String durText = HmsUtils.mmmss( stir.duration() );
+      tp = aGc.textExtent( durText );
+      int dtX = x1 + width - DUR_TEXT_RIGHT_MARGIN - tp.x;
+      int dtY = y1 + height - DUR_TEXT_BOTTOM_MARGIN - tp.y;
+      aGc.drawText( durText, dtX, dtY );
+      // outline
       aGc.drawRectangle( x1, y1, width, height );
       startSec += stir.duration();
     }
@@ -120,16 +148,24 @@ class PlepTimelineCanvas
     if( plep == null ) {
       return;
     }
-    aGc.setBackground( colorManager().getColor( ETsColor.YELLOW ) );
     aGc.setForeground( colorManager().getColor( ETsColor.BLACK ) );
     int startSec = 0;
     int x1 = TRACKS_START_X;
     int width = TRACKS_WIDTH;
+    ITrack selTrack = currentTrackService.current();
     for( ITrack track : plep.tracks() ) {
       int y1 = yCoor( startSec );
       int height = yCoor( track.duration() ) - 2;
+      // background
+      ETsColor bkg = TRACK_BKG_NORM;
+      if( track == selTrack ) {
+        bkg = TRACK_BKG_SEL;
+      }
+      aGc.setBackground( colorManager().getColor( bkg ) );
       aGc.fillRectangle( x1, y1, width, height );
+      // outline
       aGc.drawRectangle( x1, y1, width, height );
+      // name
       String name = getSongName( track.songId() );
       Point tp = aGc.textExtent( name );
       aGc.drawText( name, x1 + (width - tp.x) / 2, y1 + (height - tp.y) / 2 );

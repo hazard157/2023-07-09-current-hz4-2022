@@ -39,7 +39,10 @@ class PlepLifecycleManager
   protected IPlep doCreate( IM5Bunch<IPlep> aValues ) {
     String id = ID.getFieldValue( aValues ).asString();
     PlepInfo info = makeInfo( aValues );
-    return master().createItem( id, info );
+    IList<String> llSteps = aValues.getAs( FID_PREP_STEPS, IList.class );
+    IPlep plep = master().createItem( id, info );
+    plep.preparationSteps().setAll( llSteps );
+    return plep;
   }
 
   @Override
@@ -53,7 +56,10 @@ class PlepLifecycleManager
   protected IPlep doEdit( IM5Bunch<IPlep> aValues ) {
     String id = ID.getFieldValue( aValues ).asString();
     PlepInfo info = makeInfo( aValues );
-    return master().editItem( aValues.originalEntity().id(), id, info );
+    IList<String> llSteps = aValues.getAs( FID_PREP_STEPS, IList.class );
+    IPlep plep = master().editItem( aValues.originalEntity().id(), id, info );
+    plep.preparationSteps().setAll( llSteps );
+    return plep;
   }
 
   @Override

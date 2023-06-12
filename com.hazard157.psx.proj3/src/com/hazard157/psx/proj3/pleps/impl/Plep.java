@@ -8,6 +8,7 @@ import org.toxsoft.core.tslib.coll.helpers.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.notifier.*;
 import org.toxsoft.core.tslib.coll.notifier.impl.*;
+import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.txtproj.lib.sinent.*;
 
@@ -26,8 +27,10 @@ class Plep
 
   private final INotifierListEdit<IStir>  stirs  = new NotifierListEditWrapper<>( new ElemArrayList<IStir>() );
   private final INotifierListEdit<ITrack> tracks = new NotifierListEditWrapper<>( new ElemArrayList<ITrack>() );
+  private final INotifierStringListEdit   steps  = new NotifierStringListEditWrapper( new StringArrayList() );
   private final IListReorderer<IStir>     stirsReorderer;
   private final IListReorderer<ITrack>    tracksReorderer;
+  private final IListReorderer<String>    stepsReorderer;
 
   private IUnitPleps unitPleps = null;
 
@@ -43,12 +46,14 @@ class Plep
     super( aId, aInfo );
     stirsReorderer = new ListReorderer<>( stirs );
     tracksReorderer = new ListReorderer<>( tracks );
+    stepsReorderer = new ListReorderer<>( steps );
     stirs.addCollectionChangeListener( childCollChangeListener );
     tracks.addCollectionChangeListener( childCollChangeListener );
+    steps.addCollectionChangeListener( childCollChangeListener );
   }
 
   // ------------------------------------------------------------------------------------
-  // API пакета
+  // package API
   //
 
   void setOwner( IUnitPleps aUnit ) {
@@ -56,7 +61,21 @@ class Plep
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IPlep
+  // IStridable
+  //
+
+  @Override
+  public String nmName() {
+    return info().name();
+  }
+
+  @Override
+  public String description() {
+    return info().description();
+  }
+
+  // ------------------------------------------------------------------------------------
+  // IPlep
   //
 
   @Override
@@ -129,6 +148,16 @@ class Plep
   }
 
   @Override
+  public INotifierStringListEdit preparationSteps() {
+    return steps;
+  }
+
+  @Override
+  public IListReorderer<String> preparationStepsReorderer() {
+    return stepsReorderer;
+  }
+
+  @Override
   public int computeDuration() {
     int d1 = 0;
     for( IStir s : stirs ) {
@@ -145,20 +174,6 @@ class Plep
   public IUnitPleps unit() {
     TsIllegalStateRtException.checkNull( unitPleps );
     return unitPleps;
-  }
-
-  // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IStridable
-  //
-
-  @Override
-  public String nmName() {
-    return info().name();
-  }
-
-  @Override
-  public String description() {
-    return info().description();
   }
 
 }

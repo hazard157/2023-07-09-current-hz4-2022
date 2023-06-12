@@ -44,7 +44,7 @@ class StirMpc
 
     aActs.addAll( ACDEF_SEPARATOR );
 
-    // TODO add action "move to another Stir"
+    // TODO add action "move to another PLEP"
 
     return super.doCreateToolbar( aContext, aName, aIconSize, aActs );
   }

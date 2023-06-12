@@ -18,6 +18,8 @@ interface IPsxResources {
   String STR_D_PLEP_DESCRIPTION = "Описание эпизода";
   String STR_N_PLEP_PLACE       = "Место";
   String STR_D_PLEP_PLACE       = "Планируемое место эпизода";
+  String STR_PLEP_PREP_STEPS    = "Подготовка";
+  String STR_PLEP_PREP_STEPS_D  = "Перечень мер для подготовки к эпизоду, предусловия";
 
   String STR_N_COPY_PLEP = "Копировать";
   String STR_D_COPY_PLEP = "Скопировать план с изменением идентификатора";

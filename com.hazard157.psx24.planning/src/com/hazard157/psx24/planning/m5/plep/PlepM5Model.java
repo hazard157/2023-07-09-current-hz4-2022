@@ -16,7 +16,10 @@ import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.m5.std.fields.*;
+import org.toxsoft.core.tsgui.m5.std.models.misc.*;
+import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tslib.av.*;
+import org.toxsoft.core.tslib.coll.*;
 
 import com.hazard157.psx.proj3.pleps.*;
 
@@ -42,6 +45,11 @@ public class PlepM5Model
    * ID of field {@link #STIRS_COUNT}.
    */
   public static final String FID_STIRS_COUNT = "StirsCount"; //$NON-NLS-1$
+
+  /**
+   * ID of field {@link #PREP_STEPS}.
+   */
+  public static final String FID_PREP_STEPS = "PrepSteps"; //$NON-NLS-1$
 
   /**
    * Field {@link IPlep#id()}
@@ -107,11 +115,30 @@ public class PlepM5Model
   };
 
   /**
-   * Конструктор.
+   * Field {@link IPlep#preparationSteps()}
+   */
+  public final IM5MultiModownFieldDef<IPlep, String> PREP_STEPS =
+      new M5MultiModownFieldDef<>( FID_PREP_STEPS, StringM5Model.MODEL_ID ) {
+
+        @Override
+        protected void doInit() {
+          setFlags( M5FF_DETAIL );
+          setNameAndDescription( STR_PLEP_PREP_STEPS, STR_PLEP_PREP_STEPS_D );
+          IValedControlConstants.OPDEF_NO_FIELD_LABEL.setValue( params(), AV_TRUE );
+        }
+
+        protected IList<String> doGetFieldValue( IPlep aEntity ) {
+          return aEntity.preparationSteps();
+        }
+
+      };
+
+  /**
+   * Constructor.
    */
   public PlepM5Model() {
     super( MODEL_ID, IPlep.class );
-    addFieldDefs( ID, STIRS_COUNT, NAME, PLACE, DESCRIPTION );
+    addFieldDefs( ID, STIRS_COUNT, NAME, PLACE, DESCRIPTION, PREP_STEPS );
     setPanelCreator( new M5DefaultPanelCreator<IPlep>() {
 
       @Override

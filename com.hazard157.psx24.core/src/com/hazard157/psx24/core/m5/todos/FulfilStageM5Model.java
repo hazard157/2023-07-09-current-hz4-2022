@@ -9,6 +9,8 @@ import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
+import java.sql.*;
+
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
@@ -95,7 +97,14 @@ public class FulfilStageM5Model
         OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_FILTER_PANE.setValue( aContext.params(), AV_TRUE );
         MultiPaneComponentModown<IFulfilStage> mpc =
-            new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager );
+            new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager ) {
+
+              @Override
+              protected void doAdjustEntityCreationInitialValues( IM5BunchEdit<IFulfilStage> aValues ) {
+                aValues.set( FID_WHEN, avTimestamp( new Timestamp( System.currentTimeMillis() ).getTime() ) );
+              }
+
+            };
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }
     } );

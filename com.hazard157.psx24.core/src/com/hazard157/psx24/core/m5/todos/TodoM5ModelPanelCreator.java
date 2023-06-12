@@ -7,6 +7,8 @@ import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
+import java.sql.*;
+
 import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.tsnodes.*;
@@ -119,7 +121,7 @@ public class TodoM5ModelPanelCreator
 
           @Override
           protected void doAdjustEntityCreationInitialValues( IM5BunchEdit<ITodo> aValues ) {
-            aValues.set( FID_CREATION_TIME, avTimestamp( System.currentTimeMillis() ) );
+            aValues.set( FID_CREATION_TIME, avTimestamp( new Timestamp( System.currentTimeMillis() ).getTime() ) );
           }
 
           @Override

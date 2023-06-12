@@ -159,7 +159,7 @@ public class StirM5Model
         protected void doInit() {
           setNameAndDescription( STR_N_STIR_DESCRIPTION, STR_D_STIR_DESCRIPTION );
           setFlags( M5FF_DETAIL );
-          params().setInt( OPDEF_VERTICAL_SPAN, 3 );
+          params().setInt( OPDEF_VERTICAL_SPAN, 5 );
           params().setBool( OPDEF_IS_HEIGHT_FIXED, true );
         }
 

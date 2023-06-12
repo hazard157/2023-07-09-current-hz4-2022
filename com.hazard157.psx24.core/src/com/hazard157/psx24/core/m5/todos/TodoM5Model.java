@@ -74,6 +74,7 @@ public class TodoM5Model
         protected void doInit() {
           setNameAndDescription( STR_N_TD_PRIORITY, STR_D_TD_PRIORITY );
           setFlags( M5FF_COLUMN );
+          setDefaultValue( EPriority.NORMAL );
         }
 
         protected EPriority doGetFieldValue( ITodo aEntity ) {

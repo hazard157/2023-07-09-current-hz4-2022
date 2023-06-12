@@ -4,6 +4,7 @@ import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
 import org.toxsoft.core.tslib.coll.notifier.*;
+import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.txtproj.lib.sinent.*;
 
@@ -89,6 +90,20 @@ public interface IPlep
    * @return {@link IListReorderer}&lt;{@link ITrack}&gt; - средство управления порядком треков в {@link #tracks()}
    */
   IListReorderer<ITrack> tracksReorderer();
+
+  /**
+   * Returns list of step for PLEP preparation.
+   *
+   * @return {@link IStringList} - an editable list of preparation steps
+   */
+  INotifierStringListEdit preparationSteps();
+
+  /**
+   * Returns the reorderer for {@link #preparationSteps()}.
+   *
+   * @return {@link IList}&lt;{@link String}&gt; - the reorderer
+   */
+  IListReorderer<String> preparationStepsReorderer();
 
   /**
    * Вычисляет плановую длительность.
