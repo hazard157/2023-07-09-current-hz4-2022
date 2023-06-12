@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="com.hazard157.prisex24.fragment"
+         point="org.eclipse.e4.workbench.model">
+      <fragment
+            uri="fragment.e4xmi"
+            apply="always">
+      </fragment>
+   </extension>
+
+   <extension
+         id="PRISEX v24_2"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.e4.ui.workbench.swt.E4Application"
+            description="PRISEX v24_2 Application launcher"
+            name="Prisex 24_2">
+         <property
+               name="applicationXMI"
+               value="platform:/plugin/org.toxsoft.core.tsgui.mws/Application.e4xmi">
+         </property>
+         <property
+               name="appName"
+               value="Prisex 24_2">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

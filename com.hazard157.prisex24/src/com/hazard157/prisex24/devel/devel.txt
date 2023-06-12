@@ -1,0 +1,33 @@
+HIGH
+  +++ add IStringList "steps to prepare" to the plep
+  +++ change v24.2 splash and icon
+  --- add sex toys refbook (from porn.common plugin)
+  --- add IStir -> listUsedSexToys()
+  --- add IPlep -> listUsedSexToys() -> auto-created from Stir[].listUsedSexToys()
+
+
+NORM
+
+  --- Request on the front/rear of a tag state change
+  --- Soundtrack editor: add button "Create playlist file for Clementine"
+  --- make separate window (panel?) "Work with frames":
+      - episode selection (initially - current episode) widget text+button
+      - whole toolbar as now
+      - add RANGE selection
+      - extra list with +- 1 sec nonsec frames, navigating nonsecs will navigate also secs frames (only curr CAMERA)
+      - no external "FullSizeImageDialog" - mage viewer shows full sized image
+      - buttons from "FullSizeImageDialog" add to nonsec frames list (or main image viewer widget)
+      - wheel on main image viewer scrolls through nonsec frames
+  Planning graphical timeline:
+  +++ add duration texts
+  +++ add selection of stir and track, synchronized with left lists
+  +++ handle SHIFT+WHEEL to zoom IN/OUT
+  --- handle SHIFT+wheelclick -> toggle 100% / FIT modes
+  +++ handle mouse click selection on timeline to select in left lists
+  --- synchronize selection changes in STIR and TRACK lists
+  +++ when selecting STIR/TRACK in timeline revel them in lists
+  --- when selecting STIR/TRACK in lists revel them in timeline
+      
+      
+LOW      
+  --- new Visumples subsystem
