@@ -12,6 +12,7 @@ import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
 import com.hazard157.psx.proj3.episodes.story.*;
+import com.hazard157.psx.proj3.incident.*;
 
 /**
  * Базовый интерфейс эпизода.
@@ -21,7 +22,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
  * @author hazard157
  */
 public interface IEpisode
-    extends IEpisodeIdable, IFrameable, ISinentity<EpisodeInfo> {
+    extends IPsxIncident, IEpisodeIdable, IFrameable, ISinentity<EpisodeInfo> {
 
   /**
    * Возвращает момент времен начала эпизода.
@@ -111,6 +112,11 @@ public interface IEpisode
    */
   default Svin svin() {
     return new Svin( id(), frame().cameraId(), new Secint( 0, duration() - 1 ) );
+  }
+
+  @Override
+  default String place() {
+    return info().place();
   }
 
   /**

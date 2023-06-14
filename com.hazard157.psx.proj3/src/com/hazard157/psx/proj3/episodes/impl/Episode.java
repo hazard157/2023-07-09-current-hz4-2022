@@ -16,6 +16,7 @@ import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
 import com.hazard157.psx.proj3.episodes.proplines.impl.*;
 import com.hazard157.psx.proj3.episodes.story.*;
+import com.hazard157.psx.proj3.incident.*;
 
 /**
  * Эпизод.
@@ -76,7 +77,16 @@ public class Episode
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IStridable
+  // IPsxIncident
+  //
+
+  @Override
+  final public EPsxIncidentKind incidentKind() {
+    return EPsxIncidentKind.EPISODE;
+  }
+
+  // ------------------------------------------------------------------------------------
+  // IStridable
   //
 
   @Override
@@ -90,7 +100,7 @@ public class Episode
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IEpisodeIdable
+  // IEpisodeIdable
   //
 
   @Override
@@ -99,7 +109,7 @@ public class Episode
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IFrameable
+  // IFrameable
   //
 
   @Override
@@ -108,7 +118,7 @@ public class Episode
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IEpisodeBase
+  // IEpisodeBase
   //
 
   @Override

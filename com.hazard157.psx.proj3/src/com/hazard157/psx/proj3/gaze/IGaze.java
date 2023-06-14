@@ -13,14 +13,7 @@ import com.hazard157.psx.proj3.incident.*;
  * @author hazard157
  */
 public interface IGaze
-    extends IStridableParameterized, IRatingable {
-
-  /**
-   * Returns the incident kind.
-   *
-   * @return {@link EPsxIncidentKind} - the incident kind
-   */
-  EPsxIncidentKind incidentKind();
+    extends IPsxIncident, IStridableParameterized, IRatingable {
 
   /**
    * Returns the incident date.
@@ -28,12 +21,5 @@ public interface IGaze
    * @return {@link LocalDateTime} - incident date
    */
   LocalDate incidentDate();
-
-  /**
-   * Returns the place where gaze happens.
-   *
-   * @return String - the place
-   */
-  String place();
 
 }
