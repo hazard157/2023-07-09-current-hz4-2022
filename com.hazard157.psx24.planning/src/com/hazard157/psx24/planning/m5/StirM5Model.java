@@ -159,7 +159,7 @@ public class StirM5Model
         protected void doInit() {
           setNameAndDescription( STR_N_STIR_DESCRIPTION, STR_D_STIR_DESCRIPTION );
           setFlags( M5FF_DETAIL );
-          params().setInt( OPDEF_VERTICAL_SPAN, 5 );
+          params().setInt( OPDEF_VERTICAL_SPAN, 4 );
           params().setBool( OPDEF_IS_HEIGHT_FIXED, true );
         }
 
@@ -179,7 +179,8 @@ public class StirM5Model
         @Override
         protected void doInit() {
           setNameAndDescription( OP_STIR_THUMB_FILE_PATH.nmName(), OP_STIR_THUMB_FILE_PATH.description() );
-          setFlags( 0 );
+          setFlags( M5FF_HIDDEN );
+          setDefaultValue( AV_STR_EMPTY );
         }
 
         @Override

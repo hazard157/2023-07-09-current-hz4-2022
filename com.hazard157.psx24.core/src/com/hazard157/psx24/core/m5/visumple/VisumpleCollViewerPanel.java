@@ -42,7 +42,7 @@ public class VisumpleCollViewerPanel
 
   private IM5ItemsProvider<Visumple> itemsProvider;
 
-  private static final EThumbSize DEFAULT_THUMB_SIZE = EThumbSize.SZ256;
+  private static final EThumbSize DEFAULT_THUMB_SIZE = EThumbSize.SZ180;
 
   private TsToolbar          toolbar  = null;
   private PicturesListViewer plViewer = null;
@@ -95,10 +95,12 @@ public class VisumpleCollViewerPanel
   protected TsComposite doCreateControl( Composite aParent ) {
     TsComposite board = new TsComposite( aParent );
     board.setLayout( new BorderLayout() );
-    toolbar = TsToolbar.create( board, tsContext(), EIconSize.IS_16X16, //
-        ACDEF_ZOOM_IN, ACDEF_ZOOM_ORIGINAL_PUSHBUTTON, ACDEF_ZOOM_OUT //
-    );
-    toolbar.getControl().setLayoutData( BorderLayout.NORTH );
+    toolbar = new TsToolbar( tsContext() );
+    toolbar.setVertical( true );
+    toolbar.setIconSize( EIconSize.IS_16X16 );
+    toolbar.setActionDefs( ACDEF_ZOOM_IN, ACDEF_ZOOM_ORIGINAL_PUSHBUTTON, ACDEF_ZOOM_OUT );
+    toolbar.createControl( board );
+    toolbar.getControl().setLayoutData( BorderLayout.WEST );
     toolbar.addListener( toolbarListener );
     plViewer = new PicturesListViewer( board, EPlvLayoutMode.ROWS );
     plViewer.setThumbSize( DEFAULT_THUMB_SIZE );

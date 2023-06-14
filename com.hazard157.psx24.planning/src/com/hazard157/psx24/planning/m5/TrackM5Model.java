@@ -4,35 +4,23 @@ import static com.hazard157.lib.core.IHzLibConstants.*;
 import static com.hazard157.lib.core.quants.secint.m5.ISecintM5Constants.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static com.hazard157.psx.proj3.pleps.IUnitPlepsConstants.*;
-import static com.hazard157.psx24.core.IPsxAppActions.*;
 import static com.hazard157.psx24.planning.m5.IPsxResources.*;
-import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
-import java.io.*;
-
-import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
-import org.toxsoft.core.tsgui.dialogs.*;
-import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
-import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tslib.av.*;
-import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.utils.errors.*;
-import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.e4.services.mps.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.valed.*;
 import com.hazard157.psx.proj3.pleps.*;
@@ -82,7 +70,7 @@ public class TrackM5Model
   };
 
   /**
-   * Атрибут {@link ITrack#songId()}.
+   * Attribute {@link ITrack#songId()}.
    */
   public static final IM5SingleLookupKeyFieldDef<ITrack, ISong> SONG_ID =
       new M5SingleLookupKeyFieldDef<>( FID_SONG_ID, SongM5Model.MODEL_ID, FID_ID, String.class ) {
@@ -102,7 +90,7 @@ public class TrackM5Model
       };
 
   /**
-   * Атрибут {@link ITrack#interval()}.
+   * Attribute {@link ITrack#interval()}.
    */
   public static final IM5AttributeFieldDef<ITrack> INTERVAL =
       new M5AttributeFieldDef<>( FID_INTERVAL, DT_VIDEO_INTERVAL ) {
@@ -121,7 +109,7 @@ public class TrackM5Model
       };
 
   /**
-   * Атрибут {@link ITrack#duration()}.
+   * Attribute {@link ITrack#duration()}.
    */
   public static final M5AttributeFieldDef<ITrack> START = new M5AttributeFieldDef<>( FID_START, DT_VIDEO_POSITION ) {
 
@@ -156,7 +144,7 @@ public class TrackM5Model
   };
 
   /**
-   * Атрибут название.
+   * Attribute название.
    */
   public static final IM5AttributeFieldDef<ITrack> NAME = new M5AttributeFieldDef<>( FID_NAME, DDEF_STRING ) {
 
@@ -180,7 +168,7 @@ public class TrackM5Model
   };
 
   /**
-   * Атрибут {@link ITrack#duration()}.
+   * Attribute {@link ITrack#duration()}.
    */
   public static final M5AttributeFieldDef<ITrack> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -239,53 +227,7 @@ public class TrackM5Model
         OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_ACTIONS_REORDER.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_SUMMARY_PANE.setValue( aContext.params(), AV_TRUE );
-        MultiPaneComponentModown<ITrack> mpc =
-            new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager ) {
-
-              protected ITsToolbar doCreateToolbar( ITsGuiContext aCtx, String aName, EIconSize aIconSize,
-                  IListEdit<ITsActionDef> aActs ) {
-                aActs.addAll( ACDEF_SEPARATOR, AI_PLAY );
-                return super.doCreateToolbar( aCtx, aName, aIconSize, aActs );
-              }
-
-              @Override
-              protected void doProcessAction( String aActionId ) {
-                switch( aActionId ) {
-                  case AID_PLAY: {
-                    ITrack sel = selectedItem();
-                    if( sel == null ) {
-                      break;
-                    }
-                    IUnitSongs unitSongs = tsContext().get( IUnitSongs.class );
-                    ISong song = unitSongs.items().findByKey( sel.songId() );
-                    if( song == null ) {
-                      TsDialogUtils.error( getShell(), FMT_UNKNOWN_SONG, sel.songId() );
-                      break;
-                    }
-                    File f = new File( song.filePath() );
-                    if( !TsFileUtils.isFileReadable( f ) ) {
-                      TsDialogUtils.error( getShell(), FMT_NO_SONG_FILE, f.getAbsolutePath() );
-                      break;
-                    }
-                    IMediaPlayerService mps = tsContext().get( IMediaPlayerService.class );
-                    mps.playAudioFilePart( f, sel.interval().start(), sel.interval().duration() );
-                    break;
-                  }
-                  default:
-                    throw new TsNotAllEnumsUsedRtException();
-                }
-              }
-
-              @Override
-              protected void doUpdateActionsState( boolean aIsAlive, boolean aIsSel, ITrack aSel ) {
-                toolbar().setActionEnabled( AID_PLAY, aIsSel );
-              }
-
-              @Override
-              protected IMpcSummaryPane<ITrack> doCreateSummaryPane() {
-                return new TrackSummaryPane( this );
-              }
-            };
+        MultiPaneComponentModown<ITrack> mpc = new TrackMpc( aContext, model(), aItemsProvider, aLifecycleManager );
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }
 
