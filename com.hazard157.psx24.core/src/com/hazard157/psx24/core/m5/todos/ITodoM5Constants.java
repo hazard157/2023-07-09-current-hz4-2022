@@ -1,4 +1,6 @@
-package com.hazard157.psx.proj3.todos;
+package com.hazard157.psx24.core.m5.todos;
+
+import com.hazard157.psx.proj3.todos.*;
 
 /**
  * Константы M3-моделирования {@link IUnitTodos}.
@@ -16,11 +18,11 @@ public interface ITodoM5Constants {
   String MID_PRIORITY     = TODO_M3ID_PREFIX + "Priority";
 
   String FID_TODO_ID          = "TodoId";         // long, not String
+  String FID_RELATED_TODO_IDS = "RelatedTodoIds";
   String FID_CREATION_TIME    = "CreationTime";
   String FID_TEXT             = "Text";
   String FID_IS_DONE          = "IsDone";
   String FID_PRIORITY         = "Priority";
-  String FID_RELATED_TODO_IDS = "RelatedTodoIds";
   String FID_REMINDER         = "Reminder";
   String FID_FULFIL_STAGES    = "FulfilStages";
   String FID_IS_ACTIVE        = "IsActive";

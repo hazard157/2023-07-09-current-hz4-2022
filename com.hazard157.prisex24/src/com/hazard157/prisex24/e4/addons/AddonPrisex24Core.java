@@ -11,6 +11,7 @@ import org.eclipse.e4.ui.workbench.modeling.*;
 import org.eclipse.swt.graphics.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;
 import org.toxsoft.core.tsgui.graphics.icons.impl.*;
+import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.mws.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.rcp.*;
@@ -18,19 +19,21 @@ import org.toxsoft.core.tslib.utils.*;
 
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.Activator;
+import com.hazard157.prisex24.m5.todos.*;
+import com.hazard157.psx.proj3.*;
 
 /**
  * Plugin addon.
  *
  * @author hazard157
  */
-public class Addon00Prisex24Core
+public class AddonPrisex24Core
     extends MwsAbstractAddon {
 
   /**
    * Constructor.
    */
-  public Addon00Prisex24Core() {
+  public AddonPrisex24Core() {
     super( Activator.PLUGIN_ID );
   }
 
@@ -41,6 +44,7 @@ public class Addon00Prisex24Core
   @Override
   protected void doRegisterQuants( IQuantRegistrator aQuantRegistrator ) {
     aQuantRegistrator.registerQuant( new QuantTsGuiRcp() );
+    aQuantRegistrator.registerQuant( new QuantPsx3Project() );
   }
 
   @Override
@@ -55,6 +59,11 @@ public class Addon00Prisex24Core
   @Override
   protected void initWin( IEclipseContext aWinContext ) {
     IPrisex24CoreConstants.init( aWinContext );
+    // M5
+    IM5Domain m5 = aWinContext.get( IM5Domain.class );
+    m5.addModel( new FulfilStageM5Model() );
+    m5.addModel( new TodoM5Model() );
+
     // DEBUG --- resource tracking
     Resource.setNonDisposeHandler( aT -> {
       TsTestUtils.pl( "ResourseErr: %s", aT.toString() ); //$NON-NLS-1$

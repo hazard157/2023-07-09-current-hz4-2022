@@ -1,7 +1,7 @@
 package com.hazard157.psx24.core.m5.todos;
 
-import static com.hazard157.psx.proj3.todos.ITodoM5Constants.*;
 import static com.hazard157.psx24.core.m5.todos.IPsxResources.*;
+import static com.hazard157.psx24.core.m5.todos.ITodoM5Constants.*;
 
 import org.toxsoft.core.tsgui.m5.std.models.enums.*;
 

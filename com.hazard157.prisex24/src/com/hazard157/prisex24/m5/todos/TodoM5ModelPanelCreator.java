@@ -1,7 +1,7 @@
-package com.hazard157.psx24.core.m5.todos;
+package com.hazard157.prisex24.m5.todos;
 
-import static com.hazard157.psx24.core.m5.todos.IPsxResources.*;
-import static com.hazard157.psx24.core.m5.todos.ITodoM5Constants.*;
+import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.m5.todos.IPsxResources.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
@@ -35,7 +35,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.proj3.todos.*;
 
 /**
- * Создатель панелей модели сущностей типа {@link ITodo}.
+ * Panel creator for {@link ITodo}.
  *
  * @author hazard157
  */
@@ -51,8 +51,8 @@ public class TodoM5ModelPanelCreator
 
     @Override
     public IList<ITsNode> makeRoots( ITsNode aRootNode, IList<ITodo> aItems ) {
-      DefaultTsNode<String> nodeDone = new DefaultTsNode<>( NK_DONE, aRootNode, STR_N_NODE_DONE );
-      DefaultTsNode<String> nodeUndone = new DefaultTsNode<>( NK_DONE, aRootNode, STR_N_NODE_UNDONE );
+      DefaultTsNode<String> nodeDone = new DefaultTsNode<>( NK_DONE, aRootNode, STR_NODE_DONE );
+      DefaultTsNode<String> nodeUndone = new DefaultTsNode<>( NK_DONE, aRootNode, STR_NODE_UNDONE );
       for( ITodo t : aItems ) {
         DefaultTsNode<String> parent;
         if( t.isDone() ) {
@@ -100,7 +100,7 @@ public class TodoM5ModelPanelCreator
   }
 
   /**
-   * Откритый конструктор.
+   * Constructor.
    */
   public TodoM5ModelPanelCreator() {
     // nop
@@ -112,10 +112,11 @@ public class TodoM5ModelPanelCreator
     OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
     OPDEF_IS_FILTER_PANE.setValue( aContext.params(), AV_TRUE );
     OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
+    OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(), avValobj( EBorderLayoutPlacement.EAST ) );
     TreeModeInfo<ITodo> tmi1 = new TreeModeInfo<>( "ByDone", //$NON-NLS-1$
-        STR_N_TMM_BY_DONE, STR_D_TMM_BY_DONE, null, new TreeMakerByDone() );
+        STR_TMM_BY_DONE, STR_TMM_BY_DONE_D, null, new TreeMakerByDone() );
     TreeModeInfo<ITodo> tmi2 = new TreeModeInfo<>( "ByPriority", //$NON-NLS-1$
-        STR_N_TMM_BY_PRIORITY, STR_D_TMM_BY_PRIORITY, null, new TreeMakerByPriority() );
+        STR_TMM_BY_PRIORITY, STR_TMM_BY_PRIORITY_D, null, new TreeMakerByPriority() );
     MultiPaneComponentModown<ITodo> mpc =
         new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager ) {
 
@@ -172,21 +173,21 @@ public class TodoM5ModelPanelCreator
       @Override
       protected void doInitLayout() {
         IVecTabLayout lTabs = new VecTabLayout( false );
-        // вкладка Свойства
+        // Properties tab
         IVecLadderLayout lProps = new VecLadderLayout( true );
         IVecBoard bProps = new VecBoard();
         bProps.setLayout( lProps );
-        lTabs.addControl( bProps, new VecTabLayoutData( TAB_T_TODO_PROPS, TAB_P_TODO_PROPS ) );
-        // вкладка Дела
+        lTabs.addControl( bProps, new VecTabLayoutData( TAB_TODO_PROPS, TAB_TODO_PROPS_D ) );
+        // related Todos tab
         IVecBorderLayout lTodos = new VecBorderLayout();
         IVecBoard bTodos = new VecBoard();
         bTodos.setLayout( lTodos );
-        lTabs.addControl( bTodos, new VecTabLayoutData( TAB_T_TODO_TODOS, TAB_P_TODO_TODOS ) );
-        // вкладка Этапы
+        lTabs.addControl( bTodos, new VecTabLayoutData( TAB_TODO_TODOS, TAB_TODO_TODOS_D ) );
+        // Fulfill stages tab
         IVecBorderLayout lStages = new VecBorderLayout();
         IVecBoard bStages = new VecBoard();
         bStages.setLayout( lStages );
-        lTabs.addControl( bStages, new VecTabLayoutData( TAB_T_TODO_STAGES, TAB_P_TODO_STAGES ) );
+        lTabs.addControl( bStages, new VecTabLayoutData( TAB_TODO_STAGES, TAB_TODO_STAGES_D ) );
 
         for( String fieldId : editors().keys() ) {
           IValedControl<?> varEditor = editors().getByKey( fieldId );

@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
 
 /**
- * Константы M5-моделирования сущностей PSX.
+ * PRISEX M5-modeling constants.
  *
  * @author hazard157
  */

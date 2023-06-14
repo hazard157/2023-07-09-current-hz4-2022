@@ -1,17 +1,14 @@
-package com.hazard157.psx24.core.m5.todos;
+package com.hazard157.prisex24.m5.todos;
 
-import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.psx24.core.m5.todos.IPsxResources.*;
-import static com.hazard157.psx24.core.m5.todos.ITodoM5Constants.*;
+import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.m5.todos.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
-import static org.toxsoft.core.tsgui.m5.valeds.IM5ValedConstants.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
-import org.toxsoft.core.tsgui.m5.valeds.singlemodown.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tsgui.valed.controls.av.*;
 import org.toxsoft.core.tsgui.valed.controls.basic.*;
@@ -33,8 +30,8 @@ public class TodoM5Model
    * {@link ITodo#id()}
    */
   public static final IM5AttributeFieldDef<ITodo> ID = new M5AttributeFieldDef<>( FID_ID, INTEGER, //
-      TSID_NAME, STR_N_TD_TODO_ID, //
-      TSID_DESCRIPTION, STR_N_TD_TODO_ID, //
+      TSID_NAME, STR_TD_TODO_ID, //
+      TSID_DESCRIPTION, STR_TD_TODO_ID_D, //
       M5_OPID_FLAGS, avInt( M5FF_READ_ONLY | M5FF_HIDDEN ) //
   ) {
 
@@ -48,8 +45,8 @@ public class TodoM5Model
    */
   public static final IM5AttributeFieldDef<ITodo> CREATION_TIME =
       new M5AttributeFieldDef<>( FID_CREATION_TIME, TIMESTAMP, //
-          TSID_NAME, STR_N_TD_CREATION_TIME, //
-          TSID_DESCRIPTION, STR_N_TD_CREATION_TIME, //
+          TSID_NAME, STR_TD_CREATION_TIME, //
+          TSID_DESCRIPTION, STR_TD_CREATION_TIME_D, //
           M5_OPID_FLAGS, avInt( M5FF_COLUMN | M5FF_READ_ONLY ) //
       ) {
 
@@ -67,28 +64,27 @@ public class TodoM5Model
   /**
    * {@link ITodo#priority()}
    */
-  public static final IM5SingleLookupFieldDef<ITodo, EPriority> PRIORITY =
-      new M5SingleLookupFieldDef<>( FID_PRIORITY, MID_PRIORITY ) {
+  public static final IM5AttributeFieldDef<ITodo> PRIORITY = new M5AttributeFieldDef<>( FID_PRIORITY, VALOBJ ) {
 
-        @Override
-        protected void doInit() {
-          setNameAndDescription( STR_N_TD_PRIORITY, STR_D_TD_PRIORITY );
-          setFlags( M5FF_COLUMN );
-          setDefaultValue( EPriority.NORMAL );
-        }
+    @Override
+    protected void doInit() {
+      setNameAndDescription( STR_TD_PRIORITY, STR_TD_PRIORITY_D );
+      setFlags( M5FF_COLUMN );
+      setDefaultValue( EPriority.NORMAL.atomicValue() );
+    }
 
-        protected EPriority doGetFieldValue( ITodo aEntity ) {
-          return aEntity.priority();
-        }
+    protected IAtomicValue doGetFieldValue( ITodo aEntity ) {
+      return aEntity.priority().atomicValue();
+    }
 
-      };
+  };
 
   /**
    * {@link ITodo#text()}
    */
   public static final IM5AttributeFieldDef<ITodo> TEXT = new M5AttributeFieldDef<>( FID_TEXT, STRING, //
-      TSID_NAME, STR_N_TD_TEXT, //
-      TSID_DESCRIPTION, STR_D_TD_TEXT, //
+      TSID_NAME, STR_TD_TEXT, //
+      TSID_DESCRIPTION, STR_TD_TEXT_D, //
       M5_OPID_FLAGS, avInt( M5FF_COLUMN ) //
   ) {
 
@@ -101,11 +97,11 @@ public class TodoM5Model
    * {@link ITodo#note()}
    */
   public static final IM5AttributeFieldDef<ITodo> NOTE = new M5AttributeFieldDef<>( FID_NOTE, STRING, //
-      TSID_NAME, STR_N_TD_NOTE, //
-      TSID_DESCRIPTION, STR_N_TD_NOTE, //
+      TSID_NAME, STR_TD_NOTE, //
+      TSID_DESCRIPTION, STR_TD_NOTE_D, //
       IValedControlConstants.OPID_EDITOR_FACTORY_NAME, ValedAvStringText.FACTORY_NAME, //
       ValedStringText.OPDEF_IS_MULTI_LINE, AV_TRUE, //
-      IValedControlConstants.OPID_VERTICAL_SPAN, avInt( 3 ) //
+      IValedControlConstants.OPID_VERTICAL_SPAN, avInt( 5 ) //
   ) {
 
     @Override
@@ -122,8 +118,8 @@ public class TodoM5Model
    * {@link ITodo#isDone()}
    */
   public static final IM5AttributeFieldDef<ITodo> IS_DONE = new M5AttributeFieldDef<>( FID_IS_DONE, BOOLEAN, //
-      TSID_NAME, STR_N_TD_IS_DONE, //
-      TSID_DESCRIPTION, STR_N_TD_IS_DONE, //
+      TSID_NAME, STR_TD_IS_DONE, //
+      TSID_DESCRIPTION, STR_TD_IS_DONE_D, //
       TSID_FORMAT_STRING, FMT_BOOL_CHECK_AV, //
       M5_OPID_FLAGS, avInt( M5FF_COLUMN ) //
   ) {
@@ -134,25 +130,6 @@ public class TodoM5Model
   };
 
   /**
-   * {@link ITodo#reminder()}
-   */
-  public static final IM5SingleModownFieldDef<ITodo, IReminder> REMINDER = //
-      new M5SingleModownFieldDef<>( FID_REMINDER, MID_REMINDER ) {
-
-        @Override
-        protected void doInit() {
-          setNameAndDescription( STR_N_TD_REMONDER, STR_D_TD_REMINDER );
-          setValedEditor( ValedSingleModownEditor.FACTORY_NAME );
-          params().setStr( M5_VALED_OPID_WIDGET_TYPE_ID, M5VWTID_INPLACE );
-        }
-
-        protected IReminder doGetFieldValue( ITodo aEntity ) {
-          return aEntity.reminder();
-        }
-
-      };
-
-  /**
    * {@link ITodo#relatedTodoIds()}
    */
   public static final IM5MultiLookupKeyFieldDef<ITodo, ITodo> RELATED_TODO_IDS =
@@ -160,7 +137,8 @@ public class TodoM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_TD_RELATED_TODOS, STR_D_TD_RELATED_TODOS );
+          setNameAndDescription( STR_TD_RELATED_TODOS, STR_TD_RELATED_TODOS_D );
+          setFlags( M5FF_DETAIL );
           setLookupProvider( new IM5LookupProvider<ITodo>() {
 
             @Override
@@ -199,7 +177,8 @@ public class TodoM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_TD_FULFIL_STAGES, STR_D_TD_FULFIL_STAGES );
+          setNameAndDescription( STR_TD_FULFIL_STAGES, STR_TD_FULFIL_STAGES_D );
+          setFlags( M5FF_DETAIL );
         }
 
         protected IList<IFulfilStage> doGetFieldValue( ITodo aEntity ) {
@@ -213,8 +192,8 @@ public class TodoM5Model
    */
   public TodoM5Model() {
     super( MID_TODO, ITodo.class );
-    setNameAndDescription( STR_N_M5M_TODO, STR_D_M5M_TODO );
-    addFieldDefs( ID, CREATION_TIME, PRIORITY, IS_DONE, TEXT, REMINDER, NOTE, RELATED_TODO_IDS, FULFIL_STAGES );
+    setNameAndDescription( STR_M5M_TODO, STR_M5M_TODO_D );
+    addFieldDefs( ID, CREATION_TIME, PRIORITY, IS_DONE, TEXT, NOTE, RELATED_TODO_IDS, FULFIL_STAGES );
     setPanelCreator( new TodoM5ModelPanelCreator() );
   }
 

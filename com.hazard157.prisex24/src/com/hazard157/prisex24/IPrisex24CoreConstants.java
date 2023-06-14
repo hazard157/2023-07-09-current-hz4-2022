@@ -35,11 +35,20 @@ public interface IPrisex24CoreConstants {
   String PSX_ACT_ID  = PSX_ID + ".act";          //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
+  // E4
+
+  String PERSPID_REFBOOKS     = "com.hazard157.prisex24.persp.refbooks";     //$NON-NLS-1$
+  String PARTSTACKID_REFBOOKS = "com.hazard157.prisex24.partstack.refbooks"; //$NON-NLS-1$
+
+  // ------------------------------------------------------------------------------------
   // Icons
 
-  String PREFIX_OF_ICON_FIELD_NAME = "ICONID_";  //$NON-NLS-1$
-  String ICONID_APP_ICON           = "app-icon"; //$NON-NLS-1$
-  String ICONID_PORNICON           = "pornicon"; //$NON-NLS-1$
+  String PREFIX_OF_ICON_FIELD_NAME = "ICONID_";          //$NON-NLS-1$
+  String ICONID_APP_ICON           = "app-icon";         //$NON-NLS-1$
+  String ICONID_PORNICON           = "pornicon";         //$NON-NLS-1$
+  String ICONID_TODO_ITEM          = "todo-item";        //$NON-NLS-1$
+  String ICONID_TODO_ITEM_DIMMED   = "todo-item-dimmed"; //$NON-NLS-1$
+  String ICONID_TODOS_LIST         = "todos-list";       //$NON-NLS-1$
 
   /**
    * Constants registration.

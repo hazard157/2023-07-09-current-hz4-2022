@@ -1,7 +1,9 @@
 package com.hazard157.psx.proj3.todos;
 
 import static com.hazard157.psx.proj3.todos.IPsxResources.*;
+import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
+import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.bricks.keeper.*;
 import org.toxsoft.core.tslib.bricks.keeper.std.*;
 import org.toxsoft.core.tslib.bricks.strid.*;
@@ -47,6 +49,8 @@ public enum EPriority
    */
   public static final IEntityKeeper<EPriority> KEEPER = new StridableEnumKeeper<>( EPriority.class );
 
+  private IAtomicValue av = null;
+
   private static IList<EPriority> itemsList = null;
   private final String            id;
   private final String            description;
@@ -66,7 +70,7 @@ public enum EPriority
   }
 
   // --------------------------------------------------------------------------
-  // Реализация интерфейса IStridable
+  // IStridable
   //
 
   @Override
@@ -87,6 +91,18 @@ public enum EPriority
   // ------------------------------------------------------------------------------------
   // API
   //
+
+  /**
+   * Returns the {@link EAtomicType#VALOBJ} atomic value of this constant.
+   *
+   * @return {@link IAtomicValue} - atomic value of this constant
+   */
+  public IAtomicValue atomicValue() {
+    if( av == null ) {
+      av = avValobj( this );
+    }
+    return av;
+  }
 
   /**
    * Возвращает все константы перечисления в виде списка {@link IList}.

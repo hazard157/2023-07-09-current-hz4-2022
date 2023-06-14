@@ -1,7 +1,7 @@
-package com.hazard157.psx24.core.m5.todos;
+package com.hazard157.prisex24.m5.todos;
 
-import static com.hazard157.psx24.core.m5.todos.IPsxResources.*;
-import static com.hazard157.psx24.core.m5.todos.ITodoM5Constants.*;
+import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.m5.todos.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
@@ -18,6 +18,7 @@ import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
+import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.av.*;
 
 import com.hazard157.psx.proj3.todos.*;
@@ -35,8 +36,8 @@ public class FulfilStageM5Model
    * {@link IFulfilStage#when()}
    */
   public static final IM5AttributeFieldDef<IFulfilStage> WHEN = new M5AttributeFieldDef<>( FID_WHEN, TIMESTAMP, //
-      TSID_NAME, STR_N_FS_WHEN, //
-      TSID_DESCRIPTION, STR_D_FS_WHEN, //
+      TSID_NAME, STR_FS_WHEN, //
+      TSID_DESCRIPTION, STR_FS_WHEN_D, //
       M5_OPID_FLAGS, avInt( M5FF_COLUMN ) //
   ) {
 
@@ -50,9 +51,8 @@ public class FulfilStageM5Model
    * {@link IFulfilStage#name()}
    */
   public static final IM5AttributeFieldDef<IFulfilStage> NAME = new M5AttributeFieldDef<>( FID_NAME, STRING, //
-      TSID_NAME, STR_N_FS_NAME, //
-      TSID_DESCRIPTION, STR_D_FS_NAME, //
-      TSID_DESCRIPTION, STR_D_FS_NAME, //
+      TSID_NAME, STR_FS_NAME, //
+      TSID_DESCRIPTION, STR_FS_NAME_D, //
       M5_OPID_FLAGS, avInt( M5FF_COLUMN ) //
   ) {
 
@@ -70,7 +70,7 @@ public class FulfilStageM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_FS_DESCRIPTION, STR_D_FS_DESCRIPTION );
+          setNameAndDescription( STR_FS_DESCRIPTION, STR_FS_DESCRIPTION_D );
           params().setValueIfNull( OPID_VERTICAL_SPAN, avInt( 5 ) );
           setFlags( M5FF_DETAIL );
         }
@@ -86,7 +86,7 @@ public class FulfilStageM5Model
    */
   public FulfilStageM5Model() {
     super( MID_FULFIL_STAGE, IFulfilStage.class );
-    setNameAndDescription( STR_N_M5M_FULFIL_STAGE, STR_D_M5M_FULFIL_STAGE );
+    setNameAndDescription( STR_M5M_FULFIL_STAGE, STR_M5M_FULFIL_STAGE_D );
     addFieldDefs( WHEN, NAME, DESCRIPTION );
     setPanelCreator( new M5DefaultPanelCreator<>() {
 
@@ -96,6 +96,7 @@ public class FulfilStageM5Model
         // TODO Auto-generated method stub
         OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_FILTER_PANE.setValue( aContext.params(), AV_TRUE );
+        OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(), avValobj( EBorderLayoutPlacement.SOUTH ) );
         MultiPaneComponentModown<IFulfilStage> mpc =
             new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager ) {
 

@@ -1,7 +1,6 @@
-package com.hazard157.psx24.core.m5.todos;
+package com.hazard157.prisex24.m5.todos;
 
-import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.psx24.core.m5.todos.ITodoM5Constants.*;
+import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
@@ -11,7 +10,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.proj3.todos.*;
 
 /**
- * Создатель контроллера жизненного цикала объектов типа {@link ITodo}.
+ * LM for {@link TodoM5Model}.
  *
  * @author hazard157
  */
@@ -29,8 +28,7 @@ class TodoM5LifecycleManager
     String note = aValues.getAsAv( FID_NOTE ).asString();
     t.setTexts( text, note );
     t.setDone( aValues.getAsAv( FID_IS_DONE ).asBool() );
-    t.setPriority( aValues.getAs( FID_PRIORITY, EPriority.class ) );
-    t.setReminder( aValues.getAs( FID_REMINDER, IReminder.class ) );
+    t.setPriority( aValues.getAsAv( FID_PRIORITY ).asValobj() );
     for( ITodo todo : (IList<ITodo>)aValues.getAs( FID_RELATED_TODO_IDS, IList.class ) ) {
       t.addRelatedTodo( todo.creationTime() );
     }
@@ -46,8 +44,7 @@ class TodoM5LifecycleManager
     String note = aValues.getAsAv( FID_NOTE ).asString();
     t.setTexts( text, note );
     t.setDone( aValues.getAsAv( FID_IS_DONE ).asBool() );
-    t.setPriority( aValues.getAs( FID_PRIORITY, EPriority.class ) );
-    t.setReminder( aValues.getAs( FID_REMINDER, IReminder.class ) );
+    t.setPriority( aValues.getAsAv( FID_PRIORITY ).asValobj() );
     while( !t.relatedTodoIds().isEmpty() ) {
       t.removeRelatedTodo( t.relatedTodoIds().get( 0 ).longValue() );
     }

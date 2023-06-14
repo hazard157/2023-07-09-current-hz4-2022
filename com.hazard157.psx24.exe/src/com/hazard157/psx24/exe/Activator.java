@@ -52,7 +52,7 @@ public class Activator
   protected void doStart() {
     IMwsOsgiService mws = findOsgiService( IMwsOsgiService.class );
     mws.setAppInfo( APP_INFO );
-    // конфигурация плагина проекта
+    // configure TsProject plugin
     IUnitTxtprojMwsConstants.OPDEF_SHOW_CMD_IN_TOOLBAR.setValue( mws.context().params(), AV_TRUE );
     IUnitTxtprojMwsConstants.OPDEF_SHOW_CMD_IN_MENU.setValue( mws.context().params(), AV_TRUE );
     IUnitTxtprojMwsConstants.OPDEF_ALWAYS_USE_FILE_MENU.setValue( mws.context().params(), AV_TRUE );
