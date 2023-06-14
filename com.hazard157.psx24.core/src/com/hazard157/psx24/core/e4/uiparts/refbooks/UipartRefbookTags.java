@@ -11,10 +11,10 @@ import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 
 import com.hazard157.psx.proj3.tags.*;
-import com.hazard157.psx24.core.m5.tags.*;
+import com.hazard157.psx24.core.m5.*;
 
 /**
- * Вью справочника ярлыков.
+ * UIpart: tags refbook editor.
  *
  * @author hazard157
  */
@@ -26,7 +26,7 @@ public class UipartRefbookTags
 
   @Override
   protected void doInit( Composite aParent ) {
-    IM5Model<ITag> model = m5().getModel( TagM5Model.MODEL_ID, ITag.class );
+    IM5Model<ITag> model = m5().getModel( IPsxM5Constants.MID_TAG, ITag.class );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     IM5LifecycleManager<ITag> lm = model.getLifecycleManager( rootTag );
     // DETAILS_PANE_PLACEMENT.setValue( ctx.params(), EBorderLayoutPlacement.SOUTH );

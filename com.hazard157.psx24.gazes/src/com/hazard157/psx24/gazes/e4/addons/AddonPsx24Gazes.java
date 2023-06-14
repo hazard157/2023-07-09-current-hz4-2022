@@ -39,7 +39,7 @@ public class AddonPsx24Gazes
     IPrefBundle pb = aprefs.defineBundle( PREFS_BUNDLE_ID_GAZES, OptionSetUtils.createOpSet( //
         TSID_NAME, STR_N_PREFS_BUNDLE, //
         TSID_DESCRIPTION, STR_D_PREFS_BUNDLE, //
-        TSID_ICON_ID, ICONID_GAZE //
+        TSID_ICON_ID, ICONID_INCIDENT_KIND_GAZE //
     ) );
     for( IDataDef d : ALL_APPRMS ) {
       pb.defineOption( d );

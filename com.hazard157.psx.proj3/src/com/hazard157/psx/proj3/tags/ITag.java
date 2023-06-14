@@ -1,17 +1,15 @@
 package com.hazard157.psx.proj3.tags;
 
-import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.bricks.strid.coll.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.txtproj.lib.categs.*;
 
 /**
- * Ярлык для пометки различных сущностей.
+ * Tag to mark episode intervals.
  * <p>
- * Идентификатор {@link #id()} ярлыка является ИД-путем и образует дерево ярлыков. Имя {@link #nmName()} ярлыка является
- * последней компонентой в идентификаторе {@link #id()}. Описание {@link #description()} хранится в {@link #params()} с
- * именем {@link IAvMetaConstants#TSID_DESCRIPTION}.
+ * Th ID {@link #id()} is an IDpath making natural tree of tags. The name {@link #nmName()} is last IDname component of
+ * the ID {@link #id()}.
  *
  * @author hazard157
  */
@@ -25,10 +23,10 @@ public interface ITag
   ITag parent();
 
   /**
-   * Задает информацию об узле.
+   * Sets parameters values.
    *
-   * @param aInfo {@link IOptionSet} - информация об узле
-   * @throws TsNullArgumentRtException аргумент = null
+   * @param aInfo {@link IOptionSet} - the parameters.
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   void setParams( IOptionSet aInfo );
 

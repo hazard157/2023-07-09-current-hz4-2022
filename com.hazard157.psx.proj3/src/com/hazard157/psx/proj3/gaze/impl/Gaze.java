@@ -12,7 +12,7 @@ import org.toxsoft.core.txtproj.lib.stripar.*;
 
 import com.hazard157.lib.core.quants.rating.*;
 import com.hazard157.psx.proj3.gaze.*;
-import com.hazard157.psx.proj3.ng.incident.*;
+import com.hazard157.psx.proj3.incident.*;
 
 /**
  * {@link IGaze} implementation.
@@ -51,7 +51,7 @@ public class Gaze
 
   @Override
   final public EPsxIncidentKind incidentKind() {
-    return EPsxIncidentKind.INC_GAZE;
+    return EPsxIncidentKind.GAZE;
   }
 
   @Override

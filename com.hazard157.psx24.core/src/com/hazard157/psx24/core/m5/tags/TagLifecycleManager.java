@@ -11,6 +11,11 @@ import org.toxsoft.core.tslib.coll.*;
 
 import com.hazard157.psx.proj3.tags.*;
 
+/**
+ * LM for {@link TagM5Model}.
+ *
+ * @author hazard157
+ */
 class TagLifecycleManager
     extends M5LifecycleManager<ITag, ITag> {
 
@@ -18,16 +23,23 @@ class TagLifecycleManager
     super( aModel, true, true, true, true, aMaster );
   }
 
+  // ------------------------------------------------------------------------------------
+  // implementation
+  //
+
   IOptionSet createInfo( IM5Bunch<ITag> aValues ) {
     IOptionSetEdit info = new OptionSet();
     TagM5Model.DESCRIPTION.dataDef().setValue( info, aValues.get( TagM5Model.DESCRIPTION ) );
     TagM5Model.IS_LEAF.dataDef().setValue( info, aValues.get( TagM5Model.IS_LEAF ) );
     TagM5Model.IS_MANDATORY.dataDef().setValue( info, aValues.get( TagM5Model.IS_MANDATORY ) );
     TagM5Model.IS_RADIO.dataDef().setValue( info, aValues.get( TagM5Model.IS_RADIO ) );
-    TagM5Model.ICON_NAME.dataDef().setValue( info, aValues.get( TagM5Model.ICON_NAME ) );
     TagM5Model.IN_RADIO_PRIORITY.dataDef().setValue( info, aValues.get( TagM5Model.IN_RADIO_PRIORITY ) );
     return info;
   }
+
+  // ------------------------------------------------------------------------------------
+  // M5LifecycleManager
+  //
 
   @Override
   protected ValidationResult doBeforeCreate( IM5Bunch<ITag> aValues ) {
@@ -93,9 +105,6 @@ class TagLifecycleManager
 
   @Override
   protected IList<ITag> doListEntities() {
-    // IUnitTags unitTags = appContext().get( IUnitTags.class );
-    // return unitTags.allLeafsBelow();
-    // FIXME как насчет мастер = null ???
     return master().allLeafsBelow();
   }
 

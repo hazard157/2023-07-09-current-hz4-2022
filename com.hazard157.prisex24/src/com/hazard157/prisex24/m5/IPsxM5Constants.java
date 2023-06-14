@@ -10,6 +10,8 @@ import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 @SuppressWarnings( "javadoc" )
 public interface IPsxM5Constants {
 
+  String MID_EPISODE = PSX_ID + ".Episode"; //$NON-NLS-1$
+
   String MID_TODO             = PSX_ID + ".Todo"; //$NON-NLS-1$
   String FID_NOTE             = "Note";           //$NON-NLS-1$
   String FID_CREATION_TIME    = "CreationTime";   //$NON-NLS-1$
@@ -22,5 +24,7 @@ public interface IPsxM5Constants {
 
   String MID_FULFIL_STAGE = PSX_ID + "FulfilStage"; //$NON-NLS-1$
   String FID_WHEN         = "When";                 //$NON-NLS-1$
+
+  String MID_TAG = PSX_ID + ".Tag"; //$NON-NLS-1$
 
 }

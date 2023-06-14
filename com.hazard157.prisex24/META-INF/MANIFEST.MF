@@ -5,7 +5,11 @@ Bundle-SymbolicName: com.hazard157.prisex24;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Export-Package: com.hazard157.prisex24,
  com.hazard157.prisex24.devel,
- com.hazard157.prisex24.e4.addons
+ com.hazard157.prisex24.e4.addons,
+ com.hazard157.prisex24.e4.uiparts,
+ com.hazard157.prisex24.m5,
+ com.hazard157.prisex24.m5.tags,
+ com.hazard157.prisex24.m5.todos
 Bundle-Activator: com.hazard157.prisex24.Activator
 Bundle-Vendor: HAZARD157
 Require-Bundle: javax.annotation,

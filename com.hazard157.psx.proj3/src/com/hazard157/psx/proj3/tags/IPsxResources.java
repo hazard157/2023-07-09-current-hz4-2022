@@ -26,7 +26,5 @@ interface IPsxResources {
   String STR_N_TIP_IN_RADIO_PRIORITY = "Приоритет";
   String STR_D_TIP_IN_RADIO_PRIORITY =
       "Приоритет при выборе ярлыка внутри радиогруппы (сначала назначается более высокий приоритет) -100..+100";
-  // String STR_N_TIP_IS_RECOMMENDED = "Рекомендован?";
-  // String STR_D_TIP_IS_RECOMMENDED = "Признак, что один из дочерных ярлыков рекомандован к включениею в пометках";
 
 }

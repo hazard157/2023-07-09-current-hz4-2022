@@ -11,6 +11,7 @@ import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 
 import com.hazard157.psx.proj3.todos.*;
+import com.hazard157.psx24.core.m5.todos.*;
 
 /**
  * Вью правки камер.

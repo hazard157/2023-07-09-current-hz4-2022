@@ -49,6 +49,8 @@ public interface IPrisex24CoreConstants {
   String ICONID_TODO_ITEM          = "todo-item";        //$NON-NLS-1$
   String ICONID_TODO_ITEM_DIMMED   = "todo-item-dimmed"; //$NON-NLS-1$
   String ICONID_TODOS_LIST         = "todos-list";       //$NON-NLS-1$
+  String ICONID_TAG                = "tag";              //$NON-NLS-1$
+  String ICONID_TAGS_LIST          = "tags-list";        //$NON-NLS-1$
 
   /**
    * Constants registration.

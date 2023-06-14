@@ -24,7 +24,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.valed.*;
 import com.hazard157.psx.proj3.tags.*;
-import com.hazard157.psx24.core.m5.tags.*;
+import com.hazard157.psx24.core.m5.*;
 
 /**
  * Диалог выбора ярлыка и интервала.
@@ -45,7 +45,7 @@ public class DialogTagInterval {
       this.setLayout( new BorderLayout() );
       // panelTagId
       IM5Domain m5 = tsContext().get( IM5Domain.class );
-      IM5Model<ITag> model = m5.getModel( TagM5Model.MODEL_ID, ITag.class );
+      IM5Model<ITag> model = m5.getModel( IPsxM5Constants.MID_TAG, ITag.class );
       ITsGuiContext ctx = new TsGuiContext( tsContext() );
       IMultiPaneComponentConstants.OPDEF_IS_DETAILS_PANE.setValue( ctx.params(), AV_FALSE );
       IUnitTags unitTags = tsContext().get( IUnitTags.class );

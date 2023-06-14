@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.psx.proj3.ng.incident.*;
+import com.hazard157.psx.proj3.incident.when.*;
 
 /**
  * Helper methods to work with gaze data.
@@ -50,7 +50,7 @@ public class GazeUtils {
     ValidationResult vr = doValidateGazeId( aGazeId );
     if( vr.isOk() ) {
       LocalDate ld = doGetGazeLocalDate( aGazeId );
-      return IncidentWhenValidator.VALIDATOR.validate( ld );
+      return IncidentDateValidator.VALIDATOR.validate( ld );
     }
     return vr;
   }

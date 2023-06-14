@@ -3,3 +3,5 @@ encoding//OSGI-INF/l10n/bundle_ka_GE.properties=UTF-8
 encoding//OSGI-INF/l10n/bundle_ru_RU.properties=UTF-8
 encoding//src/com/hazard157/psx24/core/e4/statline/messages_ka_GE.properties=UTF-8
 encoding//src/com/hazard157/psx24/core/e4/statline/messages_ru_RU.properties=UTF-8
+encoding//src/com/hazard157/psx24/core/m5/tags/messages_ka_GE.properties=UTF-8
+encoding//src/com/hazard157/psx24/core/m5/tags/messages_ru_RU.properties=UTF-8

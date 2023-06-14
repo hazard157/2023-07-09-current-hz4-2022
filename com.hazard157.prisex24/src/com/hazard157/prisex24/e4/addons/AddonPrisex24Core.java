@@ -19,6 +19,8 @@ import org.toxsoft.core.tslib.utils.*;
 
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.Activator;
+import com.hazard157.prisex24.e4.services.currep.*;
+import com.hazard157.prisex24.m5.tags.*;
 import com.hazard157.prisex24.m5.todos.*;
 import com.hazard157.psx.proj3.*;
 
@@ -54,6 +56,8 @@ public class AddonPrisex24Core
     EModelService modelService = aAppContext.get( EModelService.class );
     MTrimmedWindow mainWindow = (MTrimmedWindow)modelService.find( IMwsCoreConstants.MWSID_WINDOW_MAIN, app );
     mainWindow.setIconURI( TsIconManagerUtils.makeStdIconUriString( PLUGIN_ID, ICONID_APP_ICON, IS_48X48 ) );
+    // E4 services
+    aAppContext.set( ICurrentEpisodeService.class, new CurrentEpisodeService( aAppContext ) );
   }
 
   @Override
@@ -63,6 +67,7 @@ public class AddonPrisex24Core
     IM5Domain m5 = aWinContext.get( IM5Domain.class );
     m5.addModel( new FulfilStageM5Model() );
     m5.addModel( new TodoM5Model() );
+    m5.addModel( new TagM5Model() );
 
     // DEBUG --- resource tracking
     Resource.setNonDisposeHandler( aT -> {

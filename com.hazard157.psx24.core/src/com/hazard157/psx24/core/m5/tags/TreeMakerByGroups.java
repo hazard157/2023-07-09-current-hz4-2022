@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.proj3.tags.*;
 
 /**
- * Группиратор по группам ярлыков {@link ITag}
+ * Group {@link ITag} as natural tree.
  *
  * @author hazard157
  */
@@ -68,7 +68,7 @@ class TreeMakerByGroups
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса ITsTreeMaker
+  // ITsTreeMaker
   //
 
   @Override

@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.e4.services.currframeslist.*;
 import com.hazard157.psx24.core.e4.services.selsvins.*;
 
 /**
- * Реализаци {@link ICurrentEpisodeService}.
+ * {@link ICurrentEpisodeService} implementation.
  *
  * @author hazard157
  */
@@ -26,15 +26,19 @@ public class CurrentEpisodeService
   private final IUnitEpisodes unitEpisodes;
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aAppContext {@link IEclipseContext} - контекст приложения
-   * @throws TsNullArgumentRtException аргумент = null
+   * @param aAppContext {@link IEclipseContext} - application level context
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public CurrentEpisodeService( IEclipseContext aAppContext ) {
     super( aAppContext );
     unitEpisodes = appContext().get( IUnitEpisodes.class );
   }
+
+  // ------------------------------------------------------------------------------------
+  // ICurrentEpisodeService
+  //
 
   @Override
   public void select( ETsCollMove aDirection ) {

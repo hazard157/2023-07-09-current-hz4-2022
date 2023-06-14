@@ -16,6 +16,11 @@ import org.toxsoft.core.tsgui.m5.model.*;
 
 import com.hazard157.psx.proj3.tags.*;
 
+/**
+ * {@link MultiPaneComponentModown} for panel creator,
+ *
+ * @author hazard157
+ */
 class TagMpc
     extends MultiPaneComponentModown<ITag> {
 
@@ -26,7 +31,7 @@ class TagMpc
     super( aContext, aModel, aItemsProvider, aLifecycleManager );
     rootTag = aContext.get( IRootTag.class );
     TreeModeInfo<ITag> tmi1 = new TreeModeInfo<>( "ByGroup", //$NON-NLS-1$
-        STR_N_TMI_BY_GROUP, STR_D_TMI_BY_GROUP, ICON_TAGS_LIST, new TreeMakerByGroups( rootTag ) );
+        STR_TMI_BY_GROUP, STR_TMI_BY_GROUP_D, ICON_TAGS_LIST, new TreeMakerByGroups( rootTag ) );
     treeModeManager().addTreeMode( tmi1 );
     treeModeManager().setCurrentMode( tmi1.id() );
   }
@@ -41,13 +46,13 @@ class TagMpc
         TsDialogUtils.error( getShell(), FMT_ERR_NO_CHILDS_IN_LEAF, master.id() );
         return null;
       }
-      title = String.format( DLG_T_FMT_NEW_CHILD_TAG, master.id() );
+      title = String.format( DLG_FMT_NEW_CHILD_TAG_D, master.id() );
     }
     else {
       master = rootTag;
-      title = DLG_T_NEW_ROOT_TAG;
+      title = DLG_NEW_ROOT_TAG_D;
     }
-    TsDialogInfo cdi = new TsDialogInfo( tsContext(), DLG_C_NEW_TAG, title );
+    TsDialogInfo cdi = new TsDialogInfo( tsContext(), DLG_NEW_TAG, title );
     // подготовка менеджера ЖЦ
     IM5LifecycleManager<ITag> lm = new TagLifecycleManager( model(), master );
     // вызов диалога создания ярлыка
@@ -57,7 +62,7 @@ class TagMpc
   boolean canAddToSelection() {
     ITag sel = selectedItem();
     if( sel == null ) {
-      return true; // нет выбранногоэлемента - значит создание корневого элемента
+      return true; // нет выбранного элемента - значит создание корневого элемента
     }
     if( ITagsConstants.IS_LEAF.getValue( sel.params() ).asBool() ) {
       return false;

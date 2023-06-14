@@ -20,7 +20,7 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.psx.proj3.tags.*;
-import com.hazard157.psx24.core.m5.tags.*;
+import com.hazard157.psx24.core.m5.*;
 import com.hazard157.psx24.explorer.gui.filters.*;
 
 /**
@@ -55,7 +55,7 @@ public class PqFilterTagIdsPanel
     valedIsAny.eventer().addListener( notificationValedControlChangeListener );
     // panel
     ctx = new TsGuiContext( tsContext() );
-    IM5Model<ITag> model = m5().getModel( TagM5Model.MODEL_ID, ITag.class );
+    IM5Model<ITag> model = m5().getModel( IPsxM5Constants.MID_TAG, ITag.class );
     IRootTag rootTag = tsContext().get( IRootTag.class );
     IM5LifecycleManager<ITag> lm = model.getLifecycleManager( rootTag );
     OPDEF_IS_DETAILS_PANE.setValue( ctx.params(), AV_FALSE );
@@ -79,7 +79,7 @@ public class PqFilterTagIdsPanel
     super( aParent, aOwnerDialog );
     // panel
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
-    IM5Model<ITag> model = m5().getModel( TagM5Model.MODEL_ID, ITag.class );
+    IM5Model<ITag> model = m5().getModel( IPsxM5Constants.MID_TAG, ITag.class );
     IRootTag rootTag = tsContext().get( IRootTag.class );
     IM5LifecycleManager<ITag> lm = model.getLifecycleManager( rootTag );
     // OPDEF_IS_DETAILS_PANE.setValue( ctx.params(), AV_FALSE );

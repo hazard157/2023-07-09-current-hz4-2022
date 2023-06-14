@@ -4,7 +4,7 @@ import org.eclipse.e4.core.contexts.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 
 /**
- * Константы GUI приложения.
+ * Plugin constants.
  *
  * @author hazard157
  */
@@ -12,7 +12,7 @@ import org.toxsoft.core.tsgui.graphics.icons.*;
 public interface IPsxProj3Constants {
 
   // ------------------------------------------------------------------------------------
-  // Значки
+  // icons
   //
 
   String PREFIX_OF_ICON_FIELD_NAME    = "ICONID_";               //$NON-NLS-1$
@@ -28,15 +28,14 @@ public interface IPsxProj3Constants {
   String ICONID_CAMERA_WEB_DIMMED     = "camera-web-dimmed";     //$NON-NLS-1$
   String ICONID_CAMERA_FOTO_DIMMED    = "camera-foto-dimmed";    //$NON-NLS-1$
   String ICONID_CAMERA_PHONE_DIMMED   = "camera-phone-dimmed";   //$NON-NLS-1$
-  String ICONID_EPISODE               = "incident-episode";      //$NON-NLS-1$
-  String ICONID_GAZE                  = "incident-gaze";         //$NON-NLS-1$
-  // String ICONID_TAG = "tag"; //$NON-NLS-1$
-  // String ICONID_TAGS_LIST = "tags-list"; //$NON-NLS-1$
-  // String ICONID_PLAYBACK_START = "media-playback-start"; //$NON-NLS-1$
-  // String ICONID_WORK_WITH_FRAMES = "work-with-frames"; //$NON-NLS-1$
-  // String ICONID_KDENLIVE = "kdenlive"; //$NON-NLS-1$
-  // String ICONID_FILM = "film"; //$NON-NLS-1$
-  // String ICONID_FILMS_LIST = "films-list"; //$NON-NLS-1$
+  String ICONID_INCIDENT_KIND_EPISODE  = "incident-kind-episode";  //$NON-NLS-1$
+  String ICONID_INCIDENT_KIND_GAZE     = "incident-kind-gaze";     //$NON-NLS-1$
+  String ICONID_INCIDENT_KIND_MINGLE   = "incident-kind-mingle";   //$NON-NLS-1$
+  String ICONID_INCIDENT_KIND_UNKNOWN  = "incident-kind-unknown";  //$NON-NLS-1$
+  String ICONID_INCIDENTS_LIST_EPISODE = "incidents-list-episode"; //$NON-NLS-1$
+  String ICONID_INCIDENTS_LIST_GAZE    = "incidents-list-gaze";    //$NON-NLS-1$
+  String ICONID_INCIDENTS_LIST_MINGLE  = "incidents-list-mingle";  //$NON-NLS-1$
+  String ICONID_INCIDENTS_LIST_UNKNOWN = "incidents-list-unknown"; //$NON-NLS-1$
 
   /**
    * Constants registration.

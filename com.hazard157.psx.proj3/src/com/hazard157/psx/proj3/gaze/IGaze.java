@@ -5,10 +5,10 @@ import java.time.*;
 import org.toxsoft.core.tslib.bricks.strid.*;
 
 import com.hazard157.lib.core.quants.rating.*;
-import com.hazard157.psx.proj3.ng.incident.*;
+import com.hazard157.psx.proj3.incident.*;
 
 /**
- * Incident of type {@link EPsxIncidentKind#INC_GAZE}.
+ * Incident of type {@link EPsxIncidentKind#GAZE}.
  *
  * @author hazard157
  */

@@ -10,7 +10,8 @@ import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.txtproj.lib.stripar.*;
 
 import com.hazard157.psx.proj3.gaze.*;
-import com.hazard157.psx.proj3.ng.incident.*;
+import com.hazard157.psx.proj3.incident.*;
+import com.hazard157.psx.proj3.incident.when.*;
 
 /**
  * {@link IUnitGazes} implementation.
@@ -25,11 +26,11 @@ public class UnitGazes
 
     private ValidationResult internalValidate( String aId, IOptionSet aInfo ) {
       LocalDate date = OPDEF_DATE.getValue( aInfo ).asValobj();
-      ValidationResult vr = IncidentWhenValidator.VALIDATOR.validate( date );
+      ValidationResult vr = IncidentDateValidator.VALIDATOR.validate( date );
       if( vr.isError() ) {
         return vr;
       }
-      vr = ValidationResult.firstNonOk( vr, EPsxIncidentKind.INC_GAZE.getIdValidator().validate( aId ) );
+      vr = ValidationResult.firstNonOk( vr, EPsxIncidentKind.GAZE.idStrValidator().validate( aId ) );
       if( vr.isError() ) {
         return vr;
       }

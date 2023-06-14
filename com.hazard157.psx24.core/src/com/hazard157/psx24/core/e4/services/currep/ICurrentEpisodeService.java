@@ -15,7 +15,7 @@ public interface ICurrentEpisodeService
     extends ICurrentEntityService<IEpisode> {
 
   /**
-   * Selectes episode in the given direction.
+   * Selects episode in the given direction.
    *
    * @param aDirection {@link ETsCollMove} - the direction
    * @throws TsNullArgumentRtException any argument = <code>null</code>
