@@ -36,7 +36,6 @@ import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.proj3.cameras.*;
-import com.hazard157.psx.proj3.cameras.impl.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.impl.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;

@@ -37,20 +37,25 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // E4
 
+  String PERSPID_EPISODES = "com.hazard157.prisex24.persp.episodes"; //$NON-NLS-1$
+
   String PERSPID_REFBOOKS     = "com.hazard157.prisex24.persp.refbooks";     //$NON-NLS-1$
   String PARTSTACKID_REFBOOKS = "com.hazard157.prisex24.partstack.refbooks"; //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Icons
 
-  String PREFIX_OF_ICON_FIELD_NAME = "ICONID_";          //$NON-NLS-1$
-  String ICONID_APP_ICON           = "app-icon";         //$NON-NLS-1$
-  String ICONID_PORNICON           = "pornicon";         //$NON-NLS-1$
-  String ICONID_TODO_ITEM          = "todo-item";        //$NON-NLS-1$
-  String ICONID_TODO_ITEM_DIMMED   = "todo-item-dimmed"; //$NON-NLS-1$
-  String ICONID_TODOS_LIST         = "todos-list";       //$NON-NLS-1$
-  String ICONID_TAG                = "tag";              //$NON-NLS-1$
-  String ICONID_TAGS_LIST          = "tags-list";        //$NON-NLS-1$
+  String PREFIX_OF_ICON_FIELD_NAME          = "ICONID_";                     //$NON-NLS-1$
+  String ICONID_APP_ICON                    = "app-icon";                    //$NON-NLS-1$
+  String ICONID_PORNICON                    = "pornicon";                    //$NON-NLS-1$
+  String ICONID_TODO_ITEM                   = "todo-item";                   //$NON-NLS-1$
+  String ICONID_TODO_ITEM_DIMMED            = "todo-item-dimmed";            //$NON-NLS-1$
+  String ICONID_TODOS_LIST                  = "todos-list";                  //$NON-NLS-1$
+  String ICONID_TAG                         = "tag";                         //$NON-NLS-1$
+  String ICONID_TAGS_LIST                   = "tags-list";                   //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_FORCE_ONE   = "frames_per_svin_force-one";   //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_ONE_NO_MORE = "frames_per_svin_one-no-more"; //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_SELECTED    = "frames_per_svin_selected";    //$NON-NLS-1$
 
   /**
    * Constants registration.

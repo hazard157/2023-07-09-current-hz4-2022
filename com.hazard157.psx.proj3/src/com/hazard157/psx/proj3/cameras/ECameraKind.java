@@ -1,64 +1,46 @@
 package com.hazard157.psx.proj3.cameras;
 
 import static com.hazard157.psx.proj3.IPsxProj3Constants.*;
-import static com.hazard157.psx.proj3.cameras.IPsxResources.*;
+import static com.hazard157.psx.proj3.l10n.IPsxCommonSharedResources.*;
 
 import org.toxsoft.core.tslib.bricks.keeper.*;
 import org.toxsoft.core.tslib.bricks.keeper.std.*;
 import org.toxsoft.core.tslib.bricks.strid.coll.*;
 import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
-import org.toxsoft.core.tslib.utils.valobj.*;
 
 import com.hazard157.lib.core.utils.*;
 
 /**
- * Разновидности снимающих камер.
+ * Varieties of filming cameras.
  *
  * @author hazard157
  */
+@SuppressWarnings( "javadoc" )
 public enum ECameraKind
     implements IRadioPropEnum {
 
-  /**
-   * Без уточнения вида.
-   */
-  GENERIC( "generic", STR_N_CK_GENERIC, STR_D_CK_GENERIC, ICONID_CAMERA_GENERIC, ICONID_CAMERA_GENERIC_DIMMED ), //$NON-NLS-1$
+  GENERIC( "generic", STR_ECK_GENERIC, STR_ECK_GENERIC_D, ICONID_CAMERA_GENERIC, ICONID_CAMERA_GENERIC_DIMMED ), //$NON-NLS-1$
 
-  /**
-   * VHS видеокамера.
-   */
-  VHS( "vhs", STR_N_CK_VHS, STR_D_CK_VHS, ICONID_CAMERA_VHS, ICONID_CAMERA_VHS_DIMMED ), //$NON-NLS-1$
+  VHS( "vhs", STR_ECK_VHS, STR_ECK_VHS_D, ICONID_CAMERA_VHS, ICONID_CAMERA_VHS_DIMMED ), //$NON-NLS-1$
 
-  /**
-   * DV видекамера.
-   */
-  DV( "dv", STR_N_CK_DV, STR_D_CK_DV, ICONID_CAMERA_DV, ICONID_CAMERA_DV_DIMMED ), //$NON-NLS-1$
+  DV( "dv", STR_ECK_DV, STR_ECK_DV_D, ICONID_CAMERA_DV, ICONID_CAMERA_DV_DIMMED ), //$NON-NLS-1$
 
-  /**
-   * Web-камера.
-   */
-  WEB( "web", STR_N_CK_WEB, STR_D_CK_WEB, ICONID_CAMERA_WEB, ICONID_CAMERA_WEB_DIMMED ), //$NON-NLS-1$
+  WEB( "web", STR_ECK_WEB, STR_ECK_WEB_D, ICONID_CAMERA_WEB, ICONID_CAMERA_WEB_DIMMED ), //$NON-NLS-1$
 
-  /**
-   * Фотоаппарат.
-   */
-  FOTO( "foto", STR_N_CK_FOTO, STR_D_CK_FOTO, ICONID_CAMERA_FOTO, ICONID_CAMERA_FOTO_DIMMED ), //$NON-NLS-1$
+  FOTO( "foto", STR_ECK_FOTO, STR_ECK_FOTO_D, ICONID_CAMERA_FOTO, ICONID_CAMERA_FOTO_DIMMED ), //$NON-NLS-1$
 
-  /**
-   * Смартфон.
-   */
-  PHONE( "phone", STR_N_CK_PHONE, STR_D_CK_PHONE, ICONID_CAMERA_PHONE, ICONID_CAMERA_PHONE_DIMMED ), //$NON-NLS-1$
+  PHONE( "phone", STR_ECK_PHONE, STR_ECK_PHONE_D, ICONID_CAMERA_PHONE, ICONID_CAMERA_PHONE_DIMMED ), //$NON-NLS-1$
 
   ;
 
   /**
-   * Идентификатор регистрации хранителя {@link #KEEPER} в реестре {@link TsValobjUtils}.
+   * The registered keepe ID.
    */
   public static final String KEEPER_ID = "CameraKind"; //$NON-NLS-1$
 
   /**
-   * Экземпляр-синглтон хранителя.
+   * The keeper singleton.
    */
   public static final IEntityKeeper<ECameraKind> KEEPER = new StridableEnumKeeper<>( ECameraKind.class );
 
@@ -70,15 +52,6 @@ public enum ECameraKind
   private final String iconId;
   private final String iconIdDimmed;
 
-  /**
-   * Создает константу со всеми инвариантами.
-   *
-   * @param aId String - идентификатор (ИД-путь) константы
-   * @param aName String - краткое удобочитаемое название константы
-   * @param aDescription String - отображаемое описание константы
-   * @param aIconId String - идентифиатор значка
-   * @param aIconIdDimmed String - идентифиатор тусклого значка
-   */
   ECameraKind( String aId, String aName, String aDescription, String aIconId, String aIconIdDimmed ) {
     id = aId;
     name = aName;
@@ -88,7 +61,7 @@ public enum ECameraKind
   }
 
   // --------------------------------------------------------------------------
-  // Реализация интерфейса IStridable
+  // IStridable
   //
 
   @Override
@@ -110,29 +83,24 @@ public enum ECameraKind
   // API
   //
 
-  /**
-   * Возвращает идентификатор значка для отображения вида камеры.
-   *
-   * @return String - идентификатор значка
-   */
   @Override
   public String iconId() {
     return iconId;
   }
 
   /**
-   * Возвращает идентификатор тусклого значка для отображения вида камеры.
+   * Returns the dimmed icon ID.
    *
-   * @return String - идентификатор тусклого значка
+   * @return String - the dimmed icon ID
    */
   public String iconIdDimmed() {
     return iconIdDimmed;
   }
 
   /**
-   * Возвращает все константы в виде списка.
+   * Returns all constants in single list.
    *
-   * @return {@link IStridablesList}&lt; {@link ECameraKind} &gt; - список всех констант
+   * @return {@link IStridablesList}&lt; {@link ECameraKind} &gt; - list of constants in order of declaraion
    */
   public static IStridablesList<ECameraKind> asList() {
     if( list == null ) {
@@ -142,60 +110,23 @@ public enum ECameraKind
   }
 
   /**
-   * Определяет, существует ли константа перечисления с заданным идентификатором.
+   * Returns the constant by the ID.
    *
-   * @param aId String - идентификатор искомой константы
-   * @return boolean - признак существования константы <br>
-   *         <b>true</b> - константа с заданным идентификатором существует;<br>
-   *         <b>false</b> - нет константы с таким идентификатором.
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   */
-  public static boolean isItemById( String aId ) {
-    return findById( aId ) != null;
-  }
-
-  /**
-   * Находит константу по идентификатору.
-   *
-   * @param aId String - идентификатор искомой константы
-   * @return ECameraKind - найденная константа, или <code>null</code> если нет константы с таимк идентификатором
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   */
-  public static ECameraKind findById( String aId ) {
-    return asList().findByKey( aId );
-  }
-
-  /**
-   * Возвращает константу по идентификатору.
-   *
-   * @param aId String - идентификатор искомой константы
-   * @return ECameraKind - найденная константа
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   * @throws TsItemNotFoundRtException нет константы с таким идентификатором
+   * @param aId String - the ID
+   * @return {@link ECameraKind} - found constant
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsItemNotFoundRtException no constant found by specified ID
    */
   public static ECameraKind getById( String aId ) {
     return asList().getByKey( aId );
   }
 
   /**
-   * Определяет, существует ли константа перечисления с заданным именем.
+   * Finds the constant by the name.
    *
-   * @param aName String - имя (название) искомой константы
-   * @return boolean - признак существования константы <br>
-   *         <b>true</b> - константа с заданным именем существует;<br>
-   *         <b>false</b> - нет константы с таким именем.
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   */
-  public static boolean isItemByName( String aName ) {
-    return findByName( aName ) != null;
-  }
-
-  /**
-   * Находит константу по имени.
-   *
-   * @param aName String - имя искомой константы
-   * @return ECameraKind - найденная константа, или <code>null</code> если нет константы с таким именем
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
+   * @param aName String - the name
+   * @return {@link ECameraKind} - found constant or <code>null</code>
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public static ECameraKind findByName( String aName ) {
     TsNullArgumentRtException.checkNull( aName );
@@ -208,12 +139,12 @@ public enum ECameraKind
   }
 
   /**
-   * Возвращает константу по имени.
+   * Returns the constant by the name.
    *
-   * @param aName String - имя искомой константы
-   * @return ECameraKind - найденная константа
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   * @throws TsItemNotFoundRtException нет константы с таким именем
+   * @param aName String - the name
+   * @return {@link ECameraKind} - found constant
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsItemNotFoundRtException no constant found by specified name
    */
   public static ECameraKind getByName( String aName ) {
     return TsItemNotFoundRtException.checkNull( findByName( aName ) );

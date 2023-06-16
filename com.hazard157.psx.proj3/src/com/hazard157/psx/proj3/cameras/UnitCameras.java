@@ -1,9 +1,7 @@
-package com.hazard157.psx.proj3.cameras.impl;
+package com.hazard157.psx.proj3.cameras;
 
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.txtproj.lib.sinent.*;
-
-import com.hazard157.psx.proj3.cameras.*;
 
 /**
  * Реализация {@link IUnitCameras}.

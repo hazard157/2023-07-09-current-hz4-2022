@@ -15,23 +15,23 @@ import com.hazard157.psx.common.stuff.*;
 import com.hazard157.psx.proj3.cameras.*;
 
 /**
- * Поле {@link ICameraIdable#cameraId()}.
+ * Field {@link ICameraIdable#cameraId()}.
  *
  * @author hazard157
- * @param <T> - конкретный тип, реализующмй {@link ICameraIdable}
+ * @param <T> - {@link ICameraIdable} implementing type
  */
 public class PsxM5CameraIdFieldDef<T extends ICameraIdable>
     extends M5SingleLookupFieldDef<T, String> {
 
   /**
-   * Идентификатор поля {@link ICameraIdable#cameraId()}.
+   * ID of field {@link ICameraIdable#cameraId()}.
    */
   public static final String FID_CAMERA_ID = "CameraId"; //$NON-NLS-1$
 
   private static final String NO_CAM_ID_STRING = "---"; //$NON-NLS-1$
 
   /**
-   * Конструктор.
+   * Constructor.
    */
   public PsxM5CameraIdFieldDef() {
     super( FID_CAMERA_ID, StringM5Model.MODEL_ID );

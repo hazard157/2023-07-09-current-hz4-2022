@@ -147,6 +147,7 @@ public class PlepM5Model
         OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_ACTIONS_REFRESH.setValue( aContext.params(), AV_TRUE );
+        OPDEF_IS_ACTIONS_HIDE_PANES.setValue( aContext.params(), AV_TRUE );
         MultiPaneComponentModown<IPlep> mpc = new PlepMpc( aContext, model(), aItemsProvider, aLifecycleManager );
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }

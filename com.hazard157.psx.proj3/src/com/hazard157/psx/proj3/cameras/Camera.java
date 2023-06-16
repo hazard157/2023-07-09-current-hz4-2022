@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.txtproj.lib.sinent.*;
 
 /**
- * Камера, используемая для съемок.
+ * {@link ICamera} implementation.
  *
  * @author hazard157
  */
@@ -16,21 +16,18 @@ public class Camera
     implements ICamera {
 
   /**
-   * "Нулевой" объект для камер.
-   * <p>
-   * Поскольку у этого экземпляра идентификатор равен {@link IStridable#NONE_ID}, то и признак
-   * {@link IStridable#isNone()} = <code>true</code>.
+   * "NULL" object singleton with camera ID {@link IStridable#NONE_ID}. {@link IStridable#isNone()} = <code>true</code>.
    */
   public static final Camera NULL =
       new Camera( NONE_ID, new CameraInfo( EMPTY_STRING, EMPTY_STRING, false, ECameraKind.GENERIC ) );
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aId String - идентификатор камеры (ИД-путь)
-   * @param aInfo {@link CameraInfo} - описание камеры
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException aId не ИД-путь
+   * @param aId String - camera ID (an IDPath)
+   * @param aInfo {@link CameraInfo} - camera info
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException ID is not an IDpath
    */
   public Camera( String aId, CameraInfo aInfo ) {
     super( aId, aInfo );
@@ -51,11 +48,6 @@ public class Camera
     return info().description();
   }
 
-  /**
-   * Возвращает {@link CameraInfo#isStillAvailable()}.
-   *
-   * @return boolean - признак, что камера еще доступна для съемок
-   */
   @Override
   public boolean isCamAvailable() {
     return info().isStillAvailable();

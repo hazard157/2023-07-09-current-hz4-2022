@@ -51,7 +51,7 @@ public interface IPsxM5Constants {
   IAtomicValue FMT_DATE_YMD_AV     = avStr( FMT_DATE_YMD );
 
   /**
-   * Метка времени, по умолчанию отображаемое как дата ДД.ММ.ГГГГ.
+   * Timestamp displayed as DD.MM.YYYY.
    */
   IDataType DT_DATE_DMY = new DataType( EAtomicType.TIMESTAMP, OptionSetUtils.createOpSet( //
       TSID_FORMAT_STRING, FMT_DATE_DMY_AV, //
@@ -61,7 +61,7 @@ public interface IPsxM5Constants {
   ) );
 
   /**
-   * Метка времени, по умолчанию отображаемое как дата ГГГГ-ММ-ДД.
+   * Timestamp displayed as YYYY-MM-DD.
    */
   IDataType DT_DATE_YMD = new DataType( EAtomicType.TIMESTAMP, OptionSetUtils.createOpSet( //
       TSID_FORMAT_STRING, FMT_DATE_YMD_AV, //

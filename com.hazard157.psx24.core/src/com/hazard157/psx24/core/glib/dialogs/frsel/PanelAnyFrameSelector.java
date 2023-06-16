@@ -16,11 +16,9 @@ import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
-import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 
-import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.utils.animkind.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
@@ -117,7 +115,7 @@ public class PanelAnyFrameSelector
       framesViewer.setCriteria( FrameSelectionCriteria.NONE );
       return;
     }
-    Svin svin = new Svin( aEpisode.id(), IStridable.NONE_ID, new Secint( 0, aEpisode.duration() - 1 ) );
+    Svin svin = Svin.removeCamId( aEpisode.svin() );
     FrameSelectionCriteria fsc = new FrameSelectionCriteria( svin, EAnimationKind.BOTH, true );
     framesViewer.setCriteria( fsc );
   }

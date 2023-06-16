@@ -71,7 +71,7 @@ public class FulfilStageM5Model
         @Override
         protected void doInit() {
           setNameAndDescription( STR_FS_DESCRIPTION, STR_FS_DESCRIPTION_D );
-          params().setValueIfNull( OPID_VERTICAL_SPAN, avInt( 5 ) );
+          params().setValueIfNull( OPID_VERTICAL_SPAN, avInt( 8 ) );
           setFlags( M5FF_DETAIL );
         }
 

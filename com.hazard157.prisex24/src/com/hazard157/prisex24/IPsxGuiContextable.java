@@ -2,7 +2,9 @@ package com.hazard157.prisex24;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 
-import com.hazard157.common.e4.services.mps.*;
+import com.hazard157.lib.core.e4.services.mps.*;
+import com.hazard157.prisex24.cofs.*;
+import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
@@ -13,6 +15,18 @@ import com.hazard157.psx.proj3.episodes.*;
 @SuppressWarnings( "javadoc" )
 public interface IPsxGuiContextable
     extends ITsGuiContextable {
+
+  default IPsxCofs psxCofs() {
+    return tsContext().get( IPsxCofs.class );
+  }
+
+  default ICofsFrames cofsFrames() {
+    return tsContext().get( IPsxCofs.class ).cofsFrames();
+  }
+
+  default IPrisex24Service psxService() {
+    return tsContext().get( IPrisex24Service.class );
+  }
 
   default IUnitEpisodes unitEpisodes() {
     return tsContext().get( IUnitEpisodes.class );

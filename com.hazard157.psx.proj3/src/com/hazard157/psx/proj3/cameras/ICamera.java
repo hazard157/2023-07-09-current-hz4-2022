@@ -3,9 +3,7 @@ package com.hazard157.psx.proj3.cameras;
 import org.toxsoft.core.tslib.bricks.strid.*;
 
 /**
- * Базовый интерфейс камеры.
- * <p>
- * Реализует общие для люой реализации эпизода методы, что для psx3, что для psx5 или еще будущих реализации.
+ * The shooting camera.
  *
  * @author hazard157
  */
@@ -13,16 +11,16 @@ public interface ICamera
     extends IStridable {
 
   /**
-   * Возвращает признак, что камера еще доступна для съемок.
+   * Returns the indication that the camera is still available for filming.
    *
-   * @return boolean - признак, что камера еще доступна для съемок
+   * @return boolean - a sign that the camera is still available for filming
    */
   boolean isCamAvailable();
 
   /**
-   * Возвращает вид камеры.
+   * Returns the camera kind.
    *
-   * @return String - вид камеры
+   * @return {@link ECameraKind} - camera kind
    */
   ECameraKind kind();
 

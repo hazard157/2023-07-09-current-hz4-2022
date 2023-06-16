@@ -4,9 +4,9 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 /**
- * Информация о камере, используемой для съемки.
+ * Camera properties.
  * <p>
- * Это неизменяемый класс.
+ * This is an immutable class.
  *
  * @author hazard157
  */
@@ -18,13 +18,13 @@ public final class CameraInfo {
   private final ECameraKind kind;
 
   /**
-   * Конструктор со всеми инвариантами.
+   * Constructor.
    *
-   * @param aName String - название
-   * @param aDescription String - описание
-   * @param aIsAvailable boolean - признак, что камера еще доступна для съемок
-   * @param aKind {@link ECameraKind} - вид камеры
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aName String - ID
+   * @param aDescription String - name
+   * @param aIsAvailable boolean - availability flag
+   * @param aKind {@link ECameraKind} - the camera kind
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public CameraInfo( String aName, String aDescription, boolean aIsAvailable, ECameraKind aKind ) {
     TsNullArgumentRtException.checkNull( aName, aDescription, aKind );
@@ -39,43 +39,43 @@ public final class CameraInfo {
   //
 
   /**
-   * Возвращает название камеры.
+   * Returns the title of the camera.
    *
-   * @return String - название камеры
+   * @return String - camera name
    */
   public String name() {
     return name;
   }
 
   /**
-   * Возвращает описание камеры.
+   * Returns the description of the camera.
    *
-   * @return String - описание камеры
+   * @return String - camera description
    */
   public String description() {
     return description;
   }
 
   /**
-   * Возвращает признак, что камера еще доступна для съемок.
+   * Returns the indication that the camera is still available for filming.
    *
-   * @return boolean - признак, что камера еще доступна для съемок
+   * @return boolean - a sign that the camera is still available for filming
    */
   public boolean isStillAvailable() {
     return isAvailable;
   }
 
   /**
-   * Возвращает вид камеры.
+   * Returns the camera kind.
    *
-   * @return String - вид камеры
+   * @return String - camera kind
    */
   public ECameraKind kind() {
     return kind;
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация методов класса Object
+  // Object
   //
 
   @Override
@@ -88,8 +88,7 @@ public final class CameraInfo {
     if( aObj == this ) {
       return true;
     }
-    if( aObj instanceof CameraInfo ) {
-      CameraInfo that = (CameraInfo)aObj;
+    if( aObj instanceof CameraInfo that ) {
       return isAvailable == that.isAvailable && name.equals( that.name ) && description.equals( that.description )
           && this.kind.equals( that.kind );
     }

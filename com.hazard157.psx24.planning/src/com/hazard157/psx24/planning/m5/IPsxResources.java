@@ -23,19 +23,21 @@ interface IPsxResources {
   // String STR_N_TM_BY_PLACE = "Места";
   // String STR_D_TM_BY_PLACE = "Группировка по планируемым местам";
 
-  String STR_N_M5M_STIR         = "Движение";
-  String STR_D_M5M_STIR         = "Однотипные движения или смена позы, элемент плана";
-  String STR_N_STIR_SEQ_NO      = "№";
-  String STR_D_STIR_SEQ_NO      = "Порялковый номер в планируемом эпизоде";
-  String STR_N_STIR_START       = "Начало";
-  String STR_D_STIR_START       = "Время начала движения с момента начала эпизода";
-  String STR_N_STIR_NAME        = "Название";
-  String STR_D_STIR_NAME        = "Название движения";
-  String STR_N_STIR_DESCRIPTION = "Описание";
-  String STR_D_STIR_DESCRIPTION = "Описание движения";
-  String STR_N_STIR_DURATION    = "Время";
-  String STR_D_STIR_DURATION    = "Длительнось движения в секундах";
-  String FMT_MSG_STIR_SUMMARY   = "Длительность: %s, всего движений: %d";
+  String STR_N_M5M_STIR           = "Движение";
+  String STR_D_M5M_STIR           = "Однотипные движения или смена позы, элемент плана";
+  String STR_N_STIR_SEQ_NO        = "№";
+  String STR_D_STIR_SEQ_NO        = "Порялковый номер в планируемом эпизоде";
+  String STR_N_STIR_START         = "Начало";
+  String STR_D_STIR_START         = "Время начала движения с момента начала эпизода";
+  String STR_STIR_NUM_VISUMPLES   = "Nvis";
+  String STR_STIR_NUM_VISUMPLES_D = "Количество иллюстраций";
+  String STR_N_STIR_NAME          = "Название";
+  String STR_D_STIR_NAME          = "Название движения";
+  String STR_N_STIR_DESCRIPTION   = "Описание";
+  String STR_D_STIR_DESCRIPTION   = "Описание движения";
+  String STR_N_STIR_DURATION      = "Время";
+  String STR_D_STIR_DURATION      = "Длительнось движения в секундах";
+  String FMT_MSG_STIR_SUMMARY     = "Длительность: %s, всего движений: %d";
 
   String STR_N_M5M_TRACK       = "Трек";
   String STR_D_M5M_TRACK       = "Трек - часть песни";

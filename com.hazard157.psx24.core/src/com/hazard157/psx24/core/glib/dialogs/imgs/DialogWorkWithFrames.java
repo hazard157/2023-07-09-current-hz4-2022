@@ -5,7 +5,6 @@ import static org.toxsoft.core.tsgui.dialogs.datarec.ITsDialogConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
 import org.eclipse.e4.core.contexts.*;
-import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
@@ -113,27 +112,27 @@ public class DialogWorkWithFrames
    * @return {@link IFrame} - выбранный кадр или <code>null</code>
    * @throws TsNullArgumentRtException aAppContext = null
    */
-  public static IFrame select( ITsGuiContext aContext, IFrame aIniFrame, FrameSelectionCriteria aCriteria ) {
-    TsNullArgumentRtException.checkNulls( aContext, aIniFrame, aCriteria );
-    Shell shell = aContext.get( Shell.class );
-    // нельзя вызвать диалог, если в данных нет ни одного эпизода
-    IUnitEpisodes ue = aContext.get( IUnitEpisodes.class );
-    if( ue.items().isEmpty() ) {
-      TsDialogUtils.error( null, MSG_NO_EPSIDEOS_DEFINED );
-      return null;
-    }
-
-    IDialogPanelCreator<IFrame, IEclipseContext> creator = ( aParent, aOwnerDialog ) -> {
-      DialogWorkWithFrames dc = new DialogWorkWithFrames( aParent, aOwnerDialog, aCriteria );
-      Rectangle sb = shell.getBounds();
-      dc.setMinimumHeight( sb.height * 80 / 100 );
-      dc.setMaximumHeight( sb.height );
-      dc.setMinimumWidth( sb.width * 65 / 100 );
-      return dc;
-    };
-    ITsDialogInfo cdi = new TsDialogInfo( aContext, STR_C_DWWF, STR_T_DWWF );
-    TsDialog<IFrame, IEclipseContext> d = new TsDialog<>( cdi, aIniFrame, aContext.eclipseContext(), creator );
-    return d.execData();
-  }
+  // public static IFrame select( ITsGuiContext aContext, IFrame aIniFrame, FrameSelectionCriteria aCriteria ) {
+  // TsNullArgumentRtException.checkNulls( aContext, aIniFrame, aCriteria );
+  // Shell shell = aContext.get( Shell.class );
+  // // нельзя вызвать диалог, если в данных нет ни одного эпизода
+  // IUnitEpisodes ue = aContext.get( IUnitEpisodes.class );
+  // if( ue.items().isEmpty() ) {
+  // TsDialogUtils.error( null, MSG_NO_EPSIDEOS_DEFINED );
+  // return null;
+  // }
+  //
+  // IDialogPanelCreator<IFrame, IEclipseContext> creator = ( aParent, aOwnerDialog ) -> {
+  // DialogWorkWithFrames dc = new DialogWorkWithFrames( aParent, aOwnerDialog, aCriteria );
+  // Rectangle sb = shell.getBounds();
+  // dc.setMinimumHeight( sb.height * 80 / 100 );
+  // dc.setMaximumHeight( sb.height );
+  // dc.setMinimumWidth( sb.width * 65 / 100 );
+  // return dc;
+  // };
+  // ITsDialogInfo cdi = new TsDialogInfo( aContext, STR_C_DWWF, STR_T_DWWF );
+  // TsDialog<IFrame, IEclipseContext> d = new TsDialog<>( cdi, aIniFrame, aContext.eclipseContext(), creator );
+  // return d.execData();
+  // }
 
 }

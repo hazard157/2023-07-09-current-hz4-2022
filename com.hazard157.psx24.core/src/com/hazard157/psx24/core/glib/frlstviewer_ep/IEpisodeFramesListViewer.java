@@ -10,13 +10,13 @@ import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 
 /**
- * Просмотрщик списка кадров одного эпизода.
+ * Single episode frame list viewer.
  * <p>
- * Состоит из:
+ * Contains:
  * <ul>
- * <li>панели инструментов - сверху, позволяет менять параметры отображения и работать с кадрами;</li>
- * <li>таблицы кадров - слева, содержит список отобранных критерием {@link #getCriteria()} кадров;</li>
- * <li>изображение кадра - справа, содержит изображение выбранного в таблице кадра.</li>
+ * <li>toolbar - on top, allows you to change display options and work with frames;</li>
+ * <li>frame tables - on the left, contains a list of frames selected by the {@link #getCriteria()} criterion;</li>
+ * <li>frame preview - on the right, contains the image of the frame selected in the table.</li>
  * </ul>
  *
  * @author hazard157
@@ -37,17 +37,17 @@ public interface IEpisodeFramesListViewer
    * Изменяет список по новому критерию показа кадров.
    *
    * @param aCriteria {@link FrameSelectionCriteria} - новый криетрии
-   * @throws TsNullArgumentRtException аргумент = null
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   void setCriteria( FrameSelectionCriteria aCriteria );
 
-  /**
-   * Устанавливает выделенным кадр, ближайший за указанную секунду.
-   *
-   * @param aSec int - секунда эпизода
-   * @return {@link IFrame} - выдленный кадр или null если нечего выделять
-   */
-  IFrame positionOnSec( int aSec );
+  // /**
+  // * Устанавливает выделенным кадр, ближайший за указанную секунду.
+  // *
+  // * @param aSec int - секунда эпизода
+  // * @return {@link IFrame} - выдленный кадр или null если нечего выделять
+  // */
+  // IFrame positionOnSec( int aSec );
 
   /**
    * Возвращает кадры, которые отображены в списке.

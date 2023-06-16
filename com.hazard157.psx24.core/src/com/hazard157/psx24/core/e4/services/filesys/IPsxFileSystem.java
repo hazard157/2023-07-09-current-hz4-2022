@@ -123,14 +123,11 @@ public interface IPsxFileSystem {
 
   /**
    * Finds frame file and loads thumbnail image.
-   * <p>
-   * Для этого, сначала находит файл методом {@link IPsxFileSystem#findFrameFile(IFrame)}, а потом загружает миниатюру
-   * методом {@link ITsImageManager#findThumb(File, EThumbSize)}.
    *
-   * @param aFrame {@link IFrame} - запрошенный кадр
-   * @param aThumbSize {@link EThumbSize} - размер получаемого миниатюры
-   * @return {@link TsImage} - изображение миниатюры или null
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aFrame {@link IFrame} - the frame
+   * @param aThumbSize {@link EThumbSize} - asked size of the thumbnail
+   * @return {@link TsImage} - loaded thumbnail or <code>null</code>
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   TsImage findThumb( IFrame aFrame, EThumbSize aThumbSize );
 

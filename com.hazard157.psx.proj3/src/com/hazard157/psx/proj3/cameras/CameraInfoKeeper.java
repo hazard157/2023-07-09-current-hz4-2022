@@ -1,9 +1,7 @@
-package com.hazard157.psx.proj3.cameras.impl;
+package com.hazard157.psx.proj3.cameras;
 
 import org.toxsoft.core.tslib.bricks.keeper.*;
 import org.toxsoft.core.tslib.bricks.strio.*;
-
-import com.hazard157.psx.proj3.cameras.*;
 
 /**
  * Хранитель объектов типа {@link CameraInfo}.

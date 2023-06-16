@@ -30,37 +30,32 @@ public class FrameM5Model
     extends M5Model<IFrame> {
 
   /**
-   * Идентификатор модели.
-   */
-  public static final String MODEL_ID = MID_FRAME;
-
-  /**
-   * Идентификатор поля {@link #FRAME_NO}.
+   * ID of field {@link #FRAME_NO}.
    */
   public static final String FID_FRAME_NO = "FrameNo"; //$NON-NLS-1$
 
   /**
-   * Идентификатор поля {@link #IS_ANIMATED}.
+   * ID of field {@link #IS_ANIMATED}.
    */
   public static final String FID_IS_ANIMATED = "IsAnimated"; //$NON-NLS-1$
 
   /**
-   * Идентификатор поля {@link #FRAME_IMAGE}.
+   * ID of field {@link #FRAME_IMAGE}.
    */
   public static final String FID_FRAME_IMAGE = "FrameImage"; //$NON-NLS-1$
 
   /**
-   * Поле {@link IFrame#episodeId()}.
+   * Field {@link IFrame#episodeId()}.
    */
   public static final M5SingleLookupFieldDef<IFrame, String> EPISODE_ID = new PsxM5EpisodeIdFieldDef<>();
 
   /**
-   * Поле {@link IFrame#cameraId()}.
+   * Field {@link IFrame#cameraId()}.
    */
   public static final M5SingleLookupFieldDef<IFrame, String> CAM_ID = new PsxM5CameraIdFieldDef<>();
 
   /**
-   * Атрибут {@link IFrame#frameNo()}.
+   * Field {@link IFrame#frameNo()}.
    */
   public static final M5AttributeFieldDef<IFrame> FRAME_NO = new M5AttributeFieldDef<>( FID_FRAME_NO, DDEF_INTEGER ) {
 
@@ -83,7 +78,7 @@ public class FrameM5Model
   };
 
   /**
-   * Атрибут {@link IFrame#isAnimated()}.
+   * Field {@link IFrame#isAnimated()}.
    */
   public static final M5AttributeFieldDef<IFrame> IS_ANIMATED =
       new M5AttributeFieldDef<>( FID_IS_ANIMATED, DDEF_TS_BOOL ) {
@@ -102,7 +97,7 @@ public class FrameM5Model
       };
 
   /**
-   * Ссылка на сам {@link IFrame}.
+   * The {@link IFrame} itself.
    */
   public static final M5FieldDef<IFrame, IFrame> FRAME_IMAGE = new M5FieldDef<>( FID_FRAME_IMAGE, IFrame.class ) {
 
@@ -131,10 +126,10 @@ public class FrameM5Model
 
   };
 
-  static class LifecycleManager
+  static class FrameM5LifecycleManager
       extends M5LifecycleManager<IFrame, Object> {
 
-    public LifecycleManager( IM5Model<IFrame> aModel, Object aMaster ) {
+    public FrameM5LifecycleManager( IM5Model<IFrame> aModel, Object aMaster ) {
       super( aModel, true, true, true, false, aMaster );
     }
 
@@ -164,17 +159,17 @@ public class FrameM5Model
   }
 
   /**
-   * Конструктор.
+   * Constructor.
    */
   public FrameM5Model() {
-    super( MODEL_ID, IFrame.class );
+    super( MID_FRAME, IFrame.class );
     setNameAndDescription( STR_N_M5M_FRAME, STR_D_M5M_FRAME );
     addFieldDefs( EPISODE_ID, CAM_ID, IS_ANIMATED, FRAME_NO, FRAME_IMAGE );
   }
 
   @Override
   protected IM5LifecycleManager<IFrame> doCreateDefaultLifecycleManager() {
-    return new LifecycleManager( this, null );
+    return new FrameM5LifecycleManager( this, null );
   }
 
   @Override

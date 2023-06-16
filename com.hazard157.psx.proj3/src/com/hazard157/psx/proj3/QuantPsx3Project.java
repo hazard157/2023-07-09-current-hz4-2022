@@ -19,7 +19,6 @@ import org.toxsoft.core.txtproj.lib.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.cameras.*;
-import com.hazard157.psx.proj3.cameras.impl.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.impl.*;
 import com.hazard157.psx.proj3.gaze.*;

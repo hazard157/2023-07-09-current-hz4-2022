@@ -108,8 +108,10 @@ public class EpisodeFramesListViewer
   final IUnitEpisodes     ue;
   final IUnitSourceVideos usv;
   final IPrefBundle       prefBundle;
-  IM5TreeViewer<IFrame>   framesTree;
-  IPdwWidget              imageWidget;
+
+  TsToolbar             toolbar;
+  IM5TreeViewer<IFrame> framesTree;
+  IPdwWidget            imageWidget;
 
   /**
    * Управление режимами дерева: описание всех режимов, переключение между ними и таблицей.
@@ -129,8 +131,6 @@ public class EpisodeFramesListViewer
    * Используется в {@link #fillAvTable()} для локального отбора показываемых кадров.
    */
   String shownFramesCamId = null;
-
-  protected TsToolbar toolbar;
 
   /**
    * Создает панель.
@@ -170,7 +170,7 @@ public class EpisodeFramesListViewer
   }
 
   // ------------------------------------------------------------------------------------
-  // Внутренные методы
+  // implementation
   //
 
   void fillAvTable() {
@@ -346,8 +346,16 @@ public class EpisodeFramesListViewer
         setSelectedItem( frame );
         break;
       }
+      case ACTID_COLLAPSE_ALL: {
+        framesTree.console().collapseAll();
+        break;
+      }
+      case ACTID_EXPAND_ALL: {
+        framesTree.console().expandAll();
+        break;
+      }
       default:
-        throw new TsNotAllEnumsUsedRtException();
+        TsDialogUtils.warn( getShell(), aActionId );
     }
     updateActionsState();
   }
@@ -371,8 +379,8 @@ public class EpisodeFramesListViewer
     toolbar.setActionEnabled( AID_COPY_FRAME, isAlive && isSel );
     toolbar.setActionChecked( ACTID_VIEW_AS_LIST, !treeModeManager.isCurrentTreeMode() );
     toolbar.setActionChecked( ACTID_VIEW_AS_TREE, treeModeManager.isCurrentTreeMode() );
-    toolbar.setActionChecked( ACTID_GO_PREV, !framesTree.items().isEmpty() && sel != framesTree.items().first() );
-    toolbar.setActionChecked( ACTID_GO_PREV, !framesTree.items().isEmpty() && sel != framesTree.items().last() );
+    toolbar.setActionEnabled( ACTID_GO_PREV, !framesTree.items().isEmpty() && sel != framesTree.items().first() );
+    toolbar.setActionEnabled( ACTID_GO_NEXT, !framesTree.items().isEmpty() && sel != framesTree.items().last() );
     updateLocalCriteria();
   }
 
@@ -564,7 +572,7 @@ public class EpisodeFramesListViewer
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса ITsSelectionProvider
+  // ITsSelectionProvider
   //
 
   @Override
@@ -592,7 +600,7 @@ public class EpisodeFramesListViewer
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса ITsDoubleClickEventProducer
+  // ITsDoubleClickEventProducer
   //
 
   @Override
@@ -606,7 +614,7 @@ public class EpisodeFramesListViewer
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса ILazyControl
+  // ILazyControl
   //
 
   @Override
@@ -682,7 +690,7 @@ public class EpisodeFramesListViewer
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IEpisodeFramesListViewer
+  // IEpisodeFramesListViewer
   //
 
   @Override
@@ -690,52 +698,52 @@ public class EpisodeFramesListViewer
     return framesTree.items();
   }
 
-  @Override
-  public IFrame positionOnSec( int aSec ) {
-    IList<IFrame> frames = framesTree.items();
-    if( frames.isEmpty() ) {
-      framesTree.setSelectedItem( null );
-      return null;
-    }
-    if( frames.size() == 1 ) {
-      framesTree.setSelectedItem( frames.get( 0 ) );
-      return frames.get( 0 );
-    }
-    IFrame f1 = null, f2 = null;
-    for( IFrame f : frames ) {
-      int fSec = f.frameNo() / FPS;
-      if( fSec == aSec ) {
-        framesTree.setSelectedItem( f );
-        return f;
-      }
-      if( fSec < aSec ) {
-        f1 = f;
-      }
-      else {
-        f2 = f;
-        break;
-      }
-    }
-    if( f1 == null ) {
-      framesTree.setSelectedItem( f2 );
-      return f2;
-    }
-    if( f2 == null ) {
-      framesTree.setSelectedItem( f1 );
-      return f1;
-    }
-    int d1 = aSec - f1.frameNo() / FPS;
-    int d2 = f2.frameNo() / FPS - aSec;
-    if( d1 <= d2 ) {
-      framesTree.setSelectedItem( f1 );
-      return f1;
-    }
-    framesTree.setSelectedItem( f2 );
-    return f2;
-  }
+  // @Override
+  // public IFrame positionOnSec( int aSec ) {
+  // IList<IFrame> frames = framesTree.items();
+  // if( frames.isEmpty() ) {
+  // framesTree.setSelectedItem( null );
+  // return null;
+  // }
+  // if( frames.size() == 1 ) {
+  // framesTree.setSelectedItem( frames.get( 0 ) );
+  // return frames.get( 0 );
+  // }
+  // IFrame f1 = null, f2 = null;
+  // for( IFrame f : frames ) {
+  // int fSec = f.frameNo() / FPS;
+  // if( fSec == aSec ) {
+  // framesTree.setSelectedItem( f );
+  // return f;
+  // }
+  // if( fSec < aSec ) {
+  // f1 = f;
+  // }
+  // else {
+  // f2 = f;
+  // break;
+  // }
+  // }
+  // if( f1 == null ) {
+  // framesTree.setSelectedItem( f2 );
+  // return f2;
+  // }
+  // if( f2 == null ) {
+  // framesTree.setSelectedItem( f1 );
+  // return f1;
+  // }
+  // int d1 = aSec - f1.frameNo() / FPS;
+  // int d2 = f2.frameNo() / FPS - aSec;
+  // if( d1 <= d2 ) {
+  // framesTree.setSelectedItem( f1 );
+  // return f1;
+  // }
+  // framesTree.setSelectedItem( f2 );
+  // return f2;
+  // }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IFramesListViewer
+  // IEpisodeFramesListViewer
   //
 
   @Override

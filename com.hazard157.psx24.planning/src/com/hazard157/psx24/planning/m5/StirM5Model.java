@@ -8,6 +8,7 @@ import static com.hazard157.psx24.planning.m5.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
+import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
@@ -72,7 +73,7 @@ public class StirM5Model
   };
 
   /**
-   * Атрибут {@link IStir#duration()}.
+   * {@link IStir#duration()}.
    */
   public static final M5AttributeFieldDef<IStir> START = new M5AttributeFieldDef<>( FID_START, DT_VIDEO_POSITION ) {
 
@@ -107,7 +108,7 @@ public class StirM5Model
   };
 
   /**
-   * Атрибут {@link IStir#name()}.
+   * {@link IStir#name()}.
    */
   public static final IM5AttributeFieldDef<IStir> NAME = new M5AttributeFieldDef<>( FID_NAME, DDEF_STRING ) {
 
@@ -125,7 +126,7 @@ public class StirM5Model
   };
 
   /**
-   * Атрибут {@link IStir#duration()}.
+   * {@link IStir#duration()}.
    */
   public static final M5AttributeFieldDef<IStir> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -150,7 +151,7 @@ public class StirM5Model
       };
 
   /**
-   * Атрибут {@link IStir#description()}.
+   * {@link IStir#description()}.
    */
   public static final IM5AttributeFieldDef<IStir> DESCRIPTION =
       new M5AttributeFieldDef<>( FID_DESCRIPTION, DDEF_DESCRIPTION ) {
@@ -171,7 +172,7 @@ public class StirM5Model
       };
 
   /**
-   * Атрибут {@link IStir#thumbFilePath()}
+   * {@link IStir#thumbFilePath()}
    */
   public static final IM5AttributeFieldDef<IStir> THUMB_FILE_PATH =
       new M5AttributeFieldDef<>( FID_THUMB_FILE_PATH, ValedAvValobjFileImage.DT_IMAGEFILE_NAME ) {
@@ -212,16 +213,38 @@ public class StirM5Model
       };
 
   /**
-   * Поле {@link IStir#visumples()}.
+   * {@link IStir#visumples()}.
    */
-  public static VisumpleM5FieldDef<IStir> VISUMPLES = new VisumpleM5FieldDef<>();
+  public final VisumpleM5FieldDef<IStir> VISUMPLES = new VisumpleM5FieldDef<>();
+
+  /**
+   * ID of field {@link #NUM_VISUMPLES}.
+   */
+  public static final String FID_NUM_VISUMPLES = "numVisumples"; //$NON-NLS-1$
+
+  /**
+   * Read-only field: numbed of VIUMPLEs in {@link IStir#visumples()}.
+   */
+  public final IM5AttributeFieldDef<IStir> NUM_VISUMPLES = new M5AttributeFieldDef<>( FID_NUM_VISUMPLES, INTEGER, //
+      TSID_NAME, STR_STIR_NUM_VISUMPLES, //
+      TSID_DESCRIPTION, STR_STIR_NUM_VISUMPLES_D, //
+      M5_OPDEF_FLAGS, avInt( M5FF_READ_ONLY | M5FF_COLUMN ), //
+      TSID_DEFAULT_VALUE, AV_0 //
+  ) {
+
+    protected IAtomicValue doGetFieldValue( IStir aEntity ) {
+      return avInt( aEntity.visumples().size() );
+    }
+
+  };
 
   /**
    * Конструктор.
    */
   public StirM5Model() {
     super( MODEL_ID, IStir.class );
-    addFieldDefs( SEQ_NO, START, DURATION, NAME, DESCRIPTION, THUMB_FILE_PATH, VISUMPLES, INSERTION_INDEX );
+    addFieldDefs( SEQ_NO, START, DURATION, NUM_VISUMPLES, NAME, DESCRIPTION, THUMB_FILE_PATH, VISUMPLES,
+        INSERTION_INDEX );
     setPanelCreator( new M5DefaultPanelCreator<IStir>() {
 
       @Override
