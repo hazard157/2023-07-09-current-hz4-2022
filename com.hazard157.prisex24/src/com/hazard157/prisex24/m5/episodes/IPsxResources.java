@@ -5,52 +5,51 @@ package com.hazard157.prisex24.m5.episodes;
  *
  * @author hazard157
  */
-@SuppressWarnings( "nls" )
 interface IPsxResources {
 
   /**
    * {@link EpisodeM5Model}
    */
-  String STR_N_M5M_EPISODE        = "Эпизод";
-  String STR_D_M5M_EPISODE        = "Эпизод";
-  String STR_N_EP_ID              = "Идентификатор";
-  String STR_D_EP_ID              = "Идентификатор эпизода";
-  String STR_N_EP_NAME            = "Название";
-  String STR_D_EP_NAME            = "Название эпизода";
-  String STR_N_EP_DESCRIPTION     = "Описание";
-  String STR_D_EP_DESCRIPTION     = "Описание эпизода";
-  String STR_N_EP_WHEN            = "Дата";
-  String STR_D_EP_WHEN            = "Дата и время начала эпизода";
-  String STR_N_EP_PLACE           = "Место";
-  String STR_D_EP_PLACE           = "Место, где случился эпизод";
-  String STR_N_EP_DURATION        = "Длительность";
-  String STR_D_EP_DURATION        = "Длительность эпизода в секундах";
-  String STR_N_EP_ACTION_INTERVAL = "Акт";
-  String STR_D_EP_ACTION_INTERVAL = "Интервал акта в эпизоде";
-  String STR_N_EP_DEF_TRAILER_ID  = "Трейлер";
-  String STR_D_EP_DEF_TRAILER_ID  = "Идентификатор трейлера по умолчанию";
-  String STR_N_EP_NOTES           = "Надо делать";
-  String STR_D_EP_NOTES           = "Какие работы по эпизоду еще не выполнены";
-  String STR_N_EP_FRAME           = "Кадр";
-  String STR_D_EP_FRAME           = "Иллюстрирующий анимированный кадр эпизода";
-  String STR_N_TMI_BY_PLACE       = "Места";
-  String STR_D_TMI_BY_PLACE       = "Группировка по местам";
-  String STR_N_TMI_BY_MONTH       = "Месяцы";
-  String STR_D_TMI_BY_MONTH       = "Группировка по месяцам года";
+  String STR_M5M_EPISODE          = Messages.getString( "STR_M5M_EPISODE" );          //$NON-NLS-1$
+  String STR_M5M_EPISODE_D        = Messages.getString( "STR_M5M_EPISODE_D" );        //$NON-NLS-1$
+  String STR_EP_ID                = Messages.getString( "STR_EP_ID" );                //$NON-NLS-1$
+  String STR_EP_ID_D              = Messages.getString( "STR_EP_ID_D" );              //$NON-NLS-1$
+  String STR_EP_NAME              = Messages.getString( "STR_EP_NAME" );              //$NON-NLS-1$
+  String STR_EP_NAME_D            = Messages.getString( "STR_EP_NAME_D" );            //$NON-NLS-1$
+  String STR_EP_DESCRIPTION       = Messages.getString( "STR_EP_DESCRIPTION" );       //$NON-NLS-1$
+  String STR_EP_DESCRIPTION_D     = Messages.getString( "STR_EP_DESCRIPTION_D" );     //$NON-NLS-1$
+  String STR_EP_WHEN              = Messages.getString( "STR_EP_WHEN" );              //$NON-NLS-1$
+  String STR_EP_WHEN_D            = Messages.getString( "STR_EP_WHEN_D" );            //$NON-NLS-1$
+  String STR_EP_PLACE             = Messages.getString( "STR_EP_PLACE" );             //$NON-NLS-1$
+  String STR_EP_PLACE_D           = Messages.getString( "STR_EP_PLACE_D" );           //$NON-NLS-1$
+  String STR_EP_DURATION          = Messages.getString( "STR_EP_DURATION" );          //$NON-NLS-1$
+  String STR_EP_DURATION_D        = Messages.getString( "STR_EP_DURATION_D" );        //$NON-NLS-1$
+  String STR_EP_ACTION_INTERVAL   = Messages.getString( "STR_EP_ACTION_INTERVAL" );   //$NON-NLS-1$
+  String STR_EP_ACTION_INTERVAL_D = Messages.getString( "STR_EP_ACTION_INTERVAL_D" ); //$NON-NLS-1$
+  String STR_EP_DEF_TRAILER_ID    = Messages.getString( "STR_EP_DEF_TRAILER_ID" );    //$NON-NLS-1$
+  String STR_EP_DEF_TRAILER_ID_D  = Messages.getString( "STR_EP_DEF_TRAILER_ID_D" );  //$NON-NLS-1$
+  String STR_EP_NOTES             = Messages.getString( "STR_EP_NOTES" );             //$NON-NLS-1$
+  String STR_EP_NOTES_D           = Messages.getString( "STR_EP_NOTES_D" );           //$NON-NLS-1$
+  String STR_EP_FRAME             = Messages.getString( "STR_EP_FRAME" );             //$NON-NLS-1$
+  String STR_EP_FRAME_D           = Messages.getString( "STR_EP_FRAME_D" );           //$NON-NLS-1$
+  String STR_TMI_BY_PLACE         = Messages.getString( "STR_TMI_BY_PLACE" );         //$NON-NLS-1$
+  String STR_TMI_BY_PLACE_D       = Messages.getString( "STR_TMI_BY_PLACE_D" );       //$NON-NLS-1$
+  String STR_TMI_BY_MONTH         = Messages.getString( "STR_TMI_BY_MONTH" );         //$NON-NLS-1$
+  String STR_TMI_BY_MONTH_D       = Messages.getString( "STR_TMI_BY_MONTH_D" );       //$NON-NLS-1$
 
   /**
    * {@link SceneM5Model}
    */
-  String STR_N_SI_SEQ_NO   = "№";
-  String STR_D_SI_SEQ_NO   = "Номер сцены";
-  String STR_N_SI_NAME     = "Название";
-  String STR_D_SI_NAME     = "Название сцены";
-  String STR_N_SI_INTERVAL = "Интервал";
-  String STR_D_SI_INTERVAL = "Интервал сцены";
+  String STR_SI_SEQ_NO     = Messages.getString( "STR_SI_SEQ_NO" );     //$NON-NLS-1$
+  String STR_SI_SEQ_NO_D   = Messages.getString( "STR_SI_SEQ_NO_D" );   //$NON-NLS-1$
+  String STR_SI_NAME       = Messages.getString( "STR_SI_NAME" );       //$NON-NLS-1$
+  String STR_SI_NAME_D     = Messages.getString( "STR_SI_NAME_D" );     //$NON-NLS-1$
+  String STR_SI_INTERVAL   = Messages.getString( "STR_SI_INTERVAL" );   //$NON-NLS-1$
+  String STR_SI_INTERVAL_D = Messages.getString( "STR_SI_INTERVAL_D" ); //$NON-NLS-1$
 
   /**
    * {@link TreeMakerEpisodeByPlace}
    */
-  String STR_OTHER_PLACES = "Другие места";
+  String STR_OTHER_PLACES = Messages.getString( "STR_APP_INFO" ); //$NON-NLS-1$
 
 }

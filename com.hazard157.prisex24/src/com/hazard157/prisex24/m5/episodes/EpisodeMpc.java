@@ -31,10 +31,10 @@ class EpisodeMpc
       IM5LifecycleManager<IEpisode> aLifecycleManager ) {
     super( prepareContext( aContext ), aModel, aItemsProvider, aLifecycleManager );
     TreeModeInfo<IEpisode> tmi1 = new TreeModeInfo<>( "ByPlace", //$NON-NLS-1$
-        STR_N_TMI_BY_PLACE, STR_D_TMI_BY_PLACE, null, new TreeMakerEpisodeByPlace() );
+        STR_TMI_BY_PLACE, STR_TMI_BY_PLACE_D, null, new TreeMakerEpisodeByPlace() );
     treeModeManager().addTreeMode( tmi1 );
     TreeModeInfo<IEpisode> tmi2 = new TreeModeInfo<>( "ByMonth", //$NON-NLS-1$
-        STR_N_TMI_BY_MONTH, STR_D_TMI_BY_MONTH, null, new TreeMakerEpisodeByMonth() );
+        STR_TMI_BY_MONTH, STR_TMI_BY_MONTH_D, null, new TreeMakerEpisodeByMonth() );
     treeModeManager().addTreeMode( tmi2 );
   }
 

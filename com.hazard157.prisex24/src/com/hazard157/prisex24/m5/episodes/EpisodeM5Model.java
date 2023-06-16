@@ -66,7 +66,7 @@ public class EpisodeM5Model
 
     @Override
     protected void doInit() {
-      setNameAndDescription( STR_N_EP_WHEN, STR_D_EP_WHEN );
+      setNameAndDescription( STR_EP_WHEN, STR_EP_WHEN_D );
       setFlags( M5FF_COLUMN );
     }
 
@@ -120,7 +120,7 @@ public class EpisodeM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_EP_DURATION, STR_D_EP_DURATION );
+          setNameAndDescription( STR_EP_DURATION, STR_EP_DURATION_D );
           setFlags( M5FF_COLUMN );
           setFlags( M5FF_COLUMN );
           setValedEditor( ValedAvIntHhmmss.FACTORY_NAME );
@@ -162,7 +162,7 @@ public class EpisodeM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_EP_ACTION_INTERVAL, STR_D_EP_ACTION_INTERVAL );
+          setNameAndDescription( STR_EP_ACTION_INTERVAL, STR_EP_ACTION_INTERVAL_D );
           setValedEditor( ValedSecintFactory.FACTORY_NAME );
         }
 
@@ -186,7 +186,7 @@ public class EpisodeM5Model
     @Override
     protected void doInit() {
       setFlags( M5FF_DETAIL );
-      setNameAndDescription( STR_N_EP_PLACE, STR_D_EP_PLACE );
+      setNameAndDescription( STR_EP_PLACE, STR_EP_PLACE_D );
     }
 
     @Override
@@ -203,7 +203,7 @@ public class EpisodeM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_EP_DEF_TRAILER_ID, STR_D_EP_DEF_TRAILER_ID );
+          setNameAndDescription( STR_EP_DEF_TRAILER_ID, STR_EP_DEF_TRAILER_ID_D );
           setValedEditor( ValedComboSelector.FACTORY_NAME );
         }
 
@@ -220,7 +220,7 @@ public class EpisodeM5Model
 
     @Override
     protected void doInit() {
-      setNameAndDescription( STR_N_EP_NOTES, STR_D_EP_NOTES );
+      setNameAndDescription( STR_EP_NOTES, STR_EP_NOTES_D );
       params().setValueIfNull( ValedStringText.OPID_IS_MULTI_LINE, AV_TRUE );
     }
 
