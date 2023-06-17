@@ -23,7 +23,7 @@ import com.hazard157.psx24.core.*;
  * @author hazard157
  */
 class TreeMakerByEpSecint
-    implements ITsTreeMaker<Svin>, IPsxStdReferences {
+    implements ITsTreeMaker<Svin>, IPsxGuiContextable {
 
   static final String MODE_ID = "ByEpSecint"; //$NON-NLS-1$
 

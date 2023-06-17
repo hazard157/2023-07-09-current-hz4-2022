@@ -24,7 +24,7 @@ import com.hazard157.psx24.core.*;
  * @author hazard157
  */
 class TestGifFileCreator
-    implements IRunnableWithProgress, IPsxStdReferences {
+    implements IRunnableWithProgress, IPsxGuiContextable {
 
   /**
    * In range (1..FPS), used to optimize: each Nth frame will be used to create GIF

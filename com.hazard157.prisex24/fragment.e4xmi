@@ -8,12 +8,17 @@
     <elements xsi:type="application:Addon" xmi:id="_lW7SYAioEe6RgN0UorbIgw" elementId="com.hazard157.prisex24.addon.0" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.addons.AddonPrisex24Core"/>
     <elements xsi:type="application:Addon" xmi:id="_mmvUcAioEe6RgN0UorbIgw" elementId="com.hazard157.prisex24.addon.1" contributionURI="bundleclass://com.hazard157.common/com.hazard157.common.e4.addons.AddonMainWindowDebugSize"/>
     <elements xsi:type="application:Addon" xmi:id="_fG-BkAqoEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.addon.2" contributionURI="bundleclass://com.hazard157.common/com.hazard157.common.e4.addons.AddonInitialPerspectiveChooser"/>
+    <elements xsi:type="application:Addon" xmi:id="_t7Ba0A0QEe6MCt0KJQBWiw" elementId="com.hazard157.prisex24.addon.3" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.addons.AddonPrisex24Behaviour"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_19JvIAqoEe6kmvIYOJ1hbQ" featurename="children" parentElementId="org.toxsoft.mws.perspectivestack.main">
     <elements xsi:type="advanced:Perspective" xmi:id="_e3nAsAw5Ee6bKYfEj3FUUA" elementId="com.hazard157.prisex24.persp.episodes" label="%Persp_Episodes" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incidents-list-episode.png" tooltip="%Persp_Episodes_D">
       <children xsi:type="basic:PartSashContainer" xmi:id="_4Q6yUAw5Ee6bKYfEj3FUUA" elementId="com.hazard157.prisex24.partsashcontainer.0" horizontal="true">
-        <children xsi:type="basic:PartStack" xmi:id="_B6AMcAw6Ee6bKYfEj3FUUA" elementId="com.hazard157.prisex24.partstack.0">
+        <children xsi:type="basic:PartStack" xmi:id="_B6AMcAw6Ee6bKYfEj3FUUA" elementId="com.hazard157.prisex24.partstack.0" containerData="1500">
           <children xsi:type="basic:Part" xmi:id="_DsZ-MAw6Ee6bKYfEj3FUUA" elementId="com.hazard157.prisex24.part.uipart_episodes_list" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.episodes.UipartEpisodesList" label="%Uipart_Episodes_List" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incidents-list-episode.png" tooltip="%Uipart_Episodes_List_D"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_fBuI4AyPEe61qMlfL3-t4w" elementId="com.hazard157.prisex24.partstack.1" containerData="2500"/>
+        <children xsi:type="basic:PartStack" xmi:id="_fXLbgAyPEe61qMlfL3-t4w" elementId="com.hazard157.prisex24.partstack.2" containerData="6000">
+          <children xsi:type="advanced:Placeholder" xmi:id="_a9lTsA0AEe6MCt0KJQBWiw" elementId="com.hazard157.prisex24.placeholder.0" ref="_2Coq4Az_Ee6MCt0KJQBWiw"/>
         </children>
       </children>
     </elements>
@@ -39,5 +44,8 @@
     <elements xsi:type="menu:HandledToolItem" xmi:id="_e7h7sAqqEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.handledtoolitem.persp_refbooks" label="%Persp_Refbooks" iconURI="platform:/plugin/com.hazard157.common/icons/is24x24/refbooks-list.png" tooltip="%Persp_Refbooks_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_kUtm4AqqEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.parameter.1" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.refbooks"/>
     </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yU7DAAz_Ee6MCt0KJQBWiw" featurename="sharedElements" parentElementId="org.toxsoft.mws.window.main">
+    <elements xsi:type="basic:Part" xmi:id="_2Coq4Az_Ee6MCt0KJQBWiw" elementId="com.hazard157.prisex24.part.uipart_svins_frames" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.UipartSharedSvinsFramesViewer" label="%Uipart_Svins_Frames" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/pornicon.png" tooltip="%Uipart_Svins_Frames_D"/>
   </fragments>
 </fragment:ModelFragments>

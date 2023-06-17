@@ -27,9 +27,9 @@ public interface ISvinsFramesViewer
   /**
    * Returns the customizable frames selection strategy from the SVINs.
    *
-   * @return {@link ISvinFramesSelectionStrategy} - SVIN to frames strategy
+   * @return {@link ISvinFramesParams} - SVIN to frames strategy
    */
-  ISvinFramesSelectionStrategy svinStrategy();
+  ISvinFramesParams svinFramesParams();
 
   /**
    * Determines what labels are under frames.

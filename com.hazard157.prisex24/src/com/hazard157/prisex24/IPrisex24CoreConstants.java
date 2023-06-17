@@ -1,12 +1,23 @@
 package com.hazard157.prisex24;
 
 import static com.hazard157.prisex24.IPsxResources.*;
+import static org.toxsoft.core.tslib.av.EAtomicType.*;
+import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
+import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import java.time.*;
 
 import org.eclipse.e4.core.contexts.*;
+import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
+import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.mws.appinf.*;
+import org.toxsoft.core.tslib.av.impl.*;
+import org.toxsoft.core.tslib.av.metainfo.*;
+import org.toxsoft.core.tslib.av.opset.impl.*;
+import org.toxsoft.core.tslib.bricks.apprefs.*;
+import org.toxsoft.core.tslib.bricks.strid.coll.*;
+import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 import org.toxsoft.core.tslib.utils.*;
 
 /**
@@ -56,6 +67,64 @@ public interface IPrisex24CoreConstants {
   String ICONID_FRAMES_PER_SVIN_FORCE_ONE   = "frames_per_svin_force-one";   //$NON-NLS-1$
   String ICONID_FRAMES_PER_SVIN_ONE_NO_MORE = "frames_per_svin_one-no-more"; //$NON-NLS-1$
   String ICONID_FRAMES_PER_SVIN_SELECTED    = "frames_per_svin_selected";    //$NON-NLS-1$
+  String ICONID_GIF_CREATE                  = "gif-create";                  //$NON-NLS-1$
+  String ICONID_GIF_INFO                    = "gif-info";                    //$NON-NLS-1$
+  String ICONID_GIF_RECREATE_ALL            = "gif-recreate-all";            //$NON-NLS-1$
+  String ICONID_GIF_REMOVE                  = "gif-remove";                  //$NON-NLS-1$
+  String ICONID_GIF_TEST                    = "gif-test";                    //$NON-NLS-1$
+  String ICONID_WORK_WITH_FRAMES            = "work-with-frames";            //$NON-NLS-1$
+
+  // ------------------------------------------------------------------------------------
+  // Actions
+
+  String ACTID_GIF_CREATE       = PSX_ACT_ID + ".gif_create";       //$NON-NLS-1$
+  String ACTID_GIF_INFO         = PSX_ACT_ID + ".gif_info";         //$NON-NLS-1$
+  String ACTID_GIF_RECREATE_ALL = PSX_ACT_ID + ".gif_recreate_all"; //$NON-NLS-1$
+  String ACTID_GIF_REMOVE       = PSX_ACT_ID + ".gif_remove";       //$NON-NLS-1$
+  String ACTID_GIF_TEST         = PSX_ACT_ID + ".gif_test";         //$NON-NLS-1$
+  String ACTID_WORK_WITH_FRAMES = PSX_ACT_ID + ".work_with_frames"; //$NON-NLS-1$
+
+  ITsActionDef ACDEF_GIF_CREATE = TsActionDef.ofPush2( ACTID_GIF_CREATE, //
+      STR_GIF_CREATE, STR_GIF_CREATE_D, ICONID_GIF_CREATE );
+
+  ITsActionDef ACDEF_GIF_CREATE_MENU = TsActionDef.ofMenu2( ACTID_GIF_CREATE, //
+      STR_GIF_CREATE, STR_GIF_CREATE_D, ICONID_GIF_CREATE );
+
+  ITsActionDef ACDEF_GIF_INFO = TsActionDef.ofPush2( ACTID_GIF_INFO, //
+      STR_GIF_INFO, STR_GIF_INFO_D, ICONID_GIF_INFO );
+
+  ITsActionDef ACDEF_GIF_RECREATE_ALL = TsActionDef.ofPush2( ACTID_GIF_RECREATE_ALL, //
+      STR_GIF_RECREATE_ALL, STR_GIF_RECREATE_ALL_D, ICONID_GIF_RECREATE_ALL );
+
+  ITsActionDef ACDEF_GIF_REMOVE = TsActionDef.ofPush2( ACTID_GIF_REMOVE, //
+      STR_GIF_REMOVE, STR_GIF_REMOVE_D, ICONID_GIF_REMOVE );
+
+  ITsActionDef ACDEF_GIF_TEST = TsActionDef.ofPush2( ACTID_GIF_TEST, //
+      STR_GIF_TEST, STR_GIF_TEST_D, ICONID_GIF_TEST );
+
+  ITsActionDef ACDEF_WORK_WITH_FRAMES = TsActionDef.ofPush2( ACTID_WORK_WITH_FRAMES, //
+      STR_WORK_WITH_FRAMES, STR_WORK_WITH_FRAMES_D, ICONID_WORK_WITH_FRAMES );
+
+  // ------------------------------------------------------------------------------------
+  // Application preferences
+
+  /**
+   * Preferences bundle specific for HZ library.
+   */
+  String PBID_PSX24_COMMON = PSX_FULL_ID + ".Common"; //$NON-NLS-1$
+
+  String APREFID_THUMB_SIZE_IN_MENUS = "ThumbSizeInMenus"; //$NON-NLS-1$
+
+  IDataDef APPREF_THUMB_SIZE_IN_MENUS = DataDef.create( APREFID_THUMB_SIZE_IN_MENUS, VALOBJ, //
+      TSID_NAME, STR_THUMB_SIZE_IN_MENUS, //
+      TSID_DESCRIPTION, STR_THUMB_SIZE_IN_MENUS_D, //
+      TSID_KEEPER_ID, EThumbSize.KEEPER_ID, //
+      TSID_DEFAULT_VALUE, avValobj( EThumbSize.SZ180 ) //
+  );
+
+  IStridablesList<IDataDef> ALL_APPREFS = new StridablesList<>( //
+      APPREF_THUMB_SIZE_IN_MENUS //
+  );
 
   /**
    * Constants registration.
@@ -66,6 +135,15 @@ public interface IPrisex24CoreConstants {
     ITsIconManager iconManager = aWinContext.get( ITsIconManager.class );
     iconManager.registerStdIconByIds( Activator.PLUGIN_ID, IPrisex24CoreConstants.class, PREFIX_OF_ICON_FIELD_NAME );
     //
+    IAppPreferences aprefs = aWinContext.get( IAppPreferences.class );
+    IPrefBundle pb = aprefs.defineBundle( PBID_PSX24_COMMON, OptionSetUtils.createOpSet( //
+        TSID_NAME, STR_PB_PSX24_COMMON, //
+        TSID_DESCRIPTION, STR_PB_PSX24_COMMON_D, //
+        TSID_ICON_ID, ICONID_APP_ICON //
+    ) );
+    for( IDataDef dd : ALL_APPREFS ) {
+      pb.defineOption( dd );
+    }
   }
 
 }

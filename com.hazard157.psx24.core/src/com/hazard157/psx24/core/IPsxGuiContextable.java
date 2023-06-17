@@ -23,7 +23,7 @@ import com.hazard157.psx24.core.e4.services.selsvins.*;
  * @author hazard157
  */
 @SuppressWarnings( "javadoc" )
-public interface IPsxStdReferences
+public interface IPsxGuiContextable
     extends ITsGuiContextable {
 
   default IPsxFileSystem psxFileSystem() {

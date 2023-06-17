@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.glib.frep;
+package com.hazard157.prisex24.glib.epframes;
 
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.stdevents.*;

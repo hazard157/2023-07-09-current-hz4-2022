@@ -17,10 +17,9 @@ import com.hazard157.psx.common.stuff.frame.*;
  * <li>second-aligned JPGs - are files names HH-MM-SS_<b>00</b>.jpg;</li>
  * <li>all frame JPGs - are files names HH-MM-SS_<b>FF</b>.jpg, where FF have value 00..24.</li>
  * </ol>
- * COFS contains only frames of kind 1 and 2. Kind 3 (all frames) contains too many files and are outside of COFS. So
- * this interface works only with GIFs and second aligned JPGs.
- * <p>
- * Note: when application asks for frames of kind 3 the warning is logged.
+ * COFS contains only frames of kind 1 and 2. Kind 3 (all frames) contains too many files and are outside of COFS.
+ * However this interface <b><i>partially</i></b> works only with GIFs and second aligned JPGs. Each method includes
+ * notes on whether the method supports non-second-aligned frames.
  *
  * @author hazard157
  */
@@ -30,6 +29,8 @@ public interface ICofsFrames {
    * Returns frame file if exists.
    * <p>
    * For {@link IFrame#NONE} returns special file with unknown episode meaning.
+   * <p>
+   * Supports non-seconds aligned frames they will be found by this method.
    *
    * @param aFrame {@link IFrame} - the frame
    * @return {@link File} - existing frame image file or <code>null</code>
@@ -39,6 +40,8 @@ public interface ICofsFrames {
 
   /**
    * Returns all frames with images files.
+   * <p>
+   * Does not supports non-seconds aligned frames, they are not included in the returned set.
    *
    * @param aEpisodeId String - the requested episode ID
    * @return {@link IList}&lt;{@link IFrame}&gt; - the list of all frames of the episode
@@ -46,7 +49,5 @@ public interface ICofsFrames {
    * @throws TsIllegalArgumentRtException invalid ID of episode
    */
   IFramesSet listEpisodeFrames( String aEpisodeId );
-
-  // TODO add non-sec-alignes frames management
 
 }

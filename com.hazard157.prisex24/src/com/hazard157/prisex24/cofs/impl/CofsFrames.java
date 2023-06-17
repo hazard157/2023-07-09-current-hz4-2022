@@ -27,6 +27,9 @@ import com.hazard157.psx.proj3.incident.*;
 class CofsFrames
     implements ICofsFrames {
 
+  // FIXME move to settings? argument of this service?
+  private static final File NONSECS_ROOT = new File( "/home/.psx/episodes/frames-nonsec/" ); //$NON-NLS-1$
+
   /**
    * Episodes resources root directory or <code>null</code> is specified one is not accessible.
    */
@@ -116,6 +119,53 @@ class CofsFrames
     cachedEpFrames.put( epId, new FramesSet( llCacheAllFrames ) );
   }
 
+  private File internalFindSecAlignedStillFrame( IFrame aFrame ) {
+    LocalDate ld = EPsxIncidentKind.EPISODE.id2date( aFrame.episodeId() );
+    File epDir = new File( epsRoot, ld.toString() );
+    File epFramesDir = new File( epDir, SUBDIR_EP_STILL_IMAGES );
+    File epCamDir = new File( epFramesDir, aFrame.cameraId() );
+    if( !TsFileUtils.isDirReadable( epCamDir ) ) {
+      return null;
+    }
+    String bareName = PsxCofsUtils.bareSourceFrameFileName( aFrame.frameNo() );
+    File frameFile = new File( epCamDir, bareName + '.' + STILL_IMAGE_FILE_EXT );
+    if( frameFile.exists() ) {
+      return frameFile;
+    }
+    return null;
+  }
+
+  private File internalFindGifFrame( IFrame aFrame ) {
+    LocalDate ld = EPsxIncidentKind.EPISODE.id2date( aFrame.episodeId() );
+    File epDir = new File( epsRoot, ld.toString() );
+    File epFramesDir = new File( epDir, SUBDIR_EP_ANIM_IMAGES );
+    File epCamDir = new File( epFramesDir, aFrame.cameraId() );
+    if( !TsFileUtils.isDirReadable( epCamDir ) ) {
+      return null;
+    }
+    String bareName = PsxCofsUtils.bareSourceFrameFileName( aFrame.frameNo() );
+    File frameFile = new File( epCamDir, bareName + '.' + ANIM_IMAGE_FILE_EXT );
+    if( frameFile.exists() ) {
+      return frameFile;
+    }
+    return null;
+  }
+
+  private static File internalFindNonSecFrame( IFrame aFrame ) {
+    LocalDate ld = EPsxIncidentKind.EPISODE.id2date( aFrame.episodeId() );
+    File epFramesDir = new File( NONSECS_ROOT, ld.toString() );
+    File epCamDir = new File( epFramesDir, aFrame.cameraId() );
+    if( !TsFileUtils.isDirReadable( epCamDir ) ) {
+      return null;
+    }
+    String bareName = PsxCofsUtils.bareSourceFrameFileName( aFrame.frameNo() );
+    File frameFile = new File( epCamDir, bareName + '.' + STILL_IMAGE_FILE_EXT );
+    if( frameFile.exists() ) {
+      return frameFile;
+    }
+    return null;
+  }
+
   // ------------------------------------------------------------------------------------
   // ICofsFrames
   //
@@ -129,26 +179,13 @@ class CofsFrames
     if( aFrame.frameNo() < 0 || !aFrame.isDefined() ) {
       return null;
     }
-    LocalDate ld = EPsxIncidentKind.EPISODE.id2date( aFrame.episodeId() );
-    File epDir = new File( epsRoot, ld.toString() );
-    File epFramesDir;
     if( aFrame.isAnimated() ) {
-      epFramesDir = new File( epDir, SUBDIR_EP_ANIM_IMAGES );
+      return internalFindGifFrame( aFrame );
     }
-    else {
-      epFramesDir = new File( epDir, SUBDIR_EP_STILL_IMAGES );
+    if( aFrame.isSecAligned() ) {
+      return internalFindSecAlignedStillFrame( aFrame );
     }
-    File epCamDir = new File( epFramesDir, aFrame.cameraId() );
-    if( !TsFileUtils.isDirReadable( epCamDir ) ) {
-      return null;
-    }
-    String bareName = PsxCofsUtils.bareSourceFrameFileName( aFrame.frameNo() );
-    String ext = aFrame.isAnimated() ? ANIM_IMAGE_FILE_EXT : STILL_IMAGE_FILE_EXT;
-    File frameFile = new File( epCamDir, bareName + '.' + ext );
-    if( frameFile.exists() ) {
-      return frameFile;
-    }
-    return null;
+    return internalFindNonSecFrame( aFrame );
   }
 
   @Override

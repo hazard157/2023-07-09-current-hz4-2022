@@ -9,6 +9,7 @@ import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.panels.*;
 import org.toxsoft.core.tsgui.panels.pgv.*;
+import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tslib.bricks.filter.*;
 import org.toxsoft.core.tslib.coll.*;
@@ -44,8 +45,10 @@ public class FramesGridViewer
    */
   public FramesGridViewer( Composite aParent, ITsGuiContext aContext ) {
     super( aParent, aContext );
+    this.setLayout( new BorderLayout() );
     pgViewer = new PicsGridViewer<>( this, tsContext() );
     pgViewer.setVisualsProvider( visualsProvider );
+    pgViewer.getControl().setLayoutData( BorderLayout.CENTER );
   }
 
   // ------------------------------------------------------------------------------------

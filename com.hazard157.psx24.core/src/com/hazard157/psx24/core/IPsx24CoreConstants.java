@@ -68,6 +68,7 @@ public interface IPsx24CoreConstants {
   String ICON_PSX_CREATE_GIF          = "create-gif";                           //$NON-NLS-1$
   String ICON_PSX_TEST_GIF            = "test-gif";                             //$NON-NLS-1$
   String ICON_PSX_RECREATE_ALL_GIFS   = "recreate-all-gifs";                    //$NON-NLS-1$
+  String ICON_PSX_WORK_WITH_FRAMES    = "work-with-frames";                     //$NON-NLS-1$
   String ICON_PSX_IMAGE_X_GENERIC     = "image-x-generic";                      //$NON-NLS-1$
   String ICON_PSX_VIDEO_X_GENERIC     = "video-x-generic";                      //$NON-NLS-1$
   String ICON_AUDIO_X_GENERIC         = "audio-x-generic";                      //$NON-NLS-1$
@@ -76,7 +77,6 @@ public interface IPsx24CoreConstants {
   String ICON_PSX_PLAYBACK_START      = "media-playback-start";                 //$NON-NLS-1$
   String ICON_PSX_ONE_ICON_PER_EPIN   = "applications-education-miscellaneous"; //$NON-NLS-1$
   String ICON_PSX_NONE_EPISODE_IMAGE  = "none-episode-image";                   //$NON-NLS-1$
-  String ICON_PSX_WORK_WITH_FRAMES    = "work-with-frames";                     //$NON-NLS-1$
   String ICON_TAG                     = "tag";                                  //$NON-NLS-1$
   String ICON_TAGS_LIST               = "tags-list";                            //$NON-NLS-1$
   String ICON_PSX_INCL_ONLY_USED_TAGS = "bookmark-new-list";                    //$NON-NLS-1$

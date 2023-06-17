@@ -26,7 +26,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
  * @author hazard157
  */
 public class GazeMediaFileVisualsProvider
-    implements IPgvVisualsProvider<OptedFile>, IPsxStdReferences {
+    implements IPgvVisualsProvider<OptedFile>, IPsxGuiContextable {
 
   private final ITsGuiContext tsContext;
 

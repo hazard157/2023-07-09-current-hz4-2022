@@ -19,8 +19,6 @@ import com.hazard157.lib.core.quants.secint.*;
 public class FramesSet
     implements IFramesSet {
 
-  // TODO for optimization create and use FrameSetBuilder
-
   private final INotifierListBasicEdit<IFrame> items =
       new NotifierListBasicEditWrapper<>( new SortedElemLinkedBundleList<IFrame>() );
 
@@ -63,17 +61,19 @@ public class FramesSet
     cacheMapByCameras = new StringMap<>();
     cacheMapByEpAndCam = new StringMap<>();
     cacheMinutesIndexes = new IntArrayList();
+
+    int prevMinute = -1;
+
     for( int i = 0, n = items.size(); i < n; i++ ) {
       IFrame f = items.get( i );
-      int frameSec = f.secNo();
       String epId = f.episodeId();
       String camId = f.cameraId();
       // minutes starting indexes cache
-      int prevSec = cacheMinutesIndexes.size() - 1;
-      int secDiff = frameSec - prevSec;
-      for( int j = 0; j < secDiff; j++ ) {
+      int currMinute = f.secNo() / 60;
+      for( int jj = prevMinute + 1; jj <= currMinute; jj++ ) {
         cacheMinutesIndexes.add( i );
       }
+      prevMinute = currMinute;
       // episodes map
       IListEdit<IFrame> llEp = cacheMapByEpisodes.findByKey( camId );
       if( llEp == null ) {
@@ -154,6 +154,7 @@ public class FramesSet
   @Override
   public void collectInInterval( Secint aInterval, IListEdit<IFrame> aList ) {
     TsNullArgumentRtException.checkNulls( aInterval, aList );
+    ensureCaches();
     int startMinute = aInterval.start() / 60;
     int endMinute = 1 + aInterval.end() / 60;
     int maxMinutes = cacheMinutesIndexes.size();

@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.glib.frep;
+package com.hazard157.prisex24.glib.epframes;
 
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 

@@ -1,16 +1,14 @@
 package com.hazard157.prisex24.glib.frasel;
 
 import org.toxsoft.core.tslib.bricks.events.change.*;
-import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.lib.core.utils.animkind.*;
-import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 
 /**
- * Determines rules how to make list of frames from the SVIN.
+ * Determines parameters of the algorithm making list of frames from the SVIN.
  * <p>
  * Selection is mare by rules:
  * <ul>
@@ -31,7 +29,7 @@ import com.hazard157.psx.common.stuff.svin.*;
  *
  * @author hazard157
  */
-public interface ISvinFramesSelectionStrategy
+public interface ISvinFramesParams
     extends IGenericChangeEventCapable {
 
   /**
@@ -96,6 +94,27 @@ public interface ISvinFramesSelectionStrategy
   void setFramesPerSvin( EFramesPerSvin aFramesPerSvin );
 
   /**
+   * Sets all parameters at once.
+   * <p>
+   * Note: any argument may have value <code>null</code> indication that corresponding parameters would not be changed.
+   *
+   * @param aAnimationKind {@link EAnimationKind} - accepted images kind or <code>null</code>
+   * @param aOnlySvinCams {@link Boolean} - <code>true</code> only SVIN camera frames, or <code>null</code>
+   * @param aCameraIds {@link IStringList} - the camera IDs or an empty list for any camera or <code>null</code>
+   * @param aFramesPerSvin {@link EFramesPerSvin} - frames per SVIN or <code>null</code>
+   */
+  void setParams( EAnimationKind aAnimationKind, Boolean aOnlySvinCams, IStringList aCameraIds,
+      EFramesPerSvin aFramesPerSvin );
+
+  /**
+   * Sets all parameters at once from the source parameres holde..
+   *
+   * @param aSource {@link ISvinFramesParams} - the source
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  void setParams( ISvinFramesParams aSource );
+
+  /**
    * Selects and returns frames for the specified SVIN.
    * <p>
    * If SVIN contains invalid data (eg non-existing episode, bad interval) then returns an empty list.
@@ -104,6 +123,5 @@ public interface ISvinFramesSelectionStrategy
    * @return {@link IList}&lt;{@link IFrame}&gt; - selected frames
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
-  IList<IFrame> selectFrames( Svin aSvin );
 
 }

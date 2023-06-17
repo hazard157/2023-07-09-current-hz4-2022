@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 /**
- * Диалог показа заданного {@link TsImage}.
+ * Dialog to simple show the specified {@link TsImage}.
  *
  * @author hazard157
  */
@@ -48,14 +48,15 @@ public class DialogShowMultiImage {
   }
 
   /**
-   * Показывает изображение в диалоге.
+   * Show the image i the modal dialog.
    *
-   * @param aTsContext {@link ITsGuiContext} - контекст
-   * @param aImage {@link TsImage} - изображение, может быть <code>null</code>
-   * @param aCaption String - название диалога или <code>null</code> для умолчания
-   * @param aTitle String - текст в диалоге или <code>null</code> для пустой строки
+   * @param aTsContext {@link ITsGuiContext} - the context
+   * @param aImage {@link TsImage} - the image or <code>null</code>
+   * @param aCaption String - the dialog caption or <code>null</code> for default
+   * @param aText String - the text in the dialog or <code>null</code> for default
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
-  public static final void showImage( ITsGuiContext aTsContext, TsImage aImage, String aCaption, String aTitle ) {
+  public static final void showImage( ITsGuiContext aTsContext, TsImage aImage, String aCaption, String aText ) {
     TsNullArgumentRtException.checkNull( aTsContext );
     Shell shell = aTsContext.get( Shell.class );
     if( aImage == null ) {
@@ -68,7 +69,7 @@ public class DialogShowMultiImage {
     if( aCaption != null && !aCaption.isEmpty() ) {
       caption = aCaption;
     }
-    String title = aTitle != null ? aTitle : TsLibUtils.EMPTY_STRING;
+    String title = aText != null ? aText : TsLibUtils.EMPTY_STRING;
     ITsDialogInfo tdi = new TsDialogInfo( aTsContext, shell, caption, title, DF_NO_APPROVE );
     TsDialog<TsImage, ITsGuiContext> d = new TsDialog<>( tdi, aImage, aTsContext, creator );
     d.execDialog();

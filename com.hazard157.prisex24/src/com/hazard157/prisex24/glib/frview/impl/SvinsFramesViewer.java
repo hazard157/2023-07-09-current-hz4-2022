@@ -1,5 +1,7 @@
 package com.hazard157.prisex24.glib.frview.impl;
 
+import static com.hazard157.common.IHzConstants.*;
+import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tslib.coll.impl.TsCollectionsUtils.*;
 
@@ -18,6 +20,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.prisex24.glib.frasel.*;
 import com.hazard157.prisex24.glib.frview.*;
+import com.hazard157.prisex24.utils.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 
@@ -30,8 +33,8 @@ public class SvinsFramesViewer
     extends TsStdEventsProducerPanel<IFrame>
     implements ISvinsFramesViewer, ITsActionHandler {
 
-  private final ISvinSeqEdit                 svinSeq = new SvinSeq();
-  private final ISvinFramesSelectionStrategy svinFramnesStrategy;
+  private final ISvinSeqEdit      svinSeq = new SvinSeq();
+  private final ISvinFramesParams svinFramnesPatams;
 
   private final TsToolbar         toolbar;
   private final IFramesGridViewer fgViewer;
@@ -47,20 +50,64 @@ public class SvinsFramesViewer
    */
   public SvinsFramesViewer( Composite aParent, ITsGuiContext aContext ) {
     super( aParent, aContext );
-    svinFramnesStrategy = new SvinFramesSelectionStrategy( tsContext() );
+    svinFramnesPatams = new SvinFramesParams();
     this.setLayout( new BorderLayout() );
     // fgViewer
     toolbar = new TsToolbar( tsContext() );
-    toolbar.setVertical( true );
-    toolbar.setActionDefs( ACDEF_ABOUT );
+    toolbar.setVertical( false );
+    toolbar.setActionDefs( //
+        ACDEF_GIF_CREATE_MENU, ACDEF_SEPARATOR, //
+        // FIXME ACDEF_SHOW_SINGLE, ACDEF_CAM_ID_MENU, ACDEF_SEPARATOR, //
+        ACDEF_VIEW_AS_TREE_MENU, ACDEF_VIEW_AS_LIST, ACDEF_SEPARATOR, //
+        ACDEF_COLLAPSE_ALL, ACDEF_EXPAND_ALL, //
+        ACDEF_ZOOM_ORIGINAL_PUSHBUTTON, //
+        // FIXME ACDEF_COPY_FRAME, //
+        ACDEF_PLAY_MENU, //
+        ACDEF_GO_PREV, ACDEF_GO_NEXT, //
+        //
+        // FIXME ACDEF_FRAME_TIME_STEPPABLE_ZOOM_ORIGINAL_MENU, // Frame time step meny (density)
+        // FIXME ACDEF_THUMB_SIZEABLE_ZOOM_MENU, // Thumb size menu (zoom)
+        // FIXME ACDEF_SHOW_AK_BOTH, ACDEF_SHOW_AK_ANIMATED, ACDEF_SHOW_AK_SINGLE, ACDEF_SEPARATOR, // Animation
+        // FIXME ACDEF_CAM_ID_MENU, ACDEF_SEPARATOR, // Camera
+        ACDEF_WORK_WITH_FRAMES, // Play menu
+        // FIXME ACDEF_ONE_BY_ONE, //
+        ACDEF_SEPARATOR, ACDEF_RUN_KDENLIVE //
+
+    );
     toolbar.createControl( this );
-    toolbar.getControl().setLayoutData( BorderLayout.WEST );
+    toolbar.getControl().setLayoutData( BorderLayout.NORTH );
     // fgViewer
     fgViewer = new FramesGridViewer( this, tsContext() );
     fgViewer.getControl().setLayoutData( BorderLayout.CENTER );
     // setup
+    toolbar.setActionMenu( ACTID_GIF_CREATE, new AbstractGifManagemntDropDownMenuCreator( tsContext(), this ) {
+
+      @Override
+      protected IFrame doGetFrame() {
+        return selectedItem();
+      }
+
+    } );
     svinSeq.genericChangeEventer().addListener( s -> whenSvinSeqChanged() );
-    svinFramnesStrategy.genericChangeEventer().addListener( s -> whenSvinFramesStrategyChanged() );
+    svinFramnesPatams.genericChangeEventer().addListener( s -> whenSvinFramesStrategyChanged() );
+    updateActionState();
+  }
+
+  // ------------------------------------------------------------------------------------
+  // ITsActionHandler
+  //
+
+  @Override
+  public void handleAction( String aActionId ) {
+    // IFrame sel = selectedItem();
+    switch( aActionId ) {
+      case ACTID_ABOUT: {
+        TsDialogUtils.underDevelopment( getShell() );
+        break;
+      }
+      default:
+        TsDialogUtils.warn( getShell(), aActionId );
+    }
     updateActionState();
   }
 
@@ -80,9 +127,10 @@ public class SvinsFramesViewer
     }
     int order = estimateOrder( 5 * totalDuration );
     // SVINs -> frames
+    SvinFramesSelector sfs = new SvinFramesSelector( tsContext() );
     IListBasicEdit<IFrame> ll = new SortedElemLinkedBundleList<>( getListInitialCapacity( order ), true );
     for( Svin s : svinSeq.svins() ) {
-      ll.addAll( svinFramnesStrategy.selectFrames( s ) );
+      ll.addAll( sfs.selectFrames( s, svinFramnesPatams ) );
     }
     // display
     fgViewer.setFrames( ll );
@@ -94,24 +142,6 @@ public class SvinsFramesViewer
 
   private void whenSvinSeqChanged() {
     recrateUnfilteredFramesListAndSetToFgViewer();
-  }
-
-  // ------------------------------------------------------------------------------------
-  // ITsActionHandler
-  //
-
-  @Override
-  public void handleAction( String aActionId ) {
-    // IFrame sel = selectedItem();
-    switch( aActionId ) {
-      case ACTID_ABOUT: {
-        TsDialogUtils.underDevelopment( getShell() );
-        break;
-      }
-      default:
-        break;
-    }
-    updateActionState();
   }
 
   // ------------------------------------------------------------------------------------
@@ -147,8 +177,8 @@ public class SvinsFramesViewer
   }
 
   @Override
-  public ISvinFramesSelectionStrategy svinStrategy() {
-    return svinFramnesStrategy;
+  public ISvinFramesParams svinFramesParams() {
+    return svinFramnesPatams;
   }
 
   @Override

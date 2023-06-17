@@ -27,6 +27,7 @@ import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.cofs.impl.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;
+import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.m5.episodes.*;
 import com.hazard157.prisex24.m5.frames.*;
 import com.hazard157.prisex24.m5.tags.*;
@@ -35,7 +36,7 @@ import com.hazard157.prisex24.valeds.frames.*;
 import com.hazard157.psx.proj3.*;
 
 /**
- * Plugin addon.
+ * Plugin addon - initializes all subsystems and modules..
  *
  * @author hazard157
  */
@@ -72,6 +73,7 @@ public class AddonPrisex24Core
     aAppContext.set( IPsxCofs.class, new PsxCofs() );
     // E4 services
     aAppContext.set( ICurrentEpisodeService.class, new CurrentEpisodeService( aAppContext ) );
+    aAppContext.set( IPsxSelectedSvinsService.class, new PsxSelectedSvinsService() );
   }
 
   @Override

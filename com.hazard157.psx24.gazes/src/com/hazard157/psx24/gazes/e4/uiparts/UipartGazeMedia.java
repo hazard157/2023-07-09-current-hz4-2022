@@ -45,7 +45,7 @@ import com.hazard157.psx24.gazes.utils.*;
  */
 public class UipartGazeMedia
     extends MwsAbstractPart
-    implements IPsxStdReferences, ITsKeyInputListener {
+    implements IPsxGuiContextable, ITsKeyInputListener {
 
   /**
    * Change panel contetn when current gaze changes.

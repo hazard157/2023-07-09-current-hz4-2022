@@ -31,7 +31,7 @@ import com.hazard157.psx24.core.m5.std.*;
  */
 public class SvinM5Model
     extends M5Model<Svin>
-    implements IPsxStdReferences {
+    implements IPsxGuiContextable {
 
   /**
    * Поле {@link Svin#episodeId()}.

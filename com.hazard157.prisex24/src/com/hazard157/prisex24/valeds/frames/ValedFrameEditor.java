@@ -6,7 +6,7 @@ import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tsgui.valed.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.prisex24.glib.frep.*;
+import com.hazard157.prisex24.glib.epframes.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**

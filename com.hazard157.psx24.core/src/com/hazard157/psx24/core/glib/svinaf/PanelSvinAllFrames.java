@@ -29,7 +29,7 @@ import com.hazard157.psx24.core.*;
  */
 public class PanelSvinAllFrames
     extends AbstractGenericCollPanel<IFrame>
-    implements IPanelSvinAllFrames, IPsxStdReferences {
+    implements IPanelSvinAllFrames, IPsxGuiContextable {
 
   private final String     APREFID_THUMB_SIZE = APPRMID_THUMBSZ_FRAMES_IN_PANELS;
   private final EThumbSize DEFAULT_THUMB_SIZE = APPRM_THUMBSZ_FRAMES_IN_PANELS.defaultValue().asValobj();
