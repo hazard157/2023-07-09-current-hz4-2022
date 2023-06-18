@@ -5,6 +5,7 @@ import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 
 import com.hazard157.common.quants.ankind.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.utils.frasel.*;
@@ -51,7 +52,7 @@ public class AddonPrisex24Behaviour
         svin = new Svin( currEpisode.id() );
       }
       selSvinsService.framesSelectionParams().setParams( EAnimationKind.ANIMATED, Boolean.FALSE, IStringList.EMPTY,
-          EFramesPerSvin.SELECTED );
+          ESecondsStep.SEC_20, EFramesPerSvin.SELECTED );
       selSvinsService.setSvin( svin );
     } );
   }

@@ -8,7 +8,11 @@ import org.toxsoft.core.tsgui.graphics.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.viewers.*;
 import org.toxsoft.core.tsgui.m5.gui.viewers.impl.*;
+import org.toxsoft.core.tslib.coll.primtypes.*;
+import org.toxsoft.core.tslib.coll.primtypes.impl.*;
+import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.ankind.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
@@ -17,9 +21,13 @@ import com.hazard157.psx.common.stuff.frame.*;
  * @author hazard157
  */
 class CommonFramesM5TreeViewer
-    extends M5TreeViewer<IFrame> {
+    extends M5TreeViewer<IFrame>
+    implements IAnimationKindable {
 
   private final ITreeModeManager<IFrame> treeModeManager;
+
+  private final IStringListEdit showCmaeraIds     = new StringArrayList(); // EMPTY -> show all
+  private EAnimationKind        showAnimationKind = EAnimationKind.BOTH;
 
   public CommonFramesM5TreeViewer( ITsGuiContext aContext, IM5Model<IFrame> aObjModel ) {
     super( aContext, aObjModel, false );
@@ -41,8 +49,16 @@ class CommonFramesM5TreeViewer
         }
         repackColumns();
       }
-
     };
+    filterManager().setFilter( aObj -> {
+      if( aObj == null || !aObj.isDefined() ) {
+        return false;
+      }
+      if( showAnimationKind.accept( aObj.isAnimated() ) ) {
+        return showCmaeraIds.isEmpty() || showCmaeraIds.hasElem( aObj.cameraId() );
+      }
+      return false;
+    } );
   }
 
   void repackColumns() {
@@ -77,6 +93,36 @@ class CommonFramesM5TreeViewer
 
   public ITreeModeManager<IFrame> tmm() {
     return treeModeManager;
+  }
+
+  public void setShownCameraIds( IStringList aCamIds ) {
+    if( !showCmaeraIds.equals( aCamIds ) ) {
+      showCmaeraIds.setAll( aCamIds );
+      refresh();
+    }
+  }
+
+  // ------------------------------------------------------------------------------------
+  // IAnimationKindable
+  //
+
+  @Override
+  public EAnimationKind getDefaultAnimationKind() {
+    return EAnimationKind.BOTH;
+  }
+
+  @Override
+  public EAnimationKind getShownAnimationKind() {
+    return showAnimationKind;
+  }
+
+  @Override
+  public void setShownAnimationKind( EAnimationKind aAnimationKind ) {
+    TsNullArgumentRtException.checkNull( aAnimationKind );
+    if( showAnimationKind != aAnimationKind ) {
+      showAnimationKind = aAnimationKind;
+      refresh();
+    }
   }
 
 }

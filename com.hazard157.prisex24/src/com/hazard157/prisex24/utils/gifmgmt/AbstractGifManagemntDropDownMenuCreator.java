@@ -29,45 +29,34 @@ import com.hazard157.prisex24.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
- * Creates GIF management drop-down menu for the action {@link IPrisex24CoreConstants#ACDEF_GIF_CREATE_MENU}.
+ * Creates GIF management drop-down menu for the action {@link IPrisex24CoreConstants#ACDEF_GIF_TEST_MENU}.
  * <p>
- * Creates menu with actions, some of them are handled here, but others require external handling. The actions are:
+ * Creates menu with actions:
  * <ul>
- * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_CREATE} - needs external handling;</li>
- * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_TEST} - handled locally;</li>
- * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_RECREATE_ALL} - needs external handling;</li>
- * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_REMOVE} - needs external handling;</li>
- * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_INFO} - handled locally.</li>
+ * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_TEST};</li>
+ * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_CREATE};</li>
+ * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_RECREATE_ALL};</li>
+ * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_REMOVE};</li>
+ * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_INFO}.</li>
  * </ul>
  *
  * @author hazard157
  */
 public abstract class AbstractGifManagemntDropDownMenuCreator
     extends AbstractMenuCreator
-    implements IPsxGuiContextable {
+    implements IPsxGuiContextable, ITsActionHandler {
 
-  private final ITsGuiContext    tsContext;
-  private final ITsActionHandler actionHandler;
+  private final ITsGuiContext tsContext;
 
   /**
    * Constructor.
-   * <p>
-   * The following actions must be handled by the specified handler:
-   * <ul>
-   * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_CREATE} - create GIF at selected frame;</li>
-   * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_RECREATE_ALL} - recreate all GIFs in the speicifed context;</li>
-   * <li>{@link IPrisex24CoreConstants#ACDEF_GIF_REMOVE} - remove specified GIF. Called only if the selected frame is an
-   * animated GIF.</li>
-   * </ul>
    *
    * @param aContext - {@link ITsGuiContext} - the context
-   * @param aActionHandler {@link ITsActionHandler} - handles action not handled by this class
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
-  public AbstractGifManagemntDropDownMenuCreator( ITsGuiContext aContext, ITsActionHandler aActionHandler ) {
+  public AbstractGifManagemntDropDownMenuCreator( ITsGuiContext aContext ) {
     TsNullArgumentRtException.checkNull( aContext );
     tsContext = aContext;
-    actionHandler = aActionHandler;
   }
 
   // ------------------------------------------------------------------------------------
@@ -80,10 +69,11 @@ public abstract class AbstractGifManagemntDropDownMenuCreator
   }
 
   // ------------------------------------------------------------------------------------
-  // implementation
+  // ITsActionHandler
   //
 
-  void internalHandler( String aActionId ) {
+  @Override
+  public void handleAction( String aActionId ) {
     IFrame sel = doGetFrame();
     if( sel == null ) {
       return;
@@ -131,17 +121,24 @@ public abstract class AbstractGifManagemntDropDownMenuCreator
         TsDialogUtils.info( getShell(), sb.toString() );
         break;
       }
+      // TODO implement actions
       case ACTID_GIF_REMOVE: {
         if( sel.isAnimated() ) { // handle remove only for animated GIF frames
-          actionHandler.handleAction( aActionId );
+          TsDialogUtils.underDevelopment( getShell() );
         }
         break;
       }
+      case ACTID_GIF_CREATE:
+      case ACTID_GIF_RECREATE_ALL:
       default:
-        actionHandler.handleAction( aActionId );
+        TsDialogUtils.underDevelopment( getShell() );
         break;
     }
   }
+
+  // ------------------------------------------------------------------------------------
+  // AbstractMenuCreator
+  //
 
   @Override
   protected boolean fillMenu( Menu aMenu ) {
@@ -151,8 +148,8 @@ public abstract class AbstractGifManagemntDropDownMenuCreator
     }
     ITsIconManager iconManager = tsContext.get( ITsIconManager.class );
     IListEdit<ITsActionDef> actInfoes = new ElemArrayList<>( //
-        ACDEF_GIF_CREATE, //
         ACDEF_GIF_TEST, //
+        ACDEF_GIF_CREATE, //
         ACDEF_GIF_RECREATE_ALL, //
         ACDEF_SEPARATOR, //
         ACDEF_GIF_REMOVE, //
@@ -172,7 +169,7 @@ public abstract class AbstractGifManagemntDropDownMenuCreator
 
         @Override
         public void widgetSelected( SelectionEvent aE ) {
-          internalHandler( actInfo.id() );
+          handleAction( actInfo.id() );
         }
       } );
       if( actInfo == ACDEF_REMOVE ) {

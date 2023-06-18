@@ -1,7 +1,9 @@
 package com.hazard157.prisex24.m5.frames;
 
 import static com.hazard157.common.IHzConstants.*;
+import static com.hazard157.common.quants.ankind.AnimationKindDropDownMenuCreator.*;
 import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 
 import java.io.*;
@@ -30,12 +32,18 @@ import org.toxsoft.core.tslib.bricks.geometry.*;
 import org.toxsoft.core.tslib.bricks.geometry.impl.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
+import org.toxsoft.core.tslib.coll.primtypes.*;
+import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.ankind.*;
+import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.prisex24.*;
-import com.hazard157.prisex24.utils.*;
+import com.hazard157.prisex24.utils.camenu.*;
 import com.hazard157.prisex24.utils.gifmgmt.*;
+import com.hazard157.prisex24.utils.playmenu.*;
 import com.hazard157.psx.common.stuff.frame.*;
+import com.hazard157.psx.common.stuff.svin.*;
 
 /**
  * {@link IM5CollectionViewer} implementation for {@link FrameM5Model}.
@@ -58,6 +66,8 @@ class FrameCollectionPanel
 
   private TsComposite board = null;
 
+  private AbstractGifManagemntDropDownMenuCreator gifMenuCreator = null;
+
   /**
    * Constructor.
    * <p>
@@ -79,13 +89,16 @@ class FrameCollectionPanel
     toolbar.setIconSize( EIconSize.IS_24X24 );
     toolbar.setVertical( false );
     toolbar.setActionDefs( //
-        ACDEF_GIF_CREATE_MENU, //
-        // TODO AnumationKind menu, ACDEF_SEPARATOR, //
-        // TODO Shown cameras menu, ACDEF_SEPARATOR, //
+        ACDEF_GIF_TEST_MENU, //
+        AI_ANIMATION_KINDABLE_MENU, ACDEF_SEPARATOR, //
+        ACDEF_CAM_ID_MENU, ACDEF_SEPARATOR, //
         ACDEF_VIEW_AS_TREE_MENU, ACDEF_VIEW_AS_LIST, ACDEF_SEPARATOR, //
         ACDEF_COLLAPSE_ALL, ACDEF_EXPAND_ALL, //
-        // TODO AI_COPY_FRAME, //
         ACDEF_PLAY_MENU, //
+        ACDEF_SEPARATOR, //
+        ACDEF_COPY_FRAME, //
+        ACDEF_RUN_KDENLIVE, //
+        ACDEF_SEPARATOR, //
         ACDEF_GO_PREV, ACDEF_GO_NEXT //
     );
     toolbar.addListener( this );
@@ -116,15 +129,19 @@ class FrameCollectionPanel
   private void updateActionsState() {
     IFrame sel = framesTree.selectedItem();
     boolean isSel = sel != null;
-    boolean isAnim = sel != null && sel.isDefined() && sel.isAnimated();
+    boolean isInTreeMode = framesTree.tmm().isCurrentTreeMode();
     // enables
     toolbar.setActionEnabled( ACTID_PLAY, isSel );
-    toolbar.setActionEnabled( ACTID_VIEW_AS_LIST, !framesTree.tmm().isCurrentTreeMode() );
+    toolbar.setActionEnabled( ACTID_VIEW_AS_LIST, isInTreeMode );
     toolbar.setActionEnabled( ACTID_GO_PREV, !framesTree.items().isEmpty() && sel != framesTree.items().first() );
     toolbar.setActionEnabled( ACTID_GO_NEXT, !framesTree.items().isEmpty() && sel != framesTree.items().last() );
+    toolbar.setActionEnabled( ACTID_COPY_FRAME, isSel );
+    toolbar.setActionEnabled( ACTID_RUN_KDENLIVE, isSel );
+    toolbar.setActionEnabled( ACTID_EXPAND_ALL, isInTreeMode );
+    toolbar.setActionEnabled( ACTID_COLLAPSE_ALL, isInTreeMode );
     // checks
-    toolbar.setActionChecked( ACTID_VIEW_AS_LIST, !framesTree.tmm().isCurrentTreeMode() );
-    toolbar.setActionChecked( ACTID_VIEW_AS_TREE, framesTree.tmm().isCurrentTreeMode() );
+    toolbar.setActionChecked( ACTID_VIEW_AS_LIST, !isInTreeMode );
+    toolbar.setActionChecked( ACTID_VIEW_AS_TREE, isInTreeMode );
   }
 
   private void whenFramesTreeSelectionChange( IFrame aSel ) {
@@ -143,16 +160,34 @@ class FrameCollectionPanel
     }
     imageWidget.setTsImage( img );
     imageWidget.redraw();
+    if( aSel != null ) {
+      toolbar.setActionMenu( ACTID_PLAY, new AbstractPlayMenuCreator( tsContext() ) {
+
+        @Override
+        protected Svin getPlayableSvin() {
+          return getFrameSvin( aSel );
+        }
+      } );
+      updateActionsState();
+    }
   }
 
   /**
-   * Returns the displayed frame which may be non-seconds aligned one.
+   * Return SVIN -5 + 30 sec from the specified frame.
    *
-   * @return {@link IFrame} - displayed frame or <code>null</code>
+   * @param aFrame {@link IFrame} - the frame or <code>null</code>
+   * @return {@link Svin} - the svin or null
    */
-  private IFrame getDisplayedFrame() {
-    // TODO FrameCollectionPanel.getSelectedFrame()
-    return selectedItem();
+  private static Svin getFrameSvin( IFrame aFrame ) {
+    if( aFrame == null ) {
+      return null;
+    }
+    int startSec = aFrame.frameNo() / FPS - 5;
+    if( startSec < 0 ) {
+      startSec = 0;
+    }
+    Secint in = new Secint( startSec, startSec + 30 );
+    return new Svin( aFrame.episodeId(), aFrame.cameraId(), in );
   }
 
   // ------------------------------------------------------------------------------------
@@ -161,6 +196,7 @@ class FrameCollectionPanel
 
   @Override
   public void handleAction( String aActionId ) {
+    IFrame sel = selectedItem();
     switch( aActionId ) {
       case ACTID_VIEW_AS_TREE: {
         framesTree.tmm().setNextMode();
@@ -186,11 +222,33 @@ class FrameCollectionPanel
         framesTree.console().expandAll();
         break;
       }
-      // TODO implement actions
-      // TODO GIF actions move to AbstractGifManagemntDropDownMenuCreator
-      case ACTID_GIF_CREATE:
-      case ACTID_GIF_RECREATE_ALL:
-      case ACTID_GIF_REMOVE:
+      case ACTID_GIF_TEST: {
+        gifMenuCreator.handleAction( ACTID_GIF_TEST );
+        break;
+      }
+      case AID_ANIMATION_KINDABLE_MENU: {
+        framesTree.setDefaultAnimationKind();
+        break;
+      }
+      case ACTID_COPY_FRAME: {
+        if( sel != null ) {
+          psxService().copyFrameImage( sel );
+        }
+        break;
+      }
+      case ACTID_RUN_KDENLIVE: {
+        if( sel != null ) {
+          psxService().runKdenliveFor( sel );
+        }
+        break;
+      }
+      case ACTID_PLAY: {
+        if( sel != null ) {
+          Svin svin = getFrameSvin( sel );
+          psxService().playEpisodeVideo( svin );
+        }
+        break;
+      }
       default:
         TsDialogUtils.warn( getShell(), aActionId );
     }
@@ -220,6 +278,8 @@ class FrameCollectionPanel
     toolbar.createControl( board );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
     toolbar.setActionMenu( ACTID_VIEW_AS_TREE, new TreeModeDropDownMenuCreator<>( tsContext(), framesTree.tmm() ) );
+    toolbar.setActionMenu( AID_ANIMATION_KINDABLE_MENU,
+        new AnimationKindDropDownMenuCreator( framesTree, tsContext() ) );
     // mainBoard
     TsComposite mainBoard = new TsComposite( board );
     mainBoard.setLayoutData( BorderLayout.CENTER );
@@ -235,11 +295,35 @@ class FrameCollectionPanel
     nonsecsList.getControl().setLayoutData( BorderLayout.EAST );
     nonsecsList.addTsSelectionListener( ( src, sel ) -> whenNonsecsSelectionChanged( sel ) );
     // setup
-    toolbar.setActionMenu( ACTID_GIF_CREATE, new AbstractGifManagemntDropDownMenuCreator( tsContext(), this ) {
+    gifMenuCreator = new AbstractGifManagemntDropDownMenuCreator( tsContext() ) {
 
       @Override
       protected IFrame doGetFrame() {
-        return getDisplayedFrame();
+        return nonsecsList.selectedItem();
+      }
+    };
+    toolbar.setActionMenu( ACTID_GIF_TEST, gifMenuCreator );
+    toolbar.setActionMenu( ACTID_CAM_ID_MENU, new AbstractCamerasManagemntDropDownMenuCreator( tsContext() ) {
+
+      @Override
+      protected void setShownCameraIds( IStringList aCameraIds ) {
+        framesTree.setShownCameraIds( aCameraIds );
+      }
+
+      @Override
+      protected IStringList listAvailableCameraIds() {
+        IStringListEdit llCamIds = new StringArrayList();
+        for( IFrame f : items() ) {
+          if( !llCamIds.hasElem( f.cameraId() ) ) {
+            llCamIds.add( f.cameraId() );
+          }
+        }
+        return llCamIds;
+      }
+
+      @Override
+      protected IFrame getSelectedFrame() {
+        return nonsecsList.selectedItem();
       }
     } );
     imageWidget.addTsUserInputListener( new ITsUserInputListener() {

@@ -14,7 +14,6 @@ import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.prisex24.*;
 import com.hazard157.psx.common.stuff.frame.*;
-import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 
 /**
@@ -68,25 +67,34 @@ public abstract class AbstractCamerasManagemntDropDownMenuCreator
   // AbstractMenuCreator
   //
 
+  @SuppressWarnings( "unused" )
   @Override
   protected boolean fillMenu( Menu aMenu ) {
+    // all camareas to be listed in meny
+    IStringListEdit llCamIds = new StringArrayList( listAvailableCameraIds() );
     IFrame camsFrame = getSelectedFrame();
-    if( camsFrame == null ) {
-      return false;
+    IStringMap<ISourceVideo> svs = IStringMap.EMPTY;
+    if( camsFrame != null && camsFrame.isDefined() ) {
+      llCamIds.remove( camsFrame.cameraId() );
+      llCamIds.add( camsFrame.cameraId() ); // became first in list
+      svs = unitSourceVideos().episodeSourceVideos( camsFrame.episodeId() );
+      for( String cid : svs.keys() ) {
+        if( !llCamIds.hasElem( cid ) ) {
+          llCamIds.add( cid );
+        }
+      }
     }
-    IStringMap<ISourceVideo> svs = unitSourceVideos().episodeSourceVideos( camsFrame.episodeId() );
-    IEpisode e = unitEpisodes().items().findByKey( camsFrame.episodeId() );
-    if( e == null || svs.isEmpty() ) {
-      return false;
-    }
+    // menu items
     EThumbSize thumbSize = readThumbSizeFromAppSettings();
-    for( final String camId : svs.keys() ) {
+    for( final String camId : llCamIds ) {
       MenuItem mItem = new MenuItem( aMenu, SWT.PUSH );
       mItem.setText( camId );
-      ISourceVideo sv = svs.getByKey( camId );
-      TsImage mi = psxService().findThumb( sv.frame(), thumbSize );
-      if( mi != null ) {
-        mItem.setImage( mi.image() );
+      ISourceVideo sv = svs.findByKey( camId );
+      if( sv != null ) {
+        TsImage mi = psxService().findThumb( sv.frame(), thumbSize );
+        if( mi != null ) {
+          mItem.setImage( mi.image() );
+        }
       }
       mItem.addSelectionListener( new SelectionListenerAdapter() {
 
@@ -95,13 +103,49 @@ public abstract class AbstractCamerasManagemntDropDownMenuCreator
           setShownCameraIds( new SingleStringList( camId ) );
         }
       } );
+      if( camId == llCamIds.first() && camsFrame != null && camsFrame.isDefined() ) {
+        new MenuItem( aMenu, SWT.SEPARATOR );
+      }
     }
     return true;
   }
 
+  // @Override
+  // protected boolean fillMenu( Menu aMenu ) {
+  // IFrame camsFrame = getSelectedFrame();
+  // if( camsFrame == null ) {
+  // return false;
+  // }
+  // IStringMap<ISourceVideo> svs = unitSourceVideos().episodeSourceVideos( camsFrame.episodeId() );
+  // IEpisode e = unitEpisodes().items().findByKey( camsFrame.episodeId() );
+  // if( e == null || svs.isEmpty() ) {
+  // return false;
+  // }
+  // EThumbSize thumbSize = readThumbSizeFromAppSettings();
+  // for( final String camId : svs.keys() ) {
+  // MenuItem mItem = new MenuItem( aMenu, SWT.PUSH );
+  // mItem.setText( camId );
+  // ISourceVideo sv = svs.getByKey( camId );
+  // TsImage mi = psxService().findThumb( sv.frame(), thumbSize );
+  // if( mi != null ) {
+  // mItem.setImage( mi.image() );
+  // }
+  // mItem.addSelectionListener( new SelectionListenerAdapter() {
+  //
+  // @Override
+  // public void widgetSelected( SelectionEvent aEvent ) {
+  // setShownCameraIds( new SingleStringList( camId ) );
+  // }
+  // } );
+  // }
+  // return true;
+  // }
+  //
   // ------------------------------------------------------------------------------------
   // To implement
   //
+
+  protected abstract IStringList listAvailableCameraIds();
 
   protected abstract void setShownCameraIds( IStringList aCameraIds );
 

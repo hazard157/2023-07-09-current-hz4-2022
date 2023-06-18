@@ -2,7 +2,9 @@ package com.hazard157.prisex24.glib.frview.impl;
 
 import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.common.quants.ankind.AnimationKindDropDownMenuCreator.*;
+import static com.hazard157.common.quants.secstep.SecondsSteppableDropDownMenuCreator.*;
 import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+import static com.hazard157.prisex24.utils.frasel.FramesPerSvinDropDownMenuCreator.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.icons.EIconSize.*;
@@ -22,9 +24,11 @@ import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
+import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.ankind.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.glib.dialogs.*;
@@ -51,6 +55,8 @@ public class SvinsFramesViewer
   private final TsToolbar         toolbar;
   private final IFramesGridViewer fgViewer;
 
+  private final AbstractGifManagemntDropDownMenuCreator gifMenuCreator;
+
   /**
    * Constructor.
    * <p>
@@ -68,20 +74,15 @@ public class SvinsFramesViewer
     toolbar = new TsToolbar( tsContext() );
     toolbar.setVertical( false );
     toolbar.setActionDefs( //
-        ACDEF_GIF_CREATE_MENU, ACDEF_SEPARATOR, //
-        AI_THUMB_SIZEABLE_ZOOM_MENU, //
-        AI_ANIMATION_KINDABLE_MENU, ACDEF_SEPARATOR, //
-        ACDEF_COLLAPSE_ALL, ACDEF_EXPAND_ALL, //
-        // FIXME ACDEF_COPY_FRAME, //
-        ACDEF_PLAY_MENU, //
-        ACDEF_GO_PREV, ACDEF_GO_NEXT, //
-        //
-        // FIXME ACDEF_FRAME_TIME_STEPPABLE_ZOOM_ORIGINAL_MENU, // Frame time step meny (density)
-        // FIXME ACDEF_SHOW_AK_BOTH, ACDEF_SHOW_AK_ANIMATED, ACDEF_SHOW_AK_SINGLE, ACDEF_SEPARATOR, // Animation
-        // FIXME ACDEF_CAM_ID_MENU, ACDEF_SEPARATOR, // Camera
-        ACDEF_WORK_WITH_FRAMES, // Play menu
-        // FIXME ACDEF_ONE_BY_ONE, //
-        ACDEF_SEPARATOR, ACDEF_RUN_KDENLIVE //
+        ACDEF_GIF_TEST_MENU, ACDEF_SEPARATOR, //
+        AI_THUMB_SIZEABLE_ZOOM_MENU, AI_SEC_STEPPABLE_ZOOM_ORIGINAL_MENU, AI_ANIMATION_KINDABLE_MENU, ACDEF_SEPARATOR, //
+        ACDEF_CAM_ID_MENU, //
+        ACDEF_PLAY_MENU, ACDEF_SEPARATOR, //
+        ACDEF_WORK_WITH_FRAMES, //
+        AI_FRAMES_PER_SVIN_MENU, //
+        ACDEF_SEPARATOR, //
+        ACDEF_COPY_FRAME, //
+        ACDEF_RUN_KDENLIVE //
 
     );
     toolbar.createControl( this );
@@ -91,17 +92,23 @@ public class SvinsFramesViewer
     fgViewer.getControl().setLayoutData( BorderLayout.CENTER );
     // setup
     toolbar.addListener( this );
-    toolbar.setActionMenu( ACTID_GIF_CREATE, new AbstractGifManagemntDropDownMenuCreator( tsContext(), this ) {
+    gifMenuCreator = new AbstractGifManagemntDropDownMenuCreator( tsContext() ) {
 
       @Override
       protected IFrame doGetFrame() {
         return selectedItem();
       }
 
-    } );
+    };
+    toolbar.setActionMenu( ACTID_GIF_TEST, gifMenuCreator );
     toolbar.setActionMenu( AID_THUMB_SIZEABLE_ZOOM_MENU, new ThumbSizeableDropDownMenuCreator(
         fgViewer.thumbSizeManager(), tsContext(), IS_16X16, PSX_MIN_FRAME_THUMB_SIZE, PSX_MAX_FRAME_THUMB_SIZE ) );
     toolbar.setActionMenu( ACTID_CAM_ID_MENU, new AbstractCamerasManagemntDropDownMenuCreator( tsContext() ) {
+
+      @Override
+      protected IStringList listAvailableCameraIds() {
+        return listAllCamearsOfAllEpuisodesOfAllSvins();
+      }
 
       @Override
       protected void setShownCameraIds( IStringList aCameraIds ) {
@@ -114,13 +121,17 @@ public class SvinsFramesViewer
       }
     } );
     toolbar.setActionMenu( AID_ANIMATION_KINDABLE_MENU,
-        new AnimationKindDropDownMenuCreator( svinFramesParams, aContext ) );
+        new AnimationKindDropDownMenuCreator( svinFramesParams, tsContext() ) );
+    toolbar.setActionMenu( AID_SEC_STEPPABLE_ZOOM_ORIGINAL,
+        new SecondsSteppableDropDownMenuCreator( svinFramesParams, tsContext(), IS_24X24 ) );
+    toolbar.setActionMenu( AID_FRAMES_PER_SVIN_MENU,
+        new FramesPerSvinDropDownMenuCreator( svinFramesParams, tsContext() ) );
     svinSeq.genericChangeEventer().addListener( s -> whenSvinSeqChanged() );
     svinFramesParams.genericChangeEventer().addListener( s -> whenSvinFramesStrategyChanged() );
     fgViewer.addTsSelectionListener( ( src, sel ) -> whenSelectedFrameChanges( sel ) );
-    fgViewer.addTsDoubleClickListener( doubleClickEventHelper );
+    fgViewer.addTsDoubleClickListener( ( src, sel ) -> handleAction( ACTID_PLAY ) );
     fgViewer.addTsSelectionListener( selectionChangeEventHelper );
-    updateActionState();
+    updateActionsState();
   }
 
   // ------------------------------------------------------------------------------------
@@ -138,7 +149,7 @@ public class SvinsFramesViewer
         break;
       }
       case ACTID_CAM_ID_MENU: {
-        svinFramesParams.setCameraIds( svinSeq.listCameraIds() );
+        svinFramesParams.setCameraIds( listAllCamearsOfAllEpuisodesOfAllSvins() );
         break;
       }
       case ACTID_PLAY: {
@@ -148,26 +159,86 @@ public class SvinsFramesViewer
         }
         break;
       }
-      // TODO implement actions
-      // TODO GIF actions move to AbstractGifManagemntDropDownMenuCreator
-      case ACTID_GIF_CREATE:
-      case ACTID_GIF_RECREATE_ALL:
-      case ACTID_GIF_REMOVE:
+      case AID_SEC_STEPPABLE_ZOOM_ORIGINAL: {
+        svinFramesParams.setDefaultTimeStep();
+        break;
+      }
+      case AID_ANIMATION_KINDABLE_MENU: {
+        svinFramesParams.setDefaultAnimationKind();
+        break;
+      }
+      case AID_THUMB_SIZEABLE_ZOOM_MENU: {
+        fgViewer.thumbSizeManager().setDefaultThumbSize();
+        break;
+      }
+      case ACTID_GIF_TEST: {
+        gifMenuCreator.handleAction( aActionId );
+        break;
+      }
+      case AID_FRAMES_PER_SVIN_MENU: {
+        EFramesPerSvin toSet;
+        switch( svinFramesParams.framesPerSvin() ) {
+          case SELECTED: {
+            toSet = EFramesPerSvin.FORCE_ONE;
+            break;
+          }
+          case FORCE_ONE: {
+            toSet = EFramesPerSvin.SELECTED;
+            break;
+          }
+          case ONE_NO_MORE: {
+            toSet = EFramesPerSvin.FORCE_ONE;
+            break;
+          }
+          default:
+            throw new TsNotAllEnumsUsedRtException( svinFramesParams.framesPerSvin().id() );
+        }
+        svinFramesParams.setFramesPerSvin( toSet );
+        break;
+      }
+      case ACTID_COPY_FRAME: {
+        if( sel != null ) {
+          psxService().copyFrameImage( sel );
+        }
+        break;
+      }
+      case ACTID_RUN_KDENLIVE: {
+        if( sel != null ) {
+          psxService().runKdenliveFor( sel );
+        }
+        break;
+      }
       default:
         TsDialogUtils.warn( getShell(), aActionId );
     }
-    updateActionState();
+    updateActionsState();
   }
 
   // ------------------------------------------------------------------------------------
   // implementation
   //
 
-  private void updateActionState() {
+  private void updateActionsState() {
     IFrame sel = selectedItem();
     boolean isSel = sel != null;
     toolbar.setActionEnabled( ACTID_WORK_WITH_FRAMES, isSel );
     toolbar.setActionEnabled( ACTID_PLAY, isSel );
+    toolbar.setActionEnabled( ACTID_GIF_TEST, isSel );
+    toolbar.setActionEnabled( ACTID_COPY_FRAME, isSel );
+    toolbar.setActionEnabled( ACTID_RUN_KDENLIVE, isSel );
+  }
+
+  private IStringList listAllCamearsOfAllEpuisodesOfAllSvins() {
+    IStringListEdit llCamIds = new StringArrayList();
+    for( String epId : svinSeq.listEpisodeIds() ) {
+      IStringList epCamIds = unitSourceVideos().episodeSourceVideos( epId ).keys();
+      for( String camId : epCamIds ) {
+        if( !llCamIds.hasElem( epId ) ) {
+          llCamIds.add( camId );
+        }
+      }
+    }
+    return llCamIds;
   }
 
   private void recrateUnfilteredFramesListAndSetToFgViewer() {
@@ -204,7 +275,7 @@ public class SvinsFramesViewer
           return getFrameSvin( aSelectedItem );
         }
       } );
-      updateActionState();
+      updateActionsState();
     }
   }
 

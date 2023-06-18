@@ -1,16 +1,23 @@
 package com.hazard157.prisex24.e4.services.psx;
 
+import static com.hazard157.common.IHzConstants.*;
+import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 import static com.hazard157.prisex24.e4.services.psx.IPsxResources.*;
 
 import java.io.*;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.dialogs.*;
+import org.toxsoft.core.tsgui.dialogs.datarec.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
+import org.toxsoft.core.tsgui.rcp.utils.*;
+import org.toxsoft.core.tslib.bricks.apprefs.*;
+import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
+import org.toxsoft.core.tslib.utils.logs.impl.*;
 
 import com.hazard157.prisex24.*;
 import com.hazard157.psx.common.stuff.frame.*;
@@ -25,6 +32,11 @@ import com.hazard157.psx.proj3.sourcevids.*;
  */
 public class Prisex24Service
     implements IPrisex24Service, IPsxGuiContextable {
+
+  /**
+   * Last copy destination app pref ID in the prefs bundle {@link IPrisex24CoreConstants#PBID_PSX24_COMMON}.
+   */
+  private static final String APPREFID_LAST_DESTINATION = "FrameCopyLastDestination"; //$NON-NLS-1$
 
   private final ITsGuiContext tsContext;
 
@@ -53,6 +65,21 @@ public class Prisex24Service
 
   private void errDialog( String aMsg, Object... aArgs ) {
     TsDialogUtils.error( getShell(), aMsg, aArgs );
+  }
+
+  private void performFrameImageCopy( IFrame aFrame, File aDestDir ) {
+    TsNullArgumentRtException.checkNull( aFrame );
+    TsFileUtils.checkDirReadable( aDestDir );
+    File srcFile = cofsFrames().findFrameFile( aFrame );
+    if( srcFile == null ) {
+      return;
+    }
+    String newName = aFrame.episodeId() + '-' + // episode ID
+        TsFileUtils.extractBareFileName( srcFile.getName() ) + '-' + // frameNo ЧЧ-ММ-СС_КК
+        aFrame.cameraId() + // camera ID
+        TsFileUtils.CHAR_EXT_SEPARATOR + TsFileUtils.extractExtension( srcFile.getName() ); // source extension
+    File destFile = new File( aDestDir, newName );
+    TsFileUtils.copyFile( srcFile, destFile );
   }
 
   // ------------------------------------------------------------------------------------
@@ -113,6 +140,36 @@ public class Prisex24Service
     }
     else {
       mediaPlayer().playVideoFile( f );
+    }
+  }
+
+  @Override
+  public void copyFrameImage( IFrame aFrame ) {
+    TsNullArgumentRtException.checkNull( aFrame );
+    try {
+      IPrefBundle pb = prefBundle( PBID_PSX24_COMMON );
+      String path = pb.prefs().getStr( APPREFID_LAST_DESTINATION, TsLibUtils.EMPTY_STRING );
+      File destDir = TsRcpDialogUtils.askDirOpen( getShell(), path );
+      if( destDir != null ) {
+        performFrameImageCopy( aFrame, destDir );
+        path = destDir.getAbsolutePath();
+        pb.prefs().setStr( APPREFID_LAST_DESTINATION, path );
+      }
+    }
+    catch( Exception ex ) {
+      LoggerUtils.errorLogger().error( ex );
+      TsDialogUtils.error( getShell(), ex );
+    }
+  }
+
+  @Override
+  public void runKdenliveFor( IFrame aFrame ) {
+    TsNullArgumentRtException.checkNull( aFrame );
+    IList<File> projs = psxCofs().listEpisodeKdenliveProjects( aFrame.episodeId() );
+    ITsDialogInfo cdi = TsDialogInfo.forSelectEntity( tsContext );
+    File sel = DialogItemsList.select( cdi, projs, null, ITsNameProvider.DEFAULT );
+    if( sel != null ) {
+      TsMiscUtils.runProgram( PROGRAM_KDENLIVE, sel.getAbsolutePath() );
     }
   }
 

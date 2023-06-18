@@ -45,7 +45,7 @@ class NonsecFramesM5TreeViewer
     // frameNo
     col = columnManager().add( FID_FRAME_NO );
     col.setAlignment( EHorAlignment.CENTER );
-    col.pack();
+    col.setWidth( 80 );
     col = columnManager().add( FID_IS_ANIMATED );
     col.setAlignment( EHorAlignment.CENTER );
     col.pack();

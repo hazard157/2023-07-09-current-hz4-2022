@@ -2,6 +2,7 @@ package com.hazard157.prisex24;
 
 import static com.hazard157.prisex24.IPsxResources.*;
 import static com.hazard157.psx.proj3.IPsxProj3Constants.*;
+import static org.toxsoft.core.tsgui.graphics.icons.ITsStdIconIds.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
@@ -65,9 +66,10 @@ public interface IPrisex24CoreConstants {
   String ICONID_TODOS_LIST                  = "todos-list";                  //$NON-NLS-1$
   String ICONID_TAG                         = "tag";                         //$NON-NLS-1$
   String ICONID_TAGS_LIST                   = "tags-list";                   //$NON-NLS-1$
-  String ICONID_FRAMES_PER_SVIN_FORCE_ONE   = "frames_per_svin_force-one";   //$NON-NLS-1$
-  String ICONID_FRAMES_PER_SVIN_ONE_NO_MORE = "frames_per_svin_one-no-more"; //$NON-NLS-1$
-  String ICONID_FRAMES_PER_SVIN_SELECTED    = "frames_per_svin_selected";    //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_FORCE_ONE   = "frames-per-svin-force-one";   //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_ONE_NO_MORE = "frames-per-svin-one-no-more"; //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_SELECTED    = "frames-per-svin-selected";    //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_QUESTION    = "frames-per-svin-question";    //$NON-NLS-1$
   String ICONID_GIF_CREATE                  = "gif-create";                  //$NON-NLS-1$
   String ICONID_GIF_INFO                    = "gif-info";                    //$NON-NLS-1$
   String ICONID_GIF_RECREATE_ALL            = "gif-recreate-all";            //$NON-NLS-1$
@@ -85,12 +87,13 @@ public interface IPrisex24CoreConstants {
   String ACTID_GIF_TEST         = PSX_ACT_ID + ".gif_test";         //$NON-NLS-1$
   String ACTID_WORK_WITH_FRAMES = PSX_ACT_ID + ".work_with_frames"; //$NON-NLS-1$
   String ACTID_CAM_ID_MENU      = PSX_ACT_ID + ".CamIdMenu";        //$NON-NLS-1$
+  String ACTID_COPY_FRAME       = PSX_ACT_ID + ".CopyFrame";        //$NON-NLS-1$
 
   ITsActionDef ACDEF_GIF_CREATE = TsActionDef.ofPush2( ACTID_GIF_CREATE, //
       STR_GIF_CREATE, STR_GIF_CREATE_D, ICONID_GIF_CREATE );
 
-  ITsActionDef ACDEF_GIF_CREATE_MENU = TsActionDef.ofMenu2( ACTID_GIF_CREATE, //
-      STR_GIF_CREATE, STR_GIF_CREATE_D, ICONID_GIF_CREATE );
+  ITsActionDef ACDEF_GIF_TEST_MENU = TsActionDef.ofMenu2( ACTID_GIF_TEST, //
+      STR_GIF_TEST, STR_GIF_TEST_D, ICONID_GIF_TEST );
 
   ITsActionDef ACDEF_GIF_INFO = TsActionDef.ofPush2( ACTID_GIF_INFO, //
       STR_GIF_INFO, STR_GIF_INFO_D, ICONID_GIF_INFO );
@@ -109,6 +112,9 @@ public interface IPrisex24CoreConstants {
 
   ITsActionDef ACDEF_CAM_ID_MENU = TsActionDef.ofMenu2( ACTID_CAM_ID_MENU, //
       ACT_CAM_ID_MENU, ACT_CAM_ID_MENU_D, ICONID_CAMERA_GENERIC );
+
+  ITsActionDef ACDEF_COPY_FRAME = TsActionDef.ofPush2( ACTID_COPY_FRAME, //
+      ACT_COPY_FRAME, ACT_COPY_FRAME_D, ICONID_ARROW_RIGHT );
 
   // ------------------------------------------------------------------------------------
   // Application preferences

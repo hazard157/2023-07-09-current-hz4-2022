@@ -71,6 +71,7 @@ public final class SvinFramesSelector
     for( IFrame f : intervalFrames ) {
       if( params.animationKind().accept( f.isAnimated() ) && //
           aSvin.interval().contains( f.secNo() ) && //
+          (params.secondsStep().accept( f.secNo() ) || f.isAnimated()) && //
           tmpCamList.hasElem( f.cameraId() ) ) {
         ll.add( f );
       }

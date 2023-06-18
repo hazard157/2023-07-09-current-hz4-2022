@@ -5,17 +5,19 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.ankind.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.common.stuff.svin.*;
 
 /**
  * Determines parameters of the algorithm making list of frames from the SVIN.
  * <p>
- * Selection is mare by rules:
+ * Selection is made according to the rules:
  * <ul>
  * <li>{@link #animationKind()} - determines which kind of frames will be processed further;</li>
  * <li>{@link #isOnlySvinCams()} - if set to <code>true</code> filters out non {@link Svin#cameraId()} frames ;</li>
  * <li>{@link #cameraIds()} determines frames of cameras to include, works if {@link #isOnlySvinCams()} =
  * <code>false</code>;</li>
+ * <li>{@link #secondsStep()} - determines how still frames will be bypassed;</li>
  * <li>{@link #framesPerSvin()} - behavior depends on specified value:</li>
  * <ul>
  * <li>{@link EFramesPerSvin#SELECTED} - resulting frames remain unchanged;</li>
@@ -30,7 +32,7 @@ import com.hazard157.psx.common.stuff.svin.*;
  * @author hazard157
  */
 public interface ISvinFramesParams
-    extends IGenericChangeEventCapable, IAnimationKindable {
+    extends IGenericChangeEventCapable, IAnimationKindable, ISecondsSteppable {
 
   /**
    * Determines which kind of frames to select - still, animated or both.
@@ -79,6 +81,21 @@ public interface ISvinFramesParams
   void setCameraIds( IStringList aCameraIds );
 
   /**
+   * Determines which still frames to bypass.
+   *
+   * @return {@link ESecondsStep} - the frames "density" in time
+   */
+  ESecondsStep secondsStep();
+
+  /**
+   * Sets {@link #secondsStep()}.
+   *
+   * @param aSecondsStep {@link ESecondsStep} - the frames "density" in time
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  void setSecondsStep( ESecondsStep aSecondsStep );
+
+  /**
    * Determines how many frames will be selected per SVIN.
    *
    * @return {@link EFramesPerSvin} - frames per SVIN
@@ -101,9 +118,12 @@ public interface ISvinFramesParams
    * @param aAnimationKind {@link EAnimationKind} - accepted images kind or <code>null</code>
    * @param aOnlySvinCams {@link Boolean} - <code>true</code> only SVIN camera frames, or <code>null</code>
    * @param aCameraIds {@link IStringList} - the camera IDs or an empty list for any camera or <code>null</code>
+   * @param aSecondsStep {@link ESecondsStep} - {@link ESecondsStep} - the frames "density" in time
    * @param aFramesPerSvin {@link EFramesPerSvin} - frames per SVIN or <code>null</code>
    */
   void setParams( EAnimationKind aAnimationKind, Boolean aOnlySvinCams, IStringList aCameraIds,
+      ESecondsStep aSecondsStep,
+
       EFramesPerSvin aFramesPerSvin );
 
   /**

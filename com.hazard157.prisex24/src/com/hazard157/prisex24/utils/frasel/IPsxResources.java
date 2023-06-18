@@ -14,4 +14,7 @@ interface IPsxResources {
   String STR_FRPSP_FORCE_ONE     = Messages.getString( "STR_FRPSP_FORCE_ONE" );     //$NON-NLS-1$
   String STR_FRPSP_FORCE_ONE_D   = Messages.getString( "STR_FRPSP_FORCE_ONE_D" );   //$NON-NLS-1$
 
+  String STR_FRAMES_PER_SVIN_MENU   = Messages.getString( "STR_FRAMES_PER_SVIN_MENU" );   //$NON-NLS-1$
+  String STR_FRAMES_PER_SVIN_MENU_D = Messages.getString( "STR_FRAMES_PER_SVIN_MENU_D" ); //$NON-NLS-1$
+
 }
