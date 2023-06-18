@@ -4,8 +4,8 @@ import org.toxsoft.core.tsgui.bricks.stdevents.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.widgets.*;
 
-import com.hazard157.prisex24.glib.frasel.*;
 import com.hazard157.prisex24.glib.frview.impl.*;
+import com.hazard157.prisex24.utils.frasel.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 

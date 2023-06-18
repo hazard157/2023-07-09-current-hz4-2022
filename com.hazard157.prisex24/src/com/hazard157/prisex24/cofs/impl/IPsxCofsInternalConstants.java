@@ -33,8 +33,9 @@ interface IPsxCofsInternalConstants {
   File COFS_EPISODES_ROOT = new File( COFS_ROOT, "episodes/" ); //$NON-NLS-1$
   File COFS_MEDIA_ROOT    = new File( COFS_ROOT, "media/" );    //$NON-NLS-1$
 
-  String SUBDIR_EP_STILL_IMAGES = "frames-still"; //$NON-NLS-1$
-  String SUBDIR_EP_ANIM_IMAGES  = "frames-anim";  //$NON-NLS-1$
+  String SUBDIR_EP_STILL_IMAGES  = "frames-still"; //$NON-NLS-1$
+  String SUBDIR_EP_ANIM_IMAGES   = "frames-anim";  //$NON-NLS-1$
+  String SUBDIR_EP_SOURCE_VIDEOS = "srcvideos";    //$NON-NLS-1$
 
   String STILL_IMAGE_FILE_EXT = "jpg"; //$NON-NLS-1$
   String ANIM_IMAGE_FILE_EXT  = "gif"; //$NON-NLS-1$

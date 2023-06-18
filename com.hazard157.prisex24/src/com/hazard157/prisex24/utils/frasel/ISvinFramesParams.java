@@ -1,10 +1,10 @@
-package com.hazard157.prisex24.glib.frasel;
+package com.hazard157.prisex24.utils.frasel;
 
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.utils.animkind.*;
+import com.hazard157.common.quants.ankind.*;
 import com.hazard157.psx.common.stuff.svin.*;
 
 /**
@@ -30,7 +30,7 @@ import com.hazard157.psx.common.stuff.svin.*;
  * @author hazard157
  */
 public interface ISvinFramesParams
-    extends IGenericChangeEventCapable {
+    extends IGenericChangeEventCapable, IAnimationKindable {
 
   /**
    * Determines which kind of frames to select - still, animated or both.

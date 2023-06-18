@@ -1,6 +1,6 @@
 package com.hazard157.prisex24.glib.dialogs;
 
-import com.hazard157.prisex24.utils.Messages;
+import com.hazard157.prisex24.utils.gifmgmt.*;
 
 /**
  * Localizable resources.

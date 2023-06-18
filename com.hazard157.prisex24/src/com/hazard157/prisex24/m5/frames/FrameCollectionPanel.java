@@ -34,6 +34,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.utils.*;
+import com.hazard157.prisex24.utils.gifmgmt.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
@@ -186,6 +187,7 @@ class FrameCollectionPanel
         break;
       }
       // TODO implement actions
+      // TODO GIF actions move to AbstractGifManagemntDropDownMenuCreator
       case ACTID_GIF_CREATE:
       case ACTID_GIF_RECREATE_ALL:
       case ACTID_GIF_REMOVE:

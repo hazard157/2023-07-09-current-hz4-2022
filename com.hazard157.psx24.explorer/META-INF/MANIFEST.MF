@@ -21,6 +21,7 @@ Require-Bundle: javax.annotation,
  org.toxsoft.core.tsgui.mws,
  org.toxsoft.core.txtproj.lib,
  com.hazard157.lib.core,
+ com.hazard157.common,
  com.hazard157.psx.common,
  com.hazard157.psx.proj3,
  com.hazard157.psx24.core

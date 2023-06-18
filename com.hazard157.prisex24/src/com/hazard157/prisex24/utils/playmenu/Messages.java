@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.glib.frasel;
+package com.hazard157.prisex24.utils.playmenu;
 
 import java.util.*;
 

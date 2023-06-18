@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.glib.frasel;
+package com.hazard157.prisex24.utils.frasel;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tslib.coll.*;

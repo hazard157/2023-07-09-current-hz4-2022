@@ -22,6 +22,8 @@ interface IPsxResources {
   String STR_GIF_TEST_D         = Messages.getString( "STR_GIF_TEST_D" );         //$NON-NLS-1$
   String STR_WORK_WITH_FRAMES   = Messages.getString( "STR_WORK_WITH_FRAMES" );   //$NON-NLS-1$
   String STR_WORK_WITH_FRAMES_D = Messages.getString( "STR_WORK_WITH_FRAMES_D" ); //$NON-NLS-1$
+  String ACT_CAM_ID_MENU        = Messages.getString( "ACT_CAM_ID_MENU" );        //$NON-NLS-1$
+  String ACT_CAM_ID_MENU_D      = Messages.getString( "ACT_CAM_ID_MENU_D" );      //$NON-NLS-1$
 
   String STR_THUMB_SIZE_IN_MENUS   = Messages.getString( "STR_THUMB_SIZE_IN_MENUS" );   //$NON-NLS-1$
   String STR_THUMB_SIZE_IN_MENUS_D = Messages.getString( "STR_THUMB_SIZE_IN_MENUS_D" ); //$NON-NLS-1$

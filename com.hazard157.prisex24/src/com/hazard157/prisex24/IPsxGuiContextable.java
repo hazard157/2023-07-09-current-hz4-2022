@@ -6,6 +6,7 @@ import com.hazard157.lib.core.e4.services.mps.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.psx.proj3.episodes.*;
+import com.hazard157.psx.proj3.sourcevids.*;
 
 /**
  * Extending {@link ITsGuiContextable} with PSX services.
@@ -30,6 +31,10 @@ public interface IPsxGuiContextable
 
   default IUnitEpisodes unitEpisodes() {
     return tsContext().get( IUnitEpisodes.class );
+  }
+
+  default IUnitSourceVideos unitSourceVideos() {
+    return tsContext().get( IUnitSourceVideos.class );
   }
 
   default IMediaPlayerService mediaPlayer() {

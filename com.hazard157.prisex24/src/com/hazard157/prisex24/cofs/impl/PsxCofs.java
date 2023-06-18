@@ -2,6 +2,8 @@ package com.hazard157.prisex24.cofs.impl;
 
 import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.prisex24.cofs.impl.IPsxCofsInternalConstants.*;
+import static org.toxsoft.core.tsgui.utils.IMediaFileConstants.*;
+import static org.toxsoft.core.tslib.utils.files.TsFileUtils.*;
 
 import java.io.*;
 import java.time.*;
@@ -13,6 +15,7 @@ import org.toxsoft.core.tslib.utils.files.*;
 
 import com.hazard157.common.incub.fs.*;
 import com.hazard157.prisex24.cofs.*;
+import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.incident.*;
 
 /**
@@ -64,6 +67,24 @@ public class PsxCofs
       }
     }
     return nonBackupProjFiles;
+  }
+
+  @Override
+  public File findSourceVideoFile( String aSourceVideoId ) {
+    String episodeId = SourceVideoUtils.extractEpisodeId( aSourceVideoId );
+    LocalDate epDate = EPsxIncidentKind.EPISODE.id2date( episodeId );
+    File epDir = new File( COFS_EPISODES_ROOT, epDate.toString() );
+    File svDir = new File( epDir, SUBDIR_EP_SOURCE_VIDEOS );
+    if( TsFileUtils.isDirReadable( svDir ) ) {
+      String cameraId = SourceVideoUtils.extractCamId( aSourceVideoId );
+      for( String ext : VIDEO_FILE_EXTENSIONS ) {
+        File srcVideoFile = new File( svDir, cameraId + CHAR_EXT_SEPARATOR + ext );
+        if( srcVideoFile.exists() ) {
+          return srcVideoFile;
+        }
+      }
+    }
+    return null;
   }
 
 }

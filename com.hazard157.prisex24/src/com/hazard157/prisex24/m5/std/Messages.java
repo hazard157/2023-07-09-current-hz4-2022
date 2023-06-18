@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.utils;
+package com.hazard157.prisex24.m5.std;
 
 import java.util.*;
 

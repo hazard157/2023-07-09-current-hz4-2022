@@ -19,8 +19,8 @@ import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.av.*;
 
+import com.hazard157.common.quants.ankind.*;
 import com.hazard157.lib.core.quants.secint.*;
-import com.hazard157.lib.core.utils.animkind.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;

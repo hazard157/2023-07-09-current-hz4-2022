@@ -52,11 +52,11 @@ public interface IPsxFileSystem {
   File findIconFile( String aPath );
 
   /**
-   * Возвращает файл исходного видео, если таковой существует.
+   * Returns source video file if exists.
    *
-   * @param aSourceVideoId String - идентификатор исходного видео
-   * @return {@link File} - файл исходного видео или null
-   * @throws TsNullArgumentRtException аргумент = null
+   * @param aSourceVideoId String - source video ID
+   * @return {@link File} - source video file or <code>null</code>
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   File findSourceVideoFile( String aSourceVideoId );
 

@@ -49,6 +49,8 @@ public class FramesGridViewer
     pgViewer = new PicsGridViewer<>( this, tsContext() );
     pgViewer.setVisualsProvider( visualsProvider );
     pgViewer.getControl().setLayoutData( BorderLayout.CENTER );
+    pgViewer.addTsDoubleClickListener( doubleClickEventHelper );
+    pgViewer.addTsSelectionListener( selectionChangeEventHelper );
   }
 
   // ------------------------------------------------------------------------------------

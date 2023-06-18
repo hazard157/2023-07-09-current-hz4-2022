@@ -7,21 +7,21 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx24.core.*;
 
 /**
- * Поддержка реализации {@link IPsxAppActions#AI_PLAY_MENU}.
+ * Support for {@link IPsxAppActions#AI_PLAY_MENU} implementation.
  * <p>
- * Экземпляр должен быть в контексте приложения.
+ * The instance must be in the windows level context.
  *
  * @author hazard157
  */
 public interface IPlayMenuSupport {
 
   /**
-   * Возвращает создатель меню для установки методом {@link IAction#setMenuCreator(IMenuCreator)}.
+   * Returns menu creator to be set by {@link IAction#setMenuCreator(IMenuCreator)}.
    *
    * @param aContext {@link ITsGuiContext} - the context
-   * @param aParamsProvider {@link IPlayMenuParamsProvider} - предоставляет начальные параметры просмотра
-   * @return {@link IMenuCreator} - создатель меню
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aParamsProvider {@link IPlayMenuParamsProvider} - play parameters provider
+   * @return {@link IMenuCreator} - menu creator
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   IMenuCreator getPlayMenuCreator( ITsGuiContext aContext, IPlayMenuParamsProvider aParamsProvider );
 

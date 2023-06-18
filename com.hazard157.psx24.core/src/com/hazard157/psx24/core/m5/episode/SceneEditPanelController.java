@@ -9,9 +9,9 @@ import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.ankind.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.valed.*;
-import com.hazard157.lib.core.utils.animkind.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.common.utils.*;

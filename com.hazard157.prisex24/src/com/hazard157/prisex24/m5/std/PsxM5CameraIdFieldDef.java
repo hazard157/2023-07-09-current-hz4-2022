@@ -35,7 +35,7 @@ public class PsxM5CameraIdFieldDef<T extends ICameraIdable>
 
   @Override
   protected void doInit() {
-    setNameAndDescription( STR_N_FIELD_CAMERA_ID, STR_D_FIELD_CAMERA_ID );
+    setNameAndDescription( STR_FIELD_CAMERA_ID, STR_FIELD_CAMERA_ID_D );
     setFlags( M5FF_COLUMN );
     setDefaultValue( IStridable.NONE_ID );
     validator().addValidator( IdPathStringValidator.IDPATH_VALIDATOR );

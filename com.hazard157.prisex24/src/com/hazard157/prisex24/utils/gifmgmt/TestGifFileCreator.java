@@ -1,6 +1,6 @@
-package com.hazard157.prisex24.utils;
+package com.hazard157.prisex24.utils.gifmgmt;
 
-import static com.hazard157.prisex24.utils.IPsxResources.*;
+import static com.hazard157.prisex24.utils.gifmgmt.IPsxResources.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 
 import java.io.*;

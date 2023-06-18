@@ -1,7 +1,7 @@
-package com.hazard157.prisex24.utils;
+package com.hazard157.prisex24.utils.gifmgmt;
 
 import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
-import static com.hazard157.prisex24.utils.IPsxResources.*;
+import static com.hazard157.prisex24.utils.gifmgmt.IPsxResources.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 
 import java.io.*;

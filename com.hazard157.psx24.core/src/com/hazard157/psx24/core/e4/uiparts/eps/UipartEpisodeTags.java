@@ -32,8 +32,8 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.ankind.*;
 import com.hazard157.lib.core.quants.secint.*;
-import com.hazard157.lib.core.utils.animkind.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;
@@ -433,16 +433,12 @@ public class UipartEpisodeTags
     if( node.kind() == TsNodeTreeTagInterval.KIND ) {
       node = node.parent();
     }
-    switch( node.kind().id() ) {
-      case TsNodeTreeTagGroup.KIND_ID:
-        return ((TsNodeTreeTagGroup)node).entity();
-      case TsNodeTreeTagLeaf.KIND_ID:
-        return ((TsNodeTreeTagLeaf)node).entity();
-      case TsNodeListTag.KIND_ID:
-        return ((TsNodeListTag)node).entity();
-      default:
-        throw new TsNotAllEnumsUsedRtException();
-    }
+    return switch( node.kind().id() ) {
+      case TsNodeTreeTagGroup.KIND_ID -> ((TsNodeTreeTagGroup)node).entity();
+      case TsNodeTreeTagLeaf.KIND_ID -> ((TsNodeTreeTagLeaf)node).entity();
+      case TsNodeListTag.KIND_ID -> ((TsNodeListTag)node).entity();
+      default -> throw new TsNotAllEnumsUsedRtException();
+    };
   }
 
   /**
@@ -586,21 +582,17 @@ public class UipartEpisodeTags
 
   @Override
   public boolean onKeyDown( Object aSource, int aCode, char aChar, int aState ) {
-    switch( aCode ) {
-      case SWT.INSERT:
+    return switch( aCode ) {
+      case SWT.INSERT -> {
         processAction( ACTID_ADD );
-        return true;
-      // обрабатывается в SWT - Enter = double click
-      // case SWT.CR:
-      // case SWT.KEYPAD_CR:
-      // processAction( ACDEF_EDIT );
-      // return true;
-      case SWT.DEL:
+        yield true;
+      }
+      case SWT.DEL -> {
         processAction( ACTID_REMOVE );
-        return true;
-      default:
-        return false;
-    }
+        yield true;
+      }
+      default -> false;
+    };
   }
 
 }

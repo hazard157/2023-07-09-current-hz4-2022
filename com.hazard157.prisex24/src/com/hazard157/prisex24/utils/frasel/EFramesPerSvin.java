@@ -1,7 +1,7 @@
-package com.hazard157.prisex24.glib.frasel;
+package com.hazard157.prisex24.utils.frasel;
 
 import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
-import static com.hazard157.prisex24.glib.frasel.IPsxResources.*;
+import static com.hazard157.prisex24.utils.frasel.IPsxResources.*;
 
 import org.toxsoft.core.tslib.bricks.keeper.*;
 import org.toxsoft.core.tslib.bricks.keeper.std.*;

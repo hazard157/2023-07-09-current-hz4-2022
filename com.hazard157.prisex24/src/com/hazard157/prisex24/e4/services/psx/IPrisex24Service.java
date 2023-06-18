@@ -4,6 +4,7 @@ import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.psx.common.stuff.frame.*;
+import com.hazard157.psx.common.stuff.svin.*;
 
 /**
  * Application-specific methods.
@@ -21,5 +22,15 @@ public interface IPrisex24Service {
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   TsImage findThumb( IFrame aFrame, EThumbSize aThumbSize );
+
+  /**
+   * Plays source video with the specified parameters.
+   * <p>
+   * If it is not possible to play the requested video, the method throws a dialog and returns without exception.
+   *
+   * @param aSvin {@link Svin} - play parameters
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  void playEpisodeVideo( Svin aSvin );
 
 }

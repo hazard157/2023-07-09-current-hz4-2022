@@ -17,7 +17,8 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 @SuppressWarnings( "javadoc" )
 public interface IPsxM5Constants {
 
-  String FID_WHEN = "When"; //$NON-NLS-1$
+  String FID_WHEN     = "When";     //$NON-NLS-1$
+  String FID_INTERVAL = "Interval"; //$NON-NLS-1$
 
   String MID_EPISODE         = PSX_ID + ".Episode"; //$NON-NLS-1$
   String FID_ACTION_INTERVAL = "ActInterval";       //$NON-NLS-1$
@@ -42,6 +43,8 @@ public interface IPsxM5Constants {
   String MID_FULFIL_STAGE = PSX_ID + "FulfilStage"; //$NON-NLS-1$
 
   String MID_TAG = PSX_ID + ".Tag"; //$NON-NLS-1$
+
+  String MID_SVIN = PSX_ID + ".Svin"; //$NON-NLS-1$
 
   String       FMT_DATE_DMY    = "%1$td.%1$tm.%1$tY";  // TIMESTAMP в виде "DD.MM.YYYY". //$NON-NLS-1$
   IAtomicValue FMT_DATE_DMY_AV = avStr( FMT_DATE_DMY );

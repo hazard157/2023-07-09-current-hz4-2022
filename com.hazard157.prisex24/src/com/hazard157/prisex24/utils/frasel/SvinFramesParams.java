@@ -1,11 +1,11 @@
-package com.hazard157.prisex24.glib.frasel;
+package com.hazard157.prisex24.utils.frasel;
 
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.utils.animkind.*;
+import com.hazard157.common.quants.ankind.*;
 
 /**
  * {@link ISvinFramesParams} implementation.
@@ -121,6 +121,25 @@ public class SvinFramesParams
     TsNullArgumentRtException.checkNull( aSource );
     setParams( aSource.animationKind(), Boolean.valueOf( aSource.isOnlySvinCams() ), aSource.cameraIds(),
         aSource.framesPerSvin() );
+  }
+
+  // ------------------------------------------------------------------------------------
+  // IAnimationKindable
+  //
+
+  @Override
+  public EAnimationKind getDefaultAnimationKind() {
+    return EAnimationKind.ANIMATED;
+  }
+
+  @Override
+  public EAnimationKind getShownAnimationKind() {
+    return animationKind;
+  }
+
+  @Override
+  public void setShownAnimationKind( EAnimationKind aAnimationKind ) {
+    setAnimationKind( aAnimationKind );
   }
 
 }

@@ -15,8 +15,8 @@ import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.bricks.strio.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.ankind.*;
 import com.hazard157.lib.core.quants.secint.*;
-import com.hazard157.lib.core.utils.animkind.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.common.utils.*;
@@ -55,7 +55,7 @@ public class FrameSelectionCriteria {
         protected FrameSelectionCriteria doRead( IStrioReader aSr ) {
           Svin svin = SvinKeeper.KEEPER.read( aSr );
           aSr.ensureSeparatorChar();
-          EAnimationKind showFrameType = EAnimationKind.findById( aSr.readIdName() );
+          EAnimationKind showFrameType = EAnimationKind.asList().findByKey( aSr.readIdName() );
           aSr.ensureSeparatorChar();
           boolean onlySecAligned = aSr.readBoolean();
           return new FrameSelectionCriteria( svin, showFrameType, onlySecAligned );

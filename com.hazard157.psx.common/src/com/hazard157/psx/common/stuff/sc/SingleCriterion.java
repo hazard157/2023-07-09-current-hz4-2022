@@ -3,8 +3,8 @@ package com.hazard157.psx.common.stuff.sc;
 import org.toxsoft.core.tslib.bricks.strid.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.ankind.*;
 import com.hazard157.lib.core.quants.secint.*;
-import com.hazard157.lib.core.utils.animkind.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.common.utils.ftstep.*;
@@ -22,7 +22,7 @@ public class SingleCriterion
   private final Secint         interval;
   private final EAnimationKind kind;
   private final boolean        onlySecAligned;
-  private final ESecondsStep timeStep;
+  private final ESecondsStep   timeStep;
 
   private SingleCriterion( String aEpisodeId, String aCameraId, Secint aInterval, EAnimationKind aKind,
       boolean aSecAlign, ESecondsStep aTimeStep ) {

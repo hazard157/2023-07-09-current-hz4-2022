@@ -10,25 +10,25 @@ interface IPsxResources {
   /**
    * {@link PsxM5CameraIdFieldDef}
    */
-  String STR_N_FIELD_CAMERA_ID = "Камера";
-  String STR_D_FIELD_CAMERA_ID = "Идентификатор камеры";
+  String STR_FIELD_CAMERA_ID   = Messages.getString( "STR_FIELD_CAMERA_ID" );   //$NON-NLS-1$
+  String STR_FIELD_CAMERA_ID_D = Messages.getString( "STR_FIELD_CAMERA_ID_D" ); //$NON-NLS-1$
 
   /**
    * {@link PsxM5EpisodeIdFieldDef}
    */
-  String STR_FIELD_EPISODE_ID   = "Эпизод";
-  String STR_FIELD_EPISODE_ID_D = "Идентификатор эпизода";
+  String STR_FIELD_EPISODE_ID   = Messages.getString( "STR_FIELD_EPISODE_ID" );   //$NON-NLS-1$
+  String STR_FIELD_EPISODE_ID_D = Messages.getString( "STR_FIELD_EPISODE_ID_D" ); //$NON-NLS-1$
 
   /**
    * {@link PsxM5FrameFieldDef}
    */
-  String STR_N_FD_FRAME = "Кадр";
-  String STR_D_FD_FRAME = "Иллюстрирующий кадр";
+  String STR_FD_FRAME   = Messages.getString( "STR_FD_FRAME" );   //$NON-NLS-1$
+  String STR_FD_FRAME_D = Messages.getString( "STR_FD_FRAME_D" ); //$NON-NLS-1$
 
   /**
    * {@link PsxM5IntervalFieldDef}
    */
-  String STR_N_FIELD_INTERVAL = "Интервал";
-  String STR_D_FIELD_INTERVAL = "Интервал внутри эпизода";
+  String STR_FIELD_INTERVAL   = Messages.getString( "STR_FIELD_INTERVAL" );   //$NON-NLS-1$
+  String STR_FIELD_INTERVAL_D = Messages.getString( "STR_FIELD_INTERVAL_D" ); //$NON-NLS-1$
 
 }

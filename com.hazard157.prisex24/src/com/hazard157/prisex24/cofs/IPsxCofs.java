@@ -68,4 +68,13 @@ public interface IPsxCofs {
    */
   IList<File> listEpisodeKdenliveProjects( String aEpisodeId );
 
+  /**
+   * Returns source video file if exists.
+   *
+   * @param aSourceVideoId String - source video ID
+   * @return {@link File} - source video file or <code>null</code>
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  File findSourceVideoFile( String aSourceVideoId );
+
 }

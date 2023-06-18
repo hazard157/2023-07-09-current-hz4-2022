@@ -35,7 +35,7 @@ public class PsxM5FrameFieldDef<T extends IFrameable>
    */
   public PsxM5FrameFieldDef() {
     super( FID_FRAME, MID_FRAME );
-    setNameAndDescription( STR_N_FD_FRAME, STR_D_FD_FRAME );
+    setNameAndDescription( STR_FD_FRAME, STR_FD_FRAME_D );
     setValedEditor( ValedFrameFactory.FACTORY_NAME );
     setFlags( M5FF_DETAIL );
     setDefaultValue( IFrame.NONE );

@@ -1,6 +1,7 @@
 package com.hazard157.prisex24;
 
 import static com.hazard157.prisex24.IPsxResources.*;
+import static com.hazard157.psx.proj3.IPsxProj3Constants.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
@@ -83,6 +84,7 @@ public interface IPrisex24CoreConstants {
   String ACTID_GIF_REMOVE       = PSX_ACT_ID + ".gif_remove";       //$NON-NLS-1$
   String ACTID_GIF_TEST         = PSX_ACT_ID + ".gif_test";         //$NON-NLS-1$
   String ACTID_WORK_WITH_FRAMES = PSX_ACT_ID + ".work_with_frames"; //$NON-NLS-1$
+  String ACTID_CAM_ID_MENU      = PSX_ACT_ID + ".CamIdMenu";        //$NON-NLS-1$
 
   ITsActionDef ACDEF_GIF_CREATE = TsActionDef.ofPush2( ACTID_GIF_CREATE, //
       STR_GIF_CREATE, STR_GIF_CREATE_D, ICONID_GIF_CREATE );
@@ -105,6 +107,9 @@ public interface IPrisex24CoreConstants {
   ITsActionDef ACDEF_WORK_WITH_FRAMES = TsActionDef.ofPush2( ACTID_WORK_WITH_FRAMES, //
       STR_WORK_WITH_FRAMES, STR_WORK_WITH_FRAMES_D, ICONID_WORK_WITH_FRAMES );
 
+  ITsActionDef ACDEF_CAM_ID_MENU = TsActionDef.ofMenu2( ACTID_CAM_ID_MENU, //
+      ACT_CAM_ID_MENU, ACT_CAM_ID_MENU_D, ICONID_CAMERA_GENERIC );
+
   // ------------------------------------------------------------------------------------
   // Application preferences
 
@@ -125,6 +130,19 @@ public interface IPrisex24CoreConstants {
   IStridablesList<IDataDef> ALL_APPREFS = new StridablesList<>( //
       APPREF_THUMB_SIZE_IN_MENUS //
   );
+
+  // ------------------------------------------------------------------------------------
+  // Misc settings
+
+  /**
+   * Minimal frame thumb size, restricted due to prepared image files size.
+   */
+  EThumbSize PSX_MIN_FRAME_THUMB_SIZE = EThumbSize.SZ64;
+
+  /**
+   * Maximal frame thumb size, restricted due to prepared image files size.
+   */
+  EThumbSize PSX_MAX_FRAME_THUMB_SIZE = EThumbSize.SZ512;
 
   /**
    * Constants registration.
