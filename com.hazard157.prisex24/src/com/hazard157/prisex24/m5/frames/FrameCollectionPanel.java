@@ -1,17 +1,16 @@
 package com.hazard157.prisex24.m5.frames;
 
 import static com.hazard157.common.IHzConstants.*;
-import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 
 import java.io.*;
 
-import org.eclipse.swt.*;
-import org.eclipse.swt.custom.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.tstree.tmm.*;
+import org.toxsoft.core.tsgui.bricks.uievents.*;
 import org.toxsoft.core.tsgui.dialogs.*;
 import org.toxsoft.core.tsgui.graphics.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
@@ -19,7 +18,6 @@ import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.gui.viewers.*;
-import org.toxsoft.core.tsgui.m5.gui.viewers.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.panels.lazy.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
@@ -28,18 +26,18 @@ import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tsgui.utils.rectfit.*;
 import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tsgui.widgets.pdw.*;
+import org.toxsoft.core.tslib.bricks.geometry.*;
 import org.toxsoft.core.tslib.bricks.geometry.impl.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.prisex24.*;
+import com.hazard157.prisex24.utils.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
  * {@link IM5CollectionViewer} implementation for {@link FrameM5Model}.
- * <p>
- * TODO add ability to view non-sec frames
  *
  * @author hazard157
  */
@@ -47,18 +45,12 @@ class FrameCollectionPanel
     extends AbstractTsStdEventsProducerLazyPanel<IFrame, Control>
     implements IM5CollectionPanel<IFrame>, ITsActionHandler, IPsxGuiContextable {
 
-  // TODO tree mode management
+  private final IM5Model<IFrame> model;
 
-  // TODO create columns
-
-  // TODO selection -> image update
-
-  private final IM5Model<IFrame>         model;
-  private final ITreeModeManager<IFrame> treeModeManager;
-
-  private final TsToolbar             toolbar;
-  private final IM5TreeViewer<IFrame> framesTree;
-  private final IPdwWidget            imageWidget;
+  private final TsToolbar                toolbar;
+  private final CommonFramesM5TreeViewer framesTree;
+  private final IPdwWidget               imageWidget;
+  private final NonsecFramesM5TreeViewer nonsecsList;
 
   private IM5ItemsProvider<IFrame>    itemsProvider    = IM5ItemsProvider.EMPTY;
   private IM5LifecycleManager<IFrame> lifecycleManager = null;
@@ -86,7 +78,7 @@ class FrameCollectionPanel
     toolbar.setIconSize( EIconSize.IS_24X24 );
     toolbar.setVertical( false );
     toolbar.setActionDefs( //
-        // TODO GIF management menu, ACDEF_SEPARATOR, //
+        ACDEF_GIF_CREATE_MENU, //
         // TODO AnumationKind menu, ACDEF_SEPARATOR, //
         // TODO Shown cameras menu, ACDEF_SEPARATOR, //
         ACDEF_VIEW_AS_TREE_MENU, ACDEF_VIEW_AS_LIST, ACDEF_SEPARATOR, //
@@ -97,31 +89,15 @@ class FrameCollectionPanel
     );
     toolbar.addListener( this );
     // framesTree
-    framesTree = new M5TreeViewer<>( tsContext(), model, false );
+    framesTree = new CommonFramesM5TreeViewer( tsContext(), model );
     // imageWidget
     imageWidget = new PdwWidgetSimple( tsContext() );
     imageWidget.setFitInfo( RectFitInfo.BEST );
     imageWidget.setPreferredSizeFixed( false );
     imageWidget.setFulcrum( ETsFulcrum.CENTER );
     imageWidget.setAreaPreferredSize( new TsPoint( 720, 576 ) );
-    // treeModeManager
-    treeModeManager = new FrameCollectionPanelTmm( tsContext() ) {
-
-      @Override
-      protected void onCurrentModeIdChanged() {
-        if( !isCurrentTreeMode() ) {
-          framesTree.setTreeMaker( null );
-          return;
-        }
-        TreeModeInfo<IFrame> info = treeModeInfoes().findByKey( currModeId() );
-        if( info == null ) {
-          framesTree.setTreeMaker( null );
-          return;
-        }
-        framesTree.setTreeMaker( info.treeMaker() );
-      }
-
-    };
+    // nonsecsList
+    nonsecsList = new NonsecFramesM5TreeViewer( tsContext(), model );
   }
 
   // ------------------------------------------------------------------------------------
@@ -142,15 +118,21 @@ class FrameCollectionPanel
     boolean isAnim = sel != null && sel.isDefined() && sel.isAnimated();
     // enables
     toolbar.setActionEnabled( ACTID_PLAY, isSel );
-    toolbar.setActionEnabled( ACTID_VIEW_AS_LIST, !treeModeManager.isCurrentTreeMode() );
+    toolbar.setActionEnabled( ACTID_VIEW_AS_LIST, !framesTree.tmm().isCurrentTreeMode() );
     toolbar.setActionEnabled( ACTID_GO_PREV, !framesTree.items().isEmpty() && sel != framesTree.items().first() );
     toolbar.setActionEnabled( ACTID_GO_NEXT, !framesTree.items().isEmpty() && sel != framesTree.items().last() );
     // checks
-    toolbar.setActionChecked( ACTID_VIEW_AS_LIST, !treeModeManager.isCurrentTreeMode() );
-    toolbar.setActionChecked( ACTID_VIEW_AS_TREE, treeModeManager.isCurrentTreeMode() );
+    toolbar.setActionChecked( ACTID_VIEW_AS_LIST, !framesTree.tmm().isCurrentTreeMode() );
+    toolbar.setActionChecked( ACTID_VIEW_AS_TREE, framesTree.tmm().isCurrentTreeMode() );
   }
 
   private void whenFramesTreeSelectionChange( IFrame aSel ) {
+    nonsecsList.setBaseFrame( aSel );
+    selectionChangeEventHelper.fireTsSelectionEvent( aSel );
+    updateActionsState();
+  }
+
+  private void whenNonsecsSelectionChanged( IFrame aSel ) {
     TsImage img = null;
     if( aSel != null ) {
       File file = cofsFrames().findFrameFile( aSel );
@@ -160,9 +142,16 @@ class FrameCollectionPanel
     }
     imageWidget.setTsImage( img );
     imageWidget.redraw();
-    // TODO FrameCollectionPanel.whenFramesTreeSelectionChange()
-    selectionChangeEventHelper.fireTsSelectionEvent( aSel );
-    updateActionsState();
+  }
+
+  /**
+   * Returns the displayed frame which may be non-seconds aligned one.
+   *
+   * @return {@link IFrame} - displayed frame or <code>null</code>
+   */
+  private IFrame getDisplayedFrame() {
+    // TODO FrameCollectionPanel.getSelectedFrame()
+    return selectedItem();
   }
 
   // ------------------------------------------------------------------------------------
@@ -171,28 +160,21 @@ class FrameCollectionPanel
 
   @Override
   public void handleAction( String aActionId ) {
-    IFrame sel = framesTree.selectedItem();
     switch( aActionId ) {
-      case "": {
-        // TODO FrameCollectionPanel.handleAction()
-        break;
-      }
       case ACTID_VIEW_AS_TREE: {
-        treeModeManager.setCurrentMode( treeModeManager.lastModeId() );
+        framesTree.tmm().setNextMode();
         break;
       }
       case ACTID_VIEW_AS_LIST: {
-        treeModeManager.setCurrentMode( null );
+        framesTree.tmm().setCurrentMode( null );
         break;
       }
       case ACTID_GO_PREV: {
-        IFrame frame = ETsCollMove.PREV.findElemAt( sel, framesTree.items(), 10, false );
-        setSelectedItem( frame );
+        nonsecsList.moveSelection( ETsCollMove.PREV );
         break;
       }
       case ACTID_GO_NEXT: {
-        IFrame frame = ETsCollMove.NEXT.findElemAt( sel, framesTree.items(), 10, false );
-        setSelectedItem( frame );
+        nonsecsList.moveSelection( ETsCollMove.NEXT );
         break;
       }
       case ACTID_COLLAPSE_ALL: {
@@ -203,6 +185,10 @@ class FrameCollectionPanel
         framesTree.console().expandAll();
         break;
       }
+      // TODO implement actions
+      case ACTID_GIF_CREATE:
+      case ACTID_GIF_RECREATE_ALL:
+      case ACTID_GIF_REMOVE:
       default:
         TsDialogUtils.warn( getShell(), aActionId );
     }
@@ -231,19 +217,42 @@ class FrameCollectionPanel
     // toolbar
     toolbar.createControl( board );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
-    toolbar.setActionMenu( ACTID_VIEW_AS_TREE, new TreeModeDropDownMenuCreator<>( tsContext(), treeModeManager ) );
-    // sfMain: framesTree, imageWidget
-    SashForm sfMain = new SashForm( board, SWT.HORIZONTAL );
-    sfMain.setLayoutData( BorderLayout.CENTER );
-    framesTree.createControl( sfMain );
-    IM5Column<IFrame> col = framesTree.columnManager().add( FID_FRAME_NO );
-    col.setWidth( 150 );
-    framesTree.columnManager().add( FID_IS_ANIMATED );
-    framesTree.columnManager().add( FID_CAMERA_ID );
-    framesTree.setTreeMaker( null );
-    imageWidget.createControl( sfMain );
+    toolbar.setActionMenu( ACTID_VIEW_AS_TREE, new TreeModeDropDownMenuCreator<>( tsContext(), framesTree.tmm() ) );
+    // mainBoard
+    TsComposite mainBoard = new TsComposite( board );
+    mainBoard.setLayoutData( BorderLayout.CENTER );
+    mainBoard.setLayout( new BorderLayout() );
+    // frameTree
+    framesTree.createControl( mainBoard );
+    framesTree.getControl().setLayoutData( BorderLayout.WEST );
+    // imageWidget
+    imageWidget.createControl( mainBoard );
+    imageWidget.getControl().setLayoutData( BorderLayout.CENTER );
+    // nonsecsList
+    nonsecsList.createControl( mainBoard );
+    nonsecsList.getControl().setLayoutData( BorderLayout.EAST );
+    nonsecsList.addTsSelectionListener( ( src, sel ) -> whenNonsecsSelectionChanged( sel ) );
     // setup
-    sfMain.setWeights( 4000, 6000 );
+    toolbar.setActionMenu( ACTID_GIF_CREATE, new AbstractGifManagemntDropDownMenuCreator( tsContext(), this ) {
+
+      @Override
+      protected IFrame doGetFrame() {
+        return getDisplayedFrame();
+      }
+    } );
+    imageWidget.addTsUserInputListener( new ITsUserInputListener() {
+
+      @Override
+      public boolean onMouseWheel( Object aSource, int aState, ITsPoint aCoors, Control aWidget, int aScrollLines ) {
+        if( aScrollLines < 0 ) {
+          nonsecsList.moveSelection( ETsCollMove.NEXT );
+        }
+        if( aScrollLines > 0 ) {
+          nonsecsList.moveSelection( ETsCollMove.PREV );
+        }
+        return true;
+      }
+    } );
     framesTree.addTsSelectionListener( ( src, sel ) -> whenFramesTreeSelectionChange( sel ) );
     return board;
   }

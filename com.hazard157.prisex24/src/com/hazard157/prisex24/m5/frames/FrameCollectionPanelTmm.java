@@ -225,7 +225,7 @@ class FrameCollectionPanelTmm
 
   private final ITsGuiContext tsContext;
 
-  public FrameCollectionPanelTmm( ITsGuiContext aContext ) {
+  FrameCollectionPanelTmm( ITsGuiContext aContext ) {
     super( true );
     tsContext = aContext;
     addTreeMode( new TreeModeInfo<>( TMID_BY_MINUTS, STR_TM_BY_MINUTES, STR_TM_BY_MINUTES_D, null, tmByMinutes ) );

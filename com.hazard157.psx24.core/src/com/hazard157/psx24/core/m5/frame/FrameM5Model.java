@@ -8,6 +8,7 @@ import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import org.eclipse.swt.graphics.*;
+import org.toxsoft.core.tsgui.graphics.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.m5.*;
@@ -87,6 +88,7 @@ public class FrameM5Model
         protected void doInit() {
           setNameAndDescription( STR_N_FR_IS_ANIMATED, STR_D_FR_IS_ANIMATED );
           setFlags( M5FF_COLUMN );
+          M5_OPDEF_COLUMN_ALIGN.setValue( params(), avValobj( EHorAlignment.CENTER ) );
         }
 
         @Override

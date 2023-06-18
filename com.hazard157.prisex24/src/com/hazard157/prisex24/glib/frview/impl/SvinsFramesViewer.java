@@ -18,6 +18,7 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.prisex24.glib.dialogs.*;
 import com.hazard157.prisex24.glib.frasel.*;
 import com.hazard157.prisex24.glib.frview.*;
 import com.hazard157.prisex24.utils.*;
@@ -80,6 +81,7 @@ public class SvinsFramesViewer
     fgViewer = new FramesGridViewer( this, tsContext() );
     fgViewer.getControl().setLayoutData( BorderLayout.CENTER );
     // setup
+    toolbar.addListener( this );
     toolbar.setActionMenu( ACTID_GIF_CREATE, new AbstractGifManagemntDropDownMenuCreator( tsContext(), this ) {
 
       @Override
@@ -99,10 +101,12 @@ public class SvinsFramesViewer
 
   @Override
   public void handleAction( String aActionId ) {
-    // IFrame sel = selectedItem();
+    IFrame sel = selectedItem();
     switch( aActionId ) {
-      case ACTID_ABOUT: {
-        TsDialogUtils.underDevelopment( getShell() );
+      case ACTID_WORK_WITH_FRAMES: {
+        if( sel != null ) {
+          DialogWorkWithFrames.open( tsContext(), sel );
+        }
         break;
       }
       default:
