@@ -4,6 +4,7 @@ import org.toxsoft.core.tsgui.bricks.ctx.*;
 
 import com.hazard157.lib.core.e4.services.mps.*;
 import com.hazard157.prisex24.cofs.*;
+import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
@@ -39,6 +40,10 @@ public interface IPsxGuiContextable
 
   default IMediaPlayerService mediaPlayer() {
     return tsContext().get( IMediaPlayerService.class );
+  }
+
+  default ICurrentEpisodeService currentEpisodeService() {
+    return tsContext().get( ICurrentEpisodeService.class );
   }
 
 }

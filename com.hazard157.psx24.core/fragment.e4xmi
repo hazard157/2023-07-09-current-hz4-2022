@@ -72,6 +72,10 @@
     <elements xsi:type="commands:Handler" xmi:id="_E_V98Op9EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.handler.2" contributionURI="bundleclass://com.hazard157.psx24.core/com.hazard157.psx24.core.e4.handlers.CmdRunEpisodeKdenlive" command="_ClH-QOp9EeySrJdMpYbYRA"/>
     <elements xsi:type="commands:Handler" xmi:id="_aBymkOqJEeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.handler.3" contributionURI="bundleclass://com.hazard157.psx24.core/com.hazard157.psx24.core.e4.handlers.CmdEpisodeSelect" command="_Fs8NUOqJEeySrJdMpYbYRA"/>
   </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_slkMIOp7EeySrJdMpYbYRA" featurename="bindings" parentElementId="org.toxsoft.mws.framework.main.bindingtable.global">
+    <elements xsi:type="commands:KeyBinding" xmi:id="_wLmesOp7EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.keybinding.0" keySequence="F6" command="_eZrxsOp6EeySrJdMpYbYRA"/>
+    <elements xsi:type="commands:KeyBinding" xmi:id="_x0u_sOp7EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.keybinding.1" keySequence="F7" command="_H7HS4Op6EeySrJdMpYbYRA"/>
+  </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_zWuMUOp6EeySrJdMpYbYRA" featurename="children" parentElementId="org.toxsoft.mws.menu.main" positionInList="after:org.toxsoft.mws.menu.main.perspectives">
     <elements xsi:type="menu:Menu" xmi:id="_9gIFQOp6EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.menu.mmenu_episode" label="%MMenu_Episode">
       <children xsi:type="menu:HandledMenuItem" xmi:id="_G5g2gOp7EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.handledmenuitem.0" iconURI="platform:/plugin/org.toxsoft.core.tsgui/icons/is24x24/go-previous.png" command="_eZrxsOp6EeySrJdMpYbYRA"/>
@@ -81,10 +85,6 @@
       <children xsi:type="menu:MenuSeparator" xmi:id="_8V17EOqIEeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.menuseparator.1"/>
       <children xsi:type="menu:HandledMenuItem" xmi:id="_PSqn4Op9EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.handledmenuitem.2" iconURI="platform:/plugin/com.hazard157.psx24.core/icons/is24x24/kdenlive.png" command="_ClH-QOp9EeySrJdMpYbYRA"/>
     </elements>
-  </fragments>
-  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_slkMIOp7EeySrJdMpYbYRA" featurename="bindings" parentElementId="org.toxsoft.mws.framework.main.bindingtable.global">
-    <elements xsi:type="commands:KeyBinding" xmi:id="_wLmesOp7EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.keybinding.0" keySequence="F6" command="_eZrxsOp6EeySrJdMpYbYRA"/>
-    <elements xsi:type="commands:KeyBinding" xmi:id="_x0u_sOp7EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.keybinding.1" keySequence="F7" command="_H7HS4Op6EeySrJdMpYbYRA"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_2zh08Op7EeySrJdMpYbYRA" featurename="children" parentElementId="org.toxsoft.mws.main.trimbar.top">
     <elements xsi:type="menu:ToolBar" xmi:id="_6icWsOp7EeySrJdMpYbYRA" elementId="com.hazard157.psx24.core.toolbar.0">

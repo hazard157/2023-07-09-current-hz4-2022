@@ -36,7 +36,7 @@ import com.hazard157.psx.common.utils.ftstep.*;
  * методом {@link #setFitMenuItem(boolean)};</li>
  * <li>задать меню к действию методом {@link TsToolbar#setActionMenu(String, IMenuCreator) toolbar.setActionMenu(
  * AID_FRAME_TIME_STEPPABLE_ZOOM_FIT/OIGINAL, menuCreator )};</li>
- * <li>в обработчике тулбара {@link ITsToolbarListener#onToolButtonPressed(String)} обработать действие
+ * <li>в обработчике тулбара {@link ITsActionHandler#handleAction(String)} обработать действие
  * {#AID_FRAME_TIME_STEPPABLE_ZOOM_FIT} или {{@link #AID_FRAME_TIME_STEPPABLE_ZOOM_ORIGINAL} в зависимости от
  * используемого в тулюаре дествия. Для ZOOM_ORIGINAL надо задать методом
  * {@link IFrameTimeSteppable#setFrameTimeStep(ESecondsStep)}, где новый шаг нужно получить метдом

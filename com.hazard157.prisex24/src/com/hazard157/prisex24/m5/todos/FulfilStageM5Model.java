@@ -95,8 +95,9 @@ public class FulfilStageM5Model
           IM5ItemsProvider<IFulfilStage> aItemsProvider, IM5LifecycleManager<IFulfilStage> aLifecycleManager ) {
         // TODO Auto-generated method stub
         OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
-        OPDEF_IS_FILTER_PANE.setValue( aContext.params(), AV_TRUE );
+        OPDEF_IS_FILTER_PANE.setValue( aContext.params(), AV_FALSE );
         OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(), avValobj( EBorderLayoutPlacement.SOUTH ) );
+        OPDEF_IS_DETAILS_PANE.setValue( aContext.params(), AV_TRUE );
         MultiPaneComponentModown<IFulfilStage> mpc =
             new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager ) {
 
@@ -108,6 +109,12 @@ public class FulfilStageM5Model
             };
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }
+
+      protected IM5EntityPanel<IFulfilStage> doCreateEntityDetailsPanel( ITsGuiContext aContext ) {
+        OPDEF_IS_DETAILS_PANE.setValue( aContext.params(), AV_TRUE );
+        return new M5DefaultEntityDetailsPanel<>( aContext, model() );
+      }
+
     } );
   }
 

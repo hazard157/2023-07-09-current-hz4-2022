@@ -28,6 +28,7 @@ Export-Package: com.hazard157.prisex24,
  com.hazard157.prisex24.utils.camenu,
  com.hazard157.prisex24.utils.frasel,
  com.hazard157.prisex24.utils.gifmgmt,
+ com.hazard157.prisex24.utils.playmenu,
  com.hazard157.prisex24.valeds.frames
 Bundle-Activator: com.hazard157.prisex24.Activator
 Bundle-Vendor: HAZARD157

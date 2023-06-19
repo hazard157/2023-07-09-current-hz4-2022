@@ -50,10 +50,17 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // E4
 
-  String PERSPID_EPISODES = "com.hazard157.prisex24.persp.episodes"; //$NON-NLS-1$
+  String PERSPID_EPISODES    = "com.hazard157.prisex24.persp.episodes";     //$NON-NLS-1$
+  String PARTID_EISODES_LIST = "com.hazard157.prisex24.part.episodes_list"; //$NON-NLS-1$
+  String PARTID_EP_PROPS     = "com.hazard157.prisex24.part.ep_props";      //$NON-NLS-1$
 
   String PERSPID_REFBOOKS     = "com.hazard157.prisex24.persp.refbooks";     //$NON-NLS-1$
   String PARTSTACKID_REFBOOKS = "com.hazard157.prisex24.partstack.refbooks"; //$NON-NLS-1$
+
+  String CMDID_GOTO_EPISODE_PREV   = "com.hazard157.prisex24.cmd.goto_episode_prev";   //$NON-NLS-1$
+  String CMDID_GOTO_EPISODE_NEXT   = "com.hazard157.prisex24.cmd.goto_episode_next";   //$NON-NLS-1$
+  String CMDID_GOTO_EPISODE_SELECT = "com.hazard157.prisex24.cmd.goto_episode_select"; //$NON-NLS-1$
+  String CMDID_EP_KDENLIVES        = "com.hazard157.prisex24.cmd.episode_kdenlive";    //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Icons
