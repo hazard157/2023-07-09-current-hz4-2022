@@ -33,7 +33,7 @@ public interface IPsxAppActions {
   String AID_PLAY                   = PSX_ACT_ID + ".Play";                //$NON-NLS-1$
   String AID_WORK_WITH_FRAMES       = PSX_ACT_ID + ".WorkWithFrames";      //$NON-NLS-1$
   String AID_SHOW_TAGLINE_AS_LIST   = PSX_ACT_ID + ".ShowTaglineAsList";   //$NON-NLS-1$
-  String AID_INCLUDE_ONLY_USED_TAGS = PSX_ACT_ID + ".IncludeOnlyUsedTags"; //$NON-NLS-1$
+  String ACTID_INCLUDE_ONLY_USED_TAGS = PSX_ACT_ID + ".IncludeOnlyUsedTags"; //$NON-NLS-1$
   String AID_RUN_KDENLIVE           = PSX_ACT_ID + ".RunKdenlive";         //$NON-NLS-1$
   String AID_SHOW_AK_BOTH           = PSX_ACT_ID + ".ShowAkBoth";          //$NON-NLS-1$
   String AID_SHOW_AK_ANIMATED       = PSX_ACT_ID + ".ShowAkAnimated";      //$NON-NLS-1$
@@ -94,8 +94,8 @@ public interface IPsxAppActions {
   ITsActionDef AI_SHOW_TAGLINE_AS_LIST = TsActionDef.ofCheck2( AID_SHOW_TAGLINE_AS_LIST, //
       ACT_T_SHOW_TAGLINE_AS_LIST, ACT_P_SHOW_TAGLINE_AS_LIST, ICONID_FORMAT_JUSTIFY_FILL );
 
-  ITsActionDef AI_INCLUDE_ONLY_USED_TAGS = TsActionDef.ofCheck2( AID_INCLUDE_ONLY_USED_TAGS, //
-      ACT_T_INCLUDE_ONLY_USED_TAGS, ACT_P_INCLUDE_ONLY_USED_TAGS, ICON_PSX_INCL_ONLY_USED_TAGS );
+  ITsActionDef AI_INCLUDE_ONLY_USED_TAGS = TsActionDef.ofCheck2( ACTID_INCLUDE_ONLY_USED_TAGS, //
+      ACT_INCLUDE_ONLY_USED_TAGS, ACT_INCLUDE_ONLY_USED_TAGS_D, ICON_PSX_INCL_ONLY_USED_TAGS );
 
   ITsActionDef AI_RUN_KDENLIVE = TsActionDef.ofPush2( AID_RUN_KDENLIVE, //
       ACT_T_RUN_KDENLIVE, ACT_P_RUN_KDENLIVE, ICON_PSX_KDENLIVE );

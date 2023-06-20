@@ -56,6 +56,7 @@ public interface IPrisex24CoreConstants {
   String PARTID_EP_STORY     = "com.hazard157.prisex24.part.ep_story";      //$NON-NLS-1$
   String PARTID_EP_PLANES    = "com.hazard157.prisex24.part.ep_planes";     //$NON-NLS-1$
   String PARTID_EP_NOTES     = "com.hazard157.prisex24.part.ep_notes";      //$NON-NLS-1$
+  String PARTID_EP_TAGS      = "com.hazard157.prisex24.part.ep_tags";       //$NON-NLS-1$
   String PARTID_EP_          = "com.hazard157.prisex24.part.ep_";           //$NON-NLS-1$
 
   String PERSPID_REFBOOKS     = "com.hazard157.prisex24.persp.refbooks";     //$NON-NLS-1$
@@ -90,18 +91,20 @@ public interface IPrisex24CoreConstants {
   String ICONID_PSX_PLANE                   = "media-optical-dvd-video";     //$NON-NLS-1$
   String ICONID_PSX_PLANE_LINE              = "tools-rip-video-dvd";         //$NON-NLS-1$
   String ICONID_KNOTES                      = "knotes";                      //$NON-NLS-1$
+  String ICONID_PSX_INCL_ONLY_USED_TAGS     = "bookmark-new-list";           //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions
 
-  String ACTID_GIF_CREATE       = PSX_ACT_ID + ".gif_create";       //$NON-NLS-1$
-  String ACTID_GIF_INFO         = PSX_ACT_ID + ".gif_info";         //$NON-NLS-1$
-  String ACTID_GIF_RECREATE_ALL = PSX_ACT_ID + ".gif_recreate_all"; //$NON-NLS-1$
-  String ACTID_GIF_REMOVE       = PSX_ACT_ID + ".gif_remove";       //$NON-NLS-1$
-  String ACTID_GIF_TEST         = PSX_ACT_ID + ".gif_test";         //$NON-NLS-1$
-  String ACTID_WORK_WITH_FRAMES = PSX_ACT_ID + ".work_with_frames"; //$NON-NLS-1$
-  String ACTID_CAM_ID_MENU      = PSX_ACT_ID + ".CamIdMenu";        //$NON-NLS-1$
-  String ACTID_COPY_FRAME       = PSX_ACT_ID + ".CopyFrame";        //$NON-NLS-1$
+  String ACTID_GIF_CREATE             = PSX_ACT_ID + ".gif_create";          //$NON-NLS-1$
+  String ACTID_GIF_INFO               = PSX_ACT_ID + ".gif_info";            //$NON-NLS-1$
+  String ACTID_GIF_RECREATE_ALL       = PSX_ACT_ID + ".gif_recreate_all";    //$NON-NLS-1$
+  String ACTID_GIF_REMOVE             = PSX_ACT_ID + ".gif_remove";          //$NON-NLS-1$
+  String ACTID_GIF_TEST               = PSX_ACT_ID + ".gif_test";            //$NON-NLS-1$
+  String ACTID_WORK_WITH_FRAMES       = PSX_ACT_ID + ".work_with_frames";    //$NON-NLS-1$
+  String ACTID_CAM_ID_MENU            = PSX_ACT_ID + ".CamIdMenu";           //$NON-NLS-1$
+  String ACTID_COPY_FRAME             = PSX_ACT_ID + ".CopyFrame";           //$NON-NLS-1$
+  String ACTID_INCLUDE_ONLY_USED_TAGS = PSX_ACT_ID + ".IncludeOnlyUsedTags"; //$NON-NLS-1$
 
   ITsActionDef ACDEF_GIF_CREATE = TsActionDef.ofPush2( ACTID_GIF_CREATE, //
       STR_GIF_CREATE, STR_GIF_CREATE_D, ICONID_GIF_CREATE );
@@ -129,6 +132,9 @@ public interface IPrisex24CoreConstants {
 
   ITsActionDef ACDEF_COPY_FRAME = TsActionDef.ofPush2( ACTID_COPY_FRAME, //
       ACT_COPY_FRAME, ACT_COPY_FRAME_D, ICONID_ARROW_RIGHT );
+
+  ITsActionDef ACDEF_INCLUDE_ONLY_USED_TAGS = TsActionDef.ofCheck2( ACTID_INCLUDE_ONLY_USED_TAGS, //
+      ACT_INCLUDE_ONLY_USED_TAGS, ACT_INCLUDE_ONLY_USED_TAGS_D, ICONID_PSX_INCL_ONLY_USED_TAGS );
 
   // ------------------------------------------------------------------------------------
   // Application preferences

@@ -1,8 +1,9 @@
-package com.hazard157.psx24.core.e4.uiparts.eps;
+package com.hazard157.prisex24.e4.uiparts.episodes;
 
+import static com.hazard157.common.IHzConstants.*;
+import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+import static com.hazard157.prisex24.e4.uiparts.episodes.IPsxResources.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
-import static com.hazard157.psx24.core.IPsxAppActions.*;
-import static com.hazard157.psx24.core.e4.uiparts.eps.IPsxResources.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 
 import javax.inject.*;
@@ -34,21 +35,19 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.ankind.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.prisex24.e4.services.selsvins.*;
+import com.hazard157.prisex24.glib.tagint.*;
+import com.hazard157.prisex24.glib.tagline.*;
+import com.hazard157.prisex24.utils.frasel.*;
+import com.hazard157.prisex24.utils.playmenu.*;
+import com.hazard157.prisex24.utils.txtfilt.*;
 import com.hazard157.psx.common.stuff.frame.*;
-import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.story.*;
 import com.hazard157.psx.proj3.tags.*;
-import com.hazard157.psx24.core.e4.services.currframeslist.*;
-import com.hazard157.psx24.core.e4.services.filesys.*;
-import com.hazard157.psx24.core.e4.services.playmenu.*;
-import com.hazard157.psx24.core.e4.services.prisex.*;
-import com.hazard157.psx24.core.e4.services.selsvins.*;
-import com.hazard157.psx24.core.glib.tagint.*;
-import com.hazard157.psx24.core.glib.tagline.*;
-import com.hazard157.psx24.core.legacy.*;
 
 /**
  * UIpart: view and edit {@link IEpisode#tagLine()}.
@@ -58,9 +57,6 @@ import com.hazard157.psx24.core.legacy.*;
 public class UipartEpisodeTags
     extends AbstractEpisodeUipart
     implements ITsKeyInputListener, ITsActionHandler {
-
-  @Inject
-  ICurrentFramesListService currentFramesListService;
 
   @Inject
   IPsxSelectedSvinsService selectedSvinsService;
@@ -96,8 +92,8 @@ public class UipartEpisodeTags
     // toolbar
     toolbar = TsToolbar.create( board, tsContext(), EIconSize.IS_16X16, //
         ACDEF_ADD, ACDEF_EDIT, ACDEF_REMOVE, ACDEF_SEPARATOR, //
-        AI_PLAY_MENU, ACDEF_SEPARATOR, ACDEF_COLLAPSE_ALL, ACDEF_EXPAND_ALL, ACDEF_SEPARATOR, //
-        AI_SHOW_TAGLINE_AS_LIST, AI_INCLUDE_ONLY_USED_TAGS, ACDEF_SEPARATOR //
+        ACDEF_PLAY_MENU, ACDEF_SEPARATOR, ACDEF_COLLAPSE_ALL, ACDEF_EXPAND_ALL, ACDEF_SEPARATOR, //
+        ACDEF_VIEW_AS_LIST, ACDEF_INCLUDE_ONLY_USED_TAGS, ACDEF_SEPARATOR //
     );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
     filterContribution = new TextFilterContribution( toolbar );
@@ -110,7 +106,7 @@ public class UipartEpisodeTags
     ITsViewerColumn col1 = treeViewer.addColumn( STR_H_NAME, EHorAlignment.LEFT, aItem -> {
       if( aItem.entity() instanceof ITag ) {
         ITag tag = (ITag)aItem.entity();
-        boolean modeAsList = toolbar.isActionChecked( AID_SHOW_TAGLINE_AS_LIST );
+        boolean modeAsList = toolbar.isActionChecked( ACTID_VIEW_AS_LIST );
         if( modeAsList ) {
           return tag.id();
         }
@@ -176,24 +172,20 @@ public class UipartEpisodeTags
    * @param aSelectedItem {@link ITsNode} - current tree node, may be <code>null</code>
    */
   void addPlayMenu( ITsNode aSelectedItem ) {
-    IPlayMenuSupport pms = tsContext().get( IPlayMenuSupport.class );
-    toolbar.setActionMenu( AID_PLAY, pms.getPlayMenuCreator( tsContext(), new IPlayMenuParamsProvider() {
+    if( aSelectedItem != null ) {
+      toolbar.setActionMenu( ACTID_PLAY, new AbstractPlayMenuCreator( tsContext() ) {
 
-      @Override
-      public Svin playParams() {
-        return getItemSvinOrNull( aSelectedItem );
-      }
-
-      @Override
-      public int spotlightSec() {
-        return -1;
-      }
-    } ) );
+        @Override
+        protected Svin getPlayableSvin() {
+          return getItemSvinOrNull( aSelectedItem );
+        }
+      } );
+      updateActionsState();
+    }
   }
 
   void updateFramesListFromView( ITsNode aNode ) {
     if( aNode == null || episode() == null ) {
-      currentFramesListService.setCurrentAsSvin( null );
       selectedSvinsService.setSvin( null );
       return;
     }
@@ -205,7 +197,6 @@ public class UipartEpisodeTags
         start = 0;
       }
       Svin svin = new Svin( episode().id(), IStridable.NONE_ID, new Secint( start, node.entity().end() ) );
-      currentFramesListService.setCurrentAsSvin( svin );
       selectedSvinsService.setSvin( svin );
       return;
     }
@@ -222,27 +213,17 @@ public class UipartEpisodeTags
           }
           Svin svin = new Svin( episode().id(), IStridable.NONE_ID, new Secint( start, node.entity().end() ) );
           svins.add( svin );
-          IPsxFileSystem fs = tsContext().get( IPsxFileSystem.class );
-          FrameSelectionCriteria criteria = new FrameSelectionCriteria( svin, EAnimationKind.ANIMATED, false );
-          IFramesList nodeFrames = new FramesList( fs.listEpisodeFrames( criteria ) );
-          // если нет анимированных, подберем неподвижный кадр
-          if( nodeFrames.isEmpty() ) {
-            criteria = new FrameSelectionCriteria( svin, EAnimationKind.SINGLE, false );
-            nodeFrames = new FramesList( fs.listEpisodeFrames( criteria ) );
-          }
-          // выберем единственный кадр
-          IFrame singlePerInterval =
-              nodeFrames.findNearest( svin.interval().start() + svin.interval().duration() / 2, IStridable.NONE_ID );
-          if( singlePerInterval != null ) { // только если интервал выходит за пределы эпизода
-            ll.add( singlePerInterval );
-          }
+
+          ISvinFramesParams sfp = new SvinFramesParams();
+          sfp.setParams( EAnimationKind.ANIMATED, Boolean.FALSE, IStringList.EMPTY, ESecondsStep.SEC_01,
+              EFramesPerSvin.FORCE_ONE );
+          SvinFramesSelector sfs = new SvinFramesSelector( tsContext() );
+          ll.addAll( sfs.selectFrames( svin, sfp ) );
         }
       }
-      currentFramesListService.setCurrent( ll );
       selectedSvinsService.setSvins( svins );
       return;
     }
-    currentFramesListService.setCurrentAsSvin( null );
     selectedSvinsService.setSvin( null );
   }
 
@@ -341,12 +322,12 @@ public class UipartEpisodeTags
       case ACTID_EXPAND_ALL:
         treeViewer.console().expandAll();
         break;
-      case AID_PLAY:
+      case ACTID_PLAY:
         if( sel != null ) {
           playItem( sel );
         }
         break;
-      case AID_SHOW_TAGLINE_AS_LIST:
+      case ACTID_VIEW_AS_LIST:
         refreshView();
         break;
       case ACTID_INCLUDE_ONLY_USED_TAGS:
@@ -458,7 +439,7 @@ public class UipartEpisodeTags
   void playItem( ITsNode aItemOrNull ) {
     Svin svin = getItemSvinOrNull( aItemOrNull );
     if( svin != null ) {
-      tsContext().get( IPrisexService.class ).playEpisodeVideo( svin );
+      psxService().playEpisodeVideo( svin );
     }
   }
 
@@ -469,7 +450,7 @@ public class UipartEpisodeTags
     toolbar.setActionEnabled( ACTID_ADD, isAlive );
     toolbar.setActionEnabled( ACTID_EDIT, isAlive && isInterval );
     toolbar.setActionEnabled( ACTID_REMOVE, isAlive && isInterval );
-    toolbar.setActionEnabled( AID_PLAY, isAlive && isInterval );
+    toolbar.setActionEnabled( ACTID_PLAY, isAlive && isInterval );
     tsContext().get( ITsE4Helper.class ).updateHandlersCanExecuteState();
     updateDetailsPane( sel );
   }
@@ -516,7 +497,7 @@ public class UipartEpisodeTags
     }
     ITsNode selNode = treeViewer.selectedItem();
     Object selEntity = selNode != null ? selNode.entity() : null;
-    boolean modeAsList = toolbar.isActionChecked( AID_SHOW_TAGLINE_AS_LIST );
+    boolean modeAsList = toolbar.isActionChecked( ACTID_VIEW_AS_LIST );
     boolean includeOnlyUsed = toolbar.isActionChecked( ACTID_INCLUDE_ONLY_USED_TAGS );
     IStringListEdit ll = new StringLinkedBundleList();
     for( ITag tn : unitTags.root().allNodesBelow() ) {

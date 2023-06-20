@@ -51,7 +51,6 @@ import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.utils.treeops.*;
-import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.glib.tagint.*;
 import com.hazard157.prisex24.m5.episodes.*;
@@ -70,7 +69,7 @@ import com.hazard157.psx.proj3.tags.*;
  */
 public class UipartEpisodeStory
     extends AbstractEpisodeUipart
-    implements ITsKeyInputListener, ITsActionHandler, IPsxGuiContextable {
+    implements ITsKeyInputListener, ITsActionHandler {
 
   @Inject
   IPsxSelectedSvinsService selectedSvinsService;

@@ -67,8 +67,8 @@ interface IPsxResources {
   String ACT_T_WORK_WITH_FRAMES = "Кадры";
   String ACT_P_WORK_WITH_FRAMES = "Работа с кадрами эпизода";
 
-  String ACT_T_INCLUDE_ONLY_USED_TAGS = "Только используемые";
-  String ACT_P_INCLUDE_ONLY_USED_TAGS = "Показать только используемые ярлыки";
+  String ACT_INCLUDE_ONLY_USED_TAGS   = "Только используемые";
+  String ACT_INCLUDE_ONLY_USED_TAGS_D = "Показать только используемые ярлыки";
   String ACT_T_RECREATE_ALL_GIFS      = "Переоздать GIF-ы";
   String ACT_P_RECREATE_ALL_GIFS      = "Пересоздать все GIF-анимации";
   String ACT_T_RUN_KDENLIVE           = "Kdenlive";
