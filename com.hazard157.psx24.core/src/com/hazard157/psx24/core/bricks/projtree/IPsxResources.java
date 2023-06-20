@@ -1,7 +1,7 @@
 package com.hazard157.psx24.core.bricks.projtree;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

@@ -1,7 +1,7 @@
 package com.hazard157.psx24.explorer.m5;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

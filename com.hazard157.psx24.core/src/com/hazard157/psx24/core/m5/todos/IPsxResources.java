@@ -3,7 +3,7 @@ package com.hazard157.psx24.core.m5.todos;
 import com.hazard157.psx.proj3.todos.*;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

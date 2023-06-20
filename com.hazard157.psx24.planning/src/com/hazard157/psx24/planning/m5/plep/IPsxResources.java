@@ -1,7 +1,7 @@
 package com.hazard157.psx24.planning.m5.plep;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

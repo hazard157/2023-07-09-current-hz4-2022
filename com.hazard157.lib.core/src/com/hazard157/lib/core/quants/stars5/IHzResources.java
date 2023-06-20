@@ -1,7 +1,7 @@
 package com.hazard157.lib.core.quants.stars5;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

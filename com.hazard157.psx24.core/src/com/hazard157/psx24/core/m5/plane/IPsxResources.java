@@ -1,11 +1,10 @@
 package com.hazard157.psx24.core.m5.plane;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */
-@SuppressWarnings( "nls" )
 interface IPsxResources {
 
   /**

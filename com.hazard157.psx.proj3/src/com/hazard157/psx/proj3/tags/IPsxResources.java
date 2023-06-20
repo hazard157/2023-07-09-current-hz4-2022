@@ -3,7 +3,7 @@ package com.hazard157.psx.proj3.tags;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

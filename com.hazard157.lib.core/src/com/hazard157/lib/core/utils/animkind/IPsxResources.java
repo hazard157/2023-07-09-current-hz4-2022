@@ -1,7 +1,7 @@
 package com.hazard157.lib.core.utils.animkind;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

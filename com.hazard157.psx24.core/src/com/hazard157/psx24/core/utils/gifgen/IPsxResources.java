@@ -1,7 +1,7 @@
 package com.hazard157.psx24.core.utils.gifgen;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

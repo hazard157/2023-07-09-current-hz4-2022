@@ -22,7 +22,7 @@ class MarkPlaneGuideEntityDetailsPanel
   }
 
   /**
-   * Инициализирует раскладку для полей:
+   * Initializes layout for the fields:
    * <ul>
    * <li>{@link MarkPlaneGuideM5Model#INTERVAL}</li>
    * <li>{@link MarkPlaneGuideM5Model#CAMERA_ID}</li>
@@ -33,7 +33,7 @@ class MarkPlaneGuideEntityDetailsPanel
   @Override
   protected void doInitLayout() {
     IVecBorderLayout lMain = new VecBorderLayout();
-    // левая панель (все редакторы кроме просмотра кадра)
+    // left panel (all field editors except image view)
     IVecLadderLayout lLeft = new VecLadderLayout( true );
     for( String fieldId : editors().keys() ) {
       if( fieldId.equals( MarkPlaneGuideM5Model.FRAME.id() ) ) {
@@ -54,13 +54,13 @@ class MarkPlaneGuideEntityDetailsPanel
       IVecLadderLayoutData layoutData = new VecLadderLayoutData( useLabel, false, verSpan, label, horAl, verAl );
       lLeft.addControl( varEditor, layoutData );
     }
-    // правая панель - просмотр кадра
+    // right panel - frame view
     IVecBorderLayout lRight = new VecBorderLayout();
     IValedControl<?> varEditor = editors().getByKey( MarkPlaneGuideM5Model.FRAME.id() );
     lRight.addControl( varEditor, EBorderLayoutPlacement.CENTER );
     IVecBoard bRight = new VecBoard();
     bRight.setLayout( lRight );
-    // создание главной панели из двух
+    // create main board from two
     IVecBoard bLeft = new VecBoard();
     bLeft.setLayout( lLeft );
     lMain.addControl( bLeft, EBorderLayoutPlacement.CENTER );

@@ -30,6 +30,8 @@ import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.m5.episodes.*;
 import com.hazard157.prisex24.m5.frames.*;
+import com.hazard157.prisex24.m5.note.*;
+import com.hazard157.prisex24.m5.plane.*;
 import com.hazard157.prisex24.m5.tags.*;
 import com.hazard157.prisex24.m5.todos.*;
 import com.hazard157.prisex24.valeds.frames.*;
@@ -88,6 +90,9 @@ public class AddonPrisex24Core
     m5.addModel( new TagM5Model() );
     m5.addModel( new FrameM5Model() );
     m5.addModel( new EpisodeM5Model() );
+    m5.addModel( new SceneM5Model() );
+    m5.addModel( new MarkPlaneGuideM5Model() );
+    m5.addModel( new MarkNoteM5Model() );
     // VALEDs
     IValedControlFactoriesRegistry vcfReg = aWinContext.get( IValedControlFactoriesRegistry.class );
     vcfReg.registerFactory( ValedFrameFactory.FACTORY );

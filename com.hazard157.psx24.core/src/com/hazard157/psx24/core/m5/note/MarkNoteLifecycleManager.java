@@ -6,7 +6,6 @@ import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
@@ -14,13 +13,6 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 class MarkNoteLifecycleManager
     extends M5LifecycleManager<MarkNote, INoteLine> {
 
-  /**
-   * Конструктор.
-   *
-   * @param aModel {@link IM5Model} - модель
-   * @param aMaster &lt;{@link INoteLine}&gt; - линия пометок, может быть null
-   * @throws TsNullArgumentRtException aModel = null
-   */
   public MarkNoteLifecycleManager( IM5Model<MarkNote> aModel, INoteLine aMaster ) {
     super( aModel, true, true, true, true, aMaster );
   }

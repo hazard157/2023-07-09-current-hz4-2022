@@ -2,6 +2,7 @@ package com.hazard157.psx24.core.m5.note;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
 import static com.hazard157.lib.core.quants.secint.m5.ISecintM5Constants.*;
+import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
 import static com.hazard157.psx24.core.m5.note.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
@@ -29,7 +30,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
 import com.hazard157.psx24.core.m5.std.*;
 
 /**
- * Модель объектов типа {@link MarkNote}.
+ * Model of {@link MarkNote}.
  *
  * @author hazard157
  */
@@ -37,12 +38,7 @@ public class MarkNoteM5Model
     extends M5Model<MarkNote> {
 
   /**
-   * Идентификатор модели.
-   */
-  public static final String MODEL_ID = "psx.MarkNote"; //$NON-NLS-1$
-
-  /**
-   * Атрибут {@link Secint#start() MarkNote.in().start()}
+   * Field {@link Secint#start() MarkNote.in().start()}
    */
   public static final M5AttributeFieldDef<MarkNote> START = new M5AttributeFieldDef<>( FID_START, DT_VIDEO_POSITION ) {
 
@@ -65,7 +61,7 @@ public class MarkNoteM5Model
   };
 
   /**
-   * Атрибут {@link Secint#duration() MarkNote.in().duration()}
+   * Field {@link Secint#duration() MarkNote.in().duration()}
    */
   public static final M5AttributeFieldDef<MarkNote> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -89,7 +85,7 @@ public class MarkNoteM5Model
       };
 
   /**
-   * Поле {@link MarkNote#in()}
+   * Field {@link MarkNote#in()}
    */
   public static final M5SingleModownFieldDef<MarkNote, Secint> INTERVAL =
       new M5SingleModownFieldDef<>( PsxM5IntervalFieldDef.FID_INTERVAL, SecintM5Model.MODEL_ID ) {
@@ -110,7 +106,7 @@ public class MarkNoteM5Model
       };
 
   /**
-   * Атрибут {@link Secint#duration() MarkNote.in().duration()}
+   * Field {@link Secint#duration() MarkNote.in().duration()}
    */
   public static final M5AttributeFieldDef<MarkNote> NOTE = new M5AttributeFieldDef<>( FID_NOTE, DDEF_STRING ) {
 
@@ -128,7 +124,7 @@ public class MarkNoteM5Model
   };
 
   /**
-   * Поле {@link PlaneGuide#frame()}
+   * Field {@link PlaneGuide#frame()}
    */
   public static final PsxM5FrameFieldDef<MarkNote> FRAME = new PsxM5FrameFieldDef<>() {
 
@@ -162,7 +158,7 @@ public class MarkNoteM5Model
    * @throws TsNullArgumentRtException любой аргумент = null
    */
   public MarkNoteM5Model( IEclipseContext aAppContext ) {
-    super( MODEL_ID, MarkNote.class );
+    super( MID_EP_NOTE, MarkNote.class );
     TsNullArgumentRtException.checkNull( aAppContext );
     appContext = aAppContext;
     addFieldDefs( INTERVAL, START, DURATION, NOTE, FRAME );

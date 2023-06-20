@@ -1,6 +1,7 @@
 package com.hazard157.psx24.core.e4.uiparts.eps;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
+import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
 
 import javax.inject.*;
 
@@ -22,7 +23,6 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 import com.hazard157.psx24.core.e4.services.currframeslist.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.e4.services.selsvins.*;
-import com.hazard157.psx24.core.m5.plane.*;
 
 /**
  * Вью просмотра планов эпизода.
@@ -64,7 +64,7 @@ public class UipartEpisodePlanes
   @Override
   protected void doCreatePartContent( Composite aParent ) {
     fileSystem = tsContext().get( IPsxFileSystem.class );
-    model = m5().getModel( MarkPlaneGuideM5Model.MODEL_ID, MarkPlaneGuide.class );
+    model = m5().getModel( MID_MARK_PLANE_GUIDE, MarkPlaneGuide.class );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     panel = model.panelCreator().createCollEditPanel( ctx, null, null );
     panel.createControl( aParent );

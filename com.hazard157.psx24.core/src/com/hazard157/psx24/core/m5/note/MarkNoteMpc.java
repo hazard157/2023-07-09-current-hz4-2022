@@ -13,7 +13,6 @@ import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
-import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
@@ -28,7 +27,7 @@ import com.hazard157.psx24.core.e4.services.playmenu.*;
 import com.hazard157.psx24.core.e4.services.prisex.*;
 
 /**
- * Для {@link IM5CollectionPanel} к модели {@link MarkNoteM5Model}.
+ * {@link MultiPaneComponentModown} implementation for {@link MarkNoteM5Model}.
  *
  * @author hazard157
  */

@@ -1,7 +1,7 @@
 package com.hazard157.psx.proj3.gaze;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

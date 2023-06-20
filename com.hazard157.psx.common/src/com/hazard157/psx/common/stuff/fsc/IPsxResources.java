@@ -1,7 +1,7 @@
 package com.hazard157.psx.common.stuff.fsc;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

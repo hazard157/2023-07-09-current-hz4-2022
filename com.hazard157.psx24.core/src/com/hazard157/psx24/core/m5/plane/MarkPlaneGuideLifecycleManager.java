@@ -7,20 +7,12 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.psx.proj3.episodes.proplines.*;
 
 class MarkPlaneGuideLifecycleManager
     extends M5LifecycleManager<MarkPlaneGuide, IMlPlaneGuide> {
 
-  /**
-   * Конструктор.
-   *
-   * @param aModel {@link IM5Model} - модель
-   * @param aMaster &lt;{@link IMlPlaneGuide}&gt; - линия пометок, может быть null
-   * @throws TsNullArgumentRtException aModel = null
-   */
   public MarkPlaneGuideLifecycleManager( IM5Model<MarkPlaneGuide> aModel, IMlPlaneGuide aMaster ) {
     super( aModel, true, true, true, true, aMaster );
   }

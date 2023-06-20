@@ -1,6 +1,7 @@
 package com.hazard157.psx24.core.e4.uiparts.eps;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
+import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
 
 import javax.inject.*;
 
@@ -23,7 +24,6 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 import com.hazard157.psx24.core.e4.services.currframeslist.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.e4.services.selsvins.*;
-import com.hazard157.psx24.core.m5.note.*;
 
 /**
  * Вью работы с {@link IEpisode#noteLine()}.
@@ -65,7 +65,7 @@ public class UipartEpisodeNotes
   @Override
   protected void doCreatePartContent( Composite aParent ) {
     fileSystem = tsContext().get( IPsxFileSystem.class );
-    model = m5().getModel( MarkNoteM5Model.MODEL_ID, MarkNote.class );
+    model = m5().getModel( MID_EP_NOTE, MarkNote.class );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     panel = model.panelCreator().createCollEditPanel( ctx, null, null );
     panel.createControl( aParent );

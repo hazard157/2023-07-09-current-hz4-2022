@@ -25,6 +25,9 @@ public interface IPsxM5Constants {
   String FID_PLACE           = "Place";             //$NON-NLS-1$
   String FID_DEF_TRAILER_ID  = "defaultTrailerId";  //$NON-NLS-1$
 
+  String MID_SCENE        = PSX_ID + ".Secene"; //$NON-NLS-1$
+  String FID_DUR_PERC_STR = "DurPercStr";       //$NON-NLS-1$
+
   String MID_FRAME       = PSX_ID + ".Frame"; //$NON-NLS-1$
   String FID_FRAME_NO    = "FrameNo";         //$NON-NLS-1$
   String FID_IS_ANIMATED = "IsAnimated";      //$NON-NLS-1$
@@ -45,6 +48,14 @@ public interface IPsxM5Constants {
   String MID_TAG = PSX_ID + ".Tag"; //$NON-NLS-1$
 
   String MID_SVIN = PSX_ID + ".Svin"; //$NON-NLS-1$
+
+  String MID_MARK_PLANE_GUIDE = PSX_ID + ".MarkPlaneGuide"; //$NON-NLS-1$
+  String FID_GUIDE            = "Guide";                    //$NON-NLS-1$
+
+  String MID_EP_NOTE = PSX_ID + ".MarkNote"; //$NON-NLS-1$
+
+  // ------------------------------------------------------------------------------------
+  // Data types
 
   String       FMT_DATE_DMY    = "%1$td.%1$tm.%1$tY";  // TIMESTAMP в виде "DD.MM.YYYY". //$NON-NLS-1$
   IAtomicValue FMT_DATE_DMY_AV = avStr( FMT_DATE_DMY );

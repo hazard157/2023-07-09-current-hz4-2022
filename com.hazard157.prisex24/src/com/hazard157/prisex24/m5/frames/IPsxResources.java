@@ -1,7 +1,7 @@
 package com.hazard157.prisex24.m5.frames;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

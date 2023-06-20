@@ -1,11 +1,10 @@
 package com.hazard157.psx24.core.e4.uiparts.eps;
 
 /**
- * Локализуемые ресусры.
+ * Localizable resources.
  *
  * @author hazard157
  */
-@SuppressWarnings( "nls" )
 interface IPsxResources {
 
   /**

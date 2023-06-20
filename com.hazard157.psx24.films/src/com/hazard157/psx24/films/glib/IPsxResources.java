@@ -1,7 +1,7 @@
 package com.hazard157.psx24.films.glib;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

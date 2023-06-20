@@ -3,10 +3,10 @@ package com.hazard157.prisex24.e4.uiparts.episodes;
 import javax.inject.*;
 
 import org.eclipse.swt.widgets.*;
-import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 
 import com.hazard157.prisex24.e4.services.currep.*;
+import com.hazard157.prisex24.e4.uiparts.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
@@ -15,7 +15,7 @@ import com.hazard157.psx.proj3.episodes.*;
  * @author hazard157
  */
 public abstract class AbstractEpisodeUipart
-    extends MwsAbstractPart {
+    extends PsxAbstractUipart {
 
   @Inject
   protected ICurrentEpisodeService currentEpisodeService;

@@ -1,7 +1,7 @@
 package com.hazard157.psx24.core.m5.std;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

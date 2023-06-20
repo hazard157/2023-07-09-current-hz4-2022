@@ -1,7 +1,7 @@
 package com.hazard157.psx.common.utils;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

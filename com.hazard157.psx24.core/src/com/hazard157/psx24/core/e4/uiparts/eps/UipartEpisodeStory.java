@@ -66,13 +66,13 @@ import com.hazard157.psx24.core.glib.tagint.*;
 import com.hazard157.psx24.core.m5.episode.*;
 
 /**
- * Вью просмотра и редактирования сюжета {@link IEpisode#story()}.
+ * UIpart: episode {@link IEpisode#story() story} viewer and editor.
  *
  * @author hazard157
  */
 public class UipartEpisodeStory
     extends AbstractEpisodeUipart
-    implements ITsKeyInputListener {
+    implements ITsKeyInputListener, ITsActionHandler {
 
   @Inject
   ICurrentFramesListService currentFramesListService;
@@ -81,13 +81,13 @@ public class UipartEpisodeStory
   IPsxSelectedSvinsService selectedSvinsService;
 
   // ------------------------------------------------------------------------------------
-  // Работа с деревом
+  // Work with tree
   //
 
   static final ITsNodeKind<IScene> NK_SCENE = new TsNodeKind<>( "Scene", IScene.class, true ); //$NON-NLS-1$
 
   /**
-   * Группировщик сцен в сюжетное дерево.
+   * Groups scenes.
    */
   private final ITsTreeMaker<IScene> treeMakerScenes = new ITsTreeMaker<>() {
 
@@ -123,7 +123,7 @@ public class UipartEpisodeStory
   };
 
   /**
-   * Слушатель изменения выбранной сены в дереве.
+   * Scene change listener - updates tags marks panel, changes {@link IPsxSelectedSvinsService}.
    */
   private final ITsSelectionChangeListener<IScene> selectedSceneChangeListener = ( aSource, aSelectedItem ) -> {
     addPlayMenu( aSelectedItem );
@@ -138,13 +138,13 @@ public class UipartEpisodeStory
   };
 
   /**
-   * Слушатель двойного щелчка на сцене.
+   * Scene double click handler - invokes scene edit dialog.
    */
   private final ITsDoubleClickListener<IScene> sceneDoubleClickListener =
-      ( aSource, aSelectedItem ) -> processAction( ACTID_EDIT );
+      ( aSource, aSelectedItem ) -> handleAction( ACTID_EDIT );
 
   /**
-   * Слушатель двойного щелчка на zhksrt.
+   * Tag double click listener - TODO locates on tagline item.
    */
   private final ITsDoubleClickListener<ITag> tagDoubleClickListener = ( aSource, aSelectedItem ) -> {
     if( aSelectedItem != null ) {
@@ -156,7 +156,7 @@ public class UipartEpisodeStory
   };
 
   /**
-   * Отрабатывает "живое" изменение пометки ярлыками сцен сюжета.
+   * Tam marks change listener - edits scene marking.
    */
   private final ITagMarksCheckStateChangeListener tagMarksCheckStateChangeListener =
       new ITagMarksCheckStateChangeListener() {
@@ -181,7 +181,7 @@ public class UipartEpisodeStory
       };
 
   // ------------------------------------------------------------------------------------
-  // Панель инструментов
+  // Toolbar
   //
 
   private static final String AID_ADD_TAG_INTERVAL = PSX_ACT_ID + ".AddTagInterval"; //$NON-NLS-1$
@@ -189,10 +189,8 @@ public class UipartEpisodeStory
   private static final ITsActionDef AI_ADD_TAG_INTERVAL = TsActionDef.ofPush2( AID_ADD_TAG_INTERVAL, //
       ACT_T_ADD_TAG_INTERVAL, ACT_P_ADD_TAG_INTERVAL, ICON_TAG );
 
-  private final ITsActionHandler toolbarListener = this::processAction;
-
   // ------------------------------------------------------------------------------------
-  // Создание вью
+  // Create and init
   //
 
   private static final EThumbSize DEFAULT_THUMB_SIZE = EThumbSize.SZ360;
@@ -217,7 +215,7 @@ public class UipartEpisodeStory
     );
     toolbar.setNameLabelText( STR_STORY_TOOLBAR_NAME );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
-    toolbar.addListener( toolbarListener );
+    toolbar.addListener( this );
     // sash
     SashForm sf = new SashForm( aParent, SWT.VERTICAL );
     sf.setLayoutData( BorderLayout.CENTER );
@@ -246,7 +244,7 @@ public class UipartEpisodeStory
     ctx = new TsGuiContext( tsContext() );
     frameWidget = new PdwWidgetSimple( ctx );
     frameWidget.createControl( bottomBoard );
-    frameWidget.setAreaPreferredSize( EThumbSize.SZ360.pointSize() );
+    frameWidget.setAreaPreferredSize( EThumbSize.SZ256.pointSize() );
     frameWidget.setFitInfo( RectFitInfo.BEST );
     frameWidget.setFulcrum( ETsFulcrum.CENTER );
     frameWidget.setPreferredSizeFixed( true );
@@ -258,20 +256,16 @@ public class UipartEpisodeStory
   }
 
   // ------------------------------------------------------------------------------------
-  // Внутренные методы
+  // ITsActionHandler
   //
 
-  /**
-   * Обрабатывает нажатие казанной кнопки на панели управления.
-   *
-   * @param aItemId int идентификатор кнопки
-   */
-  void processAction( String aItemId ) {
-    if( !toolbar.isActionEnabled( aItemId ) ) {
+  @Override
+  public void handleAction( String aActionId ) {
+    if( !toolbar.isActionEnabled( aActionId ) ) {
       return;
     }
     IScene sel = treeViewer.selectedItem();
-    switch( aItemId ) {
+    switch( aActionId ) {
       case ACTID_ADD:
         addScene();
         break;
@@ -319,9 +313,10 @@ public class UipartEpisodeStory
     updateActionsState();
   }
 
-  /**
-   * Обновляет состояние кнопок на панели управления.
-   */
+  // ------------------------------------------------------------------------------------
+  // Implementation
+  //
+
   void updateActionsState() {
     IScene sel = treeViewer.selectedItem();
     TsImage mi = null;
@@ -343,7 +338,7 @@ public class UipartEpisodeStory
   }
 
   /**
-   * Обновляет состояние пометок текущей сцены (дерево ярлыков внизу вью).
+   * Refresh tag marks panel according to scenes panel state.
    */
   void updateTagMarksPanel() {
     IScene sel = treeViewer.selectedItem();
@@ -363,9 +358,9 @@ public class UipartEpisodeStory
   }
 
   /**
-   * Воспроизводит видео, соответствующий сцене.
+   * Plays the video corresponding to the scene.
    *
-   * @param aItemOrNull {@link IScene} - сцена, может быть null
+   * @param aItemOrNull {@link IScene} - scene, can be <code>null</code>
    */
   void playItem( IScene aItemOrNull ) {
     Svin svin = getItemSvinOrNull( aItemOrNull );
@@ -375,10 +370,10 @@ public class UipartEpisodeStory
   }
 
   /**
-   * Возвращает воспроизводимый интервал, соотвутетсвующий сцене.
+   * Returns the playback interval corresponding to the scene.
    *
-   * @param aItemOrNull {@link IScene} - сцена, может быть null
-   * @return {@link Svin} - интервал вопрозведения или null
+   * @param aItemOrNull {@link IScene} - scene, can be <code>null</code>
+   * @return {@link Svin} - replay interval or <code>null</code>
    */
   Svin getItemSvinOrNull( IScene aItemOrNull ) {
     if( aItemOrNull == null ) {
@@ -389,11 +384,11 @@ public class UipartEpisodeStory
   }
 
   /**
-   * Обновляет выпадающее меню кнопки вопроизведения на панели инструметнов.
+   * Updates the play button drop-down menu on the toolbar.
    * <p>
-   * Должен вызываться каждый раз, когда меняется текущая (выделенная) в дереве сцена.
+   * Must be called every time the current (selected) scene in the tree changes.
    *
-   * @param aSelectedItem {@link IScene} - текущая сцена, может быть null
+   * @param aSelectedItem {@link IScene} - current scene, may be <code>null</code>
    */
   void addPlayMenu( IScene aSelectedItem ) {
     toolbar.setActionMenu( AID_PLAY,
@@ -418,11 +413,11 @@ public class UipartEpisodeStory
   }
 
   /**
-   * Меняет состояние пометок в теглайне эпизода.
+   * Changes the state of the tag marks in the episode tagline and updates scenes properties.
    *
-   * @param aTagIds {@link IStringList} - идентификаторы изменившихся ярлыков
-   * @param aIn {@link Secint} - интервал изменения
-   * @param aSet boolean - новое состояние пометки
+   * @param aTagIds {@link IStringList} - changed tag IDs
+   * @param aIn {@link Secint} - changed interval
+   * @param aSet boolean - new state of the mark
    */
   void setSceneTagMarks( IStringList aTagIds, Secint aIn, boolean aSet ) {
     if( episode() == null ) {
@@ -441,11 +436,11 @@ public class UipartEpisodeStory
   }
 
   /**
-   * Меняет состояние пометок в теглайне эпизода.
+   * Changes the state of the tag mark in the episode tagline and updates scenes properties.
    *
-   * @param aTagId String - идентификатор изменившегося ярлыка
-   * @param aIn {@link Secint} - интервал изменения
-   * @param aSet boolean - новое состояние пометки
+   * @param aTagId String - changed tag ID
+   * @param aIn {@link Secint} - changed interval
+   * @param aSet boolean - new state of the mark
    */
   void setSceneTagMark( String aTagId, Secint aIn, boolean aSet ) {
     if( episode() == null ) {
@@ -462,23 +457,23 @@ public class UipartEpisodeStory
   }
 
   // ------------------------------------------------------------------------------------
-  // Работа со сценами
+  // Work with the scenes
   //
 
   /**
-   * Добавляет сцену, предварительно запрсив, куда относительно текущей сцены ее разместить.
+   * Adds a scene, after asking where relative to the current scene to place it.
    */
   private void addScene() {
     if( episode() == null ) {
       return;
     }
     IStory story = episode().story();
-    // если сюжет пустой, сразу перейдем к добалению сцены
+    // if the story is empty, go straight to adding the scene
     if( story.isEmpty() ) {
       doAddItem( story, story.interval() );
       return;
     }
-    // в дереве должна быть выбрана сцена, относительно которой создается новая
+    // in the tree, a scene must be selected, relative to which a new one is created
     IScene sel = treeViewer.selectedItem();
     if( sel == null ) {
       TsDialogUtils.warn( getShell(), MSG_WARN_FIRST_SELECT_SCENE );
@@ -499,19 +494,19 @@ public class UipartEpisodeStory
     if( inBefore == null ) {
       disabledPlaces.add( ENodeAddPlace.BEFORE );
     }
-    // если все возможности выбраны, то некуда добавлять сцену
+    // if all possibilities are checked, then there is nowhere to add the scene
     if( disabledPlaces.size() == ENodeAddPlace.values().length ) {
       TsDialogUtils.error( getShell(), MSG_ERR_NO_PLACES_TO_ADD_SCENE );
       return;
     }
-    ENodeAddPlace defPlace = ENodeAddPlace.AFTER; // по умолчанию добавление идет по приоритетм AFTER, CHILD, BEFORE
+    ENodeAddPlace defPlace = ENodeAddPlace.AFTER; // default adding priority is AFTER, CHILD, BEFORE
     if( disabledPlaces.hasElem( defPlace ) ) {
       defPlace = ENodeAddPlace.CHILD;
     }
     if( disabledPlaces.hasElem( defPlace ) ) {
       defPlace = ENodeAddPlace.BEFORE;
     }
-    // вызов диалога выбора места добавления новой сцены
+    // invoke dialog to determine scene adding location
     ITsDialogInfo cdi = new TsDialogInfo( tsContext(), DLG_C_ADD_SCENE_PLACE, DLG_T_ADD_SCENE_PLACE );
     ENodeAddPlace nap = TreeOpUtils.askNap( defPlace, cdi, disabledPlaces );
     if( nap == null ) {
@@ -533,7 +528,7 @@ public class UipartEpisodeStory
       }
       default -> throw new TsNotAllEnumsUsedRtException();
     };
-    // собственно вызов диалога свойств сцены и добавление сцены
+    // invokde dialog and save edit changes
     doAddItem( whomToAdd, allowedInterval );
   }
 
@@ -561,7 +556,7 @@ public class UipartEpisodeStory
   }
 
   private void editScene( IScene aScene ) {
-    // определение допустимого интервала
+    // determine allowed range
     IScene parent = aScene.parent(); // не бывает null, ведь не правим сам сюжет
     Secint allowedInterval = aScene.interval();
     int selIndex = parent.childScenes().keys().indexOf( aScene.interval() );
@@ -573,7 +568,7 @@ public class UipartEpisodeStory
     if( inAfter != null ) {
       allowedInterval = Secint.union( allowedInterval, inAfter );
     }
-    // вызов диалога
+    // invoke scene edit dialog
     IM5LifecycleManager<IScene> lm = scenesModel.getLifecycleManager( aScene.parent() );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     M5EntityPanelWithValedsController<IScene> ctrl = new SceneEditPanelController( episode().id(), allowedInterval );
@@ -587,9 +582,9 @@ public class UipartEpisodeStory
   }
 
   /**
-   * Удаляет указанную сцену, предварительно запросив разрешение.
+   * Removes asked scene queries allowance before.
    *
-   * @param aScene {@link IScene} - удаляемая сцена, если <code>null</code>, то метод ничего не делает
+   * @param aScene {@link IScene} - scene to remove or <code>null</code> to do nothing
    */
   void removeScene( IScene aScene ) {
     if( aScene == null ) {
@@ -610,7 +605,7 @@ public class UipartEpisodeStory
   }
 
   // ------------------------------------------------------------------------------------
-  // Переопределение методов
+  // AbstractEpisodeUipart
   //
 
   @Override
@@ -643,11 +638,11 @@ public class UipartEpisodeStory
   public boolean onKeyDown( Object aSource, int aCode, char aChar, int aState ) {
     return switch( aCode ) {
       case SWT.INSERT -> {
-        processAction( ACTID_ADD );
+        handleAction( ACTID_ADD );
         yield true;
       }
       case SWT.DEL -> {
-        processAction( ACTID_REMOVE );
+        handleAction( ACTID_REMOVE );
         yield true;
       }
       default -> false;

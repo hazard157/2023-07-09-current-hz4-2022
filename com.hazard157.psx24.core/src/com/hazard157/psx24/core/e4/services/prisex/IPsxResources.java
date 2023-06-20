@@ -1,7 +1,7 @@
 package com.hazard157.psx24.core.e4.services.prisex;
 
 /**
- * Локализуемые ресурсы.
+ * Localizable resources.
  *
  * @author hazard157
  */

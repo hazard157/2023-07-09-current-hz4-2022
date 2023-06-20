@@ -2,6 +2,7 @@ package com.hazard157.psx24.core.m5.plane;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
 import static com.hazard157.lib.core.quants.secint.m5.ISecintM5Constants.*;
+import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
 import static com.hazard157.psx24.core.m5.plane.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
@@ -22,7 +23,7 @@ import com.hazard157.psx.proj3.episodes.proplines.*;
 import com.hazard157.psx24.core.m5.std.*;
 
 /**
- * Модель сущностей {@link MarkPlaneGuide}.
+ * M5-nodel of {@link MarkPlaneGuide}.
  *
  * @author hazard157
  */
@@ -30,17 +31,7 @@ public class MarkPlaneGuideM5Model
     extends M5Model<MarkPlaneGuide> {
 
   /**
-   * Идентификатор модели.
-   */
-  public static final String MODEL_ID = "psx.MarkPlaneGuide"; //$NON-NLS-1$
-
-  /**
-   * Идентификатор поля {@link #GUIDE}.
-   */
-  public static final String FID_GUIDE = "Guide"; //$NON-NLS-1$
-
-  /**
-   * Атрибут {@link Secint#start() MarkPlaneGuide.in().start()}
+   * Field {@link Secint#start() MarkPlaneGuide.in().start()}
    */
   public static final M5AttributeFieldDef<MarkPlaneGuide> START =
       new M5AttributeFieldDef<>( FID_START, DT_VIDEO_POSITION ) {
@@ -64,7 +55,7 @@ public class MarkPlaneGuideM5Model
       };
 
   /**
-   * Атрибут {@link Secint#duration() MarkPlaneGuide.in().duration()}
+   * Field {@link Secint#duration() MarkPlaneGuide.in().duration()}
    */
   public static final M5AttributeFieldDef<MarkPlaneGuide> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -88,7 +79,7 @@ public class MarkPlaneGuideM5Model
       };
 
   /**
-   * Атрибут {@link Secint#duration() MarkPlaneGuide.in().duration()}
+   * Field {@link Secint#duration() MarkPlaneGuide.in().duration()}
    */
   public static final M5AttributeFieldDef<MarkPlaneGuide> NAME = new M5AttributeFieldDef<>( FID_NAME, DDEF_NAME ) {
 
@@ -106,7 +97,7 @@ public class MarkPlaneGuideM5Model
   };
 
   /**
-   * Атрибут {@link Secint#duration() MarkPlaneGuide.in().duration()}
+   * Field {@link Secint#duration() MarkPlaneGuide.in().duration()}
    */
   public static final M5AttributeFieldDef<MarkPlaneGuide> CAMERA_ID =
       new M5AttributeFieldDef<>( PsxM5CameraIdFieldDef.FID_CAMERA_ID, DDEF_IDPATH ) {
@@ -125,7 +116,7 @@ public class MarkPlaneGuideM5Model
       };
 
   /**
-   * Поле {@link MarkPlaneGuide#in()}
+   * Field {@link MarkPlaneGuide#in()}
    */
   public static final M5SingleModownFieldDef<MarkPlaneGuide, Secint> INTERVAL =
       new M5SingleModownFieldDef<>( PsxM5IntervalFieldDef.FID_INTERVAL, SecintM5Model.MODEL_ID ) {
@@ -146,7 +137,7 @@ public class MarkPlaneGuideM5Model
       };
 
   /**
-   * Поле {@link MarkPlaneGuide#marker()}
+   * Field {@link MarkPlaneGuide#marker()}
    */
   public static final M5SingleModownFieldDef<MarkPlaneGuide, PlaneGuide> GUIDE =
       new M5SingleModownFieldDef<>( FID_GUIDE, PlaneGuideM5Model.MODEL_ID ) {
@@ -169,7 +160,7 @@ public class MarkPlaneGuideM5Model
       };
 
   /**
-   * Поле {@link PlaneGuide#frame()}
+   * Field {@link PlaneGuide#frame()}
    */
   public static final PsxM5FrameFieldDef<MarkPlaneGuide> FRAME = new PsxM5FrameFieldDef<>() {
 
@@ -185,7 +176,7 @@ public class MarkPlaneGuideM5Model
    * Конструктор.
    */
   public MarkPlaneGuideM5Model() {
-    super( MODEL_ID, MarkPlaneGuide.class );
+    super( MID_MARK_PLANE_GUIDE, MarkPlaneGuide.class );
     addFieldDefs( INTERVAL, START, DURATION, CAMERA_ID, NAME, GUIDE, FRAME );
     setPanelCreator( new M5DefaultPanelCreator<MarkPlaneGuide>() {
 
