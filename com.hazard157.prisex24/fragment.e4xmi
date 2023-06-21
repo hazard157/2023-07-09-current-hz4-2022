@@ -33,6 +33,7 @@
         <children xsi:type="basic:Part" xmi:id="_cc6_sAq0Ee6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.part.refbook_todos" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.refbooks.UipartRefbookTodos" label="%Uipart_Refbook_Todos" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/todos-list.png" tooltip="%Uipart_Refbook_Todos_D"/>
         <children xsi:type="basic:Part" xmi:id="_NPDf0ArfEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.part.refbook_tags" accessibilityPhrase="" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.refbooks.UipartRefbookTags" label="%Uipart_Refbook_Tags" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/tags-list.png" tooltip="%Uipart_Refbook_Tags_D"/>
         <children xsi:type="basic:Part" xmi:id="_xJuzQBAVEe6syK__7C_iEA" elementId="com.hazard157.prisex24.part.refbook_cameras" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.refbooks.UipartRefbookCameras" label="%Uipart_Refbook_Cameras" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/camera-generic.png" tooltip="%Uipart_Refbook_Cameras_D"/>
+        <children xsi:type="basic:Part" xmi:id="_7JQskBAXEe6syK__7C_iEA" elementId="com.hazard157.prisex24.part.refbook_source_videos" accessibilityPhrase="%Uipart_Refbook_Sourcevids_D" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.refbooks.UipartRefbookSourceVideos" label="%Uipart_Refbook_Sourcevids" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/source-videos-list.png"/>
       </children>
     </elements>
   </fragments>
@@ -71,8 +72,8 @@
     <elements xsi:type="commands:KeyBinding" xmi:id="_nRFuwA6XEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.keybinding.0" keySequence="F6" command="_QIrToA6VEe62AdeTRK4p9w"/>
     <elements xsi:type="commands:KeyBinding" xmi:id="_pOPX8A6XEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.keybinding.1" keySequence="F7" command="_PvvPMA6VEe62AdeTRK4p9w"/>
   </fragments>
-  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yjdiQA6UEe62AdeTRK4p9w" featurename="children" parentElementId="org.toxsoft.mws.menu.main">
-    <elements xsi:type="menu:Menu" xmi:id="_2eDIgA6UEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.menu.mmenu_episode" label="%MMenu_Episode">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yjdiQA6UEe62AdeTRK4p9w" featurename="children" parentElementId="org.toxsoft.mws.menu.main" positionInList="before:org.toxsoft.mws.menu.main.help">
+    <elements xsi:type="menu:Menu" xmi:id="_2eDIgA6UEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.menu.mmenu_episode" label="%MMenu_Episode" mnemonics="">
       <children xsi:type="menu:HandledMenuItem" xmi:id="_A-wuMA6VEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.handledmenuitem.0" iconURI="platform:/plugin/org.toxsoft.core.tsgui/icons/is24x24/go-previous.png" command="_QIrToA6VEe62AdeTRK4p9w"/>
       <children xsi:type="menu:HandledMenuItem" xmi:id="_CXc_cA6VEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.handledmenuitem.1" iconURI="platform:/plugin/org.toxsoft.core.tsgui/icons/is24x24/go-previous.png" command="_PvvPMA6VEe62AdeTRK4p9w"/>
       <children xsi:type="menu:MenuSeparator" xmi:id="_C3B3YA6VEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.menuseparator.0"/>

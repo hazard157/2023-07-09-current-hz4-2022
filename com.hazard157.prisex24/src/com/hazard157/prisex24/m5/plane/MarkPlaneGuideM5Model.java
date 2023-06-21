@@ -39,7 +39,7 @@ public class MarkPlaneGuideM5Model
         @Override
         protected void doInit() {
           setFlags( M5FF_COLUMN );
-          setNameAndDescription( STR_N_FIELD_START, STR_D_FIELD_START );
+          setNameAndDescription( STR_FIELD_START, STR_FIELD_START_D );
         }
 
         @Override
@@ -63,7 +63,7 @@ public class MarkPlaneGuideM5Model
         @Override
         protected void doInit() {
           setFlags( M5FF_COLUMN | M5FF_HIDDEN | M5FF_READ_ONLY );
-          setNameAndDescription( STR_N_FIELD_DURATION, STR_D_FIELD_DURATION );
+          setNameAndDescription( STR_FIELD_DURATION, STR_FIELD_DURATION_D );
         }
 
         @Override
@@ -86,7 +86,7 @@ public class MarkPlaneGuideM5Model
     @Override
     protected void doInit() {
       setFlags( M5FF_DETAIL | M5FF_COLUMN | M5FF_HIDDEN | M5FF_READ_ONLY );
-      setNameAndDescription( STR_N_FIELD_NAME, STR_D_FIELD_NAME );
+      setNameAndDescription( STR_FIELD_NAME, STR_FIELD_NAME_D );
     }
 
     @Override
@@ -105,7 +105,7 @@ public class MarkPlaneGuideM5Model
         @Override
         protected void doInit() {
           setFlags( M5FF_DETAIL | M5FF_COLUMN | M5FF_HIDDEN | M5FF_READ_ONLY );
-          setNameAndDescription( STR_N_FIELD_CAMERA_ID, STR_D_FIELD_CAMERA_ID );
+          setNameAndDescription( STR_FIELD_CAMERA_ID, STR_FIELD_CAMERA_ID_D );
         }
 
         @Override
@@ -124,7 +124,7 @@ public class MarkPlaneGuideM5Model
         @Override
         protected void doInit() {
           setFlags( M5FF_DETAIL | M5FF_HIDDEN );
-          setNameAndDescription( STR_N_FIELD_INTERVAL, STR_D_FIELD_INTERVAL );
+          setNameAndDescription( STR_FIELD_INTERVAL, STR_FIELD_INTERVAL_D );
           setDefaultValue( Secint.MAXIMUM );
           setValedEditor( ValedSecintFactory.FACTORY_NAME );
         }
@@ -145,7 +145,7 @@ public class MarkPlaneGuideM5Model
         @Override
         protected void doInit() {
           setFlags( 0 );
-          setNameAndDescription( STR_N_FIELD_GUIDE, STR_D_FIELD_GUIDE );
+          setNameAndDescription( STR_FIELD_GUIDE, STR_FIELD_GUIDE_D );
           params().setValueIfNull( OPID_IS_WIDTH_FIXED, AV_FALSE );
           params().setValueIfNull( OPID_IS_HEIGHT_FIXED, AV_FALSE );
           params().setValueIfNull( OPID_VERTICAL_SPAN, avInt( 10 ) );

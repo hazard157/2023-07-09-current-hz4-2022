@@ -40,7 +40,7 @@ public class CameraM5Model
 
     @Override
     protected void doInit() {
-      setNameAndDescription( STR_N_CAM_ID, STR_D_CAM_ID );
+      setNameAndDescription( STR_CAM_ID, STR_CAM_ID_D );
       setFlags( M5FF_COLUMN | M5FF_INVARIANT );
     }
 
@@ -71,7 +71,7 @@ public class CameraM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_CAM_IS_STILL_AVAILABLE, STR_D_CAM_IS_STILL_AVAILABLE );
+          setNameAndDescription( STR_CAM_IS_STILL_AVAILABLE, STR_CAM_IS_STILL_AVAILABLE_D );
           setFlags( M5FF_COLUMN );
           setDefaultValue( AV_FALSE );
         }
@@ -90,7 +90,7 @@ public class CameraM5Model
 
     @Override
     protected void doInit() {
-      setNameAndDescription( STR_N_CAM_USE_COUNT, STR_D_CAM_USE_COUNT );
+      setNameAndDescription( STR_CAM_USE_COUNT, STR_CAM_USE_COUNT_D );
       setFlags( M5FF_COLUMN | M5FF_READ_ONLY );
       setDefaultValue( AV_0 );
     }
@@ -119,7 +119,7 @@ public class CameraM5Model
 
     @Override
     protected void doInit() {
-      setNameAndDescription( STR_N_CAM_NAME, STR_D_CAM_NAME );
+      setNameAndDescription( STR_CAM_NAME, STR_CAM_NAME_D );
       setFlags( M5FF_COLUMN );
     }
 
@@ -138,7 +138,7 @@ public class CameraM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_CAM_DESCRIPTION, STR_D_CAM_DESCRIPTION );
+          setNameAndDescription( STR_CAM_DESCRIPTION, STR_CAM_DESCRIPTION_D );
           setFlags( M5FF_DETAIL );
           params().setValueIfNull( ValedStringText.OPID_IS_MULTI_LINE, AV_TRUE );
           params().setValueIfNull( OPID_IS_HEIGHT_FIXED, AV_FALSE );
@@ -156,8 +156,8 @@ public class CameraM5Model
    * Атрибут {@link Camera#kind()}.
    */
   public static IM5AttributeFieldDef<Camera> CAMERA_KIND = new M5AttributeFieldDef<>( FID_CAMERA_KIND, VALOBJ, //
-      TSID_NAME, STR_N_CAMERA_KIND, //
-      TSID_DESCRIPTION, STR_D_CAMERA_KIND, //
+      TSID_NAME, STR_CAMERA_KIND, //
+      TSID_DESCRIPTION, STR_CAMERA_KIND_D, //
       M5_OPID_FLAGS, avInt( M5FF_DETAIL ), //
       OPID_EDITOR_FACTORY_NAME, ValedAvValobjEnumCombo.FACTORY_NAME, //
       TSID_KEEPER_ID, ECameraKind.KEEPER_ID, //
@@ -193,7 +193,7 @@ public class CameraM5Model
    */
   public CameraM5Model() {
     super( MID_CAMERA, Camera.class );
-    setNameAndDescription( STR_N_M5M_CAMERA, STR_N_M5M_CAMERA );
+    setNameAndDescription( STR_M5M_CAMERA, STR_M5M_CAMERA );
     addFieldDefs( ID, CAMERA_KIND, IS_CAM_AVAILABLE, USE_COUNT, NAME, DESCRIPTION );
     setPanelCreator( new M5DefaultPanelCreator<Camera>() {
 

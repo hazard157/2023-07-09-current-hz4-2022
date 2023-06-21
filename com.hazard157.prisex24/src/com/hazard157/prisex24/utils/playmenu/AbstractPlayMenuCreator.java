@@ -1,6 +1,6 @@
 package com.hazard157.prisex24.utils.playmenu;
 
-import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static com.hazard157.prisex24.utils.playmenu.IPsxResources.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
@@ -61,7 +61,7 @@ public abstract class AbstractPlayMenuCreator
   //
 
   private EThumbSize readThumbSizeFromAppSettings() {
-    return APPREF_THUMB_SIZE_IN_MENUS.getValue( prefBundle( PBID_PSX24_COMMON ).prefs() ).asValobj();
+    return APPREF_THUMB_SIZE_IN_MENUS.getValue( prefBundle( PBID_HZ_COMMON ).prefs() ).asValobj();
   }
 
   /**

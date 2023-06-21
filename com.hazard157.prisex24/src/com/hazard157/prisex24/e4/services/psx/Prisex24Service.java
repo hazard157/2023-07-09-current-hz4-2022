@@ -1,7 +1,6 @@
 package com.hazard157.prisex24.e4.services.psx;
 
 import static com.hazard157.common.IHzConstants.*;
-import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 import static com.hazard157.prisex24.e4.services.psx.IPsxResources.*;
 
 import java.io.*;
@@ -147,7 +146,7 @@ public class Prisex24Service
   public void copyFrameImage( IFrame aFrame ) {
     TsNullArgumentRtException.checkNull( aFrame );
     try {
-      IPrefBundle pb = prefBundle( PBID_PSX24_COMMON );
+      IPrefBundle pb = prefBundle( PBID_HZ_COMMON );
       String path = pb.prefs().getStr( APPREFID_LAST_DESTINATION, TsLibUtils.EMPTY_STRING );
       File destDir = TsRcpDialogUtils.askDirOpen( getShell(), path );
       if( destDir != null ) {

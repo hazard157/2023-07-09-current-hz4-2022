@@ -4,9 +4,6 @@ import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.prisex24.m5.srcvideo.IPsxResources.*;
 import static com.hazard157.psx.proj3.IPsxProj3Constants.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
-import static org.toxsoft.core.tslib.av.EAtomicType.*;
-import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
-import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import org.eclipse.swt.graphics.*;
 import org.toxsoft.core.tsgui.bricks.actions.*;
@@ -20,11 +17,7 @@ import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
 import org.toxsoft.core.tsgui.m5.gui.viewers.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
-import org.toxsoft.core.tslib.av.impl.*;
-import org.toxsoft.core.tslib.av.metainfo.*;
-import org.toxsoft.core.tslib.bricks.apprefs.*;
 import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.coll.notifier.basis.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
@@ -38,23 +31,13 @@ import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 
 /**
- * Панель работы с менеджером камер {@link IUnitSourceVideos}, который находится в контексте приложения.
+ * {@link MultiPaneComponentModown} implementation for {@link SourceVideoM5Model}.
  *
  * @author hazard157
  */
-public class PanelUnitSourceVideos
+class SourceVideosMpc
     extends MultiPaneComponentModown<ISourceVideo>
     implements IPsxGuiContextable {
-
-  /**
-   * Размер миниатюр исходных видео в списках.
-   */
-  public static final IDataDef OP_SVL_THUMB_SIZE = DataDef.create( "psx.sourcevidslist.ThumbSize", VALOBJ, //$NON-NLS-1$
-      TSID_DEFAULT_VALUE, avValobj( EThumbSize.SZ128 ), //
-      TSID_KEEPER_ID, EThumbSize.KEEPER_ID, //
-      TSID_NAME, STR_N_SVL_THUMB_SIZE, //
-      TSID_DESCRIPTION, STR_D_SVL_THUMB_SIZE //
-  );
 
   static final ITsNodeKind<Camera> NK_CAM = new TsNodeKind<>( "Cam", //$NON-NLS-1$
       Camera.class, true, ICONID_CAMERA_GENERIC );
@@ -127,33 +110,21 @@ public class PanelUnitSourceVideos
     }
   };
 
-  IPrefBundle prefBundle1;
-
-  private final ITsCollectionChangeListener appPrefsChangeListener = ( aSource, aOp, aItem ) -> {
-    String opId = (String)aItem;
-    if( opId == null || opId.equals( OP_SVL_THUMB_SIZE.id() ) ) {
-      tree().setThumbSize( OP_SVL_THUMB_SIZE.getValue( prefBundle1.prefs() ).asValobj() );
-      refresh();
-    }
-  };
-
   final IUnitCameras  camerasUnit;
   final IUnitEpisodes episodesUnit;
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aContext {@link ITsGuiContext} - контекст
-   * @param aModel {@link IM5Model} - модель сущностей
-   * @param aItemsProvider {@link IM5ItemsProvider} - поставщик элементов, может быть <code>null</code>
-   * @param aLifecycleManager {@link IM5LifecycleManager} - менеджер ЖЦ, может быть <code>null</code>
+   * @param aContext {@link ITsGuiContext} - the context
+   * @param aModel {@link IM5Model} - the model
+   * @param aItemsProvider {@link IM5ItemsProvider} - the items provider or <code>null</code>
+   * @param aLifecycleManager {@link IM5LifecycleManager} - the lifecycle manager or <code>null</code>
    */
-  public PanelUnitSourceVideos( ITsGuiContext aContext, IM5Model<ISourceVideo> aModel,
+  public SourceVideosMpc( ITsGuiContext aContext, IM5Model<ISourceVideo> aModel,
       IM5ItemsProvider<ISourceVideo> aItemsProvider, IM5LifecycleManager<ISourceVideo> aLifecycleManager ) {
     super( aContext, aModel, aItemsProvider, aLifecycleManager );
-    prefBundle1 = tsContext().get( IPrefBundle.class );
-    prefBundle1.prefs().addCollectionChangeListener( appPrefsChangeListener );
-    tree().setThumbSize( OP_SVL_THUMB_SIZE.getValue( prefBundle1.prefs() ).asValobj() );
+    tree().setThumbSize( apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_LISTS ).asValobj() );
     camerasUnit = tsContext().get( IUnitCameras.class );
     episodesUnit = tsContext().get( IUnitEpisodes.class );
     itemsProvider().genericChangeEventer().addListener( aSource -> refresh() );
@@ -169,9 +140,9 @@ public class PanelUnitSourceVideos
   @Override
   protected void doAfterCreateControls() {
     treeModeManager().addTreeMode( new TreeModeInfo<>( "ByCameras", //$NON-NLS-1$
-        STR_N_TREE_BY_CAMERAS, STR_D_TREE_BY_CAMERAS, null, tmByCameras ) );
+        STR_TREE_BY_CAMERAS, STR_TREE_BY_CAMERAS_D, null, tmByCameras ) );
     treeModeManager().addTreeMode( new TreeModeInfo<>( "ByEpisodes", //$NON-NLS-1$
-        STR_D_TREE_BY_EPISODES, STR_D_TREE_BY_EPISODES, null, tmByEpisodes ) );
+        STR_TREE_BY_EPISODES_D, STR_TREE_BY_EPISODES_D, null, tmByEpisodes ) );
   }
 
   @Override

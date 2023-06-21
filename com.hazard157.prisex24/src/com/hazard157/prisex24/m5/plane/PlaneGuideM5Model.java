@@ -39,7 +39,7 @@ public class PlaneGuideM5Model
 
     @Override
     protected void doInit() {
-      setNameAndDescription( STR_N_FIELD_NAME, STR_D_FIELD_NAME );
+      setNameAndDescription( STR_FIELD_NAME, STR_FIELD_NAME_D );
     }
 
     @Override
@@ -66,7 +66,7 @@ public class PlaneGuideM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_FIELD_IS_NATURALLY_LONG, STR_D_FIELD_IS_NATURALLY_LONG );
+          setNameAndDescription( STR_FIELD_IS_NATURALLY_LONG, STR_FIELD_IS_NATURALLY_LONG_D );
         }
 
         @Override

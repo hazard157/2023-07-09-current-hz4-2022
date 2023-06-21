@@ -40,7 +40,7 @@ public class SourceVideoM5Model
 
     @Override
     protected void doInit() {
-      setNameAndDescription( STR_N_SV_ID, STR_D_SV_ID );
+      setNameAndDescription( STR_SV_ID, STR_SV_ID_D );
       setFlags( M5FF_INVARIANT | M5FF_HIDDEN );
     }
 
@@ -76,7 +76,7 @@ public class SourceVideoM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_SV_LOCATION, STR_D_SV_LOCATION );
+          setNameAndDescription( STR_SV_LOCATION, STR_SV_LOCATION_D );
           setFlags( M5FF_COLUMN );
         }
 
@@ -95,7 +95,7 @@ public class SourceVideoM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_SV_DESCRIPTION, STR_D_SV_DESCRIPTION );
+          setNameAndDescription( STR_SV_DESCRIPTION, STR_SV_DESCRIPTION_D );
           setFlags( M5FF_DETAIL );
         }
 
@@ -114,7 +114,7 @@ public class SourceVideoM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_SV_DURATION, STR_D_SV_DURATION );
+          setNameAndDescription( STR_SV_DURATION, STR_SV_DURATION_D );
           setFlags( M5FF_COLUMN );
         }
 
@@ -149,7 +149,7 @@ public class SourceVideoM5Model
    */
   public SourceVideoM5Model() {
     super( MID_SOURCE_VIDEO, ISourceVideo.class );
-    setNameAndDescription( STR_N_M5M_SOURCE_VIDEO, STR_N_M5M_SOURCE_VIDEO );
+    setNameAndDescription( STR_M5M_SOURCE_VIDEO, STR_M5M_SOURCE_VIDEO );
     addFieldDefs( FRAME, ID, CAM_ID, DURATION, EPISODE_ID, LOCATION, DESCRIPTION );
     setPanelCreator( new M5DefaultPanelCreator<ISourceVideo>() {
 
@@ -163,7 +163,7 @@ public class SourceVideoM5Model
         // INITIAL_VIEWER_DETAILS_RATIO.setValue( aContext.params(), avInt( 85 ) );
         // }
         MultiPaneComponentModown<ISourceVideo> mpc =
-            new PanelUnitSourceVideos( aContext, model(), aItemsProvider, aLifecycleManager );
+            new SourceVideosMpc( aContext, model(), aItemsProvider, aLifecycleManager );
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }
 

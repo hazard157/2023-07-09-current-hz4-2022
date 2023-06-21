@@ -1,6 +1,6 @@
 package com.hazard157.prisex24.e4.statline;
 
-import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.prisex24.e4.statline.IPsxResources.*;
 
 import java.io.*;
@@ -72,7 +72,7 @@ public class CurrentEpisodeInfoTooltip
     }
     File f = cofsFrames().findFrameFile( e.frame() );
     if( f != null ) {
-      IOptionSet prefs = prefBundle( PBID_PSX24_COMMON ).prefs();
+      IOptionSet prefs = prefBundle( PBID_HZ_COMMON ).prefs();
       EThumbSize thumbSize = APPREF_THUMB_SIZE_IN_MENUS.getValue( prefs ).asValobj();
       TsImage tsim = imageManager().findThumb( f, thumbSize );
       if( tsim != null ) {

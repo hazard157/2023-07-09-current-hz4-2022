@@ -1,5 +1,6 @@
 package com.hazard157.prisex24.e4.uiparts.refbooks;
 
+import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
@@ -11,7 +12,6 @@ import org.eclipse.swt.custom.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
-import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
@@ -53,13 +53,14 @@ public class UipartRefbookCameras
     IM5LifecycleManager<Camera> camLm = camModel.getLifecycleManager( unitCameras );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     OPDEF_IS_FILTER_PANE.setValue( ctx.params(), AV_TRUE );
+    OPDEF_NODE_THUMB_SIZE.setValue( ctx.params(), apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_LISTS ) );
     camPanel = camModel.panelCreator().createCollEditPanel( ctx, camLm.itemsProvider(), camLm );
     camPanel.createControl( sfMain );
     // source videos
     IM5Model<ISourceVideo> svModel = m5().getModel( MID_SOURCE_VIDEO, ISourceVideo.class );
     ctx = new TsGuiContext( tsContext() );
     IM5LifecycleManager<ISourceVideo> lm0 = new CameraSourceVideoLifecycleManager( svModel, null, unitSourceVideos );
-    OPDEF_NODE_THUMB_SIZE.setValue( ctx.params(), avValobj( EThumbSize.SZ180 ) );
+    OPDEF_NODE_THUMB_SIZE.setValue( ctx.params(), apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_LISTS ) );
     svPanel = svModel.panelCreator().createCollEditPanel( ctx, lm0.itemsProvider(), lm0 );
     OPDEF_IS_SUPPORTS_TREE.setValue( ctx.params(), AV_FALSE );
     svPanel.createControl( sfMain );

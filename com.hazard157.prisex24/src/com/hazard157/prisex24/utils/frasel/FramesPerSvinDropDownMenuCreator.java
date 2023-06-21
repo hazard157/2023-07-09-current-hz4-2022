@@ -36,7 +36,12 @@ public class FramesPerSvinDropDownMenuCreator
   /**
    * ID of action {@link #AI_FRAMES_PER_SVIN_SELECTED}.
    */
-  public static final String AID_FRAMES_PER_SVIN_BOTH = HZ_ACT_ID + ".FramesPerSvin." + SELECTED.id(); //$NON-NLS-1$
+  public static final String AID_FRAMES_PER_SVIN_SELECTED = HZ_ACT_ID + ".FramesPerSvin." + SELECTED.id(); //$NON-NLS-1$
+
+  /**
+   * ID of action {@link #AI_FRAMES_PER_SVIN_AT_LEAST_ONE}.
+   */
+  public static final String AID_FRAMES_PER_SVIN_AT_LEAST_ONE = HZ_ACT_ID + ".FramesPerSvin." + AT_LEAST_ONE.id(); //$NON-NLS-1$
 
   /**
    * ID of action {@link #AI_FRAMES_PER_SVIN_ONE_NO_MORE}.
@@ -57,8 +62,15 @@ public class FramesPerSvinDropDownMenuCreator
   /**
    * Action: set animation kind to {@link EFramesPerSvin#SELECTED}.
    */
-  public static final ITsActionDef AI_FRAMES_PER_SVIN_SELECTED = TsActionDef.ofPush2( AID_FRAMES_PER_SVIN_BOTH, //
+  public static final ITsActionDef AI_FRAMES_PER_SVIN_SELECTED = TsActionDef.ofPush2( AID_FRAMES_PER_SVIN_SELECTED, //
       SELECTED.nmName(), SELECTED.description(), SELECTED.iconId() );
+
+  /**
+   * Action: set animation kind to {@link EFramesPerSvin#AT_LEAST_ONE}.
+   */
+  public static final ITsActionDef AI_FRAMES_PER_SVIN_AT_LEAST_ONE =
+      TsActionDef.ofPush2( AID_FRAMES_PER_SVIN_AT_LEAST_ONE, //
+          AT_LEAST_ONE.nmName(), AT_LEAST_ONE.description(), AT_LEAST_ONE.iconId() );
 
   /**
    * Action: set animation kind to {@link EFramesPerSvin#ONE_NO_MORE}.
@@ -78,6 +90,7 @@ public class FramesPerSvinDropDownMenuCreator
   static {
     IMapEdit<EFramesPerSvin, ITsActionDef> map = new ElemMap<>();
     map.put( EFramesPerSvin.SELECTED, AI_FRAMES_PER_SVIN_SELECTED );
+    map.put( EFramesPerSvin.AT_LEAST_ONE, AI_FRAMES_PER_SVIN_AT_LEAST_ONE );
     map.put( EFramesPerSvin.ONE_NO_MORE, AI_FRAMES_PER_SVIN_ONE_NO_MORE );
     map.put( EFramesPerSvin.FORCE_ONE, AI_FRAMES_PER_SVIN_FORCE_ONE );
     mapKindAct = map;

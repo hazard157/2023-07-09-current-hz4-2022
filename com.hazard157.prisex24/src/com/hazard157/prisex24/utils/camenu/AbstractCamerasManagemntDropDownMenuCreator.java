@@ -1,6 +1,6 @@
 package com.hazard157.prisex24.utils.camenu;
 
-import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+import static com.hazard157.common.IHzConstants.*;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
@@ -51,7 +51,7 @@ public abstract class AbstractCamerasManagemntDropDownMenuCreator
   //
 
   private EThumbSize readThumbSizeFromAppSettings() {
-    return APPREF_THUMB_SIZE_IN_MENUS.getValue( prefBundle( PBID_PSX24_COMMON ).prefs() ).asValobj();
+    return APPREF_THUMB_SIZE_IN_MENUS.getValue( prefBundle( PBID_HZ_COMMON ).prefs() ).asValobj();
   }
 
   // ------------------------------------------------------------------------------------

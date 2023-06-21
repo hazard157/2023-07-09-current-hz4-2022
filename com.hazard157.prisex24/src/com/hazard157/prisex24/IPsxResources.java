@@ -29,9 +29,7 @@ interface IPsxResources {
   String ACT_INCLUDE_ONLY_USED_TAGS   = Messages.getString( "ACT_INCLUDE_ONLY_USED_TAGS" );   //$NON-NLS-1$
   String ACT_INCLUDE_ONLY_USED_TAGS_D = Messages.getString( "ACT_INCLUDE_ONLY_USED_TAGS_D" ); //$NON-NLS-1$
 
-  String STR_THUMB_SIZE_IN_MENUS   = Messages.getString( "STR_THUMB_SIZE_IN_MENUS" );   //$NON-NLS-1$
-  String STR_THUMB_SIZE_IN_MENUS_D = Messages.getString( "STR_THUMB_SIZE_IN_MENUS_D" ); //$NON-NLS-1$
-  String STR_PB_PSX24_COMMON       = Messages.getString( "STR_PB_PSX24_COMMON" );       //$NON-NLS-1$
-  String STR_PB_PSX24_COMMON_D     = Messages.getString( "STR_PB_PSX24_COMMON_D" );     //$NON-NLS-1$
+  String STR_PB_PSX24_COMMON   = Messages.getString( "STR_PB_PSX24_COMMON" );   //$NON-NLS-1$
+  String STR_PB_PSX24_COMMON_D = Messages.getString( "STR_PB_PSX24_COMMON_D" ); //$NON-NLS-1$
 
 }
