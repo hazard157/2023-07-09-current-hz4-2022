@@ -41,14 +41,15 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // E4
 
-  String PERSPID_EPISODES    = "com.hazard157.prisex24.persp.episodes";     //$NON-NLS-1$
-  String PARTID_EISODES_LIST = "com.hazard157.prisex24.part.episodes_list"; //$NON-NLS-1$
-  String PARTID_EP_PROPS     = "com.hazard157.prisex24.part.ep_props";      //$NON-NLS-1$
-  String PARTID_EP_STORY     = "com.hazard157.prisex24.part.ep_story";      //$NON-NLS-1$
-  String PARTID_EP_PLANES    = "com.hazard157.prisex24.part.ep_planes";     //$NON-NLS-1$
-  String PARTID_EP_NOTES     = "com.hazard157.prisex24.part.ep_notes";      //$NON-NLS-1$
-  String PARTID_EP_TAGS      = "com.hazard157.prisex24.part.ep_tags";       //$NON-NLS-1$
-  String PARTID_EP_          = "com.hazard157.prisex24.part.ep_";           //$NON-NLS-1$
+  String PERSPID_EPISODES        = "com.hazard157.prisex24.persp.episodes";        //$NON-NLS-1$
+  String PARTID_EISODES_LIST     = "com.hazard157.prisex24.part.episodes_list";    //$NON-NLS-1$
+  String PARTID_EP_PROPS         = "com.hazard157.prisex24.part.ep_props";         //$NON-NLS-1$
+  String PARTID_EP_STORY         = "com.hazard157.prisex24.part.ep_story";         //$NON-NLS-1$
+  String PARTID_EP_PLANES        = "com.hazard157.prisex24.part.ep_planes";        //$NON-NLS-1$
+  String PARTID_EP_NOTES         = "com.hazard157.prisex24.part.ep_notes";         //$NON-NLS-1$
+  String PARTID_EP_TAGS          = "com.hazard157.prisex24.part.ep_tags";          //$NON-NLS-1$
+  String PARTID_EP_SOURCE_VIDEOS = "com.hazard157.prisex24.part.ep_source_videos"; //$NON-NLS-1$
+  String PARTID_EP_              = "com.hazard157.prisex24.part.ep_";              //$NON-NLS-1$
 
   String PERSPID_REFBOOKS             = "com.hazard157.prisex24.persp.refbooks";             //$NON-NLS-1$
   String PARTSTACKID_REFBOOKS         = "com.hazard157.prisex24.partstack.refbooks";         //$NON-NLS-1$

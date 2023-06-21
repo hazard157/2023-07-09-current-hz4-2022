@@ -10,25 +10,25 @@ interface IPsxResources {
   /**
    * {@link UipartEpisodeStory}
    */
-  String STR_STORY_TOOLBAR_NAME         = "Сцены:";
-  String ACT_T_ADD_TAG_INTERVAL         = "Ярлык";
-  String ACT_P_ADD_TAG_INTERVAL         = "Пометить интервал ярлыком";
-  String MSG_WARN_FIRST_SELECT_SCENE    = "Выберите сцену, после, перед или дочерным которой хотите создать новую";
-  String MSG_ERR_NO_PLACES_TO_ADD_SCENE = "Некуда добавлять: нет места перед, после или среди дочек выбранной сцены";
-  String DLG_C_ADD_SCENE_PLACE          = "Новая сцена";
-  String DLG_T_ADD_SCENE_PLACE          = "Выберите место относительно текущей сцены,\n куда будет добалена новая";
-  String DLG_C_SCENE_INTERVAL           = "Интервал сцены";
-  String DLG_T_SCENE_INTERVAL           = "Задайте интервал и свойства сцены";
+  String STR_STORY_TOOLBAR_NAME         = Messages.getString( "STR_STORY_TOOLBAR_NAME" );         //$NON-NLS-1$
+  String ACT_ADD_TAG_INTERVAL           = Messages.getString( "ACT_ADD_TAG_INTERVAL" );           //$NON-NLS-1$
+  String ACT_ADD_TAG_INTERVAL_D         = Messages.getString( "ACT_ADD_TAG_INTERVAL_D" );         //$NON-NLS-1$
+  String MSG_WARN_FIRST_SELECT_SCENE    = Messages.getString( "MSG_WARN_FIRST_SELECT_SCENE" );    //$NON-NLS-1$
+  String MSG_ERR_NO_PLACES_TO_ADD_SCENE = Messages.getString( "MSG_ERR_NO_PLACES_TO_ADD_SCENE" ); //$NON-NLS-1$
+  String DLG_ADD_SCENE_PLACE            = Messages.getString( "DLG_ADD_SCENE_PLACE" );            //$NON-NLS-1$
+  String DLG_ADD_SCENE_PLACE_D          = Messages.getString( "DLG_ADD_SCENE_PLACE_D" );          //$NON-NLS-1$
+  String DLG_SCENE_INTERVAL             = Messages.getString( "DLG_SCENE_INTERVAL" );             //$NON-NLS-1$
+  String DLG_SCENE_INTERVAL_D           = Messages.getString( "DLG_SCENE_INTERVAL_D" );           //$NON-NLS-1$
 
   /**
    * {@link UipartEpisodeTags}
    */
-  String MSG_ENTER_FILTER_TEXT   = "Введите текст отбора ярлыков";
-  String ASK_DELETE_TAG_INTERVAL = "Действительно удалить ярлык %s в интервале %s ?";
-  String STR_L_TAG_DESCRIPTION   = "Ярлык: ";
-  String STR_L_TAG_SECLINE       = "Занято: ";
-  String STR_L_TAG_GAPS          = "Свободно: ";
-  String STR_H_NAME              = "Ярлык";
-  String STR_H_DESCRIPTION       = "Описание";
+  String MSG_ENTER_FILTER_TEXT   = Messages.getString( "MSG_ENTER_FILTER_TEXT" );   //$NON-NLS-1$
+  String ASK_DELETE_TAG_INTERVAL = Messages.getString( "ASK_DELETE_TAG_INTERVAL" ); //$NON-NLS-1$
+  String STR_TAG_DESCRIPTION     = Messages.getString( "STR_TAG_DESCRIPTION" );     //$NON-NLS-1$
+  String STR_TAG_SECLINE         = Messages.getString( "STR_TAG_SECLINE" );         //$NON-NLS-1$
+  String STR_TAG_GAPS            = Messages.getString( "STR_TAG_GAPS" );            //$NON-NLS-1$
+  String STR_NAME                = Messages.getString( "STR_NAME" );                //$NON-NLS-1$
+  String STR_DESCRIPTION         = Messages.getString( "STR_DESCRIPTION" );         //$NON-NLS-1$
 
 }

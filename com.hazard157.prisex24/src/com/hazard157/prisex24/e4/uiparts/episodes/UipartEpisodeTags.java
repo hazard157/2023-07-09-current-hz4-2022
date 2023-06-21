@@ -103,7 +103,7 @@ public class UipartEpisodeTags
     treeViewer = new TsTreeViewer( new TsGuiContext( tsContext() ) );
     treeViewer.createControl( board );
     treeViewer.addTsKeyInputListener( this );
-    ITsViewerColumn col1 = treeViewer.addColumn( STR_H_NAME, EHorAlignment.LEFT, aItem -> {
+    ITsViewerColumn col1 = treeViewer.addColumn( STR_NAME, EHorAlignment.LEFT, aItem -> {
       if( aItem.entity() instanceof ITag ) {
         ITag tag = (ITag)aItem.entity();
         boolean modeAsList = toolbar.isActionChecked( ACTID_VIEW_AS_LIST );
@@ -116,7 +116,7 @@ public class UipartEpisodeTags
       return aItem.name();
     } );
     col1.setWidth( 220 );
-    treeViewer.addColumn( STR_H_DESCRIPTION, EHorAlignment.LEFT, aItem -> {
+    treeViewer.addColumn( STR_DESCRIPTION, EHorAlignment.LEFT, aItem -> {
       if( aItem.entity() instanceof ITag ) {
         ITag tag = (ITag)aItem.entity();
         return tag.description();
@@ -135,17 +135,17 @@ public class UipartEpisodeTags
     detailtsPane.setLayoutData( BorderLayout.SOUTH );
     detailtsPane.setLayout( new GridLayout( 2, false ) );
     Label l = new Label( detailtsPane, SWT.LEFT );
-    l.setText( STR_L_TAG_DESCRIPTION );
+    l.setText( STR_TAG_DESCRIPTION );
     txtTagDecription = new Text( detailtsPane, SWT.BORDER );
     txtTagDecription.setEnabled( false );
     txtTagDecription.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
     l = new Label( detailtsPane, SWT.LEFT );
-    l.setText( STR_L_TAG_SECLINE );
+    l.setText( STR_TAG_SECLINE );
     txtTagSecline = new Text( detailtsPane, SWT.BORDER );
     txtTagSecline.setEnabled( false );
     txtTagSecline.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
     l = new Label( detailtsPane, SWT.LEFT );
-    l.setText( STR_L_TAG_GAPS );
+    l.setText( STR_TAG_GAPS );
     txtTagGaps = new Text( detailtsPane, SWT.BORDER );
     txtTagGaps.setEnabled( false );
     txtTagGaps.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );

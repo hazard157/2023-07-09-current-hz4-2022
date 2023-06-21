@@ -186,7 +186,7 @@ public class UipartEpisodeStory
   private static final String AID_ADD_TAG_INTERVAL = PSX_ACT_ID + ".AddTagInterval"; //$NON-NLS-1$
 
   private static final ITsActionDef AI_ADD_TAG_INTERVAL = TsActionDef.ofPush2( AID_ADD_TAG_INTERVAL, //
-      ACT_T_ADD_TAG_INTERVAL, ACT_P_ADD_TAG_INTERVAL, ICONID_TAG );
+      ACT_ADD_TAG_INTERVAL, ACT_ADD_TAG_INTERVAL_D, ICONID_TAG );
 
   // ------------------------------------------------------------------------------------
   // Create and init
@@ -505,7 +505,7 @@ public class UipartEpisodeStory
       defPlace = ENodeAddPlace.BEFORE;
     }
     // invoke dialog to determine scene adding location
-    ITsDialogInfo cdi = new TsDialogInfo( tsContext(), DLG_C_ADD_SCENE_PLACE, DLG_T_ADD_SCENE_PLACE );
+    ITsDialogInfo cdi = new TsDialogInfo( tsContext(), DLG_ADD_SCENE_PLACE, DLG_ADD_SCENE_PLACE_D );
     ENodeAddPlace nap = TreeOpUtils.askNap( defPlace, cdi, disabledPlaces );
     if( nap == null ) {
       return;
