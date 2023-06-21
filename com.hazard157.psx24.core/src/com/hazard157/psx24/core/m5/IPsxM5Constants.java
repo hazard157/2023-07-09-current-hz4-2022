@@ -24,6 +24,7 @@ public interface IPsxM5Constants {
   String MID_SVIN             = PSX_ID + ".Svin";           //$NON-NLS-1$
   String MID_MARK_PLANE_GUIDE = PSX_ID + ".MarkPlaneGuide"; //$NON-NLS-1$
   String MID_EP_NOTE          = PSX_ID + ".MarkNote";       //$NON-NLS-1$
+  String MID_SOURCE_VIDEO     = PSX_ID + ".SourceVideo";    //$NON-NLS-1$
 
   String FID_FRAME_NO        = "FrameNo";          //$NON-NLS-1$
   String FID_IS_ANIMATED     = "IsAnimated";       //$NON-NLS-1$
@@ -36,6 +37,7 @@ public interface IPsxM5Constants {
   String FID_PLACE           = "Place";            //$NON-NLS-1$
   String FID_DEF_TRAILER_ID  = "defaultTrailerId"; //$NON-NLS-1$
   String FID_GUIDE           = "Guide";            //$NON-NLS-1$
+  String FID_LOCATION        = "Location";         //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Data types

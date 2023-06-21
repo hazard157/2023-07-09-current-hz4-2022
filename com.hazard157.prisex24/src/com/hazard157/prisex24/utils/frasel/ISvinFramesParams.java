@@ -122,9 +122,22 @@ public interface ISvinFramesParams
    * @param aFramesPerSvin {@link EFramesPerSvin} - frames per SVIN or <code>null</code>
    */
   void setParams( EAnimationKind aAnimationKind, Boolean aOnlySvinCams, IStringList aCameraIds,
-      ESecondsStep aSecondsStep,
+      ESecondsStep aSecondsStep, EFramesPerSvin aFramesPerSvin );
 
-      EFramesPerSvin aFramesPerSvin );
+  /**
+   * Sets parameters at once .
+   * <p>
+   * Sets {@link #isOnlySvinCams()} = <code>false</code> and {@link #cameraIds()} to empty list.
+   * <p>
+   * Note: any argument may have value <code>null</code> indication that corresponding parameters would not be changed.
+   *
+   * @param aAnimationKind {@link EAnimationKind} - accepted images kind or <code>null</code>
+   * @param aSecondsStep {@link ESecondsStep} - {@link ESecondsStep} - the frames "density" in time
+   * @param aFramesPerSvin {@link EFramesPerSvin} - frames per SVIN or <code>null</code>
+   */
+  default void setParams( EAnimationKind aAnimationKind, ESecondsStep aSecondsStep, EFramesPerSvin aFramesPerSvin ) {
+    setParams( aAnimationKind, Boolean.FALSE, IStringList.EMPTY, aSecondsStep, aFramesPerSvin );
+  }
 
   /**
    * Sets all parameters at once from the source parameres holde..

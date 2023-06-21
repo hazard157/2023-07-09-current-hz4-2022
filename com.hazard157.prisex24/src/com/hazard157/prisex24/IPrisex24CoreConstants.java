@@ -59,8 +59,12 @@ public interface IPrisex24CoreConstants {
   String PARTID_EP_TAGS      = "com.hazard157.prisex24.part.ep_tags";       //$NON-NLS-1$
   String PARTID_EP_          = "com.hazard157.prisex24.part.ep_";           //$NON-NLS-1$
 
-  String PERSPID_REFBOOKS     = "com.hazard157.prisex24.persp.refbooks";     //$NON-NLS-1$
-  String PARTSTACKID_REFBOOKS = "com.hazard157.prisex24.partstack.refbooks"; //$NON-NLS-1$
+  String PERSPID_REFBOOKS       = "com.hazard157.prisex24.persp.refbooks";       //$NON-NLS-1$
+  String PARTSTACKID_REFBOOKS   = "com.hazard157.prisex24.partstack.refbooks";   //$NON-NLS-1$
+  String PARTID_REFBOOK_TODOS   = "com.hazard157.prisex24.part.refbook_todos";   //$NON-NLS-1$
+  String PARTID_REFBOOK_TAGS    = "com.hazard157.prisex24.part.refbook_tags";    //$NON-NLS-1$
+  String PARTID_REFBOOK_CAMERAS = "com.hazard157.prisex24.part.refbook_cameras"; //$NON-NLS-1$
+  String PARTID_REFBOOK_        = "com.hazard157.prisex24.part.refbook_";        //$NON-NLS-1$
 
   String CMDID_GOTO_EPISODE_PREV   = "com.hazard157.prisex24.cmd.goto_episode_prev";   //$NON-NLS-1$
   String CMDID_GOTO_EPISODE_NEXT   = "com.hazard157.prisex24.cmd.goto_episode_next";   //$NON-NLS-1$
@@ -70,28 +74,29 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // Icons
 
-  String PREFIX_OF_ICON_FIELD_NAME          = "ICONID_";                     //$NON-NLS-1$
-  String ICONID_APP_ICON                    = "app-icon";                    //$NON-NLS-1$
-  String ICONID_PORNICON                    = "pornicon";                    //$NON-NLS-1$
-  String ICONID_TODO_ITEM                   = "todo-item";                   //$NON-NLS-1$
-  String ICONID_TODO_ITEM_DIMMED            = "todo-item-dimmed";            //$NON-NLS-1$
-  String ICONID_TODOS_LIST                  = "todos-list";                  //$NON-NLS-1$
-  String ICONID_TAG                         = "tag";                         //$NON-NLS-1$
-  String ICONID_TAGS_LIST                   = "tags-list";                   //$NON-NLS-1$
-  String ICONID_FRAMES_PER_SVIN_FORCE_ONE   = "frames-per-svin-force-one";   //$NON-NLS-1$
-  String ICONID_FRAMES_PER_SVIN_ONE_NO_MORE = "frames-per-svin-one-no-more"; //$NON-NLS-1$
-  String ICONID_FRAMES_PER_SVIN_SELECTED    = "frames-per-svin-selected";    //$NON-NLS-1$
-  String ICONID_FRAMES_PER_SVIN_QUESTION    = "frames-per-svin-question";    //$NON-NLS-1$
-  String ICONID_GIF_CREATE                  = "gif-create";                  //$NON-NLS-1$
-  String ICONID_GIF_INFO                    = "gif-info";                    //$NON-NLS-1$
-  String ICONID_GIF_RECREATE_ALL            = "gif-recreate-all";            //$NON-NLS-1$
-  String ICONID_GIF_REMOVE                  = "gif-remove";                  //$NON-NLS-1$
-  String ICONID_GIF_TEST                    = "gif-test";                    //$NON-NLS-1$
-  String ICONID_WORK_WITH_FRAMES            = "work-with-frames";            //$NON-NLS-1$
-  String ICONID_PSX_PLANE                   = "media-optical-dvd-video";     //$NON-NLS-1$
-  String ICONID_PSX_PLANE_LINE              = "tools-rip-video-dvd";         //$NON-NLS-1$
-  String ICONID_KNOTES                      = "knotes";                      //$NON-NLS-1$
-  String ICONID_PSX_INCL_ONLY_USED_TAGS     = "bookmark-new-list";           //$NON-NLS-1$
+  String PREFIX_OF_ICON_FIELD_NAME           = "ICONID_";                      //$NON-NLS-1$
+  String ICONID_APP_ICON                     = "app-icon";                     //$NON-NLS-1$
+  String ICONID_PORNICON                     = "pornicon";                     //$NON-NLS-1$
+  String ICONID_TODO_ITEM                    = "todo-item";                    //$NON-NLS-1$
+  String ICONID_TODO_ITEM_DIMMED             = "todo-item-dimmed";             //$NON-NLS-1$
+  String ICONID_TODOS_LIST                   = "todos-list";                   //$NON-NLS-1$
+  String ICONID_TAG                          = "tag";                          //$NON-NLS-1$
+  String ICONID_TAGS_LIST                    = "tags-list";                    //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_FORCE_ONE    = "frames-per-svin-force-one";    //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_AT_LEAST_ONE = "frames-per-svin-at-least-one"; //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_ONE_NO_MORE  = "frames-per-svin-one-no-more";  //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_SELECTED     = "frames-per-svin-selected";     //$NON-NLS-1$
+  String ICONID_FRAMES_PER_SVIN_QUESTION     = "frames-per-svin-question";     //$NON-NLS-1$
+  String ICONID_GIF_CREATE                   = "gif-create";                   //$NON-NLS-1$
+  String ICONID_GIF_INFO                     = "gif-info";                     //$NON-NLS-1$
+  String ICONID_GIF_RECREATE_ALL             = "gif-recreate-all";             //$NON-NLS-1$
+  String ICONID_GIF_REMOVE                   = "gif-remove";                   //$NON-NLS-1$
+  String ICONID_GIF_TEST                     = "gif-test";                     //$NON-NLS-1$
+  String ICONID_WORK_WITH_FRAMES             = "work-with-frames";             //$NON-NLS-1$
+  String ICONID_PSX_PLANE                    = "media-optical-dvd-video";      //$NON-NLS-1$
+  String ICONID_PSX_PLANE_LINE               = "tools-rip-video-dvd";          //$NON-NLS-1$
+  String ICONID_KNOTES                       = "knotes";                       //$NON-NLS-1$
+  String ICONID_PSX_INCL_ONLY_USED_TAGS      = "bookmark-new-list";            //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions

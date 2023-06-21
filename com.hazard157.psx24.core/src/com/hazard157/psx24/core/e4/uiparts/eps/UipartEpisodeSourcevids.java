@@ -1,5 +1,7 @@
 package com.hazard157.psx24.core.e4.uiparts.eps;
 
+import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
+
 import javax.inject.*;
 
 import org.eclipse.swt.widgets.*;
@@ -41,7 +43,7 @@ public class UipartEpisodeSourcevids
 
   @Override
   protected void doCreatePartContent( Composite aParent ) {
-    IM5Model<ISourceVideo> model = m5().getModel( SourceVideoM5Model.MODEL_ID, ISourceVideo.class );
+    IM5Model<ISourceVideo> model = m5().getModel( MID_SOURCE_VIDEO, ISourceVideo.class );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     IM5LifecycleManager<ISourceVideo> lm = new EpisodeSourceVideoLifecycleManager( model, episode(), unitSourceVideos );
     panel = model.panelCreator().createCollEditPanel( ctx, lm.itemsProvider(), lm );
@@ -68,7 +70,7 @@ public class UipartEpisodeSourcevids
 
   @Override
   protected void doSetEpisode() {
-    IM5Model<ISourceVideo> model = m5().getModel( SourceVideoM5Model.MODEL_ID, ISourceVideo.class );
+    IM5Model<ISourceVideo> model = m5().getModel( MID_SOURCE_VIDEO, ISourceVideo.class );
     IM5LifecycleManager<ISourceVideo> lm = new EpisodeSourceVideoLifecycleManager( model, episode(), unitSourceVideos );
     panel.setItemsProvider( lm.itemsProvider() );
     panel.setLifecycleManager( lm );

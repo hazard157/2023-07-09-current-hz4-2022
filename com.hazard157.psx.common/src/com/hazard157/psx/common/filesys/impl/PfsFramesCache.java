@@ -109,7 +109,7 @@ public class PfsFramesCache
         camFrames = new SortedElemLinkedBundleList<>();
         epFramesByCamMap.put( camId, camFrames );
       }
-      File[] allImages = probableCamSubdir.listFiles( IMediaFileConstants.IMAGE_FILES_FILTER );
+      File[] allImages = probableCamSubdir.listFiles( IMediaFileConstants.FF_IMAGES );
       for( File imgFile : allImages ) {
         IFrame f = PfsUtils.makeSourceFrameFromFileName( imgFile, camId, aEpisodeId );
         if( f != null ) {

@@ -1,5 +1,6 @@
 package com.hazard157.psx24.core.e4.uiparts.refbooks;
 
+import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
@@ -22,7 +23,6 @@ import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.glib.frlstviewer_any.*;
-import com.hazard157.psx24.core.m5.srcvids.*;
 
 /**
  * Вью правки камер.
@@ -42,7 +42,7 @@ public class UipartRefbookSourcevids
   protected void doInit( Composite aParent ) {
     SashForm sfMain = new SashForm( aParent, SWT.HORIZONTAL );
     // source videos list
-    IM5Model<ISourceVideo> model = m5().getModel( SourceVideoM5Model.MODEL_ID, ISourceVideo.class );
+    IM5Model<ISourceVideo> model = m5().getModel( MID_SOURCE_VIDEO, ISourceVideo.class );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     IM5LifecycleManager<ISourceVideo> lm = model.getLifecycleManager( unitSourceVideos );
     OPDEF_DETAILS_PANE_PLACE.setValue( ctx.params(), avValobj( EBorderLayoutPlacement.SOUTH ) );

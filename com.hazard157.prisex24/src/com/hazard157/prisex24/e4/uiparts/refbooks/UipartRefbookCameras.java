@@ -1,6 +1,6 @@
-package com.hazard157.psx24.core.e4.uiparts.refbooks;
+package com.hazard157.prisex24.e4.uiparts.refbooks;
 
-import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
@@ -15,16 +15,18 @@ import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
-import org.toxsoft.core.tsgui.mws.bases.*;
 
+import com.hazard157.common.quants.ankind.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.prisex24.e4.uiparts.*;
+import com.hazard157.prisex24.glib.frview.*;
+import com.hazard157.prisex24.glib.frview.impl.*;
+import com.hazard157.prisex24.m5.srcvideo.*;
+import com.hazard157.prisex24.utils.frasel.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.cameras.*;
 import com.hazard157.psx.proj3.sourcevids.*;
-import com.hazard157.psx24.core.e4.services.filesys.*;
-import com.hazard157.psx24.core.glib.frlstviewer_any.*;
-import com.hazard157.psx24.core.m5.camera.*;
-import com.hazard157.psx24.core.m5.srcvids.*;
 
 /**
  * Вью правки камер.
@@ -32,7 +34,7 @@ import com.hazard157.psx24.core.m5.srcvids.*;
  * @author hazard157
  */
 public class UipartRefbookCameras
-    extends MwsAbstractPart {
+    extends PsxAbstractUipart {
 
   @Inject
   IUnitCameras unitCameras;
@@ -47,7 +49,7 @@ public class UipartRefbookCameras
   protected void doInit( Composite aParent ) {
     SashForm sfMain = new SashForm( aParent, SWT.HORIZONTAL );
     // cameras
-    IM5Model<Camera> camModel = m5().getModel( CameraM5Model.MODEL_ID, Camera.class );
+    IM5Model<Camera> camModel = m5().getModel( MID_CAMERA, Camera.class );
     IM5LifecycleManager<Camera> camLm = camModel.getLifecycleManager( unitCameras );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     OPDEF_IS_FILTER_PANE.setValue( ctx.params(), AV_TRUE );
@@ -64,7 +66,8 @@ public class UipartRefbookCameras
     // svPanel.addTsSelectionListener( soureceVideoSelectionChangeListener );
     // frames list
     ctx = new TsGuiContext( tsContext() );
-    PanelFramesListViewer flPanel = new PanelFramesListViewer( sfMain, ctx );
+    ISvinsFramesViewer flPanel = new SvinsFramesViewer( sfMain, ctx );
+    flPanel.svinFramesParams().setParams( EAnimationKind.ANIMATED, ESecondsStep.SEC_01, EFramesPerSvin.AT_LEAST_ONE );
 
     // setup
     camPanel.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
@@ -77,25 +80,12 @@ public class UipartRefbookCameras
     } );
     svPanel.addTsSelectionListener( ( aSource, aSel ) -> {
       if( aSel == null ) {
-        flPanel.setFramesList( null );
+        flPanel.svinSeq().svins().clear();
         return;
       }
       Secint in = new Secint( 0, aSel.duration() - 1 );
       Svin svin = new Svin( aSel.episodeId(), aSel.cameraId(), in, aSel.frame() );
-      IPsxFileSystem fileSystem = tsContext().get( IPsxFileSystem.class );
-      // IList<IFrame> frames =
-      // fileSystem.listEpisodeFrames( new FrameSelectionCriteria( svin, EAnimationKind.ANIMATED, true ) );
-      // if( frames.isEmpty() ) {
-      // int frameSec = svin.interval().start() + svin.interval().duration() / 2;
-      // IFsExplorer fe = appContext().get( IFsExplorer.class );
-      // IStringMap<File> camDirs = fe.listSourceCameraDirs( svin.episodeId() );
-      // if( !camDirs.isEmpty() ) {
-      // Frame middleFrame = new Frame( svin.episodeId(), camDirs.values().first().getName(), frameSec, false );
-      // frames = new SingleItemList<>( middleFrame );
-      // }
-      // }
-      // flPanel.setFramesList( frames );
-      flPanel.setFramesList( fileSystem.listSvinIllustrationFrames( svin ) );
+      flPanel.svinSeq().svins().setAll( svin );
     } );
     sfMain.setWeights( 250, 250, 500 );
   }

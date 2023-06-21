@@ -182,12 +182,16 @@ public class SvinsFramesViewer
             toSet = EFramesPerSvin.FORCE_ONE;
             break;
           }
-          case FORCE_ONE: {
+          case AT_LEAST_ONE: {
             toSet = EFramesPerSvin.SELECTED;
             break;
           }
           case ONE_NO_MORE: {
-            toSet = EFramesPerSvin.FORCE_ONE;
+            toSet = EFramesPerSvin.SELECTED;
+            break;
+          }
+          case FORCE_ONE: {
+            toSet = EFramesPerSvin.SELECTED;
             break;
           }
           default:

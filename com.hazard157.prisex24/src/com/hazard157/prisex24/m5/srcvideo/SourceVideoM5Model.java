@@ -1,9 +1,9 @@
-package com.hazard157.psx24.core.m5.srcvids;
+package com.hazard157.prisex24.m5.srcvideo;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
 import static com.hazard157.lib.core.quants.secint.m5.ISecintM5Constants.*;
-import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
-import static com.hazard157.psx24.core.m5.srcvids.IPsxResources.*;
+import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.m5.srcvideo.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
@@ -20,14 +20,10 @@ import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.av.*;
 
-import com.hazard157.common.quants.ankind.*;
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.prisex24.m5.std.*;
+import com.hazard157.prisex24.valeds.frames.*;
 import com.hazard157.psx.common.stuff.frame.*;
-import com.hazard157.psx.common.stuff.fsc.*;
-import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.sourcevids.*;
-import com.hazard157.psx24.core.m5.std.*;
-import com.hazard157.psx24.core.valeds.frames.*;
 
 /**
  * Модель объектов типа {@link ISourceVideo}.
@@ -179,10 +175,8 @@ public class SourceVideoM5Model
           @Override
           public void afterSetValues( IM5Bunch<ISourceVideo> aValues ) {
             String episodeId = EPISODE_ID.getFieldValue( aValues );
-            Svin svin = new Svin( episodeId, Secint.MAXIMUM );
-            FrameSelectionCriteria criteria = new FrameSelectionCriteria( svin, EAnimationKind.SINGLE, true );
             ValedFrameEditor vfe = (ValedFrameEditor)editors().getByKey( PsxM5FrameFieldDef.FID_FRAME );
-            vfe.setSelectionCriteria( criteria );
+            vfe.setEpisodeId( episodeId );
             IFrame frame = FRAME.getFieldValue( aValues );
             vfe.setValue( frame );
           }

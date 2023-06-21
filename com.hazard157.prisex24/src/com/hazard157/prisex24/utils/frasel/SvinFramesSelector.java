@@ -82,6 +82,14 @@ public final class SvinFramesSelector
         aFrames.addAll( ll );
         return;
       }
+      case AT_LEAST_ONE: {
+        if( ll.size() >= 1 ) {
+          aFrames.addAll( ll );
+          return;
+        }
+        internalFindIntervalBestFrame( aSvin, intervalFrames, aFrames );
+        return;
+      }
       case ONE_NO_MORE: {
         if( ll.size() <= 1 ) {
           aFrames.addAll( ll );

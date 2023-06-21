@@ -154,9 +154,9 @@ public class PsxFilmsService
     IListBasicEdit<File> result = new SortedElemLinkedBundleList<>();
     if( OP_SHOW_LEGACY_FILMS.getValue( filmsPrefBundle.prefs() ).asBool() ) {
       File legacyDir = new File( filmsDir, SUBDIR_LEGACY );
-      result.addAll( TsFileUtils.listChilds( legacyDir, IMediaFileConstants.VIDEO_FILES_FILTER ) );
+      result.addAll( TsFileUtils.listChilds( legacyDir, IMediaFileConstants.FF_VIDEOS ) );
     }
-    result.addAll( TsFileUtils.listChilds( filmsDir, IMediaFileConstants.VIDEO_FILES_FILTER ) );
+    result.addAll( TsFileUtils.listChilds( filmsDir, IMediaFileConstants.FF_VIDEOS ) );
     return result;
     // File[] filesArray = filmsDir.listFiles( IMediaFileConstants.VIDEO_FILES_FILTER );
     // if( filesArray == null || filesArray.length == 0 ) {

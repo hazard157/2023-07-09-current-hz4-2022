@@ -131,7 +131,7 @@ final class VisumpleEditPanel
         if( dir != null ) {
           File currFile = getExistingFile();
           IListBasicEdit<File> imgFiles = new SortedElemLinkedBundleList<>();
-          imgFiles.addAll( TsFileUtils.listChilds( dir, IMediaFileConstants.IMAGE_FILES_FILTER ) );
+          imgFiles.addAll( TsFileUtils.listChilds( dir, IMediaFileConstants.FF_IMAGES ) );
           File f = ETsCollMove.PREV.findElemAt( currFile, imgFiles, 10, true );
           changeFile( f );
         }
@@ -142,7 +142,7 @@ final class VisumpleEditPanel
         if( dir != null ) {
           File currFile = getExistingFile();
           IListBasicEdit<File> imgFiles = new SortedElemLinkedBundleList<>();
-          imgFiles.addAll( TsFileUtils.listChilds( dir, IMediaFileConstants.IMAGE_FILES_FILTER ) );
+          imgFiles.addAll( TsFileUtils.listChilds( dir, IMediaFileConstants.FF_IMAGES ) );
           File f = ETsCollMove.NEXT.findElemAt( currFile, imgFiles, 10, true );
           changeFile( f );
         }
@@ -161,7 +161,7 @@ final class VisumpleEditPanel
     if( dir != null ) {
       File f = getExistingFile();
       IListBasicEdit<File> imgFiles = new SortedElemLinkedBundleList<>();
-      imgFiles.addAll( dir.listFiles( IMediaFileConstants.IMAGE_FILES_FILTER ) );
+      imgFiles.addAll( dir.listFiles( IMediaFileConstants.FF_IMAGES ) );
       hasPrev = (ETsCollMove.PREV.findElemAt( f, imgFiles, 10, true ) != null);
       hasNext = (ETsCollMove.NEXT.findElemAt( f, imgFiles, 10, true ) != null);
     }

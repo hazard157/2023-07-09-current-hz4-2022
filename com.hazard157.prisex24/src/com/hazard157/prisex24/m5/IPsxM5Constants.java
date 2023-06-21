@@ -17,42 +17,40 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 @SuppressWarnings( "javadoc" )
 public interface IPsxM5Constants {
 
-  String FID_WHEN     = "When";     //$NON-NLS-1$
-  String FID_INTERVAL = "Interval"; //$NON-NLS-1$
-
-  String MID_EPISODE         = PSX_ID + ".Episode"; //$NON-NLS-1$
-  String FID_ACTION_INTERVAL = "ActInterval";       //$NON-NLS-1$
-  String FID_PLACE           = "Place";             //$NON-NLS-1$
-  String FID_DEF_TRAILER_ID  = "defaultTrailerId";  //$NON-NLS-1$
-
-  String MID_SCENE        = PSX_ID + ".Secene"; //$NON-NLS-1$
-  String FID_DUR_PERC_STR = "DurPercStr";       //$NON-NLS-1$
-
-  String MID_FRAME       = PSX_ID + ".Frame"; //$NON-NLS-1$
-  String FID_FRAME_NO    = "FrameNo";         //$NON-NLS-1$
-  String FID_IS_ANIMATED = "IsAnimated";      //$NON-NLS-1$
-  String FID_FRAME_IMAGE = "FrameImage";      //$NON-NLS-1$
-  String FID_CAMERA_ID   = "CameraId";        //$NON-NLS-1$
-
-  String MID_TODO             = PSX_ID + ".Todo"; //$NON-NLS-1$
-  String FID_CREATION_TIME    = "CreationTime";   //$NON-NLS-1$
-  String FID_PRIORITY         = "Priority";       //$NON-NLS-1$
-  String FID_TEXT             = "Text";           //$NON-NLS-1$
-  String FID_IS_DONE          = "IsDone";         //$NON-NLS-1$
-  String FID_TODO_ID          = "TodoId";         //$NON-NLS-1$
-  String FID_RELATED_TODO_IDS = "RelatedTodoIds"; //$NON-NLS-1$
-  String FID_FULFIL_STAGES    = "FulfilStages";   //$NON-NLS-1$
-
-  String MID_FULFIL_STAGE = PSX_ID + "FulfilStage"; //$NON-NLS-1$
-
-  String MID_TAG = PSX_ID + ".Tag"; //$NON-NLS-1$
-
-  String MID_SVIN = PSX_ID + ".Svin"; //$NON-NLS-1$
-
+  String MID_CAMERA           = PSX_ID + ".Camera";         //$NON-NLS-1$
+  String MID_FULFIL_STAGE     = PSX_ID + "FulfilStage";     //$NON-NLS-1$
+  String MID_TAG              = PSX_ID + ".Tag";            //$NON-NLS-1$
+  String MID_SVIN             = PSX_ID + ".Svin";           //$NON-NLS-1$
   String MID_MARK_PLANE_GUIDE = PSX_ID + ".MarkPlaneGuide"; //$NON-NLS-1$
-  String FID_GUIDE            = "Guide";                    //$NON-NLS-1$
+  String MID_EP_NOTE          = PSX_ID + ".MarkNote";       //$NON-NLS-1$
+  String MID_EPISODE          = PSX_ID + ".Episode";        //$NON-NLS-1$
+  String MID_SCENE            = PSX_ID + ".Secene";         //$NON-NLS-1$
+  String MID_FRAME            = PSX_ID + ".Frame";          //$NON-NLS-1$
+  String MID_TODO             = PSX_ID + ".Todo";           //$NON-NLS-1$
+  String MID_SOURCE_VIDEO     = PSX_ID + ".SourceVideo";    //$NON-NLS-1$
 
-  String MID_EP_NOTE = PSX_ID + ".MarkNote"; //$NON-NLS-1$
+  String FID_IS_CAM_AVAILABLE = "IsCamAvailable";   //$NON-NLS-1$
+  String FID_USE_COUNT        = "UseCount";         //$NON-NLS-1$
+  String FID_CAMERA_KIND      = "CameraKind";       //$NON-NLS-1$
+  String FID_WHEN             = "When";             //$NON-NLS-1$
+  String FID_INTERVAL         = "Interval";         //$NON-NLS-1$
+  String FID_ACTION_INTERVAL  = "ActInterval";      //$NON-NLS-1$
+  String FID_PLACE            = "Place";            //$NON-NLS-1$
+  String FID_DEF_TRAILER_ID   = "defaultTrailerId"; //$NON-NLS-1$
+  String FID_DUR_PERC_STR     = "DurPercStr";       //$NON-NLS-1$
+  String FID_FRAME_NO         = "FrameNo";          //$NON-NLS-1$
+  String FID_IS_ANIMATED      = "IsAnimated";       //$NON-NLS-1$
+  String FID_FRAME_IMAGE      = "FrameImage";       //$NON-NLS-1$
+  String FID_CAMERA_ID        = "CameraId";         //$NON-NLS-1$
+  String FID_CREATION_TIME    = "CreationTime";     //$NON-NLS-1$
+  String FID_PRIORITY         = "Priority";         //$NON-NLS-1$
+  String FID_TEXT             = "Text";             //$NON-NLS-1$
+  String FID_IS_DONE          = "IsDone";           //$NON-NLS-1$
+  String FID_TODO_ID          = "TodoId";           //$NON-NLS-1$
+  String FID_RELATED_TODO_IDS = "RelatedTodoIds";   //$NON-NLS-1$
+  String FID_FULFIL_STAGES    = "FulfilStages";     //$NON-NLS-1$
+  String FID_GUIDE            = "Guide";            //$NON-NLS-1$
+  String FID_LOCATION         = "Location";         //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Data types
