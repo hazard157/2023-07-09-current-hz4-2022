@@ -41,6 +41,11 @@ public abstract class AbstractEpisodeUipart
     setEpisode( currentEpisodeService.current() );
   }
 
+  @Override
+  protected void whenPartVisible() {
+    doSetEpisode();
+  }
+
   // ------------------------------------------------------------------------------------
   // API
   //
@@ -67,7 +72,16 @@ public abstract class AbstractEpisodeUipart
     if( episode != null ) {
       episode.eventer().addListener( episodeChangeListener );
     }
-    doSetEpisode();
+    /**
+     * In method doSetEpisode() many subclasses generate application wide events like "ChangeCurrentXxxEntity", however,
+     * they must NOT do anything when they are not visible and must NOT generate such events when they are not focused.
+     * <p>
+     * Here we do nothing (not calling doSetEpisode()) when view are invisible and call doSetEpisode() in
+     * whenPartVisible().
+     */
+    if( isPartVisible() ) {
+      doSetEpisode();
+    }
   }
 
   // ------------------------------------------------------------------------------------
