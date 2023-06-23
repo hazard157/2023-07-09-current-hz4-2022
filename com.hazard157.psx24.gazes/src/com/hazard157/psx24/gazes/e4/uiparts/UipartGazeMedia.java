@@ -29,9 +29,9 @@ import org.toxsoft.core.tslib.bricks.apprefs.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.notifier.basis.*;
 
+import com.hazard157.common.incub.fs.*;
 import com.hazard157.lib.core.glib.pgviewer.*;
 import com.hazard157.lib.core.glib.pgviewer.impl.*;
-import com.hazard157.lib.core.incub.optedfile.*;
 import com.hazard157.lib.core.utils.*;
 import com.hazard157.psx.proj3.gaze.*;
 import com.hazard157.psx24.core.*;

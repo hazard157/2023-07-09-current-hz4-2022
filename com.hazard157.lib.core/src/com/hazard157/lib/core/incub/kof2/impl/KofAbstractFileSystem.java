@@ -7,8 +7,8 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
+import com.hazard157.common.incub.fs.*;
 import com.hazard157.lib.core.incub.kof.*;
-import com.hazard157.lib.core.incub.optedfile.*;
 
 /**
  * Basic abstract {@link IKofFileSystem} implementation.

@@ -8,8 +8,8 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
+import com.hazard157.common.incub.fs.*;
 import com.hazard157.lib.core.incub.kof.*;
-import com.hazard157.lib.core.incub.optedfile.*;
 
 /**
  * An {@link IKofFileSystem} implementation including all non-hidden directories and files by extensions list.

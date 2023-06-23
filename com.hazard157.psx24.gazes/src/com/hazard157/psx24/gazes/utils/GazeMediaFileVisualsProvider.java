@@ -15,8 +15,8 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
+import com.hazard157.common.incub.fs.*;
 import com.hazard157.lib.core.glib.pgviewer.*;
-import com.hazard157.lib.core.incub.optedfile.*;
 import com.hazard157.psx24.core.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 

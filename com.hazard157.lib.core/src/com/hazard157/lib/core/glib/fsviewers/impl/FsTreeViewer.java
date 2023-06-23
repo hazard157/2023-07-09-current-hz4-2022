@@ -1,32 +1,27 @@
 package com.hazard157.lib.core.glib.fsviewers.impl;
 
-import java.io.File;
-import java.util.Objects;
+import java.io.*;
+import java.util.*;
 
-import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.contexts.*;
 import org.eclipse.jface.viewers.*;
-import org.eclipse.swt.SWT;
+import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
-import org.toxsoft.core.tsgui.bricks.stdevents.ITsDoubleClickListener;
-import org.toxsoft.core.tsgui.bricks.stdevents.ITsSelectionChangeListener;
-import org.toxsoft.core.tsgui.bricks.stdevents.impl.TsDoubleClickEventHelper;
-import org.toxsoft.core.tsgui.bricks.stdevents.impl.TsSelectionChangeEventHelper;
-import org.toxsoft.core.tsgui.bricks.tstree.ITsTreeViewerConsole;
-import org.toxsoft.core.tsgui.bricks.tstree.impl.TsTreeViewerConsole;
-import org.toxsoft.core.tsgui.graphics.icons.EIconSize;
-import org.toxsoft.core.tsgui.graphics.image.EThumbSize;
-import org.toxsoft.core.tsgui.graphics.image.TsImage;
-import org.toxsoft.core.tsgui.utils.jface.TableLabelProviderAdapter;
-import org.toxsoft.core.tsgui.utils.jface.ViewerPaintHelper;
-import org.toxsoft.core.tslib.utils.TsLibUtils;
+import org.toxsoft.core.tsgui.bricks.stdevents.*;
+import org.toxsoft.core.tsgui.bricks.stdevents.impl.*;
+import org.toxsoft.core.tsgui.bricks.tstree.*;
+import org.toxsoft.core.tsgui.bricks.tstree.impl.*;
+import org.toxsoft.core.tsgui.graphics.icons.*;
+import org.toxsoft.core.tsgui.graphics.image.*;
+import org.toxsoft.core.tsgui.utils.jface.*;
+import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
-import org.toxsoft.core.tslib.utils.files.EFsObjKind;
+import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.glib.fsviewers.IFsIconProvider;
-import com.hazard157.lib.core.glib.fsviewers.IFsTreeViewer;
-import com.hazard157.lib.core.incub.kof.IKofFileSystem;
-import com.hazard157.lib.core.incub.optedfile.OptedFile;
+import com.hazard157.common.incub.fs.*;
+import com.hazard157.lib.core.glib.fsviewers.*;
+import com.hazard157.lib.core.incub.kof.*;
 
 /**
  * Реализация просмотрщика {@link IFsTreeViewer}.
@@ -152,12 +147,10 @@ public class FsTreeViewer<T extends OptedFile>
     @Override
     public String getColumnText( Object aElem, int aColumnIndex ) {
       if( aElem instanceof File f ) {
-        switch( aColumnIndex ) {
-          case COLIDX_NAME:
-            return f.getName();
-          default:
-            throw new TsNotAllEnumsUsedRtException();
-        }
+        return switch( aColumnIndex ) {
+          case COLIDX_NAME -> f.getName();
+          default -> throw new TsNotAllEnumsUsedRtException();
+        };
       }
       return TsLibUtils.EMPTY_STRING;
     }

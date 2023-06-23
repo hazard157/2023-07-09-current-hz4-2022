@@ -154,7 +154,7 @@ class TreeMakers {
   static class TmByHh
       implements ITsTreeMaker<IGaze> {
 
-    @SuppressWarnings( { "rawtypes", "unchecked", "boxing" } )
+    @SuppressWarnings( { "rawtypes", "unchecked" } )
     @Override
     public IList<ITsNode> makeRoots( ITsNode aRootNode, IList<IGaze> aItems ) {
       IIntMapEdit<DefaultTsNode<Integer>> hhMap = new SortedIntMap();

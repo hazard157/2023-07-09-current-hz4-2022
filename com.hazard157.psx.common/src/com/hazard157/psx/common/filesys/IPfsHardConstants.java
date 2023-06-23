@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.av.impl.*;
 import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.bricks.keeper.std.*;
 
-import com.hazard157.lib.core.incub.optedfile.*;
+import com.hazard157.common.incub.fs.*;
 
 /**
  * Constants with persistent values.

@@ -19,7 +19,8 @@ Require-Bundle: javax.annotation,
  org.toxsoft.core.tsgui,
  org.toxsoft.core.tsgui.rcp,
  org.toxsoft.core.tsgui.mws,
- org.toxsoft.core.txtproj.lib
+ org.toxsoft.core.txtproj.lib,
+ com.hazard157.common
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.lib.core
 Bundle-ActivationPolicy: lazy
@@ -48,7 +49,8 @@ Export-Package: com.hazard157.lib.core,
  com.hazard157.lib.core.incub.acsupart,
  com.hazard157.lib.core.incub.kof,
  com.hazard157.lib.core.incub.kof.impl,
- com.hazard157.lib.core.incub.optedfile,
+ com.hazard157.lib.core.incub.kof2,
+ com.hazard157.lib.core.incub.kof2.impl,
  com.hazard157.lib.core.incub.partman,
  com.hazard157.lib.core.incub.projtree,
  com.hazard157.lib.core.incub.scraspect,
@@ -76,6 +78,7 @@ Export-Package: com.hazard157.lib.core,
  com.hazard157.lib.core.quants.vulgar,
  com.hazard157.lib.core.quants.zodsign,
  com.hazard157.lib.core.utils,
+ com.hazard157.lib.core.utils.animkind,
  com.hazard157.lib.core.utils.dirwatch,
  com.hazard157.lib.core.utils.fros,
  com.hazard157.lib.core.utils.stdops,

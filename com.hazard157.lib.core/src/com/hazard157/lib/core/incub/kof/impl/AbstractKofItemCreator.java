@@ -1,11 +1,10 @@
 package com.hazard157.lib.core.incub.kof.impl;
 
-import java.io.File;
+import java.io.*;
 
-import org.toxsoft.core.tslib.utils.errors.TsInternalErrorRtException;
-import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
+import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.incub.optedfile.OptedFile;
+import com.hazard157.common.incub.fs.*;
 
 /**
  * {@link IKofItemCreator} abstract base class.

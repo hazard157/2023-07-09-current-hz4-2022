@@ -1,16 +1,14 @@
 package com.hazard157.lib.core.incub.kof.impl;
 
-import java.io.File;
+import java.io.*;
 
 import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.coll.impl.ElemArrayList;
-import org.toxsoft.core.tslib.coll.impl.ElemMap;
+import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
-import org.toxsoft.core.tslib.utils.files.EFsObjKind;
-import org.toxsoft.core.tslib.utils.files.TsFileUtils;
+import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.incub.kof.IKofFileSystem;
-import com.hazard157.lib.core.incub.optedfile.OptedFile;
+import com.hazard157.common.incub.fs.*;
+import com.hazard157.lib.core.incub.kof.*;
 
 /**
  * Basic abstract {@link IKofFileSystem} implementation.

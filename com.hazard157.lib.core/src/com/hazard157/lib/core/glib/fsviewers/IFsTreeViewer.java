@@ -9,8 +9,8 @@ import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.incub.fs.*;
 import com.hazard157.lib.core.incub.kof.*;
-import com.hazard157.lib.core.incub.optedfile.*;
 
 // TODO TRANSLATE
 
