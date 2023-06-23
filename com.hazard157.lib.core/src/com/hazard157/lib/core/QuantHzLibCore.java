@@ -10,8 +10,6 @@ import com.hazard157.lib.core.e4.services.mps.*;
 import com.hazard157.lib.core.legacy.valeds.fileimg.*;
 import com.hazard157.lib.core.legacy.valeds.hms.*;
 import com.hazard157.lib.core.quants.cupsz.*;
-import com.hazard157.lib.core.quants.eyecol.*;
-import com.hazard157.lib.core.quants.haircol.*;
 import com.hazard157.lib.core.quants.naughty.*;
 import com.hazard157.lib.core.quants.rating.*;
 import com.hazard157.lib.core.quants.secint.*;
@@ -49,8 +47,6 @@ public class QuantHzLibCore
     registerQuant( new QuantShotFieldSize() );
     registerQuant( new QuantBraCupUkSize() );
     registerQuant( new QuantZodiacSign() );
-    registerQuant( new QuantEyeColor() );
-    registerQuant( new QuantHairColor() );
     registerQuant( new QuantKeywordManager() );
   }
 
