@@ -1,6 +1,6 @@
 package com.hazard157.lib.core;
 
-import org.toxsoft.core.tsgui.mws.bases.MwsActivator;
+import org.toxsoft.core.tsgui.mws.bases.*;
 
 /**
  * The plugin activator.

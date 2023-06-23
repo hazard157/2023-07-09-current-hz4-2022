@@ -1,4 +1,4 @@
-package com.hazard157.psx.common.stuff;
+package com.hazard157.psx.common.stuff.place;
 
 /**
  * A mixin interface of entities that happened at a specific place.

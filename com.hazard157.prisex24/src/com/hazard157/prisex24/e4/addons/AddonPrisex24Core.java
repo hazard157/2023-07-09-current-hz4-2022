@@ -18,8 +18,11 @@ import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.rcp.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tslib.utils.*;
+import org.toxsoft.core.txtproj.lib.*;
 
 import com.hazard157.common.*;
+import com.hazard157.common.quants.visumple.*;
+import com.hazard157.common.quants.visumple.impl.*;
 import com.hazard157.lib.core.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.Activator;
@@ -28,14 +31,18 @@ import com.hazard157.prisex24.cofs.impl.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
+import com.hazard157.prisex24.glib.fravisum.*;
 import com.hazard157.prisex24.m5.camera.*;
 import com.hazard157.prisex24.m5.episodes.*;
 import com.hazard157.prisex24.m5.frames.*;
 import com.hazard157.prisex24.m5.note.*;
 import com.hazard157.prisex24.m5.plane.*;
+import com.hazard157.prisex24.m5.snippet.*;
 import com.hazard157.prisex24.m5.srcvideo.*;
 import com.hazard157.prisex24.m5.tags.*;
 import com.hazard157.prisex24.m5.todos.*;
+import com.hazard157.prisex24.pdus.snippets.*;
+import com.hazard157.prisex24.pdus.snippets.impl.*;
 import com.hazard157.prisex24.valeds.frames.*;
 import com.hazard157.psx.proj3.*;
 
@@ -61,8 +68,8 @@ public class AddonPrisex24Core
   @Override
   protected void doRegisterQuants( IQuantRegistrator aQuantRegistrator ) {
     aQuantRegistrator.registerQuant( new QuantTsGuiRcp() );
-    aQuantRegistrator.registerQuant( new QuantHzLibCore() );
-    aQuantRegistrator.registerQuant( new QuantHzCommon_HzCore_Compatible() );
+    aQuantRegistrator.registerQuant( new QuantHzLibCore_for_PRISEX24() );
+    aQuantRegistrator.registerQuant( new QuantHzCommon() );
     aQuantRegistrator.registerQuant( new QuantPsx3Project() );
   }
 
@@ -78,6 +85,11 @@ public class AddonPrisex24Core
     // E4 services
     aAppContext.set( ICurrentEpisodeService.class, new CurrentEpisodeService( aAppContext ) );
     aAppContext.set( IPsxSelectedSvinsService.class, new PsxSelectedSvinsService() );
+    //
+    ITsProject proj = aAppContext.get( ITsProject.class );
+    IUnitSnippets unitSnippets = new UnitSnippets();
+    proj.registerUnit( ISnippetConstants.UNITID_SNIPPETS, unitSnippets, true );
+    aAppContext.set( IUnitSnippets.class, unitSnippets );
   }
 
   @Override
@@ -97,10 +109,15 @@ public class AddonPrisex24Core
     m5.addModel( new MarkNoteM5Model() );
     m5.addModel( new CameraM5Model() );
     m5.addModel( new SourceVideoM5Model() );
+    m5.addModel( new SnippetM5Model() );
     // VALEDs
     IValedControlFactoriesRegistry vcfReg = aWinContext.get( IValedControlFactoriesRegistry.class );
     vcfReg.registerFactory( ValedFrameFactory.FACTORY );
     vcfReg.registerFactory( ValedAvValobjFrameEditor.FACTORY );
+    //
+    VisumpleProvidersRegistry vpReg = aWinContext.get( VisumpleProvidersRegistry.class );
+    IVisumplesProvider vp = new PsxFrameVisumplesProvider( new TsGuiContext( aWinContext ) );
+    vpReg.registerProvider( vp.id(), vp );
 
     // DEBUG --- resource tracking
     Resource.setNonDisposeHandler( aT -> {

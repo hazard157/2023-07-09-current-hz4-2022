@@ -6,6 +6,7 @@ import com.hazard157.lib.core.e4.services.mps.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;
+import com.hazard157.prisex24.pdus.snippets.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 
@@ -26,6 +27,10 @@ public interface IPsxGuiContextable
     return tsContext().get( IPsxCofs.class ).cofsFrames();
   }
 
+  default ICofsOutputMedia cofsOutputMedia() {
+    return tsContext().get( IPsxCofs.class ).cofsOutputMedia();
+  }
+
   default IPrisex24Service psxService() {
     return tsContext().get( IPrisex24Service.class );
   }
@@ -36,6 +41,10 @@ public interface IPsxGuiContextable
 
   default IUnitSourceVideos unitSourceVideos() {
     return tsContext().get( IUnitSourceVideos.class );
+  }
+
+  default IUnitSnippets unitSnippets() {
+    return tsContext().get( IUnitSnippets.class );
   }
 
   default IMediaPlayerService mediaPlayer() {

@@ -28,6 +28,7 @@ public interface IPsxM5Constants {
   String MID_FRAME            = PSX_ID + ".Frame";          //$NON-NLS-1$
   String MID_TODO             = PSX_ID + ".Todo";           //$NON-NLS-1$
   String MID_SOURCE_VIDEO     = PSX_ID + ".SourceVideo";    //$NON-NLS-1$
+  String MID_SNIPPET          = PSX_ID + ".Snippet";        //$NON-NLS-1$
 
   String FID_IS_CAM_AVAILABLE = "IsCamAvailable";   //$NON-NLS-1$
   String FID_USE_COUNT        = "UseCount";         //$NON-NLS-1$
@@ -51,6 +52,7 @@ public interface IPsxM5Constants {
   String FID_FULFIL_STAGES    = "FulfilStages";     //$NON-NLS-1$
   String FID_GUIDE            = "Guide";            //$NON-NLS-1$
   String FID_LOCATION         = "Location";         //$NON-NLS-1$
+  String FID_CATEGORY         = "Category";         //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Data types

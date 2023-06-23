@@ -55,6 +55,13 @@ public interface IPsxCofs {
    */
   ICofsFrames cofsFrames();
 
+  /**
+   * Returns means to access output media files.
+   *
+   * @return {@link ICofsOutputMedia} - output media files manager
+   */
+  ICofsOutputMedia cofsOutputMedia();
+
   // ------------------------------------------------------------------------------------
   // yet unsorted may be put in some helper interfaces
 

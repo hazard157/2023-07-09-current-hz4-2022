@@ -10,7 +10,8 @@ import org.toxsoft.core.tsgui.dialogs.datarec.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.prisex24.glib.epframes.*;
+import com.hazard157.prisex24.glib.frview.*;
+import com.hazard157.prisex24.glib.frview.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.proj3.episodes.*;
 
@@ -24,12 +25,12 @@ public class DialogWorkWithFrames
 
   static final String SETTINGS_NODE_ID = "DialogWorkWithFrames.FramesListViewer"; //$NON-NLS-1$
 
-  final IEpisodeFramesViewer framesViewer;
+  final IEpisodeFrameSelector framesViewer;
 
   DialogWorkWithFrames( Composite aParent, TsDialog<IFrame, IEclipseContext> aOwnerDialog, String aEpisodeId ) {
     super( aParent, aOwnerDialog );
     this.setLayout( new BorderLayout() );
-    framesViewer = new EpisodeFramesViewer( tsContext() );
+    framesViewer = new EpisodeFramesSelector( tsContext() );
     framesViewer.createControl( aParent ).setLayoutData( BorderLayout.CENTER );
     framesViewer.setEpisodeId( aEpisodeId );
   }

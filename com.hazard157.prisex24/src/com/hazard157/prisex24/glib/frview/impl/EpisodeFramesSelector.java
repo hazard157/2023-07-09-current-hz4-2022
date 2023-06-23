@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.glib.epframes;
+package com.hazard157.prisex24.glib.frview.impl;
 
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 
@@ -14,16 +14,17 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.prisex24.*;
+import com.hazard157.prisex24.glib.frview.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
- * {@link IEpisodeFramesViewer} implementation.
+ * {@link IEpisodeFrameSelector} implementation.
  *
  * @author hazard157
  */
-public class EpisodeFramesViewer
+public class EpisodeFramesSelector
     extends AbstractTsStdEventsProducerLazyPanel<IFrame, Control>
-    implements IEpisodeFramesViewer, IPsxGuiContextable {
+    implements IEpisodeFrameSelector, IPsxGuiContextable {
 
   private final IM5CollectionPanel<IFrame> framesViewer;
 
@@ -37,7 +38,7 @@ public class EpisodeFramesViewer
    * @param aContext {@link ITsGuiContext} - the context
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
-  public EpisodeFramesViewer( ITsGuiContext aContext ) {
+  public EpisodeFramesSelector( ITsGuiContext aContext ) {
     super( aContext );
     IM5Model<IFrame> model = m5().getModel( MID_FRAME, IFrame.class );
     framesViewer = model.panelCreator().createCollViewerPanel( tsContext(), IM5ItemsProvider.EMPTY );

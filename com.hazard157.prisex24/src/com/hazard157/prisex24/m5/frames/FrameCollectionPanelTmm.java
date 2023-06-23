@@ -17,14 +17,14 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.lib.core.incub.acsupart.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.prisex24.*;
-import com.hazard157.prisex24.glib.epframes.*;
+import com.hazard157.prisex24.glib.frview.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
 import com.hazard157.psx.proj3.episodes.story.*;
 
 /**
- * Tree mode manager for {@link EpisodeFramesViewer}.
+ * Tree mode manager for {@link EpisodeFramesSelector}.
  *
  * @author hazard157
  */

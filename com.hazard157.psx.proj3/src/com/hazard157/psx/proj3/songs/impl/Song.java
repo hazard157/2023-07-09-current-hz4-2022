@@ -7,7 +7,7 @@ import org.toxsoft.core.txtproj.lib.stripar.*;
 import com.hazard157.psx.proj3.songs.*;
 
 /**
- * Реализация {@link ISong}.
+ * {@link ISong} implementation.
  *
  * @author hazard157
  */
@@ -15,7 +15,7 @@ public class Song
     extends StridableParameterized
     implements ISong {
 
-  static final IStriparCreator<ISong> CREATOR = ( aId, aParams ) -> new Song( aId, aParams );
+  static final IStriparCreator<ISong> CREATOR = Song::new;
 
   Song( String aId, IOptionSet aParams ) {
     super( aId, aParams );

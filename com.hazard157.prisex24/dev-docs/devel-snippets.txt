@@ -1,0 +1,6 @@
+
+=== snippets PDU
+    Snippet is amll piece of idea, POV example, wanna do, etc. Snippets are making categorized library.
+    
+  --- ISnippet
+  --- IUnitSnippets    

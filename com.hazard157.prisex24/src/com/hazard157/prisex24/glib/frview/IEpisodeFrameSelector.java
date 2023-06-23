@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.glib.epframes;
+package com.hazard157.prisex24.glib.frview;
 
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.stdevents.*;
@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.coll.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
- * Single episode frame list viewer.
+ * Single episode frames lister to view and select single frame.
  * <p>
  * Contains:
  * <ul>
@@ -19,7 +19,7 @@ import com.hazard157.psx.common.stuff.frame.*;
  *
  * @author hazard157
  */
-public interface IEpisodeFramesViewer
+public interface IEpisodeFrameSelector
     extends ILazyControl<Control>, ITsSelectionProvider<IFrame>, ITsDoubleClickEventProducer<IFrame> {
 
   /**

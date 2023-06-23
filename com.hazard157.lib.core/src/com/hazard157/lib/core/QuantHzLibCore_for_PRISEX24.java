@@ -17,12 +17,7 @@ import com.hazard157.lib.core.quants.rating.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.m5.*;
 import com.hazard157.lib.core.quants.secint.valed.*;
-import com.hazard157.lib.core.quants.sfz.*;
 import com.hazard157.lib.core.quants.stars5.*;
-import com.hazard157.lib.core.quants.valeds.radioprop.*;
-import com.hazard157.lib.core.quants.visumple.*;
-import com.hazard157.lib.core.quants.visumple3.*;
-import com.hazard157.lib.core.quants.vulgar.*;
 import com.hazard157.lib.core.quants.zodsign.*;
 
 /**
@@ -30,23 +25,23 @@ import com.hazard157.lib.core.quants.zodsign.*;
  *
  * @author hazard157
  */
-public class QuantHzLibCore
+public class QuantHzLibCore_for_PRISEX24
     extends AbstractQuant {
 
   /**
    * Constructor.
    */
-  public QuantHzLibCore() {
-    super( QuantHzLibCore.class.getSimpleName() );
+  public QuantHzLibCore_for_PRISEX24() {
+    super( QuantHzLibCore_for_PRISEX24.class.getSimpleName() );
     //
     registerQuant( new QuantRating() );
     registerQuant( new QuantStarsFive() );
-    registerQuant( new QuantVulgarness() );
+    // registerQuant( new QuantVulgarness() );
     registerQuant( new QuantNaughtiness() );
     registerQuant( new QuantSecint() );
-    registerQuant( new QuantVisumple() );
-    registerQuant( new QuantVisumple3() );
-    registerQuant( new QuantShotFieldSize() );
+    // registerQuant( new QuantVisumple() );
+    // registerQuant( new QuantVisumple3() );
+    // registerQuant( new QuantShotFieldSize() );
     registerQuant( new QuantBraCupUkSize() );
     registerQuant( new QuantZodiacSign() );
     registerQuant( new QuantEyeColor() );
@@ -69,8 +64,8 @@ public class QuantHzLibCore
     vr.registerFactory( ValedSecintFactory.FACTORY );
     vr.registerFactory( ValedAvSecintFactory.FACTORY );
     vr.registerFactory( ValedAvValobjFileImage.FACTORY );
-    vr.registerFactory( ValedAvValobjRadioPropEnumStars.FACTORY );
-    vr.registerFactory( ValedRadioPropEnumStars.FACTORY );
+    // vr.registerFactory( ValedAvValobjRadioPropEnumStars.FACTORY );
+    // vr.registerFactory( ValedRadioPropEnumStars.FACTORY );
     //
     IM5Domain m5 = aWinContext.get( IM5Domain.class );
     m5.addModel( new SecintM5Model() );

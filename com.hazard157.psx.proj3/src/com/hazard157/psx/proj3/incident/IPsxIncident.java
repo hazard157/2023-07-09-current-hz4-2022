@@ -3,6 +3,7 @@ package com.hazard157.psx.proj3.incident;
 import org.toxsoft.core.tslib.bricks.strid.*;
 
 import com.hazard157.psx.common.stuff.*;
+import com.hazard157.psx.common.stuff.place.*;
 
 /**
  * Base class of all PSX incidents.

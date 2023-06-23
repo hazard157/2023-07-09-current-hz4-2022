@@ -6,18 +6,19 @@ import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tsgui.valed.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.prisex24.glib.epframes.*;
+import com.hazard157.prisex24.glib.frview.*;
+import com.hazard157.prisex24.glib.frview.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
- * Редактор поля {@link IFrameable#frame()}.
+ * {@link IFrame} editor - selects frame for the specified episode.
  *
  * @author hazard157
  */
 public class ValedFrameEditor
     extends AbstractValedControl<IFrame, Control> {
 
-  private final IEpisodeFramesViewer framesViewer;
+  private final IEpisodeFrameSelector framesViewer;
 
   /**
    * Constructor for subclasses.
@@ -28,7 +29,7 @@ public class ValedFrameEditor
   public ValedFrameEditor( ITsGuiContext aTsContext ) {
     super( aTsContext );
     params().setInt( IValedControlConstants.OPID_VERTICAL_SPAN, 15 );
-    framesViewer = new EpisodeFramesViewer( aTsContext );
+    framesViewer = new EpisodeFramesSelector( aTsContext );
   }
 
   // ------------------------------------------------------------------------------------
