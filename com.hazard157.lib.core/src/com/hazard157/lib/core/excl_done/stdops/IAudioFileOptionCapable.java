@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.utils.stdops;
+package com.hazard157.lib.core.excl_done.stdops;
 
-import static com.hazard157.lib.core.utils.stdops.IHzOptionsConstants.*;
+import static com.hazard157.lib.core.excl_done.stdops.IHzOptionsConstants.*;
 
 import java.io.*;
 

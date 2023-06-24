@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.quants.stars5;
+package com.hazard157.lib.core.excl_done.stars5;
 
-import static com.hazard157.lib.core.quants.stars5.IStarsFiveConstants.*;
+import static com.hazard157.lib.core.excl_done.stars5.IStarsFiveConstants.*;
 
 import org.toxsoft.core.tsgui.m5.std.models.enums.M5StridableEnumModelBase;
 

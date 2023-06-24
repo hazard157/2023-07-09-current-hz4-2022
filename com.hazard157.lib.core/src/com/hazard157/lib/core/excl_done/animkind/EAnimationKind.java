@@ -1,7 +1,7 @@
-package com.hazard157.lib.core.utils.animkind;
+package com.hazard157.lib.core.excl_done.animkind;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.utils.animkind.IPsxResources.*;
+import static com.hazard157.lib.core.excl_done.animkind.IPsxResources.*;
 
 import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.utils.errors.*;

@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.quants.visumple3;
+package com.hazard157.lib.core.excl_done.visumple3;
 
 import org.eclipse.e4.core.contexts.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;

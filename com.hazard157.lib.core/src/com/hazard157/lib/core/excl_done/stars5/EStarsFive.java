@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.quants.stars5;
+package com.hazard157.lib.core.excl_done.stars5;
 
-import static com.hazard157.lib.core.quants.stars5.IHzResources.*;
+import static com.hazard157.lib.core.excl_done.stars5.IHzResources.*;
 
 import org.toxsoft.core.tslib.bricks.keeper.IEntityKeeper;
 import org.toxsoft.core.tslib.bricks.keeper.std.StridableEnumKeeper;

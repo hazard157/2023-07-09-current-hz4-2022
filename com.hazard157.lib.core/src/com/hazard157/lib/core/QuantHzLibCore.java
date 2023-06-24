@@ -8,10 +8,7 @@ import org.toxsoft.core.tsgui.valed.api.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.m5.*;
 import com.hazard157.lib.core.quants.secint.valed.*;
-import com.hazard157.lib.core.quants.stars5.*;
 import com.hazard157.lib.core.quants.visumple.*;
-import com.hazard157.lib.core.quants.visumple3.*;
-import com.hazard157.lib.core.quants.zodsign.*;
 
 /**
  * Plugin quant.
@@ -27,11 +24,8 @@ public class QuantHzLibCore
   public QuantHzLibCore() {
     super( QuantHzLibCore.class.getSimpleName() );
     //
-    registerQuant( new QuantStarsFive() );
     registerQuant( new QuantSecint() );
     registerQuant( new QuantVisumple() );
-    registerQuant( new QuantVisumple3() );
-    registerQuant( new QuantZodiacSign() );
   }
 
   @Override

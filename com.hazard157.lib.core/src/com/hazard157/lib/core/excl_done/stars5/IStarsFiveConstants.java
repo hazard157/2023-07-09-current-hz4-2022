@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.quants.stars5;
+package com.hazard157.lib.core.excl_done.stars5;
 
-import static com.hazard157.lib.core.quants.stars5.IHzResources.*;
+import static com.hazard157.lib.core.excl_done.stars5.IHzResources.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;

@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.utils.stdops;
+package com.hazard157.lib.core.excl_done.stdops;
 
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;

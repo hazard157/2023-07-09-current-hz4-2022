@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.utils.fros;
+package com.hazard157.lib.core.excl_done.fros;
 
 import org.toxsoft.core.tslib.utils.errors.TsIllegalArgumentRtException;
 

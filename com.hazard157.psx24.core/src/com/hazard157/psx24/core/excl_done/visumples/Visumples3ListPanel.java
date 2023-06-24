@@ -1,4 +1,4 @@
-package com.hazard157.psx24.core.glib.visumples;
+package com.hazard157.psx24.core.excl_done.visumples;
 
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.image.impl.ThumbSizeableDropDownMenuCreator.*;

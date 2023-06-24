@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.quants.stars5;
+package com.hazard157.lib.core.excl_done.stars5;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.toxsoft.core.tsgui.bricks.quant.AbstractQuant;

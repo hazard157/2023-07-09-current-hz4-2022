@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.utils.animkind;
+package com.hazard157.lib.core.excl_done.animkind;
 
 /**
  * Localizable resources.

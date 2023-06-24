@@ -1,6 +1,4 @@
-package com.hazard157.lib.core.quants.visumple3;
-
-import static com.hazard157.lib.core.utils.stdops.IHzOptionsConstants.*;
+package com.hazard157.lib.core.excl_done.visumple3;
 
 import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
@@ -84,7 +82,7 @@ public final class Visumple3
    * @return String - notes
    */
   public String notes() {
-    return OPDEF_NOTE.getValue( params ).asString();
+    return params.getStr( FID_NOTES, TsLibUtils.EMPTY_STRING );
   }
 
   // ------------------------------------------------------------------------------------

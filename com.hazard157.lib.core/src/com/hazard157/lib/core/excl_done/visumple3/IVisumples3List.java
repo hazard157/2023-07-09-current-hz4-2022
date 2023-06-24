@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.quants.visumple3;
+package com.hazard157.lib.core.excl_done.visumple3;
 
 import org.toxsoft.core.tslib.coll.*;
 

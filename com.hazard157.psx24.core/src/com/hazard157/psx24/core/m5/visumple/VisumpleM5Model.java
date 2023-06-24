@@ -1,6 +1,5 @@
 package com.hazard157.psx24.core.m5.visumple;
 
-import static com.hazard157.lib.core.utils.stdops.IHzOptionsConstants.*;
 import static com.hazard157.psx24.core.m5.visumple.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
@@ -122,7 +121,7 @@ public class VisumpleM5Model
       String filePath = VisumpleM5Model.FILE_PATH.getFieldValue( aValues ).asString();
       String notes = VisumpleM5Model.NOTES.getFieldValue( aValues ).asString();
       IOptionSetEdit p = new OptionSet();
-      OPDEF_NOTE.setValue( p, avStr( notes ) );
+      p.setStr( FID_NOTES, notes );
 
       // FIXME params !
 
@@ -134,7 +133,8 @@ public class VisumpleM5Model
       String filePath = VisumpleM5Model.FILE_PATH.getFieldValue( aValues ).asString();
       String notes = VisumpleM5Model.NOTES.getFieldValue( aValues ).asString();
       IOptionSetEdit p = new OptionSet();
-      OPDEF_NOTE.setValue( p, avStr( notes ) );
+
+      p.setStr( FID_NOTES, notes );
 
       // FIXME params !
 
