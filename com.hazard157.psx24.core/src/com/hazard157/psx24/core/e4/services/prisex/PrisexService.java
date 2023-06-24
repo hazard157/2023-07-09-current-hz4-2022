@@ -16,7 +16,7 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.e4.services.mps.*;
+import com.hazard157.common.e4.services.mps.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
@@ -100,7 +100,7 @@ public class PrisexService
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IPrisexService
+  // IPrisexService
   //
 
   @Override
@@ -143,10 +143,10 @@ public class PrisexService
       return;
     }
     if( !aSvin.isWholeEpisode() ) {
-      mps().playVideoFilePart( f, aSvin.interval().start(), aSvin.interval().duration() + 1 );
+      mps().playVideoFilePart( f, aSvin.interval().start(), aSvin.interval().duration() + 1, false );
     }
     else {
-      mps().playVideoFile( f );
+      mps().playVideoFile( f, false );
     }
   }
 
@@ -162,7 +162,7 @@ public class PrisexService
       errDialog( FMT_ERR_TRAILER_FILE_INACCESSABLE, f.getAbsolutePath() );
       return;
     }
-    mps().playVideoFile( f );
+    mps().playVideoFile( f, false );
   }
 
   // @Override

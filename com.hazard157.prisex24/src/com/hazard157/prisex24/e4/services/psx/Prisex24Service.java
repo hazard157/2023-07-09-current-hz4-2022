@@ -135,10 +135,10 @@ public class Prisex24Service
       return;
     }
     if( !aSvin.isWholeEpisode() ) {
-      mediaPlayer().playVideoFilePart( f, aSvin.interval().start(), aSvin.interval().duration() + 1 );
+      mediaPlayer().playVideoFilePart( f, aSvin.interval().start(), aSvin.interval().duration() + 1, false );
     }
     else {
-      mediaPlayer().playVideoFile( f );
+      mediaPlayer().playVideoFile( f, false );
     }
   }
 

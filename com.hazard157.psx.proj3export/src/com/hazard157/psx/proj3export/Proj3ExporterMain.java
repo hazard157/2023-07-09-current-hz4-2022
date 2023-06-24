@@ -30,8 +30,6 @@ import org.toxsoft.core.txtproj.lib.bound.*;
 import org.toxsoft.core.txtproj.lib.impl.*;
 
 import com.hazard157.common.quants.rating.*;
-import com.hazard157.lib.core.bricks.kwmark.*;
-import com.hazard157.lib.core.bricks.kwmark.manager.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
@@ -495,27 +493,7 @@ public class Proj3ExporterMain {
       llItems.add( p );
     }
     // write data
-    writeKeywordHeader( aSw, "Keywords", true );
-    writeOpSetList( aSw, llItems );
-    pl( "Done %d", Integer.valueOf( llItems.size() ) );
-  }
-
-  private static void exportKeywordManager( ITsProject aProj3, IStrioWriter aSw ) {
-    p( "Exporting keywords... " );
-    // read unit
-    IKeywordManager unitKwMan = new KeywordManager();
-    aProj3.registerUnit( QuantKeywordManager.UNITID_KEYWORDS, unitKwMan, true );
-    // prepare data
-    IListEdit<IOptionSetEdit> llItems = new ElemArrayList<>();
-    for( String item : unitKwMan.listAll() ) {
-      IOptionSetEdit p = new OptionSet();
-      // ======
-      p.setStr( "keyword", item );
-      // ======
-      llItems.add( p );
-    }
-    // write data
-    writeKeywordHeader( aSw, "Keywords", true );
+    writeKeywordHeader( aSw, "Inquiries", true );
     writeOpSetList( aSw, llItems );
     pl( "Done %d", Integer.valueOf( llItems.size() ) );
   }
@@ -586,9 +564,6 @@ public class Proj3ExporterMain {
     //// units not listed in QuantPsx3Project
     // IUnitExplorer
     exportUnitExplorer( aProj3, aSw );
-    aSw.writeEol();
-    // IKeywordManager
-    exportKeywordManager( aProj3, aSw );
     aSw.writeEol();
     // INbNotebook
     exportNbNotebook( aProj3, aSw );

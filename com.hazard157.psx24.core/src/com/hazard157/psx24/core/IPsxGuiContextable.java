@@ -3,7 +3,7 @@ package com.hazard157.psx24.core;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
 
-import com.hazard157.lib.core.e4.services.mps.*;
+import com.hazard157.common.e4.services.mps.*;
 import com.hazard157.psx.common.filesys.*;
 import com.hazard157.psx.proj3.cameras.*;
 import com.hazard157.psx.proj3.episodes.*;
@@ -82,6 +82,7 @@ public interface IPsxGuiContextable
     return tsContext().get( IAppPreferences.class );
   }
 
+  @Override
   default IPrefBundle prefBundle( String aBundleId ) {
     return appPreferences().getBundle( aBundleId );
   }

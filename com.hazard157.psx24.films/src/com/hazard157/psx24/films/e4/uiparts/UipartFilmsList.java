@@ -27,7 +27,7 @@ import org.toxsoft.core.tslib.coll.notifier.basis.*;
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.e4.services.mps.*;
+import com.hazard157.common.e4.services.mps.*;
 import com.hazard157.psx24.films.e4.services.*;
 import com.hazard157.psx24.films.m5.*;
 

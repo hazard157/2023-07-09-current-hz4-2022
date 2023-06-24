@@ -2,7 +2,7 @@ package com.hazard157.prisex24;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 
-import com.hazard157.lib.core.e4.services.mps.*;
+import com.hazard157.common.e4.services.mps.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;

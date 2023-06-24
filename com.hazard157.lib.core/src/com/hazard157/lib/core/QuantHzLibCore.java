@@ -5,8 +5,6 @@ import org.toxsoft.core.tsgui.bricks.quant.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 
-import com.hazard157.lib.core.bricks.kwmark.*;
-import com.hazard157.lib.core.e4.services.mps.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.m5.*;
 import com.hazard157.lib.core.quants.secint.valed.*;
@@ -34,13 +32,12 @@ public class QuantHzLibCore
     registerQuant( new QuantVisumple() );
     registerQuant( new QuantVisumple3() );
     registerQuant( new QuantZodiacSign() );
-    registerQuant( new QuantKeywordManager() );
   }
 
   @Override
   protected void doInitApp( IEclipseContext aAppContext ) {
-    IMediaPlayerService mps = new MediaPlayerService();
-    aAppContext.set( IMediaPlayerService.class, mps );
+    // IMediaPlayerService mps = new MediaPlayerService();
+    // aAppContext.set( IMediaPlayerService.class, mps );
   }
 
   @Override

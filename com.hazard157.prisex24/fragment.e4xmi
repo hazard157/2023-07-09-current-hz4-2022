@@ -96,6 +96,6 @@
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_SIKiUA6ZEe62AdeTRK4p9w" featurename="children" parentElementId="org.toxsoft.mws.main.trimbar.bottom">
     <elements xsi:type="menu:ToolControl" xmi:id="_S6kPoA6ZEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.toolcontrol.0" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.statline.StatLineCurrentEpisodeId"/>
-    <elements xsi:type="menu:ToolControl" xmi:id="_WBTXEA6ZEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.toolcontrol.1" contributionURI="bundleclass://com.hazard157.lib.core/com.hazard157.lib.core.e4.services.statline.StatLineHeapInfo"/>
+    <elements xsi:type="menu:ToolControl" xmi:id="_WBTXEA6ZEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.toolcontrol.1" contributionURI="bundleclass://com.hazard157.common/com.hazard157.common.e4.statline.StatLineHeapInfo"/>
   </fragments>
 </fragment:ModelFragments>

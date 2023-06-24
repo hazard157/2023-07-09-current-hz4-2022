@@ -24,7 +24,7 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.e4.services.mps.*;
+import com.hazard157.common.e4.services.mps.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx.proj3.songs.*;
 
