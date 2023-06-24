@@ -16,8 +16,8 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.lib.core.excl_done.fsviewers.*;
-import com.hazard157.lib.core.glib.pgviewer.*;
-import com.hazard157.lib.core.glib.pgviewer.impl.*;
+import com.hazard157.lib.core.excl_done.pgviewer.*;
+import com.hazard157.lib.core.excl_done.pgviewer.impl.*;
 
 /**
  * Реализация {@link IFsListThumbViewer}.

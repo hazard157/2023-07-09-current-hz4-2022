@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.glib.cellsgrid;
+package com.hazard157.lib.core.excl_done.cellsgrid;
 
 /**
  * Параметры настройка границ и интервалов рисования сетки значков.

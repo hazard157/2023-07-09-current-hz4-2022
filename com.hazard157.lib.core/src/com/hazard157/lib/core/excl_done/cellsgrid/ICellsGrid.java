@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.glib.cellsgrid;
+package com.hazard157.lib.core.excl_done.cellsgrid;
 
 import org.toxsoft.core.tslib.bricks.geometry.ITsRectangle;
 import org.toxsoft.core.tslib.coll.IList;

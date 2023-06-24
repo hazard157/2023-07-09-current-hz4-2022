@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.panels.generic.*;
+import org.toxsoft.core.tsgui.panels.pgv.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
@@ -17,7 +18,6 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.glib.pgviewer.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx24.core.*;

@@ -22,7 +22,7 @@ import org.toxsoft.core.tslib.utils.TsLibUtils;
 import org.toxsoft.core.tslib.utils.errors.TsIllegalArgumentRtException;
 import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
 
-import com.hazard157.lib.core.utils.IRadioPropEnum;
+import com.hazard157.lib.core.excl_done.*;
 
 /**
  * {@link IRadioPropEnum} editor as yellow/dimmed stars line.

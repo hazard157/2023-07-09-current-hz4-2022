@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.bricks.strid.coll.*;
 import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.utils.*;
+import com.hazard157.common.utils.*;
 
 /**
  * Varieties of filming cameras.

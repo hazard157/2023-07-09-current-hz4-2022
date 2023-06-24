@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.av.EAtomicType;
 import org.toxsoft.core.tslib.av.IAtomicValue;
 import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
 
-import com.hazard157.lib.core.utils.IRadioPropEnum;
+import com.hazard157.lib.core.excl_done.*;
 
 /**
  * {@link EAtomicType#VALOBJ} of type {@link IRadioPropEnum} editor wrapping {@link ValedRadioPropEnumStars}.

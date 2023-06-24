@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.bricks.keeper.std.StridableEnumKeeper;
 import org.toxsoft.core.tslib.utils.errors.TsItemNotFoundRtException;
 import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
 
-import com.hazard157.lib.core.utils.IRadioPropEnum;
+import com.hazard157.lib.core.excl_done.*;
 
 /**
  * Степень эротичности.

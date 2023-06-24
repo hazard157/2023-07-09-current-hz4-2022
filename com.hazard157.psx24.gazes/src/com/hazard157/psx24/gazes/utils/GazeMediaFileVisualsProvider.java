@@ -8,6 +8,7 @@ import org.eclipse.swt.graphics.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
+import org.toxsoft.core.tsgui.panels.pgv.*;
 import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
@@ -16,7 +17,6 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
 import com.hazard157.common.incub.fs.*;
-import com.hazard157.lib.core.glib.pgviewer.*;
 import com.hazard157.psx24.core.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 
@@ -26,7 +26,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
  * @author hazard157
  */
 public class GazeMediaFileVisualsProvider
-    implements IPgvVisualsProvider<OptedFile>, IPsxGuiContextable {
+    implements ITsVisualsProvider<OptedFile>, IPsxGuiContextable {
 
   private final ITsGuiContext tsContext;
 
@@ -151,18 +151,17 @@ public class GazeMediaFileVisualsProvider
   }
 
   @Override
-  public String getLabel1( OptedFile aEntity ) {
+  public String getName( OptedFile aEntity ) {
     String bareName = TsFileUtils.extractBareFileName( aEntity.file().getName() );
     return bareName;
   }
 
-  @Override
   public String getLabel2( OptedFile aEntity ) {
     return TsLibUtils.EMPTY_STRING;
   }
 
   @Override
-  public String getTooltip( OptedFile aEntity ) {
+  public String getDescription( OptedFile aEntity ) {
     return aEntity.file().getAbsolutePath();
   }
 

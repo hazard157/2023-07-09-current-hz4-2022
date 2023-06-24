@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.glib.pgviewer;
+package com.hazard157.lib.core.excl_done.pgviewer;
 
 import org.toxsoft.core.tsgui.bricks.stdevents.*;
 import org.toxsoft.core.tsgui.bricks.uievents.*;
@@ -7,7 +7,7 @@ import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.glib.cellsgrid.*;
+import com.hazard157.lib.core.excl_done.cellsgrid.*;
 
 /**
  * Просмотрщик картинок в виде миниатюр.

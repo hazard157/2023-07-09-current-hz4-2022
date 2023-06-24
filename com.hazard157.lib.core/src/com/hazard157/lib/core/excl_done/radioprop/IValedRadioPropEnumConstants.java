@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.av.EAtomicType;
 import org.toxsoft.core.tslib.av.impl.DataDef;
 import org.toxsoft.core.tslib.av.metainfo.IDataDef;
 
-import com.hazard157.lib.core.utils.IRadioPropEnum;
+import com.hazard157.lib.core.excl_done.*;
 
 /**
  * {@link IRadioPropEnum} valeds constants.

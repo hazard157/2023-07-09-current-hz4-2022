@@ -49,8 +49,8 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.utils.treeops.*;
 import com.hazard157.lib.core.quants.secint.*;
-import com.hazard157.lib.core.utils.treeops.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;

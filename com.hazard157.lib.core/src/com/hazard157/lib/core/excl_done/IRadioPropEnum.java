@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.utils;
+package com.hazard157.lib.core.excl_done;
 
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tslib.bricks.strid.*;

@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.glib.pgviewer.impl;
+package com.hazard157.lib.core.excl_done.pgviewer.impl;
 
-import static com.hazard157.lib.core.glib.pgviewer.IPicsGridViewerConstants.*;
+import static com.hazard157.lib.core.excl_done.pgviewer.IPicsGridViewerConstants.*;
 
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.swt.*;
@@ -22,8 +22,8 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.glib.cellsgrid.*;
-import com.hazard157.lib.core.glib.pgviewer.*;
+import com.hazard157.lib.core.excl_done.cellsgrid.*;
+import com.hazard157.lib.core.excl_done.pgviewer.*;
 
 /**
  * Канва в {@link ScrolledComposite}, собственно рисующий сетку миниатюр.

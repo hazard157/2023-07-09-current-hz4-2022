@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.utils.dirwatch;
+package com.hazard157.lib.core.excl_done.dirwatch;
 
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tslib.coll.*;

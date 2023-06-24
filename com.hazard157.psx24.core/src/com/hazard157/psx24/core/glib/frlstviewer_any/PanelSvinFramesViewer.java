@@ -8,7 +8,6 @@ import static com.hazard157.psx24.core.utils.ftstep.FrameTimeSteppableDropDownMe
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.icons.EIconSize.*;
 import static org.toxsoft.core.tsgui.graphics.image.impl.ThumbSizeableDropDownMenuCreator.*;
-import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.coll.impl.TsCollectionsUtils.*;
 
 import java.io.*;
@@ -28,7 +27,9 @@ import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.graphics.image.impl.*;
 import org.toxsoft.core.tsgui.panels.lazy.*;
+import org.toxsoft.core.tsgui.panels.pgv.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
+import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tsgui.utils.swt.*;
 import org.toxsoft.core.tsgui.widgets.*;
@@ -43,8 +44,6 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.ankind.*;
-import com.hazard157.lib.core.glib.pgviewer.*;
-import com.hazard157.lib.core.glib.pgviewer.impl.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
@@ -69,10 +68,10 @@ public class PanelSvinFramesViewer
     extends AbstractLazyPanel<Control>
     implements IPanelSvinFramesViewer, ITsActionHandler {
 
-  private final IPgvVisualsProvider<IFrame> visualsProvider = new IPgvVisualsProvider<>() {
+  private final ITsVisualsProvider<IFrame> visualsProvider = new ITsVisualsProvider<>() {
 
     @Override
-    public String getTooltip( IFrame aEntity ) {
+    public String getDescription( IFrame aEntity ) {
       return aEntity.toString();
     }
 
@@ -81,13 +80,12 @@ public class PanelSvinFramesViewer
       return fileSystem.findThumb( aEntity, aThumbSize );
     }
 
-    @Override
-    public String getLabel2( IFrame aEntity ) {
-      return EpisodeUtils.ymdFromId( aEntity.episodeId() );
-    }
+    // public String getLabel( IFrame aEntity ) {
+    // return EpisodeUtils.ymdFromId( aEntity.episodeId() );
+    // }
 
     @Override
-    public String getLabel1( IFrame aEntity ) {
+    public String getName( IFrame aEntity ) {
       return HhMmSsFfUtils.mmssff( aEntity.frameNo() );
     }
 
@@ -224,7 +222,7 @@ public class PanelSvinFramesViewer
     toolbar.addListener( this );
     // viewer
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
-    IPicsGridViewerConstants.OP_IS_LABEL2_SHOWN.setValue( ctx.params(), AV_TRUE );
+    // TODO IPicsGridViewerConstants.OP_IS_LABEL2_SHOWN.setValue( ctx.params(), AV_TRUE );
     viewer = new PicsGridViewer<>( board, ctx );
     viewer.getControl().setLayoutData( BorderLayout.CENTER );
     viewer.setVisualsProvider( visualsProvider );

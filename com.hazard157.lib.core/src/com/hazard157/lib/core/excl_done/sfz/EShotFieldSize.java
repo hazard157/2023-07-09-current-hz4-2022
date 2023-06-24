@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.bricks.strid.coll.impl.StridablesList;
 import org.toxsoft.core.tslib.utils.errors.TsItemNotFoundRtException;
 import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
 
-import com.hazard157.lib.core.utils.IRadioPropEnum;
+import com.hazard157.lib.core.excl_done.*;
 
 /**
  * План — «крупность» изображения, пойманная объективом, условное деление для приложений SX.

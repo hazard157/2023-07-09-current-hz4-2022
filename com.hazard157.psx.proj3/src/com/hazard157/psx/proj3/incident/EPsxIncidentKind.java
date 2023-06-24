@@ -16,7 +16,7 @@ import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.bricks.validator.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.utils.*;
+import com.hazard157.common.utils.*;
 import com.hazard157.psx.proj3.incident.when.*;
 
 /**

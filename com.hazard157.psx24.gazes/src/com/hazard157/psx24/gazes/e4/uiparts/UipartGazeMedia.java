@@ -16,12 +16,12 @@ import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.bricks.stdevents.*;
 import org.toxsoft.core.tsgui.bricks.uievents.*;
-import org.toxsoft.core.tsgui.graphics.colors.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.graphics.image.impl.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.mws.services.currentity.*;
+import org.toxsoft.core.tsgui.panels.pgv.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tsgui.widgets.*;
@@ -30,9 +30,7 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.notifier.basis.*;
 
 import com.hazard157.common.incub.fs.*;
-import com.hazard157.lib.core.glib.pgviewer.*;
-import com.hazard157.lib.core.glib.pgviewer.impl.*;
-import com.hazard157.lib.core.utils.*;
+import com.hazard157.common.utils.*;
 import com.hazard157.psx.proj3.gaze.*;
 import com.hazard157.psx24.core.*;
 import com.hazard157.psx24.gazes.e4.services.*;
@@ -102,11 +100,9 @@ public class UipartGazeMedia
     // pgViewer
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     EThumbSize defThumbSize = APREF_MEDIA_THUMB_SIZE.defaultValue().asValobj();
-    IPicsGridViewerConstants.OP_DEFAULT_THUMB_SIZE.setValue( ctx.params(), avValobj( defThumbSize ) );
-    IPicsGridViewerConstants.OP_IS_LABEL2_SHOWN.setValue( ctx.params(), AV_FALSE );
-    IPicsGridViewerConstants.OP_IS_LABELS_SHOWN.setValue( ctx.params(), AV_TRUE );
-    IPicsGridViewerConstants.OP_IS_TOOLTIPS_SHOWN.setValue( ctx.params(), AV_TRUE );
-    IPicsGridViewerConstants.OP_SELECTION_BORDER_COLOR.setValue( ctx.params(), avValobj( ETsColor.BLACK.rgb() ) );
+    IPicsGridViewerConstants.OPDEF_DEFAULT_THUMB_SIZE.setValue( ctx.params(), avValobj( defThumbSize ) );
+    IPicsGridViewerConstants.OPDEF_IS_LABELS_SHOWN.setValue( ctx.params(), AV_TRUE );
+    IPicsGridViewerConstants.OPDEF_IS_TOOLTIPS_SHOWN.setValue( ctx.params(), AV_TRUE );
     pgViewer = new PicsGridViewer<>( board, ctx );
     pgViewer.setVisualsProvider( new GazeMediaFileVisualsProvider( ctx ) );
     pgViewer.setThumbSize( APREF_MEDIA_THUMB_SIZE.getValue( prefBundle.prefs() ).asValobj() );
@@ -156,7 +152,7 @@ public class UipartGazeMedia
 
   void playItem( OptedFile aFile ) {
     if( aFile != null ) {
-      PsxUtils.runDefaultApp( aFile.file() );
+      HzUtils.runDefaultMediaApp( aFile.file() );
     }
     updateActionsState();
   }

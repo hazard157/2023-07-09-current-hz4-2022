@@ -15,7 +15,7 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.StringArrayList;
 import org.toxsoft.core.tslib.utils.TsLibUtils;
 import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
 
-import com.hazard157.lib.core.utils.IRadioPropEnum;
+import com.hazard157.lib.core.excl_done.*;
 
 /**
  * {@link IRadioPropEnum} editor as icons {@link IRadioPropEnum#iconId()} line.

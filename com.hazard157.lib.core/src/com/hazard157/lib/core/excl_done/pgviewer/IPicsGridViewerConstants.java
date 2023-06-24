@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.glib.pgviewer;
+package com.hazard157.lib.core.excl_done.pgviewer;
 
-import static com.hazard157.lib.core.glib.pgviewer.ITsResources.*;
+import static com.hazard157.lib.core.excl_done.pgviewer.ITsResources.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;

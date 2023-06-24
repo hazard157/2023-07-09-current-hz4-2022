@@ -4,9 +4,9 @@ import java.io.*;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
+import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.glib.pgviewer.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
@@ -17,7 +17,7 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
  * @author hazard157
  */
 public class FramePgvVisualsProvider
-    implements IPgvVisualsProvider<IFrame> {
+    implements ITsVisualsProvider<IFrame> {
 
   /**
    * Признак показа даты эпизода в виде "ГГГГ-ММ-СС".
@@ -105,17 +105,20 @@ public class FramePgvVisualsProvider
   }
 
   @Override
+  public String getName( IFrame aEntity ) {
+    return formatLabel( aEntity, l1flags );
+  }
+
   public String getLabel1( IFrame aEntity ) {
     return formatLabel( aEntity, l1flags );
   }
 
-  @Override
   public String getLabel2( IFrame aEntity ) {
     return formatLabel( aEntity, l2flags );
   }
 
   @Override
-  public String getTooltip( IFrame aEntity ) {
+  public String getDescription( IFrame aEntity ) {
     return aEntity.toString();
   }
 

@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.glib.pgviewer;
+package com.hazard157.lib.core.excl_done.pgviewer;
 
 /**
  * Localizable resources.

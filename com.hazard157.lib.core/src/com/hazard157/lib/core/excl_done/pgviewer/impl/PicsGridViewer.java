@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.glib.pgviewer.impl;
+package com.hazard157.lib.core.excl_done.pgviewer.impl;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.custom.*;
@@ -15,8 +15,8 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.glib.cellsgrid.*;
-import com.hazard157.lib.core.glib.pgviewer.*;
+import com.hazard157.lib.core.excl_done.cellsgrid.*;
+import com.hazard157.lib.core.excl_done.pgviewer.*;
 
 /**
  * Реализация {@link IPicsGridViewer}.

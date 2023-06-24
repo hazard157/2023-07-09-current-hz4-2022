@@ -11,8 +11,6 @@ import org.toxsoft.core.tslib.bricks.geometry.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.utils.*;
-
 /**
  * Визуальный контроль с полосками прокрутки, в котором отображается картинка.
  *
@@ -514,14 +512,14 @@ class Picture
       int len = imgSize.x - bounds.width;
       int step = len / STEPS_COUNT + 1;
       int jump = len / JUMPS_COUNT + 1;
-      newOrigin.x = PsxUtils.displaceValue( aHor, 0, len, step, jump, origin.x );
+      newOrigin.x = displaceValue( aHor, 0, len, step, jump, origin.x );
     }
     // перемещаем по вуртикали
     if( imgSize.y > bounds.height ) {
       int len = imgSize.y - bounds.height;
       int step = len / STEPS_COUNT + 1;
       int jump = len / JUMPS_COUNT + 1;
-      newOrigin.y = PsxUtils.displaceValue( aVer, 0, len, step, jump, origin.y );
+      newOrigin.y = displaceValue( aVer, 0, len, step, jump, origin.y );
     }
     if( !origin.equals( newOrigin ) ) {
       setOrigin( newOrigin );
@@ -547,6 +545,62 @@ class Picture
    */
   public Image getImage() {
     return image;
+  }
+
+  /**
+   * Вычисляет новое значение перемещения виртуального ползунка.
+   *
+   * @param aAmount {@link ETsCollMove} - значение перемещения
+   * @param aMin int - минимальное значение
+   * @param aMax int - максимальное значение
+   * @param aStep int - значение шага
+   * @param aJump int - значение прижка
+   * @param aValue int - начальное значение
+   * @return int - новое значение в пределах от aMin до aMax включительно
+   * @throws TsIllegalArgumentRtException aMin > aMax
+   * @throws TsIllegalArgumentRtException aStep < 0
+   * @throws TsIllegalArgumentRtException aJump < 0
+   */
+  @SuppressWarnings( { "nls", "boxing" } )
+  public static int displaceValue( ETsCollMove aAmount, int aMin, int aMax, int aStep, int aJump, int aValue ) {
+    TsIllegalArgumentRtException.checkTrue( aMin > aMax, "aMin = %d < aMax = %d", aMin, aMax );
+    TsIllegalArgumentRtException.checkTrue( aStep < 0, "aStep = %d < 0", aStep );
+    TsIllegalArgumentRtException.checkTrue( aJump < 0, "aJump = %d < 0", aJump );
+    int value = aValue;
+    switch( aAmount ) {
+      case NONE:
+        break;
+      case FIRST:
+        value = aMin;
+        break;
+      case LAST:
+        value = aMax;
+        break;
+      case MIDDLE:
+        value = (aMax - aMin) / 2;
+        break;
+      case PREV:
+        value -= aStep;
+        break;
+      case NEXT:
+        value += aStep;
+        break;
+      case JUMP_PREV:
+        value -= aJump;
+        break;
+      case JUMP_NEXT:
+        value += aJump;
+        break;
+      default:
+        throw new TsNotAllEnumsUsedRtException();
+    }
+    if( value < aMin ) {
+      value = aMin;
+    }
+    if( value > aMax ) {
+      value = aMax;
+    }
+    return value;
   }
 
 }
