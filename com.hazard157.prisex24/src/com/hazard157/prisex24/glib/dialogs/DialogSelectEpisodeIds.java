@@ -9,22 +9,23 @@ import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.dialogs.datarec.*;
+import org.toxsoft.core.tsgui.graphics.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
-import org.toxsoft.core.tsgui.utils.anim.*;
 import org.toxsoft.core.tsgui.utils.jface.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
+import org.toxsoft.core.tsgui.utils.rectfit.*;
 import org.toxsoft.core.tsgui.widgets.*;
+import org.toxsoft.core.tsgui.widgets.pdw.*;
 import org.toxsoft.core.tslib.bricks.strid.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.legacy.picview.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
- * Multi-episode selection dialog/
+ * Multi-episode selection dialog.
  * <p>
  * Displays a list of all episodes with the ability to check individual episodes. Returns a list of checked episode IDs.
  *
@@ -101,12 +102,12 @@ public class DialogSelectEpisodeIds {
       public void selectionChanged( SelectionChangedEvent aEvent ) {
         IStructuredSelection sel = (IStructuredSelection)aEvent.getSelection();
         if( sel.isEmpty() ) {
-          picViewer.clearImage();
+          picViewer.setTsImage( null );
           return;
         }
         IEpisode e = (IEpisode)sel.getFirstElement();
         TsImage mi = psxService().findThumb( e.frame(), EP_THUMB_SIZE );
-        picViewer.setMultiImage( mi );
+        picViewer.setTsImage( mi );
       }
     };
 
@@ -133,7 +134,7 @@ public class DialogSelectEpisodeIds {
     private final Button      btnClearAll;
     private final Button      btnSetAll;
     final CheckboxTableViewer tableViewer;
-    final PictureViewer       picViewer;
+    final IPdwWidget          picViewer;
     final IStringListEdit     checkedEpisodeIds = new StringLinkedBundleList();
 
     Panel( Composite aParent, TsDialog<IStringList, ITsGuiContext> aOwnerDialog ) {
@@ -168,7 +169,12 @@ public class DialogSelectEpisodeIds {
       btnSetAll.setText( STR_T_BTN_SET_ALL );
       btnSetAll.addSelectionListener( btnSetAllListener );
       // picture below
-      picViewer = new PictureViewer( right, tsContext(), SWT.CENTER, tsContext().get( IAnimationSupport.class ) );
+      picViewer = new PdwWidgetSimple( tsContext() );
+      picViewer.createControl( right );
+      picViewer.setFitInfo( RectFitInfo.BEST_FILL );
+      picViewer.setFulcrum( ETsFulcrum.CENTER );
+      picViewer.setPreferredSizeFixed( false );
+      picViewer.setFitInfo( RectFitInfo.BEST_FILL );
       picViewer.getControl().setLayoutData( BorderLayout.CENTER );
     }
 

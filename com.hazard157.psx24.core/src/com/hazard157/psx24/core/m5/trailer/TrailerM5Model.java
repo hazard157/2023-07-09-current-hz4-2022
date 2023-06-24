@@ -15,7 +15,7 @@ import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.av.validators.*;
 import org.toxsoft.core.tslib.bricks.strid.*;
 
-import com.hazard157.lib.core.legacy.valeds.hms.*;
+import com.hazard157.lib.core.quants.secint.valed.*;
 import com.hazard157.psx.proj3.trailers.*;
 import com.hazard157.psx24.core.m5.std.*;
 

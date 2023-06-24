@@ -26,7 +26,6 @@ import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tsgui.valed.controls.basic.*;
 import org.toxsoft.core.tslib.av.*;
 
-import com.hazard157.lib.core.legacy.valeds.hms.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.m5.*;
 import com.hazard157.lib.core.quants.secint.valed.*;

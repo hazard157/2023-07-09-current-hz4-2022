@@ -24,7 +24,7 @@ import org.toxsoft.core.tslib.coll.helpers.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.legacy.picview.*;
+import com.hazard157.lib.core.excl_plan.picview.*;
 
 /**
  * Простой диалог показа изображения в оригинальном масштабе (прямо из файла).

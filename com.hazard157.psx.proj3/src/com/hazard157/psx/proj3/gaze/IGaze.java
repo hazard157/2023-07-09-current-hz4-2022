@@ -4,7 +4,7 @@ import java.time.*;
 
 import org.toxsoft.core.tslib.bricks.strid.*;
 
-import com.hazard157.lib.core.quants.rating.*;
+import com.hazard157.common.quants.rating.*;
 import com.hazard157.psx.proj3.incident.*;
 
 /**

@@ -13,6 +13,7 @@ import org.toxsoft.core.tsgui.mws.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.rcp.*;
 
+import com.hazard157.common.*;
 import com.hazard157.lib.core.*;
 import com.hazard157.psx.proj3.*;
 import com.hazard157.psx24.exe.*;
@@ -37,6 +38,7 @@ public class AddonPsx24Exe
   protected void doRegisterQuants( IQuantRegistrator aQuantRegistrator ) {
     aQuantRegistrator.registerQuant( new QuantTsGuiRcp() );
     aQuantRegistrator.registerQuant( new QuantHzLibCore() );
+    aQuantRegistrator.registerQuant( new QuantHzCommon() );
     aQuantRegistrator.registerQuant( new QuantPsx3Project() );
   }
 

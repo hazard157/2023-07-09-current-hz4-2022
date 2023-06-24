@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.bricks.validator.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.legacy.widgets.hhmmss.*;
+import com.hazard157.lib.core.excl_plan.hhmmss.*;
 import com.hazard157.lib.core.quants.secint.*;
 
 /**

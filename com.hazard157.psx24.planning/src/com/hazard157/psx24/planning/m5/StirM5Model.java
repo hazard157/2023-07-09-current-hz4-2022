@@ -12,12 +12,7 @@ import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
-import java.io.*;
-
-import org.eclipse.swt.graphics.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
-import org.toxsoft.core.tsgui.graphics.icons.*;
-import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
@@ -25,7 +20,6 @@ import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tslib.av.*;
 
-import com.hazard157.lib.core.legacy.valeds.fileimg.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx24.core.m5.visumple.*;
 
@@ -59,16 +53,17 @@ public class StirM5Model
       return avInt( index + 1 );
     }
 
-    @Override
-    protected Image doGetFieldValueIcon( IStir aEntity, EIconSize aIconSize ) {
-      File file = new File( aEntity.thumbFilePath() );
-      ITsImageManager imageManager = tsContext().get( ITsImageManager.class );
-      TsImage mi = imageManager.findThumb( file, EThumbSize.findIncluding( aIconSize ) );
-      if( mi != null ) {
-        return mi.image();
-      }
-      return null;
-    }
+    // TODO NO_STRI_THUMB
+    // @Override
+    // protected Image doGetFieldValueIcon( IStir aEntity, EIconSize aIconSize ) {
+    // File file = new File( aEntity.thumbFilePath() );
+    // ITsImageManager imageManager = tsContext().get( ITsImageManager.class );
+    // TsImage mi = imageManager.findThumb( file, EThumbSize.findIncluding( aIconSize ) );
+    // if( mi != null ) {
+    // return mi.image();
+    // }
+    // return null;
+    // }
 
   };
 
@@ -171,25 +166,26 @@ public class StirM5Model
 
       };
 
-  /**
-   * {@link IStir#thumbFilePath()}
-   */
-  public static final IM5AttributeFieldDef<IStir> THUMB_FILE_PATH =
-      new M5AttributeFieldDef<>( FID_THUMB_FILE_PATH, ValedAvValobjFileImage.DT_IMAGEFILE_NAME ) {
-
-        @Override
-        protected void doInit() {
-          setNameAndDescription( OP_STIR_THUMB_FILE_PATH.nmName(), OP_STIR_THUMB_FILE_PATH.description() );
-          setFlags( M5FF_HIDDEN );
-          setDefaultValue( AV_STR_EMPTY );
-        }
-
-        @Override
-        protected IAtomicValue doGetFieldValue( IStir aEntity ) {
-          return OP_STIR_THUMB_FILE_PATH.getValue( aEntity.params() );
-        }
-
-      };
+  // TODO NO_STRI_THUMB
+  // /**
+  // * {@link IStir#thumbFilePath()}
+  // */
+  // public static final IM5AttributeFieldDef<IStir> THUMB_FILE_PATH =
+  // new M5AttributeFieldDef<>( FID_THUMB_FILE_PATH, ValedAvValobjFileImage.DT_IMAGEFILE_NAME ) {
+  //
+  // @Override
+  // protected void doInit() {
+  // setNameAndDescription( OP_STIR_THUMB_FILE_PATH.nmName(), OP_STIR_THUMB_FILE_PATH.description() );
+  // setFlags( M5FF_HIDDEN );
+  // setDefaultValue( AV_STR_EMPTY );
+  // }
+  //
+  // @Override
+  // protected IAtomicValue doGetFieldValue( IStir aEntity ) {
+  // return OP_STIR_THUMB_FILE_PATH.getValue( aEntity.params() );
+  // }
+  //
+  // };
 
   /**
    * Скрытое поле - индекс для вставления нового {@link IStir}.
@@ -243,8 +239,9 @@ public class StirM5Model
    */
   public StirM5Model() {
     super( MODEL_ID, IStir.class );
-    addFieldDefs( SEQ_NO, START, DURATION, NUM_VISUMPLES, NAME, DESCRIPTION, THUMB_FILE_PATH, VISUMPLES,
-        INSERTION_INDEX );
+    addFieldDefs( SEQ_NO, START, DURATION, NUM_VISUMPLES, NAME, DESCRIPTION,
+        // TODO NO_STRI_THUMB THUMB_FILE_PATH,
+        VISUMPLES, INSERTION_INDEX );
     setPanelCreator( new M5DefaultPanelCreator<IStir>() {
 
       @Override

@@ -13,7 +13,7 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 
-import com.hazard157.lib.core.quants.rating.*;
+import com.hazard157.common.quants.rating.*;
 import com.hazard157.psx.proj3.gaze.*;
 
 class TreeMakers {

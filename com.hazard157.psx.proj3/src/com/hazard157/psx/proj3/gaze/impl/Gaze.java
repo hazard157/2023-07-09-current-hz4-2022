@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.bricks.strid.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.txtproj.lib.stripar.*;
 
-import com.hazard157.lib.core.quants.rating.*;
+import com.hazard157.common.quants.rating.*;
 import com.hazard157.psx.proj3.gaze.*;
 import com.hazard157.psx.proj3.incident.*;
 

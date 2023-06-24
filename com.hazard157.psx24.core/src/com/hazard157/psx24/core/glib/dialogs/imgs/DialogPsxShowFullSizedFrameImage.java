@@ -30,7 +30,7 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.logs.impl.*;
 
-import com.hazard157.lib.core.legacy.picview.*;
+import com.hazard157.lib.core.excl_plan.picview.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.e4.services.prisex.*;

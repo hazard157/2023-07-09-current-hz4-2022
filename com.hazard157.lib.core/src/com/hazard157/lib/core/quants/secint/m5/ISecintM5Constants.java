@@ -12,7 +12,6 @@ import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.av.validators.defav.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 
-import com.hazard157.lib.core.legacy.valeds.hms.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.secint.valed.*;
 

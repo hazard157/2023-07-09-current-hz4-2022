@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.bricks.keeper.std.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 
-import com.hazard157.lib.core.quants.rating.*;
+import com.hazard157.common.quants.rating.*;
 import com.hazard157.psx24.films.glib.valeds.*;
 
 /**

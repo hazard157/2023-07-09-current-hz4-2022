@@ -16,4 +16,10 @@ interface IPsxResources {
   String STR_N_MAX_END   = "Макс. окончание";
   String STR_D_MAX_END   = "Максимальное значение окончания интервала";
 
+  /**
+   * {@link ValedAvIntHhmmss}
+   */
+  String STR_D_DAV_INT_HHMMSS_ONLY_MMSS = "Использовать вид ММ:СС вместо ЧЧ:ММ:СС";
+  String STR_N_DAV_INT_HHMMSS_ONLY_MMSS = "ММ:СС";
+
 }

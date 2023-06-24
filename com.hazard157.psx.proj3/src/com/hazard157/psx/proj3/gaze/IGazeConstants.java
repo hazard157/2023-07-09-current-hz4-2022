@@ -13,8 +13,8 @@ import org.toxsoft.core.tslib.av.impl.*;
 import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.bricks.keeper.std.*;
 
-import com.hazard157.lib.core.quants.rating.*;
-import com.hazard157.lib.core.quants.valeds.radioprop.*;
+import com.hazard157.common.quants.rating.*;
+import com.hazard157.common.valed.radioprop.*;
 
 @SuppressWarnings( "javadoc" )
 public interface IGazeConstants {

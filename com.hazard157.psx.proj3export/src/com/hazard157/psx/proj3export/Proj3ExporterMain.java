@@ -29,9 +29,9 @@ import org.toxsoft.core.txtproj.lib.*;
 import org.toxsoft.core.txtproj.lib.bound.*;
 import org.toxsoft.core.txtproj.lib.impl.*;
 
+import com.hazard157.common.quants.rating.*;
 import com.hazard157.lib.core.bricks.kwmark.*;
 import com.hazard157.lib.core.bricks.kwmark.manager.*;
-import com.hazard157.lib.core.quants.rating.*;
 import com.hazard157.lib.core.quants.secint.*;
 import com.hazard157.lib.core.quants.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
@@ -330,7 +330,7 @@ public class Proj3ExporterMain {
     p.setStr( TSID_NAME, aStir.name() );
     p.setStr( TSID_DESCRIPTION, aStir.description() );
     p.setStr( "duration", HmsUtils.mmmss( aStir.duration() ) );
-    p.setStr( "thumbFilePath", aStir.thumbFilePath() );
+    // TODO NO_STRI_THUMB p.setStr( "thumbFilePath", aStir.thumbFilePath() );
     for( int i = 1; i <= aStir.visumples().size(); i++ ) {
       Visumple v = aStir.visumples().get( i - 1 );
       IOptionSet ops = makeVisumple( v );

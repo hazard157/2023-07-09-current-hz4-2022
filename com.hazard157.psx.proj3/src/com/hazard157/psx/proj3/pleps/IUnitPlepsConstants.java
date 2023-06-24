@@ -38,20 +38,21 @@ public interface IUnitPlepsConstants {
       TSID_DEFAULT_VALUE, avInt( 60 ) //
   );
 
-  String FID_THUMB_FILE_PATH = "ThumbFilePath";
-
-  IDataDef OP_STIR_THUMB_FILE_PATH = DataDef.create( FID_THUMB_FILE_PATH, STRING, //
-      TSID_IS_NULL_ALLOWED, Boolean.TRUE, //
-      // FIXME ValedAvImageFileNameViewer.VIEWER_SIZE, ThumbSizeKeeper.KEEPER.toAv( EThumbSize.SZ360 ), //
-      // FIXME EValedControlParam.EDITOR_FACTORY_NAME, avStr( ValedAvImageFileNameEditor.FACTORY_NAME ),
-      TSID_DEFAULT_VALUE, AV_STR_EMPTY //
-  );
+  // TODO NO_STRI_THUMB
+  // String FID_THUMB_FILE_PATH = "ThumbFilePath";
+  //
+  // IDataDef OP_STIR_THUMB_FILE_PATH = DataDef.create( FID_THUMB_FILE_PATH, STRING, //
+  // TSID_IS_NULL_ALLOWED, Boolean.TRUE, //
+  // // FIXME ValedAvImageFileNameViewer.VIEWER_SIZE, ThumbSizeKeeper.KEEPER.toAv( EThumbSize.SZ360 ), //
+  // // FIXME EValedControlParam.EDITOR_FACTORY_NAME, avStr( ValedAvImageFileNameEditor.FACTORY_NAME ),
+  // TSID_DEFAULT_VALUE, AV_STR_EMPTY //
+  // );
 
   IList<IDataDef> ALL_STIR_OPS = new ElemArrayList<>( //
       OP_STIR_NAME, //
       OP_STIR_DURATION, //
       OP_STIR_DESCRIPTION, //
-      OP_STIR_THUMB_FILE_PATH, //
+      // TODO NO_STRI_THUMB OP_STIR_THUMB_FILE_PATH, //
       IVisumpleConstants.OPDEF_VISUMPLES //
   );
 

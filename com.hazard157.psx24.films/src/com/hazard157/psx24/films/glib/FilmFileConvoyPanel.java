@@ -17,8 +17,8 @@ import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.quants.rating.*;
-import com.hazard157.lib.core.quants.valeds.radioprop.*;
+import com.hazard157.common.quants.rating.*;
+import com.hazard157.common.valed.radioprop.*;
 import com.hazard157.psx24.films.glib.valeds.*;
 
 /**
