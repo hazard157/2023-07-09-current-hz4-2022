@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.incub;
+package com.hazard157.lib.core.excl_done;
 
-import static com.hazard157.lib.core.incub.ITsResources.*;
+import static com.hazard157.lib.core.excl_done.ITsResources.*;
 
 import java.io.File;
 

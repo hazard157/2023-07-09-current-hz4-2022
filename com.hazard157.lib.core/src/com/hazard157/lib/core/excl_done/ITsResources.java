@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.incub;
+package com.hazard157.lib.core.excl_done;
 
 /**
  * Localizable resources.

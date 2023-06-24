@@ -19,11 +19,11 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.panels.vecboard.*;
 import org.toxsoft.core.tsgui.panels.vecboard.impl.*;
 import org.toxsoft.core.tsgui.valed.api.*;
+import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.incub.*;
 import com.hazard157.lib.core.quants.secint.*;
 
 /**
