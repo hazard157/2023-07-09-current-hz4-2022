@@ -17,7 +17,7 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tslib.coll.*;
 
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.utils.playmenu.*;

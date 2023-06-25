@@ -37,7 +37,7 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.quants.visumple.*;
+import com.hazard157.lib.core.excl_plan.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.glib.dialogs.frsel.*;

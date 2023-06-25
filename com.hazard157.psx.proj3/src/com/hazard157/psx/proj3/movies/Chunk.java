@@ -5,7 +5,7 @@ import static org.toxsoft.core.tslib.utils.TsLibUtils.*;
 import org.toxsoft.core.tslib.bricks.strid.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.psx.common.stuff.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;

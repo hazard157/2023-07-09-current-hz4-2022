@@ -21,7 +21,7 @@ import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.quants.visumple.*;
+import com.hazard157.lib.core.excl_plan.visumple.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx24.planning.e4.services.*;
 import com.hazard157.psx24.planning.m5.*;

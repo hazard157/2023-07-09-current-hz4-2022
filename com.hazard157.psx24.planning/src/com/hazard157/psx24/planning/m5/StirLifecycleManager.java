@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
 
-import com.hazard157.lib.core.quants.visumple.*;
+import com.hazard157.lib.core.excl_plan.visumple.*;
 import com.hazard157.psx.proj3.pleps.*;
 
 class StirLifecycleManager

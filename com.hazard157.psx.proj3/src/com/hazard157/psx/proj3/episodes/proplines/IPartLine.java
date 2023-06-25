@@ -2,7 +2,7 @@ package com.hazard157.psx.proj3.episodes.proplines;
 
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 
 /**
  * Линия деления видеоряда на непрерывные части.

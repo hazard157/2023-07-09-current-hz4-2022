@@ -1,7 +1,6 @@
 package com.hazard157.psx24.core.glib.frlstviewer_ep;
 
 import static com.hazard157.psx24.core.glib.frlstviewer_ep.IPsxResources.*;
-import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
@@ -20,8 +19,7 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.incub.acsupart.*;
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
@@ -33,8 +31,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
  * @author hazard157
  */
 class EflvTreeModeManager
-    extends TreeModeManager<IFrame>
-    implements ITsActionProcessor {
+    extends TreeModeManager<IFrame> {
 
   /**
    * Группировщик в дерево кадров по минутам.
@@ -285,30 +282,35 @@ class EflvTreeModeManager
     return episode;
   }
 
-  @Override
-  public boolean processAction( String aActionId ) {
-    switch( aActionId ) {
-      case ACTID_VIEW_AS_TREE: {
-        if( isCurrentTreeMode() ) {
-          TreeModeInfo<IFrame> currModeInfo = treeModeInfoes().findByKey( currModeId() );
-          TreeModeInfo<IFrame> nextModeInfo = treeModeInfoes().next( currModeInfo );
-          if( nextModeInfo == null ) {
-            nextModeInfo = treeModeInfoes().first();
-          }
-          setCurrentMode( nextModeInfo.id() );
-        }
-        else {
-          setCurrentMode( TMID_BY_MINUTS );
-        }
-        return true;
-      }
-      case ACTID_VIEW_AS_LIST: {
-        setCurrentMode( null );
-        return true;
-      }
-      default:
-        return false;
-    }
-  }
+  // public void handleAction( String aActionId ) {
+  // switch( aActionId ) {
+  // case ACTID_VIEW_AS_TREE: {
+  // if( isCurrentTreeMode() ) {
+  // TreeModeInfo<IFrame> currModeInfo = treeModeInfoes().findByKey( currModeId() );
+  // TreeModeInfo<IFrame> nextModeInfo = treeModeInfoes().next( currModeInfo );
+  // if( nextModeInfo == null ) {
+  // nextModeInfo = treeModeInfoes().first();
+  // }
+  // setCurrentMode( nextModeInfo.id() );
+  // }
+  // else {
+  // setCurrentMode( TMID_BY_MINUTS );
+  // }
+  // return
+  // // true
+  // ;
+  // }
+  // case ACTID_VIEW_AS_LIST: {
+  // setCurrentMode( null );
+  // return
+  // // true
+  // ;
+  // }
+  // default:
+  // return
+  // // false
+  // ;
+  // }
+  // }
 
 }

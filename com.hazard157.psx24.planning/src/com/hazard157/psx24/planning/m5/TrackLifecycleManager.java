@@ -7,7 +7,7 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
 
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx.proj3.songs.*;
 

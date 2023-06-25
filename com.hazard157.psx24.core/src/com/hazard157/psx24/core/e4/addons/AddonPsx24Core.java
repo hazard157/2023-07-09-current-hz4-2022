@@ -9,7 +9,7 @@ import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tslib.utils.valobj.*;
 
-import com.hazard157.lib.core.incub.projtree.*;
+import com.hazard157.lib.core.excl_plan.projtree.*;
 import com.hazard157.psx.common.filesys.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx24.core.*;

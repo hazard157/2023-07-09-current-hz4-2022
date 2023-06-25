@@ -21,8 +21,8 @@ import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.quants.secint.*;
-import com.hazard157.lib.core.quants.secint.valed.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.valed.*;
 import com.hazard157.prisex24.m5.*;
 import com.hazard157.psx.proj3.tags.*;
 

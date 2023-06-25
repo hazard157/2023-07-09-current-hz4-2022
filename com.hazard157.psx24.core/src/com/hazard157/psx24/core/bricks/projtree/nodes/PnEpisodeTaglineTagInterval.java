@@ -4,7 +4,7 @@ import static com.hazard157.psx24.core.bricks.projtree.nodes.IPsxResources.*;
 
 import org.toxsoft.core.tsgui.bricks.tsnodes.*;
 
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
 
 /**

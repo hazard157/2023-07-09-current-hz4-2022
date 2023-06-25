@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.av.validators.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.quants.visumple.*;
+import com.hazard157.lib.core.excl_plan.visumple.*;
 
 /**
  * Модель объектов типа {@link Visumple}.

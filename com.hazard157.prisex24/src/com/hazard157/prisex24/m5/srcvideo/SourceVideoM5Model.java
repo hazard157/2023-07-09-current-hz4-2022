@@ -1,7 +1,7 @@
 package com.hazard157.prisex24.m5.srcvideo;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.quants.secint.m5.ISecintM5Constants.*;
+import static com.hazard157.lib.core.excl_plan.secint.m5.ISecintM5Constants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static com.hazard157.prisex24.m5.srcvideo.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;

@@ -6,7 +6,7 @@ import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.bricks.keeper.*;
 import org.toxsoft.core.tslib.bricks.strio.*;
 
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.proj3.episodes.*;
 

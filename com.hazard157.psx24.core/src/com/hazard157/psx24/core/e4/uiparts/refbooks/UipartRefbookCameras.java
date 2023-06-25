@@ -17,7 +17,7 @@ import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 
-import com.hazard157.lib.core.quants.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.cameras.*;
 import com.hazard157.psx.proj3.sourcevids.*;

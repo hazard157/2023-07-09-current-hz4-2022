@@ -25,18 +25,11 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.lib.core
 Bundle-ActivationPolicy: lazy
 Export-Package: com.hazard157.lib.core,
- com.hazard157.lib.core.bricks.stripent,
- com.hazard157.lib.core.bricks.stripent.impl,
- com.hazard157.lib.core.bricks.stripent.m5,
- com.hazard157.lib.core.excl_plan.hhmmss,
- com.hazard157.lib.core.excl_plan.hms,
+ com.hazard157.lib.core.excl_plan.acsupart,
  com.hazard157.lib.core.excl_plan.picview,
- com.hazard157.lib.core.incub,
- com.hazard157.lib.core.incub.acsupart,
- com.hazard157.lib.core.incub.projtree,
- com.hazard157.lib.core.incub.utils,
- com.hazard157.lib.core.quants.secint,
- com.hazard157.lib.core.quants.secint.glib,
- com.hazard157.lib.core.quants.secint.m5,
- com.hazard157.lib.core.quants.secint.valed,
- com.hazard157.lib.core.quants.visumple
+ com.hazard157.lib.core.excl_plan.projtree,
+ com.hazard157.lib.core.excl_plan.secint,
+ com.hazard157.lib.core.excl_plan.secint.glib,
+ com.hazard157.lib.core.excl_plan.secint.m5,
+ com.hazard157.lib.core.excl_plan.secint.valed,
+ com.hazard157.lib.core.excl_plan.visumple

@@ -1,7 +1,7 @@
 package com.hazard157.psx24.planning.m5;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.quants.secint.m5.ISecintM5Constants.*;
+import static com.hazard157.lib.core.excl_plan.secint.m5.ISecintM5Constants.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static com.hazard157.psx.proj3.pleps.IUnitPlepsConstants.*;
 import static com.hazard157.psx24.planning.m5.IPsxResources.*;
@@ -21,8 +21,8 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tslib.av.*;
 
-import com.hazard157.lib.core.quants.secint.*;
-import com.hazard157.lib.core.quants.secint.valed.*;
+import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.lib.core.excl_plan.secint.valed.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx.proj3.songs.*;
 import com.hazard157.psx24.core.m5.songs.*;
