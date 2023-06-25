@@ -1,13 +1,18 @@
 package com.hazard157.prisex24.m5.snippet;
 
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.m5.snippet.IPsxResources.*;
 import static com.hazard157.prisex24.pdus.snippets.ISnippetConstants.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
+import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.bricks.tstree.tmm.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.*;
+import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
+import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.m5.std.fields.*;
@@ -63,7 +68,13 @@ public class SnippetM5Model
           IM5ItemsProvider<ISnippet> aItemsProvider, IM5LifecycleManager<ISnippet> aLifecycleManager ) {
         IMultiPaneComponentConstants.OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(),
             avValobj( BorderLayout.EAST ) );
-        return super.doCreateCollEditPanel( aContext, aItemsProvider, aLifecycleManager );
+        OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
+        OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
+        MultiPaneComponentModown<ISnippet> mpc = new MultiPaneComponentModown<>( aContext, model(), aItemsProvider );
+        TreeModeInfo<ISnippet> tmi1 = new TreeModeInfo<>( "ByCateg", //$NON-NLS-1$
+            STR_TMI_BY_CATEGORY, STR_TMI_BY_CATEGORY_D, null, new TreeMakerByCategory() );
+        mpc.treeModeManager().addTreeMode( tmi1 );
+        return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
       }
 
       @Override
@@ -71,7 +82,13 @@ public class SnippetM5Model
           IM5ItemsProvider<ISnippet> aItemsProvider ) {
         IMultiPaneComponentConstants.OPDEF_DETAILS_PANE_PLACE.setValue( aContext.params(),
             avValobj( BorderLayout.EAST ) );
-        return super.doCreateCollViewerPanel( aContext, aItemsProvider );
+        OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_FALSE );
+        OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
+        MultiPaneComponentModown<ISnippet> mpc = new MultiPaneComponentModown<>( aContext, model(), aItemsProvider );
+        TreeModeInfo<ISnippet> tmi1 = new TreeModeInfo<>( "ByCateg", //$NON-NLS-1$
+            STR_TMI_BY_CATEGORY, STR_TMI_BY_CATEGORY_D, null, new TreeMakerByCategory() );
+        mpc.treeModeManager().addTreeMode( tmi1 );
+        return new M5CollectionPanelMpcModownWrapper<>( mpc, true );
       }
     } );
   }

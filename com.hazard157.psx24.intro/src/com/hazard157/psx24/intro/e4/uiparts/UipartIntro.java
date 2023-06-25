@@ -10,8 +10,6 @@ import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
 import java.io.*;
 
-import javax.inject.*;
-
 import org.eclipse.e4.core.contexts.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.widgets.*;
@@ -20,7 +18,9 @@ import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
+import org.toxsoft.core.tsgui.panels.pgv.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
+import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
@@ -33,12 +33,12 @@ import org.toxsoft.core.tslib.utils.logs.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
+import com.hazard157.psx24.core.*;
 import com.hazard157.psx24.core.e4.services.currep.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.e4.services.playmenu.*;
 import com.hazard157.psx24.core.e4.services.prisex.*;
 import com.hazard157.psx24.core.e4.services.psxgui.*;
-import com.hazard157.psx24.core.glib.plv.*;
 
 /**
  * Welcome view with eisodes thumbs.
@@ -46,12 +46,43 @@ import com.hazard157.psx24.core.glib.plv.*;
  * @author hazard157
  */
 public class UipartIntro
-    extends MwsAbstractPart {
+    extends MwsAbstractPart
+    implements IPsxGuiContextable {
 
   private static final String ACTID_TOGGLE_FORCE_STILL = "act.force_toggle_still"; //$NON-NLS-1$
 
   private static final ITsActionDef ACTDEF_TOGGLE_FORCE_STILL = TsActionDef.ofCheck2( ACTID_TOGGLE_FORCE_STILL, //
       STR_IS_FORCE_STILL_FRAME, STR_IS_FORCE_STILL_FRAME_D, ICONID_AK_SINGLE );
+
+  private final ITsVisualsProvider<IEpisode> visualsProvider = new ITsVisualsProvider<>() {
+
+    @Override
+    public String getName( IEpisode aItem ) {
+      String fmtStr = "%1$te %1$tB %1$tY"; //$NON-NLS-1$
+      if( APPRM_IS_LABEL_AS_YMD.getValue( prefBundle.prefs() ).asBool() ) {
+        fmtStr = "%tF"; //$NON-NLS-1$
+      }
+      return String.format( fmtStr, Long.valueOf( aItem.info().when() ) );
+    }
+
+    @Override
+    public TsImage getThumb( IEpisode aItem, EThumbSize aThumbSize ) {
+      boolean isStillForced = APPRM_IS_FORCE_STILL_FRAME.getValue( prefBundle.prefs() ).asBool();
+      File ff = fileSystem.findFrameFile( aItem.frame() );
+      TsImage mi = null;
+      if( ff != null ) {
+        mi = imageManager().findThumb( ff, aThumbSize );
+      }
+      if( mi == null ) {
+        mi = getNoneImageForEpisode( aThumbSize );
+      }
+      if( mi.isAnimated() && isStillForced ) {
+        mi = TsImage.create( mi.image() ); // SWT image will be disposed when anumated mi disposes
+      }
+      return mi;
+    }
+
+  };
 
   private final ITsCollectionChangeListener appSettingsChangeListener = ( aSource, aOp, aItem ) -> {
     // String opId = (String)aItem;
@@ -66,15 +97,12 @@ public class UipartIntro
 
   IPrefBundle prefBundle;
 
-  @Inject
-  IUnitEpisodes unitEpisodes;
-
   ICurrentEpisodeService currentEpisodeService;
   IPlayMenuSupport       playMenuSupport;
 
-  TsToolbar          toolbar;
-  PicturesListViewer plViewer;
-  IPsxFileSystem     fileSystem;
+  TsToolbar                 toolbar;
+  IPicsGridViewer<IEpisode> plViewer;
+  IPsxFileSystem            fileSystem;
 
   boolean isLocalCurrEpChange = false;
 
@@ -83,7 +111,7 @@ public class UipartIntro
     IAppPreferences apprefs = tsContext().get( IAppPreferences.class );
     prefBundle = apprefs.getBundle( PSX_INTRO_APREF_BUNDLE_ID );
     prefBundle.prefs().addCollectionChangeListener( appSettingsChangeListener );
-    unitEpisodes.genericChangeEventer().addListener( episodesUnitChangeListener );
+    unitEpisodes().genericChangeEventer().addListener( episodesUnitChangeListener );
     playMenuSupport = tsContext().get( IPlayMenuSupport.class );
     currentEpisodeService = tsContext().get( ICurrentEpisodeService.class );
     fileSystem = tsContext().get( IPsxFileSystem.class );
@@ -93,7 +121,8 @@ public class UipartIntro
         ACTDEF_TOGGLE_FORCE_STILL );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
     toolbar.addListener( toolbarListener );
-    plViewer = new PicturesListViewer( aParent, EPlvLayoutMode.ROWS );
+    plViewer = new PicsGridViewer<>( aParent, tsContext() );
+    plViewer.setVisualsProvider( visualsProvider );
     plViewer.getControl().setLayoutData( BorderLayout.CENTER );
     EThumbSize thumbSize = APPRM_THUMB_SIZE.getValue( prefBundle.prefs() ).asValobj();
     plViewer.setThumbSize( thumbSize );
@@ -130,7 +159,7 @@ public class UipartIntro
         break;
       }
       case AID_PLAY: {
-        IEpisode selEpisode = getSelectedEpisode();
+        IEpisode selEpisode = plViewer.selectedItem();
         if( selEpisode != null ) {
           IPrisexService prisexService = tsContext().get( IPrisexService.class );
           prisexService.playEpisodeVideo( new Svin( selEpisode.id() ) );
@@ -149,7 +178,7 @@ public class UipartIntro
   }
 
   void updateActionsState() {
-    IEpisode selEpisode = getSelectedEpisode();
+    IEpisode selEpisode = plViewer.selectedItem();
     boolean isSel = selEpisode != null;
     toolbar.setActionEnabled( AID_PLAY, isSel );
     boolean isStillForced = APPRM_IS_FORCE_STILL_FRAME.getValue( prefBundle.prefs() ).asBool();
@@ -157,22 +186,10 @@ public class UipartIntro
     updatePlayMenu();
   }
 
-  IEpisode getSelectedEpisode() {
-    PlvItem selItem = plViewer.selectedItem();
-    if( selItem != null ) {
-      return (IEpisode)selItem.userData();
-    }
-    return null;
-  }
-
-  void setCurrEpisode( PlvItem aPlvItem ) {
-    IEpisode e = null;
-    if( aPlvItem != null ) {
-      e = (IEpisode)aPlvItem.userData();
-    }
+  void setCurrEpisode( IEpisode aEpisode ) {
     isLocalCurrEpChange = true;
     try {
-      currentEpisodeService.setCurrent( e );
+      currentEpisodeService.setCurrent( aEpisode );
     }
     catch( Exception ex ) {
       LoggerUtils.errorLogger().error( ex );
@@ -188,12 +205,12 @@ public class UipartIntro
     if( isLocalCurrEpChange ) {
       return;
     }
-    plViewer.selectByUserData( currentEpisodeService.current() );
+    plViewer.setSelectedItem( currentEpisodeService.current() );
     updateActionsState();
   }
 
   private void updatePlayMenu() {
-    final IEpisode episode = getSelectedEpisode();
+    final IEpisode episode = plViewer.selectedItem();
     if( episode != null ) {
       final IPlayMenuParamsProvider playParamsProvider = new IPlayMenuParamsProvider() {
 
@@ -224,29 +241,8 @@ public class UipartIntro
   void initViewerContent() {
     EThumbSize thumbSize = APPRM_THUMB_SIZE.getValue( prefBundle.prefs() ).asValobj();
     plViewer.setThumbSize( thumbSize );
-    plViewer.clearItems();
-    boolean isStillForced = APPRM_IS_FORCE_STILL_FRAME.getValue( prefBundle.prefs() ).asBool();
-    for( IEpisode e : unitEpisodes.items() ) {
-      File ff = fileSystem.findFrameFile( e.frame() );
-      TsImage mi = null;
-      if( ff != null ) {
-        mi = imageManager().findThumb( ff, thumbSize );
-      }
-      if( mi == null ) {
-        mi = getNoneImageForEpisode( thumbSize );
-      }
-      if( mi.isAnimated() && isStillForced ) {
-        mi = TsImage.create( mi.image() ); // SWT image will be disposed when anumated mi disposes
-      }
-      TsInternalErrorRtException.checkNull( mi );
-      String fmtStr = "%1$te %1$tB %1$tY"; //$NON-NLS-1$
-      if( APPRM_IS_LABEL_AS_YMD.getValue( prefBundle.prefs() ).asBool() ) {
-        fmtStr = "%tF"; //$NON-NLS-1$
-      }
-      String l1 = String.format( fmtStr, Long.valueOf( e.info().when() ) );
-      PlvItem item = new PlvItem( mi, l1, e.nmName(), e );
-      plViewer.addItem( item );
-    }
+    plViewer.setItems( null );
+    plViewer.setItems( unitEpisodes().items() );
   }
 
   @Override
