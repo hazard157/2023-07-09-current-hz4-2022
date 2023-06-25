@@ -1,6 +1,6 @@
-package com.hazard157.psx24.core.glib.plv;
+package com.hazard157.lib.core.excl_plan.plv;
 
-import static com.hazard157.psx24.core.glib.plv.IPsxResources.*;
+import static com.hazard157.lib.core.excl_plan.plv.IPsxResources.*;
 
 import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.utils.errors.*;

@@ -24,15 +24,6 @@ public interface IHzLibConstants {
   String HZ_ID = "com.hazard157"; //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
-  // M5
-
-  String FID_START    = "Start";    //$NON-NLS-1$
-  String FID_END      = "End";      //$NON-NLS-1$
-  String FID_DURATION = "Duration"; //$NON-NLS-1$
-  String FID_SEQ_NO   = "SeqNo";    //$NON-NLS-1$
-  String FID_NOTE     = "Note";     //$NON-NLS-1$
-
-  // ------------------------------------------------------------------------------------
   // Значки
   String PREFIX_OF_ICON_FIELD_NAME = "ICON";                //$NON-NLS-1$
   String ICON_STAR_YELLOW          = "star-yellow";         //$NON-NLS-1$

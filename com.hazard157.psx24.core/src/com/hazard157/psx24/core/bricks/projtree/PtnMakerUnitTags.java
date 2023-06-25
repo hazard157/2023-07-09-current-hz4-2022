@@ -6,7 +6,7 @@ import static com.hazard157.psx24.core.bricks.projtree.IPsxResources.*;
 import org.toxsoft.core.tsgui.bricks.tsnodes.*;
 import org.toxsoft.core.tslib.coll.*;
 
-import com.hazard157.lib.core.excl_plan.projtree.*;
+import com.hazard157.common.incub.projtree.*;
 import com.hazard157.psx.proj3.tags.*;
 import com.hazard157.psx24.core.bricks.projtree.nodes.*;
 

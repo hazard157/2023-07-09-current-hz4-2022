@@ -24,9 +24,9 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.logs.impl.*;
 
+import com.hazard157.lib.core.excl_plan.plv.*;
 import com.hazard157.lib.core.excl_plan.visumple.*;
 import com.hazard157.psx24.core.glib.dialogs.imgs.*;
-import com.hazard157.psx24.core.glib.plv.*;
 
 /**
  * Просмотрщик коллекции {@link Visumple} в таблицы миниатюр.

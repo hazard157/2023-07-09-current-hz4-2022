@@ -1,7 +1,7 @@
 package com.hazard157.prisex24.m5.note;
 
+import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
-import static com.hazard157.lib.core.IHzLibConstants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static com.hazard157.prisex24.m5.note.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;

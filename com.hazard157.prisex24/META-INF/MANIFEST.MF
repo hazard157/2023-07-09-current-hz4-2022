@@ -62,7 +62,6 @@ Require-Bundle: javax.annotation,
  org.toxsoft.core.tsgui.rcp,
  org.toxsoft.core.tsgui,
  org.toxsoft.core.tsgui.mws,
- com.hazard157.lib.core,
  com.hazard157.common,
  com.hazard157.psx.common,
  com.hazard157.psx.proj3

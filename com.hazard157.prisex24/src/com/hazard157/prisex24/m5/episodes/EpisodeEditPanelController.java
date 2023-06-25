@@ -1,6 +1,6 @@
 package com.hazard157.prisex24.m5.episodes;
 
-import static com.hazard157.lib.core.IHzLibConstants.*;
+import static com.hazard157.common.quants.secint.ISecintConstants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 

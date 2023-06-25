@@ -1,4 +1,4 @@
-package com.hazard157.psx24.core.glib.plv;
+package com.hazard157.lib.core.excl_plan.plv;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.custom.*;
@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.bricks.geometry.impl.*;
  *
  * @author hazard157
  */
-class PictureGridCanvasVerLine
+class PictureGridCanvasHorLine
     extends AbstractPictureGridCanvas {
 
   /**
@@ -19,10 +19,10 @@ class PictureGridCanvasVerLine
    *
    * @param aParent {@link ScrolledComposite} - родительская панель прокрутки
    */
-  public PictureGridCanvasVerLine( ScrolledComposite aParent ) {
+  public PictureGridCanvasHorLine( ScrolledComposite aParent ) {
     super( aParent );
     ITsPoint cellSize = calcCellSize();
-    setSize( margins().leftMargin() + cellSize.y() + margins().rightMargin(), SWT.DEFAULT );
+    setSize( SWT.DEFAULT, margins().topMargin() + cellSize.y() + margins().bottomMargin() );
   }
 
   // ------------------------------------------------------------------------------------
@@ -38,14 +38,14 @@ class PictureGridCanvasVerLine
     Rectangle r = parent.getClientArea();
     int firstVisibleIndex = -1;
     for( int i = 0, n = items.size(); i < n; i++ ) {
-      if( cells.get( i ).a().y() >= origin.y ) {
+      if( cells.get( i ).a().x() >= origin.x ) {
         firstVisibleIndex = i;
         break;
       }
     }
     int lastVisibleIndex = -1;
     for( int i = items.size() - 1; i >= 0; i-- ) {
-      if( cells.get( i ).b().y() <= (origin.y + r.height) ) {
+      if( cells.get( i ).b().x() <= (origin.x + r.width) ) {
         lastVisibleIndex = i;
         break;
       }
@@ -55,36 +55,36 @@ class PictureGridCanvasVerLine
     }
     ITsRectangle cellR = cells.get( aIndex );
     if( aIndex == lastVisibleIndex + 1 ) { // частично видимый в конце элемент ставим последин
-      parent.setOrigin( origin.x, cellR.b().y() - r.height );
+      parent.setOrigin( cellR.b().x() - r.width, origin.y );
       return;
     }
     if( aIndex == firstVisibleIndex + 1 ) { // частично видимый в начале элемент ставим первым
-      parent.setOrigin( origin.x, cellR.b().y() - 1 );
+      parent.setOrigin( cellR.b().x() - 1, origin.y );
       return;
     }
     // всех остальныч ставим в центр
-    parent.setOrigin( origin.x, cellR.a().y() - r.height / 2 + cellR.height() / 2 );
+    parent.setOrigin( cellR.a().x() - r.width / 2 + cellR.width() / 2, origin.y );
   }
 
   @Override
   boolean doRecalcPlacesAndResizeIfNeeded() {
     ITsPoint cellSize = calcCellSize();
-    int deltaY = cellSize.y() + margins().verInterval();
+    int deltaX = cellSize.x() + margins().horInterval();
     int count = items.size();
-    for( int row = 0; row < count; row++ ) {
-      int y = margins().topMargin();
-      if( row > 0 ) {
-        y += row * deltaY;
+    for( int col = 0; col < count; col++ ) {
+      int x = margins().leftMargin();
+      if( col > 0 ) {
+        x += col * deltaX;
       }
-      cells.add( new TsRectangle( margins().leftMargin(), y, cellSize.x(), cellSize.y() ) );
+      cells.add( new TsRectangle( x, margins().topMargin(), cellSize.x(), cellSize.y() ) );
     }
-    int height = margins().topMargin() + margins().bottomMargin() + 1;
+    int width = margins().leftMargin() + margins().rightMargin() + 1;
     if( count > 0 ) {
-      height += count * cellSize.y() + (count - 1) * margins().horInterval();
+      width += count * cellSize.x() + (count - 1) * margins().horInterval();
     }
     Point selfSize = getSize();
-    if( height != selfSize.y ) {
-      setSize( selfSize.x, height );
+    if( width != selfSize.x ) {
+      setSize( width, selfSize.y );
       return true;
     }
     return false;
@@ -113,7 +113,7 @@ class PictureGridCanvasVerLine
         return index;
       }
       case SWT.PAGE_DOWN: {
-        int pageLen = calcFittedRowCount( getSize().y );
+        int pageLen = calcFittedColCount( getSize().x );
         int index = aIndex + pageLen;
         if( index >= items.size() ) {
           index = 0;
@@ -121,7 +121,7 @@ class PictureGridCanvasVerLine
         return index;
       }
       case SWT.PAGE_UP: {
-        int pageLen = calcFittedRowCount( getSize().y );
+        int pageLen = calcFittedColCount( getSize().x );
         int index = aIndex - pageLen;
         if( index < 0 ) {
           index = items.size() - 1;

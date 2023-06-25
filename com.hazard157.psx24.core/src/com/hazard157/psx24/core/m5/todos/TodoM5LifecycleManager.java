@@ -1,6 +1,6 @@
 package com.hazard157.psx24.core.m5.todos;
 
-import static com.hazard157.lib.core.IHzLibConstants.*;
+import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.psx24.core.m5.todos.ITodoM5Constants.*;
 
 import org.toxsoft.core.tsgui.m5.*;

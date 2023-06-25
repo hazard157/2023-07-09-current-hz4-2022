@@ -1,4 +1,4 @@
-package com.hazard157.psx24.core.glib.plv;
+package com.hazard157.lib.core.excl_plan.plv;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.custom.*;
