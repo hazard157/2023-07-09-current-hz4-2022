@@ -8,7 +8,7 @@ import org.toxsoft.core.tsgui.panels.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.bricks.geometry.*;
 
-import com.hazard157.psx.common.utils.ftstep.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
@@ -76,19 +76,19 @@ public class TimelineCanvas
   //
 
   @Override
-  public ESecondsStep getFrameTimeStep() {
+  public ESecondsStep getTimeStep() {
     // TODO Auto-generated method stub
     return null;
   }
 
   @Override
-  public void setFrameTimeStep( ESecondsStep aStep ) {
+  public void setTimeStep( ESecondsStep aStep ) {
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public ESecondsStep defaultFrameTimeStep() {
+  public ESecondsStep defaultTimeStep() {
     // TODO Auto-generated method stub
     return null;
   }

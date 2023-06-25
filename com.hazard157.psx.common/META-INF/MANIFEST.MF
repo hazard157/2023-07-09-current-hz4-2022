@@ -33,5 +33,4 @@ Export-Package: com.hazard157.psx.common,
  com.hazard157.psx.common.stuff.place,
  com.hazard157.psx.common.stuff.sc,
  com.hazard157.psx.common.stuff.svin,
- com.hazard157.psx.common.utils,
- com.hazard157.psx.common.utils.ftstep
+ com.hazard157.psx.common.utils

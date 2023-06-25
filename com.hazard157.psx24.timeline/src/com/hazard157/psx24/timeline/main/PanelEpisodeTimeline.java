@@ -1,7 +1,7 @@
 package com.hazard157.psx24.timeline.main;
 
+import static com.hazard157.common.quants.secstep.SecondsSteppableDropDownMenuCreator.*;
 import static com.hazard157.psx24.core.IPsx24CoreConstants.*;
-import static com.hazard157.psx24.core.utils.ftstep.FrameTimeSteppableDropDownMenuCreator.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.image.impl.ThumbSizeableDropDownMenuCreator.*;
 
@@ -16,9 +16,8 @@ import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.psx.common.utils.ftstep.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx24.core.utils.ftstep.*;
 
 /**
  * Episode timeline panel.
@@ -48,7 +47,7 @@ public class PanelEpisodeTimeline
     this.setLayout( new BorderLayout() );
     // toolbar
     toolbar = TsToolbar.create( this, tsContext(), EIconSize.IS_24X24, //
-        AI_FRAME_TIME_STEPPABLE_ZOOM_FIT_MENU, //
+        AI_SEC_STEPPABLE_ZOOM_FIT_MENU, //
         AI_THUMB_SIZEABLE_ZOOM_MENU //
     );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
@@ -58,16 +57,16 @@ public class PanelEpisodeTimeline
     // setup
     toolbar.setActionMenu( AID_THUMB_SIZEABLE_ZOOM_MENU, new ThumbSizeableDropDownMenuCreator( timelineCanvas,
         tsContext(), EIconSize.IS_16X16, PSX_MIN_FRAME_THUMB_SIZE, PSX_MAX_FRAME_THUMB_SIZE ) );
-    FrameTimeSteppableDropDownMenuCreator ftsMc =
-        new FrameTimeSteppableDropDownMenuCreator( timelineCanvas, tsContext(), EIconSize.IS_16X16 ) {
+    SecondsSteppableDropDownMenuCreator ftsMc =
+        new SecondsSteppableDropDownMenuCreator( timelineCanvas, tsContext(), EIconSize.IS_16X16 ) {
 
           @Override
-          public void doSetFitSize( IFrameTimeSteppable aSubject ) {
-            handleAction( AID_FRAME_TIME_STEPPABLE_ZOOM_FIT );
+          public void doSetFitSize( ISecondsSteppable aSubject ) {
+            handleAction( AID_SEC_STEPPABLE_ZOOM_FIT );
           }
         };
     ftsMc.setFitMenuItem( true );
-    toolbar.setActionMenu( AID_FRAME_TIME_STEPPABLE_ZOOM_FIT, ftsMc );
+    toolbar.setActionMenu( AID_SEC_STEPPABLE_ZOOM_FIT, ftsMc );
     timelineCanvas.setEpisode( null );
     updateActionsState();
 
@@ -82,7 +81,7 @@ public class PanelEpisodeTimeline
     // TODO wait cursor!
     // ITsCursorManager cursorManager = appContext().get( ITsCursorManager.class );
     switch( aActionId ) {
-      case AID_FRAME_TIME_STEPPABLE_ZOOM_FIT:
+      case AID_SEC_STEPPABLE_ZOOM_FIT:
       case ACTID_ZOOM_FIT_BEST:
       case ACTID_ZOOM_FIT_WIDTH: {
         // TODO PanelEpisodeTimeline.handleAction()
@@ -101,10 +100,10 @@ public class PanelEpisodeTimeline
 
   void updateActionsState() {
     boolean isAlive = episode != null;
-    ESecondsStep step = timelineCanvas.getFrameTimeStep();
+    ESecondsStep step = timelineCanvas.getTimeStep();
     toolbar.setActionEnabled( ACTID_ZOOM_IN, !step.isMaxZoomIn() );
     toolbar.setActionEnabled( ACTID_ZOOM_OUT, !step.isMaxZoomOut() );
-    toolbar.setActionEnabled( ACTID_ZOOM_ORIGINAL, isAlive && step != timelineCanvas.defaultFrameTimeStep() );
+    toolbar.setActionEnabled( ACTID_ZOOM_ORIGINAL, isAlive && step != timelineCanvas.defaultTimeStep() );
   }
 
   // ------------------------------------------------------------------------------------

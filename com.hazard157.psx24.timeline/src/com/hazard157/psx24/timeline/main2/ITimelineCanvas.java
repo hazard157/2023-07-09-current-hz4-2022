@@ -3,8 +3,8 @@ package com.hazard157.psx24.timeline.main2;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.panels.lazy.*;
 
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx24.core.utils.ftstep.*;
 
 /**
  * Timeline drawing canvas.
@@ -15,7 +15,7 @@ import com.hazard157.psx24.core.utils.ftstep.*;
  */
 @SuppressWarnings( "javadoc" )
 public interface ITimelineCanvas
-    extends ILazyControl<Control>, IFrameTimeSteppable {
+    extends ILazyControl<Control>, ISecondsSteppable {
 
   IEpisode getEpisode();
 

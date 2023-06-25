@@ -1,10 +1,10 @@
 package com.hazard157.psx24.core.glib.frlstviewer_any;
 
+import static com.hazard157.common.quants.secstep.SecondsSteppableDropDownMenuCreator.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static com.hazard157.psx24.core.IPsx24CoreConstants.*;
 import static com.hazard157.psx24.core.IPsxAppActions.*;
 import static com.hazard157.psx24.core.glib.frlstviewer_any.IPsxResources.*;
-import static com.hazard157.psx24.core.utils.ftstep.FrameTimeSteppableDropDownMenuCreator.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.icons.EIconSize.*;
 import static org.toxsoft.core.tsgui.graphics.image.impl.ThumbSizeableDropDownMenuCreator.*;
@@ -45,11 +45,11 @@ import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.ankind.*;
 import com.hazard157.common.quants.secint.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.common.utils.*;
-import com.hazard157.psx.common.utils.ftstep.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 import com.hazard157.psx24.core.*;
@@ -57,7 +57,6 @@ import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.e4.services.playmenu.*;
 import com.hazard157.psx24.core.e4.services.prisex.*;
 import com.hazard157.psx24.core.glib.dialogs.imgs.*;
-import com.hazard157.psx24.core.utils.ftstep.*;
 
 /**
  * {@link IPanelSvinFramesViewer} implementation.
@@ -149,7 +148,7 @@ public class PanelSvinFramesViewer
   private IListBasicEdit<IFrame> shownFramesList =
       new SortedElemLinkedBundleList<>( getListInitialCapacity( estimateOrder( 1_000 ) ), true );
 
-  private ESecondsStep   shownFrameTimeStep = DEFAULT_FRAME_STEP;
+  private ESecondsStep   shownTimeStep      = DEFAULT_FRAME_STEP;
   private EAnimationKind shownAnimationKind = EAnimationKind.ANIMATED;
   private boolean        showOnlySvinCams   = false;
 
@@ -202,7 +201,7 @@ public class PanelSvinFramesViewer
     board.setLayout( new BorderLayout() );
     // toolbar
     toolbar = TsToolbar.create( board, tsContext(), EIconSize.IS_24X24, //
-        AI_FRAME_TIME_STEPPABLE_ZOOM_ORIGINAL_MENU, // Frame time step meny (density)
+        AI_SEC_STEPPABLE_ZOOM_ORIGINAL_MENU, // Frame time step meny (density)
         AI_THUMB_SIZEABLE_ZOOM_MENU, // Thumb size menu (zoom)
         AI_SHOW_AK_BOTH, AI_SHOW_AK_ANIMATED, AI_SHOW_AK_SINGLE, ACDEF_SEPARATOR, // Animation
         AI_CAM_ID_MENU, ACDEF_SEPARATOR, // Camera
@@ -215,8 +214,9 @@ public class PanelSvinFramesViewer
         PSX_MIN_FRAME_THUMB_SIZE, PSX_MAX_FRAME_THUMB_SIZE );
     toolbar.setActionMenu( AID_THUMB_SIZEABLE_ZOOM_MENU, tsDdmc );
     // frame time step menu
-    FrameTimeSteppableDropDownMenuCreator ftsDdmc = new FrameTimeSteppableDropDownMenuCreator( this, tsContext() );
-    toolbar.setActionMenu( AID_FRAME_TIME_STEPPABLE_ZOOM_ORIGINAL, ftsDdmc );
+    SecondsSteppableDropDownMenuCreator ftsDdmc =
+        new SecondsSteppableDropDownMenuCreator( this, tsContext(), IS_16X16 );
+    toolbar.setActionMenu( AID_SEC_STEPPABLE_ZOOM_ORIGINAL, ftsDdmc );
     // toolbar other staff
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
     toolbar.addListener( this );
@@ -286,7 +286,7 @@ public class PanelSvinFramesViewer
     if( !shownAnimationKind.accept( aFrame.isAnimated() ) ) {
       return false;
     }
-    if( !aFrame.isAnimated() && (aFrame.secNo() % shownFrameTimeStep.stepSecs()) != 0 ) {
+    if( !aFrame.isAnimated() && (aFrame.secNo() % shownTimeStep.stepSecs()) != 0 ) {
       return false;
     }
     if( showOnlySvinCams ) {
@@ -305,7 +305,7 @@ public class PanelSvinFramesViewer
    * <li>{@link #svins} - этот метод всегда следует вызывать после {@link #internalUpdate_onSvinsListChange()};</li>
    * <li>{@link #shownAnimationKind};</li>
    * <li>{@link #shownCameraIds};</li>
-   * <li>{@link #shownFrameTimeStep};</li>
+   * <li>{@link #shownTimeStep};</li>
    * <li>состояние кнопки {@link IPsxAppActions#ACDEF_ONE_BY_ONE}.</li>
    * </ul>
    */
@@ -488,8 +488,8 @@ public class PanelSvinFramesViewer
         setThumbSize( viewer.defaultThumbSize() );
         break;
       }
-      case AID_FRAME_TIME_STEPPABLE_ZOOM_ORIGINAL: {
-        setFrameTimeStep( DEFAULT_FRAME_STEP );
+      case AID_SEC_STEPPABLE_ZOOM_ORIGINAL: {
+        setTimeStep( DEFAULT_FRAME_STEP );
         break;
       }
       case AID_SHOW_AK_BOTH: {
@@ -612,26 +612,26 @@ public class PanelSvinFramesViewer
   }
 
   // ------------------------------------------------------------------------------------
-  // IFrameTimeSteppable
+  // ITimeSteppable
   //
 
   @Override
-  public ESecondsStep getFrameTimeStep() {
-    return shownFrameTimeStep;
+  public ESecondsStep getTimeStep() {
+    return shownTimeStep;
   }
 
   @Override
-  public void setFrameTimeStep( ESecondsStep aStep ) {
+  public void setTimeStep( ESecondsStep aStep ) {
     TsNullArgumentRtException.checkNull( aStep );
-    if( shownFrameTimeStep != aStep ) {
-      shownFrameTimeStep = aStep;
+    if( shownTimeStep != aStep ) {
+      shownTimeStep = aStep;
       internalUpdate_shownFramesList();
       refreshViewer();
     }
   }
 
   @Override
-  public ESecondsStep defaultFrameTimeStep() {
+  public ESecondsStep defaultTimeStep() {
     return DEFAULT_FRAME_STEP;
   }
 

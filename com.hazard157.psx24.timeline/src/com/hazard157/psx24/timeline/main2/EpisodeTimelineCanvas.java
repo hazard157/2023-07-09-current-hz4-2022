@@ -18,10 +18,9 @@ import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.psx.common.utils.ftstep.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
-import com.hazard157.psx24.core.utils.ftstep.*;
 import com.hazard157.psx24.timeline.main2.stripes.*;
 
 /**
@@ -32,7 +31,7 @@ import com.hazard157.psx24.timeline.main2.stripes.*;
 @SuppressWarnings( "nls" )
 class EpisodeTimelineCanvas
     extends AbstractLazyPanel<Control>
-    implements IThumbSizeableEx, IFrameTimeSteppable, ITsUserInputListener {
+    implements IThumbSizeableEx, ISecondsSteppable, ITsUserInputListener {
 
   private static final int DEFAULT_NULL_EPISODE_DURATION_SECS = 3 * 60;
   private static final int MIN_DURATION_SECS                  = 2 * 60;
@@ -72,7 +71,7 @@ class EpisodeTimelineCanvas
 
     @Override
     public ESecondsStep timelineStep() {
-      return EpisodeTimelineCanvas.this.getFrameTimeStep();
+      return EpisodeTimelineCanvas.this.getTimeStep();
     }
 
     @Override
@@ -210,16 +209,16 @@ class EpisodeTimelineCanvas
   }
 
   // ------------------------------------------------------------------------------------
-  // IFrameTimeSteppable
+  // ITimeSteppable
   //
 
   @Override
-  public ESecondsStep getFrameTimeStep() {
+  public ESecondsStep getTimeStep() {
     return step;
   }
 
   @Override
-  public void setFrameTimeStep( ESecondsStep aStep ) {
+  public void setTimeStep( ESecondsStep aStep ) {
     TsNullArgumentRtException.checkNull( aStep );
     if( step != aStep ) {
       step = aStep;
@@ -228,7 +227,7 @@ class EpisodeTimelineCanvas
   }
 
   @Override
-  public ESecondsStep defaultFrameTimeStep() {
+  public ESecondsStep defaultTimeStep() {
     return DEFAULT_FRAME_TIME_STEP;
   }
 

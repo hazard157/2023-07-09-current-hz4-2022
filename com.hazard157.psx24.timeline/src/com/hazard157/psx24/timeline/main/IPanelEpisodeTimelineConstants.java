@@ -8,7 +8,7 @@ import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.av.impl.*;
 import org.toxsoft.core.tslib.av.metainfo.*;
 
-import com.hazard157.psx.common.utils.ftstep.*;
+import com.hazard157.common.quants.secstep.*;
 
 /**
  * Timeline constants.

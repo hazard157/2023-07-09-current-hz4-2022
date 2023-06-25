@@ -67,6 +67,5 @@ Export-Package: com.hazard157.psx24.core,
  com.hazard157.psx24.core.m5.trailer,
  com.hazard157.psx24.core.m5.visumple,
  com.hazard157.psx24.core.utils,
- com.hazard157.psx24.core.utils.ftstep,
  com.hazard157.psx24.core.utils.gifgen,
  com.hazard157.psx24.core.valeds.frames

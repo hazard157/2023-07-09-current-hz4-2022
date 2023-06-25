@@ -1,7 +1,7 @@
 package com.hazard157.psx24.timeline.main2;
 
+import static com.hazard157.common.quants.secstep.SecondsSteppableDropDownMenuCreator.*;
 import static com.hazard157.psx24.core.IPsx24CoreConstants.*;
-import static com.hazard157.psx24.core.utils.ftstep.FrameTimeSteppableDropDownMenuCreator.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.image.impl.ThumbSizeableDropDownMenuCreator.*;
 
@@ -17,9 +17,8 @@ import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.psx.common.utils.ftstep.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx24.core.utils.ftstep.*;
 
 /**
  * Вертикальный грфик плана.
@@ -57,7 +56,7 @@ public class PanelEpisodeTimeline
     this.setLayout( new BorderLayout() );
     // toolbar
     toolbar = TsToolbar.create( this, tsContext(), EIconSize.IS_24X24, //
-        AI_FRAME_TIME_STEPPABLE_ZOOM_FIT_MENU, //
+        AI_SEC_STEPPABLE_ZOOM_FIT_MENU, //
         AI_THUMB_SIZEABLE_ZOOM_MENU //
     );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
@@ -73,17 +72,17 @@ public class PanelEpisodeTimeline
     // setup
     toolbar.setActionMenu( AID_THUMB_SIZEABLE_ZOOM_MENU, new ThumbSizeableDropDownMenuCreator( ptc, tsContext(),
         EIconSize.IS_16X16, PSX_MIN_FRAME_THUMB_SIZE, PSX_MAX_FRAME_THUMB_SIZE ) );
-    FrameTimeSteppableDropDownMenuCreator ftsMc =
-        new FrameTimeSteppableDropDownMenuCreator( ptc, tsContext(), EIconSize.IS_16X16 ) {
+    SecondsSteppableDropDownMenuCreator ftsMc =
+        new SecondsSteppableDropDownMenuCreator( ptc, tsContext(), EIconSize.IS_16X16 ) {
 
           @Override
-          public void doSetFitSize( IFrameTimeSteppable aSubject ) {
-            processAction( AID_FRAME_TIME_STEPPABLE_ZOOM_FIT );
+          public void doSetFitSize( ISecondsSteppable aSubject ) {
+            processAction( AID_SEC_STEPPABLE_ZOOM_FIT );
           }
         };
     ftsMc.setFitMenuItem( true );
-    toolbar.setActionMenu( AID_FRAME_TIME_STEPPABLE_ZOOM_FIT, ftsMc );
-    ptc.setFrameTimeStep( ORIGINAL_ZOOM_TIMELINE_STEP );
+    toolbar.setActionMenu( AID_SEC_STEPPABLE_ZOOM_FIT, ftsMc );
+    ptc.setTimeStep( ORIGINAL_ZOOM_TIMELINE_STEP );
     ptc.setEpisode( null );
     updateActionsState();
   }
@@ -92,10 +91,10 @@ public class PanelEpisodeTimeline
   // Внутренние методы
   //
 
-  ESecondsStep calcFitFrameTimeStep() {
+  ESecondsStep calcFitTimeStep() {
     IEpisode ep = ptc.getEpisode();
     if( ep == null ) {
-      return ptc.defaultFrameTimeStep();
+      return ptc.defaultTimeStep();
     }
     double stripesAreaWidth = scrollPanel.getClientArea().width - ptc.getWidthOfHelperAreas();
     double duration = ep.duration();
@@ -109,11 +108,11 @@ public class PanelEpisodeTimeline
     // TODO wait cursor!
     // ITsCursorManager cursorManager = appContext().get( ITsCursorManager.class );
     switch( aActionId ) {
-      case AID_FRAME_TIME_STEPPABLE_ZOOM_FIT:
+      case AID_SEC_STEPPABLE_ZOOM_FIT:
       case ACTID_ZOOM_FIT_BEST:
       case ACTID_ZOOM_FIT_WIDTH: {
-        ESecondsStep bestStep = calcFitFrameTimeStep();
-        ptc.setFrameTimeStep( bestStep );
+        ESecondsStep bestStep = calcFitTimeStep();
+        ptc.setTimeStep( bestStep );
         break;
       }
       case AID_THUMB_SIZEABLE_ZOOM_MENU: {
@@ -128,7 +127,7 @@ public class PanelEpisodeTimeline
 
   void updateActionsState() {
     boolean isAlive = ptc.getEpisode() != null;
-    ESecondsStep step = ptc.getFrameTimeStep();
+    ESecondsStep step = ptc.getTimeStep();
     toolbar.setActionEnabled( ACTID_ZOOM_IN, !step.isMaxZoomIn() );
     toolbar.setActionEnabled( ACTID_ZOOM_OUT, !step.isMaxZoomOut() );
     toolbar.setActionEnabled( ACTID_ZOOM_ORIGINAL, isAlive && step != ORIGINAL_ZOOM_TIMELINE_STEP );

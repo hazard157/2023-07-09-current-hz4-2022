@@ -8,10 +8,9 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 
 import com.hazard157.common.quants.ankind.*;
+import com.hazard157.common.quants.secstep.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
-import com.hazard157.psx.common.utils.ftstep.*;
-import com.hazard157.psx24.core.utils.ftstep.*;
 
 /**
  * Panel shows one episode frames in specified intervals.
@@ -33,7 +32,7 @@ import com.hazard157.psx24.core.utils.ftstep.*;
 @SuppressWarnings( "javadoc" )
 public interface IPanelSvinFramesViewer
     extends ILazyControl<Control>, ITsSelectionProvider<IFrame>, ITsDoubleClickEventProducer<IFrame>, IThumbSizeableEx,
-    IFrameTimeSteppable {
+    ISecondsSteppable {
 
   IList<Svin> getSvins();
 

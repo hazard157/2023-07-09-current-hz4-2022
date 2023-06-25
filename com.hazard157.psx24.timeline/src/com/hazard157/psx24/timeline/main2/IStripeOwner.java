@@ -4,7 +4,7 @@ import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.psx.common.utils.ftstep.*;
+import com.hazard157.common.quants.secstep.*;
 
 /**
  * Stripes painter component API for stripes implementations.
