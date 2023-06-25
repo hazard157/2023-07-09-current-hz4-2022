@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint.glib;
+package com.hazard157.lib.core.excl_plan.secint.gui;
 
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.panels.lazy.*;

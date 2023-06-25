@@ -21,7 +21,7 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 
 import com.hazard157.lib.core.excl_plan.secint.*;
-import com.hazard157.lib.core.excl_plan.secint.m5.*;
+import com.hazard157.lib.core.excl_plan.secint.gui.*;
 import com.hazard157.lib.core.excl_plan.secint.valed.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.e4.services.currep.*;

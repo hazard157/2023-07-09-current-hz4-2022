@@ -4,6 +4,9 @@ import static com.hazard157.lib.core.excl_plan.secint.IPsxResources.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 
 import org.toxsoft.core.tsgui.utils.*;
+import org.toxsoft.core.tslib.bricks.keeper.*;
+import org.toxsoft.core.tslib.bricks.keeper.AbstractEntityKeeper.*;
+import org.toxsoft.core.tslib.bricks.strio.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.bricks.validator.impl.*;
 import org.toxsoft.core.tslib.utils.*;
@@ -38,6 +41,11 @@ public class Secint
   public static final Secint ZERO = new Secint( 0, 0 );
 
   /**
+   * String representation of the {@link #NULL}.
+   */
+  public static final String STR_NULL = "Secint.NULL"; //$NON-NLS-1$
+
+  /**
    * "Нулевой" объект, для использования вместо <code>null</code> там, где Java-API не допускает <code>null</code>.
    */
   public static final Secint NULL = new Secint( 0, 0 ) {
@@ -47,7 +55,40 @@ public class Secint
       return true;
     }
 
+    @Override
+    public String toString() {
+      return STR_NULL;
+    }
+
   };
+
+  /**
+   * The registered keeper ID.
+   */
+  public static final String KEEPER_ID = "Secint"; //$NON-NLS-1$
+
+  /**
+   * The keeper singleton.
+   */
+  public static IEntityKeeper<Secint> KEEPER =
+      new AbstractEntityKeeper<>( Secint.class, EEncloseMode.ENCLOSES_BASE_CLASS, null ) {
+
+        @Override
+        protected void doWrite( IStrioWriter aSw, Secint aEntity ) {
+          writeAutoHms( aSw, aEntity.start() );
+          aSw.writeSeparatorChar();
+          writeAutoHms( aSw, aEntity.end() );
+        }
+
+        @Override
+        protected Secint doRead( IStrioReader aSr ) {
+          int start = readAutoHms( aSr );
+          aSr.ensureSeparatorChar();
+          int end = readAutoHms( aSr );
+          return new Secint( start, end );
+        }
+
+      };
 
   private final int start;
   private final int end;

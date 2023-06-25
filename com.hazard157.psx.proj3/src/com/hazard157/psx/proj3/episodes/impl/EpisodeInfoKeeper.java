@@ -50,7 +50,7 @@ public class EpisodeInfoKeeper
     aSw.writeSeparatorChar();
     HmsUtils.writeMmSs( aSw, aEntity.duration() );
     aSw.writeSeparatorChar();
-    SecintKeeper.KEEPER.write( aSw, aEntity.actionInterval() );
+    Secint.KEEPER.write( aSw, aEntity.actionInterval() );
     aSw.writeSeparatorChar();
     aSw.writeQuotedString( aEntity.defaultTrailerId() );
     aSw.writeSeparatorChar();
@@ -76,7 +76,7 @@ public class EpisodeInfoKeeper
     aSr.ensureSeparatorChar();
     int duration = HmsUtils.readMmSs( aSr );
     aSr.ensureSeparatorChar();
-    Secint actionInterval = SecintKeeper.KEEPER.read( aSr );
+    Secint actionInterval = Secint.KEEPER.read( aSr );
     aSr.ensureSeparatorChar();
     String defTrailerId = aSr.readQuotedString();
     aSr.ensureSeparatorChar();

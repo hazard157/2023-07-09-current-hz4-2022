@@ -6,7 +6,7 @@ import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 
 import com.hazard157.lib.core.excl_plan.secint.*;
-import com.hazard157.lib.core.excl_plan.secint.m5.*;
+import com.hazard157.lib.core.excl_plan.secint.gui.*;
 import com.hazard157.lib.core.excl_plan.secint.valed.*;
 import com.hazard157.lib.core.excl_plan.visumple.*;
 

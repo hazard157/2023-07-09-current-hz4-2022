@@ -35,7 +35,7 @@ public class ChunkKeeper
     aSw.writeSeparatorChar();
     aSw.writeQuotedString( aEntity.name() );
     aSw.writeSeparatorChar();
-    SecintKeeper.KEEPER.write( aSw, aEntity.interval() );
+    Secint.KEEPER.write( aSw, aEntity.interval() );
     aSw.writeSeparatorChar();
     FrameKeeper.KEEPER.write( aSw, aEntity.frame() );
   }
@@ -48,7 +48,7 @@ public class ChunkKeeper
     aSr.ensureSeparatorChar();
     String name = aSr.readQuotedString();
     aSr.ensureSeparatorChar();
-    Secint in = SecintKeeper.KEEPER.read( aSr );
+    Secint in = Secint.KEEPER.read( aSr );
     aSr.ensureSeparatorChar();
     IFrame frame = FrameKeeper.KEEPER.read( aSr );
     return new Chunk( episodeId, camId, name, in, frame );

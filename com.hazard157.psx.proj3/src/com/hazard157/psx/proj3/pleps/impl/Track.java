@@ -27,14 +27,14 @@ class Track
         protected void doWrite( IStrioWriter aSw, ITrack aEntity ) {
           aSw.writeAsIs( aEntity.songId() );
           aSw.writeSeparatorChar();
-          SecintKeeper.KEEPER.write( aSw, aEntity.interval() );
+          Secint.KEEPER.write( aSw, aEntity.interval() );
         }
 
         @Override
         protected ITrack doRead( IStrioReader aSr ) {
           String songId = aSr.readIdPath();
           aSr.ensureSeparatorChar();
-          Secint interval = SecintKeeper.KEEPER.read( aSr );
+          Secint interval = Secint.KEEPER.read( aSr );
           return new Track( songId, interval );
         }
       };

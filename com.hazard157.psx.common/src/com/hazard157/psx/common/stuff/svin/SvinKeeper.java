@@ -37,7 +37,7 @@ public class SvinKeeper
     aSw.writeSeparatorChar();
     aSw.writeAsIs( aEntity.cameraId() );
     aSw.writeSeparatorChar();
-    SecintKeeper.KEEPER.write( aSw, aEntity.interval() );
+    Secint.KEEPER.write( aSw, aEntity.interval() );
   }
 
   @Override
@@ -48,7 +48,7 @@ public class SvinKeeper
     camId = aSr.readIdPath();
     aSr.ensureSeparatorChar();
     Secint in = null;
-    in = SecintKeeper.KEEPER.read( aSr );
+    in = Secint.KEEPER.read( aSr );
     char ch = aSr.peekChar( EStrioSkipMode.SKIP_BYPASSED );
     IFrame frame = IFrame.NONE;
     if( ch == CHAR_ITEM_SEPARATOR ) {

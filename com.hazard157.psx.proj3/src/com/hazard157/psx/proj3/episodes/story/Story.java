@@ -46,7 +46,7 @@ public class Story
 
   private static void writeScene( IStrioWriter aSw, IScene aS ) {
     aSw.writeChar( CHAR_SET_BEGIN );
-    SecintKeeper.KEEPER.write( aSw, aS.interval() );
+    Secint.KEEPER.write( aSw, aS.interval() );
     aSw.writeSeparatorChar();
     SceneInfoKeeper.KEEPER.write( aSw, aS.info() );
     aSw.writeSeparatorChar();
@@ -72,7 +72,7 @@ public class Story
 
   private static void readScene( IStrioReader aSr, AbstractScene aParent ) {
     aSr.ensureChar( CHAR_SET_BEGIN );
-    Secint in = SecintKeeper.KEEPER.read( aSr );
+    Secint in = Secint.KEEPER.read( aSr );
     aSr.ensureSeparatorChar();
     SceneInfo sceneInfo = SceneInfoKeeper.KEEPER.read( aSr );
     aSr.ensureSeparatorChar();

@@ -3,9 +3,14 @@ package com.hazard157.lib.core.excl_plan.secint;
 import java.util.*;
 
 import org.toxsoft.core.tslib.bricks.events.change.*;
+import org.toxsoft.core.tslib.bricks.keeper.*;
+import org.toxsoft.core.tslib.bricks.keeper.AbstractEntityKeeper.*;
+import org.toxsoft.core.tslib.bricks.strio.*;
+import org.toxsoft.core.tslib.bricks.strio.impl.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.basis.*;
 import org.toxsoft.core.tslib.coll.impl.*;
+import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 /**
@@ -18,6 +23,29 @@ import org.toxsoft.core.tslib.utils.errors.*;
  */
 public class SecintsList
     implements ISecintsListEdit {
+
+  /**
+   * The registered keeper ID.
+   */
+  public static final String KEEPER_ID = "SecintsList"; //$NON-NLS-1$
+
+  /**
+   * The keeper singleton.
+   */
+  public static IEntityKeeper<ISecintsList> KEEPER =
+      new AbstractEntityKeeper<>( ISecintsList.class, EEncloseMode.ENCLOSES_KEEPER_IMPLEMENTATION, null ) {
+
+        @Override
+        protected void doWrite( IStrioWriter aDw, ISecintsList aEntity ) {
+          StrioUtils.writeCollection( aDw, TsLibUtils.EMPTY_STRING, aEntity, Secint.KEEPER, false );
+        }
+
+        @Override
+        protected ISecintsList doRead( IStrioReader aDr ) {
+          IList<Secint> ll = StrioUtils.readCollection( aDr, TsLibUtils.EMPTY_STRING, Secint.KEEPER );
+          return new SecintsList( ll );
+        }
+      };
 
   private final GenericChangeEventer   eventer;
   private final IListBasicEdit<Secint> items = new SortedElemLinkedBundleList<>();

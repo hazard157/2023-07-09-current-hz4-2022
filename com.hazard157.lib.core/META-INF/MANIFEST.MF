@@ -29,7 +29,6 @@ Export-Package: com.hazard157.lib.core,
  com.hazard157.lib.core.excl_plan.picview,
  com.hazard157.lib.core.excl_plan.projtree,
  com.hazard157.lib.core.excl_plan.secint,
- com.hazard157.lib.core.excl_plan.secint.glib,
- com.hazard157.lib.core.excl_plan.secint.m5,
+ com.hazard157.lib.core.excl_plan.secint.gui,
  com.hazard157.lib.core.excl_plan.secint.valed,
  com.hazard157.lib.core.excl_plan.visumple

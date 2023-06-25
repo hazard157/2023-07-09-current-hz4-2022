@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.excl_plan.secint.m5;
+package com.hazard157.lib.core.excl_plan.secint.gui;
 
-import static com.hazard157.lib.core.excl_plan.secint.m5.IPsxResources.*;
+import static com.hazard157.lib.core.excl_plan.secint.gui.IPsxResources.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 

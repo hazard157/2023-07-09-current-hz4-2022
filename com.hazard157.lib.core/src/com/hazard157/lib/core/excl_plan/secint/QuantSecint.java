@@ -1,8 +1,8 @@
 package com.hazard157.lib.core.excl_plan.secint;
 
-import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.toxsoft.core.tsgui.bricks.quant.AbstractQuant;
-import org.toxsoft.core.tslib.utils.valobj.TsValobjUtils;
+import org.eclipse.e4.core.contexts.*;
+import org.toxsoft.core.tsgui.bricks.quant.*;
+import org.toxsoft.core.tslib.utils.valobj.*;
 
 /**
  * Квант работы с интервалами в виедоматериалах.
@@ -17,8 +17,8 @@ public class QuantSecint
    */
   public QuantSecint() {
     super( QuantSecint.class.getSimpleName() );
-    TsValobjUtils.registerKeeperIfNone( SecintKeeper.KEEPER_ID, SecintKeeper.KEEPER );
-    TsValobjUtils.registerKeeperIfNone( SecintsListKeeper.ID, SecintsListKeeper.KEEPER );
+    TsValobjUtils.registerKeeperIfNone( Secint.KEEPER_ID, Secint.KEEPER );
+    TsValobjUtils.registerKeeperIfNone( SecintsList.KEEPER_ID, SecintsList.KEEPER );
   }
 
   @Override

@@ -318,7 +318,7 @@ public class TagLine
       IIntMap<Secint> marks = marksMap.values().get( i );
       aSw.writeAsIs( tagId );
       aSw.writeChars( CHAR_SPACE, CHAR_EQUAL, CHAR_SPACE );
-      SecintKeeper.KEEPER.writeColl( aSw, marks.values(), false );
+      Secint.KEEPER.writeColl( aSw, marks.values(), false );
       if( i < n - 1 ) {
         aSw.writeChar( CHAR_ITEM_SEPARATOR );
         aSw.writeEol();
@@ -336,7 +336,7 @@ public class TagLine
       do {
         String tagId = aSr.readIdPath();
         aSr.ensureChar( CHAR_EQUAL );
-        IList<Secint> ins = SecintKeeper.KEEPER.readColl( aSr );
+        IList<Secint> ins = Secint.KEEPER.readColl( aSr );
         IIntMapEdit<Secint> marks = new SortedIntMap<>();
         for( Secint in : ins ) {
           marks.put( in.start(), in );

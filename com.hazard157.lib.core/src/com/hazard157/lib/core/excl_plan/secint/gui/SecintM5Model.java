@@ -1,8 +1,8 @@
-package com.hazard157.lib.core.excl_plan.secint.m5;
+package com.hazard157.lib.core.excl_plan.secint.gui;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.excl_plan.secint.m5.IPsxResources.*;
-import static com.hazard157.lib.core.excl_plan.secint.m5.ISecintM5Constants.*;
+import static com.hazard157.lib.core.excl_plan.secint.gui.IPsxResources.*;
+import static com.hazard157.lib.core.excl_plan.secint.gui.ISecintM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;

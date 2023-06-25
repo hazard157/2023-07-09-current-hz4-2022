@@ -1,6 +1,6 @@
 package com.hazard157.psx24.explorer.m5;
 
-import static com.hazard157.lib.core.excl_plan.secint.m5.ISecintM5Constants.*;
+import static com.hazard157.lib.core.excl_plan.secint.gui.ISecintM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;

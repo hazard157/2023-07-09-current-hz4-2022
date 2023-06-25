@@ -108,13 +108,13 @@ public class NoteLine
 
   @Override
   public void write( IStrioWriter aDw ) {
-    StrioUtils.writeMap( aDw, EMPTY_STRING, marksMap, SecintKeeper.KEEPER, StringKeeper.KEEPER, true );
+    StrioUtils.writeMap( aDw, EMPTY_STRING, marksMap, Secint.KEEPER, StringKeeper.KEEPER, true );
   }
 
   @Override
   public void read( IStrioReader aDr ) {
     marksMap.clear();
-    StrioUtils.readMap( aDr, EMPTY_STRING, SecintKeeper.KEEPER, StringKeeper.KEEPER, marksMap );
+    StrioUtils.readMap( aDr, EMPTY_STRING, Secint.KEEPER, StringKeeper.KEEPER, marksMap );
     fireChangeEvent();
   }
 

@@ -1,16 +1,18 @@
 package com.hazard157.lib.core.excl_plan.secint;
 
+import com.hazard157.common.quants.secint.Secint;
+
 /**
- * Примешиваемый интерфейс сущностей, которые определены на каком-то интервале {@link Secint}.
+ * Mix-in interface for entities having seconds interval .
  *
  * @author hazard157
  */
 public interface ISecintable {
 
   /**
-   * Возвращает интервал, на которой определена сущность.
-   * 
-   * @return {@link Secint} - интервал в секундах
+   * Returns the interval of the entity.
+   *
+   * @return {@link Secint} - the interval
    */
   Secint interval();
 
