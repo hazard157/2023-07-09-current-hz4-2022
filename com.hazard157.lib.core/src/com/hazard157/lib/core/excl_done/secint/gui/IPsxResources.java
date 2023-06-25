@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint.gui;
+package com.hazard157.lib.core.excl_done.secint.gui;
 
 /**
  * Localizable resources.

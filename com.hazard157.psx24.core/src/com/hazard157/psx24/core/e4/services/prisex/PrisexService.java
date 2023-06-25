@@ -17,7 +17,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
 import com.hazard157.common.e4.services.mps.*;
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;

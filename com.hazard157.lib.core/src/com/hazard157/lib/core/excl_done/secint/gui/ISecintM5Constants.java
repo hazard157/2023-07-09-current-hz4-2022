@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.excl_plan.secint.gui;
+package com.hazard157.lib.core.excl_done.secint.gui;
 
-import static com.hazard157.lib.core.excl_plan.secint.gui.IPsxResources.*;
+import static com.hazard157.lib.core.excl_done.secint.gui.IPsxResources.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
@@ -12,8 +12,8 @@ import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.av.validators.defav.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
-import com.hazard157.lib.core.excl_plan.secint.valed.*;
+import com.hazard157.lib.core.excl_done.secint.*;
+import com.hazard157.lib.core.excl_done.secint.valed.*;
 
 /**
  * Константы M3-моделирования библиотеки MP.

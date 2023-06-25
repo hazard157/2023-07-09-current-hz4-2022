@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint.valed;
+package com.hazard157.lib.core.excl_done.secint.valed;
 
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.lib.core.excl_done.secint.*;
 
 /**
  * Редактор {@link EAtomicType#VALOBJ}, содержащий {@link Secint}.

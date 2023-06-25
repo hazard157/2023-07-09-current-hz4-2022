@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.excl_plan.secint.valed;
+package com.hazard157.lib.core.excl_done.secint.valed;
 
-import static com.hazard157.lib.core.excl_plan.secint.valed.IPsxResources.*;
+import static com.hazard157.lib.core.excl_done.secint.valed.IPsxResources.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
@@ -17,8 +17,8 @@ import org.toxsoft.core.tslib.bricks.ctx.*;
 import org.toxsoft.core.tslib.bricks.validator.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
-import com.hazard157.lib.core.excl_plan.secint.gui.*;
+import com.hazard157.lib.core.excl_done.secint.*;
+import com.hazard157.lib.core.excl_done.secint.gui.*;
 
 /**
  * Редактор (и просмотрщик) поля типа {@link Secint}.

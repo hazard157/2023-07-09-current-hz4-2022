@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint;
+package com.hazard157.lib.core.excl_done.secint;
 
 import com.hazard157.common.quants.secint.Secint;
 

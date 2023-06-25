@@ -6,7 +6,7 @@ import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.utils.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.lib.core.excl_plan.visumple.*;
 
 /**

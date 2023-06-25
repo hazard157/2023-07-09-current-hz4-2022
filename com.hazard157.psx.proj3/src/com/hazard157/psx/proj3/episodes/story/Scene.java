@@ -2,7 +2,7 @@ package com.hazard157.psx.proj3.episodes.story;
 
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**

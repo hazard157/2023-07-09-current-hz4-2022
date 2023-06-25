@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.excl_plan.secint.valed;
+package com.hazard157.lib.core.excl_done.secint.valed;
 
-import static com.hazard157.lib.core.excl_plan.secint.valed.IPsxResources.*;
+import static com.hazard157.lib.core.excl_done.secint.valed.IPsxResources.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
 import static org.toxsoft.core.tslib.av.EAtomicType.*;

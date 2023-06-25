@@ -16,7 +16,6 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 
 import com.hazard157.common.quants.ankind.*;
-import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;
@@ -136,7 +135,7 @@ public class UipartPqResultsViewer
     }
     // если иллюстрация сцены хорошо попадает в интервал, возьмем его
     IScene scene = e.story().findBestSceneFor( aSvin.interval(), true );
-    if( SecintUtils.containsEx( aSvin.interval(), scene.frame().secNo(), 2, 2 ) ) {
+    if( aSvin.interval().containsEx( scene.frame().secNo(), 2, 2 ) ) {
       return scene.frame();
     }
     // попробуем кадр камерой иллюстрации сцены в интервале

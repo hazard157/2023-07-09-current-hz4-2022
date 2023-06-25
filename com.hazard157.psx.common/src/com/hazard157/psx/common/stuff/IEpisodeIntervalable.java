@@ -1,6 +1,6 @@
 package com.hazard157.psx.common.stuff;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 
 /**
  * Entities that are related to the time interval of an episode.

@@ -1,7 +1,7 @@
 package com.hazard157.psx24.core.m5.songs;
 
+import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.excl_plan.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.psx24.core.m5.songs.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.rcp.valed.IValedFileConstants.*;

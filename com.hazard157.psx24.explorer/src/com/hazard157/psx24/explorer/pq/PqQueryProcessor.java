@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.logs.impl.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx24.explorer.filters.*;

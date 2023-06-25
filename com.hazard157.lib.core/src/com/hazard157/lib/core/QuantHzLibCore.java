@@ -2,12 +2,7 @@ package com.hazard157.lib.core;
 
 import org.eclipse.e4.core.contexts.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;
-import org.toxsoft.core.tsgui.m5.*;
-import org.toxsoft.core.tsgui.valed.api.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
-import com.hazard157.lib.core.excl_plan.secint.gui.*;
-import com.hazard157.lib.core.excl_plan.secint.valed.*;
 import com.hazard157.lib.core.excl_plan.visumple.*;
 
 /**
@@ -24,7 +19,6 @@ public class QuantHzLibCore
   public QuantHzLibCore() {
     super( QuantHzLibCore.class.getSimpleName() );
     //
-    registerQuant( new QuantSecint() );
     registerQuant( new QuantVisumple() );
   }
 
@@ -38,15 +32,15 @@ public class QuantHzLibCore
   protected void doInitWin( IEclipseContext aWinContext ) {
     IHzLibConstants.init( aWinContext );
     //
-    IValedControlFactoriesRegistry vr = aWinContext.get( IValedControlFactoriesRegistry.class );
-    vr.registerFactory( ValedAvIntHhmmss.FACTORY );
-    vr.registerFactory( ValedSecintFactory.FACTORY );
-    vr.registerFactory( ValedAvSecintFactory.FACTORY );
+    // IValedControlFactoriesRegistry vr = aWinContext.get( IValedControlFactoriesRegistry.class );
+    // vr.registerFactory( ValedAvIntHhmmss.FACTORY );
+    // vr.registerFactory( ValedSecintFactory.FACTORY );
+    // vr.registerFactory( ValedAvSecintFactory.FACTORY );
     // vr.registerFactory( ValedAvValobjRadioPropEnumStars.FACTORY );
     // vr.registerFactory( ValedRadioPropEnumStars.FACTORY );
     //
-    IM5Domain m5 = aWinContext.get( IM5Domain.class );
-    m5.addModel( new SecintM5Model() );
+    // IM5Domain m5 = aWinContext.get( IM5Domain.class );
+    // m5.addModel( new SecintM5Model() );
   }
 
 }

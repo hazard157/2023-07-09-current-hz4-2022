@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint;
+package com.hazard157.lib.core.excl_done.secint;
 
 import org.eclipse.e4.core.contexts.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;

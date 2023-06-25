@@ -1,8 +1,8 @@
-package com.hazard157.lib.core.excl_plan.secint.gui;
+package com.hazard157.lib.core.excl_done.secint.gui;
 
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.excl_plan.secint.gui.IPsxResources.*;
-import static com.hazard157.lib.core.excl_plan.secint.gui.ISecintM5Constants.*;
+import static com.hazard157.lib.core.excl_done.secint.gui.IPsxResources.*;
+import static com.hazard157.lib.core.excl_done.secint.gui.ISecintM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
@@ -24,7 +24,7 @@ import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.lib.core.excl_done.secint.*;
 
 /**
  * Модель объектов типа {@link Secint}.

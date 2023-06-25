@@ -14,8 +14,8 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.lib.core.excl_plan.acsupart.*;
-import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.glib.frview.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;

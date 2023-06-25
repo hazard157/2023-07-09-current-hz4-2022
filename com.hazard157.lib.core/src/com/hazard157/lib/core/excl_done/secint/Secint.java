@@ -1,6 +1,6 @@
-package com.hazard157.lib.core.excl_plan.secint;
+package com.hazard157.lib.core.excl_done.secint;
 
-import static com.hazard157.lib.core.excl_plan.secint.IPsxResources.*;
+import static com.hazard157.lib.core.excl_done.secint.IPsxResources.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 
 import org.toxsoft.core.tsgui.utils.*;
@@ -399,9 +399,9 @@ public class Secint
   }
 
   /**
-   * Возвращает полное текстовое представление в виде "[ start, end ] - (dur)"
+   * Returns full textual representation as "[ start, end ] - (dur)"
    *
-   * @return String - полное текстовое представление
+   * @return String - the full textual representation
    */
   @SuppressWarnings( "nls" )
   public String fullStr() {

@@ -30,7 +30,7 @@ import org.toxsoft.core.txtproj.lib.bound.*;
 import org.toxsoft.core.txtproj.lib.impl.*;
 
 import com.hazard157.common.quants.rating.*;
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.lib.core.excl_plan.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.proj3.cameras.*;

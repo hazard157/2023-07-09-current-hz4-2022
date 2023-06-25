@@ -1,7 +1,7 @@
 package com.hazard157.prisex24.m5.plane;
 
+import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.excl_plan.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static com.hazard157.prisex24.m5.plane.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
@@ -16,9 +16,9 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.av.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
-import com.hazard157.lib.core.excl_plan.secint.gui.*;
-import com.hazard157.lib.core.excl_plan.secint.valed.*;
+import com.hazard157.common.quants.secint.*;
+import com.hazard157.common.quants.secint.gui.*;
+import com.hazard157.common.quants.secint.valed.*;
 import com.hazard157.prisex24.m5.std.*;
 import com.hazard157.psx.proj3.episodes.proplines.*;
 

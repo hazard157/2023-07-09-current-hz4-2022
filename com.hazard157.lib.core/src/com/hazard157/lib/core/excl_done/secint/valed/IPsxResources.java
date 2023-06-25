@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint.valed;
+package com.hazard157.lib.core.excl_done.secint.valed;
 
 /**
  * Localizable resources.

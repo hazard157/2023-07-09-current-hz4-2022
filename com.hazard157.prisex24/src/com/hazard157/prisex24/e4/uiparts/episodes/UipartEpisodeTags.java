@@ -35,8 +35,8 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.ankind.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.common.quants.secstep.*;
-import com.hazard157.lib.core.excl_plan.secint.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.glib.tagint.*;
 import com.hazard157.prisex24.glib.tagline.*;

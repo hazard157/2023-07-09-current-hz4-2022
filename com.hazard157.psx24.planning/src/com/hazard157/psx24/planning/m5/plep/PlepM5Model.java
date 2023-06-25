@@ -1,6 +1,6 @@
 package com.hazard157.psx24.planning.m5.plep;
 
-import static com.hazard157.lib.core.excl_plan.secint.gui.ISecintM5Constants.*;
+import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.psx24.planning.m5.plep.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;

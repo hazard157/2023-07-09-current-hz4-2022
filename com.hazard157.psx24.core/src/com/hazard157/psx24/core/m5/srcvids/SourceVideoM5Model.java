@@ -1,7 +1,7 @@
 package com.hazard157.psx24.core.m5.srcvids;
 
+import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.lib.core.IHzLibConstants.*;
-import static com.hazard157.lib.core.excl_plan.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.psx24.core.m5.IPsxM5Constants.*;
 import static com.hazard157.psx24.core.m5.srcvids.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
@@ -21,7 +21,7 @@ import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.av.*;
 
 import com.hazard157.common.quants.ankind.*;
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;

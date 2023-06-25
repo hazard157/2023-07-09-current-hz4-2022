@@ -18,7 +18,7 @@ import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;

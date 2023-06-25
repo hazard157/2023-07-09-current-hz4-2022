@@ -8,8 +8,8 @@ import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.valed.api.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
-import com.hazard157.lib.core.excl_plan.secint.valed.*;
+import com.hazard157.common.quants.secint.*;
+import com.hazard157.common.quants.secint.valed.*;
 import com.hazard157.prisex24.valeds.frames.*;
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.episodes.story.*;

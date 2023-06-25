@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint;
+package com.hazard157.lib.core.excl_done.secint;
 
 import org.toxsoft.core.tslib.bricks.strio.impl.StrioUtils;
 import org.toxsoft.core.tslib.utils.errors.TsIllegalArgumentRtException;
@@ -16,14 +16,14 @@ public class SecintUtils {
   private static final int    UNDERSCORE_INDEX       = 8;
 
   /**
-   * Определяет, содержится ли секунда в расширенном интервале.
+   * Determines if argument second is in interval with extension.
    *
    * @param aIn {@link Secint} - интервал
-   * @param aSec int - проверяемая секунда
-   * @param aDeltaBelow int - секунды расширения {@link Secint#start()}, >0 - вниз, <0 - вверх
-   * @param aDeltaOver int - секунды расширения {@link Secint#end()}, >0 - вверх, <0 - вниз
-   * @return boolean - признак нахождения в расширенном интервале
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aSec int - the interval
+   * @param aDeltaBelow int - interval start extension seconds {@link Secint#start()}, >0 - down, <0 - up
+   * @param aDeltaOver int - interval end extension seconds  {@link Secint#end()}, >0 - up, <0 - down
+   * @return boolean - <code>true</code> second is in extended interval
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public static boolean containsEx( Secint aIn, int aSec, int aDeltaBelow, int aDeltaOver ) {
     TsNullArgumentRtException.checkNull( aIn );

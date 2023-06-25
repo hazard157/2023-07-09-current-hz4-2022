@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.secint.valed;
+package com.hazard157.lib.core.excl_done.secint.valed;
 
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
@@ -7,7 +7,7 @@ import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.valed.impl.*;
 import org.toxsoft.core.tslib.av.*;
 
-import com.hazard157.lib.core.excl_plan.secint.*;
+import com.hazard157.lib.core.excl_done.secint.*;
 
 /**
  * Просмотрщик {@link EAtomicType#VALOBJ}, содержащий {@link Secint}.
