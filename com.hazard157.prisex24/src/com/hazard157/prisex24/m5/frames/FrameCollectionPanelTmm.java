@@ -1,7 +1,6 @@
 package com.hazard157.prisex24.m5.frames;
 
 import static com.hazard157.prisex24.m5.frames.IPsxResources.*;
-import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.tsnodes.*;
@@ -15,7 +14,6 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.secint.*;
-import com.hazard157.lib.core.excl_plan.acsupart.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.glib.frview.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
@@ -30,7 +28,7 @@ import com.hazard157.psx.proj3.episodes.story.*;
  */
 class FrameCollectionPanelTmm
     extends TreeModeManager<IFrame>
-    implements ITsActionProcessor, IPsxGuiContextable {
+    implements IPsxGuiContextable {
 
   static final String TMID_BY_MINUTS = "ByMinutes"; //$NON-NLS-1$
   static final String TMID_BY_20SEC  = "By20Sec";   //$NON-NLS-1$
@@ -275,32 +273,6 @@ class FrameCollectionPanelTmm
       return null;
     }
     return episode;
-  }
-
-  @Override
-  public boolean processAction( String aActionId ) {
-    switch( aActionId ) {
-      case ACTID_VIEW_AS_TREE: {
-        if( isCurrentTreeMode() ) {
-          TreeModeInfo<IFrame> currModeInfo = treeModeInfoes().findByKey( currModeId() );
-          TreeModeInfo<IFrame> nextModeInfo = treeModeInfoes().next( currModeInfo );
-          if( nextModeInfo == null ) {
-            nextModeInfo = treeModeInfoes().first();
-          }
-          setCurrentMode( nextModeInfo.id() );
-        }
-        else {
-          setCurrentMode( TMID_BY_MINUTS );
-        }
-        return true;
-      }
-      case ACTID_VIEW_AS_LIST: {
-        setCurrentMode( null );
-        return true;
-      }
-      default:
-        return false;
-    }
   }
 
   // ------------------------------------------------------------------------------------

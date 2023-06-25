@@ -1,4 +1,4 @@
-package com.hazard157.lib.core.excl_plan.acsupart;
+package com.hazard157.lib.core.excl_done.acsupart;
 
 import org.toxsoft.core.tsgui.bricks.actions.ITsActionDef;
 
