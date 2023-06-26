@@ -18,6 +18,7 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.dialogs.*;
 import com.hazard157.common.quants.ankind.*;
 import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.common.*;
@@ -29,7 +30,7 @@ import com.hazard157.psx.proj3.bricks.beq.filters.*;
 import com.hazard157.psx.proj3.bricks.beq.impl.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
-import com.hazard157.psx24.core.glib.dialogs.imgs.*;
+import com.hazard157.psx24.core.utils.*;
 
 /**
  * Показывает произвольный GIF анимированный кадр в тодельном окне.
@@ -50,9 +51,10 @@ public class StartupGifDisplay {
       "fuck.fuck_speed.fast" //
   );
 
-  private final ITsGuiContext tsContext;
-  private final IUnitEpisodes unitEpisodes;
-  private final IEpisode      episode;
+  private final ITsGuiContext  tsContext;
+  private final IUnitEpisodes  unitEpisodes;
+  private final IPsxFileSystem fileSystem;
+  private final IEpisode       episode;
 
   private IListEdit<IFrame> frList = IList.EMPTY;
 
@@ -67,6 +69,7 @@ public class StartupGifDisplay {
   public StartupGifDisplay( IEclipseContext aWinContext ) {
     tsContext = new TsGuiContext( aWinContext );
     unitEpisodes = tsContext.get( IUnitEpisodes.class );
+    fileSystem = tsContext.get( IPsxFileSystem.class );
     // фильтр по эпизоду
     episode = getRandomEpisode();
     if( episode == null ) {
@@ -113,9 +116,8 @@ public class StartupGifDisplay {
     }
     if( !frList.isEmpty() ) {
       // предварительно загрузим первое GIF изображение
-      frameIndex = new Random().nextInt( frList.size() );
-      IPsxFileSystem fileSystem = tsContext.get( IPsxFileSystem.class );
-      File f = fileSystem.findFrameFile( frList.get( frameIndex ) );
+      int fIndex = new Random().nextInt( frList.size() );
+      File f = fileSystem.findFrameFile( frList.get( fIndex ) );
       if( f != null ) {
         ITsImageManager imagesManager = tsContext.get( ITsImageManager.class );
         imagesManager.findImage( f );
@@ -147,7 +149,8 @@ public class StartupGifDisplay {
           episode != null ? episode.id() : Objects.toString( episode ) );
       return;
     }
-    DialogPsxShowFullSizedFrameImage.showNonModal( frList.get( frameIndex ), tsContext, frList );
+    DialogShowImageFiles.showItemsNonModal( tsContext, frList, frList.get( frameIndex ),
+        new FrameVisualsProvider( tsContext ) );
   }
 
 }

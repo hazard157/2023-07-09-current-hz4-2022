@@ -70,7 +70,8 @@ public class SnippetM5Model
             avValobj( BorderLayout.EAST ) );
         OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
         OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
-        MultiPaneComponentModown<ISnippet> mpc = new MultiPaneComponentModown<>( aContext, model(), aItemsProvider );
+        MultiPaneComponentModown<ISnippet> mpc =
+            new MultiPaneComponentModown<>( aContext, model(), aItemsProvider, aLifecycleManager );
         TreeModeInfo<ISnippet> tmi1 = new TreeModeInfo<>( "ByCateg", //$NON-NLS-1$
             STR_TMI_BY_CATEGORY, STR_TMI_BY_CATEGORY_D, null, new TreeMakerByCategory() );
         mpc.treeModeManager().addTreeMode( tmi1 );

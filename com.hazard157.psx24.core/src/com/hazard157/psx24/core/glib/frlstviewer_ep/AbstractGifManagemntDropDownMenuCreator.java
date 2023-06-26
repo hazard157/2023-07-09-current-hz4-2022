@@ -27,7 +27,7 @@ import org.toxsoft.core.tslib.utils.logs.impl.*;
 
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
-import com.hazard157.psx24.core.glib.dialogs.imgs.*;
+import com.hazard157.psx24.core.glib.dialogs.*;
 
 abstract class AbstractGifManagemntDropDownMenuCreator
     extends AbstractMenuCreator {
@@ -119,7 +119,6 @@ abstract class AbstractGifManagemntDropDownMenuCreator
         }
         String caption = String.format( DLG_C_FMT_SHOW_TEST_GIF, sel.toString() );
         DialogShowMultiImage.showImage( tsContext, mi, caption, null );
-        // FIXME нельзя это делать, поскольку изображения кадров взяты из ITsImageManager mi.dispose();
         break;
       }
       case ACTID_ZOOM_ORIGINAL: {
@@ -140,7 +139,7 @@ abstract class AbstractGifManagemntDropDownMenuCreator
               navFrames.add( frame );
             }
           }
-          DialogPsxShowFullSizedFrameImage.show( sel, tsContext, navFrames );
+          DialogShowFrameFiles.show( tsContext, sel, navFrames );
         }
         break;
       }

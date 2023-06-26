@@ -36,6 +36,7 @@
         <children xsi:type="basic:Part" xmi:id="_xJuzQBAVEe6syK__7C_iEA" elementId="com.hazard157.prisex24.part.refbook_cameras" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.refbooks.UipartRefbookCameras" label="%Uipart_Refbook_Cameras" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/camera-generic.png" tooltip="%Uipart_Refbook_Cameras_D"/>
         <children xsi:type="basic:Part" xmi:id="_7JQskBAXEe6syK__7C_iEA" elementId="com.hazard157.prisex24.part.refbook_source_videos" accessibilityPhrase="%Uipart_Refbook_Sourcevids_D" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.refbooks.UipartRefbookSourceVideos" label="%Uipart_Refbook_Sourcevids" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/source-videos-list.png"/>
         <children xsi:type="basic:Part" xmi:id="_ICQX8BF7Ee6anr6P7c--RQ" elementId="com.hazard157.prisex24.part.snippets" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.UipartSnippets" label="Snippets"/>
+        <children xsi:type="basic:Part" xmi:id="__xukYBRoEe6_xbbBrzrWlw" elementId="com.hazard157.prisex24.part.refbook_sex_toys" contributionURI="bundleclass://com.hazard157.porn.common/com.hazard157.porn.common.quants.toys.uiparts.UipartSexToys" label="%Uipart_Refbook_SexToys" iconURI="platform:/plugin/com.hazard157.porn.common/icons/is24x24/sex-toy.png" tooltip="%Uipart_Refbook_SexToys_D"/>
       </children>
     </elements>
   </fragments>

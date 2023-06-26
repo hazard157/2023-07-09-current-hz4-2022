@@ -23,6 +23,7 @@ import org.toxsoft.core.txtproj.lib.*;
 import com.hazard157.common.*;
 import com.hazard157.common.quants.visumple.*;
 import com.hazard157.common.quants.visumple.impl.*;
+import com.hazard157.porn.common.quants.toys.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.Activator;
 import com.hazard157.prisex24.cofs.*;
@@ -67,9 +68,9 @@ public class AddonPrisex24Core
   @Override
   protected void doRegisterQuants( IQuantRegistrator aQuantRegistrator ) {
     aQuantRegistrator.registerQuant( new QuantTsGuiRcp() );
-    // FIXME aQuantRegistrator.registerQuant( new QuantHzLibCore() );
     aQuantRegistrator.registerQuant( new QuantHzCommon() );
     aQuantRegistrator.registerQuant( new QuantPsx3Project() );
+    aQuantRegistrator.registerQuant( new QuantSexToysPdu() );
   }
 
   @Override

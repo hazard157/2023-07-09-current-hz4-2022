@@ -25,7 +25,8 @@ Require-Bundle: javax.annotation,
  com.hazard157.common,
  com.hazard157.psx.common,
  com.hazard157.psx.proj3,
- com.hazard157.psx24.core
+ com.hazard157.psx24.core,
+ com.hazard157.porn.common
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.psx24.exe
 Bundle-ActivationPolicy: lazy

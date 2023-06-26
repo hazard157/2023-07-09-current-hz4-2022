@@ -64,7 +64,8 @@ Require-Bundle: javax.annotation,
  org.toxsoft.core.tsgui.mws,
  com.hazard157.common,
  com.hazard157.psx.common,
- com.hazard157.psx.proj3
+ com.hazard157.psx.proj3,
+ com.hazard157.porn.common
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.prisex24
 Bundle-ActivationPolicy: lazy

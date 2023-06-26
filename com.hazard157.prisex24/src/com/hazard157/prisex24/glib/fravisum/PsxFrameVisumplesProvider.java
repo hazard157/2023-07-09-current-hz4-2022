@@ -1,8 +1,8 @@
 package com.hazard157.prisex24.glib.fravisum;
 
-import static com.hazard157.common.quants.visumple.l10n.IQuantHzVisumpleSharedResources.*;
 import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 import static com.hazard157.prisex24.glib.fravisum.IPsxFrameVisumplesProviderConstants.*;
+import static com.hazard157.prisex24.glib.fravisum.IPsxResources.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
@@ -44,8 +44,8 @@ public class PsxFrameVisumplesProvider
     super( VPKIND_ID );
     tsContext = TsNullArgumentRtException.checkNull( aContext );
     visualsProvider = new FrameVisumpleVisualizer( tsContext );
-    params().setStr( TSID_NAME, STR_VP_SIMPLE_IMAGE_FILE );
-    params().setStr( TSID_DESCRIPTION, STR_VP_SIMPLE_IMAGE_FILE_D );
+    params().setStr( TSID_NAME, STR_VP_FRAME_IMAGE );
+    params().setStr( TSID_DESCRIPTION, STR_VP_FRAME_IMAGE_D );
     params().setStr( TSID_ICON_ID, ICONID_PORNICON );
   }
 

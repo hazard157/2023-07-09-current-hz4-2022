@@ -2,6 +2,7 @@ package com.hazard157.psx.proj3.episodes.story;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static com.hazard157.psx.proj3.episodes.story.IPsxResources.*;
+import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import org.toxsoft.core.tsgui.utils.*;
@@ -400,7 +401,7 @@ abstract class AbstractScene
   @SuppressWarnings( "nls" )
   @Override
   public String toString() {
-    return in.toString() + " - '" + info().name() + "'";
+    return String.format( "[%s,%s] - %s", mmss( in.start() ), mmss( in.end() ), info().name() );
   }
 
   // ------------------------------------------------------------------------------------

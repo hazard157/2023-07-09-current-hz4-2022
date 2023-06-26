@@ -40,8 +40,8 @@ import org.toxsoft.core.tslib.utils.files.*;
 import com.hazard157.lib.core.excl_plan.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
+import com.hazard157.psx24.core.glib.dialogs.*;
 import com.hazard157.psx24.core.glib.dialogs.frsel.*;
-import com.hazard157.psx24.core.glib.dialogs.imgs.*;
 
 /**
  * Панель редактирования сущностей {@link Visumple}.
@@ -106,7 +106,7 @@ final class VisumpleEditPanel
         ITsGuiContext ctx = new TsGuiContext( tsContext() );
         IFrame frame = DialogAnyFrameSelector.select( ctx, IFrame.NONE );
         if( frame != null ) {
-          DialogPsxShowFullSizedFrameImage.show( frame, tsContext() );
+          DialogShowFrameFiles.show( tsContext(), frame, new SingleItemList<>( frame ) );
           IPsxFileSystem fs = tsContext().get( IPsxFileSystem.class );
           File f = fs.findFrameFile( frame );
           if( f != null ) {

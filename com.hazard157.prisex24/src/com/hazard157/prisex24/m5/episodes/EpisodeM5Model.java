@@ -5,6 +5,7 @@ import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static com.hazard157.prisex24.m5.episodes.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
+import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tsgui.utils.HmsUtils.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
@@ -255,8 +256,23 @@ public class EpisodeM5Model
       @Override
       protected IM5CollectionPanel<IEpisode> doCreateCollEditPanel( ITsGuiContext aContext,
           IM5ItemsProvider<IEpisode> aItemsProvider, IM5LifecycleManager<IEpisode> aLifecycleManager ) {
+        EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_LISTS ).asValobj();
+        OPDEF_NODE_THUMB_SIZE.setValue( aContext.params(), avValobj( thumbSize ) );
+        EIconSize iconSize = EIconSize.findIncluding( thumbSize.size(), thumbSize.size() );
+        OPDEF_NODE_ICON_SIZE.setValue( aContext.params(), avValobj( iconSize ) );
         MultiPaneComponentModown<IEpisode> mpc = new EpisodeMpc( aContext, model(), aItemsProvider, aLifecycleManager );
         return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
+      }
+
+      @Override
+      protected IM5CollectionPanel<IEpisode> doCreateCollViewerPanel( ITsGuiContext aContext,
+          IM5ItemsProvider<IEpisode> aItemsProvider ) {
+        EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_LISTS ).asValobj();
+        OPDEF_NODE_THUMB_SIZE.setValue( aContext.params(), avValobj( thumbSize ) );
+        EIconSize iconSize = EIconSize.findIncluding( thumbSize.size(), thumbSize.size() );
+        OPDEF_NODE_ICON_SIZE.setValue( aContext.params(), avValobj( iconSize ) );
+        MultiPaneComponentModown<IEpisode> mpc = new EpisodeMpc( aContext, model(), aItemsProvider, null );
+        return new M5CollectionPanelMpcModownWrapper<>( mpc, true );
       }
 
     } );

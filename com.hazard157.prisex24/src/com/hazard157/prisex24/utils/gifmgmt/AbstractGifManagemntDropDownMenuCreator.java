@@ -95,7 +95,7 @@ public abstract class AbstractGifManagemntDropDownMenuCreator
           break;
         }
         String title = String.format( DLG_FMT_SHOW_TEST_GIF_D, sel.toString() );
-        DialogShowMultiImage.showImage( tsContext, mi, null, title );
+        DialogSimpleShowImage.showImage( tsContext, mi, null, title );
         // don't dispose image - it's frames are managed by ITsImageManager
         break;
       }

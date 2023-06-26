@@ -59,7 +59,7 @@ import com.hazard157.psx24.core.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.e4.services.playmenu.*;
 import com.hazard157.psx24.core.e4.services.prisex.*;
-import com.hazard157.psx24.core.glib.dialogs.imgs.*;
+import com.hazard157.psx24.core.glib.dialogs.*;
 
 /**
  * Реализация {@link IEpisodeFramesListViewer}.
@@ -69,6 +69,11 @@ import com.hazard157.psx24.core.glib.dialogs.imgs.*;
 public class EpisodeFramesListViewer
     extends AbstractLazyPanel<TsComposite>
     implements IEpisodeFramesListViewer {
+
+  /**
+   * Last copy destination app pref ID in default prefs bundle.
+   */
+  public static final String APPREFID_LAST_DESTINATION = "FrameCopyLastDestination"; //$NON-NLS-1$
 
   /**
    * Раздел {@link IAppPreferences} с настройками класса.
@@ -274,7 +279,7 @@ public class EpisodeFramesListViewer
               navFrames.add( frame );
             }
           }
-          DialogPsxShowFullSizedFrameImage.show( sel, tsContext(), navFrames );
+          DialogShowFrameFiles.show( tsContext(), sel, navFrames );
         }
         break;
       }
@@ -294,14 +299,13 @@ public class EpisodeFramesListViewer
       case AID_COPY_FRAME: {
         if( sel != null ) {
           try {
-            String path =
-                prefBundle.prefs().getStr( DialogPsxShowFullSizedFrameImage.APPREFID_LAST_DESTINATION, EMPTY_STRING );
+            String path = prefBundle.prefs().getStr( APPREFID_LAST_DESTINATION, EMPTY_STRING );
             File destDir = TsRcpDialogUtils.askDirOpen( getShell(), path );
             if( destDir != null ) {
               IPrisexService prisexService = tsContext().get( IPrisexService.class );
               prisexService.copyFrameImage( sel, destDir );
               path = destDir.getAbsolutePath();
-              prefBundle.prefs().setStr( DialogPsxShowFullSizedFrameImage.APPREFID_LAST_DESTINATION, path );
+              prefBundle.prefs().setStr( APPREFID_LAST_DESTINATION, path );
             }
           }
           catch( Exception ex ) {

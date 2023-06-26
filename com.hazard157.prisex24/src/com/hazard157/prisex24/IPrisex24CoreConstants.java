@@ -57,6 +57,7 @@ public interface IPrisex24CoreConstants {
   String PARTID_REFBOOK_TAGS          = "com.hazard157.prisex24.part.refbook_tags";          //$NON-NLS-1$
   String PARTID_REFBOOK_CAMERAS       = "com.hazard157.prisex24.part.refbook_cameras";       //$NON-NLS-1$
   String PARTID_REFBOOK_SOURCE_VIDEOS = "com.hazard157.prisex24.part.refbook_source_videos"; //$NON-NLS-1$
+  String PARTID_REFBOOK_SEX_TOYS      = "com.hazard157.prisex24.part.refbook_sex_toys";      //$NON-NLS-1$
   String PARTID_REFBOOK_              = "com.hazard157.prisex24.part.refbook_";              //$NON-NLS-1$
 
   String CMDID_GOTO_EPISODE_PREV   = "com.hazard157.prisex24.cmd.goto_episode_prev";   //$NON-NLS-1$

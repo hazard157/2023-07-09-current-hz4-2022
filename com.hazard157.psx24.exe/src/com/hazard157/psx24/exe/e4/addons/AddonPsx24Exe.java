@@ -15,6 +15,7 @@ import org.toxsoft.core.tsgui.rcp.*;
 
 import com.hazard157.common.*;
 import com.hazard157.lib.core.*;
+import com.hazard157.porn.common.quants.toys.*;
 import com.hazard157.psx.proj3.*;
 import com.hazard157.psx24.exe.*;
 import com.hazard157.psx24.exe.Activator;
@@ -40,6 +41,7 @@ public class AddonPsx24Exe
     aQuantRegistrator.registerQuant( new QuantHzLibCore() );
     aQuantRegistrator.registerQuant( new QuantHzCommon() );
     aQuantRegistrator.registerQuant( new QuantPsx3Project() );
+    aQuantRegistrator.registerQuant( new QuantSexToysPdu() );
   }
 
   @Override

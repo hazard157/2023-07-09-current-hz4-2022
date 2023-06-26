@@ -3,8 +3,6 @@ package com.hazard157.lib.core;
 import org.eclipse.e4.core.contexts.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
-
 /**
  * Plugin quant.
  *
@@ -19,7 +17,7 @@ public class QuantHzLibCore
   public QuantHzLibCore() {
     super( QuantHzLibCore.class.getSimpleName() );
     //
-    registerQuant( new QuantVisumple() );
+    // registerQuant( new QuantVisumple() );
   }
 
   @Override
