@@ -60,6 +60,10 @@ public interface IPrisex24CoreConstants {
   String PARTID_REFBOOK_SEX_TOYS      = "com.hazard157.prisex24.part.refbook_sex_toys";      //$NON-NLS-1$
   String PARTID_REFBOOK_              = "com.hazard157.prisex24.part.refbook_";              //$NON-NLS-1$
 
+  String PARTID_SHARED_SVINS_FRAMES = "com.hazard157.prisex24.part.shared.svins_frames"; //$NON-NLS-1$
+  String PARTID_SHARED_SNIPPETS     = "com.hazard157.prisex24.part.shared.snippets";     //$NON-NLS-1$
+  String PARTID_SHARED_             = "com.hazard157.prisex24.part.shared.";             //$NON-NLS-1$
+
   String CMDID_GOTO_EPISODE_PREV   = "com.hazard157.prisex24.cmd.goto_episode_prev";   //$NON-NLS-1$
   String CMDID_GOTO_EPISODE_NEXT   = "com.hazard157.prisex24.cmd.goto_episode_next";   //$NON-NLS-1$
   String CMDID_GOTO_EPISODE_SELECT = "com.hazard157.prisex24.cmd.goto_episode_select"; //$NON-NLS-1$
@@ -93,6 +97,8 @@ public interface IPrisex24CoreConstants {
   String ICONID_PSX_INCL_ONLY_USED_TAGS      = "bookmark-new-list";            //$NON-NLS-1$
   String ICONID_SOURCE_VIDEO                 = "source-video";                 //$NON-NLS-1$
   String ICONID_SOURCE_VIDEOS_LIST           = "source-videos-list";           //$NON-NLS-1$
+  String ICONID_SNIPPETS_1                   = "snippets-icon-1";              //$NON-NLS-1$
+  String ICONID_SNIPPETS_2                   = "snippets-icon-2";              //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions

@@ -261,7 +261,7 @@ class FrameCollectionPanel
 
   @Override
   public IFrame selectedItem() {
-    return framesTree.selectedItem();
+    return nonsecsList.selectedItem();
   }
 
   @Override
