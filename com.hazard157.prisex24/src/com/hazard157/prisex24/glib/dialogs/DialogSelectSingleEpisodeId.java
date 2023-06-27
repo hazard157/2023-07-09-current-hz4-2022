@@ -139,7 +139,7 @@ public class DialogSelectSingleEpisodeId {
   public static final String select( ITsGuiContext aContext, String aSelEpisodeId ) {
     TsNullArgumentRtException.checkNull( aContext );
     IDialogPanelCreator<String, ITsGuiContext> creator = Panel::new;
-    TsDialogInfo cdi = new TsDialogInfo( aContext, STD_C_DIALOG_SELECT_EPISODE, STD_T_DIALOG_SELECT_EPISODE );
+    TsDialogInfo cdi = new TsDialogInfo( aContext, STD_DIALOG_SELECT_EPISODE, STD_DIALOG_SELECT_EPISODE_D );
     cdi.setMinSizeShellRelative( 70, 80 );
     TsDialog<String, ITsGuiContext> d = new TsDialog<>( cdi, aSelEpisodeId, aContext, creator );
     return d.execData();

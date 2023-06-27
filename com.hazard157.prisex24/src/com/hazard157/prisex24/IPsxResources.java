@@ -32,4 +32,13 @@ interface IPsxResources {
   String STR_PB_PSX24_COMMON   = Messages.getString( "STR_PB_PSX24_COMMON" );   //$NON-NLS-1$
   String STR_PB_PSX24_COMMON_D = Messages.getString( "STR_PB_PSX24_COMMON_D" ); //$NON-NLS-1$
 
+  String STR_PB_WELCOME                = Messages.getString( "STR_PB_WELCOME" );                //$NON-NLS-1$
+  String STR_PB_WELCOME_D              = Messages.getString( "STR_PB_WELCOME_D" );              //$NON-NLS-1$
+  String STR_WELCOME_IS_LABEL_AS_YMD   = Messages.getString( "STR_WELCOME_IS_LABEL_AS_YMD" );   //$NON-NLS-1$
+  String STR_WELCOME_IS_LABEL_AS_YMD_D = Messages.getString( "STR_WELCOME_IS_LABEL_AS_YMD_D" ); //$NON-NLS-1$
+  String STR_WELCOME_IS_STARTUP_GIF    = Messages.getString( "STR_WELCOME_IS_STARTUP_GIF" );    //$NON-NLS-1$
+  String STR_WELCOME_IS_STARTUP_GIF_D  = Messages.getString( "STR_WELCOME_IS_STARTUP_GIF_D" );  //$NON-NLS-1$
+  String STR_WELCOME_IS_FORCE_STILL    = Messages.getString( "STR_WELCOME_IS_FORCE_STILL" );    //$NON-NLS-1$
+  String STR_WELCOME_IS_FORCE_STILL_D  = Messages.getString( "STR_WELCOME_IS_FORCE_STILL_D" );  //$NON-NLS-1$
+
 }

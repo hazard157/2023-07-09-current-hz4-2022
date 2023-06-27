@@ -16,16 +16,15 @@ interface IPsxResources {
   /**
    * {@link DialogSelectEpisodeIds}
    */
-  String STR_T_BTN_CLEAR_ALL             = "Очистить";
-  String STR_T_BTN_SET_ALL               = "Задать все";
-  String STD_C_DIALOG_SELECT_EPISODE_IDS = "Выбор эпизодов";
-  String STD_T_DIALOG_SELECT_EPISODE_IDS =
-      "Отметьте желаемые эпизоды или восползуйтесь кнопками изменения пометки всех эпизодов";
+  String STR_BTN_CLEAR_ALL            = Messages.getString( "STR_BTN_CLEAR_ALL" );            //$NON-NLS-1$
+  String STR_BTN_SET_ALL              = Messages.getString( "STR_BTN_SET_ALL" );              //$NON-NLS-1$
+  String STD_DLG_SELECT_EPISODE_IDS   = Messages.getString( "STD_DLG_SELECT_EPISODE_IDS" );   //$NON-NLS-1$
+  String STD_DLG_SELECT_EPISODE_IDS_D = Messages.getString( "STD_DLG_SELECT_EPISODE_IDS_D" ); //$NON-NLS-1$
 
   /**
    * {@link DialogSelectSingleEpisodeId}
    */
-  String STD_C_DIALOG_SELECT_EPISODE = "Выбор эпизода";
-  String STD_T_DIALOG_SELECT_EPISODE = "Выберите эпизод и нажмите OK";
+  String STD_DIALOG_SELECT_EPISODE   = Messages.getString( "STD_DIALOG_SELECT_EPISODE" );   //$NON-NLS-1$
+  String STD_DIALOG_SELECT_EPISODE_D = Messages.getString( "STD_DIALOG_SELECT_EPISODE_D" ); //$NON-NLS-1$
 
 }

@@ -163,10 +163,10 @@ public class DialogSelectEpisodeIds {
       buttonPane.setLayout( new RowLayout( SWT.VERTICAL ) );
       buttonPane.setLayoutData( BorderLayout.NORTH );
       btnClearAll = new Button( buttonPane, SWT.PUSH );
-      btnClearAll.setText( STR_T_BTN_CLEAR_ALL );
+      btnClearAll.setText( STR_BTN_CLEAR_ALL );
       btnClearAll.addSelectionListener( btnClearAllListener );
       btnSetAll = new Button( buttonPane, SWT.PUSH );
-      btnSetAll.setText( STR_T_BTN_SET_ALL );
+      btnSetAll.setText( STR_BTN_SET_ALL );
       btnSetAll.addSelectionListener( btnSetAllListener );
       // picture below
       picViewer = new PdwWidgetSimple( tsContext() );
@@ -213,7 +213,7 @@ public class DialogSelectEpisodeIds {
   public static final IStringList select( ITsGuiContext aContext, IStringList aCheckedEpisodeIds ) {
     TsNullArgumentRtException.checkNull( aContext );
     IDialogPanelCreator<IStringList, ITsGuiContext> creator = Panel::new;
-    ITsDialogInfo cdi = new TsDialogInfo( aContext, STD_C_DIALOG_SELECT_EPISODE_IDS, STD_T_DIALOG_SELECT_EPISODE_IDS );
+    ITsDialogInfo cdi = new TsDialogInfo( aContext, STD_DLG_SELECT_EPISODE_IDS, STD_DLG_SELECT_EPISODE_IDS_D );
     TsDialog<IStringList, ITsGuiContext> d = new TsDialog<>( cdi, aCheckedEpisodeIds, aContext, creator );
     return d.execData();
   }

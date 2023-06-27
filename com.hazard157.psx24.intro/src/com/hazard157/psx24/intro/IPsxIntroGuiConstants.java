@@ -9,15 +9,12 @@ import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 import org.eclipse.e4.core.contexts.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
-import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.av.impl.*;
 import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
 import org.toxsoft.core.tslib.bricks.strid.coll.*;
 import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
-
-import com.hazard157.psx24.intro.utils.*;
 
 /**
  * Plugin constants.
@@ -59,21 +56,12 @@ public interface IPsxIntroGuiConstants {
       TSID_DESCRIPTION, STR_D_INTRO_THUMB_SIZE //
   );
 
-  /**
-   * Параметр: отображать дату эпизода как "YYYY-MM-DD", а не как "DD mmm YYYY" на экране приветствия миниатюрами.
-   * <p>
-   * Хранится как {@link EAtomicType#BOOLEAN}.
-   */
-  IDataDef APPRM_IS_LABEL_AS_YMD = DataDef.create( PSX_ID + "intro.IsLabelAsYMD", //$NON-NLS-1$
-      BOOLEAN, //
+  IDataDef APPRM_IS_LABEL_AS_YMD = DataDef.create( PSX_ID + "intro.IsLabelAsYMD", BOOLEAN, //$NON-NLS-1$
       TSID_DEFAULT_VALUE, AV_TRUE, //
       TSID_NAME, STR_N_INTRO_LABEL_AS_YMD, //
       TSID_DESCRIPTION, STR_D_INTRO_LABEL_AS_YMD //
   );
 
-  /**
-   * Настройка программы - показывать каждрый раз {@link StartupGifDisplay#show()}.
-   */
   IDataDef APPRM_IS_STARTUP_GIF_SHOWN = DataDef.create( PSX_ID + "intro.IsStartupGifShown", BOOLEAN, //$NON-NLS-1$
       TSID_DEFAULT_VALUE, AV_TRUE, //
       TSID_NAME, STR_N_IS_STARTUP_GIF_SHOWN, //

@@ -3,6 +3,9 @@ package com.hazard157.prisex24;
 import static com.hazard157.prisex24.IPsxResources.*;
 import static com.hazard157.psx.proj3.IPsxProj3Constants.*;
 import static org.toxsoft.core.tsgui.graphics.icons.ITsStdIconIds.*;
+import static org.toxsoft.core.tslib.av.EAtomicType.*;
+import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
+import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import java.time.*;
 
@@ -11,6 +14,12 @@ import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.mws.appinf.*;
+import org.toxsoft.core.tslib.av.impl.*;
+import org.toxsoft.core.tslib.av.metainfo.*;
+import org.toxsoft.core.tslib.av.opset.impl.*;
+import org.toxsoft.core.tslib.bricks.apprefs.*;
+import org.toxsoft.core.tslib.bricks.strid.coll.*;
+import org.toxsoft.core.tslib.bricks.strid.coll.impl.*;
 import org.toxsoft.core.tslib.utils.*;
 
 /**
@@ -40,6 +49,9 @@ public interface IPrisex24CoreConstants {
 
   // ------------------------------------------------------------------------------------
   // E4
+
+  String PERSPID_WELCOME               = "com.hazard157.prisex24.persp.welcome";               //$NON-NLS-1$
+  String PARTID_WELCOME_EPISODE_THUMBS = "com.hazard157.prisex24.part.welcome_episode_thumbs"; //$NON-NLS-1$
 
   String PERSPID_EPISODES        = "com.hazard157.prisex24.persp.episodes";        //$NON-NLS-1$
   String PARTID_EISODES_LIST     = "com.hazard157.prisex24.part.episodes_list";    //$NON-NLS-1$
@@ -100,6 +112,8 @@ public interface IPrisex24CoreConstants {
   String ICONID_SOURCE_VIDEOS_LIST           = "source-videos-list";           //$NON-NLS-1$
   String ICONID_SNIPPETS_1                   = "snippets-icon-1";              //$NON-NLS-1$
   String ICONID_SNIPPETS_2                   = "snippets-icon-2";              //$NON-NLS-1$
+  String ICONID_NONE_EPISODE_IMAGE           = "none-episode-image";           //$NON-NLS-1$
+  String ICONID_WELCOME                      = "welcome";                      //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions
@@ -147,10 +161,36 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // Application preferences
 
-  // /**
-  // * Preferences bundle specific for HZ library.
-  // */
-  // String PBID_PSX24_COMMON = PSX_FULL_ID + ".Common"; //$NON-NLS-1$
+  String PBID_PSX24_COMMON = APP_ID;
+
+  // ------------------------------------------------------------------------------------
+  // Welcome perspective preferences
+
+  String PBID_WELCOME = PERSPID_WELCOME;
+
+  IDataDef APPRM_WELCOME_IS_LABEL_AS_YMD = DataDef.create( PSX_ID + "intro.IsLabelAsYMD", BOOLEAN, //$NON-NLS-1$
+      TSID_DEFAULT_VALUE, AV_TRUE, //
+      TSID_NAME, STR_WELCOME_IS_LABEL_AS_YMD, //
+      TSID_DESCRIPTION, STR_WELCOME_IS_LABEL_AS_YMD_D //
+  );
+
+  IDataDef APPRM_WELCOME_IS_STARTUP_GIF = DataDef.create( PSX_ID + "intro.IsStartupGifShown", BOOLEAN, //$NON-NLS-1$
+      TSID_DEFAULT_VALUE, AV_TRUE, //
+      TSID_NAME, STR_WELCOME_IS_STARTUP_GIF, //
+      TSID_DESCRIPTION, STR_WELCOME_IS_STARTUP_GIF_D //
+  );
+
+  IDataDef APPRM_WELCOME_IS_FORCE_STILL = DataDef.create( PSX_ID + "intro.ForceStillFrame", BOOLEAN, //$NON-NLS-1$
+      TSID_DEFAULT_VALUE, AV_TRUE, //
+      TSID_NAME, STR_WELCOME_IS_FORCE_STILL, //
+      TSID_DESCRIPTION, STR_WELCOME_IS_FORCE_STILL_D //
+  );
+
+  IStridablesList<IDataDef> ALL_APREFS = new StridablesList<>( //
+      APPRM_WELCOME_IS_LABEL_AS_YMD, //
+      APPRM_WELCOME_IS_STARTUP_GIF, //
+      APPRM_WELCOME_IS_FORCE_STILL //
+  );
 
   // ------------------------------------------------------------------------------------
   // Misc settings
@@ -174,15 +214,15 @@ public interface IPrisex24CoreConstants {
     ITsIconManager iconManager = aWinContext.get( ITsIconManager.class );
     iconManager.registerStdIconByIds( Activator.PLUGIN_ID, IPrisex24CoreConstants.class, PREFIX_OF_ICON_FIELD_NAME );
     //
-    // IAppPreferences aprefs = aWinContext.get( IAppPreferences.class );
-    // IPrefBundle pb = aprefs.defineBundle( PBID_PSX24_COMMON, OptionSetUtils.createOpSet( //
-    // TSID_NAME, STR_PB_PSX24_COMMON, //
-    // TSID_DESCRIPTION, STR_PB_PSX24_COMMON_D, //
-    // TSID_ICON_ID, ICONID_APP_ICON //
-    // ) );
-    // for( IDataDef dd : ALL_APPREFS ) {
-    // pb.defineOption( dd );
-    // }
+    IAppPreferences aprefs = aWinContext.get( IAppPreferences.class );
+    IPrefBundle pb = aprefs.defineBundle( PBID_WELCOME, OptionSetUtils.createOpSet( //
+        TSID_NAME, STR_PB_WELCOME, //
+        TSID_DESCRIPTION, STR_PB_WELCOME_D, //
+        TSID_ICON_ID, ICONID_WELCOME //
+    ) );
+    for( IDataDef dd : ALL_APREFS ) {
+      pb.defineOption( dd );
+    }
   }
 
 }
