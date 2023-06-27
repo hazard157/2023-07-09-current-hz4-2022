@@ -68,6 +68,7 @@ public interface IPrisex24CoreConstants {
   String CMDID_GOTO_EPISODE_NEXT   = "com.hazard157.prisex24.cmd.goto_episode_next";   //$NON-NLS-1$
   String CMDID_GOTO_EPISODE_SELECT = "com.hazard157.prisex24.cmd.goto_episode_select"; //$NON-NLS-1$
   String CMDID_EP_KDENLIVES        = "com.hazard157.prisex24.cmd.episode_kdenlive";    //$NON-NLS-1$
+  String CMDID_WORK_WITH_FRAMES    = "com.hazard157.prisex24.cmd.work_with_frames";    //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Icons

@@ -50,7 +50,7 @@ public class DialogWorkWithFrames
   //
 
   /**
-   * Displays a dialog for working with frames nearby the specified frame.
+   * Displays a dialog for working with frames of the single episode nearby the specified frame.
    *
    * @param aContext {@link ITsGuiContext} - the context
    * @param aInitialFrame {@link IFrame} - the initial frame
@@ -72,6 +72,22 @@ public class DialogWorkWithFrames
     cdi.setMinSizeShellRelative( 65, 80 );
     TsDialog<IFrame, IEclipseContext> d = new TsDialog<>( cdi, aInitialFrame, aContext.eclipseContext(), creator );
     d.execDialog();
+  }
+
+  /**
+   * Displays a dialog for working with frames of all episodes nearby the specified frame.
+   *
+   * @param aContext {@link ITsGuiContext} - the context
+   * @param aInitialFrame {@link IFrame} - the initial frame or <code>null</code>
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException the frame is undefined
+   * @throws TsItemNotFoundRtException the episode of the frame does not exists
+   */
+  public static void openAll( ITsGuiContext aContext, IFrame aInitialFrame ) {
+    TsNullArgumentRtException.checkNull( aContext );
+    TsDialogInfo di =
+        new TsDialogInfo( aContext, aContext.get( Shell.class ), DLG_DWWF, DLG_DWWF_D, DF_NO_APPROVE | DF_NONMODAL );
+    DialogSelectAnyFrame.show( di, aInitialFrame );
   }
 
 }

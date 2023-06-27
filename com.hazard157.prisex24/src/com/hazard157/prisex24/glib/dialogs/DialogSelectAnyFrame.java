@@ -4,6 +4,7 @@ import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.dialogs.datarec.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
+import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.prisex24.glib.frview.*;
 import com.hazard157.prisex24.glib.frview.impl.*;
@@ -41,6 +42,19 @@ public class DialogSelectAnyFrame {
       return framesSelector.selectedItem();
     }
 
+  }
+
+  /**
+   * Invokes frame display dialog with {@link IAllFramesSelector} panel.
+   *
+   * @param aDialogInfo {@link ITsDialogInfo} - dialog info
+   * @param aInitial {@link IFrame} - initially selected frame or <code>null</code>
+   */
+  public static void show( ITsDialogInfo aDialogInfo, IFrame aInitial ) {
+    TsNullArgumentRtException.checkNull( aDialogInfo );
+    IDialogPanelCreator<IFrame, Object> creator = DialogPanel::new;
+    TsDialog<IFrame, Object> d = new TsDialog<>( aDialogInfo, aInitial, null, creator );
+    d.execData();
   }
 
   /**
