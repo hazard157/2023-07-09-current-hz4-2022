@@ -16,7 +16,7 @@
         <children xsi:type="basic:PartStack" xmi:id="_JCzCUBTFEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.partstack.3" containerData="7500">
           <children xsi:type="basic:Part" xmi:id="_J0Y3UBTFEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.part.welcome_episode_thumbs" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.welcome.UipartWelcomeEpisodeThumbs" label="%Part_WelcomeEpisodeThumbs" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incident-kind-episode.png" tooltip="%Part_WelcomeEpisodeThumbs_D">
             <toolbar xmi:id="_y1-eMBTtEe6XtpOwIEtpWQ" elementId="com.hazard157.prisex24.toolbar.1">
-              <children xsi:type="menu:DirectToolItem" xmi:id="_z_CYABTtEe6XtpOwIEtpWQ" elementId="com.hazard157.prisex24.directtoolitem.0"/>
+              <children xsi:type="menu:HandledToolItem" xmi:id="_sB6DYBUvEe6sLO0Te0Wmsw" elementId="com.hazard157.prisex24.handledtoolitem.4" iconURI="platform:/plugin/com.hazard157.common/icons/is16x16/ak-single.png" type="Check" command="_gkHKYBUvEe6sLO0Te0Wmsw"/>
             </toolbar>
           </children>
         </children>
@@ -88,6 +88,7 @@
     <elements xsi:type="commands:Command" xmi:id="_Qnq8wA6VEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.cmd.episode_kdenlive" commandName="%Cmd_RunEpisodeKdenlive" description="%Cmd_RunEpisodeKdenlive_D" category="_dXCyEAilEe6RgN0UorbIgw"/>
     <elements xsi:type="commands:Command" xmi:id="_QYtTsA6VEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.cmd.goto_episode_select" commandName="%Cmd_EpisodeSel" description="%Cmd_EpisodeSel_D" category="_dXCyEAilEe6RgN0UorbIgw"/>
     <elements xsi:type="commands:Command" xmi:id="_5UPwsBTCEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.cmd.work_with_frames" commandName="%Cmd_WorkWithFrames" description="%Cmd_WorkWithFrames_D" category="_dXCyEAilEe6RgN0UorbIgw"/>
+    <elements xsi:type="commands:Command" xmi:id="_gkHKYBUvEe6sLO0Te0Wmsw" elementId="com.hazard157.prisex24.cmd.toggle_welcome_still" commandName="%Cmd_ForceStill" description="%Cmd_ForceStill_D" category="_dXCyEAilEe6RgN0UorbIgw"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_mo5i0A6WEe62AdeTRK4p9w" featurename="handlers" parentElementId="org.toxsoft.mws.window.main">
     <elements xsi:type="commands:Handler" xmi:id="_pH4twA6WEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.handler.0" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.handlers.CmdEpisodeNext" command="_PvvPMA6VEe62AdeTRK4p9w"/>
@@ -95,6 +96,7 @@
     <elements xsi:type="commands:Handler" xmi:id="_p5VY0A6WEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.handler.2" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.handlers.CmdRunEpisodeKdenlive" command="_Qnq8wA6VEe62AdeTRK4p9w"/>
     <elements xsi:type="commands:Handler" xmi:id="_qJ2hEA6WEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.handler.3" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.handlers.CmdEpisodeSelect" command="_QYtTsA6VEe62AdeTRK4p9w"/>
     <elements xsi:type="commands:Handler" xmi:id="_SFLTsBTDEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.handler.4" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.handlers.CmdWorkWithFrames" command="_5UPwsBTCEe6zZuIbQz4mwA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_mgykMBUvEe6sLO0Te0Wmsw" elementId="com.hazard157.prisex24.handler.5" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.handlers.CmdToggleStillEpisodeThumbs" command="_gkHKYBUvEe6sLO0Te0Wmsw"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_logAUA6XEe62AdeTRK4p9w" featurename="bindings" parentElementId="org.toxsoft.mws.framework.main.bindingtable.global">
     <elements xsi:type="commands:KeyBinding" xmi:id="_nRFuwA6XEe62AdeTRK4p9w" elementId="com.hazard157.prisex24.keybinding.0" keySequence="F6" command="_QIrToA6VEe62AdeTRK4p9w"/>

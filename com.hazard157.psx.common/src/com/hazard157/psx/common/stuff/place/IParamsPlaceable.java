@@ -7,10 +7,8 @@ import org.toxsoft.core.tslib.av.utils.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.common.quants.keywords.*;
-
 /**
- * Defines how to implement {@link IKeywordable} for {@link IParameterized} entities.
+ * Defines how to implement {@link IPlaceable} for {@link IParameterized} entities.
  *
  * @author hazard157
  */

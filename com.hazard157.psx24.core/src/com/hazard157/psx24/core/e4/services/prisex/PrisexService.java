@@ -143,10 +143,10 @@ public class PrisexService
       return;
     }
     if( !aSvin.isWholeEpisode() ) {
-      mps().playVideoFilePart( f, aSvin.interval().start(), aSvin.interval().duration() + 1, false );
+      mps().playVideoFilePart( f, aSvin.interval().start(), aSvin.interval().duration() + 1 );
     }
     else {
-      mps().playVideoFile( f, false );
+      mps().playVideoFile( f );
     }
   }
 
@@ -162,7 +162,7 @@ public class PrisexService
       errDialog( FMT_ERR_TRAILER_FILE_INACCESSABLE, f.getAbsolutePath() );
       return;
     }
-    mps().playVideoFile( f, false );
+    mps().playVideoFile( f );
   }
 
   // @Override

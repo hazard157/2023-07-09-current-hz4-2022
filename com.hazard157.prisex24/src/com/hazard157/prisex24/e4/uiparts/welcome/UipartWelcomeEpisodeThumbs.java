@@ -3,10 +3,13 @@ package com.hazard157.prisex24.e4.uiparts.welcome;
 import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 
+import javax.inject.*;
+
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.panels.pgv.*;
 
+import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.uiparts.*;
 import com.hazard157.prisex24.glib.*;
 import com.hazard157.psx.proj3.episodes.*;
@@ -19,14 +22,19 @@ import com.hazard157.psx.proj3.episodes.*;
 public class UipartWelcomeEpisodeThumbs
     extends PsxAbstractUipart {
 
-  private IPicsGridViewer<IEpisode> plViewer;
+  @Inject
+  ICurrentEpisodeService currentEpisodeService;
+
+  private IPicsGridViewer<IEpisode> pgViewer;
 
   @Override
   protected void doInit( Composite aParent ) {
-    plViewer = new PicsGridViewer<>( aParent, tsContext() );
-    plViewer.setVisualsProvider( new EpisodeVisualsProvider( tsContext() ) );
+    pgViewer = new PicsGridViewer<>( aParent, tsContext() );
+    pgViewer.setVisualsProvider( new EpisodeVisualsProvider( tsContext() ) );
     prefBundle( PBID_HZ_COMMON ).prefs().addCollectionChangeListener( ( s, o, i ) -> initViewerContent() );
     prefBundle( PBID_WELCOME ).prefs().addCollectionChangeListener( ( s, o, i ) -> initViewerContent() );
+    pgViewer.addTsSelectionListener( ( src, sel ) -> currentEpisodeService.setCurrent( sel ) );
+    currentEpisodeService.addCurrentEntityChangeListener( curr -> pgViewer.setSelectedItem( curr ) );
     initViewerContent();
   }
 
@@ -35,11 +43,11 @@ public class UipartWelcomeEpisodeThumbs
   //
 
   void initViewerContent() {
-    IEpisode sel = plViewer.selectedItem();
+    IEpisode sel = pgViewer.selectedItem();
     EThumbSize thumbSize = APPREF_THUMB_SIZE_IN_GRIDS.getValue( prefBundle( PBID_HZ_COMMON ).prefs() ).asValobj();
-    plViewer.setThumbSize( thumbSize );
-    plViewer.setItems( unitEpisodes().items() );
-    plViewer.setSelectedItem( sel );
+    pgViewer.setThumbSize( thumbSize );
+    pgViewer.setItems( unitEpisodes().items() );
+    pgViewer.setSelectedItem( sel );
   }
 
 }

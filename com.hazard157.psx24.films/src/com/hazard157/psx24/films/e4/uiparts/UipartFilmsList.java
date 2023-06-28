@@ -62,8 +62,7 @@ public class UipartFilmsList
         case AID_PLAY:
           if( sel != null ) {
             IMediaPlayerService mps = tsContext().get( IMediaPlayerService.class );
-            boolean isFullScreen = OP_SHOW_FILM_FULLSCREEN.getValue( filmsService.modulePrefs().prefs() ).asBool();
-            mps.playVideoFile( sel, isFullScreen );
+            mps.playVideoFile( sel );
           }
           break;
         case AID_RUN_KDENLIVE: {

@@ -76,11 +76,12 @@ public interface IPrisex24CoreConstants {
   String PARTID_SHARED_SNIPPETS     = "com.hazard157.prisex24.part.shared.snippets";     //$NON-NLS-1$
   String PARTID_SHARED_             = "com.hazard157.prisex24.part.shared.";             //$NON-NLS-1$
 
-  String CMDID_GOTO_EPISODE_PREV   = "com.hazard157.prisex24.cmd.goto_episode_prev";   //$NON-NLS-1$
-  String CMDID_GOTO_EPISODE_NEXT   = "com.hazard157.prisex24.cmd.goto_episode_next";   //$NON-NLS-1$
-  String CMDID_GOTO_EPISODE_SELECT = "com.hazard157.prisex24.cmd.goto_episode_select"; //$NON-NLS-1$
-  String CMDID_EP_KDENLIVES        = "com.hazard157.prisex24.cmd.episode_kdenlive";    //$NON-NLS-1$
-  String CMDID_WORK_WITH_FRAMES    = "com.hazard157.prisex24.cmd.work_with_frames";    //$NON-NLS-1$
+  String CMDID_GOTO_EPISODE_PREV    = "com.hazard157.prisex24.cmd.goto_episode_prev";    //$NON-NLS-1$
+  String CMDID_GOTO_EPISODE_NEXT    = "com.hazard157.prisex24.cmd.goto_episode_next";    //$NON-NLS-1$
+  String CMDID_GOTO_EPISODE_SELECT  = "com.hazard157.prisex24.cmd.goto_episode_select";  //$NON-NLS-1$
+  String CMDID_EP_KDENLIVES         = "com.hazard157.prisex24.cmd.episode_kdenlive";     //$NON-NLS-1$
+  String CMDID_WORK_WITH_FRAMES     = "com.hazard157.prisex24.cmd.work_with_frames";     //$NON-NLS-1$
+  String CMDID_TOOGLE_WELCOME_STILL = "com.hazard157.prisex24.cmd.toggle_welcome_still"; //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Icons
@@ -161,35 +162,35 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // Application preferences
 
-  String PBID_PSX24_COMMON = APP_ID;
+  String PBID_PSX24_COMMON1 = APP_ID;
 
   // ------------------------------------------------------------------------------------
   // Welcome perspective preferences
 
   String PBID_WELCOME = PERSPID_WELCOME;
 
-  IDataDef APPRM_WELCOME_IS_LABEL_AS_YMD = DataDef.create( PSX_ID + "intro.IsLabelAsYMD", BOOLEAN, //$NON-NLS-1$
+  IDataDef APPREF_WELCOME_IS_LABEL_AS_YMD = DataDef.create( PSX_ID + "intro.IsLabelAsYMD", BOOLEAN, //$NON-NLS-1$
       TSID_DEFAULT_VALUE, AV_TRUE, //
       TSID_NAME, STR_WELCOME_IS_LABEL_AS_YMD, //
       TSID_DESCRIPTION, STR_WELCOME_IS_LABEL_AS_YMD_D //
   );
 
-  IDataDef APPRM_WELCOME_IS_STARTUP_GIF = DataDef.create( PSX_ID + "intro.IsStartupGifShown", BOOLEAN, //$NON-NLS-1$
+  IDataDef APPREF_WELCOME_IS_STARTUP_GIF = DataDef.create( PSX_ID + "intro.IsStartupGifShown", BOOLEAN, //$NON-NLS-1$
       TSID_DEFAULT_VALUE, AV_TRUE, //
       TSID_NAME, STR_WELCOME_IS_STARTUP_GIF, //
       TSID_DESCRIPTION, STR_WELCOME_IS_STARTUP_GIF_D //
   );
 
-  IDataDef APPRM_WELCOME_IS_FORCE_STILL = DataDef.create( PSX_ID + "intro.ForceStillFrame", BOOLEAN, //$NON-NLS-1$
+  IDataDef APPREF_WELCOME_IS_FORCE_STILL = DataDef.create( PSX_ID + "intro.ForceStillFrame", BOOLEAN, //$NON-NLS-1$
       TSID_DEFAULT_VALUE, AV_TRUE, //
       TSID_NAME, STR_WELCOME_IS_FORCE_STILL, //
       TSID_DESCRIPTION, STR_WELCOME_IS_FORCE_STILL_D //
   );
 
   IStridablesList<IDataDef> ALL_APREFS = new StridablesList<>( //
-      APPRM_WELCOME_IS_LABEL_AS_YMD, //
-      APPRM_WELCOME_IS_STARTUP_GIF, //
-      APPRM_WELCOME_IS_FORCE_STILL //
+      APPREF_WELCOME_IS_LABEL_AS_YMD, //
+      APPREF_WELCOME_IS_STARTUP_GIF, //
+      APPREF_WELCOME_IS_FORCE_STILL //
   );
 
   // ------------------------------------------------------------------------------------

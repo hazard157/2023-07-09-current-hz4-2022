@@ -50,8 +50,8 @@ public class PqtRootNode
 
   @Override
   protected IStridablesList<IQNode> doGetNodes() {
-    // TODO Auto-generated method stub
-    return null;
+    // TODO реализовать PqtRootNode.doGetNodes()
+    throw new TsUnderDevelopmentRtException( "PqtRootNode.doGetNodes()" );
   }
 
 }

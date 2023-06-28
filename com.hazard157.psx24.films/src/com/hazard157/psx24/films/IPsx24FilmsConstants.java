@@ -40,11 +40,11 @@ public interface IPsx24FilmsConstants {
 
   String PREF_BUNDLE_ID = PERSPID_FILMS;
 
-  IDataDef OP_SHOW_FILM_FULLSCREEN = DataDef.create( "ShowFilmFullscreen", BOOLEAN, //$NON-NLS-1$
-      TSID_NAME, STR_N_SHOW_FILM_FULLSCREEN, //
-      TSID_DESCRIPTION, STR_D_SHOW_FILM_FULLSCREEN, //
-      TSID_DEFAULT_VALUE, AV_TRUE //
-  );
+  // IDataDef OP_SHOW_FILM_FULLSCREEN = DataDef.create( "ShowFilmFullscreen", BOOLEAN, //$NON-NLS-1$
+  // TSID_NAME, STR_N_SHOW_FILM_FULLSCREEN, //
+  // TSID_DESCRIPTION, STR_D_SHOW_FILM_FULLSCREEN, //
+  // TSID_DEFAULT_VALUE, AV_TRUE //
+  // );
 
   IDataDef OP_FILMS_DIR_ROOT = DataDef.create( "FilmsDirRoot", STRING, //$NON-NLS-1$
       OPDEF_IS_WIDTH_FIXED, AV_FALSE, //
@@ -81,7 +81,7 @@ public interface IPsx24FilmsConstants {
    */
   IStridablesList<IDataDef> ALL_OPS = new StridablesList<>( //
       OP_FILMS_DIR_ROOT, //
-      OP_SHOW_FILM_FULLSCREEN, //
+      // OP_SHOW_FILM_FULLSCREEN, //
       OP_THUMB_SIZE, //
       OP_SHOW_LEGACY_FILMS //
   );

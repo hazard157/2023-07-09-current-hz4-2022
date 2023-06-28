@@ -10,6 +10,7 @@ import org.toxsoft.core.tsgui.graphics.icons.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
+import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.prisex24.*;
@@ -63,15 +64,20 @@ public class EpisodeVisualsProvider
   @Override
   public String getName( IEpisode aItem ) {
     String fmtStr = "%1$te %1$tB %1$tY"; //$NON-NLS-1$
-    if( APPRM_WELCOME_IS_LABEL_AS_YMD.getValue( prefBundle.prefs() ).asBool() ) {
+    if( APPREF_WELCOME_IS_LABEL_AS_YMD.getValue( prefBundle.prefs() ).asBool() ) {
       fmtStr = "%tF"; //$NON-NLS-1$
     }
     return String.format( fmtStr, Long.valueOf( aItem.info().when() ) );
   }
 
   @Override
+  public String getDescription( IEpisode aItem ) {
+    return aItem != null ? aItem.nmName() + '\n' + '\n' + aItem.description() : TsLibUtils.EMPTY_STRING;
+  }
+
+  @Override
   public TsImage getThumb( IEpisode aItem, EThumbSize aThumbSize ) {
-    boolean isStillForced = APPRM_WELCOME_IS_FORCE_STILL.getValue( prefBundle.prefs() ).asBool();
+    boolean isStillForced = APPREF_WELCOME_IS_FORCE_STILL.getValue( prefBundle.prefs() ).asBool();
     File ff = cofsFrames().findFrameFile( aItem.frame() );
     TsImage mi = null;
     if( ff != null ) {
