@@ -29,6 +29,7 @@ public class UipartSharedSvinsFramesViewer
     svinViewer = new SvinsFramesViewer( aParent, tsContext() );
     selectedSvinsService.eventer().addListener( s -> refreshView() );
     selectedSvinsService.framesSelectionParams().genericChangeEventer().addListener( s -> refreshView() );
+    refreshView();
   }
 
   private void refreshView() {

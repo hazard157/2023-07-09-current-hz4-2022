@@ -1,13 +1,16 @@
 package com.hazard157.prisex24.e4.addons;
 
 import org.eclipse.e4.core.contexts.*;
+import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 
+import com.hazard157.common.e4.services.mwsloc.*;
 import com.hazard157.common.quants.ankind.*;
 import com.hazard157.common.quants.secstep.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
+import com.hazard157.prisex24.glib.locations.*;
 import com.hazard157.prisex24.utils.frasel.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
@@ -55,6 +58,10 @@ public class AddonPrisex24Behaviour
           ESecondsStep.SEC_20, EFramesPerSvin.SELECTED );
       selSvinsService.setSvin( svin );
     } );
+    //
+    IMwsLocationService locationService = aWinContext.get( IMwsLocationService.class );
+    EpisodePropertyLocator episodePropertyLocator = new EpisodePropertyLocator( new TsGuiContext( aWinContext ) );
+    locationService.registerLocator( episodePropertyLocator );
   }
 
 }

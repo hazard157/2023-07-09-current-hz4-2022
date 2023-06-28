@@ -39,6 +39,7 @@ public class UipartSvinsFrames
     // ---
 
     psxSelectedSvinsService.eventer().addListener( svinsListChangeListener );
+    viewer.setSvins( this.psxSelectedSvinsService.svins() );
   }
 
 }

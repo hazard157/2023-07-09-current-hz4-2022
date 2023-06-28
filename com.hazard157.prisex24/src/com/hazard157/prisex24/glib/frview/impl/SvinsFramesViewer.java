@@ -9,15 +9,18 @@ import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.icons.EIconSize.*;
 import static org.toxsoft.core.tsgui.graphics.image.impl.ThumbSizeableDropDownMenuCreator.*;
+import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.coll.impl.TsCollectionsUtils.*;
 
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.dialogs.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tsgui.graphics.image.impl.*;
 import org.toxsoft.core.tsgui.panels.*;
+import org.toxsoft.core.tsgui.panels.pgv.*;
 import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tsgui.widgets.*;
@@ -27,6 +30,7 @@ import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.*;
 import com.hazard157.common.quants.ankind.*;
 import com.hazard157.common.quants.secint.*;
 import com.hazard157.common.quants.secstep.*;
@@ -42,6 +46,9 @@ import com.hazard157.psx.common.stuff.svin.*;
 
 /**
  * {@link ISvinsFramesViewer} implementation.
+ * <p>
+ * Thumb size menu changes thumb size in the instance independent from the other instances and parameters. However
+ * {@link IHzConstants#APPREF_THUMB_SIZE_IN_GRIDS} affects on default thumb size.
  *
  * @author hazard157
  */
@@ -88,7 +95,10 @@ public class SvinsFramesViewer
     toolbar.createControl( this );
     toolbar.getControl().setLayoutData( BorderLayout.NORTH );
     // fgViewer
-    fgViewer = new FramesGridViewer( this, tsContext() );
+    ITsGuiContext ctx = new TsGuiContext( tsContext() );
+    EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    IPicsGridViewerConstants.OPDEF_DEFAULT_THUMB_SIZE.setValue( ctx.params(), avValobj( thumbSize ) );
+    fgViewer = new FramesGridViewer( this, ctx );
     fgViewer.getControl().setLayoutData( BorderLayout.CENTER );
     // setup
     toolbar.addListener( this );
@@ -131,6 +141,7 @@ public class SvinsFramesViewer
     fgViewer.addTsSelectionListener( ( src, sel ) -> whenSelectedFrameChanges( sel ) );
     fgViewer.addTsDoubleClickListener( ( src, sel ) -> handleAction( ACTID_PLAY ) );
     fgViewer.addTsSelectionListener( selectionChangeEventHelper );
+    prefBundle( PBID_HZ_COMMON ).prefs().addCollectionChangeListener( ( s, o, i ) -> whenHzCommonAppPrefsChanged() );
     updateActionsState();
   }
 
@@ -281,6 +292,13 @@ public class SvinsFramesViewer
       } );
       updateActionsState();
     }
+  }
+
+  private void whenHzCommonAppPrefsChanged() {
+    // change default thumb size, the current thumb size is NOT changed
+    EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    IPicsGridViewerConstants.OPDEF_DEFAULT_THUMB_SIZE.setValue( fgViewer.tsContext().params(), avValobj( thumbSize ) );
+    updateActionsState();
   }
 
   /**

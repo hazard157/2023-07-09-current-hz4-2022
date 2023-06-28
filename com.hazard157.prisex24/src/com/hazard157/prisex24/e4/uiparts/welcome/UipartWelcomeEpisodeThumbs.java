@@ -12,6 +12,7 @@ import org.toxsoft.core.tsgui.panels.pgv.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.uiparts.*;
 import com.hazard157.prisex24.glib.*;
+import com.hazard157.prisex24.glib.locations.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
@@ -34,6 +35,7 @@ public class UipartWelcomeEpisodeThumbs
     prefBundle( PBID_HZ_COMMON ).prefs().addCollectionChangeListener( ( s, o, i ) -> initViewerContent() );
     prefBundle( PBID_WELCOME ).prefs().addCollectionChangeListener( ( s, o, i ) -> initViewerContent() );
     pgViewer.addTsSelectionListener( ( src, sel ) -> currentEpisodeService.setCurrent( sel ) );
+    pgViewer.addTsDoubleClickListener( ( src, sel ) -> whenThumbDoubleClicked( sel ) );
     currentEpisodeService.addCurrentEntityChangeListener( curr -> pgViewer.setSelectedItem( curr ) );
     initViewerContent();
   }
@@ -42,12 +44,18 @@ public class UipartWelcomeEpisodeThumbs
   // implementation
   //
 
-  void initViewerContent() {
+  private void initViewerContent() {
     IEpisode sel = pgViewer.selectedItem();
     EThumbSize thumbSize = APPREF_THUMB_SIZE_IN_GRIDS.getValue( prefBundle( PBID_HZ_COMMON ).prefs() ).asValobj();
     pgViewer.setThumbSize( thumbSize );
     pgViewer.setItems( unitEpisodes().items() );
     pgViewer.setSelectedItem( sel );
+  }
+
+  private void whenThumbDoubleClicked( IEpisode aSel ) {
+    if( aSel != null ) {
+      mwsLocationService().locate( EpisodePropertyLocator.ofEpisode( aSel ) );
+    }
   }
 
 }

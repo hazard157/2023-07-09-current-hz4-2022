@@ -1,7 +1,9 @@
 package com.hazard157.prisex24.glib.frview;
 
+import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.stdevents.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
+import org.toxsoft.core.tsgui.panels.pgv.*;
 import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.bricks.filter.*;
@@ -11,13 +13,15 @@ import com.hazard157.prisex24.glib.frview.impl.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
- * Displayes frames as the grid.
+ * Displays frames as the grid.
+ * <p>
+ * Accepts {@link IPicsGridViewerConstants} options.
  *
  * @author hazard157
  */
 public interface IFramesGridViewer
     extends ITsSelectionProvider<IFrame>, ITsDoubleClickEventProducer<IFrame>, //
-    IThumbSizeChangeCapable, IGenericChangeEventCapable {
+    IThumbSizeChangeCapable, IGenericChangeEventCapable, ITsGuiContextable {
 
   /**
    * TODO mouse and keyboard handler ???

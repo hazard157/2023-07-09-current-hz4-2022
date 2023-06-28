@@ -1,8 +1,13 @@
 package com.hazard157.prisex24.e4.uiparts.episodes;
 
+import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+
+import java.util.*;
+
 import javax.inject.*;
 
 import org.eclipse.swt.widgets.*;
+import org.toxsoft.core.tsgui.mws.services.e4helper.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 
 import com.hazard157.prisex24.e4.services.currep.*;
@@ -39,10 +44,25 @@ public abstract class AbstractEpisodeUipart
       ex.printStackTrace();
     }
     setEpisode( currentEpisodeService.current() );
+    e4Helper().perspectiveEventer().addListener( ( aSource, aPerspectiveId ) -> {
+      if( Objects.equals( aPerspectiveId, PERSPID_EPISODES ) ) {
+        doSetEpisode();
+      }
+    } );
   }
 
   @Override
   protected void whenPartVisible() {
+    doSetEpisode();
+  }
+
+  @Override
+  protected void whenPartActivated() {
+    doSetEpisode();
+  }
+
+  @Override
+  protected void whenPartBroughtToTop() {
     doSetEpisode();
   }
 
