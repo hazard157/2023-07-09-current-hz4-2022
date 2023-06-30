@@ -9,6 +9,7 @@ import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 
+import com.hazard157.prisex24.onetime.*;
 import com.hazard157.prisex24.pdus.snippets.*;
 
 /**
@@ -23,6 +24,12 @@ public class UipartSnippets
 
   @Override
   protected void doInit( Composite aParent ) {
+
+    // TODO onetime ---
+    ConvertSomePlansToSnippets c = new ConvertSomePlansToSnippets( tsContext() );
+    c.convertStirsToSnippets();
+    // ---
+
     IM5Model<ISnippet> model = m5().getModel( MID_SNIPPET, ISnippet.class );
     IM5LifecycleManager<ISnippet> lm = model.getLifecycleManager( unitSnippets() );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );

@@ -63,6 +63,15 @@
         <children xsi:type="basic:Part" xmi:id="__xukYBRoEe6_xbbBrzrWlw" elementId="com.hazard157.prisex24.part.refbook_sex_toys" contributionURI="bundleclass://com.hazard157.porn.common/com.hazard157.porn.common.quants.toys.uiparts.UipartSexToys" label="%Uipart_Refbook_SexToys" iconURI="platform:/plugin/com.hazard157.porn.common/icons/is24x24/sex-toy.png" tooltip="%Uipart_Refbook_SexToys_D"/>
       </children>
     </elements>
+    <elements xsi:type="advanced:Perspective" xmi:id="_RAUoABeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.persp.planning" label="%Persp_Planning" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Persp_Planning_D">
+      <children xsi:type="basic:PartSashContainer" xmi:id="_BPq9QBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partsashcontainer.3" horizontal="true">
+        <children xsi:type="basic:PartStack" xmi:id="_CBCv0BeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.6" containerData="2000"/>
+        <children xsi:type="basic:PartStack" xmi:id="_CT8dsBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.7" containerData="5700">
+          <children xsi:type="advanced:Placeholder" xmi:id="_FzGsMBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.placeholder.2" ref="_J45sQBS3Ee63pt3VU6a_-g"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_Ck_KYBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.8" containerData="2300"/>
+      </children>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_ZtJLQAqqEe6kmvIYOJ1hbQ" featurename="children" parentElementId="org.toxsoft.mws.menu.main.perspectives">
     <elements xsi:type="menu:HandledMenuItem" xmi:id="_MTd-UBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.handledmenuitem.persp_welcome" label="%Persp_Welcome" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/welcome.png" tooltip="%Persp_Welcome_D" mnemonics="" command="_erzlkAilEe6RgN0UorbIgw">
@@ -75,6 +84,9 @@
     <elements xsi:type="menu:HandledMenuItem" xmi:id="_eOsD0AqqEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.handledmenuitem.persp_refbooks" label="%Persp_Refbooks" iconURI="platform:/plugin/com.hazard157.common/icons/is24x24/refbooks-list.png" tooltip="%Persp_Refbooks_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_jiNy8AqqEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.parameter.0" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.refbooks"/>
     </elements>
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_gzMD0BeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.handledmenuitem.persp_planning" label="%Persp_Planning" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Persp_Planning_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
+      <parameters xmi:id="_qbhQABeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.parameter.7" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.planning"/>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Z5OfcAqqEe6kmvIYOJ1hbQ" featurename="children" parentElementId="org.toxsoft.mws.toolbar.perspectives">
     <elements xsi:type="menu:HandledToolItem" xmi:id="_VL4JcBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.handledtoolitem.persp_welcome" label="%Persp_Welcome" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/welcome.png" tooltip="%Persp_Welcome_D" command="_erzlkAilEe6RgN0UorbIgw">
@@ -86,6 +98,9 @@
     </elements>
     <elements xsi:type="menu:HandledToolItem" xmi:id="_e7h7sAqqEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.handledtoolitem.persp_refbooks" label="%Persp_Refbooks" iconURI="platform:/plugin/com.hazard157.common/icons/is24x24/refbooks-list.png" tooltip="%Persp_Refbooks_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_kUtm4AqqEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.parameter.1" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.refbooks"/>
+    </elements>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_hwxGYBeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.handledtoolitem.persp_planning" label="%Persp_Planning" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Persp_Planning_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
+      <parameters xmi:id="_pRLj0BeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.parameter.6" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.planning"/>
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yU7DAAz_Ee6MCt0KJQBWiw" featurename="sharedElements" parentElementId="org.toxsoft.mws.window.main">

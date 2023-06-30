@@ -30,6 +30,9 @@ public interface IStir
     return OP_STIR_DURATION.getValue( params() ).asInt();
   }
 
+  @Override
+  IVisumplesList visumples();
+
   // TODO NO_STRI_THUMB
   // default String thumbFilePath() {
   // return OP_STIR_THUMB_FILE_PATH.getValue( params() ).asString();

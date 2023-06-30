@@ -75,6 +75,8 @@ public interface IPrisex24CoreConstants {
   String PARTID_REFBOOK_SEX_TOYS      = "com.hazard157.prisex24.part.refbook_sex_toys";      //$NON-NLS-1$
   String PARTID_REFBOOK_              = "com.hazard157.prisex24.part.refbook_";              //$NON-NLS-1$
 
+  String PERSPID_PLANNING = "com.hazard157.prisex24.persp.planning"; //$NON-NLS-1$
+
   String PARTID_SHARED_SVINS_FRAMES = "com.hazard157.prisex24.part.shared.svins_frames"; //$NON-NLS-1$
   String PARTID_SHARED_SNIPPETS     = "com.hazard157.prisex24.part.shared.snippets";     //$NON-NLS-1$
   String PARTID_SHARED_             = "com.hazard157.prisex24.part.shared.";             //$NON-NLS-1$
@@ -120,6 +122,8 @@ public interface IPrisex24CoreConstants {
   String ICONID_WELCOME                      = "welcome";                      //$NON-NLS-1$
   String ICONID_FILMS_LIST                   = "films-list";                   //$NON-NLS-1$
   String ICONID_FILM                         = "film";                         //$NON-NLS-1$
+  String ICONID_PLANNING_FULL                = "planning-full";                //$NON-NLS-1$
+  String ICONID_PLANNING                     = "planning";                     //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions
