@@ -50,8 +50,11 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // E4
 
-  String PERSPID_WELCOME               = "com.hazard157.prisex24.persp.welcome";               //$NON-NLS-1$
-  String PARTID_WELCOME_EPISODE_THUMBS = "com.hazard157.prisex24.part.welcome_episode_thumbs"; //$NON-NLS-1$
+  String PERSPID_WELCOME                 = "com.hazard157.prisex24.persp.welcome";                 //$NON-NLS-1$
+  String PARTID_WELCOME_EPISODE_THUMBS   = "com.hazard157.prisex24.part.welcome_episode_thumbs";   //$NON-NLS-1$
+  String PARTID_WELCOME_FILM_THUMBS      = "com.hazard157.prisex24.part.welcome_film_thumbs";      //$NON-NLS-1$
+  String TOOLITEMID_WELCOME_EPISODE_PLAY = "com.hazard157.prisex24.toolitem.welcome_episode_play"; //$NON-NLS-1$
+  String TOOLITEMID_WELCOME_FILM_PLAY    = "com.hazard157.prisex24.toolitem.welcome_film_play";    //$NON-NLS-1$
 
   String PERSPID_EPISODES        = "com.hazard157.prisex24.persp.episodes";        //$NON-NLS-1$
   String PARTID_EISODES_LIST     = "com.hazard157.prisex24.part.episodes_list";    //$NON-NLS-1$
@@ -115,6 +118,8 @@ public interface IPrisex24CoreConstants {
   String ICONID_SNIPPETS_2                   = "snippets-icon-2";              //$NON-NLS-1$
   String ICONID_NONE_EPISODE_IMAGE           = "none-episode-image";           //$NON-NLS-1$
   String ICONID_WELCOME                      = "welcome";                      //$NON-NLS-1$
+  String ICONID_FILMS_LIST                   = "films-list";                   //$NON-NLS-1$
+  String ICONID_FILM                         = "film";                         //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions
@@ -162,7 +167,7 @@ public interface IPrisex24CoreConstants {
   // ------------------------------------------------------------------------------------
   // Application preferences
 
-  String PBID_PSX24_COMMON1 = APP_ID;
+  String PBID_PSX24_COMMON = APP_ID;
 
   // ------------------------------------------------------------------------------------
   // Welcome perspective preferences

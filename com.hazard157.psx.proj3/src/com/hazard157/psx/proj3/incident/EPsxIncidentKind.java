@@ -4,6 +4,7 @@ import static com.hazard157.psx.proj3.IPsxProj3Constants.*;
 import static com.hazard157.psx.proj3.incident.IPrisexIncidentConstants.*;
 import static com.hazard157.psx.proj3.incident.IPsxResources.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
+import static org.toxsoft.core.tslib.bricks.strio.impl.StrioUtils.*;
 
 import java.time.*;
 
@@ -195,6 +196,26 @@ public enum EPsxIncidentKind
   public String date2id( LocalDate aDate ) {
     IncidentDateValidator.VALIDATOR.checkValid( aDate );
     return chIdPrefix + aDate.toString().replace( '-', '_' );
+  }
+
+  /**
+   * Parses "YYYY-DD-MM" string as {@link LocalDate} without throwing a parsing exception.
+   *
+   * @param aStr - string to parse
+   * @return {@link LocalDate} - parsed date or <code>null</code>
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  public static LocalDate parseDate( String aStr ) {
+    TsNullArgumentRtException.checkNull( aStr );
+    if( aStr.length() != 10 ) { // "YYYY-DD-MM"
+      return null;
+    }
+    if( !isAsciiDigit( aStr.charAt( 0 ) ) || !isAsciiDigit( aStr.charAt( 1 ) ) || !isAsciiDigit( aStr.charAt( 2 ) )
+        || !isAsciiDigit( aStr.charAt( 3 ) ) || !isAsciiDigit( aStr.charAt( 5 ) ) || !isAsciiDigit( aStr.charAt( 6 ) )
+        || !isAsciiDigit( aStr.charAt( 8 ) ) || !isAsciiDigit( aStr.charAt( 9 ) ) ) {
+      return null;
+    }
+    return LocalDate.parse( aStr );
   }
 
   // ----------------------------------------------------------------------------------

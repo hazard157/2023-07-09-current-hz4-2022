@@ -26,15 +26,17 @@ import com.hazard157.psx.proj3.incident.*;
 public class PsxCofs
     implements IPsxCofs {
 
-  private final ICofsFrames      cofsFrames;
-  private final ICofsOutputMedia cofsOutputMedia;
+  private final ICofsFrames   cofsFrames;
+  private final ICofsFilms    cofsFilms;
+  private final ICofsTrailers cofsTrailers;
 
   /**
    * Constructor.
    */
   public PsxCofs() {
     cofsFrames = new CofsFrames( COFS_EPISODES_ROOT );
-    cofsOutputMedia = new CofsOutputMedia();
+    cofsFilms = new CofsFilms();
+    cofsTrailers = new CofsTrailers();
   }
 
   // ------------------------------------------------------------------------------------
@@ -52,8 +54,13 @@ public class PsxCofs
   }
 
   @Override
-  public ICofsOutputMedia cofsOutputMedia() {
-    return cofsOutputMedia;
+  public ICofsFilms cofsFilms() {
+    return cofsFilms;
+  }
+
+  @Override
+  public ICofsTrailers cofsTrailers() {
+    return cofsTrailers;
   }
 
   @Override

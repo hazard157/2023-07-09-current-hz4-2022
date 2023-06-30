@@ -33,8 +33,6 @@ import com.hazard157.psx.proj3.tags.*;
 import com.hazard157.psx.proj3.tags.impl.*;
 import com.hazard157.psx.proj3.todos.*;
 import com.hazard157.psx.proj3.todos.impl.*;
-import com.hazard157.psx.proj3.trailers.*;
-import com.hazard157.psx.proj3.trailers.impl.*;
 
 /**
  * Квант проекта PSX.
@@ -190,9 +188,13 @@ public class QuantPsx3Project
     proj.registerUnit( UNITID_CAMERAS, unitCameras, true );
     aAppContext.set( IUnitCameras.class, unitCameras );
     //
-    IUnitTrailers unitTrailers = new UnitTrailers();
-    proj.registerUnit( UNITID_TRAILERS, unitTrailers, true );
-    aAppContext.set( IUnitTrailers.class, unitTrailers );
+
+    // FIXME GOGA temporary ---
+    // IUnitTrailers unitTrailers = new UnitTrailers();
+    // proj.registerUnit( UNITID_TRAILERS, unitTrailers, true );
+    // aAppContext.set( IUnitTrailers.class, unitTrailers );
+    // ---
+
     //
     IUnitSongs unitSongs = new UnitSongs();
     proj.registerUnit( UNITID_SONGS, unitSongs, true );

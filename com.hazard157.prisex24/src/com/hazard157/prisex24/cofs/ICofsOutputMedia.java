@@ -43,6 +43,6 @@ package com.hazard157.prisex24.cofs;
  */
 public interface ICofsOutputMedia {
 
-  // nop
+  // TODO divide output media access to different interfaces like ICofsFilms
 
 }

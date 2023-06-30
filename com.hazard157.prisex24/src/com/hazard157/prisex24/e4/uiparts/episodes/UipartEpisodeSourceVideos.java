@@ -11,6 +11,7 @@ import org.toxsoft.core.tsgui.bricks.stdevents.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
+import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 
 import com.hazard157.common.quants.secint.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
@@ -53,6 +54,7 @@ public class UipartEpisodeSourceVideos
     if( aSel != null ) {
       Secint in = new Secint( 0, aSel.duration() - 1 );
       svin = new Svin( aSel.episodeId(), aSel.cameraId(), in, aSel.frame() );
+      selectedSvinsService.framesSelectionParams().setCameraIds( new SingleStringList( aSel.cameraId() ) );
     }
     selectedSvinsService.setSvin( svin );
   }

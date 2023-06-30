@@ -56,11 +56,18 @@ public interface IPsxCofs {
   ICofsFrames cofsFrames();
 
   /**
-   * Returns means to access output media files.
+   * Returns means to access film files.
    *
-   * @return {@link ICofsOutputMedia} - output media files manager
+   * @return {@link ICofsFilms} - film files manager
    */
-  ICofsOutputMedia cofsOutputMedia();
+  ICofsFilms cofsFilms();
+
+  /**
+   * Returns means to access trailer files.
+   *
+   * @return {@link ICofsTrailers} - trailer files manager
+   */
+  ICofsTrailers cofsTrailers();
 
   // ------------------------------------------------------------------------------------
   // yet unsorted may be put in some helper interfaces

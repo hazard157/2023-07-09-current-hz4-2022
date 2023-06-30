@@ -9,6 +9,7 @@ import org.eclipse.e4.ui.model.application.*;
 import org.eclipse.e4.ui.model.application.ui.basic.*;
 import org.eclipse.e4.ui.workbench.modeling.*;
 import org.eclipse.swt.graphics.*;
+import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;
 import org.toxsoft.core.tsgui.graphics.icons.impl.*;
@@ -31,6 +32,7 @@ import com.hazard157.prisex24.cofs.impl.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
+import com.hazard157.prisex24.e4.uiparts.welcome.*;
 import com.hazard157.prisex24.glib.fravisum.*;
 import com.hazard157.prisex24.m5.camera.*;
 import com.hazard157.prisex24.m5.episodes.*;
@@ -95,8 +97,9 @@ public class AddonPrisex24Core
   @Override
   protected void initWin( IEclipseContext aWinContext ) {
     IPrisex24CoreConstants.init( aWinContext );
+    ITsGuiContext ctx = new TsGuiContext( aWinContext );
     //
-    aWinContext.set( IPrisex24Service.class, new Prisex24Service( new TsGuiContext( aWinContext ) ) );
+    aWinContext.set( IPrisex24Service.class, new Prisex24Service( ctx ) );
     // M5
     IM5Domain m5 = aWinContext.get( IM5Domain.class );
     m5.addModel( new FulfilStageM5Model() );
@@ -118,6 +121,8 @@ public class AddonPrisex24Core
     VisumpleProvidersRegistry vpReg = aWinContext.get( VisumpleProvidersRegistry.class );
     IVisumplesProvider vp = new PsxFrameVisumplesProvider( new TsGuiContext( aWinContext ) );
     vpReg.registerProvider( vp.id(), vp );
+    //
+    aWinContext.set( IWelcomePerspectiveController.class, new WelcomePerspectiveController( ctx ) );
 
     // DEBUG --- resource tracking
     Resource.setNonDisposeHandler( aT -> {

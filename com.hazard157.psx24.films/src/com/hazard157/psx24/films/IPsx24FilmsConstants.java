@@ -54,7 +54,7 @@ public interface IPsx24FilmsConstants {
       OPDEF_IS_DIRECTORY, AV_TRUE, //
       TSID_NAME, STR_N_FILMS_DIR_ROOT, //
       TSID_DESCRIPTION, STR_D_FILMS_DIR_ROOT, //
-      TSID_DEFAULT_VALUE, avStr( "/home/hmade/media/films/" ) //
+      TSID_DEFAULT_VALUE, avStr( "/home/hmade/cofs/media/films/" ) //
   );
 
   /**

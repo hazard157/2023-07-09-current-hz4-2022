@@ -30,7 +30,7 @@ public interface IPrisexApplication {
 
   IUnitSongs unitSongs();
 
-  ICofsOutputMedia cofsOutputMedia();
+  ICofsFilms cofsOutputMedia();
 
   // IUnitPleps unitPleps();
   // IUnitTodos unitTodos();

@@ -1,5 +1,7 @@
 package com.hazard157.prisex24.cofs.l10n;
 
+import com.hazard157.prisex24.cofs.impl.*;
+
 /**
  * Localizable resources.
  *
@@ -24,5 +26,11 @@ public interface IPsxCofsSharedResources {
    * {@link CofsFrames}
    */
   String FMT_WARN_NO_FRAMES_ROOT_DIR = Messages.getString( "FMT_WARN_NO_FRAMES_ROOT_DIR" ); //$NON-NLS-1$
+
+  /**
+   * {@link CofsFilms}
+   */
+  String FMT_WARN_NO_SH_FILE     = Messages.getString( "FMT_WARN_NO_SH_FILE" );     //$NON-NLS-1$
+  String FMT_CREATING_FILM_THUMB = Messages.getString( "FMT_CREATING_FILM_THUMB" ); //$NON-NLS-1$
 
 }

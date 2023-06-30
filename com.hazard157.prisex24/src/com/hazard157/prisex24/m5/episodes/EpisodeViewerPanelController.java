@@ -10,12 +10,13 @@ import org.toxsoft.core.tsgui.valed.controls.basic.*;
 import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
-import org.toxsoft.core.tslib.coll.primtypes.*;
+import org.toxsoft.core.tslib.utils.files.*;
 
+import com.hazard157.common.incub.fs.*;
+import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.m5.std.*;
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx.proj3.trailers.*;
 
 /**
  * Panel controller for {@link IM5EntityPanel} in viewer mode.
@@ -23,7 +24,8 @@ import com.hazard157.psx.proj3.trailers.*;
  * @author hazard157
  */
 public class EpisodeViewerPanelController
-    extends M5EntityPanelWithValedsController<IEpisode> {
+    extends M5EntityPanelWithValedsController<IEpisode>
+    implements IPsxGuiContextable {
 
   private static final IList<IAtomicValue> EMPTY_IDS_LIST = new SingleItemList<>( AV_STR_NONE_ID );
 
@@ -49,10 +51,11 @@ public class EpisodeViewerPanelController
       trailerIdCombo.setItems( EMPTY_IDS_LIST );
       return;
     }
-    IStringList traIds = tsContext().get( IUnitTrailers.class ).listTrailersByEpisode( aEpisodeId ).ids();
+    IList<OptedFile> allTrailers = cofsTrailers().listEpisodeTrailerFiles( e.id() );
     IListEdit<IAtomicValue> avTraIds = new ElemArrayList<>();
-    for( String tid : traIds ) {
-      avTraIds.add( avStr( TrailerUtils.extractLocalId( tid ) ) );
+    for( OptedFile trailer : allTrailers ) {
+      String name = TsFileUtils.extractBareFileName( trailer.file().getName() );
+      avTraIds.add( avStr( name ) );
     }
     if( avTraIds.isEmpty() ) {
       avTraIds.add( AV_STR_NONE_ID );

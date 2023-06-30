@@ -28,8 +28,12 @@ public interface IPsxGuiContextable
     return tsContext().get( IPsxCofs.class ).cofsFrames();
   }
 
-  default ICofsOutputMedia cofsOutputMedia() {
-    return tsContext().get( IPsxCofs.class ).cofsOutputMedia();
+  default ICofsFilms cofsFilms() {
+    return tsContext().get( IPsxCofs.class ).cofsFilms();
+  }
+
+  default ICofsTrailers cofsTrailers() {
+    return tsContext().get( IPsxCofs.class ).cofsTrailers();
   }
 
   default IPrisex24Service psxService() {
@@ -48,7 +52,7 @@ public interface IPsxGuiContextable
     return tsContext().get( IUnitSnippets.class );
   }
 
-  default IMediaPlayerService mediaPlayer() {
+  default IMediaPlayerService mps() {
     return tsContext().get( IMediaPlayerService.class );
   }
 

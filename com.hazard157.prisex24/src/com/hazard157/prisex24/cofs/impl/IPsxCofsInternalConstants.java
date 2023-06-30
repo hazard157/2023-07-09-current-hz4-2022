@@ -36,6 +36,8 @@ interface IPsxCofsInternalConstants {
   String SUBDIR_EP_STILL_IMAGES  = "frames-still"; //$NON-NLS-1$
   String SUBDIR_EP_ANIM_IMAGES   = "frames-anim";  //$NON-NLS-1$
   String SUBDIR_EP_SOURCE_VIDEOS = "srcvideos";    //$NON-NLS-1$
+  String SUBDIR_EP_TRAILERS      = "trailers";     //$NON-NLS-1$
+  String SUBDIR_EP_DEVEL         = "devel";        //$NON-NLS-1$
 
   String STILL_IMAGE_FILE_EXT = "jpg"; //$NON-NLS-1$
   String ANIM_IMAGE_FILE_EXT  = "gif"; //$NON-NLS-1$
@@ -44,6 +46,8 @@ interface IPsxCofsInternalConstants {
       STILL_IMAGE_FILE_EXT, //
       ANIM_IMAGE_FILE_EXT //
   );
+
+  File GIF_CREATE_SH = new File( "/home/hmade/bin/scripts/make-video-thumb.sh" ); //$NON-NLS-1$
 
   /**
    * Filters frame files.

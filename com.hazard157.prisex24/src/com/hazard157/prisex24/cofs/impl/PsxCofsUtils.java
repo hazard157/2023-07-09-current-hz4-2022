@@ -1,5 +1,7 @@
 package com.hazard157.prisex24.cofs.impl;
 
+import static com.hazard157.prisex24.cofs.impl.IPsxCofsInternalConstants.*;
+import static com.hazard157.prisex24.cofs.l10n.IPsxCofsSharedResources.*;
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static org.toxsoft.core.tsgui.utils.IMediaFileConstants.*;
 import static org.toxsoft.core.tslib.bricks.strio.impl.StrioUtils.*;
@@ -7,13 +9,19 @@ import static org.toxsoft.core.tslib.utils.files.TsFileUtils.*;
 
 import java.io.*;
 
+import org.eclipse.core.runtime.*;
+import org.eclipse.jface.dialogs.*;
+import org.eclipse.jface.operation.*;
 import org.toxsoft.core.tslib.bricks.strid.impl.*;
+import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
+import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
+import com.hazard157.common.incub.fs.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
@@ -32,6 +40,62 @@ class PsxCofsUtils {
         }
 
       };
+
+  /**
+   * Ensures that fresh summary GIF file exists.
+   * <p>
+   * Out-dated or non-existing GIF will be recreated using {@link #createSummaryGif(OptedFile, File)}.
+   *
+   * @param aVideoFile {@link OptedFile} - the video file
+   * @param aGifFile {@link File} - GIF file to be created
+   * @return {@link File} - the argument <code>aGifFile</code> or <code>null</code> if can't be created
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  public static File ensureSummaryGif( OptedFile aVideoFile, File aGifFile ) {
+    TsNullArgumentRtException.checkNulls( aVideoFile, aGifFile );
+    // out-dated or non-existing GIF will be recreated
+    if( !aGifFile.exists() || aGifFile.lastModified() < aVideoFile.file().lastModified() ) {
+      ValidationResult vr = PsxCofsUtils.createSummaryGif( aVideoFile, aGifFile );
+      if( vr.isError() ) {
+        return null;
+      }
+    }
+    if( !aGifFile.exists() ) {
+      return null;
+    }
+    return aGifFile;
+  }
+
+  /**
+   * Creates the summary GIF animation for the specified video file.
+   * <p>
+   * TODO if OptedFile.params() has ClipThumb definition - use it
+   *
+   * @param aVideoFile {@link OptedFile} - the video file
+   * @param aGifFile {@link File} - GIF file to be created
+   * @return {@link ValidationResult} - how the operation was performed
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  public static ValidationResult createSummaryGif( OptedFile aVideoFile, File aGifFile ) {
+    TsNullArgumentRtException.checkNulls( aVideoFile, aGifFile );
+    if( !GIF_CREATE_SH.exists() ) {
+      return ValidationResult.warn( FMT_WARN_NO_SH_FILE, GIF_CREATE_SH.getAbsolutePath() );
+    }
+    IRunnableWithProgress thumbCreator = aMonitor -> {
+      String s = String.format( FMT_CREATING_FILM_THUMB, aVideoFile.file().getName() );
+      aMonitor.beginTask( s, IProgressMonitor.UNKNOWN );
+      TsMiscUtils.runAndWait( 600, GIF_CREATE_SH.getAbsolutePath(), aVideoFile.file().getAbsolutePath(),
+          aGifFile.getAbsolutePath() );
+    };
+    ProgressMonitorDialog d = new ProgressMonitorDialog( null );
+    try {
+      d.run( true, false, thumbCreator );
+      return ValidationResult.SUCCESS;
+    }
+    catch( Exception ex ) {
+      return ValidationResult.error( ex );
+    }
+  }
 
   /**
    * Makes bare file name (without extension) of the frame file.

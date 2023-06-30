@@ -11,13 +11,13 @@ import org.toxsoft.core.tsgui.valed.controls.basic.*;
 import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
-import org.toxsoft.core.tslib.coll.primtypes.*;
+import org.toxsoft.core.tslib.utils.files.*;
 
+import com.hazard157.common.incub.fs.*;
+import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.m5.std.*;
 import com.hazard157.prisex24.valeds.frames.*;
-import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx.proj3.trailers.*;
 
 /**
  * Panel controller for {@link IM5EntityPanel} in edit mode.
@@ -25,7 +25,8 @@ import com.hazard157.psx.proj3.trailers.*;
  * @author hazard157
  */
 public class EpisodeEditPanelController
-    extends EpisodeViewerPanelController {
+    extends EpisodeViewerPanelController
+    implements IPsxGuiContextable {
 
   /**
    * Constructor.
@@ -45,13 +46,14 @@ public class EpisodeEditPanelController
   }
 
   private void updateDefaultTrailerSelectionCombo() {
-    String episodeId = lastValues().get( EpisodeM5Model.EPISODE_ID );
-    IStringList traIds = tsContext().get( IUnitTrailers.class ).listTrailersByEpisode( episodeId ).ids();
-    IListEdit<IAtomicValue> avTraIds = new ElemArrayList<>();
-    for( String tid : traIds ) {
-      avTraIds.add( avStr( TrailerUtils.extractLocalId( tid ) ) );
-    }
     ValedComboSelector<IAtomicValue> trailerIdCombo = getEditor( FID_DEF_TRAILER_ID, ValedComboSelector.class );
+    String episodeId = lastValues().get( EpisodeM5Model.EPISODE_ID );
+    IList<OptedFile> allTrailers = cofsTrailers().listEpisodeTrailerFiles( episodeId );
+    IListEdit<IAtomicValue> avTraIds = new ElemArrayList<>();
+    for( OptedFile trailer : allTrailers ) {
+      String name = TsFileUtils.extractBareFileName( trailer.file().getName() );
+      avTraIds.add( avStr( name ) );
+    }
     if( avTraIds.isEmpty() ) {
       avTraIds.add( AV_STR_NONE_ID );
     }
