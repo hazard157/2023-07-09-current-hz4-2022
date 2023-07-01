@@ -16,7 +16,7 @@ import org.toxsoft.core.tsgui.mws.bases.*;
 
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx24.planning.e4.services.*;
-import com.hazard157.psx24.planning.m5.plep.*;
+import com.hazard157.psx24.planning.m5.*;
 
 /**
  * Вью просмотра и правки {@link IUnitPleps#items()}.
@@ -45,7 +45,7 @@ public class UipartUnitPleps
   @Override
   protected void doInit( Composite aParent ) {
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
-    IM5Model<IPlep> plepsModel = m5().getModel( PlepM5Model.MODEL_ID, IPlep.class );
+    IM5Model<IPlep> plepsModel = m5().getModel( IPlepM5Constants.MID_PLEP, IPlep.class );
     IM5LifecycleManager<IPlep> lm = plepsModel.getLifecycleManager( unitPleps );
     IMultiPaneComponentConstants.OPDEF_IS_FILTER_PANE.setValue( ctx.params(), AV_TRUE );
     plepsPanel = plepsModel.panelCreator().createCollEditPanel( ctx, lm.itemsProvider(), lm );

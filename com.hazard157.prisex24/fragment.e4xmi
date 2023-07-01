@@ -65,11 +65,18 @@
     </elements>
     <elements xsi:type="advanced:Perspective" xmi:id="_RAUoABeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.persp.planning" label="%Persp_Planning" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Persp_Planning_D">
       <children xsi:type="basic:PartSashContainer" xmi:id="_BPq9QBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partsashcontainer.3" horizontal="true">
-        <children xsi:type="basic:PartStack" xmi:id="_CBCv0BeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.6" containerData="2000"/>
-        <children xsi:type="basic:PartStack" xmi:id="_CT8dsBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.7" containerData="5700">
+        <children xsi:type="basic:PartStack" xmi:id="_CBCv0BeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.6" containerData="2000">
+          <children xsi:type="basic:Part" xmi:id="_hVcZEBhCEe6f5vSzwO-GTA" elementId="com.hazard157.prisex24.part.pleps" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.pleps.UipartUnitPleps" label="%Uipart_Pleps" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Uipart_Pleps_D"/>
+          <children xsi:type="basic:Part" xmi:id="_rz3qUBhDEe6f5vSzwO-GTA" elementId="com.hazard157.prisex24.part.songs" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.pleps.UipartSongsRefbook" label="%Uipart_Songs" iconURI="platform:/plugin/com.hazard157.common/icons/is24x24/audio-x-generic.png" tooltip="%Uipart_Songs_D"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_CT8dsBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.part.tracks" containerData="5700">
+          <children xsi:type="basic:Part" xmi:id="_yn_pgBhDEe6f5vSzwO-GTA" elementId="com.hazard157.prisex24.part.stirs" accessibilityPhrase="%Uipart_Stirs_D" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.pleps.UipartUnitPlepStirs" label="%Uipart_Stirs" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png"/>
+          <children xsi:type="basic:Part" xmi:id="_NVPIMBhEEe6f5vSzwO-GTA" elementId="com.hazard157.prisex24.part.uipart_tracks" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.pleps.UipartUnitPlepTracks" label="%Uipart_Tracks" iconURI="platform:/plugin/com.hazard157.common/icons/is24x24/audio-x-generic.png" tooltip="%Uipart_Tracks_D"/>
           <children xsi:type="advanced:Placeholder" xmi:id="_FzGsMBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.placeholder.2" ref="_J45sQBS3Ee63pt3VU6a_-g"/>
         </children>
-        <children xsi:type="basic:PartStack" xmi:id="_Ck_KYBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.8" containerData="2300"/>
+        <children xsi:type="basic:PartStack" xmi:id="_Ck_KYBeDEe661Z0SOwydgg" elementId="com.hazard157.prisex24.partstack.8" containerData="2300">
+          <children xsi:type="basic:Part" xmi:id="_PZ2rUBhEEe6f5vSzwO-GTA" elementId="com.hazard157.prisex24.part.plep_timeline" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.pleps.UipartPlepTimeline" label="%Uipart_PlepTimeline" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Uipart_PlepTimeline_D"/>
+        </children>
       </children>
     </elements>
   </fragments>

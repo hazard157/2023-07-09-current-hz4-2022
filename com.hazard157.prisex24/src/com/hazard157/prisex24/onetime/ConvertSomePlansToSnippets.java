@@ -7,6 +7,7 @@ import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
 
 import com.hazard157.prisex24.*;
+import com.hazard157.prisex24.pdus.snippets.*;
 import com.hazard157.psx.proj3.pleps.*;
 
 /**
@@ -38,6 +39,7 @@ public class ConvertSomePlansToSnippets
       IOptionSetEdit p = new OptionSet();
       p.setStr( TSID_NAME, s.name() );
       p.setStr( TSID_DESCRIPTION, s.description() );
+      p.setStr( ISnippetConstants.OPDEF_CATEGORY, aCategory );
 
       // TODO no visumples
 

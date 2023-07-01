@@ -7,7 +7,6 @@ import java.util.*;
 import javax.inject.*;
 
 import org.eclipse.swt.widgets.*;
-import org.toxsoft.core.tsgui.mws.services.e4helper.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 
 import com.hazard157.prisex24.e4.services.currep.*;

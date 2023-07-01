@@ -1,8 +1,5 @@
 package com.hazard157.psx.proj3.pleps.impl;
 
-import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
-
-import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.av.impl.*;
 import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
@@ -14,7 +11,7 @@ import org.toxsoft.core.tslib.coll.notifier.basis.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.common.quants.secint.*;
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 import com.hazard157.psx.proj3.pleps.*;
 
 /**
@@ -98,17 +95,16 @@ class Stir
 
   @Override
   public IVisumplesList visumples() {
-    // return IVisumpleConstants.OPDEF_VISUMPLES.getValue( params ).asValobj();
-    IAtomicValue av =
-        params.getValue( IVisumpleConstants.FID_VISUMPLES, avStr( IEntityKeeper.STR_EMPTY_COLLECTION_REPRESENTATION ) );
-    return new VisumplesList( VisumpleKeeper.KEEPER.str2coll( av.asString() ) );
+    return IVisumpleConstants.OPDEF_VISUMPLES.getValue( params ).asValobj();
+    // IAtomicValue av =
+    // params.getValue( IVisumpleConstants.FID_VISUMPLES, avStr( IEntityKeeper.STR_EMPTY_COLLECTION_REPRESENTATION ) );
+    // return new VisumplesList( VisumpleKeeper.KEEPER.str2coll( av.asString() ) );
   }
 
   // ------------------------------------------------------------------------------------
-  // IVisumplableEdit
+  // API
   //
 
-  @Override
   public void setVisumples( IVisumplesList aVisumples ) {
     IVisumpleConstants.OPDEF_VISUMPLES.setValue( params, AvUtils.avValobj( aVisumples ) );
   }

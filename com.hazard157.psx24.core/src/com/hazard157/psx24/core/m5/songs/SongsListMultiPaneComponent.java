@@ -18,6 +18,11 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.proj3.songs.*;
 import com.hazard157.psx24.core.e4.services.prisex.*;
 
+/**
+ * {@link MultiPaneComponentModown} implementation for {@link SongM5Model}.
+ *
+ * @author hazard157
+ */
 class SongsListMultiPaneComponent
     extends MultiPaneComponentModown<ISong> {
 

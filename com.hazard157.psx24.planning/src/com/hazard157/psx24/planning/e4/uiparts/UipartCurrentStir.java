@@ -21,7 +21,7 @@ import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx24.planning.e4.services.*;
 import com.hazard157.psx24.planning.m5.*;
@@ -51,7 +51,7 @@ public class UipartCurrentStir
   @Override
   protected void doInit( Composite aParent ) {
     currentStirService.addCurrentEntityChangeListener( currentStirChangeListener );
-    model = m5().getModel( StirM5Model.MODEL_ID, IStir.class );
+    model = m5().getModel( IPlepM5Constants.MID_STIR, IStir.class );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     // GUI
     aParent.setLayout( new BorderLayout() );

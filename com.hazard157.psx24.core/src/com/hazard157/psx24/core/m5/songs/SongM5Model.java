@@ -19,9 +19,10 @@ import org.toxsoft.core.tslib.av.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.psx.proj3.songs.*;
+import com.hazard157.psx24.core.m5.*;
 
 /**
- * M5-модель сущности {@link ISong}.
+ * M5-model of {@link ISong}.
  *
  * @author hazard157
  */
@@ -29,36 +30,26 @@ public class SongM5Model
     extends M5Model<ISong> {
 
   /**
-   * Идентификатор модели.
-   */
-  public static final String MODEL_ID = "psx.Song"; //$NON-NLS-1$
-
-  /**
-   * Идентификатор атрибута {@link #FILE_PATH}.
-   */
-  public static final String FID_FILE_PATH = "filePath"; //$NON-NLS-1$
-
-  /**
-   * Атрибут {@link ISong#id()}
+   * Field {@link ISong#id()}
    */
   public static final M5AttributeFieldDef<ISong> ID = new M5StdFieldDefId<>( STR_N_SONG_ID, STR_D_SONG_ID );
 
   /**
-   * Атрибут {@link ISong#nmName()}
+   * Field {@link ISong#nmName()}
    */
   public static final M5AttributeFieldDef<ISong> NAME = new M5StdFieldDefName<>( STR_N_SONG_NAME, STR_D_SONG_NAME );
 
   /**
-   * Атрибут {@link ISong#description()}
+   * Field {@link ISong#description()}
    */
   public static final M5AttributeFieldDef<ISong> DESCRIPTION =
       new M5StdFieldDefDescription<>( STR_N_SONG_DESCRIPTION, STR_D_SONG_DESCRIPTION );
 
   /**
-   * Атрибут {@link ISong#filePath()}
+   * Field {@link ISong#filePath()}
    */
   public static final M5AttributeFieldDef<ISong> FILE_PATH =
-      new M5AttributeFieldDef<>( FID_FILE_PATH, DT_FILE_OPEN_NAME ) {
+      new M5AttributeFieldDef<>( IPsxM5Constants.FID_FILE_PATH, DT_FILE_OPEN_NAME ) {
 
         @Override
         protected void doInit() {
@@ -74,7 +65,7 @@ public class SongM5Model
       };
 
   /**
-   * Атрибут {@link ISong#duration()}
+   * Field {@link ISong#duration()}
    */
   public static final M5AttributeFieldDef<ISong> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -98,10 +89,10 @@ public class SongM5Model
       };
 
   /**
-   * Конструктор.
+   * Constructor.
    */
   public SongM5Model() {
-    super( MODEL_ID, ISong.class );
+    super( IPsxM5Constants.MID_SONG, ISong.class );
     addFieldDefs( ID, DURATION, NAME, DESCRIPTION, FILE_PATH );
     setPanelCreator( new M5DefaultPanelCreator<ISong>() {
 

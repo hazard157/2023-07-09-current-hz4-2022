@@ -11,6 +11,11 @@ import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx.proj3.songs.*;
 
+/**
+ * LM for {@link TrackM5Model}.
+ *
+ * @author hazard157
+ */
 class TrackLifecycleManager
     extends M5LifecycleManager<ITrack, IPlep> {
 
@@ -20,8 +25,8 @@ class TrackLifecycleManager
 
   @Override
   protected ITrack doCreate( IM5Bunch<ITrack> aValues ) {
-    String songId = aValues.getAs( TrackM5Model.FID_SONG_ID, ISong.class ).id();
-    Secint interval = aValues.getAsAv( TrackM5Model.FID_INTERVAL ).asValobj();
+    String songId = aValues.getAs( IPlepM5Constants.FID_SONG_ID, ISong.class ).id();
+    Secint interval = aValues.getAsAv( IPlepM5Constants.FID_INTERVAL ).asValobj();
     int insertionIndex = aValues.getAsAv( OPID_TRACK_INSERTION_INDEX ).asInt();
     if( insertionIndex < -1 || insertionIndex > master().stirs().size() ) {
       insertionIndex = -1;
@@ -31,8 +36,8 @@ class TrackLifecycleManager
 
   @Override
   protected ITrack doEdit( IM5Bunch<ITrack> aValues ) {
-    String songId = aValues.getAs( TrackM5Model.FID_SONG_ID, ISong.class ).id();
-    Secint interval = aValues.getAsAv( TrackM5Model.FID_INTERVAL ).asValobj();
+    String songId = aValues.getAs( IPlepM5Constants.FID_SONG_ID, ISong.class ).id();
+    Secint interval = aValues.getAsAv( IPlepM5Constants.FID_INTERVAL ).asValobj();
     int index = master().tracks().indexOf( aValues.originalEntity() );
     try {
       master().eventer().pauseFiring();

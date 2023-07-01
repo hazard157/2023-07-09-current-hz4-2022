@@ -42,7 +42,7 @@ public class UipartUnitPlepTracks
     currentPlepService.addCurrentEntityChangeListener( currentPlepChangeListener );
     currentTrackService.addCurrentEntityChangeListener( c -> tracksPanel.setSelectedItem( c ) );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
-    IM5Model<ITrack> tracksModel = m5().getModel( TrackM5Model.MODEL_ID, ITrack.class );
+    IM5Model<ITrack> tracksModel = m5().getModel( IPlepM5Constants.MID_TRACK, ITrack.class );
     tracksPanel = tracksModel.panelCreator().createCollEditPanel( ctx, null, null );
     tracksPanel.createControl( aParent );
     tracksPanel.addTsSelectionListener( selectedTrackChangeListener );
@@ -52,7 +52,7 @@ public class UipartUnitPlepTracks
   void updateOnCurrentPlep() {
     IPlep plep = currentPlepService.current();
     if( plep != null ) {
-      IM5Model<ITrack> tracksModel = m5().getModel( TrackM5Model.MODEL_ID, ITrack.class );
+      IM5Model<ITrack> tracksModel = m5().getModel( IPlepM5Constants.MID_TRACK, ITrack.class );
       IM5LifecycleManager<ITrack> lm = tracksModel.getLifecycleManager( plep );
       tracksPanel.setItemsProvider( lm.itemsProvider() );
       tracksPanel.setLifecycleManager( lm );

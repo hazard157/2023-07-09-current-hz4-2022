@@ -7,7 +7,6 @@ import org.toxsoft.core.tsgui.mws.bases.*;
 import com.hazard157.psx24.planning.*;
 import com.hazard157.psx24.planning.e4.services.*;
 import com.hazard157.psx24.planning.m5.*;
-import com.hazard157.psx24.planning.m5.plep.*;
 
 /**
  * Адон приложения.

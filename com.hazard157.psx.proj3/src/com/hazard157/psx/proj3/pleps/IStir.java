@@ -7,7 +7,7 @@ import org.toxsoft.core.tslib.av.utils.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 
 import com.hazard157.common.quants.secint.*;
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 
 /**
  * Движение - элемент планируемого эпизода.
@@ -16,7 +16,7 @@ import com.hazard157.lib.core.excl_plan.visumple.*;
  */
 @SuppressWarnings( "javadoc" )
 public interface IStir
-    extends IParameterizedEdit, IVisumplableEdit, IGenericChangeEventCapable {
+    extends IParameterizedEdit, IVisumplable, IGenericChangeEventCapable {
 
   default String name() {
     return OP_STIR_NAME.getValue( params() ).asString();

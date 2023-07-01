@@ -25,8 +25,8 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.logs.impl.*;
 
 import com.hazard157.common.dialogs.*;
+import com.hazard157.common.quants.visumple.*;
 import com.hazard157.lib.core.excl_plan.plv.*;
-import com.hazard157.lib.core.excl_plan.visumple.*;
 
 /**
  * Просмотрщик коллекции {@link Visumple} в таблицы миниатюр.

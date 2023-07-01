@@ -34,7 +34,7 @@ public class Prisex24Service
     implements IPrisex24Service, IPsxGuiContextable {
 
   /**
-   * Last copy destination apppref ID in the bundle {@link IPrisex24CoreConstants#PBID_PSX24_COMMON1}.
+   * Last copy destination apppref ID in the bundle {@link IPrisex24CoreConstants#PBID_PSX24_COMMON}.
    */
   private static final String APPREFID_LAST_DESTINATION = "FrameCopyLastDestination"; //$NON-NLS-1$
 

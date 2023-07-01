@@ -2,7 +2,6 @@ package com.hazard157.psx24.planning.m5;
 
 import static com.hazard157.common.IHzConstants.*;
 import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
-import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static com.hazard157.psx.proj3.pleps.IUnitPlepsConstants.*;
 import static com.hazard157.psx24.planning.m5.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
@@ -25,10 +24,11 @@ import com.hazard157.common.quants.secint.*;
 import com.hazard157.common.quants.secint.valed.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx.proj3.songs.*;
+import com.hazard157.psx24.core.m5.*;
 import com.hazard157.psx24.core.m5.songs.*;
 
 /**
- * Модель сущностей типа {@link ITrack}.
+ * M5-model of {@link ITrack}.
  *
  * @author hazard157
  */
@@ -36,22 +36,7 @@ public class TrackM5Model
     extends M5Model<ITrack> {
 
   /**
-   * Идентификатор модели.
-   */
-  public static final String MODEL_ID = PSX_ID + "Track"; //$NON-NLS-1$
-
-  /**
-   * Идентификатор поля {@link #SONG_ID}..
-   */
-  public static final String FID_SONG_ID = "songId"; //$NON-NLS-1$
-
-  /**
-   * Идентификатор поля {@link #INTERVAL}..
-   */
-  public static final String FID_INTERVAL = "interval"; //$NON-NLS-1$
-
-  /**
-   * Поле: порядковый номе в {@link IPlep#tracks()}, начиная нумерацию с 1.
+   * Field: sequence number of the track in the {@link IPlep#tracks()}, starting from 1.
    */
   public static final M5AttributeFieldDef<ITrack> SEQ_NO = new M5AttributeFieldDef<>( FID_SEQ_NO, DDEF_INTEGER ) {
 
@@ -70,10 +55,10 @@ public class TrackM5Model
   };
 
   /**
-   * Attribute {@link ITrack#songId()}.
+   * Field: {@link ITrack#songId()}.
    */
   public static final IM5SingleLookupKeyFieldDef<ITrack, ISong> SONG_ID =
-      new M5SingleLookupKeyFieldDef<>( FID_SONG_ID, SongM5Model.MODEL_ID, FID_ID, String.class ) {
+      new M5SingleLookupKeyFieldDef<>( IPlepM5Constants.FID_SONG_ID, IPsxM5Constants.MID_SONG, FID_ID, String.class ) {
 
         @Override
         protected void doInit() {
@@ -90,10 +75,10 @@ public class TrackM5Model
       };
 
   /**
-   * Attribute {@link ITrack#interval()}.
+   * Field: {@link ITrack#interval()}.
    */
   public static final IM5AttributeFieldDef<ITrack> INTERVAL =
-      new M5AttributeFieldDef<>( FID_INTERVAL, DT_VIDEO_INTERVAL ) {
+      new M5AttributeFieldDef<>( IPlepM5Constants.FID_INTERVAL, DT_VIDEO_INTERVAL ) {
 
         @Override
         protected void doInit() {
@@ -109,7 +94,7 @@ public class TrackM5Model
       };
 
   /**
-   * Attribute {@link ITrack#duration()}.
+   * Field: {@link ITrack#duration()}.
    */
   public static final M5AttributeFieldDef<ITrack> START = new M5AttributeFieldDef<>( FID_START, DT_VIDEO_POSITION ) {
 
@@ -144,7 +129,7 @@ public class TrackM5Model
   };
 
   /**
-   * Attribute название.
+   * Field: track name (uses {@link ISong#nmName()}.
    */
   public static final IM5AttributeFieldDef<ITrack> NAME = new M5AttributeFieldDef<>( FID_NAME, DDEF_STRING ) {
 
@@ -168,7 +153,7 @@ public class TrackM5Model
   };
 
   /**
-   * Attribute {@link ITrack#duration()}.
+   * Field: {@link ITrack#duration()}.
    */
   public static final M5AttributeFieldDef<ITrack> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -217,7 +202,7 @@ public class TrackM5Model
    * Конструктор.
    */
   public TrackM5Model() {
-    super( MODEL_ID, ITrack.class );
+    super( IPlepM5Constants.MID_TRACK, ITrack.class );
     addFieldDefs( SEQ_NO, SONG_ID, START, INTERVAL, DURATION, NAME, INSERTION_INDEX );
     setPanelCreator( new M5DefaultPanelCreator<ITrack>() {
 

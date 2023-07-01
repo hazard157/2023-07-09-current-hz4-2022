@@ -9,6 +9,7 @@ import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 
 import com.hazard157.psx.proj3.songs.*;
+import com.hazard157.psx24.core.m5.*;
 import com.hazard157.psx24.core.m5.songs.*;
 
 /**
@@ -21,7 +22,7 @@ public class UipartRefbookSongs
 
   @Override
   protected void doInit( Composite aParent ) {
-    IM5Model<ISong> model = m5().getModel( SongM5Model.MODEL_ID, ISong.class );
+    IM5Model<ISong> model = m5().getModel( IPsxM5Constants.MID_SONG, ISong.class );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     IUnitSongs sm = tsContext().get( IUnitSongs.class );
     IM5LifecycleManager<ISong> lm = model.getLifecycleManager( sm );

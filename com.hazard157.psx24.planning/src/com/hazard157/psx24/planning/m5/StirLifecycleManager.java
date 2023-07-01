@@ -11,9 +11,13 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.helpers.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
 import com.hazard157.psx.proj3.pleps.*;
 
+/**
+ * LM foe {@link StirM5Model}.
+ *
+ * @author hazard157
+ */
 class StirLifecycleManager
     extends M5LifecycleManager<IStir, IPlep> {
 
@@ -24,14 +28,8 @@ class StirLifecycleManager
   private static IOptionSet makeStirParams( IM5Bunch<IStir> aValues ) {
     IOptionSetEdit ops = new OptionSet();
     for( IDataDef op : ALL_STIR_OPS ) {
-      if( op.id().equals( IVisumpleConstants.FID_VISUMPLES ) ) {
-        IList<Visumple> ll = aValues.getAs( op.id(), IList.class );
-        ops.setStr( op.id(), VisumpleKeeper.KEEPER.coll2str( ll ) );
-      }
-      else {
-        IAtomicValue av = aValues.getAsAv( op.id() );
-        ops.setValue( op, av );
-      }
+      IAtomicValue av = aValues.getAsAv( op.id() );
+      ops.setValue( op, av );
     }
     return ops;
   }

@@ -14,7 +14,6 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
 import com.hazard157.common.incub.fs.*;
-import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.m5.std.*;
 import com.hazard157.prisex24.valeds.frames.*;
 import com.hazard157.psx.proj3.episodes.*;
@@ -25,8 +24,7 @@ import com.hazard157.psx.proj3.episodes.*;
  * @author hazard157
  */
 public class EpisodeEditPanelController
-    extends EpisodeViewerPanelController
-    implements IPsxGuiContextable {
+    extends EpisodeViewerPanelController {
 
   /**
    * Constructor.

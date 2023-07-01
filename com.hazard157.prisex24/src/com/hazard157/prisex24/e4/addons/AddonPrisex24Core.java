@@ -30,6 +30,7 @@ import com.hazard157.prisex24.Activator;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.cofs.impl.*;
 import com.hazard157.prisex24.e4.services.currep.*;
+import com.hazard157.prisex24.e4.services.pleps.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.e4.uiparts.welcome.*;
@@ -39,6 +40,7 @@ import com.hazard157.prisex24.m5.episodes.*;
 import com.hazard157.prisex24.m5.frames.*;
 import com.hazard157.prisex24.m5.note.*;
 import com.hazard157.prisex24.m5.plane.*;
+import com.hazard157.prisex24.m5.plep.*;
 import com.hazard157.prisex24.m5.snippet.*;
 import com.hazard157.prisex24.m5.srcvideo.*;
 import com.hazard157.prisex24.m5.tags.*;
@@ -87,6 +89,9 @@ public class AddonPrisex24Core
     // E4 services
     aAppContext.set( ICurrentEpisodeService.class, new CurrentEpisodeService( aAppContext ) );
     aAppContext.set( IPsxSelectedSvinsService.class, new PsxSelectedSvinsService() );
+    aAppContext.set( ICurrentPlepService.class, new CurrentPlepService() );
+    aAppContext.set( ICurrentStirService.class, new CurrentStirService() );
+    aAppContext.set( ICurrentTrackService.class, new CurrentTrackService() );
     //
     ITsProject proj = aAppContext.get( ITsProject.class );
     IUnitSnippets unitSnippets = new UnitSnippets();
@@ -113,6 +118,10 @@ public class AddonPrisex24Core
     m5.addModel( new CameraM5Model() );
     m5.addModel( new SourceVideoM5Model() );
     m5.addModel( new SnippetM5Model() );
+    m5.addModel( new SongM5Model() );
+    m5.addModel( new StirM5Model() );
+    m5.addModel( new TrackM5Model() );
+    m5.addModel( new PlepM5Model() );
     // VALEDs
     IValedControlFactoriesRegistry vcfReg = aWinContext.get( IValedControlFactoriesRegistry.class );
     vcfReg.registerFactory( ValedFrameFactory.FACTORY );

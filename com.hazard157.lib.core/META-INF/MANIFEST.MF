@@ -26,5 +26,4 @@ Automatic-Module-Name: com.hazard157.lib.core
 Bundle-ActivationPolicy: lazy
 Export-Package: com.hazard157.lib.core,
  com.hazard157.lib.core.excl_plan.picview,
- com.hazard157.lib.core.excl_plan.plv,
- com.hazard157.lib.core.excl_plan.visumple
+ com.hazard157.lib.core.excl_plan.plv

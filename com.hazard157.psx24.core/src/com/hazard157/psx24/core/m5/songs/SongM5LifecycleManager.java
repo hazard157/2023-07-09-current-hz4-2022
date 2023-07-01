@@ -13,6 +13,11 @@ import org.toxsoft.core.tslib.coll.*;
 
 import com.hazard157.psx.proj3.songs.*;
 
+/**
+ * LM for {@link SongM5Model}.
+ *
+ * @author hazard157
+ */
 class SongM5LifecycleManager
     extends M5LifecycleManager<ISong, IUnitSongs> {
 

@@ -9,7 +9,7 @@ import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 
 /**
  * Создатель панелей для модели {@link VisumpleM5Model}.

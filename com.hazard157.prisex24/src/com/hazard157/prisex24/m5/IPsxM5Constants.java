@@ -29,6 +29,10 @@ public interface IPsxM5Constants {
   String MID_TODO             = PSX_ID + ".Todo";           //$NON-NLS-1$
   String MID_SOURCE_VIDEO     = PSX_ID + ".SourceVideo";    //$NON-NLS-1$
   String MID_SNIPPET          = PSX_ID + ".Snippet";        //$NON-NLS-1$
+  String MID_SONG             = PSX_ID + ".Song";           //$NON-NLS-1$
+  String MID_PLEP             = PSX_ID + ".Plep";           //$NON-NLS-1$
+  String MID_STIR             = PSX_ID + ".Stir";           //$NON-NLS-1$
+  String MID_TRACK            = PSX_ID + ".Track";          //$NON-NLS-1$
 
   String FID_IS_CAM_AVAILABLE = "IsCamAvailable";   //$NON-NLS-1$
   String FID_USE_COUNT        = "UseCount";         //$NON-NLS-1$
@@ -37,7 +41,7 @@ public interface IPsxM5Constants {
   String FID_INTERVAL         = "Interval";         //$NON-NLS-1$
   String FID_ACTION_INTERVAL  = "ActInterval";      //$NON-NLS-1$
   String FID_PLACE            = "Place";            //$NON-NLS-1$
-  String FID_DEF_TRAILER_ID   = "defaultTrailerId"; //$NON-NLS-1$
+  String FID_DEF_TRAILER_ID   = "DefaultTrailerId"; //$NON-NLS-1$
   String FID_DUR_PERC_STR     = "DurPercStr";       //$NON-NLS-1$
   String FID_FRAME_NO         = "FrameNo";          //$NON-NLS-1$
   String FID_IS_ANIMATED      = "IsAnimated";       //$NON-NLS-1$
@@ -53,6 +57,11 @@ public interface IPsxM5Constants {
   String FID_GUIDE            = "Guide";            //$NON-NLS-1$
   String FID_LOCATION         = "Location";         //$NON-NLS-1$
   String FID_CATEGORY         = "Category";         //$NON-NLS-1$
+  String FID_FILE_PATH        = "FilePath";         //$NON-NLS-1$
+  String FID_NUM_VISUMPLES    = "NumVisumples";     //$NON-NLS-1$
+  String FID_SONG_ID          = "SongId";           //$NON-NLS-1$
+  String FID_STIRS_COUNT      = "StirsCount";       //$NON-NLS-1$
+  String FID_PREP_STEPS       = "PrepSteps";        //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Data types

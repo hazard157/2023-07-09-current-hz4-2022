@@ -14,7 +14,7 @@ import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.av.validators.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 
 /**
  * Модель объектов типа {@link Visumple}.
@@ -85,24 +85,24 @@ public class VisumpleM5Model
 
       };
 
-  /**
-   * Атрибут {@link Visumple#notes()}
-   */
-  public static final M5AttributeFieldDef<Visumple> NOTES = new M5AttributeFieldDef<>( FID_NOTES, DDEF_STRING ) {
-
-    @Override
-    protected void doInit() {
-      setNameAndDescription( STR_N_VS_NOTES, STR_D_VS_NOTES );
-      setDefaultValue( AV_STR_EMPTY );
-      setFlags( M5FF_DETAIL );
-    }
-
-    @Override
-    protected IAtomicValue doGetFieldValue( Visumple aEntity ) {
-      return avStr( aEntity.notes() );
-    }
-
-  };
+  // /**
+  // * Атрибут {@link Visumple#notes()}
+  // */
+  // public static final M5AttributeFieldDef<Visumple> NOTES = new M5AttributeFieldDef<>( FID_NOTES, DDEF_STRING ) {
+  //
+  // @Override
+  // protected void doInit() {
+  // setNameAndDescription( STR_N_VS_NOTES, STR_D_VS_NOTES );
+  // setDefaultValue( AV_STR_EMPTY );
+  // setFlags( M5FF_DETAIL );
+  // }
+  //
+  // @Override
+  // protected IAtomicValue doGetFieldValue( Visumple aEntity ) {
+  // return avStr( aEntity.notes() );
+  // }
+  //
+  // };
 
   /**
    * Управление жизненным циклом сущностей {@link Visumple}.
@@ -119,9 +119,9 @@ public class VisumpleM5Model
     @Override
     protected Visumple doCreate( IM5Bunch<Visumple> aValues ) {
       String filePath = VisumpleM5Model.FILE_PATH.getFieldValue( aValues ).asString();
-      String notes = VisumpleM5Model.NOTES.getFieldValue( aValues ).asString();
+      // String notes = VisumpleM5Model.NOTES.getFieldValue( aValues ).asString();
       IOptionSetEdit p = new OptionSet();
-      p.setStr( FID_NOTES, notes );
+      // p.setStr( FID_NOTES, notes );
 
       // FIXME params !
 
@@ -131,10 +131,10 @@ public class VisumpleM5Model
     @Override
     protected Visumple doEdit( IM5Bunch<Visumple> aValues ) {
       String filePath = VisumpleM5Model.FILE_PATH.getFieldValue( aValues ).asString();
-      String notes = VisumpleM5Model.NOTES.getFieldValue( aValues ).asString();
+      // String notes = VisumpleM5Model.NOTES.getFieldValue( aValues ).asString();
       IOptionSetEdit p = new OptionSet();
 
-      p.setStr( FID_NOTES, notes );
+      // p.setStr( FID_NOTES, notes );
 
       // FIXME params !
 
@@ -154,7 +154,9 @@ public class VisumpleM5Model
   public VisumpleM5Model() {
     super( MODEL_ID, Visumple.class );
     setNameAndDescription( STR_N_M5M_VISUMPLE, STR_D_M5M_VISUMPLE );
-    addFieldDefs( FILE_NAME, FILE_PATH, NOTES );
+    addFieldDefs( FILE_NAME, FILE_PATH
+    // , NOTES
+    );
     setPanelCreator( new VisumpleM5PanelCreator() );
   }
 

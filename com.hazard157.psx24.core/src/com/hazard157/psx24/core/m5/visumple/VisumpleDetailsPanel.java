@@ -20,7 +20,7 @@ import org.toxsoft.core.tsgui.widgets.pdw.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 
 /**
  * Панель детальной информации сущностей {@link Visumple}.

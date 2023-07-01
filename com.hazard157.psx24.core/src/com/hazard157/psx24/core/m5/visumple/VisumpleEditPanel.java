@@ -37,7 +37,7 @@ import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.glib.dialogs.*;
@@ -57,7 +57,7 @@ final class VisumpleEditPanel
 
   TsToolbar toolbar;
   Text      txtFilePath;
-  Text      txtNotes;
+  // Text txtNotes;
 
   /**
    * Редактируемый {@link Visumple}, задается из {@link IM5Bunch#originalEntity()}, нужен для редактироваия.
@@ -242,13 +242,13 @@ final class VisumpleEditPanel
     txtFilePath.setMessage( VisumpleM5Model.FILE_PATH.description() );
     txtFilePath.addModifyListener( filePathModifyListener );
     // txtNotes
-    l = new Label( pane1, SWT.LEFT );
-    l.setText( VisumpleM5Model.NOTES.nmName() );
-    l.setToolTipText( VisumpleM5Model.NOTES.description() );
-    l.setLayoutData( new GridData( SWT.LEFT, SWT.FILL, false, false ) );
-    txtNotes = new Text( pane1, SWT.BORDER );
-    txtNotes.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
-    txtNotes.setMessage( VisumpleM5Model.NOTES.description() );
+    // l = new Label( pane1, SWT.LEFT );
+    // l.setText( VisumpleM5Model.NOTES.nmName() );
+    // l.setToolTipText( VisumpleM5Model.NOTES.description() );
+    // l.setLayoutData( new GridData( SWT.LEFT, SWT.FILL, false, false ) );
+    // txtNotes = new Text( pane1, SWT.BORDER );
+    // txtNotes.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
+    // txtNotes.setMessage( VisumpleM5Model.NOTES.description() );
     // image
     imageWidget = new PdwWidgetSimple( tsContext() );
     imageWidget.createControl( pane1 );
@@ -265,7 +265,7 @@ final class VisumpleEditPanel
   protected void doSetValues( IM5Bunch<Visumple> aValues ) {
     if( aValues == null ) {
       txtFilePath.setText( EMPTY_STRING );
-      txtNotes.setText( EMPTY_STRING );
+      // txtNotes.setText( EMPTY_STRING );
       imageWidget.setTsImage( null );
       currVisumple = null;
       return;
@@ -273,7 +273,7 @@ final class VisumpleEditPanel
     currVisumple = aValues.originalEntity();
     String filePath = VisumpleM5Model.FILE_PATH.getFieldValue( aValues ).asString();
     txtFilePath.setText( filePath );
-    txtNotes.setText( VisumpleM5Model.NOTES.getFieldValue( aValues ).asString() );
+    // txtNotes.setText( VisumpleM5Model.NOTES.getFieldValue( aValues ).asString() );
     TsImage mi = imageManager().findImage( new File( filePath ) );
     imageWidget.setTsImage( mi );
     imageWidget.redraw();
@@ -291,14 +291,14 @@ final class VisumpleEditPanel
     }
     aBunch.fillFrom( currVisumple, true );
     VisumpleM5Model.FILE_PATH.setFieldValue( aBunch, avStr( txtFilePath.getText() ) );
-    VisumpleM5Model.NOTES.setFieldValue( aBunch, avStr( txtNotes.getText() ) );
+    // VisumpleM5Model.NOTES.setFieldValue( aBunch, avStr( txtNotes.getText() ) );
     return ValidationResult.SUCCESS;
   }
 
   @Override
   protected void doEditableStateChanged() {
     txtFilePath.setEditable( isEditable() );
-    txtNotes.setEditable( isEditable() );
+    // txtNotes.setEditable( isEditable() );
     updateActionsState();
   }
 

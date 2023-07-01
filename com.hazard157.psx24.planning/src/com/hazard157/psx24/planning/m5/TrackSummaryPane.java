@@ -7,6 +7,11 @@ import org.toxsoft.core.tsgui.utils.*;
 
 import com.hazard157.psx.proj3.pleps.*;
 
+/**
+ * Summary pane for {@link TrackMpc}.
+ *
+ * @author hazard157
+ */
 class TrackSummaryPane
     extends MpcSummaryPaneMessage<ITrack> {
 

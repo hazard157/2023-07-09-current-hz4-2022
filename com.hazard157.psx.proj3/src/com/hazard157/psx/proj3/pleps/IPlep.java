@@ -11,7 +11,7 @@ import org.toxsoft.core.txtproj.lib.sinent.*;
 import com.hazard157.common.quants.secint.*;
 
 /**
- * Планируемый эпизод.
+ * The planned episode..
  *
  * @author hazard157
  */

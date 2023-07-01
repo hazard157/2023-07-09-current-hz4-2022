@@ -7,6 +7,11 @@ import org.toxsoft.core.tsgui.utils.*;
 
 import com.hazard157.psx.proj3.pleps.*;
 
+/**
+ * Summary panel for {@link StirMpc}.
+ *
+ * @author hazard157
+ */
 class StirSummaryPane
     extends MpcSummaryPaneMessage<IStir> {
 

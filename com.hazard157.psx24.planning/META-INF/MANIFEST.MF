@@ -10,8 +10,7 @@ Export-Package: com.hazard157.psx24.planning,
  com.hazard157.psx24.planning.e4.services,
  com.hazard157.psx24.planning.e4.uiparts,
  com.hazard157.psx24.planning.glib,
- com.hazard157.psx24.planning.m5,
- com.hazard157.psx24.planning.m5.plep
+ com.hazard157.psx24.planning.m5
 Require-Bundle: javax.annotation,
  javax.inject,
  org.eclipse.core.runtime,

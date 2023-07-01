@@ -46,7 +46,7 @@ public class UipartUnitPlepStirs
     currentPlepService.addCurrentEntityChangeListener( currentPlepChangeListener );
     currentStirService.addCurrentEntityChangeListener( c -> stirsPanel.setSelectedItem( c ) );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
-    IM5Model<IStir> stirsModel = m5().getModel( StirM5Model.MODEL_ID, IStir.class );
+    IM5Model<IStir> stirsModel = m5().getModel( IPlepM5Constants.MID_STIR, IStir.class );
     OPDEF_NODE_ICON_SIZE.setValue( ctx.params(), avValobj( EIconSize.IS_64X64 ) );
     OPDEF_IS_FILTER_PANE.setValue( ctx.params(), AV_TRUE );
     stirsPanel = stirsModel.panelCreator().createCollEditPanel( ctx, null, null );
@@ -58,7 +58,7 @@ public class UipartUnitPlepStirs
   void updateOnCurrentPlep() {
     IPlep plep = currentPlepService.current();
     if( plep != null ) {
-      IM5Model<IStir> stirsModel = m5().getModel( StirM5Model.MODEL_ID, IStir.class );
+      IM5Model<IStir> stirsModel = m5().getModel( IPlepM5Constants.MID_STIR, IStir.class );
       IM5LifecycleManager<IStir> lm = stirsModel.getLifecycleManager( plep );
       stirsPanel.setItemsProvider( lm.itemsProvider() );
       stirsPanel.setLifecycleManager( lm );

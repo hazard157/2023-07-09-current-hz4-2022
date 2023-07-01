@@ -12,7 +12,7 @@ import org.toxsoft.core.tsgui.m5.valeds.multimodown.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.coll.*;
 
-import com.hazard157.lib.core.excl_plan.visumple.*;
+import com.hazard157.common.quants.visumple.*;
 
 /**
  * M5 field definition of {@link IVisumplable#visumples()}.
