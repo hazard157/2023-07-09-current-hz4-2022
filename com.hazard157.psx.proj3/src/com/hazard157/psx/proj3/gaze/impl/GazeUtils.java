@@ -2,6 +2,7 @@ package com.hazard157.psx.proj3.gaze.impl;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 import static com.hazard157.psx.proj3.gaze.impl.IHzResources.*;
+import static com.hazard157.psx.proj3.incident.IPrisexIncidentConstants.*;
 import static org.toxsoft.core.tslib.bricks.strio.impl.StrioUtils.*;
 
 import java.time.*;
@@ -37,7 +38,7 @@ public class GazeUtils {
    * <p>
    * ID name with date looks like <b>"{@value #CHAR_GAZE_ID_PREFIX}YYYY_MM_DD".</b>
    */
-  public static final char CHAR_GAZE_ID_PREFIX = 'g';
+  // public static final char CHAR_GAZE_ID_PREFIX = 'g';
 
   /**
    * Validates gaze ID for correctness and returns the result.
@@ -68,7 +69,7 @@ public class GazeUtils {
     if( aGazeDate.isBefore( MIN_PSX_DATE ) || aGazeDate.isAfter( MAX_PSX_DATE ) ) {
       throw new TsIllegalArgumentRtException();
     }
-    return String.format( "%c%04d_%02d_%02d", Character.valueOf( CHAR_GAZE_ID_PREFIX ), //$NON-NLS-1$
+    return String.format( "%c%04d_%02d_%02d", Character.valueOf( GAZE_ID_PREFIX ), //$NON-NLS-1$
         Integer.valueOf( aGazeDate.getYear() ), Integer.valueOf( aGazeDate.getMonthValue() ),
         Integer.valueOf( aGazeDate.getDayOfMonth() ) );
   }
@@ -99,7 +100,7 @@ public class GazeUtils {
     if( aId.length() > 11 ) {
       return ValidationResult.error( FMT_ERR_INV_GAZE_ID_TOO_LONG, aId );
     }
-    if( aId.charAt( 0 ) != CHAR_GAZE_ID_PREFIX ) {
+    if( aId.charAt( 0 ) != GAZE_ID_PREFIX ) {
       return ValidationResult.error( FMT_ERR_INV_GAZE_ID_INV_START, aId );
     }
     if( !isAsciiDigit( aId.charAt( 1 ) ) || !isAsciiDigit( aId.charAt( 2 ) ) || !isAsciiDigit( aId.charAt( 3 ) )

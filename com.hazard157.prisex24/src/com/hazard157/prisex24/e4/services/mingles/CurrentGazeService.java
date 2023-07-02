@@ -1,7 +1,8 @@
-package com.hazard157.prisex24.e4.services.gazes;
+package com.hazard157.prisex24.e4.services.mingles;
 
 import org.toxsoft.core.tsgui.mws.services.currentity.*;
 
+import com.hazard157.prisex24.e4.services.gazes.*;
 import com.hazard157.psx.proj3.gaze.*;
 
 /**

@@ -40,6 +40,10 @@ public interface IPsxGuiContextable
     return tsContext().get( IPsxCofs.class ).cofsGazes();
   }
 
+  default ICofsMingles cofsMingles() {
+    return tsContext().get( IPsxCofs.class ).cofsMingles();
+  }
+
   default IPrisex24Service psxService() {
     return tsContext().get( IPrisex24Service.class );
   }

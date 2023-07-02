@@ -1,13 +1,13 @@
-package com.hazard157.prisex24.m5.gaze;
+package com.hazard157.prisex24.m5.mingle;
 
-import static com.hazard157.prisex24.m5.gaze.GazeM5Model.*;
-import static com.hazard157.prisex24.m5.gaze.IPsxResources.*;
-import static com.hazard157.psx.proj3.gaze.IGazeConstants.*;
+import static com.hazard157.prisex24.m5.mingle.IPsxResources.*;
+import static com.hazard157.psx.proj3.mingle.IMingleConstants.*;
 
 import java.time.*;
 
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
+import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.av.opset.impl.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
@@ -16,31 +16,29 @@ import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx.proj3.gaze.*;
-import com.hazard157.psx.proj3.gaze.impl.*;
+import com.hazard157.psx.proj3.mingle.*;
+import com.hazard157.psx.proj3.mingle.impl.*;
 
-class GazeM5LifecycleManager
-    extends M5LifecycleManager<IGaze, IUnitGazes> {
+class MingleM5LifecycleManager
+    extends M5LifecycleManager<IMingle, IUnitMingles> {
 
-  public GazeM5LifecycleManager( IM5Model<IGaze> aModel, IUnitGazes aMaster ) {
+  public MingleM5LifecycleManager( IM5Model<IMingle> aModel, IUnitMingles aMaster ) {
     super( aModel, true, true, true, true, aMaster );
     TsNullArgumentRtException.checkNull( aMaster );
   }
 
-  private static IOptionSet makeGazeInfo( IM5Bunch<IGaze> aValues ) {
+  private static IOptionSet makeMingleInfo( IM5Bunch<IMingle> aValues ) {
     IOptionSetEdit p = new OptionSet();
-    p.setValue( NAME.id(), NAME.getFieldValue( aValues ) );
-    p.setValue( DESCRIPTION.id(), DESCRIPTION.getFieldValue( aValues ) );
-    p.setValue( DATE.id(), DATE.getFieldValue( aValues ) );
-    p.setValue( RATING.id(), RATING.getFieldValue( aValues ) );
-    p.setValue( PLACE.id(), PLACE.getFieldValue( aValues ) );
+    for( IDataDef dd : ALL_MINGLE_OPS ) {
+      p.setValue( dd, aValues.getAsAv( dd.id() ) );
+    }
     return p;
   }
 
   private ValidationResult internalValidateFileSystem( IOptionSet aInfo ) {
     LocalDate ld = OPDEF_DATE.getValue( aInfo ).asValobj();
     ValidationResult vr = ValidationResult.SUCCESS;
-    // FIXME check if original media directory exsists
+    // FIXME check if original media directory exists
     // IPfsOriginalMedia fsOm = tsContext().get( IPfsOriginalMedia.class );
     // if( !fsOm.listDates().hasElem( ld ) ) {
     // vr = ValidationResult.warn( FMT_WARN_NO_ORIG_MEDIA_DIR, ld.toString() );
@@ -55,10 +53,10 @@ class GazeM5LifecycleManager
   }
 
   @Override
-  protected ValidationResult doBeforeCreate( IM5Bunch<IGaze> aValues ) {
-    IOptionSet info = makeGazeInfo( aValues );
+  protected ValidationResult doBeforeCreate( IM5Bunch<IMingle> aValues ) {
+    IOptionSet info = makeMingleInfo( aValues );
     LocalDate ld = OPDEF_DATE.getValue( info ).asValobj();
-    String id = GazeUtils.localDate2GazeId( ld );
+    String id = MingleUtils.localDate2MingleId( ld );
     ValidationResult vr = master().svs().validator().canCreateItem( id, info );
     if( vr.isError() ) {
       return vr;
@@ -67,18 +65,18 @@ class GazeM5LifecycleManager
   }
 
   @Override
-  protected IGaze doCreate( IM5Bunch<IGaze> aValues ) {
-    IOptionSet info = makeGazeInfo( aValues );
+  protected IMingle doCreate( IM5Bunch<IMingle> aValues ) {
+    IOptionSet info = makeMingleInfo( aValues );
     LocalDate ld = OPDEF_DATE.getValue( info ).asValobj();
-    String id = GazeUtils.localDate2GazeId( ld );
+    String id = MingleUtils.localDate2MingleId( ld );
     return master().createItem( id, info );
   }
 
   @Override
-  protected ValidationResult doBeforeEdit( IM5Bunch<IGaze> aValues ) {
-    IOptionSet info = makeGazeInfo( aValues );
+  protected ValidationResult doBeforeEdit( IM5Bunch<IMingle> aValues ) {
+    IOptionSet info = makeMingleInfo( aValues );
     LocalDate ld = OPDEF_DATE.getValue( info ).asValobj();
-    String id = GazeUtils.localDate2GazeId( ld );
+    String id = MingleUtils.localDate2MingleId( ld );
     ValidationResult vr = master().svs().validator().canEditItem( aValues.originalEntity().id(), id, info );
     if( vr.isError() ) {
       return vr;
@@ -87,25 +85,25 @@ class GazeM5LifecycleManager
   }
 
   @Override
-  protected IGaze doEdit( IM5Bunch<IGaze> aValues ) {
-    IOptionSet info = makeGazeInfo( aValues );
+  protected IMingle doEdit( IM5Bunch<IMingle> aValues ) {
+    IOptionSet info = makeMingleInfo( aValues );
     LocalDate ld = OPDEF_DATE.getValue( info ).asValobj();
-    String id = GazeUtils.localDate2GazeId( ld );
+    String id = MingleUtils.localDate2MingleId( ld );
     return master().editItem( aValues.originalEntity().id(), id, info );
   }
 
   @Override
-  protected ValidationResult doBeforeRemove( IGaze aEntity ) {
+  protected ValidationResult doBeforeRemove( IMingle aEntity ) {
     return master().svs().validator().canRemoveItem( aEntity.id() );
   }
 
   @Override
-  protected void doRemove( IGaze aEntity ) {
+  protected void doRemove( IMingle aEntity ) {
     master().removeItem( aEntity.id() );
   }
 
   @Override
-  protected IList<IGaze> doListEntities() {
+  protected IList<IMingle> doListEntities() {
     return master().items();
   }
 

@@ -72,7 +72,11 @@ public interface IPrisex24CoreConstants {
   String PARTID_GAZE_SOURCES = "com.hazard157.prisex24.part.gaze_sources"; //$NON-NLS-1$
   String PARTID_GAZE_OUTPUTS = "com.hazard157.prisex24.part.gaze_outputs"; //$NON-NLS-1$
 
-  String PERSPID_MINGLE = "com.hazard157.prisex24.persp.mingle"; //$NON-NLS-1$
+  String PERSPID_MINGLES       = "com.hazard157.prisex24.persp.mingles";       //$NON-NLS-1$
+  String PARTID_MINGLES_LIST   = "com.hazard157.prisex24.part.mingles_list";   //$NON-NLS-1$
+  String PARTID_MINGLE_MASTERS = "com.hazard157.prisex24.part.mingle_masters"; //$NON-NLS-1$
+  String PARTID_MINGLE_SOURCES = "com.hazard157.prisex24.part.mingle_sources"; //$NON-NLS-1$
+  String PARTID_MINGLE_OUTPUTS = "com.hazard157.prisex24.part.mingle_outputs"; //$NON-NLS-1$
 
   String PERSPID_REFBOOKS             = "com.hazard157.prisex24.persp.refbooks";             //$NON-NLS-1$
   String PARTSTACKID_REFBOOKS         = "com.hazard157.prisex24.partstack.refbooks";         //$NON-NLS-1$

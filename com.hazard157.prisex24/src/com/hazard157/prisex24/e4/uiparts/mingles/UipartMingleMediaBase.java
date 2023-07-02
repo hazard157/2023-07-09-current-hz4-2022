@@ -1,4 +1,4 @@
-package com.hazard157.prisex24.e4.uiparts.gazes;
+package com.hazard157.prisex24.e4.uiparts.mingles;
 
 import static com.hazard157.common.IHzConstants.*;
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
@@ -33,21 +33,21 @@ import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.e4.services.gazes.*;
 import com.hazard157.prisex24.e4.uiparts.*;
 import com.hazard157.prisex24.utils.*;
-import com.hazard157.psx.proj3.gaze.*;
+import com.hazard157.psx.proj3.mingle.*;
 
 /**
- * Displays content of selected gaze media files of the specified kind.
+ * Displays content of selected mingle media files of the specified kind.
  *
  * @author hazard157
  */
-public class UipartGazeMediaBase
+public class UipartMingleMediaBase
     extends PsxAbstractUipart
     implements ITsKeyInputListener {
 
   /**
-   * Change panel content when current gaze changes.
+   * Change panel content when current mingle changes.
    */
-  private final ICurrentEntityChangeListener<IGaze> serviceSelectionChangeListener = this::showContentOfGaze;
+  private final ICurrentEntityChangeListener<IMingle> serviceSelectionChangeListener = this::showContentOfMingle;
 
   /**
    * Tooolbar listener calls {@link #processAction(String)}.
@@ -75,14 +75,14 @@ public class UipartGazeMediaBase
       ( aSource, aSelectedItem ) -> updateActionsState();
 
   @Inject
-  ICurrentGazeService currentGazeService;
+  ICurrentMingleService currentMingleService;
 
   final EIncidentMediaKind incidentMediaKind;
 
   TsToolbar                  toolbar;
   IPicsGridViewer<OptedFile> pgViewer;
 
-  protected UipartGazeMediaBase( EIncidentMediaKind aMediaKind ) {
+  protected UipartMingleMediaBase( EIncidentMediaKind aMediaKind ) {
     incidentMediaKind = TsNullArgumentRtException.checkNull( aMediaKind );
   }
 
@@ -91,7 +91,7 @@ public class UipartGazeMediaBase
     TsComposite board = new TsComposite( aParent );
     board.setLayout( new BorderLayout() );
     prefBundle( PBID_HZ_COMMON ).prefs().addCollectionChangeListener( appSettingsChangeListener );
-    currentGazeService.addCurrentEntityChangeListener( serviceSelectionChangeListener );
+    currentMingleService.addCurrentEntityChangeListener( serviceSelectionChangeListener );
     // toolbar
     toolbar = TsToolbar.create( board, tsContext(), EIconSize.IS_24X24, //
         ACDEF_PLAY, ACDEF_SEPARATOR, AI_THUMB_SIZEABLE_ZOOM_MENU //
@@ -105,7 +105,7 @@ public class UipartGazeMediaBase
     IPicsGridViewerConstants.OPDEF_IS_LABELS_SHOWN.setValue( ctx.params(), AV_TRUE );
     IPicsGridViewerConstants.OPDEF_IS_TOOLTIPS_SHOWN.setValue( ctx.params(), AV_TRUE );
     pgViewer = new PicsGridViewer<>( board, ctx );
-    pgViewer.setVisualsProvider( new GazeMediaFileVisualsProvider( ctx ) );
+    pgViewer.setVisualsProvider( new MingleMediaFileVisualsProvider( ctx ) );
     pgViewer.setThumbSize( defThumbSize );
     pgViewer.getControl().setLayoutData( BorderLayout.CENTER );
     pgViewer.addTsDoubleClickListener( doubleClickListener );
@@ -115,7 +115,7 @@ public class UipartGazeMediaBase
     IMenuCreator mc1 = new ThumbSizeableDropDownMenuCreator( pgViewer, tsContext(), EIconSize.IS_24X24, EThumbSize.SZ96,
         EThumbSize.SZ512 );
     toolbar.setActionMenu( AID_THUMB_SIZEABLE_ZOOM_MENU, mc1 );
-    showContentOfGaze( currentGazeService.current() );
+    showContentOfMingle( currentMingleService.current() );
   }
 
   boolean processAction( String aActionId ) {
@@ -142,12 +142,12 @@ public class UipartGazeMediaBase
     toolbar.setActionEnabled( ACTID_PLAY, isSel );
   }
 
-  void showContentOfGaze( IGaze aGaze ) {
-    if( aGaze == null ) {
+  void showContentOfMingle( IMingle aMingle ) {
+    if( aMingle == null ) {
       pgViewer.setItems( IList.EMPTY );
       return;
     }
-    IList<OptedFile> ll = cofsGazes().listMediaFiles( aGaze.incidentDate(), incidentMediaKind );
+    IList<OptedFile> ll = cofsMingles().listMediaFiles( aMingle.incidentDate(), incidentMediaKind );
     pgViewer.setItems( ll );
     updateActionsState();
   }

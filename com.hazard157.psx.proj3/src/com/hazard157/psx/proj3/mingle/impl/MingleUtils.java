@@ -1,6 +1,7 @@
 package com.hazard157.psx.proj3.mingle.impl;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
+import static com.hazard157.psx.proj3.incident.IPrisexIncidentConstants.*;
 import static com.hazard157.psx.proj3.mingle.impl.IHzResources.*;
 import static org.toxsoft.core.tslib.bricks.strio.impl.StrioUtils.*;
 
@@ -33,13 +34,6 @@ public class MingleUtils {
   };
 
   /**
-   * Character to start mingle ID with encoded date.
-   * <p>
-   * ID name with date looks like <b>"{@value #CHAR_MINGLE_ID_PREFIX}YYYY_MM_DD".</b>
-   */
-  public static final char CHAR_MINGLE_ID_PREFIX = 'g';
-
-  /**
    * Validates mingle ID for correctness and returns the result.
    *
    * @param aMingleId String - mingle ID to be checked
@@ -68,7 +62,7 @@ public class MingleUtils {
     if( aMingleDate.isBefore( MIN_PSX_DATE ) || aMingleDate.isAfter( MAX_PSX_DATE ) ) {
       throw new TsIllegalArgumentRtException();
     }
-    return String.format( "%c%04d_%02d_%02d", Character.valueOf( CHAR_MINGLE_ID_PREFIX ), //$NON-NLS-1$
+    return String.format( "%c%04d_%02d_%02d", Character.valueOf( MINGLE_ID_PREFIX ), //$NON-NLS-1$
         Integer.valueOf( aMingleDate.getYear() ), Integer.valueOf( aMingleDate.getMonthValue() ),
         Integer.valueOf( aMingleDate.getDayOfMonth() ) );
   }
@@ -99,7 +93,7 @@ public class MingleUtils {
     if( aId.length() > 11 ) {
       return ValidationResult.error( FMT_ERR_INV_MINGLE_ID_TOO_LONG, aId );
     }
-    if( aId.charAt( 0 ) != CHAR_MINGLE_ID_PREFIX ) {
+    if( aId.charAt( 0 ) != MINGLE_ID_PREFIX ) {
       return ValidationResult.error( FMT_ERR_INV_MINGLE_ID_INV_START, aId );
     }
     if( !isAsciiDigit( aId.charAt( 1 ) ) || !isAsciiDigit( aId.charAt( 2 ) ) || !isAsciiDigit( aId.charAt( 3 ) )

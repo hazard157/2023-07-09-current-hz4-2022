@@ -80,6 +80,13 @@ public interface IPsxCofs {
   ICofsGazes cofsGazes();
 
   /**
+   * Returns means to access mingles media files.
+   *
+   * @return {@link ICofsTrailers} - trailer files manager
+   */
+  ICofsMingles cofsMingles();
+
+  /**
    * Returns the summary image of the film.
    * <p>
    * Summary image is the image used to display media file thumbnail via

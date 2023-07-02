@@ -34,6 +34,7 @@ public interface IPsxM5Constants {
   String MID_STIR             = PSX_ID + ".Stir";           //$NON-NLS-1$
   String MID_TRACK            = PSX_ID + ".Track";          //$NON-NLS-1$
   String MID_GAZE             = PSX_ID + ".m5.Gaze";        //$NON-NLS-1$
+  String MID_MINGLE           = PSX_ID + ".m5.Mingle";      //$NON-NLS-1$
 
   String FID_IS_CAM_AVAILABLE = "IsCamAvailable";   //$NON-NLS-1$
   String FID_USE_COUNT        = "UseCount";         //$NON-NLS-1$

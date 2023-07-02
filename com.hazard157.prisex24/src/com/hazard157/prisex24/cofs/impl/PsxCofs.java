@@ -32,6 +32,7 @@ public class PsxCofs
   private final ICofsFilms    cofsFilms;
   private final ICofsTrailers cofsTrailers;
   private final ICofsGazes    cofsGazes;
+  private final ICofsMingles  cofsMingles;
 
   /**
    * Constructor.
@@ -41,6 +42,7 @@ public class PsxCofs
     cofsFilms = new CofsFilms();
     cofsTrailers = new CofsTrailers();
     cofsGazes = new CofsGazes();
+    cofsMingles = new CofsMingles();
   }
 
   // ------------------------------------------------------------------------------------
@@ -70,6 +72,11 @@ public class PsxCofs
   @Override
   public ICofsGazes cofsGazes() {
     return cofsGazes;
+  }
+
+  @Override
+  public ICofsMingles cofsMingles() {
+    return cofsMingles;
   }
 
   @Override
