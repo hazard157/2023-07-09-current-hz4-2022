@@ -32,7 +32,7 @@ public interface IPfsOriginalMedia {
   boolean isOriginalMediaPresent();
 
   /**
-   * List the dates subdirectories in original files directory.
+   * List the dates sub-directories in original files directory.
    *
    * @return {@link IList}&lt;{@link LocalDate}&gt; - list of the directories as dates
    */
@@ -49,7 +49,7 @@ public interface IPfsOriginalMedia {
   IList<OptedFile> listFiles( LocalDate aDate );
 
   /**
-   * Lists all media files in all data subdirectories.
+   * Lists all media files in all data sub-directories.
    *
    * @return {@link IList}&lt;{@link OptedFile}&gt; - all files in all data subdirs directory
    */

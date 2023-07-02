@@ -7,32 +7,16 @@ import static org.toxsoft.core.tslib.av.EAtomicType.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
-import java.time.*;
-
 import org.toxsoft.core.tslib.av.impl.*;
 import org.toxsoft.core.tslib.av.metainfo.*;
 import org.toxsoft.core.tslib.bricks.keeper.std.*;
 
 import com.hazard157.common.quants.rating.*;
 import com.hazard157.common.valed.radioprop.*;
+import com.hazard157.psx.proj3.incident.*;
 
 @SuppressWarnings( "javadoc" )
 public interface IGazeConstants {
-
-  /**
-   * Default valid value for timestamps.
-   */
-  long DEFAULT_TIMESTAMP = System.currentTimeMillis();
-
-  /**
-   * Default timestamp as {@link Instant}.
-   */
-  Instant DEFAULT_INSTANT = Instant.ofEpochMilli( DEFAULT_TIMESTAMP );
-
-  /**
-   * Default timestamp as {@link LocalDate}.
-   */
-  LocalDate DEFAULT_DATE = LocalDate.ofInstant( DEFAULT_INSTANT, ZoneId.systemDefault() );
 
   String OPID_NAME        = TSID_NAME;
   String OPID_DESCRIPTION = TSID_DESCRIPTION;
@@ -41,35 +25,35 @@ public interface IGazeConstants {
   String OPID_PLACE       = PSX_ID + ".place";  //$NON-NLS-1$
 
   IDataDef OPDEF_NAME = DataDef.create( OPID_NAME, STRING, //
-      TSID_NAME, STR_N_NAME, //
-      TSID_DESCRIPTION, STR_D_NAME, //
+      TSID_NAME, STR_NAME, //
+      TSID_DESCRIPTION, STR_NAME_D, //
       TSID_DEFAULT_VALUE, DEFAULT_NAME_AV //
   );
 
   IDataDef OPDEF_DESCRIPTION = DataDef.create( OPID_DESCRIPTION, STRING, //
-      TSID_NAME, STR_N_DESCRIPTION, //
-      TSID_DESCRIPTION, STR_D_DESCRIPTION, //
+      TSID_NAME, STR_DESCRIPTION, //
+      TSID_DESCRIPTION, STR_DESCRIPTION_D, //
       TSID_DEFAULT_VALUE, AV_STR_EMPTY //
   );
 
   IDataDef OPDEF_DATE = DataDef.create( OPID_DATE, VALOBJ, //
-      TSID_NAME, STR_N_DATE, //
-      TSID_DESCRIPTION, STR_D_DATE, //
+      TSID_NAME, STR_DATE, //
+      TSID_DESCRIPTION, STR_DATE_D, //
       TSID_KEEPER_ID, LocalDateKeeper.KEEPER_ID, //
-      TSID_DEFAULT_VALUE, avValobj( DEFAULT_DATE ) //
+      TSID_DEFAULT_VALUE, avValobj( IPrisexIncidentConstants.DEFAULT_NEW_INCIDENT_DATE ) //
   );
 
   IDataDef OPDEF_RATING = DataDef.create( OPID_RATING, VALOBJ, //
-      TSID_NAME, STR_N_RATING, //
-      TSID_DESCRIPTION, STR_D_RATING, //
+      TSID_NAME, STR_RATING, //
+      TSID_DESCRIPTION, STR_RATING_D, //
       OPDEF_EDITOR_FACTORY_NAME, ValedAvValobjRadioPropEnumStars.FACTORY_NAME, //
       TSID_KEEPER_ID, ERating.KEEPER_ID, //
       TSID_DEFAULT_VALUE, avValobj( ERating.UNKNOWN ) //
   );
 
   IDataDef OPDEF_PLACE = DataDef.create( OPID_PLACE, STRING, //
-      TSID_NAME, STR_N_PLACE, //
-      TSID_DESCRIPTION, STR_D_PLACE, //
+      TSID_NAME, STR_PLACE, //
+      TSID_DESCRIPTION, STR_PLACE_D, //
       TSID_DEFAULT_VALUE, AV_STR_EMPTY //
   );
 

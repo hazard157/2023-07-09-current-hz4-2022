@@ -36,6 +36,10 @@ public interface IPsxGuiContextable
     return tsContext().get( IPsxCofs.class ).cofsTrailers();
   }
 
+  default ICofsGazes cofsGazes() {
+    return tsContext().get( IPsxCofs.class ).cofsGazes();
+  }
+
   default IPrisex24Service psxService() {
     return tsContext().get( IPrisex24Service.class );
   }

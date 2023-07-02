@@ -33,7 +33,7 @@ class TreeMakerEpisodeByMonth
     }
     // распределим эпизоды
     for( IEpisode e : aItems ) {
-      DefaultTsNode<Month> parent = monMap.findByKey( e.date().getMonth() );
+      DefaultTsNode<Month> parent = monMap.findByKey( e.incidentDate().getMonth() );
       DefaultTsNode<IEpisode> node = new DefaultTsNode<>( NK_EPISODE, parent, e );
       parent.addNode( node );
     }

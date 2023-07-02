@@ -2,8 +2,11 @@ package com.hazard157.prisex24.cofs;
 
 import java.io.*;
 
+import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.utils.errors.*;
+
+import com.hazard157.common.incub.fs.*;
 
 /**
  * Access to the PRISEX file resources in COFS (Cloud Optimized File System).
@@ -68,6 +71,31 @@ public interface IPsxCofs {
    * @return {@link ICofsTrailers} - trailer files manager
    */
   ICofsTrailers cofsTrailers();
+
+  /**
+   * Returns means to access gazes media files.
+   *
+   * @return {@link ICofsTrailers} - trailer files manager
+   */
+  ICofsGazes cofsGazes();
+
+  /**
+   * Returns the summary image of the film.
+   * <p>
+   * Summary image is the image used to display media file thumbnail via
+   * {@link ITsImageManager#findThumb(File, EThumbSize)}. For images (like JPG or GIF) it may be the image itself, for
+   * videos - animated GIF, for other types - just file type icon. For video files creates new GIF-animation if there is
+   * no one or video file was changed after last GIF creation.
+   * <p>
+   * The parameters {@link OptedFile#params()} may contain additional information about summary file, like which part of
+   * video to use for GIF-animation.
+   * <p>
+   * Summary files (if specially created) are places in the COFS cache directory.
+   *
+   * @param aMediaFile {@link OptedFile} - the GAZE media file
+   * @return {@link File} - an existing image file or <code>null</code> if can not be created
+   */
+  File ensureSummaryImage( OptedFile aMediaFile );
 
   // ------------------------------------------------------------------------------------
   // yet unsorted may be put in some helper interfaces

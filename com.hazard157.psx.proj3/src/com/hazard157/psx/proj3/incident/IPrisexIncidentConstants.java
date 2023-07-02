@@ -2,6 +2,8 @@ package com.hazard157.psx.proj3.incident;
 
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
+import java.time.*;
+
 import org.toxsoft.core.tslib.av.*;
 
 /**
@@ -72,5 +74,20 @@ public interface IPrisexIncidentConstants {
    * Atomic value representation of {@link #MINGLE_ID_NONE_AV}.
    */
   IAtomicValue MINGLE_ID_NONE_AV = avStr( MINGLE_ID_NONE );
+
+  /**
+   * Default valid value for timestamps when crating new incidents.
+   */
+  long DEFAULT_NEW_INCIDENT_TIMESTAMP = System.currentTimeMillis();
+
+  /**
+   * Value of {@link #DEFAULT_NEW_INCIDENT_TIMESTAMP} as {@link Instant}.
+   */
+  Instant DEFAULT_NEW_INCIDENT_INSTANT = Instant.ofEpochMilli( DEFAULT_NEW_INCIDENT_TIMESTAMP );
+
+  /**
+   * Value of {@link #DEFAULT_NEW_INCIDENT_TIMESTAMP} as {@link LocalDate}.
+   */
+  LocalDate DEFAULT_NEW_INCIDENT_DATE = LocalDate.ofInstant( DEFAULT_NEW_INCIDENT_INSTANT, ZoneId.systemDefault() );
 
 }

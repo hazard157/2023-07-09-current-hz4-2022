@@ -90,7 +90,7 @@ public class CurrentEpisodeInfoTooltip
     }
     String descr = e.description();
     // TODO word-wrap description, eg 80 chars
-    return String.format( "%s\n%s\n%s", e.date().toString(), e.nmName(), descr ); //$NON-NLS-1$
+    return String.format( "%s\n%s\n%s", e.incidentDate().toString(), e.nmName(), descr ); //$NON-NLS-1$
   }
 
   // ------------------------------------------------------------------------------------

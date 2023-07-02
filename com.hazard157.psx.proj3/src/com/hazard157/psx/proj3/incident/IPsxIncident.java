@@ -1,8 +1,9 @@
 package com.hazard157.psx.proj3.incident;
 
+import java.time.*;
+
 import org.toxsoft.core.tslib.bricks.strid.*;
 
-import com.hazard157.psx.common.stuff.*;
 import com.hazard157.psx.common.stuff.place.*;
 
 /**
@@ -21,5 +22,12 @@ public interface IPsxIncident
    * @return {@link EPsxIncidentKind} - incident kind
    */
   EPsxIncidentKind incidentKind();
+
+  /**
+   * Returns the incident date.
+   *
+   * @return {@link LocalDateTime} - incident date
+   */
+  LocalDate incidentDate();
 
 }

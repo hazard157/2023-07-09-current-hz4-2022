@@ -23,6 +23,8 @@ import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.impl.*;
 import com.hazard157.psx.proj3.gaze.*;
 import com.hazard157.psx.proj3.gaze.impl.*;
+import com.hazard157.psx.proj3.mingle.*;
+import com.hazard157.psx.proj3.mingle.impl.*;
 import com.hazard157.psx.proj3.pleps.*;
 import com.hazard157.psx.proj3.pleps.impl.*;
 import com.hazard157.psx.proj3.songs.*;
@@ -61,6 +63,7 @@ public class QuantPsx3Project
   public static final String UNITID_SONGS         = "SongManager";     //$NON-NLS-1$
   public static final String UNITID_PLEPS         = "PlannedEpisodes"; //$NON-NLS-1$
   public static final String UNITID_GAZES         = "Gazes";           //$NON-NLS-1$
+  public static final String UNITID_MINGLES       = "Mingles";         //$NON-NLS-1$
 
   private static final int    PROJ_FILE_FORMAT_VERSTION = 3;
   private static final String PROJ_FILE_APP_ID          = "ru.tsdev.goga.prisex"; //$NON-NLS-1$
@@ -210,6 +213,10 @@ public class QuantPsx3Project
     IUnitGazes unitGazes = new UnitGazes();
     proj.registerUnit( UNITID_GAZES, unitGazes, true );
     aAppContext.set( IUnitGazes.class, unitGazes );
+    //
+    IUnitMingles unitMingles = new UnitMingles();
+    proj.registerUnit( UNITID_MINGLES, unitMingles, true );
+    aAppContext.set( IUnitMingles.class, unitMingles );
   }
 
   @Override

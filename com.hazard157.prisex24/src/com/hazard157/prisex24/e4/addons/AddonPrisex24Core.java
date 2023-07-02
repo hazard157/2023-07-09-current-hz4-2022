@@ -30,6 +30,7 @@ import com.hazard157.prisex24.Activator;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.cofs.impl.*;
 import com.hazard157.prisex24.e4.services.currep.*;
+import com.hazard157.prisex24.e4.services.gazes.*;
 import com.hazard157.prisex24.e4.services.pleps.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
@@ -38,6 +39,7 @@ import com.hazard157.prisex24.glib.fravisum.*;
 import com.hazard157.prisex24.m5.camera.*;
 import com.hazard157.prisex24.m5.episodes.*;
 import com.hazard157.prisex24.m5.frames.*;
+import com.hazard157.prisex24.m5.gaze.*;
 import com.hazard157.prisex24.m5.note.*;
 import com.hazard157.prisex24.m5.plane.*;
 import com.hazard157.prisex24.m5.plep.*;
@@ -92,6 +94,7 @@ public class AddonPrisex24Core
     aAppContext.set( ICurrentPlepService.class, new CurrentPlepService() );
     aAppContext.set( ICurrentStirService.class, new CurrentStirService() );
     aAppContext.set( ICurrentTrackService.class, new CurrentTrackService() );
+    aAppContext.set( ICurrentGazeService.class, new CurrentGazeService() );
     //
     ITsProject proj = aAppContext.get( ITsProject.class );
     IUnitSnippets unitSnippets = new UnitSnippets();
@@ -122,6 +125,8 @@ public class AddonPrisex24Core
     m5.addModel( new StirM5Model() );
     m5.addModel( new TrackM5Model() );
     m5.addModel( new PlepM5Model() );
+    m5.addModel( new GazeM5Model() );
+    // FIXME m5.addModel( new MingleM5Model() );
     // VALEDs
     IValedControlFactoriesRegistry vcfReg = aWinContext.get( IValedControlFactoriesRegistry.class );
     vcfReg.registerFactory( ValedFrameFactory.FACTORY );

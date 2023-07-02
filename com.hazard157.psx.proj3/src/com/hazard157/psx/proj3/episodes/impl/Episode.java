@@ -127,7 +127,7 @@ public class Episode
   }
 
   @Override
-  public LocalDate date() {
+  public LocalDate incidentDate() {
     if( date == null ) {
       date = EpisodeUtils.id2date( id() );
     }

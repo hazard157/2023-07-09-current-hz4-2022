@@ -11,9 +11,11 @@ import java.time.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
+import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
 import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.utils.mop.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.incident.*;
@@ -29,6 +31,7 @@ public class PsxCofs
   private final ICofsFrames   cofsFrames;
   private final ICofsFilms    cofsFilms;
   private final ICofsTrailers cofsTrailers;
+  private final ICofsGazes    cofsGazes;
 
   /**
    * Constructor.
@@ -37,6 +40,7 @@ public class PsxCofs
     cofsFrames = new CofsFrames( COFS_EPISODES_ROOT );
     cofsFilms = new CofsFilms();
     cofsTrailers = new CofsTrailers();
+    cofsGazes = new CofsGazes();
   }
 
   // ------------------------------------------------------------------------------------
@@ -61,6 +65,42 @@ public class PsxCofs
   @Override
   public ICofsTrailers cofsTrailers() {
     return cofsTrailers;
+  }
+
+  @Override
+  public ICofsGazes cofsGazes() {
+    return cofsGazes;
+  }
+
+  @Override
+  public File ensureSummaryImage( OptedFile aMediaFile ) {
+    TsNullArgumentRtException.checkNull( aMediaFile );
+    EMediaFileKind fileKind = EMediaFileKind.determineFileKind( aMediaFile.file() );
+    switch( fileKind ) {
+      case ANIMATED:
+      case STILL: {
+        if( TsFileUtils.isFileReadable( aMediaFile.file() ) ) {
+          return aMediaFile.file();
+        }
+        break;
+      }
+      case VIDEO: {
+        String mediaFileAbsDir = aMediaFile.file().getParentFile().getAbsolutePath();
+        String gifAbsDir = TsFileUtils.removeEndingSeparator( COFS_CACHE_SUMMARIES_ROOT.getAbsolutePath() )
+            + File.separator + TsFileUtils.removeEndingSeparator( mediaFileAbsDir ) + File.separator;
+        File gifFile = new File( gifAbsDir, aMediaFile.file().getName() + GIF_DOT_EXT );
+        return PsxCofsUtils.ensureSummaryGif( aMediaFile, gifFile );
+      }
+      case AUDIO: {
+        return SPEC_IMAGE_MFK_AUDIO_FILE;
+      }
+      case OTHER: {
+        return SPEC_IMAGE_MFK_OTHER_FILE;
+      }
+      default:
+        throw new TsNotAllEnumsUsedRtException( fileKind.id() );
+    }
+    return null;
   }
 
   @Override

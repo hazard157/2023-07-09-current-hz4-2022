@@ -29,9 +29,19 @@ interface IPsxCofsInternalConstants {
 
   // File HMADE_ROOT = new File( "/home/hmade" ); //$NON-NLS-1$
 
-  File COFS_ROOT          = new File( "/home/hmade/cofs/" );    //$NON-NLS-1$
-  File COFS_EPISODES_ROOT = new File( COFS_ROOT, "episodes/" ); //$NON-NLS-1$
-  File COFS_MEDIA_ROOT    = new File( COFS_ROOT, "media/" );    //$NON-NLS-1$
+  File COFS_ROOT          = new File( "/home/hmade/cofs/" );     //$NON-NLS-1$
+  File COFS_EPISODES_ROOT = new File( COFS_ROOT, "episodes/" );  //$NON-NLS-1$
+  File COFS_GAZES_ROOT    = new File( COFS_ROOT, "inc-gazes/" ); //$NON-NLS-1$
+  File COFS_MEDIA_ROOT    = new File( COFS_ROOT, "media/" );     //$NON-NLS-1$
+
+  File COFS_CACHE_ROOT           = new File( COFS_ROOT, "cache/" );            //$NON-NLS-1$
+  File COFS_CACHE_SUMMARIES_ROOT = new File( COFS_CACHE_ROOT, "summaries//" ); //$NON-NLS-1$
+
+  File SPEC_IMAGE_MFK_AUDIO_FILE = new File( "/home/hmade/data/resources/spec-images/mfk-audio.png" ); //$NON-NLS-1$
+  File SPEC_IMAGE_MFK_OTHER_FILE = new File( "/home/hmade/data/resources/spec-images/mfk-other.png" ); //$NON-NLS-1$
+
+  String SUBDIR_GAZE_SOURCE = "source"; //$NON-NLS-1$
+  String SUBDIR_GAZE_OUTPUT = "output"; //$NON-NLS-1$
 
   String SUBDIR_EP_STILL_IMAGES  = "frames-still"; //$NON-NLS-1$
   String SUBDIR_EP_ANIM_IMAGES   = "frames-anim";  //$NON-NLS-1$

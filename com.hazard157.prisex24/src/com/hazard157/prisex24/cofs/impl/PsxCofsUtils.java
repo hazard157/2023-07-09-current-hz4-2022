@@ -78,6 +78,12 @@ class PsxCofsUtils {
    */
   public static ValidationResult createSummaryGif( OptedFile aVideoFile, File aGifFile ) {
     TsNullArgumentRtException.checkNulls( aVideoFile, aGifFile );
+
+    /**
+     * TODO aVideoFile.params() may contain additional information about GIF file creation, such as #ClipThumb, here
+     * must be the implementation of such GIF creation
+     */
+
     if( !GIF_CREATE_SH.exists() ) {
       return ValidationResult.warn( FMT_WARN_NO_SH_FILE, GIF_CREATE_SH.getAbsolutePath() );
     }

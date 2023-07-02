@@ -36,7 +36,7 @@ public interface IEpisode
    *
    * @return {@link LocalDate} - дата эпизода
    */
-  LocalDate date();
+  LocalDate incidentDate();
 
   /**
    * Возвращает сюжет эпизода.

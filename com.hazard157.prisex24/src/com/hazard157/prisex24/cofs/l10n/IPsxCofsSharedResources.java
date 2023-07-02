@@ -1,5 +1,6 @@
 package com.hazard157.prisex24.cofs.l10n;
 
+import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.cofs.impl.*;
 
 /**
@@ -9,6 +10,16 @@ import com.hazard157.prisex24.cofs.impl.*;
  */
 @SuppressWarnings( "javadoc" )
 public interface IPsxCofsSharedResources {
+
+  /**
+   * {@link EIncidentMediaKind}
+   */
+  String STR_IMK_MASTER   = Messages.getString( "STR_IMK_MASTER" );   //$NON-NLS-1$
+  String STR_IMK_MASTER_D = Messages.getString( "STR_IMK_MASTER_D" ); //$NON-NLS-1$
+  String STR_IMK_SOURCE   = Messages.getString( "STR_IMK_SOURCE" );   //$NON-NLS-1$
+  String STR_IMK_SOURCE_D = Messages.getString( "STR_IMK_SOURCE_D" ); //$NON-NLS-1$
+  String STR_IMK_OUTPUT   = Messages.getString( "STR_IMK_OUTPUT" );   //$NON-NLS-1$
+  String STR_IMK_OUTPUT_D = Messages.getString( "STR_IMK_OUTPUT_D" ); //$NON-NLS-1$
 
   /**
    * {@link IPsxCofsInternalConstants}

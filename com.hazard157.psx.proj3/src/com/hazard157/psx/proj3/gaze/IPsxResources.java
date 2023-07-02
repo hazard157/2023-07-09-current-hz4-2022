@@ -7,15 +7,15 @@ package com.hazard157.psx.proj3.gaze;
  */
 interface IPsxResources {
 
-  String STR_N_NAME        = Messages.getString( "STR_N_NAME" );        //$NON-NLS-1$
-  String STR_D_NAME        = Messages.getString( "STR_D_NAME" );        //$NON-NLS-1$
-  String STR_N_DESCRIPTION = Messages.getString( "STR_N_DESCRIPTION" ); //$NON-NLS-1$
-  String STR_D_DESCRIPTION = Messages.getString( "STR_D_DESCRIPTION" ); //$NON-NLS-1$
-  String STR_N_DATE        = Messages.getString( "STR_N_DATE" );        //$NON-NLS-1$
-  String STR_D_DATE        = Messages.getString( "STR_D_DATE" );        //$NON-NLS-1$
-  String STR_N_RATING      = Messages.getString( "STR_N_RATING" );      //$NON-NLS-1$
-  String STR_D_RATING      = Messages.getString( "STR_D_RATING" );      //$NON-NLS-1$
-  String STR_N_PLACE       = Messages.getString( "STR_N_PLACE" );       //$NON-NLS-1$
-  String STR_D_PLACE       = Messages.getString( "STR_D_PLACE" );       //$NON-NLS-1$
+  String STR_NAME          = Messages.getString( "STR_NAME" );          //$NON-NLS-1$
+  String STR_NAME_D        = Messages.getString( "STR_NAME_D" );        //$NON-NLS-1$
+  String STR_DESCRIPTION   = Messages.getString( "STR_DESCRIPTION" );   //$NON-NLS-1$
+  String STR_DESCRIPTION_D = Messages.getString( "STR_DESCRIPTION_D" ); //$NON-NLS-1$
+  String STR_DATE          = Messages.getString( "STR_DATE" );          //$NON-NLS-1$
+  String STR_DATE_D        = Messages.getString( "STR_DATE_D" );        //$NON-NLS-1$
+  String STR_RATING        = Messages.getString( "STR_RATING" );        //$NON-NLS-1$
+  String STR_RATING_D      = Messages.getString( "STR_RATING_D" );      //$NON-NLS-1$
+  String STR_PLACE         = Messages.getString( "STR_PLACE" );         //$NON-NLS-1$
+  String STR_PLACE_D       = Messages.getString( "STR_PLACE_D" );       //$NON-NLS-1$
 
 }
