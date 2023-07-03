@@ -1,6 +1,9 @@
 package com.hazard157.prisex24.e4.addons;
 
+import java.util.*;
+
 import org.eclipse.e4.core.contexts.*;
+import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
@@ -34,6 +37,20 @@ public class AddonPrisex24Behaviour
   // implementation
   //
 
+  private static IEpisode getRandomEpisode( IEclipseContext aWinContext ) {
+    IUnitEpisodes unitEpisodes = aWinContext.get( IUnitEpisodes.class );
+    if( unitEpisodes.items().isEmpty() ) {
+      return null;
+    }
+    Random random = new Random();
+    int rind = random.nextInt();
+    if( rind < 0 ) {
+      rind = -rind;
+    }
+    rind %= unitEpisodes.items().size();
+    return unitEpisodes.items().get( rind );
+  }
+
   // ------------------------------------------------------------------------------------
   // MwsAbstractAddon
   //
@@ -62,6 +79,10 @@ public class AddonPrisex24Behaviour
     IMwsLocationService locationService = aWinContext.get( IMwsLocationService.class );
     EpisodePropertyLocator episodePropertyLocator = new EpisodePropertyLocator( new TsGuiContext( aWinContext ) );
     locationService.registerLocator( episodePropertyLocator );
+    // initially select the random episode
+    ICurrentEpisodeService currentEpisodeService = aWinContext.get( ICurrentEpisodeService.class );
+    Display display = aWinContext.get( Display.class );
+    display.asyncExec( () -> currentEpisodeService.setCurrent( getRandomEpisode( aWinContext ) ) );
   }
 
 }

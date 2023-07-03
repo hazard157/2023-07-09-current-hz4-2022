@@ -2,8 +2,7 @@ package com.hazard157.prisex24;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 
-import com.hazard157.common.e4.services.mps.*;
-import com.hazard157.common.e4.services.mwsloc.*;
+import com.hazard157.common.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;
@@ -18,7 +17,7 @@ import com.hazard157.psx.proj3.sourcevids.*;
  */
 @SuppressWarnings( "javadoc" )
 public interface IPsxGuiContextable
-    extends ITsGuiContextable {
+    extends IHzGuiContextable {
 
   default IPsxCofs psxCofs() {
     return tsContext().get( IPsxCofs.class );
@@ -60,16 +59,8 @@ public interface IPsxGuiContextable
     return tsContext().get( IUnitSnippets.class );
   }
 
-  default IMediaPlayerService mps() {
-    return tsContext().get( IMediaPlayerService.class );
-  }
-
   default ICurrentEpisodeService currentEpisodeService() {
     return tsContext().get( ICurrentEpisodeService.class );
-  }
-
-  default IMwsLocationService mwsLocationService() {
-    return tsContext().get( IMwsLocationService.class );
   }
 
 }

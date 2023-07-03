@@ -24,14 +24,16 @@
           </children>
         </children>
         <children xsi:type="basic:PartSashContainer" xmi:id="_zII-8BbfEe648-7JmmYjAQ" elementId="com.hazard157.prisex24.partsashcontainer.2">
-          <children xsi:type="basic:PartStack" xmi:id="_zx0OEBbfEe648-7JmmYjAQ" elementId="com.hazard157.prisex24.partstack.4">
+          <children xsi:type="basic:PartStack" xmi:id="_0GgEoBbfEe648-7JmmYjAQ" elementId="com.hazard157.prisex24.partstack.5" containerData="7500">
+            <children xsi:type="basic:Part" xmi:id="_RcEeABkxEe61p9AQFC4_jQ" elementId="com.hazard157.prisex24.part.part_welcomecurrepisodethumbs" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.welcome.UipartCurrentEpisodeIllustrationsGrid" label="%Part_WelcomeCurrEpisodeThumbs" tooltip="%Part_WelcomeCurrEpisodeThumbs_D"/>
+          </children>
+          <children xsi:type="basic:PartStack" xmi:id="_zx0OEBbfEe648-7JmmYjAQ" elementId="com.hazard157.prisex24.partstack.4" containerData="2500">
             <children xsi:type="basic:Part" xmi:id="_0tM4QBbfEe648-7JmmYjAQ" elementId="com.hazard157.prisex24.part.welcome_film_thumbs" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.welcome.UipartWelcomeFilmsThumbs" label="%Part_WelcomeFilmThumbs" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/films-list.png" tooltip="%Part_WelcomeFilmThumbs_D">
               <toolbar xmi:id="_12qJgBd1Ee648-7JmmYjAQ" elementId="com.hazard157.prisex24.toolbar.2">
                 <children xsi:type="menu:DirectToolItem" xmi:id="_2qNtYBd1Ee648-7JmmYjAQ" elementId="com.hazard157.prisex24.toolitem.welcome_film_play" label="%Cmd_PlayFilm" iconURI="platform:/plugin/com.hazard157.common/icons/is16x16/media-playback-start.png" tooltip="%Cmd_PlayFilm_D" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.welcome.CmdPlayFilm"/>
               </toolbar>
             </children>
           </children>
-          <children xsi:type="basic:PartStack" xmi:id="_0GgEoBbfEe648-7JmmYjAQ" elementId="com.hazard157.prisex24.partstack.5"/>
         </children>
       </children>
     </elements>

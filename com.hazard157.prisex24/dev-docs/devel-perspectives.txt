@@ -3,9 +3,7 @@
 
 === Perspective PLANING
 
-=== Perspective INC-GAZES
-
-=== Perspective INC-MISC ???
+=== Perspective OUTPUT media
 
 === Perspective Media browser
 

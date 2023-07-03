@@ -39,7 +39,7 @@ import com.hazard157.psx.proj3.trailers.*;
 import com.hazard157.psx.proj3.trailers.impl.*;
 
 /**
- * Квант проекта PSX.
+ * PRISEX project quant.
  *
  * @author hazard157
  */

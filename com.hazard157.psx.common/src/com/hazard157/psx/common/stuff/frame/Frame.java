@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.common.utils.*;
 
 /**
- * Неизменяемая реализация {@link IFrame}.
+ * {@link IFrame} immutable implementation.
  *
  * @author hazard157
  */
@@ -27,14 +27,14 @@ public class Frame
   private transient LocalDate date;
 
   /**
-   * Конструктор со всеми инвариантами.
+   * Constructor.
    *
-   * @param aEpisodeId String - идентификатор эпизода или {@link IStridable#NONE_ID}
-   * @param aCamId String - идентификатор камеры или {@link IStridable#NONE_ID}
-   * @param aFrameNo int - номер первого кадра или -1
-   * @param aIsAnimated boolean - признак анимированной последовательности
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException aEpisodeId невалидный идентификатор эпизода
+   * @param aEpisodeId String - the episode ID or {@link IStridable#NONE_ID}
+   * @param aCamId String - the camera ID or {@link IStridable#NONE_ID}
+   * @param aFrameNo int - first frame number or -1
+   * @param aIsAnimated boolean - the animated sequence flag
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException aEpisodeId is invalid episode ID
    * @throws TsIllegalArgumentRtException aCamId не ИД-путь
    */
   public Frame( String aEpisodeId, String aCamId, int aFrameNo, boolean aIsAnimated ) {
@@ -132,8 +132,7 @@ public class Frame
     if( aObj == this ) {
       return true;
     }
-    if( aObj instanceof IFrame ) {
-      IFrame that = (IFrame)aObj;
+    if( aObj instanceof IFrame that ) {
       return frameNo() == that.frameNo() && isAnimated == that.isAnimated() && cameraId().equals( that.cameraId() )
           && episodeId.equals( that.episodeId() );
     }

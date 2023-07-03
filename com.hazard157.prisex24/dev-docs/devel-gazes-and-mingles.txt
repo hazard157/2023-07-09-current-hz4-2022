@@ -1,0 +1,5 @@
+
+GAZES & MINGLES
+  --- define OptedFiles properties for MASTER???, SOURCE and OUTPUT files in ICofsXxxConstants
+  --- add OptedFiles property editor to MASTER???, SOURCE and OUTPUT files
+  --- add query/selection by specified OptedFile properties of above files to ICofsXxx API
