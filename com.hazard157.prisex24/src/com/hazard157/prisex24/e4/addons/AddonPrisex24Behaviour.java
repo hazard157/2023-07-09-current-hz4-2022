@@ -1,11 +1,14 @@
 package com.hazard157.prisex24.e4.addons;
 
+import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
+
 import java.util.*;
 
 import org.eclipse.e4.core.contexts.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
+import org.toxsoft.core.tslib.bricks.apprefs.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 
 import com.hazard157.common.e4.services.mwsloc.*;
@@ -14,6 +17,7 @@ import com.hazard157.common.quants.secstep.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.glib.locations.*;
+import com.hazard157.prisex24.utils.*;
 import com.hazard157.prisex24.utils.frasel.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
@@ -79,10 +83,21 @@ public class AddonPrisex24Behaviour
     IMwsLocationService locationService = aWinContext.get( IMwsLocationService.class );
     EpisodePropertyLocator episodePropertyLocator = new EpisodePropertyLocator( new TsGuiContext( aWinContext ) );
     locationService.registerLocator( episodePropertyLocator );
-    // initially select the random episode
+
+    // show if you need a startup GIF
     ICurrentEpisodeService currentEpisodeService = aWinContext.get( ICurrentEpisodeService.class );
+    IAppPreferences aprefs = aWinContext.get( IAppPreferences.class );
+    IPrefBundle prefBundle = aprefs.getBundle( PBID_WELCOME );
     Display display = aWinContext.get( Display.class );
-    display.asyncExec( () -> currentEpisodeService.setCurrent( getRandomEpisode( aWinContext ) ) );
+    if( APPREF_WELCOME_IS_STARTUP_GIF.getValue( prefBundle.prefs() ).asBool() ) {
+      display.asyncExec( () -> {
+        StartupGifDisplay sgd = new StartupGifDisplay( new TsGuiContext( aWinContext ) );
+        IEpisode episode = sgd.show();
+        // initially select the random episode of startup GIF
+        currentEpisodeService.setCurrent( episode );
+      } );
+    }
+
   }
 
 }

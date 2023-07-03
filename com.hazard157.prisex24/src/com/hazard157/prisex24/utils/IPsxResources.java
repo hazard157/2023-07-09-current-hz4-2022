@@ -1,4 +1,4 @@
-package com.hazard157.psx24.intro.utils;
+package com.hazard157.prisex24.utils;
 
 /**
  * Localizable resources.

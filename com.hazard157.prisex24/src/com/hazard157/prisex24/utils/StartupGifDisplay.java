@@ -1,17 +1,15 @@
-package com.hazard157.psx24.intro.utils;
+package com.hazard157.prisex24.utils;
 
-import static com.hazard157.psx24.intro.utils.IPsxResources.*;
+import static com.hazard157.prisex24.utils.IPsxResources.*;
 
 import java.io.*;
 import java.util.*;
 
-import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.dialogs.*;
 import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.bricks.filter.*;
 import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
@@ -19,17 +17,15 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.common.dialogs.*;
 import com.hazard157.common.quants.ankind.*;
 import com.hazard157.common.quants.secint.*;
+import com.hazard157.prisex24.*;
+import com.hazard157.prisex24.utils.frasel.*;
 import com.hazard157.psx.common.*;
 import com.hazard157.psx.common.stuff.frame.*;
-import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.bricks.beq.*;
 import com.hazard157.psx.proj3.bricks.beq.filters.*;
 import com.hazard157.psx.proj3.bricks.beq.impl.*;
 import com.hazard157.psx.proj3.episodes.*;
-import com.hazard157.psx24.core.*;
-import com.hazard157.psx24.core.e4.services.filesys.*;
-import com.hazard157.psx24.core.utils.*;
 
 /**
  * Shows an arbitrary GIF animated frame in a separate window.
@@ -52,11 +48,9 @@ public class StartupGifDisplay
   );
 
   private final ITsGuiContext tsContext;
-  // private final IUnitEpisodes unitEpisodes;
-  private final IPsxFileSystem fileSystem;
-  private final IEpisode       episode;
+  private final IEpisode      episode;
 
-  private IListEdit<IFrame> frList = IList.EMPTY;
+  private IList<IFrame> frList = IList.EMPTY;
 
   private int frameIndex = 0;
 
@@ -68,7 +62,6 @@ public class StartupGifDisplay
    */
   public StartupGifDisplay( ITsGuiContext aContext ) {
     tsContext = TsNullArgumentRtException.checkNull( aContext );
-    fileSystem = tsContext.get( IPsxFileSystem.class );
     // selection criteria by random episode
     episode = getRandomEpisode();
     if( episode == null ) {
@@ -99,24 +92,19 @@ public class StartupGifDisplay
       sl.add( new Secint( start, s.interval().end() ) );
     }
     // list all animated frames of the episode
-    IPsxFileSystem fs = tsContext.get( IPsxFileSystem.class );
-    Svin svin = Svin.removeCamId( episode.svin() );
-    FrameSelectionCriteria fsc = new FrameSelectionCriteria( svin, EAnimationKind.ANIMATED, true );
-    IList<IFrame> epFrames = fs.listEpisodeFrames( fsc );
-    // select only frames from the specified intervals
-    frList = new ElemArrayList<>( epFrames.size() );
-    for( IFrame f : epFrames ) {
-      for( Secint s : sl ) {
-        if( s.contains( f.secNo() ) ) {
-          frList.add( f );
-          break;
-        }
-      }
-    }
+
+    ISvinFramesParams svinFramesParams = new SvinFramesParams();
+    svinFramesParams.setAnimationKind( EAnimationKind.ANIMATED );
+    svinFramesParams.setCameraIds( IStringList.EMPTY );
+    svinFramesParams.setFramesPerSvin( EFramesPerSvin.SELECTED );
+    svinFramesParams.setOnlySvinCams( false );
+    SvinFramesSelector svinFramesSelector = new SvinFramesSelector( aContext );
+    frList = svinFramesSelector.selectFrames( svins, svinFramesParams );
+
     if( !frList.isEmpty() ) {
       // preload the first GIF image
       int fIndex = new Random().nextInt( frList.size() );
-      File f = fileSystem.findFrameFile( frList.get( fIndex ) );
+      File f = cofsFrames().findFrameFile( frList.get( fIndex ) );
       if( f != null ) {
         ITsImageManager imagesManager = tsContext.get( ITsImageManager.class );
         imagesManager.findImage( f );
@@ -156,16 +144,19 @@ public class StartupGifDisplay
 
   /**
    * Display an animation in the separate window.
+   *
+   * @return {@link IEpisode} - the random episode of stratup GIF or <code>null</code>
    */
-  public void show() {
-    if( frList.isEmpty() ) {
-      Shell shell = tsContext.get( Shell.class );
-      TsDialogUtils.warn( shell, FMT_WARN_FRAMES_LIST_EMPTY,
-          episode != null ? episode.id() : Objects.toString( episode ) );
-      return;
+  public IEpisode show() {
+    if( !frList.isEmpty() ) {
+      DialogShowImageFiles.showItemsNonModal( tsContext, frList, frList.get( frameIndex ),
+          new FrameVisualsProvider( tsContext ) );
     }
-    DialogShowImageFiles.showItemsNonModal( tsContext, frList, frList.get( frameIndex ),
-        new FrameVisualsProvider( tsContext ) );
+    else {
+      TsDialogUtils.warn( getShell(), FMT_WARN_FRAMES_LIST_EMPTY,
+          episode != null ? episode.id() : Objects.toString( episode ) );
+    }
+    return episode;
   }
 
 }

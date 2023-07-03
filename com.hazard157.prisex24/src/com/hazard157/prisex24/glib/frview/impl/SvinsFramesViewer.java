@@ -10,7 +10,6 @@ import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
 import static org.toxsoft.core.tsgui.graphics.icons.EIconSize.*;
 import static org.toxsoft.core.tsgui.graphics.image.impl.ThumbSizeableDropDownMenuCreator.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
-import static org.toxsoft.core.tslib.coll.impl.TsCollectionsUtils.*;
 
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.actions.*;
@@ -25,7 +24,6 @@ import org.toxsoft.core.tsgui.panels.toolbar.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tslib.coll.*;
-import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
@@ -257,19 +255,8 @@ public class SvinsFramesViewer
   }
 
   private void recrateUnfilteredFramesListAndSetToFgViewer() {
-    // optimize
-    int totalDuration = 0;
-    for( Svin s : svinSeq.svins() ) {
-      totalDuration += s.interval().duration();
-    }
-    int order = estimateOrder( 5 * totalDuration );
-    // SVINs -> frames
     SvinFramesSelector sfs = new SvinFramesSelector( tsContext() );
-    IListBasicEdit<IFrame> ll = new SortedElemLinkedBundleList<>( getListInitialCapacity( order ), true );
-    for( Svin s : svinSeq.svins() ) {
-      ll.addAll( sfs.selectFrames( s, svinFramesParams ) );
-    }
-    // display
+    IList<IFrame> ll = sfs.selectFrames( svinSeq.svins(), svinFramesParams );
     fgViewer.setFrames( ll );
   }
 

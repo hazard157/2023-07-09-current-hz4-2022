@@ -147,14 +147,4 @@ public interface ISvinFramesParams
    */
   void setParams( ISvinFramesParams aSource );
 
-  /**
-   * Selects and returns frames for the specified SVIN.
-   * <p>
-   * If SVIN contains invalid data (eg non-existing episode, bad interval) then returns an empty list.
-   *
-   * @param aSvin {@link Svin} - the SVIN
-   * @return {@link IList}&lt;{@link IFrame}&gt; - selected frames
-   * @throws TsNullArgumentRtException any argument = <code>null</code>
-   */
-
 }

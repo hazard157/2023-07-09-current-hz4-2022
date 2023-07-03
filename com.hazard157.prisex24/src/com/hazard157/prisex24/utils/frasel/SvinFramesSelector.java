@@ -1,5 +1,7 @@
 package com.hazard157.prisex24.utils.frasel;
 
+import static org.toxsoft.core.tslib.coll.impl.TsCollectionsUtils.*;
+
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
@@ -162,6 +164,10 @@ public final class SvinFramesSelector
     return tsContext;
   }
 
+  // ------------------------------------------------------------------------------------
+  // API
+  //
+
   /**
    * Selects and returns frames for the specified SVIN.
    * <p>
@@ -180,6 +186,32 @@ public final class SvinFramesSelector
     int bc = TsCollectionsUtils.getListInitialCapacity( TsCollectionsUtils.estimateOrder( allFrames.items().size() ) );
     IListEdit<IFrame> ll = new ElemLinkedBundleList<>( bc, true );
     collectFrames( aSvin, ll );
+    return ll;
+  }
+
+  /**
+   * Selects and returns frames for the specified SVINs.
+   *
+   * @param aSvins {@link IList}&lt;{@link Svin}&gt; - the SVINs
+   * @param aParams {@link ISvinFramesParams} - frame selection parameters
+   * @return {@link IList}&lt;{@link IFrame}&gt; - the sorted list of selected frames
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   */
+  public IList<IFrame> selectFrames( IList<Svin> aSvins, ISvinFramesParams aParams ) {
+    TsNullArgumentRtException.checkNulls( aSvins, aParams );
+    if( aSvins.isEmpty() ) {
+      return IList.EMPTY;
+    }
+    // optimize
+    int totalDuration = 0;
+    for( Svin s : aSvins ) {
+      totalDuration += s.interval().duration();
+    }
+    int order = estimateOrder( 5 * totalDuration );
+    IListBasicEdit<IFrame> ll = new SortedElemLinkedBundleList<>( getListInitialCapacity( order ), true );
+    for( Svin s : aSvins ) {
+      ll.addAll( selectFrames( s, aParams ) );
+    }
     return ll;
   }
 

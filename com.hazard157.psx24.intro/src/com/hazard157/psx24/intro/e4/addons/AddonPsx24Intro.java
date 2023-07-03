@@ -4,6 +4,7 @@ import static com.hazard157.psx24.intro.IPsxIntroGuiConstants.*;
 
 import org.eclipse.e4.core.contexts.*;
 import org.eclipse.swt.widgets.*;
+import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.mws.services.e4helper.*;
 import org.toxsoft.core.tslib.bricks.apprefs.*;
@@ -43,12 +44,12 @@ public class AddonPsx24Intro
     // TODO собирает только 1 кадр на эпизод,а нужно те кадры, которые в иллюстрациях
     // UipartIntro.preloadNeededImages( aWinContext );
 
-    // покажем, если нужно приветственный GIF
+    // show if you need a startup GIF
     IAppPreferences aprefs = aWinContext.get( IAppPreferences.class );
     IPrefBundle prefBundle = aprefs.getBundle( PSX_INTRO_APREF_BUNDLE_ID );
     if( IPsxIntroGuiConstants.APPRM_IS_STARTUP_GIF_SHOWN.getValue( prefBundle.prefs() ).asBool() ) {
       display.asyncExec( () -> {
-        StartupGifDisplay sgd = new StartupGifDisplay( aWinContext );
+        StartupGifDisplay sgd = new StartupGifDisplay( new TsGuiContext( aWinContext ) );
         sgd.show();
       } );
     }
