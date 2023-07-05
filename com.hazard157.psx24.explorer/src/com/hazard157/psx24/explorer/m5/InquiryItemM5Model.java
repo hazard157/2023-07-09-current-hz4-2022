@@ -14,7 +14,7 @@ import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 
-import com.hazard157.psx24.explorer.unit.*;
+import com.hazard157.psx24.core.bricks.unit.*;
 
 /**
  * Модель элементов {@link Inquiry#items()} типа {@link InquiryItem}.

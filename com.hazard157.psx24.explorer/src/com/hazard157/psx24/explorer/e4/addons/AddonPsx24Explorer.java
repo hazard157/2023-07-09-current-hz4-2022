@@ -5,11 +5,11 @@ import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.txtproj.lib.*;
 
+import com.hazard157.psx24.core.bricks.unit.*;
+import com.hazard157.psx24.core.bricks.unit.impl.*;
 import com.hazard157.psx24.explorer.*;
 import com.hazard157.psx24.explorer.e4.services.*;
 import com.hazard157.psx24.explorer.m5.*;
-import com.hazard157.psx24.explorer.unit.*;
-import com.hazard157.psx24.explorer.unit.impl.*;
 
 /**
  * Адон плагина.

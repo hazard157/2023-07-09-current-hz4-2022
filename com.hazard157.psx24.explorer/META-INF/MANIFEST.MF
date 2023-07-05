@@ -32,10 +32,4 @@ Export-Package: com.hazard157.psx24.explorer,
  com.hazard157.psx24.explorer.e4.addons,
  com.hazard157.psx24.explorer.e4.services,
  com.hazard157.psx24.explorer.e4.uiparts,
- com.hazard157.psx24.explorer.filters,
- com.hazard157.psx24.explorer.gui.filters,
- com.hazard157.psx24.explorer.gui.resview,
- com.hazard157.psx24.explorer.m5,
- com.hazard157.psx24.explorer.pq,
- com.hazard157.psx24.explorer.unit,
- com.hazard157.psx24.explorer.unit.impl
+ com.hazard157.psx24.explorer.m5

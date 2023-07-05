@@ -5,7 +5,7 @@ import org.eclipse.swt.custom.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 
-import com.hazard157.psx24.explorer.gui.resview.*;
+import com.hazard157.psx24.core.bricks.pq.resview.*;
 
 /**
  * Выборки для конкретного эпизода.

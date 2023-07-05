@@ -14,7 +14,7 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.m5.std.fields.*;
 import org.toxsoft.core.tslib.bricks.strid.impl.*;
 
-import com.hazard157.psx24.explorer.unit.*;
+import com.hazard157.psx24.core.bricks.unit.*;
 
 /**
  * Модель {@link Inquiry} для отображения в списках

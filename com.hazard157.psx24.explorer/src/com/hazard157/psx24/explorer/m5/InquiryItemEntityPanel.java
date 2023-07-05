@@ -6,8 +6,8 @@ import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 
-import com.hazard157.psx24.explorer.gui.filters.*;
-import com.hazard157.psx24.explorer.unit.*;
+import com.hazard157.psx24.core.bricks.pq.filters.*;
+import com.hazard157.psx24.core.bricks.unit.*;
 
 class InquiryItemEntityPanel
     extends M5AbstractEntityPanel<InquiryItem> {

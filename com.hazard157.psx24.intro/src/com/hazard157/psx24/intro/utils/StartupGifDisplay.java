@@ -23,11 +23,11 @@ import com.hazard157.psx.common.*;
 import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.fsc.*;
 import com.hazard157.psx.common.stuff.svin.*;
-import com.hazard157.psx.proj3.bricks.beq.*;
-import com.hazard157.psx.proj3.bricks.beq.filters.*;
-import com.hazard157.psx.proj3.bricks.beq.impl.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx24.core.*;
+import com.hazard157.psx24.core.bricks.pq.*;
+import com.hazard157.psx24.core.bricks.pq.filters.*;
+import com.hazard157.psx24.core.bricks.unit.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.utils.*;
 
@@ -74,18 +74,19 @@ public class StartupGifDisplay
     if( episode == null ) {
       return;
     }
-    BeqFilter bf = new BeqFilter();
-    ITsSingleFilterParams sfp = BeqSingleFilterEpisodeIds.makeFilterParams( new SingleStringList( episode.id() ) );
-    bf.fpMap().put( EBeqSingleFilterKind.EPISODE_IDS, sfp );
+
+    InquiryItem ii = new InquiryItem();
+    ITsSingleFilterParams sfp = PqFilterEpisodeIds.makeFilterParams( new SingleStringList( episode.id() ) );
+    ii.fpMap().put( EPqSingleFilterKind.EPISODE_IDS, sfp );
     // selection criteria by tags
-    sfp = BeqSingleFilterTagIds.makeFilterParams( SELECTION_TAG_IDS, true );
-    bf.fpMap().put( EBeqSingleFilterKind.TAG_IDS, sfp );
+    sfp = PqFilterTagIds.makeFilterParams( SELECTION_TAG_IDS, true );
+    ii.fpMap().put( EPqSingleFilterKind.TAG_IDS, sfp );
     // select intervals
-    IBeqResult inAll = BeqUtils.createFull( unitEpisodes() );
-    IBeqProcessor p = new BeqProcessor( inAll, unitEpisodes() );
-    ITsCombiFilterParams cfp = bf.makeFilterParams();
-    IBeqResult out = p.queryData( cfp );
-    IList<Svin> svins = out.epinsMap().findByKey( episode.id() );
+    ISvinSeq inAll = PqQueryProcessor.createFull( unitEpisodes() );
+    PqQueryProcessor p = new PqQueryProcessor( inAll, unitEpisodes() );
+    ITsCombiFilterParams cfp = ii.getFilterParams();
+    ISvinSeq out = p.queryData( cfp );
+    IList<Svin> svins = out.listByEpisode( episode.id() );
     if( svins == null || svins.isEmpty() ) {
       return;
     }

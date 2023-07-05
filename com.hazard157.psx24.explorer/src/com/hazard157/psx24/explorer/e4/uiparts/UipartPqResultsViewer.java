@@ -22,13 +22,13 @@ import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.story.*;
 import com.hazard157.psx.proj3.sourcevids.*;
+import com.hazard157.psx24.core.bricks.pq.*;
+import com.hazard157.psx24.core.bricks.pq.resview.*;
 import com.hazard157.psx24.core.e4.services.currep.*;
 import com.hazard157.psx24.core.e4.services.currframeslist.*;
 import com.hazard157.psx24.core.e4.services.filesys.*;
 import com.hazard157.psx24.core.e4.services.selsvins.*;
 import com.hazard157.psx24.explorer.e4.services.*;
-import com.hazard157.psx24.explorer.gui.resview.*;
-import com.hazard157.psx24.explorer.pq.*;
 
 /**
  * Вью отображения результатов выборки.

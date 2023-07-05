@@ -27,7 +27,7 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 
-import com.hazard157.psx24.explorer.unit.*;
+import com.hazard157.psx24.core.bricks.unit.*;
 
 class InquiryMpc
     extends MultiPaneComponentModown<Inquiry> {

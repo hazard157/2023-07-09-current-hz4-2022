@@ -1,5 +1,5 @@
 
 +++ use ISvinSeq instead of PqResultSet
---- use PqXxx instead of BeqXxx in StartupGifDisplay, remove IBeqXxx
++++ use PqXxx instead of BeqXxx in StartupGifDisplay, remove IBeqXxx
 --- UipartSingleInquiry: Uipart for one inquiry (may be saved to explorer or not)
 --- Managed part stack of UipartSingleInquiry, all of them are saved to be restored 

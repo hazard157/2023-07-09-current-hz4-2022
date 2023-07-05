@@ -7,7 +7,7 @@ import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.coll.*;
 
-import com.hazard157.psx24.explorer.unit.*;
+import com.hazard157.psx24.core.bricks.unit.*;
 
 /**
  * Менеджер ЖЦ сущностей {@link Inquiry}.

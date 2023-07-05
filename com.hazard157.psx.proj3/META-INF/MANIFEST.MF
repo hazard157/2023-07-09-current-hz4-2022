@@ -26,9 +26,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.psx.proj3
 Bundle-ActivationPolicy: lazy
 Export-Package: com.hazard157.psx.proj3,
- com.hazard157.psx.proj3.bricks.beq,
- com.hazard157.psx.proj3.bricks.beq.filters,
- com.hazard157.psx.proj3.bricks.beq.impl,
  com.hazard157.psx.proj3.cameras,
  com.hazard157.psx.proj3.episodes,
  com.hazard157.psx.proj3.episodes.impl,

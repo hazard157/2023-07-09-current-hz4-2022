@@ -29,8 +29,13 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.hazard157.psx24.core
 Bundle-ActivationPolicy: lazy
 Export-Package: com.hazard157.psx24.core,
+ com.hazard157.psx24.core.bricks.pq,
+ com.hazard157.psx24.core.bricks.pq.filters,
+ com.hazard157.psx24.core.bricks.pq.resview,
  com.hazard157.psx24.core.bricks.projtree,
  com.hazard157.psx24.core.bricks.projtree.nodes,
+ com.hazard157.psx24.core.bricks.unit,
+ com.hazard157.psx24.core.bricks.unit.impl,
  com.hazard157.psx24.core.e4.addons,
  com.hazard157.psx24.core.e4.handlers,
  com.hazard157.psx24.core.e4.services.currep,
