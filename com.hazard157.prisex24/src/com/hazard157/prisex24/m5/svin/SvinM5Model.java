@@ -1,10 +1,16 @@
 package com.hazard157.prisex24.m5.svin;
 
+import static com.hazard157.common.IHzConstants.*;
+import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
+import static com.hazard157.prisex24.m5.svin.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
+import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
+import org.toxsoft.core.tsgui.utils.*;
+import org.toxsoft.core.tslib.av.*;
 
 import com.hazard157.common.quants.secint.*;
 import com.hazard157.prisex24.*;
@@ -65,10 +71,36 @@ public class SvinM5Model
   };
 
   /**
+   * Field duration of interval {@link Svin#interval()}.
+   */
+  public static final M5AttributeFieldDef<Svin> DURATION =
+      new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
+
+        @Override
+        protected void doInit() {
+          setNameAndDescription( STR_DURATION, STR_DURATION_D );
+          setFlags( M5FF_COLUMN | M5FF_READ_ONLY | M5FF_HIDDEN );
+        }
+
+        @Override
+        protected IAtomicValue doGetFieldValue( Svin aEntity ) {
+          return avInt( aEntity.interval().duration() );
+        }
+
+        @Override
+        protected String doGetFieldValueName( Svin aEntity ) {
+          return HmsUtils.mmmss( aEntity.interval().duration() );
+        }
+
+      };
+
+  /**
    * Constructor.
    */
   public SvinM5Model() {
     super( MID_SVIN, Svin.class );
+    setNameAndDescription( STR_M5M_SVIN, STR_M5M_SVIN_D );
+    addFieldDefs( FRAME, EPISODE_ID, INTERVAL, DURATION, CAM_ID );
     // TODO Auto-generated constructor stub
   }
 

@@ -39,14 +39,14 @@ public class UipartPqResultsViewer
     extends MwsAbstractPart {
 
   @SuppressWarnings( "unchecked" )
-  private final ICurrentEntityChangeListener<PqResultSet> resultChangedListener = aCurrent -> {
+  private final ICurrentEntityChangeListener<ISvinSeq> resultChangedListener = aCurrent -> {
     if( aCurrent != null ) {
       this.viewer.setPqResults( aCurrent );
       if( this.unitEpisodes == null ) {
         return;
       }
       IListBasicEdit<IFrame> toShow = new ElemLinkedBundleList<>();
-      for( Svin chunk : aCurrent.listAllSvins() ) {
+      for( Svin chunk : aCurrent.svins() ) {
         IFrame f = chooseBestFrameForSvin( chunk );
         if( f != IFrame.NONE ) {
           toShow.add( f );
@@ -62,7 +62,7 @@ public class UipartPqResultsViewer
       }
     }
     else {
-      this.viewer.setPqResults( PqResultSet.EMPTY );
+      this.viewer.setPqResults( ISvinSeq.EMPTY );
       this.psxSelectedSvinsService.setSvins( IList.EMPTY );
     }
   };
@@ -104,7 +104,7 @@ public class UipartPqResultsViewer
     viewer = new ResultsPanelAsSimpleList( aParent, ctx );
     viewer.addTsSelectionListener( selectionChangeListener );
     // покажем все эпизоды
-    PqResultSet rs = PqResultSet.createFull( unitEpisodes );
+    ISvinSeq rs = PqQueryProcessor.createFull( unitEpisodes );
     viewer.setPqResults( rs );
   }
 
@@ -114,11 +114,8 @@ public class UipartPqResultsViewer
       return;
     }
     currentEpisodeService.setCurrent( unitEpisodes.items().findByKey( aFrame.episodeId() ) );
-    PqResultSet rs = viewer.getPqResults();
-    IList<Svin> svins = rs.epinsMap().findByKey( aFrame.episodeId() );
-    if( svins == null ) {
-      return;
-    }
+    ISvinSeq rs = viewer.getPqResults();
+    IList<Svin> svins = rs.listByEpisode( aFrame.episodeId() );
     // сначала поищем точное попадание в интервал
     for( Svin s : svins ) {
       if( s.interval().contains( aFrame.secNo() ) ) {

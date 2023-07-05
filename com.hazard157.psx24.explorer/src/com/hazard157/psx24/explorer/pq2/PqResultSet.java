@@ -1,4 +1,4 @@
-package com.hazard157.psx24.explorer.pq;
+package com.hazard157.psx24.explorer.pq2;
 
 import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.coll.*;

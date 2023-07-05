@@ -10,7 +10,6 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.psx.common.stuff.svin.*;
-import com.hazard157.psx24.explorer.pq.*;
 
 /**
  * Базовый класс панели отображения наследниками в разных видах.
@@ -23,7 +22,7 @@ abstract class AbstractResultsPanel
 
   protected final TsSelectionChangeEventHelper<Svin> selectionChangeEventHelper;
 
-  private PqResultSet results = PqResultSet.EMPTY;
+  private ISvinSeq results = ISvinSeq.EMPTY;
 
   /**
    * Конструктор панели.
@@ -46,18 +45,18 @@ abstract class AbstractResultsPanel
   /**
    * Возвращает отображаемые результаты
    *
-   * @return {@link PqResultSet} - отображаемые результаты
+   * @return {@link ISvinSeq} - отображаемые результаты
    */
-  public PqResultSet getPqResults() {
+  public ISvinSeq getPqResults() {
     return results;
   }
 
   /**
    * Задает отображаемые результаты.
    *
-   * @param aResults {@link PqResultSet} - отображаемые результаты
+   * @param aResults {@link ISvinSeq} - отображаемые результаты
    */
-  public void setPqResults( PqResultSet aResults ) {
+  public void setPqResults( ISvinSeq aResults ) {
     TsNullArgumentRtException.checkNull( aResults );
     results = aResults;
     refresh();
@@ -96,7 +95,7 @@ abstract class AbstractResultsPanel
   }
 
   public IList<Svin> getAllSvins() {
-    return results.listAllSvins();
+    return results.svins();
   }
 
   protected abstract void refresh();

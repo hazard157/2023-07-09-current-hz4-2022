@@ -10,6 +10,7 @@ import org.toxsoft.core.tsgui.utils.layout.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.bricks.filter.*;
 
+import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx24.explorer.e4.services.*;
 import com.hazard157.psx24.explorer.gui.filters.*;
@@ -42,11 +43,11 @@ public class UipartsSimpleQuery
   void whenFilterChanged() {
     // prepare
     IUnitEpisodes epman = tsContext().get( IUnitEpisodes.class );
-    PqResultSet in = PqResultSet.createFull( epman );
+    ISvinSeq in = PqQueryProcessor.createFull( epman );
     PqQueryProcessor proc = new PqQueryProcessor( in, epman );
     // query
     ITsCombiFilterParams fp = panel.getInquiryItem().getFilterParams();
-    PqResultSet rs = proc.queryData( fp );
+    ISvinSeq rs = proc.queryData( fp );
     currentPqResultService.setCurrent( rs );
   }
 

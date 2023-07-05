@@ -18,6 +18,7 @@ import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tslib.bricks.events.change.*;
 import org.toxsoft.core.tslib.bricks.filter.*;
 
+import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx24.explorer.e4.services.*;
 import com.hazard157.psx24.explorer.gui.filters.*;
@@ -113,10 +114,10 @@ public class UipartsInquiries
     Inquiry inquiry = panelInquiry.selectedItem();
     // prepare
     IUnitEpisodes epman = tsContext().get( IUnitEpisodes.class );
-    PqResultSet rs = PqResultSet.EMPTY;
+    ISvinSeq rs = ISvinSeq.EMPTY;
     // queries
     if( inquiry != null && !inquiry.items().isEmpty() ) {
-      rs = PqResultSet.createFull( epman );
+      rs = PqQueryProcessor.createFull( epman );
       for( InquiryItem item : inquiry.items() ) {
         PqQueryProcessor proc = new PqQueryProcessor( rs, epman );
         rs = proc.queryData( item.getFilterParams() );

@@ -4,6 +4,7 @@ import static com.hazard157.prisex24.explorer.pq.IPsxResources.*;
 
 import org.toxsoft.core.tslib.bricks.filter.*;
 import org.toxsoft.core.tslib.bricks.filter.impl.*;
+import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
@@ -26,7 +27,7 @@ import com.hazard157.psx.proj3.episodes.*;
  */
 public class PqQueryProcessor {
 
-  private final PqResultSet inputData;
+  private final ISvinSeq inputData;
 
   /**
    * Набор посекундных срезов, соответствующий входным данным.
@@ -35,7 +36,7 @@ public class PqQueryProcessor {
    * <ul>
    * <li>сначала это карта, ключи в которых - идентификатор эпизода, а значения посекундные срезы эпизода;</li>
    * <li>посекундные срезы эпизода организованы в виде списка, который содержит в себе карту срезов, соответствующие
-   * {@link Svin}-ам входных данных. Список сортирован по времени, поскольку {@link PqResultSet} содержит сортированные
+   * {@link Svin}-ам входных данных. Список сортирован по времени, поскольку {@link ISvinSeq} содержит сортированные
    * списки {@link Svin}-ов;</li>
    * <li>срез {@link Svin}-а это карта "секунда" - {@link SecondSlice}.</li>
    * </ul>
@@ -47,18 +48,18 @@ public class PqQueryProcessor {
   /**
    * Конструктор с инвариантами.
    *
-   * @param aInputData {@link PqResultSet} - входные данные
+   * @param aInputData {@link ISvinSeq} - входные данные
    * @param aEpMan {@link IUnitEpisodes} - менеджер эпизодов
    * @throws TsNullArgumentRtException любой аргумент = null
    */
-  public PqQueryProcessor( PqResultSet aInputData, IUnitEpisodes aEpMan ) {
+  public PqQueryProcessor( ISvinSeq aInputData, IUnitEpisodes aEpMan ) {
     TsNullArgumentRtException.checkNull( aInputData );
     inputData = aInputData;
     for( EPqSingleFilterKind k : EPqSingleFilterKind.asList() ) {
       ffReg.register( k.factory() );
     }
     if( !inputData.isEmpty() ) {
-      for( String epId : inputData.epinsMap().keys() ) {
+      for( String epId : inputData.listEpisodeIds() ) {
         // проверка корректности (существования эпизода)
         IEpisode e = aEpMan.items().findByKey( epId );
         if( e == null ) {
@@ -69,7 +70,7 @@ public class PqQueryProcessor {
         IListEdit<IIntMapEdit<SecondSlice>> list = new ElemArrayList<>();
         secondSlices.put( epId, list );
         // формирует для каждоко эпизода посекундный срез состояний QpFilterInput
-        for( Svin svin : inputData.epinsMap().getByKey( epId ) ) {
+        for( Svin svin : inputData.listByEpisode( epId ) ) {
           IIntMapEdit<SecondSlice> ssMap = new IntMap<>( 157 );
           list.add( ssMap );
           for( int sec = svin.interval().start(); sec <= svin.interval().end(); sec++ ) {
@@ -86,13 +87,29 @@ public class PqQueryProcessor {
   //
 
   /**
+   * Создает набор, содержащий все интервалы всех эпизодов.
+   *
+   * @param aEpMan {@link IUnitEpisodes} - менеджер эпизодов
+   * @return {@link ISvinSeq} - "корневой" набор, откуда пойдет первый запрос
+   * @throws TsNullArgumentRtException аргумент = null
+   */
+  public static ISvinSeq createFull( IUnitEpisodes aEpMan ) {
+    SvinSeq ss = new SvinSeq();
+    for( IEpisode e : aEpMan.items() ) {
+      Svin svin = new Svin( e.id(), IStridable.NONE_ID, new Secint( 0, e.info().duration() - 1 ) );
+      ss.svins().add( svin );
+    }
+    return ss;
+  }
+
+  /**
    * Возвращает набор входных данных, над которыми будет осуществлена выборка.
    * <p>
    * Входные данные задаются один раз в конструкторе процессора.
    *
-   * @return {@link PqResultSet} - входные данные
+   * @return {@link ISvinSeq} - входные данные
    */
-  public PqResultSet inputData() {
+  public ISvinSeq inputData() {
     return inputData;
   }
 
@@ -102,16 +119,16 @@ public class PqQueryProcessor {
    * Если входные данные пустые, то возвращает пустой набор.
    *
    * @param aFilterParams {@link ITsCombiFilterParams} - параметры запроса
-   * @return {@link PqResultSet} - результаты запроса
+   * @return {@link ISvinSeq} - результаты запроса
    * @throws TsNullArgumentRtException аргумент = null
    */
-  public PqResultSet queryData( ITsCombiFilterParams aFilterParams ) {
+  public ISvinSeq queryData( ITsCombiFilterParams aFilterParams ) {
     TsNullArgumentRtException.checkNull( aFilterParams );
     if( inputData.isEmpty() ) {
-      return PqResultSet.EMPTY;
+      return ISvinSeq.EMPTY;
     }
     if( aFilterParams == ITsCombiFilterParams.NONE ) {
-      return PqResultSet.EMPTY;
+      return ISvinSeq.EMPTY;
     }
     if( aFilterParams == ITsCombiFilterParams.ALL ) {
       return inputData;
@@ -146,7 +163,7 @@ public class PqQueryProcessor {
         }
       }
     }
-    return new PqResultSet( svins );
+    return new SvinSeq( svins );
   }
 
 }

@@ -13,6 +13,8 @@ import com.hazard157.common.quants.secint.*;
  */
 public interface ISvinSeq {
 
+  ISvinSeq EMPTY = new InternalEmptySvinSeq();
+
   /**
    * Returns list of SVINs making this set.
    *
@@ -65,5 +67,49 @@ public interface ISvinSeq {
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   IList<Svin> listByInterval( Secint aInterval, boolean aCutSvins );
+
+  // ------------------------------------------------------------------------------------
+  // Convenience inline methods
+
+  @SuppressWarnings( "javadoc" )
+  default boolean isEmpty() {
+    return svins().isEmpty();
+  }
+
+}
+
+class InternalEmptySvinSeq
+    implements ISvinSeq {
+
+  @Override
+  public IList<Svin> svins() {
+    return IList.EMPTY;
+  }
+
+  @Override
+  public IList<Svin> listByEpisode( String aEpisodeId ) {
+    TsNullArgumentRtException.checkNull( aEpisodeId );
+    return IList.EMPTY;
+  }
+
+  @Override
+  public IStringList listEpisodeIds() {
+    return IStringList.EMPTY;
+  }
+
+  @Override
+  public IList<Svin> listByCamera( String aCameraId ) {
+    return IList.EMPTY;
+  }
+
+  @Override
+  public IStringList listCameraIds() {
+    return IStringList.EMPTY;
+  }
+
+  @Override
+  public IList<Svin> listByInterval( Secint aInterval, boolean aCutSvins ) {
+    return IList.EMPTY;
+  }
 
 }

@@ -39,6 +39,7 @@ class SvinM5EntityPanelWithValedsController
     else {
       camIds = unitCameras().items().keys();
     }
+    String selCamId = epCamerasList.canGetValue().isError() ? null : epCamerasList.getValue();
     epCamerasList.setLookupProvider( new IM5LookupProvider<String>() {
 
       @Override
@@ -52,7 +53,7 @@ class SvinM5EntityPanelWithValedsController
       }
 
     } );
-
+    epCamerasList.setValue( selCamId );
   }
 
   @Override

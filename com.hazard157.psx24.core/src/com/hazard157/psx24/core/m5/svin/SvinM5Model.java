@@ -99,7 +99,7 @@ public class SvinM5Model
       };
 
   /**
-   * Конструктор.
+   * Constructor.
    */
   public SvinM5Model() {
     super( MID_SVIN, Svin.class );

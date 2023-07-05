@@ -25,7 +25,7 @@ import com.hazard157.psx24.core.m5.svin.*;
 public class ResultsPanelAsSimpleList
     extends AbstractResultsPanel {
 
-  private final IM5ItemsProvider<Svin> itemsProvider = () -> getPqResults().listAllSvins();
+  private final IM5ItemsProvider<Svin> itemsProvider = () -> getPqResults().svins();
 
   private final SvinM5Mpc panel;
 
