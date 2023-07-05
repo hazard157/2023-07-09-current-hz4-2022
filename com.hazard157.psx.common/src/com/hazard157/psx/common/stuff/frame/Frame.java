@@ -2,10 +2,13 @@ package com.hazard157.psx.common.stuff.frame;
 
 import static org.toxsoft.core.tslib.utils.TsLibUtils.*;
 
-import java.time.*;
-
+import org.toxsoft.core.tslib.av.*;
+import org.toxsoft.core.tslib.av.impl.*;
+import org.toxsoft.core.tslib.bricks.keeper.*;
+import org.toxsoft.core.tslib.bricks.keeper.AbstractEntityKeeper.*;
 import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.bricks.strid.impl.*;
+import org.toxsoft.core.tslib.bricks.strio.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 import com.hazard157.psx.common.utils.*;
@@ -18,13 +21,53 @@ import com.hazard157.psx.common.utils.*;
 public class Frame
     implements IFrame {
 
+  /**
+   * Registered keeper ID.
+   */
+  public static final String KEEPER_ID = "Frame"; //$NON-NLS-1$
+
+  /**
+   * The keeper singleton.
+   */
+  public static final IEntityKeeper<IFrame> KEEPER =
+      new AbstractEntityKeeper<>( IFrame.class, EEncloseMode.ENCLOSES_BASE_CLASS, IFrame.NONE ) {
+
+        @Override
+        protected void doWrite( IStrioWriter aSw, IFrame aSf ) {
+          aSw.writeAsIs( aSf.episodeId() );
+          aSw.writeSeparatorChar();
+          aSw.writeAsIs( aSf.cameraId() );
+          aSw.writeSeparatorChar();
+          HhMmSsFfUtils.writeMmSsFf( aSw, aSf.frameNo() );
+          aSw.writeSeparatorChar();
+          aSw.writeBoolean( aSf.isAnimated() );
+        }
+
+        @Override
+        protected IFrame doRead( IStrioReader aSr ) {
+          String episodeId = aSr.readIdPath();
+          aSr.ensureSeparatorChar();
+          String camId = aSr.readIdPath();
+          aSr.ensureSeparatorChar();
+          int frameNo = HhMmSsFfUtils.readMmSsFf( aSr );
+          aSr.ensureSeparatorChar();
+          boolean isAnimated = aSr.readBoolean();
+          return new Frame( episodeId, camId, frameNo, isAnimated );
+        }
+      };
+
+  /**
+   * An atomic value corresponding to the stored {@link IFrame#NONE}.
+   */
+  public static final IAtomicValue AV_FRAME_NONE = AvUtils.avValobj( IFrame.NONE, KEEPER, KEEPER_ID );
+
   private final int     hashCode;
   private final String  episodeId;
   private final String  camId;
   private final int     frameNo;
   private final boolean isAnimated;
 
-  private transient LocalDate date;
+  // private transient LocalDate date;
 
   /**
    * Constructor.
@@ -49,7 +92,7 @@ public class Frame
   }
 
   // ------------------------------------------------------------------------------------
-  // Внутренные методы
+  // implementation
   //
 
   private int calcHashCode() {
@@ -61,28 +104,28 @@ public class Frame
   }
 
   /**
-   * Возвращает удобочитаемую строку для идентификации кадра эпизода (например, в таблицах).
+   * Returns a human-readable string to identify the frame (for example, in tables).
    *
-   * @param aSf {@link IFrame} - описание значка
-   * @return String - удобочитаемая строка для идентификации значка
-   * @throws TsNullArgumentRtException аргумент = null
+   * @param aFrame {@link IFrame} - the frame
+   * @return String - human-readable string to identify the frame
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   @SuppressWarnings( "nls" )
-  public static String humanReadableString( IFrame aSf ) {
-    TsNullArgumentRtException.checkNull( aSf );
+  public static String humanReadableString( IFrame aFrame ) {
+    TsNullArgumentRtException.checkNull( aFrame );
     StringBuilder sb = new StringBuilder();
-    sb.append( aSf.episodeId() );
+    sb.append( aFrame.episodeId() );
     sb.append( ' ' );
-    sb.append( HhMmSsFfUtils.mmssff( aSf.frameNo() ) );
+    sb.append( HhMmSsFfUtils.mmssff( aFrame.frameNo() ) );
     sb.append( ' ' );
-    sb.append( aSf.isAnimated() ? "ANIM" : "SOLE" );
+    sb.append( aFrame.isAnimated() ? "ANIM" : "SOLE" );
     sb.append( ' ' );
-    sb.append( aSf.cameraId() );
+    sb.append( aFrame.cameraId() );
     return sb.toString();
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IFrame
+  // IFrame
   //
 
   @Override
@@ -90,13 +133,13 @@ public class Frame
     return episodeId;
   }
 
-  @Override
-  public LocalDate whenDate() {
-    if( date == null ) {
-      date = EpisodeUtils.episodeId2LocalDate( episodeId );
-    }
-    return date;
-  }
+  // @Override
+  // public LocalDate whenDate() {
+  // if( date == null ) {
+  // date = EpisodeUtils.episodeId2LocalDate( episodeId );
+  // }
+  // return date;
+  // }
 
   @Override
   public String cameraId() {
@@ -119,7 +162,7 @@ public class Frame
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация методов класса Object
+  // Object
   //
 
   @Override
@@ -145,7 +188,7 @@ public class Frame
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса Comparable
+  // Comparable
   //
 
   @Override

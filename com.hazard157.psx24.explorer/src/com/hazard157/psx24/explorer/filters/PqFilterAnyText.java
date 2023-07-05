@@ -11,7 +11,7 @@ import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.story.*;
 
 /**
- * Фильтр по текстовой строке.
+ * Filter of kind {@link EPqSingleFilterKind#ANY_TEXT}.
  *
  * @author hazard157
  */
@@ -19,12 +19,12 @@ class PqFilterAnyText
     implements ITsFilter<SecondSlice> {
 
   /**
-   * Идентификатор типа фильтра.
+   * The filter type ID.
    */
   public static final String TYPE_ID = "pq.filter.Text"; //$NON-NLS-1$
 
   /**
-   * Фабрика создания фильтра из значений параметров.
+   * The filter factory.
    */
   public static final ITsSingleFilterFactory<SecondSlice> FACTORY =
       new AbstractTsSingleFilterFactory<>( TYPE_ID, SecondSlice.class ) {
@@ -57,17 +57,17 @@ class PqFilterAnyText
   private final boolean        checkPlanes;
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aText String - искомая строка
-   * @param aMatchMode {@link ETextMatchMode} - операция сравнения
-   * @param aInTags boolean - признак поиска в ярлыках
-   * @param aInScenes boolean - признак поиска в названиях сцен
-   * @param aInNotes boolean - признак поиска в заметках
-   * @param aInPlanes boolean - признак поиска в названиях планов
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException текст - пустая строка
-   * @throws TsIllegalArgumentRtException все признаки = <code>false</code>
+   * @param aText String - the search text, the left operand of the comparison
+   * @param aMatchMode {@link ETextMatchMode} - comparison operation
+   * @param aInTags boolean - the sign to search in the tags
+   * @param aInScenes boolean - the sign to search in the scenes names
+   * @param aInNotes boolean - the sign to search in the notes
+   * @param aInPlanes boolean - the sign to search in the plane names
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException text is an empty string
+   * @throws TsIllegalArgumentRtException all signs are <code>false</code>
    */
   public PqFilterAnyText( String aText, ETextMatchMode aMatchMode, boolean aInTags, boolean aInScenes, boolean aInNotes,
       boolean aInPlanes ) {
@@ -85,18 +85,18 @@ class PqFilterAnyText
   }
 
   /**
-   * Создает параметры фильтра.
+   * Creates filter parameters.
    *
-   * @param aText String - искомая строка
-   * @param aMatchMode {@link ETextMatchMode} - операция сравнения
-   * @param aInTags boolean - признак поиска в ярлыках
-   * @param aInScenes boolean - признак поиска в названиях сцен
-   * @param aInNotes boolean - признак поиска в заметках
-   * @param aInPlanes boolean - признак поиска в названиях планов
-   * @return {@link IOptionSet} - озданные параметры для фабрики {@link #FACTORY}
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException текст - пустая строка
-   * @throws TsIllegalArgumentRtException все признаки = <code>false</code>
+   * @param aText String - the search text, the left operand of the comparison
+   * @param aMatchMode {@link ETextMatchMode} - comparison operation
+   * @param aInTags boolean - the sign to search in the tags
+   * @param aInScenes boolean - the sign to search in the scenes names
+   * @param aInNotes boolean - the sign to search in the notes
+   * @param aInPlanes boolean - the sign to search in the plane names
+   * @return {@link IOptionSet} - created parameters
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException text is an empty string
+   * @throws TsIllegalArgumentRtException all signs are <code>false</code>
    */
   public static ITsSingleFilterParams makeFilterParams( String aText, ETextMatchMode aMatchMode, boolean aInTags,
       boolean aInScenes, boolean aInNotes, boolean aInPlanes ) {
@@ -113,12 +113,12 @@ class PqFilterAnyText
   }
 
   /**
-   * Возвращает удобочитаему строку параметров фильтра.
+   * Returns a human-readable string of filter options.
    *
-   * @param aParams {@link ITsSingleFilterParams} - параметры этого фильтра
-   * @return String - однострочный текст
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException параметры не от этого фильтра
+   * @param aParams {@link ITsSingleFilterParams} - the filter parameters
+   * @return String - single-line text
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException the parameters if not of this filter
    */
   @SuppressWarnings( "nls" )
   public static final String makeHumanReadableString( ITsSingleFilterParams aParams ) {

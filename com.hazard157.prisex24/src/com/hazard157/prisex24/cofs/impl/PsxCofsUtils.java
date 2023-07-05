@@ -21,7 +21,7 @@ import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.psx.common.stuff.frame.*;
 
 /**
@@ -44,14 +44,14 @@ class PsxCofsUtils {
   /**
    * Ensures that fresh summary GIF file exists.
    * <p>
-   * Out-dated or non-existing GIF will be recreated using {@link #createSummaryGif(OptedFile, File)}.
+   * Out-dated or non-existing GIF will be recreated using {@link #createSummaryGif(IOptedFile, File)}.
    *
-   * @param aVideoFile {@link OptedFile} - the video file
+   * @param aVideoFile {@link IOptedFile} - the video file
    * @param aGifFile {@link File} - GIF file to be created
    * @return {@link File} - the argument <code>aGifFile</code> or <code>null</code> if can't be created
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
-  public static File ensureSummaryGif( OptedFile aVideoFile, File aGifFile ) {
+  public static File ensureSummaryGif( IOptedFile aVideoFile, File aGifFile ) {
     TsNullArgumentRtException.checkNulls( aVideoFile, aGifFile );
     // out-dated or non-existing GIF will be recreated
     if( !aGifFile.exists() || aGifFile.lastModified() < aVideoFile.file().lastModified() ) {
@@ -69,14 +69,14 @@ class PsxCofsUtils {
   /**
    * Creates the summary GIF animation for the specified video file.
    * <p>
-   * TODO if OptedFile.params() has ClipThumb definition - use it
+   * TODO if IOptedFile.params() has ClipThumb definition - use it
    *
-   * @param aVideoFile {@link OptedFile} - the video file
+   * @param aVideoFile {@link IOptedFile} - the video file
    * @param aGifFile {@link File} - GIF file to be created
    * @return {@link ValidationResult} - how the operation was performed
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
-  public static ValidationResult createSummaryGif( OptedFile aVideoFile, File aGifFile ) {
+  public static ValidationResult createSummaryGif( IOptedFile aVideoFile, File aGifFile ) {
     TsNullArgumentRtException.checkNulls( aVideoFile, aGifFile );
 
     /**

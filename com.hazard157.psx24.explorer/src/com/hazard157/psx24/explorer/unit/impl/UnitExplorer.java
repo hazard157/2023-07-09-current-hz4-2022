@@ -6,7 +6,7 @@ import org.toxsoft.core.txtproj.lib.sinent.*;
 import com.hazard157.psx24.explorer.unit.*;
 
 /**
- * Реализация {@link IUnitExplorer}.
+ * {@link IUnitExplorer} implementation.
  *
  * @author hazard157
  */
@@ -15,14 +15,14 @@ public class UnitExplorer
     implements IUnitExplorer {
 
   /**
-   * Конструктор.
+   * Constructor.
    */
   public UnitExplorer() {
     super( TsLibUtils.EMPTY_STRING, InquiryKeeper.KEEPER );
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация методов базового класса
+  // AbstractSinentManager
   //
 
   @Override
@@ -31,7 +31,7 @@ public class UnitExplorer
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IUnitExplorer
+  // IUnitExplorer
   //
 
 }

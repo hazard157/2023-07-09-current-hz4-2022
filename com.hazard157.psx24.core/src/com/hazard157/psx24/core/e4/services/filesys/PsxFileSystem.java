@@ -592,7 +592,7 @@ public class PsxFileSystem
       }
       cmdLineItems.add( fileName );
     }
-    String outFileName = PsxFileSystemUtils.bareSourceFrameFileName( aStartSec * FPS ) + ANIMATED_FILE_DOT_EXTENSION;
+    String outFileName = PsxFileSystemUtils.bareSourceFrameFileName( aStartSec * FPS ) + GIF_FILE_DOT_EXT;
     File outDir = findSourceEpisodeSubdir( aEpisodeId, EPSUBDIR_FRAMES_ANIM );
     outDir = new File( outDir, aCamId );
     File outFile = new File( outDir, outFileName );

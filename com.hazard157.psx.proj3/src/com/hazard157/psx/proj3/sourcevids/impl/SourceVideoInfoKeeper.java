@@ -43,7 +43,7 @@ public class SourceVideoInfoKeeper
     aSw.writeSeparatorChar();
     aSw.writeQuotedString( aEntity.description() );
     aSw.writeSeparatorChar();
-    FrameKeeper.KEEPER.write( aSw, aEntity.frame() );
+    Frame.KEEPER.write( aSw, aEntity.frame() );
     aSw.decNewLine();
     aSw.writeChar( CHAR_SET_END );
   }
@@ -59,7 +59,7 @@ public class SourceVideoInfoKeeper
     aSr.ensureSeparatorChar();
     String description = aSr.readQuotedString();
     aSr.ensureSeparatorChar();
-    IFrame frame = FrameKeeper.KEEPER.read( aSr );
+    IFrame frame = Frame.KEEPER.read( aSr );
     aSr.ensureChar( CHAR_SET_END );
     return new SourceVideoInfo( duration, location, description, frame );
   }

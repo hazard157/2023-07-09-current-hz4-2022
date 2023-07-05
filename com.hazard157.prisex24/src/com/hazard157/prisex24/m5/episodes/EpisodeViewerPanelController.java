@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.*;
 import com.hazard157.prisex24.m5.std.*;
 import com.hazard157.psx.common.utils.*;
@@ -51,9 +51,9 @@ public class EpisodeViewerPanelController
       trailerIdCombo.setItems( EMPTY_IDS_LIST );
       return;
     }
-    IList<OptedFile> allTrailers = cofsTrailers().listEpisodeTrailerFiles( e.id() );
+    IList<IOptedFile> allTrailers = cofsTrailers().listEpisodeTrailerFiles( e.id() );
     IListEdit<IAtomicValue> avTraIds = new ElemArrayList<>();
-    for( OptedFile trailer : allTrailers ) {
+    for( IOptedFile trailer : allTrailers ) {
       String name = TsFileUtils.extractBareFileName( trailer.file().getName() );
       avTraIds.add( avStr( name ) );
     }

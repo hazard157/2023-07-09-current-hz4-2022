@@ -42,7 +42,7 @@ import com.hazard157.psx24.core.e4.services.selsvins.*;
 import com.hazard157.psx24.core.m5.std.*;
 
 /**
- * Реализация {@link IM5CollectionPanel} для {@link SvinM5Model}.
+ * {@link IM5CollectionPanel} implementation for {@link SvinM5Model}.
  *
  * @author hazard157
  */
@@ -69,12 +69,12 @@ public class SvinM5Mpc
   static final String            EP_SECINT_ENTITY_SVIN_CAM_ID = "EpSecintEntityCameraId";                            //$NON-NLS-1$
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aContext {@link ITsGuiContext} - контекст
-   * @param aModel {@link IM5Model} - модель сущностей
-   * @param aItemsProvider {@link IM5ItemsProvider} - поставщик элементов, может быть <code>null</code>
-   * @param aLifecycleManager {@link IM5LifecycleManager} - менеджер ЖЦ, может быть <code>null</code>
+   * @param aContext {@link ITsGuiContext} - the context
+   * @param aModel {@link IM5Model} - the model
+   * @param aItemsProvider {@link IM5ItemsProvider} - items provider or <code>null</code>
+   * @param aLifecycleManager {@link IM5LifecycleManager} - LM or <code>null</code>
    */
   public SvinM5Mpc( ITsGuiContext aContext, IM5Model<Svin> aModel, IM5ItemsProvider<Svin> aItemsProvider,
       IM5LifecycleManager<Svin> aLifecycleManager ) {
@@ -233,7 +233,7 @@ public class SvinM5Mpc
       selectedSvinsService.setSvin( null );
       return;
     }
-    // подготовим карту по эпизодам
+    // prepare map of SVINs lists by episodes
     IMapEdit<String, IListBasicEdit<Svin>> map = new SortedElemMap<>();
     IListEdit<Svin> svins = new ElemArrayList<>();
     for( Svin svin : tree().items() ) {
@@ -245,7 +245,7 @@ public class SvinM5Mpc
       ll.add( svin );
       svins.add( svin );
     }
-    // составим спиок кадров для отображения
+    // prepare list of displayed frames
     boolean isSinglePerEpisode = Objects.equals( treeModeManager().currModeId(), TreeMakerByEpisode.MODE_ID );
     IListBasicEdit<IFrame> toShow = new SortedElemLinkedBundleList<>();
     for( String epId : map.keys() ) {
@@ -273,55 +273,55 @@ public class SvinM5Mpc
     selectedSvinsService.setSvins( svins );
   }
 
-  void showAllSvinsInFramesList_old() {
-    // check preconditions
-    ICurrentFramesListService cfls = tsContext().get( ICurrentFramesListService.class );
-    IPsxSelectedSvinsService sss = tsContext().get( IPsxSelectedSvinsService.class );
-    IUnitEpisodes unitEpisodes = tsContext().get( IUnitEpisodes.class );
-    if( unitEpisodes == null ) {
-      cfls.setCurrent( IList.EMPTY );
-      sss.setSvin( null );
-      return;
-    }
-    // подготовим карту по эпизодам
-    IMapEdit<String, IListBasicEdit<Svin>> map = new SortedElemMap<>();
-    IListEdit<Svin> svins = new ElemArrayList<>();
-    for( Svin svin : tree().items() ) {
-      IListBasicEdit<Svin> ll = map.findByKey( svin.episodeId() );
-      if( ll == null ) {
-        ll = new SortedElemLinkedBundleList<>();
-        map.put( svin.episodeId(), ll );
-      }
-      ll.add( svin );
-      svins.add( svin );
-    }
-    // составим спиок кадров для отображения
-    boolean isSinglePerEpisode = Objects.equals( treeModeManager().currModeId(), TreeMakerByEpisode.MODE_ID );
-    IListBasicEdit<IFrame> toShow = new SortedElemLinkedBundleList<>();
-    for( String epId : map.keys() ) {
-      IList<Svin> ll = map.getByKey( epId );
-      if( isSinglePerEpisode ) {
-        Svin chunk = ll.get( ll.size() / 2 );
-        IEpisode e = unitEpisodes.items().findByKey( chunk.episodeId() );
-        if( e != null ) {
-          IScene scene = e.story().findBestSceneFor( chunk.interval(), true );
-          toShow.add( scene.frame() );
-        }
-      }
-      else {
-        for( Svin chunk : ll ) {
-          IEpisode e = unitEpisodes.items().findByKey( chunk.episodeId() );
-          if( e != null ) {
-            IScene scene = e.story().findBestSceneFor( chunk.interval(), true );
-            toShow.add( scene.frame() );
-          }
-        }
-      }
-    }
-    setSelectedItem( null );
-    cfls.setCurrent( toShow );
-    sss.setSvins( svins );
-  }
+  // void showAllSvinsInFramesList_old() {
+  // // check preconditions
+  // ICurrentFramesListService cfls = tsContext().get( ICurrentFramesListService.class );
+  // IPsxSelectedSvinsService sss = tsContext().get( IPsxSelectedSvinsService.class );
+  // IUnitEpisodes unitEpisodes = tsContext().get( IUnitEpisodes.class );
+  // if( unitEpisodes == null ) {
+  // cfls.setCurrent( IList.EMPTY );
+  // sss.setSvin( null );
+  // return;
+  // }
+  // // подготовим карту по эпизодам
+  // IMapEdit<String, IListBasicEdit<Svin>> map = new SortedElemMap<>();
+  // IListEdit<Svin> svins = new ElemArrayList<>();
+  // for( Svin svin : tree().items() ) {
+  // IListBasicEdit<Svin> ll = map.findByKey( svin.episodeId() );
+  // if( ll == null ) {
+  // ll = new SortedElemLinkedBundleList<>();
+  // map.put( svin.episodeId(), ll );
+  // }
+  // ll.add( svin );
+  // svins.add( svin );
+  // }
+  // // составим спиок кадров для отображения
+  // boolean isSinglePerEpisode = Objects.equals( treeModeManager().currModeId(), TreeMakerByEpisode.MODE_ID );
+  // IListBasicEdit<IFrame> toShow = new SortedElemLinkedBundleList<>();
+  // for( String epId : map.keys() ) {
+  // IList<Svin> ll = map.getByKey( epId );
+  // if( isSinglePerEpisode ) {
+  // Svin chunk = ll.get( ll.size() / 2 );
+  // IEpisode e = unitEpisodes.items().findByKey( chunk.episodeId() );
+  // if( e != null ) {
+  // IScene scene = e.story().findBestSceneFor( chunk.interval(), true );
+  // toShow.add( scene.frame() );
+  // }
+  // }
+  // else {
+  // for( Svin chunk : ll ) {
+  // IEpisode e = unitEpisodes.items().findByKey( chunk.episodeId() );
+  // if( e != null ) {
+  // IScene scene = e.story().findBestSceneFor( chunk.interval(), true );
+  // toShow.add( scene.frame() );
+  // }
+  // }
+  // }
+  // }
+  // setSelectedItem( null );
+  // cfls.setCurrent( toShow );
+  // sss.setSvins( svins );
+  // }
 
   private void updatePlayMenu() {
     Svin svin = selectedItem();
@@ -353,24 +353,20 @@ public class SvinM5Mpc
   }
 
   // ------------------------------------------------------------------------------------
-  // API класса
+  // API
   //
 
   /**
-   * Возвращает список интервалов, связанных с текущим выбранным узлом.
+   * Returns a list of SVINs associated with the currently selected node.
    * <p>
-   * Для обычного узла, содержащего {@link Svin}, его и возвращает в виде единственного элемента списка. Для групповых
-   * ущлов возвращает список дочерних интервалов.
+   * For a normal node containing {@link Svin}, it is returned as a single element of the list. For group nodes, returns
+   * a list of child SVINs.
    * <p>
-   * Если нет текущего выбранного узла, возвращает пустой список.
+   * If there is no currently selected node, returns an empty list.
    *
-   * @return {@link IList}&lt;{@link Svin}&gt; - список интервалов, не бывает <code>null</code>
+   * @return {@link IList}&lt;{@link Svin}&gt; - list of SVINs, never is <code>null</code>
    */
   public IList<Svin> getSelectedNodeSvins() {
-    // Svin sel = selectedItem();
-    // if( sel != null ) {
-    // return new SingleItemList<>( sel );
-    // }
     ITsNode selNode = (ITsNode)tree().console().selectedNode();
     if( selNode == null ) {
       return IList.EMPTY;

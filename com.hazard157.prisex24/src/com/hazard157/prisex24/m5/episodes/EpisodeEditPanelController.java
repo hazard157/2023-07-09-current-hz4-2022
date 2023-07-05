@@ -13,7 +13,7 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.m5.std.*;
 import com.hazard157.prisex24.valeds.frames.*;
 import com.hazard157.psx.proj3.episodes.*;
@@ -46,9 +46,9 @@ public class EpisodeEditPanelController
   private void updateDefaultTrailerSelectionCombo() {
     ValedComboSelector<IAtomicValue> trailerIdCombo = getEditor( FID_DEF_TRAILER_ID, ValedComboSelector.class );
     String episodeId = lastValues().get( EpisodeM5Model.EPISODE_ID );
-    IList<OptedFile> allTrailers = cofsTrailers().listEpisodeTrailerFiles( episodeId );
+    IList<IOptedFile> allTrailers = cofsTrailers().listEpisodeTrailerFiles( episodeId );
     IListEdit<IAtomicValue> avTraIds = new ElemArrayList<>();
-    for( OptedFile trailer : allTrailers ) {
+    for( IOptedFile trailer : allTrailers ) {
       String name = TsFileUtils.extractBareFileName( trailer.file().getName() );
       avTraIds.add( avStr( name ) );
     }

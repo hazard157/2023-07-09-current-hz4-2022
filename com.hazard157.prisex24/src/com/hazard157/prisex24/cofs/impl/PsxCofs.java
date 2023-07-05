@@ -10,12 +10,11 @@ import java.time.*;
 
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.impl.*;
-import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
-import com.hazard157.common.utils.mop.*;
+import com.hazard157.common.incub.opfil.*;
+import com.hazard157.common.quants.mop.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.psx.common.utils.*;
 import com.hazard157.psx.proj3.incident.*;
@@ -80,7 +79,7 @@ public class PsxCofs
   }
 
   @Override
-  public File ensureSummaryImage( OptedFile aMediaFile ) {
+  public File ensureSummaryImage( IOptedFile aMediaFile ) {
     TsNullArgumentRtException.checkNull( aMediaFile );
     EMediaFileKind fileKind = EMediaFileKind.determineFileKind( aMediaFile.file() );
     switch( fileKind ) {
@@ -117,7 +116,7 @@ public class PsxCofs
     if( !TsFileUtils.isDirReadable( epDir ) ) {
       return IList.EMPTY;
     }
-    IList<File> allProjFiles = TsFileUtils1.collectFilesInSubtree( epDir, new SingleStringList( KDENLIVE_EXT ) );
+    IList<File> allProjFiles = TsFileUtils1.collectFilesInSubtree( epDir, TsFileFilter.ofFileExt( KDENLIVE_EXT ) );
     if( allProjFiles.isEmpty() ) {
       return IList.EMPTY;
     }

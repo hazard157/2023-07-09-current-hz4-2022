@@ -4,7 +4,9 @@ import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.coll.*;
 
 /**
- * Список кадров.
+ * The list of frame.
+ * <p>
+ * This is a list {@link IList} with additional helper methods and it's own {@link FramesList#KEEPER}.
  *
  * @author hazard157
  */
@@ -13,11 +15,11 @@ public interface IFramesList
     extends IList<IFrame> {
 
   /**
-   * Находит ближайши к указанной секунде кадр из списка.
+   * Finds the frame closest to the specified second from the list.
    *
-   * @param aSec int - секунда кадра
-   * @param aPreferredCamId String - идентификатор предпочитительной камеры или {@link IStridable#NONE_ID}
-   * @return {@link IFrame} - ближайший кадр или null если список пустой
+   * @param aSec int - the second
+   * @param aPreferredCamId String - preferred camera ID or {@link IStridable#NONE_ID}
+   * @return {@link IFrame} - the nearest frame, or <code>null</code> if the list is empty
    */
   IFrame findNearest( int aSec, String aPreferredCamId );
 

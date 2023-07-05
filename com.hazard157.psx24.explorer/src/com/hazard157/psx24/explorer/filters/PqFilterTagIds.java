@@ -13,7 +13,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
- * Фильтр по идентификаторам ярлыков.
+ * Filter of kind {@link EPqSingleFilterKind#TAG_IDS}.
  *
  * @author hazard157
  */
@@ -21,12 +21,12 @@ class PqFilterTagIds
     implements ITsFilter<SecondSlice> {
 
   /**
-   * Идентификатор типа фильтра,
+   * The filter type ID.
    */
   public static final String TYPE_ID = "pq.filter.TagIds"; //$NON-NLS-1$
 
   /**
-   * Фабрика создания фильтра из значений параметров.
+   * The filter factory.
    */
   public static final ITsSingleFilterFactory<SecondSlice> FACTORY =
       new AbstractTsSingleFilterFactory<>( TYPE_ID, SecondSlice.class ) {
@@ -47,10 +47,10 @@ class PqFilterTagIds
   private final boolean     any;
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aTagIds {@link IStringList} - идентификаторы ярлыков
-   * @param aIsAny boolean - принак, чир хотя бы один ярлык должен совпадать, а не все ярлыки
+   * @param aTagIds {@link IStringList} - the tag IDs
+   * @param aIsAny boolean - sign that at least one tag must match, not all tags
    */
   public PqFilterTagIds( IStringList aTagIds, boolean aIsAny ) {
     tagIds = new StringArrayList( aTagIds );
@@ -58,12 +58,12 @@ class PqFilterTagIds
   }
 
   /**
-   * Создает параметры фильтра.
+   * Creates filter parameters.
    *
-   * @param aTagIds {@link IStringList} - идентификаторы ярлыков
-   * @param aIsAny boolean - принак, чир хотя бы один ярлык должен совпадать, а не все ярлыки
-   * @return {@link ITsSingleFilterParams} - параметры фильтра
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aTagIds {@link IStringList} - the tag IDs
+   * @param aIsAny boolean - sign that at least one tag must match, not all tags
+   * @return {@link ITsSingleFilterParams} - the filter parameters
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public static ITsSingleFilterParams makeFilterParams( IStringList aTagIds, boolean aIsAny ) {
     IOptionSetEdit p = new OptionSet();
@@ -73,12 +73,12 @@ class PqFilterTagIds
   }
 
   /**
-   * Возвращает удобочитаему строку параметров фильтра.
+   * Returns a human-readable string of filter options.
    *
-   * @param aParams {@link ITsSingleFilterParams} - параметры этого фильтра
-   * @return String - однострочный текст
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException параметры не от этого фильтра
+   * @param aParams {@link ITsSingleFilterParams} - the filter parameters
+   * @return String - single-line text
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException the parameters if not of this filter
    */
   @SuppressWarnings( "nls" )
   public static final String makeHumanReadableString( ITsSingleFilterParams aParams ) {
@@ -100,11 +100,9 @@ class PqFilterTagIds
 
   @Override
   public boolean accept( SecondSlice aObj ) {
-    // любой ярлык
     if( any ) {
       return TsCollectionsUtils.intersects( aObj.tagIds(), tagIds );
     }
-    // все ярлыки
     return TsCollectionsUtils.contains( aObj.tagIds(), tagIds );
   }
 

@@ -33,8 +33,8 @@ public interface IPsxFrameVisumplesProviderConstants {
    */
   IDataDef OPDEF_VP_FRAME = DataDef.create( OPID_VP_FRAME, VALOBJ, //
       TSID_IS_MANDATORY, AV_TRUE, //
-      TSID_KEEPER_ID, FrameKeeper.KEEPER_ID, //
-      TSID_DEFAULT_VALUE, FrameKeeper.AV_FRAME_NONE //
+      TSID_KEEPER_ID, Frame.KEEPER_ID, //
+      TSID_DEFAULT_VALUE, Frame.AV_FRAME_NONE //
   );
 
 }

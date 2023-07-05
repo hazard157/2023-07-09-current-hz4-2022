@@ -9,7 +9,7 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 
 /**
  * Служба работы с фильмами.

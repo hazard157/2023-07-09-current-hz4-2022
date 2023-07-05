@@ -12,7 +12,7 @@ import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.episodes.story.*;
 
 /**
- * Построитель дерева {@link Svin}-ов по камерам.
+ * Groups SVINs by {@link Svin#cameraId()}.
  *
  * @author hazard157
  */

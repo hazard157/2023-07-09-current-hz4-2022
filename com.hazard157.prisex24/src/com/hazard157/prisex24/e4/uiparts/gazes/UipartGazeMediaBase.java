@@ -27,7 +27,7 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.notifier.basis.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.common.utils.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.e4.services.gazes.*;
@@ -66,12 +66,12 @@ public class UipartGazeMediaBase
     }
   };
 
-  private final ITsDoubleClickListener<OptedFile> doubleClickListener = ( aSource, aSelectedItem ) -> {
+  private final ITsDoubleClickListener<IOptedFile> doubleClickListener = ( aSource, aSelectedItem ) -> {
     playItem( aSelectedItem );
     updateActionsState();
   };
 
-  private final ITsSelectionChangeListener<OptedFile> selectionListenet =
+  private final ITsSelectionChangeListener<IOptedFile> selectionListenet =
       ( aSource, aSelectedItem ) -> updateActionsState();
 
   @Inject
@@ -79,8 +79,8 @@ public class UipartGazeMediaBase
 
   final EIncidentMediaKind incidentMediaKind;
 
-  TsToolbar                  toolbar;
-  IPicsGridViewer<OptedFile> pgViewer;
+  TsToolbar                   toolbar;
+  IPicsGridViewer<IOptedFile> pgViewer;
 
   protected UipartGazeMediaBase( EIncidentMediaKind aMediaKind ) {
     incidentMediaKind = TsNullArgumentRtException.checkNull( aMediaKind );
@@ -119,7 +119,7 @@ public class UipartGazeMediaBase
   }
 
   boolean processAction( String aActionId ) {
-    OptedFile sel = pgViewer.selectedItem();
+    IOptedFile sel = pgViewer.selectedItem();
     switch( aActionId ) {
       case AID_THUMB_SIZEABLE_ZOOM_MENU: {
         pgViewer.setThumbSize( pgViewer.defaultThumbSize() );
@@ -137,7 +137,7 @@ public class UipartGazeMediaBase
   }
 
   void updateActionsState() {
-    OptedFile sel = pgViewer.selectedItem();
+    IOptedFile sel = pgViewer.selectedItem();
     boolean isSel = sel != null;
     toolbar.setActionEnabled( ACTID_PLAY, isSel );
   }
@@ -147,12 +147,12 @@ public class UipartGazeMediaBase
       pgViewer.setItems( IList.EMPTY );
       return;
     }
-    IList<OptedFile> ll = cofsGazes().listMediaFiles( aGaze.incidentDate(), incidentMediaKind );
+    IList<IOptedFile> ll = cofsGazes().listMediaFiles( aGaze.incidentDate(), incidentMediaKind );
     pgViewer.setItems( ll );
     updateActionsState();
   }
 
-  void playItem( OptedFile aFile ) {
+  void playItem( IOptedFile aFile ) {
     if( aFile != null ) {
       HzUtils.runDefaultMediaApp( aFile.file() );
     }
@@ -165,7 +165,7 @@ public class UipartGazeMediaBase
 
   @Override
   public boolean onKeyDown( Object aSource, int aCode, char aChar, int aState ) {
-    OptedFile sel = pgViewer.selectedItem();
+    IOptedFile sel = pgViewer.selectedItem();
     switch( aCode ) {
       case SWT.CR:
       case SWT.KEYPAD_CR:

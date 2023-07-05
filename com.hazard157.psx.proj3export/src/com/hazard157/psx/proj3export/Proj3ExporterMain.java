@@ -147,7 +147,7 @@ public class Proj3ExporterMain {
       p.setStr( "duration", HmsUtils.hhhmmss( item.duration() ) );
       // no need for following - item.nmName() is the same as a location
       // p.setStr( "location", item.location() );
-      p.setStr( "frame", FrameKeeper.KEEPER.ent2str( item.frame() ) );
+      p.setStr( "frame", Frame.KEEPER.ent2str( item.frame() ) );
       // ======
       llItems.add( p );
     }
@@ -187,7 +187,7 @@ public class Proj3ExporterMain {
     p.setStr( "name", aScene.info().name() );
     p.setStr( "s", HmsUtils.mmss( aScene.interval().start() ) );
     p.setStr( "e", HmsUtils.mmss( aScene.interval().end() ) );
-    p.setStr( "frame", FrameKeeper.KEEPER.ent2str( aScene.frame() ) );
+    p.setStr( "frame", Frame.KEEPER.ent2str( aScene.frame() ) );
     for( int i = 1; i <= aScene.childScenes().size(); i++ ) {
       IScene s = aScene.childScenes().values().get( i - 1 );
       IOptionSet ops = makeScene( s );
@@ -207,7 +207,7 @@ public class Proj3ExporterMain {
       IOptionSetEdit p = new OptionSet();
       // ======
       utilCopyStridable( p, item );
-      p.setStr( "frame", FrameKeeper.KEEPER.ent2str( item.frame() ) );
+      p.setStr( "frame", Frame.KEEPER.ent2str( item.frame() ) );
       p.setStr( "duration", HmsUtils.hhhmmss( item.duration() ) );
       p.setStr( "place", item.info().place() );
       p.setValobj( "when", episodeWhenToLdt( item.when() ) );
@@ -229,7 +229,7 @@ public class Proj3ExporterMain {
         ops.setStr( "inEnd", HmsUtils.hhhmmss( k.in().end() ) );
         ops.setStr( "text", k.marker() );
         ops.setStr( "camId", k.cameraId() );
-        ops.setStr( "frame", FrameKeeper.KEEPER.ent2str( k.frame() ) );
+        ops.setStr( "frame", Frame.KEEPER.ent2str( k.frame() ) );
         p.setValobj( "NoteLineMark_" + i, ops );
       }
       // tagLine
@@ -256,7 +256,7 @@ public class Proj3ExporterMain {
         ops.setStr( "camId", g.cameraId() );
         ops.setStr( "name", g.name() );
         ops.setBool( "isNaturallyLong", g.isNaturallyLong() );
-        ops.setStr( "frame", FrameKeeper.KEEPER.ent2str( g.frame() ) );
+        ops.setStr( "frame", Frame.KEEPER.ent2str( g.frame() ) );
         p.setValobj( "PlaneLineMark_" + i, ops );
       }
       // story
@@ -436,7 +436,7 @@ public class Proj3ExporterMain {
         ops.setStr( "name", ch.name() );
         ops.setStr( "inStart", HmsUtils.hhhmmss( ch.interval().start() ) );
         ops.setStr( "inEnd", HmsUtils.hhhmmss( ch.interval().end() ) );
-        ops.setStr( "frame", FrameKeeper.KEEPER.ent2str( ch.frame() ) );
+        ops.setStr( "frame", Frame.KEEPER.ent2str( ch.frame() ) );
         p.setValobj( "chunk_" + i, ops );
       }
       // ======
@@ -592,7 +592,7 @@ public class Proj3ExporterMain {
 
   private static void initKeepers() {
     TsValobjUtils.registerKeeper( FramesList.KEEPER_ID, FramesList.KEEPER );
-    TsValobjUtils.registerKeeper( FrameKeeper.KEEPER_ID, FrameKeeper.KEEPER );
+    TsValobjUtils.registerKeeper( Frame.KEEPER_ID, Frame.KEEPER );
     TsValobjUtils.registerKeeper( ERating.KEEPER_ID, ERating.KEEPER );
   }
 

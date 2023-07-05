@@ -8,7 +8,6 @@ import org.eclipse.e4.core.contexts.*;
 import org.eclipse.e4.ui.model.application.*;
 import org.eclipse.e4.ui.model.application.ui.basic.*;
 import org.eclipse.e4.ui.workbench.modeling.*;
-import org.eclipse.swt.graphics.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.bricks.quant.*;
@@ -18,7 +17,6 @@ import org.toxsoft.core.tsgui.mws.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
 import org.toxsoft.core.tsgui.rcp.*;
 import org.toxsoft.core.tsgui.valed.api.*;
-import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.txtproj.lib.*;
 
 import com.hazard157.common.*;
@@ -47,6 +45,7 @@ import com.hazard157.prisex24.m5.plane.*;
 import com.hazard157.prisex24.m5.plep.*;
 import com.hazard157.prisex24.m5.snippet.*;
 import com.hazard157.prisex24.m5.srcvideo.*;
+import com.hazard157.prisex24.m5.svin.*;
 import com.hazard157.prisex24.m5.tags.*;
 import com.hazard157.prisex24.m5.todos.*;
 import com.hazard157.prisex24.pdus.snippets.*;
@@ -130,6 +129,7 @@ public class AddonPrisex24Core
     m5.addModel( new PlepM5Model() );
     m5.addModel( new GazeM5Model() );
     m5.addModel( new MingleM5Model() );
+    m5.addModel( new SvinM5Model() );
     // VALEDs
     IValedControlFactoriesRegistry vcfReg = aWinContext.get( IValedControlFactoriesRegistry.class );
     vcfReg.registerFactory( ValedFrameFactory.FACTORY );
@@ -141,12 +141,12 @@ public class AddonPrisex24Core
     //
     aWinContext.set( IWelcomePerspectiveController.class, new WelcomePerspectiveController( ctx ) );
 
-    // DEBUG --- resource tracking
-    Resource.setNonDisposeHandler( aT -> {
-      TsTestUtils.pl( "ResourseErr: %s", aT.toString() ); //$NON-NLS-1$
-      TsTestUtils.p( "" ); //$NON-NLS-1$
-    } );
-    // ---
+    // // DEBUG --- resource tracking
+    // Resource.setNonDisposeHandler( aT -> {
+    // TsTestUtils.pl( "ResourseErr: %s", aT.toString() ); //$NON-NLS-1$
+    // TsTestUtils.p( "" ); //$NON-NLS-1$
+    // } );
+    // // ---
 
   }
 

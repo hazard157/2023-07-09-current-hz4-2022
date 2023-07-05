@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.coll.*;
 import com.hazard157.psx24.explorer.unit.*;
 
 /**
- * Хранитель объектов типа {@link Inquiry}.
+ * Keeper of the {@link Inquiry}.
  *
  * @author hazard157
  */
@@ -16,7 +16,7 @@ public class InquiryKeeper
     extends AbstractEntityKeeper<Inquiry> {
 
   /**
-   * Хранение {@link Inquiry} в текстовом представлении.
+   * The keeper singleton.
    */
   public static final IEntityKeeper<Inquiry> KEEPER = new InquiryKeeper();
 
@@ -27,7 +27,7 @@ public class InquiryKeeper
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация методов класса AbstractEntityKeeper
+  // AbstractEntityKeeper
   //
 
   @Override

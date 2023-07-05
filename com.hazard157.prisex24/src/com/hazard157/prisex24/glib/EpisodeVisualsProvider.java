@@ -77,17 +77,13 @@ public class EpisodeVisualsProvider
 
   @Override
   public TsImage getThumb( IEpisode aItem, EThumbSize aThumbSize ) {
-    boolean isStillForced = APPREF_WELCOME_IS_FORCE_STILL.getValue( prefBundle.prefs() ).asBool();
-    File ff = cofsFrames().findFrameFile( aItem.frame() );
+    File f = cofsFrames().findFrameFile( aItem.frame() );
     TsImage mi = null;
-    if( ff != null ) {
-      mi = imageManager().findThumb( ff, aThumbSize );
+    if( f != null ) {
+      mi = imageManager().findThumb( f, aThumbSize );
     }
     if( mi == null ) {
       mi = getNoneImageForEpisode( aThumbSize );
-    }
-    if( mi.isAnimated() && isStillForced ) {
-      mi = TsImage.create( mi.image() ); // SWT image will be disposed when anumated mi disposes
     }
     return mi;
   }

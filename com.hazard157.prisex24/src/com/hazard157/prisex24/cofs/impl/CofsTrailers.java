@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.psx.proj3.incident.*;
 
@@ -69,7 +69,7 @@ public class CofsTrailers
   //
 
   @Override
-  public IList<OptedFile> listEpisodeTrailerFiles( String aEpisodeId ) {
+  public IList<IOptedFile> listEpisodeTrailerFiles( String aEpisodeId ) {
     File epDir = episodeDir( aEpisodeId );
     if( epDir == null ) {
       return IList.EMPTY;
@@ -79,15 +79,15 @@ public class CofsTrailers
       return IList.EMPTY;
     }
     // collect video files
-    IListBasicEdit<OptedFile> result = new SortedElemLinkedBundleList<>();
-    result.addAll( OptedFile.list( trDir, IMediaFileConstants.FF_VIDEOS ) );
+    IListBasicEdit<IOptedFile> result = new SortedElemLinkedBundleList<>();
+    result.addAll( OptedFileUtils.list( trDir, IMediaFileConstants.FF_VIDEOS ) );
     return result;
   }
 
   @Override
-  public OptedFile findTrailerFile( String aEpisodeId, String aTrailerName ) {
+  public IOptedFile findTrailerFile( String aEpisodeId, String aTrailerName ) {
     TsNullArgumentRtException.checkNulls( aEpisodeId, aTrailerName );
-    for( OptedFile f : listEpisodeTrailerFiles( aEpisodeId ) ) {
+    for( IOptedFile f : listEpisodeTrailerFiles( aEpisodeId ) ) {
       String bareName = TsFileUtils.extractBareFileName( f.file().getName() );
       if( bareName.equals( aTrailerName ) ) {
         return f;
@@ -97,7 +97,7 @@ public class CofsTrailers
   }
 
   @Override
-  public File getSummaryGif( OptedFile aTrailerFile ) {
+  public File getSummaryGif( IOptedFile aTrailerFile ) {
     TsNullArgumentRtException.checkNull( aTrailerFile );
     // extract episode date from trailer file path
     String episodeId = episodeIdFormTrailerFile( aTrailerFile.file() );

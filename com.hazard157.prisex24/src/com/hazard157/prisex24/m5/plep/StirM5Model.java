@@ -13,6 +13,7 @@ import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.graphics.*;
 import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
@@ -180,6 +181,7 @@ public class StirM5Model
       TSID_NAME, STR_STIR_NUM_VISUMPLES, //
       TSID_DESCRIPTION, STR_STIR_NUM_VISUMPLES_D, //
       M5_OPDEF_FLAGS, avInt( M5FF_READ_ONLY | M5FF_COLUMN ), //
+      M5_OPDEF_COLUMN_ALIGN, avValobj( EHorAlignment.CENTER ), //
       TSID_DEFAULT_VALUE, AV_0 //
   ) {
 

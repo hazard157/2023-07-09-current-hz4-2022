@@ -45,7 +45,7 @@ public class ValedAvValobjFrameEditor
     @Override
     protected boolean isSuitableAvEditor( EAtomicType aAtomicType, String aKeeperId, ITsGuiContext aEditorContext ) {
       if( aAtomicType == EAtomicType.VALOBJ && aKeeperId != null ) {
-        return aKeeperId.equals( FrameKeeper.KEEPER_ID );
+        return aKeeperId.equals( Frame.KEEPER_ID );
       }
       return false;
     }

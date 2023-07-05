@@ -14,48 +14,48 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.common.*;
 
 /**
- * Расширяет методы {@link HmsUtils} работой с кадрами при частоте кадров в видеопотоке {@link IPsxHardConstants#FPS} .
+ * Extends the {@link HmsUtils} to work with frames at the frame rate {@link IPsxHardConstants#FPS} .
  *
  * @author hazard157
  */
 public class HhMmSsFfUtils {
 
   /**
-   * Строковое представление отрицательных значений количества кадров в {@link HhMmSsFfUtils#mmssff(int)}.
+   * String representation of negative frame count values in {@link HhMmSsFfUtils#mmssff(int)}.
    */
   public static final String STR_UNDEFINED_FRAMES_MMSSFF = "??:??.??"; //$NON-NLS-1$
 
   /**
-   * Атомарное представление {@link #STR_UNDEFINED_FRAMES_MMSSFF}.
+   * Atomic representation {@link #STR_UNDEFINED_FRAMES_MMSSFF}.
    */
   public static final IAtomicValue AV_STR_UNDEFINED_MMSSFF = avStr( STR_UNDEFINED_FRAMES_MMSSFF );
 
   /**
-   * Максмальная значение в кадрах, которая может отображаться в виде ММ:СС.КК.
+   * The maximum value in frames that can be displayed as MM:SS.FF.
    */
   public static final int MAX_MMSSFF_VALUE = MAX_MMSS_VALUE * FPS + FPS - 1;
 
   /**
-   * Максмальная значение в кадрах, которая может отображаться в виде ЧЧ:ММ:СС.КК.
+   * The maximum value in frames that can be displayed as HH:MM:SS.FF.
    */
   public static final int MAX_HHMMSSFF_VALUE = MAX_HHMMSS_VALUE * FPS + FPS - 1;
 
   /**
-   * Строка, используемая для значения количества кадров -1 в методе {@link #mmssff(int)}.
+   * A string used to indicate the number of frames -1 in the {@link #mmssff(int)} method.
    */
   private static final String STR_MINUS_1_HH_MM_FF = "00:00.-1"; //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
-  // Методы форматирования времени
+  // Time Formatting Methods
   //
 
   /**
-   * Возвращает строку вида "ЧЧ:ММ:СС.КК" из количества индекса (количества) кадра.
+   * Returns a string like "HH:MM:SS.FF" from the index number (quantity) of the frame.
    * <p>
-   * Если длительность меньше часа, возвращает "ММ:СС.КК".
+   * If the duration is less than an hour, returns "MM:SS.FF".
    *
-   * @param aFrameNo int - номер кадра
-   * @return String - строка вида "ЧЧ:ММ:СС.КК" или "ММ:СС.КК"
+   * @param aFrameNo int - the frame number
+   * @return String - string like "HH:MM:SS.FF" or "MM:SS.FF"
    * @throws TsIllegalArgumentRtException aFrameNo < 0
    */
   @SuppressWarnings( { "nls", "boxing" } )
@@ -73,13 +73,13 @@ public class HhMmSsFfUtils {
   }
 
   /**
-   * Возвращает строку вида "ММ:СС.КК" из количества секунд и номера кадра в секунде.
+   * Returns a string of the form "MM:SS.FF" from the number of seconds and the frame number in a second.
    *
-   * @param aSecs int - количество секунд
-   * @param aFraction int - номер кадра в поседней секунде в пределах 0.. {@link IPsxHardConstants#FPS}-1
-   * @return String - строка вида "ММ:СС.КК"
-   * @throws TsIllegalArgumentRtException aFrameNo < 0 или aFrameNo >= {@link IPsxHardConstants#FPS}
-   * @throws TsIllegalArgumentRtException aSecs < 0 или aSecs >= {@link #MAX_MMSS_VALUE}
+   * @param aSecs int - the number of secondds
+   * @param aFraction int - frame number in last second within 0.. {@link IPsxHardConstants#FPS}-1
+   * @return String - string like "MM:SS.FF"
+   * @throws TsIllegalArgumentRtException aFraction < 0 or aFraction >= {@link IPsxHardConstants#FPS}
+   * @throws TsIllegalArgumentRtException aSecs < 0 or aSecs >= {@link #MAX_MMSS_VALUE}
    */
   public static String mmssff( int aSecs, int aFraction ) {
     TsIllegalArgumentRtException.checkTrue( aFraction < 0 || aFraction >= FPS );
@@ -90,12 +90,12 @@ public class HhMmSsFfUtils {
   }
 
   /**
-   * Возвращает строку вида "ММ:СС.КК" из общего количества кадров.
+   * Returns a string like "MM:SS.FF" from the total number of frames.
    * <p>
-   * Для недопустимых значении возвращает строку {@link #STR_UNDEFINED_FRAMES_MMSSFF}.
+   * For invalid values, returns the string {@link #STR_UNDEFINED_FRAMES_MMSSFF}.
    *
-   * @param aFrameNo int - номер кадра
-   * @return String - строка вида "ММ:СС.КК"
+   * @param aFrameNo int - the frame number
+   * @return String - string like"MM:SS.FF"
    */
   public static String mmssff( int aFrameNo ) {
     if( aFrameNo < 0 || aFrameNo > MAX_MMSSFF_VALUE ) {
@@ -107,11 +107,11 @@ public class HhMmSsFfUtils {
   }
 
   /**
-   * Записывает количество кадров текстом вида "ММ:СС.КК".
+   * Writes the number of frames in text like "MM:SS.FF".
    *
-   * @param aSw {@link IStrioWriter} - писатель текстового представления
-   * @param aFrames int - количество кадров
-   * @throws TsNullArgumentRtException aSw = null
+   * @param aSw {@link IStrioWriter} - output stream
+   * @param aFrames int - the frames count
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    * @throws TsIllegalArgumentRtException aFrames < 0
    * @throws TsIllegalArgumentRtException aFrames >= {@link #MAX_MMSS_VALUE} * {@link IPsxHardConstants#FPS}
    */
@@ -134,40 +134,40 @@ public class HhMmSsFfUtils {
   }
 
   /**
-   * Из строки формата [ЧЧ:]ММ:СС[.КК] сбирает целое число - номер кадра (исходя из {@link IPsxHardConstants#FPS}).
+   * From the format string [HH:]MM:SS[.FF] collects an integer - the frame number .
    *
-   * @param aHmsf String - входная строка
-   * @return int - номер кадра
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException неверный формат строки
+   * @param aHmsf String - input stream
+   * @return int - the number of frame
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException invalid string format
    */
   public static int hmsf2no( String aHmsf ) {
     TsNullArgumentRtException.checkNull( aHmsf );
     int len = aHmsf.length();
     int h = 0, m = 0, s = 0, f = 0;
     switch( len ) {
-      case 5: // "ММ:СС"
+      case 5: // "MM:SS"
         checkAsciiDigit( aHmsf, 0, 1, 3, 4 );
         checkHmsDelim( aHmsf, 2 );
         m = parseIntTwoDigitsAt( aHmsf, 0 );
         s = parseIntTwoDigitsAt( aHmsf, 3 );
         break;
-      case 8: // "ЧЧ:ММ:СС" или "ММ:СС.КК"
+      case 8: // "HH:MM:SS" or "MM:SS.FF"
         checkAsciiDigit( aHmsf, 0, 1, 3, 4, 6, 7 );
         checkHmsDelim( aHmsf, 2 );
-        if( aHmsf.charAt( 5 ) == ':' ) { // "ЧЧ:ММ:СС"
+        if( aHmsf.charAt( 5 ) == ':' ) { // "HH:MM:SS"
           h = parseIntTwoDigitsAt( aHmsf, 0 );
           m = parseIntTwoDigitsAt( aHmsf, 3 );
           s = parseIntTwoDigitsAt( aHmsf, 6 );
         }
-        else { // "ММ:СС.КК"
+        else { // "MM:SS.FF"
           checkFramesDelim( aHmsf, 5 );
           m = parseIntTwoDigitsAt( aHmsf, 0 );
           s = parseIntTwoDigitsAt( aHmsf, 3 );
           f = parseIntTwoDigitsAt( aHmsf, 6 );
         }
         break;
-      case 11: // ЧЧ:ММ:СС.КК
+      case 11: // HH:MM:SS.КК
         checkAsciiDigit( aHmsf, 0, 1, 3, 4, 6, 7, 9, 10 );
         checkHmsDelim( aHmsf, 2, 5 );
         checkFramesDelim( aHmsf, 8 );
@@ -220,12 +220,12 @@ public class HhMmSsFfUtils {
   }
 
   /**
-   * Читает количество секунд, ожидая текст вида "ММ:СС".
+   * Reads the number of seconds waiting for text like "MM:SS".
    *
-   * @param aSr {@link IStrioReader} - чситатель текстового представления
-   * @return int - колчиство секунд
-   * @throws TsNullArgumentRtException aSr = null
-   * @throws StrioRtException нарушен формат
+   * @param aSr {@link IStrioReader} - input stream
+   * @return int - the number of seconds
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws StrioRtException inivalid format
    */
   public static int readMmSsFf( IStrioReader aSr ) {
     if( aSr == null ) {
@@ -268,7 +268,7 @@ public class HhMmSsFfUtils {
   }
 
   /**
-   * Запрет на создание экземпляров.
+   * No subclasses.
    */
   private HhMmSsFfUtils() {
     // nop

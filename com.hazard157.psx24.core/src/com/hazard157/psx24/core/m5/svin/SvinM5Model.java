@@ -25,7 +25,7 @@ import com.hazard157.psx24.core.*;
 import com.hazard157.psx24.core.m5.std.*;
 
 /**
- * Модель объектов типа {@link Svin}.
+ * M5-model of {@link Svin}.
  *
  * @author hazard157
  */
@@ -34,22 +34,22 @@ public class SvinM5Model
     implements IPsxGuiContextable {
 
   /**
-   * Поле {@link Svin#episodeId()}.
+   * Field {@link Svin#episodeId()}.
    */
   public static final M5FieldDef<Svin, String> EPISODE_ID = new PsxM5EpisodeIdFieldDef<>();
 
   /**
-   * Поле {@link Svin#cameraId()}.
+   * Field {@link Svin#cameraId()}.
    */
   public static final M5FieldDef<Svin, String> CAM_ID = new PsxM5CameraIdFieldDef<>();
 
   /**
-   * Поле {@link Svin#interval()}.
+   * Field {@link Svin#interval()}.
    */
   public static final M5FieldDef<Svin, Secint> INTERVAL = new PsxM5IntervalFieldDef<>();
 
   /**
-   * Поле {@link Svin#frame()}.
+   * Field {@link Svin#frame()}.
    */
   public final IM5SingleLookupFieldDef<Svin, IFrame> FRAME = new PsxM5FrameFieldDef<>() {
 
@@ -75,7 +75,7 @@ public class SvinM5Model
   };
 
   /**
-   * Поле длительности.
+   * Field duration of interval {@link Svin#interval()}.
    */
   public static final M5AttributeFieldDef<Svin> DURATION =
       new M5AttributeFieldDef<>( FID_DURATION, DT_VIDEO_DURATION ) {
@@ -119,6 +119,16 @@ public class SvinM5Model
         SvinM5Mpc mpc = new SvinM5Mpc( aContext, model(), aItemsProvider, null );
         return new M5CollectionPanelMpcModownWrapper<>( mpc, true );
       }
+
+      @Override
+      protected IM5EntityPanel<Svin> doCreateEntityEditorPanel( ITsGuiContext aContext,
+          IM5LifecycleManager<Svin> aLifecycleManager ) {
+        M5EntityPanelWithValeds<Svin> p =
+            new M5EntityPanelWithValeds<>( aContext, model(), false, new SvinM5EntityPanelWithValedsController() );
+        p.setLifecycleManager( aLifecycleManager );
+        return p;
+      }
+
     } );
   }
 

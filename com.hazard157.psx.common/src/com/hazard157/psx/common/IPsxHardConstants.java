@@ -20,32 +20,32 @@ public interface IPsxHardConstants {
   String PSX_FULL_ID = "com.hazard157." + PSX_ID; //$NON-NLS-1$
 
   /**
-   * Количество кадров в секунду всех видеоматериалов.
+   * The number of frames per second of all video materials.
    */
   int FPS = 25;
 
   /**
-   * Минимально допустимый год эпизода.
+   * Minimum allowed episode year.
    */
   int MIN_YEAR = 1995;
 
   /**
-   * Минимально допустимая дата эпизода (1995-01-01).
+   * The minimum allowed episode date is 1995-01-01.
    */
   long MIN_TIMESTAMP = 788893200000L;
 
   /**
-   * Минимально допустимый год эпизода.
+   * The maximum allowed episode year.
    */
   int MAX_YEAR = 2095;
 
   /**
-   * Максимально допустимая дата эпизода (2095-01-01).
+   * The maximum allowed episode date is 2095-01-01.
    */
   long MAX_TIMESTAMP = 3944653200000L;
 
   /**
-   * Минимально допустимая дата эпизода (1995-01-01).
+   * The minimum allowed episode date is 1995-01-01.
    */
   LocalDate MIN_PSX_DATE = LocalDate.of( 1995, Month.JANUARY, 1 );
 
@@ -55,7 +55,7 @@ public interface IPsxHardConstants {
   LocalDateTime MIN_PSX_DATE_TIME = LocalDateTime.of( MIN_PSX_DATE, LocalTime.NOON );
 
   /**
-   * Максимально допустимая дата эпизода (2095-12-31).
+   * The maximum allowed date for an episode is 2095-12-31.
    */
   LocalDate MAX_PSX_DATE = LocalDate.of( 2095, Month.DECEMBER, 31 );
 
@@ -70,13 +70,13 @@ public interface IPsxHardConstants {
   int ANIMATED_GIF_SECS = 5;
 
   /**
-   * ! Расширение (без точки) анимированных GIF изображений.
+   * An extension (without a dot) of animated GIF images.
    */
-  String ANIMATED_FILE_EXTENSION = "gif"; //$NON-NLS-1$
+  String GIF_FILE_EXT = "gif"; //$NON-NLS-1$
 
   /**
-   * Расширение (с точкой) анимированных GIF изображений.
+   * An extension (with a dot) of animated GIF images.
    */
-  String ANIMATED_FILE_DOT_EXTENSION = "." + ANIMATED_FILE_EXTENSION; //$NON-NLS-1$
+  String GIF_FILE_DOT_EXT = "." + GIF_FILE_EXT; //$NON-NLS-1$
 
 }

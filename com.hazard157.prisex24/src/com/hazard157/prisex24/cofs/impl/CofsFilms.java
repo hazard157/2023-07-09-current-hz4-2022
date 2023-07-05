@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.cofs.*;
 
 /**
@@ -51,19 +51,19 @@ public class CofsFilms
   //
 
   @Override
-  public IList<OptedFile> listFilms( IOptionSet aParams ) {
+  public IList<IOptedFile> listFilms( IOptionSet aParams ) {
     TsNullArgumentRtException.checkNull( aParams );
-    IListBasicEdit<OptedFile> result = new SortedElemLinkedBundleList<>();
+    IListBasicEdit<IOptedFile> result = new SortedElemLinkedBundleList<>();
     if( OPDEF_FILMS_QP_INCLUDE_LEGACY.getValue( aParams ).asBool() ) {
       File legacyDir = new File( FILMS_ROOT, SUBDIR_LEGACY );
-      result.addAll( OptedFile.list( legacyDir, IMediaFileConstants.FF_VIDEOS ) );
+      result.addAll( OptedFileUtils.list( legacyDir, IMediaFileConstants.FF_VIDEOS ) );
     }
-    result.addAll( OptedFile.list( FILMS_ROOT, IMediaFileConstants.FF_VIDEOS ) );
+    result.addAll( OptedFileUtils.list( FILMS_ROOT, IMediaFileConstants.FF_VIDEOS ) );
     return result;
   }
 
   @Override
-  public File getSummaryGif( OptedFile aFilmFile ) {
+  public File getSummaryGif( IOptedFile aFilmFile ) {
     TsNullArgumentRtException.checkNull( aFilmFile );
     File gifFile = filmGifFile( aFilmFile.file() );
     return PsxCofsUtils.ensureSummaryGif( aFilmFile, gifFile );

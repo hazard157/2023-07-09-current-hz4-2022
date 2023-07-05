@@ -5,7 +5,7 @@ import java.time.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 
 /**
  * COFS - access to the gaze source and output media files.
@@ -21,9 +21,9 @@ public interface ICofsGazes {
    *
    * @param aDate {@link LocalDate} - the gaze date
    * @param aMediaKind {@link EIncidentMediaKind} - the requested media kind
-   * @return {@link IList}&lt;{@link OptedFile}&gt; - all files in date directory
+   * @return {@link IList}&lt;{@link IOptedFile}&gt; - all files in date directory
    * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
-  IList<OptedFile> listMediaFiles( LocalDate aDate, EIncidentMediaKind aMediaKind );
+  IList<IOptedFile> listMediaFiles( LocalDate aDate, EIncidentMediaKind aMediaKind );
 
 }

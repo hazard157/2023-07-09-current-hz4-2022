@@ -2,8 +2,6 @@ package com.hazard157.psx.common.stuff.frame;
 
 import static com.hazard157.psx.common.IPsxHardConstants.*;
 
-import java.time.*;
-
 import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
@@ -11,18 +9,19 @@ import com.hazard157.psx.common.*;
 import com.hazard157.psx.common.stuff.*;
 
 /**
- * Идентификация кадра исходного клипа эпизода.
+ * Frame identification of the episodes's source clip.
  * <p>
- * Обратите внимание, что (кроме константы {@link #NONE}) ожидается реальное значение идентификатора эпизода
- * {@link #episodeId()}. Также, часто используется реальное значение {@link #cameraId()}, даже если значок не задан (то
- * есть, {@link #frameNo()} = -1).
+ * Note that (apart from the constant {@link #NONE}) the real value of the episode ID {@link #episodeId()} is expected.
+ * Also, the actual value of {@link #cameraId()} is sometimes used even if no frame is set (ie, {@link #frameNo()} =
+ * -1).
  * <p>
- * Если {@link #isAnimated()} = <code>false</code>, идентифицируется один кадр с номером {@link #frameNo()}. Если
- * {@link #isAnimated()} = <code><code>true</code>, то используется gif-нимированное изображение, содержащее 5 секунд
- * клипа, начиная с кадра {@link #frameNo()} (обычно, номер кадра при этом выравнен на границе секунды).
+ * If {@link #isAnimated()} = <code>false</code>, one frame with number {@link #frameNo()} is identified. If
+ * {@link #isAnimated()} = <code><code>true</code> then a GIF-animated image is used containing
+ * {@link IPsxHardConstants#ANIMATED_GIF_SECS} seconds of the clip, starting at frame {@link #frameNo()} (usually frame
+ * number at the same time, it is aligned on the boundary of a second).
  * <p>
- * Сортировка (интерфейс {@link Comparable}) происходит по возрастанию {@link #episodeId()}, {@link #frameNo()},
- * {@link #cameraId()}, и наконец {@link #isAnimated()}.
+ * Sorting (interface {@link Comparable}) is in ascending order {@link #episodeId()}, {@link #frameNo()},
+ * {@link #cameraId()}, and finally {@link #isAnimated()}.
  *
  * @author hazard157
  */
@@ -30,79 +29,82 @@ public interface IFrame
     extends IEpisodeIdable, ICameraIdable, Comparable<IFrame> {
 
   /**
-   * "Нулевой", отсутсвующий кадр.
+   * "Null", missing frame.
    */
   IFrame NONE = new InternalNoneFrame();
 
   /**
-   * Возвращает идентификатор эпизода.
+   * Returns the episode ID.
    *
-   * @return String - идентификатор эпизода или {@link IStridable#NONE_ID} для {@link #NONE}
+   * @return String - episode ID or {@link IStridable#NONE_ID} for {@link #NONE}
    */
   @Override
   String episodeId();
 
-  /**
-   * Возвращает дату события.
-   *
-   * @return {@link LocalDate} - дата события
-   */
-  LocalDate whenDate();
+  // /**
+  // * Возвращает дату события.
+  // *
+  // * @return {@link LocalDate} - дата события
+  // */
+  // LocalDate whenDate();
 
   /**
-   * Возвращает идентификатор снявшей камеры, что однозначно определяет исходный клип эпизода.
+   * Returns the camera ID that uniquely identifies the source clip of the episode.
    *
-   * @return String - идентификатор снявшей камеры или {@link IStridable#NONE_ID}
+   * @return String - camera ID or {@link IStridable#NONE_ID}
    */
   @Override
   String cameraId();
 
   /**
-   * Возвращает кадр с начала эпизода (частота кадров исходного клипа считается равной {@link IPsxHardConstants#FPS} ).
+   * Returns the frame zero-based number from the beginning of the video.
    * <p>
-   * Для анимированного значка возвращается номер первого кадра анимации, а для картинкми - номер единственного кадра.
+   * The frame rate per second of the source clip is assumed to be {@link IPsxHardConstants#FPS}).
+   * <p>
+   * For an animated frame, the number of the first frame of the animation is returned, and for still frames, the number
+   * of the single frame.
    *
-   * @return int - номер кадра (может быть -1 для не заданного значка)
+   * @return int - frame number or -1 for {@link IFrame#NONE}
    */
   int frameNo();
 
   /**
-   * Возвращает номер секунды, соответствующей {@link #frameNo()}.
+   * Returns the number of the second corresponding to {@link #frameNo()}.
    *
-   * @return int - номер секунды, равный {@link #frameNo()} / {@link IPsxHardConstants#FPS}
+   * @return int - second number equal to {@link #frameNo()} / {@link IPsxHardConstants#FPS}
    */
   default int secNo() {
     return frameNo() / FPS;
   }
 
   /**
-   * Возвращает признак анимированного изображения (мини-клипа).
+   * Returns the attribute of an animated image (mini-clip).
    *
-   * @return boolean - признак анимированного изображения
+   * @return boolean - animated frame sign
    */
   boolean isAnimated();
 
   /**
-   * Возвращает признак, что объект описывает валидный кадр.
+   * Specifies that the object describes a valid frame.
    * <p>
-   * Валидность кадра означает, что все поля объекта имеют осмысленные значения, а именно:
+   * Frame validity means that all fields of the object have meaningful values, namely:
    * <ul>
-   * <li>{@link #episodeId()} - является синтаксически верным идентификатором эпизода;</li>
-   * <li>{@link #cameraId()} - является валидным ИД-путем;</li>
-   * <li>{@link #frameNo()} - больше или равно 0.</li>
+   * <li>{@link #episodeId()} - is a syntactically valid episode ШВ;</li>
+   * <li>{@link #cameraId()} - is a valid ID path;</li>
+   * <li>{@link #frameNo()} - greater than or equal to 0.</li> *
    * </ul>
-   * Вместе с тем, валидность не означает, что такой кадр в действительности существует. В частности, может не
-   * существовать эпизода с таким идентификатором, камера может быть не определена (хотя бы для данного эпизода) и номер
-   * кадра может выходить за пределы длителности эпизода.
+   * However, validity does not mean that such a frame actually exists. In particular, there may not be an episode with
+   * such an identifier, the camera may not be defined (at least for this episode), and the frame number may be outside
+   * the duration of the episode.
    *
-   * @return boolean - признак, что объект описывает валидный кадр
+   * @return boolean - the sign that the object describes a valid frame
    */
   boolean isDefined();
 
   /**
-   * Опредеяет, находится ли кадро точно на границе секунды.
+   * Determine if the frame is exactly on the border of a second.
    *
-   * @return boolean - признак, что кадр соответствует секунде ровно
+   * @return boolean - a sign that the frame corresponds to a second exactly
    */
   default boolean isSecAligned() {
     return ((frameNo() % FPS) == 0);
@@ -126,10 +128,10 @@ class InternalNoneFrame
     throw new TsNullObjectErrorRtException();
   }
 
-  @Override
-  public LocalDate whenDate() {
-    throw new TsNullObjectErrorRtException();
-  }
+  // @Override
+  // public LocalDate whenDate() {
+  // throw new TsNullObjectErrorRtException();
+  // }
 
   @Override
   public String cameraId() {

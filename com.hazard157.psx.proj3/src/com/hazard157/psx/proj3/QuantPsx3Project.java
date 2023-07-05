@@ -140,7 +140,7 @@ public class QuantPsx3Project
   public QuantPsx3Project() {
     super( QuantPsx3Project.class.getSimpleName() );
     TsValobjUtils.registerKeeper( FramesList.KEEPER_ID, FramesList.KEEPER );
-    TsValobjUtils.registerKeeper( FrameKeeper.KEEPER_ID, FrameKeeper.KEEPER );
+    TsValobjUtils.registerKeeper( Frame.KEEPER_ID, Frame.KEEPER );
   }
 
   @Override

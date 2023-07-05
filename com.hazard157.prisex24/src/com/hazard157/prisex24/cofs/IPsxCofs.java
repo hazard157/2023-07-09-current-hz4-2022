@@ -6,7 +6,7 @@ import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 
 /**
  * Access to the PRISEX file resources in COFS (Cloud Optimized File System).
@@ -94,15 +94,15 @@ public interface IPsxCofs {
    * videos - animated GIF, for other types - just file type icon. For video files creates new GIF-animation if there is
    * no one or video file was changed after last GIF creation.
    * <p>
-   * The parameters {@link OptedFile#params()} may contain additional information about summary file, like which part of
-   * video to use for GIF-animation.
+   * The parameters {@link IOptedFile#params()} may contain additional information about summary file, like which part
+   * of video to use for GIF-animation.
    * <p>
    * Summary files (if specially created) are places in the COFS cache directory.
    *
-   * @param aMediaFile {@link OptedFile} - the GAZE media file
+   * @param aMediaFile {@link IOptedFile} - the GAZE media file
    * @return {@link File} - an existing image file or <code>null</code> if can not be created
    */
-  File ensureSummaryImage( OptedFile aMediaFile );
+  File ensureSummaryImage( IOptedFile aMediaFile );
 
   // ------------------------------------------------------------------------------------
   // yet unsorted may be put in some helper interfaces

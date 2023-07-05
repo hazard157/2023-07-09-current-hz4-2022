@@ -10,6 +10,11 @@ import org.toxsoft.core.tslib.bricks.strio.*;
 import com.hazard157.psx24.explorer.filters.*;
 import com.hazard157.psx24.explorer.unit.*;
 
+/**
+ * Keeper of the {@link InquiryItem}.
+ *
+ * @author hazard157
+ */
 class InquiryItemKeeper
     extends AbstractEntityKeeper<InquiryItem> {
 
@@ -64,20 +69,5 @@ class InquiryItemKeeper
     }
     return item;
   }
-
-  // @Override
-  // protected InquiryItem doRead( IDvReader aDr ) {
-  //
-  // IStridReader sr = aDr.stridReader();
-  // sr.readListBegin();
-  //
-  // InquiryItem item = new InquiryItem();
-  // StridRwUtils.readMap( aDr, "FilterParams", EPqSingleFilterKind.KEEPER, TsSingleFilterParamsKeeper.KEEPER,
-  // item.fpMap() );
-  //
-  // sr.readListEnd();
-  //
-  // return item;
-  // }
 
 }

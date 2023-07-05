@@ -21,7 +21,7 @@ import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.uiparts.*;
 import com.hazard157.prisex24.glib.*;
@@ -63,11 +63,25 @@ public class UipartWelcomeEpisodeThumbs
   //
 
   private void initViewerContent() {
+    preloadImages();
     IEpisode sel = pgViewer.selectedItem();
-    EThumbSize thumbSize = APPREF_THUMB_SIZE_IN_GRIDS.getValue( prefBundle( PBID_HZ_COMMON ).prefs() ).asValobj();
+    EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    boolean isForceStill = apprefValue( PBID_WELCOME, APPREF_WELCOME_IS_FORCE_STILL ).asBool();
+    pgViewer.setFocreStill( isForceStill );
     pgViewer.setThumbSize( thumbSize );
     pgViewer.setItems( unitEpisodes().items() );
     pgViewer.setSelectedItem( sel );
+  }
+
+  protected void preloadImages() {
+    // TODO add progress dialog
+    EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    for( IEpisode e : unitEpisodes().items() ) {
+      File ff = cofsFrames().findFrameFile( e.frame() );
+      if( ff != null ) {
+        imageManager().findThumb( ff, thumbSize );
+      }
+    }
   }
 
   private void whenThumbmDoubleClicked( IEpisode aSel ) {
@@ -102,9 +116,9 @@ public class UipartWelcomeEpisodeThumbs
     String defIconUri = iconManager().findStdIconBundleUri( ICONID_ARROW_RIGHT, EIconSize.IS_16X16 );
     String nonIconUri = iconManager().findStdIconBundleUri( ICONID_TRANSPARENT, EIconSize.IS_16X16 );
     // add all known trailers to menu
-    IList<OptedFile> trailerFiles = cofsTrailers().listEpisodeTrailerFiles( aSelectedEpisode.episodeId() );
+    IList<IOptedFile> trailerFiles = cofsTrailers().listEpisodeTrailerFiles( aSelectedEpisode.episodeId() );
     MMenu menu = MMenuFactory.INSTANCE.createMenu();
-    for( OptedFile trOp : trailerFiles ) {
+    for( IOptedFile trOp : trailerFiles ) {
       MDirectMenuItem dynamicItem = MMenuFactory.INSTANCE.createDirectMenuItem();
       String name = TsFileUtils.extractBareFileName( trOp.file().getName() );
       dynamicItem.setLabel( String.format( FMT_T_PLAY_TRAILER, name ) );

@@ -3,9 +3,7 @@ package com.hazard157.psx24.explorer.unit;
 import org.toxsoft.core.tslib.utils.errors.*;
 
 /**
- * Описание {@link Inquiry}.
- * <p>
- * Это неизменяемый класс.
+ * Description of {@link Inquiry}.
  *
  * @author hazard157
  */
@@ -15,11 +13,11 @@ public final class InquiryInfo {
   private final String description;
 
   /**
-   * Конструктор со всеми инвариантами.
+   * Constructor.
    *
-   * @param aName String - название
-   * @param aDescription String - описание
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aName String - the name
+   * @param aDescription String - the description
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public InquiryInfo( String aName, String aDescription ) {
     TsNullArgumentRtException.checkNulls( aName, aDescription );
@@ -32,18 +30,18 @@ public final class InquiryInfo {
   //
 
   /**
-   * Возвращает название эпизода.
+   * Returns the inquiry name.
    *
-   * @return String - название эпизода
+   * @return String - the inquiry name
    */
   public String name() {
     return name;
   }
 
   /**
-   * Возвращает описание эпизода.
+   * Returns the inquiry description.
    *
-   * @return String - описание эпизода
+   * @return String - the inquiry description
    */
   public String description() {
     return description;

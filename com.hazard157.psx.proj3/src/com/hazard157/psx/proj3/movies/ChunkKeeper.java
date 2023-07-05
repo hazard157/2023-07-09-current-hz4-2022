@@ -37,7 +37,7 @@ public class ChunkKeeper
     aSw.writeSeparatorChar();
     Secint.KEEPER.write( aSw, aEntity.interval() );
     aSw.writeSeparatorChar();
-    FrameKeeper.KEEPER.write( aSw, aEntity.frame() );
+    Frame.KEEPER.write( aSw, aEntity.frame() );
   }
 
   @Override
@@ -50,7 +50,7 @@ public class ChunkKeeper
     aSr.ensureSeparatorChar();
     Secint in = Secint.KEEPER.read( aSr );
     aSr.ensureSeparatorChar();
-    IFrame frame = FrameKeeper.KEEPER.read( aSr );
+    IFrame frame = Frame.KEEPER.read( aSr );
     return new Chunk( episodeId, camId, name, in, frame );
   }
 

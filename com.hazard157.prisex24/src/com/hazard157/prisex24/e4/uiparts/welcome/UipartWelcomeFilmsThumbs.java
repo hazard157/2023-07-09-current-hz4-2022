@@ -14,7 +14,7 @@ import org.toxsoft.core.tsgui.utils.*;
 import org.toxsoft.core.tslib.av.opset.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.e4.uiparts.*;
 
 /**
@@ -24,22 +24,22 @@ import com.hazard157.prisex24.e4.uiparts.*;
  */
 public class UipartWelcomeFilmsThumbs
     extends PsxAbstractUipart
-    implements ITsSelectionProvider<OptedFile> {
+    implements ITsSelectionProvider<IOptedFile> {
 
-  private final ITsVisualsProvider<OptedFile> visualsProvider = new ITsVisualsProvider<>() {
+  private final ITsVisualsProvider<IOptedFile> visualsProvider = new ITsVisualsProvider<>() {
 
     @Override
-    public String getName( OptedFile aEntity ) {
+    public String getName( IOptedFile aEntity ) {
       return aEntity != null ? TsFileUtils.extractBareFileName( aEntity.file().getName() ) : EMPTY_STRING;
     }
 
     @Override
-    public String getDescription( OptedFile aEntity ) {
+    public String getDescription( IOptedFile aEntity ) {
       return aEntity != null ? aEntity.file().getAbsolutePath() : EMPTY_STRING;
     }
 
     @Override
-    public TsImage getThumb( OptedFile aEntity, EThumbSize aThumbSize ) {
+    public TsImage getThumb( IOptedFile aEntity, EThumbSize aThumbSize ) {
       if( aEntity != null ) {
         File f = cofsFilms().getSummaryGif( aEntity );
         if( f != null ) {
@@ -51,7 +51,7 @@ public class UipartWelcomeFilmsThumbs
 
   };
 
-  IPicsGridViewer<OptedFile> pgViewer;
+  IPicsGridViewer<IOptedFile> pgViewer;
 
   // ------------------------------------------------------------------------------------
   // AbstractPsx12Uipart
@@ -76,20 +76,33 @@ public class UipartWelcomeFilmsThumbs
   //
 
   private void initViewerContent() {
-    OptedFile sel = pgViewer.selectedItem();
-    EThumbSize thumbSize = APPREF_THUMB_SIZE_IN_GRIDS.getValue( prefBundle( PBID_HZ_COMMON ).prefs() ).asValobj();
+    preloadImages();
+    IOptedFile sel = pgViewer.selectedItem();
+    EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    boolean isForceStill = apprefValue( PBID_WELCOME, APPREF_WELCOME_IS_FORCE_STILL ).asBool();
+    pgViewer.setFocreStill( isForceStill );
     pgViewer.setThumbSize( thumbSize );
     pgViewer.setItems( cofsFilms().listFilms( IOptionSet.NULL ) );
     pgViewer.setSelectedItem( sel );
   }
 
-  private void whenFilmDoubleClicked( OptedFile aSel ) {
+  private void preloadImages() {
+    EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    for( IOptedFile optedFile : cofsFilms().listFilms( IOptionSet.NULL ) ) {
+      File f = cofsFilms().getSummaryGif( optedFile );
+      if( f != null ) {
+        imageManager().findThumb( f, thumbSize );
+      }
+    }
+  }
+
+  private void whenFilmDoubleClicked( IOptedFile aSel ) {
     if( aSel != null ) {
       mps().playVideoFile( aSel.file() );
     }
   }
 
-  private void whenFilmSelectionChanges( @SuppressWarnings( "unused" ) OptedFile aSel ) {
+  private void whenFilmSelectionChanges( @SuppressWarnings( "unused" ) IOptedFile aSel ) {
     e4Helper().updateHandlersCanExecuteState();
   }
 
@@ -98,22 +111,22 @@ public class UipartWelcomeFilmsThumbs
   //
 
   @Override
-  public void addTsSelectionListener( ITsSelectionChangeListener<OptedFile> aListener ) {
+  public void addTsSelectionListener( ITsSelectionChangeListener<IOptedFile> aListener ) {
     pgViewer.addTsSelectionListener( aListener );
   }
 
   @Override
-  public void removeTsSelectionListener( ITsSelectionChangeListener<OptedFile> aListener ) {
+  public void removeTsSelectionListener( ITsSelectionChangeListener<IOptedFile> aListener ) {
     pgViewer.addTsSelectionListener( aListener );
   }
 
   @Override
-  public OptedFile selectedItem() {
+  public IOptedFile selectedItem() {
     return pgViewer.selectedItem();
   }
 
   @Override
-  public void setSelectedItem( OptedFile aItem ) {
+  public void setSelectedItem( IOptedFile aItem ) {
     pgViewer.setSelectedItem( aItem );
   }
 

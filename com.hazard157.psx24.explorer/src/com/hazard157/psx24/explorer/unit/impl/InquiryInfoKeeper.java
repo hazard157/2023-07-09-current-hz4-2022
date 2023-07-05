@@ -8,7 +8,7 @@ import org.toxsoft.core.tslib.bricks.strio.*;
 import com.hazard157.psx24.explorer.unit.*;
 
 /**
- * Хранитель объектов типа {@link InquiryInfo}.
+ * Keeper of the {@link InquiryInfo}.
  *
  * @author hazard157
  */
@@ -18,7 +18,7 @@ public class InquiryInfoKeeper
   private static final String KW_INFO = "Info"; //$NON-NLS-1$
 
   /**
-   * Экземпляр-синглтон хранителя.
+   * The keeper singleton.
    */
   public static final IEntityKeeper<InquiryInfo> KEEPER = new InquiryInfoKeeper();
 
@@ -27,7 +27,7 @@ public class InquiryInfoKeeper
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация методов класса AbstractEntityKeeper
+  // AbstractEntityKeeper
   //
 
   @Override

@@ -30,14 +30,14 @@ public class SceneInfoKeeper
   protected void doWrite( IStrioWriter aSw, SceneInfo aEntity ) {
     aSw.writeQuotedString( aEntity.name() );
     aSw.writeSeparatorChar();
-    FrameKeeper.KEEPER.write( aSw, aEntity.frame() );
+    Frame.KEEPER.write( aSw, aEntity.frame() );
   }
 
   @Override
   protected SceneInfo doRead( IStrioReader aSr ) {
     String name = aSr.readQuotedString();
     aSr.ensureSeparatorChar();
-    IFrame frame = FrameKeeper.KEEPER.read( aSr );
+    IFrame frame = Frame.KEEPER.read( aSr );
     return new SceneInfo( name, frame );
   }
 

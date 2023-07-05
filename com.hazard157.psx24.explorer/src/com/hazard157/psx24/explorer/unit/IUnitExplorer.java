@@ -3,7 +3,7 @@ package com.hazard157.psx24.explorer.unit;
 import org.toxsoft.core.txtproj.lib.sinent.*;
 
 /**
- * Компонента файла проекта - данные обозревателя.
+ * Explorer saved inquiries.
  *
  * @author hazard157
  */

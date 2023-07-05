@@ -138,6 +138,16 @@ public class FramesGridViewer
   }
 
   @Override
+  public boolean isForceStill() {
+    return pgViewer.isForceStill();
+  }
+
+  @Override
+  public void setFocreStill( boolean aForceStill ) {
+    pgViewer.setFocreStill( aForceStill );
+  }
+
+  @Override
   public TsComposite getControl() {
     return this;
   }

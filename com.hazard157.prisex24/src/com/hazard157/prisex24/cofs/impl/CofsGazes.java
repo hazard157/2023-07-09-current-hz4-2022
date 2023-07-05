@@ -10,7 +10,7 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.cofs.*;
 
 /**
@@ -37,7 +37,7 @@ public class CofsGazes
   //
 
   @Override
-  public IList<OptedFile> listMediaFiles( LocalDate aDate, EIncidentMediaKind aMediaKind ) {
+  public IList<IOptedFile> listMediaFiles( LocalDate aDate, EIncidentMediaKind aMediaKind ) {
     TsNullArgumentRtException.checkNulls( aDate, aMediaKind );
     File mediaDir;
     switch( aMediaKind ) {
@@ -58,7 +58,7 @@ public class CofsGazes
       default:
         throw new TsNotAllEnumsUsedRtException( aMediaKind.id() );
     }
-    IListBasicEdit<OptedFile> ll = new SortedElemLinkedBundleList<>();
+    IListBasicEdit<IOptedFile> ll = new SortedElemLinkedBundleList<>();
     if( TsFileUtils.isDirReadable( mediaDir ) ) {
       IList<File> ff = TsFileUtils1.collectFilesInSubtree( mediaDir, TsFileFilter.FF_FILES );
       for( File f : ff ) {

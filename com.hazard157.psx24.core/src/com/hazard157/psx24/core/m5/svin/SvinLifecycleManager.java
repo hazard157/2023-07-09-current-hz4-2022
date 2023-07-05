@@ -7,7 +7,7 @@ import com.hazard157.common.quants.secint.*;
 import com.hazard157.psx.common.stuff.svin.*;
 
 /**
- * Менедже ЖЦ сущнстей {@link Svin}.
+ * LM for {@link SvinM5Model}.
  *
  * @author hazard157
  */

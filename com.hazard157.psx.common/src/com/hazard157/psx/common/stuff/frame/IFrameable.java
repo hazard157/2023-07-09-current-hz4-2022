@@ -1,16 +1,16 @@
 package com.hazard157.psx.common.stuff.frame;
 
 /**
- * Сущность, иллюстрируемая кадром исходного клипа {@link IFrame}.
+ * Mix-in interface for entities having illustrative frame.
  *
  * @author hazard157
  */
 public interface IFrameable {
 
   /**
-   * Возвращает кадр, иллюстрирующую эту сущность.
+   * Returns a frame illustrating this entity.
    *
-   * @return {@link IFrame} - иллюстрирующеий кадр, может быть {@link IFrame#NONE}, но не null
+   * @return {@link IFrame} - illustrating frame, may be {@link IFrame#NONE}, but not null
    */
   IFrame frame();
 

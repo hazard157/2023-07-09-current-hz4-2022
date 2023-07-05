@@ -1,0 +1,3 @@
+
+--- Stir: add special STIR kind "pose change", short and displays other way ini timeline, also may be hidden from PLEP
+--- 

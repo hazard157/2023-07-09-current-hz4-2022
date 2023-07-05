@@ -1,14 +1,13 @@
 
-=== Perspective INTRO/WELCOME
+=== project tree, statistics, audit and validation
 
-=== Perspective PLANING
+=== query explorer
 
-=== Perspective OUTPUT media
+=== episode output media browser & creation
+    trailers
+    audio
+    fragments
 
-=== Perspective Media browser
 
-=== Perspective Mastering
-
-Timeline ???
 
 

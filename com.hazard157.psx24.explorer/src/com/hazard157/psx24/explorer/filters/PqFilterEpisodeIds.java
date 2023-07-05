@@ -12,7 +12,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
- * Фильтр по идентификаторам ярлыков.
+ * Filter of kind {@link EPqSingleFilterKind#EPISODE_IDS}.
  *
  * @author hazard157
  */
@@ -20,12 +20,12 @@ class PqFilterEpisodeIds
     implements ITsFilter<SecondSlice> {
 
   /**
-   * Идентификатор типа фильтра,
+   * The filter type ID.
    */
   public static final String TYPE_ID = "pq.filter.EpisodeIds"; //$NON-NLS-1$
 
   /**
-   * Фабрика создания фильтра из значений параметров.
+   * The filter factory.
    */
   public static final ITsSingleFilterFactory<SecondSlice> FACTORY =
       new AbstractTsSingleFilterFactory<>( TYPE_ID, SecondSlice.class ) {
@@ -42,20 +42,20 @@ class PqFilterEpisodeIds
   private final IStringList episodeIds;
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aEpisodeIds {@link IStringList} - идентификаторы ярлыков
+   * @param aEpisodeIds {@link IStringList} - the episode IDs
    */
   public PqFilterEpisodeIds( IStringList aEpisodeIds ) {
     episodeIds = new StringArrayList( aEpisodeIds );
   }
 
   /**
-   * Создает параметры фильтра.
+   * Creates filter parameters.
    *
-   * @param aEpisodeIds {@link IStringList} - идентификаторы ярлыков
-   * @return {@link ITsSingleFilterParams} - параметры фильтра
-   * @throws TsNullArgumentRtException любой аргумент = null
+   * @param aEpisodeIds {@link IStringList} - the episode IDs
+   * @return {@link ITsSingleFilterParams} - the filter parameters
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
    */
   public static ITsSingleFilterParams makeFilterParams( IStringList aEpisodeIds ) {
     IOptionSetEdit p = new OptionSet();
@@ -64,12 +64,12 @@ class PqFilterEpisodeIds
   }
 
   /**
-   * Возвращает удобочитаему строку параметров фильтра.
+   * Returns a human-readable string of filter options.
    *
-   * @param aParams {@link ITsSingleFilterParams} - параметры этого фильтра
-   * @return String - однострочный текст
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException параметры не от этого фильтра
+   * @param aParams {@link ITsSingleFilterParams} - the filter parameters
+   * @return String - single-line text
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException the parameters if not of this filter
    */
   @SuppressWarnings( "nls" )
   public static final String makeHumanReadableString( ITsSingleFilterParams aParams ) {

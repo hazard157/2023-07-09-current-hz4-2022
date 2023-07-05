@@ -23,7 +23,7 @@ public class ValedAvFrameViewer
 
   private final IPdwWidget     imageWidget;
   private final IPsxFileSystem fileSystem;
-  private IAtomicValue         avFrame = FrameKeeper.AV_FRAME_NONE;
+  private IAtomicValue         avFrame = Frame.AV_FRAME_NONE;
 
   /**
    * Конструктор.
@@ -58,7 +58,7 @@ public class ValedAvFrameViewer
 
   @Override
   protected void doSetUnvalidatedValue( IAtomicValue aValue ) {
-    avFrame = aValue != null ? aValue : FrameKeeper.AV_FRAME_NONE;
+    avFrame = aValue != null ? aValue : Frame.AV_FRAME_NONE;
     EThumbSize thumbSize = PI_THUMB_SIZE.getValue( params() ).asValobj();
     IFrame frame = avFrame.asValobj();
     if( frame != null ) {
@@ -72,7 +72,7 @@ public class ValedAvFrameViewer
 
   @Override
   protected void doClearValue() {
-    avFrame = FrameKeeper.AV_FRAME_NONE;
+    avFrame = Frame.AV_FRAME_NONE;
     imageWidget.setTsImage( null );
   }
 

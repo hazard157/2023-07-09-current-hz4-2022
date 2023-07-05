@@ -18,7 +18,7 @@ import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx24.core.*;
 
 /**
- * Построитель дерева {@link Svin}-ов по эпизодам.
+ * Groups SVINs by {@link Svin#episodeId()}.
  *
  * @author hazard157
  */

@@ -1,6 +1,7 @@
 package com.hazard157.prisex24.e4.uiparts.welcome;
 
 import static com.hazard157.common.IHzConstants.*;
+import static com.hazard157.prisex24.IPrisex24CoreConstants.*;
 import static com.hazard157.prisex24.glib.frview.impl.PgvVisualsProviderFrame.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
@@ -18,6 +19,7 @@ import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.uiparts.*;
 import com.hazard157.prisex24.glib.frview.*;
 import com.hazard157.prisex24.glib.frview.impl.*;
+import com.hazard157.psx.common.stuff.frame.*;
 import com.hazard157.psx.common.stuff.svin.*;
 import com.hazard157.psx.proj3.episodes.*;
 
@@ -43,7 +45,8 @@ public class UipartCurrentEpisodeIllustrationsGrid
     IPicsGridViewerConstants.OPDEF_DEFAULT_THUMB_SIZE.setValue( ctx.params(), avValobj( thumbSize ) );
     fgViewer = new FramesGridViewer( aParent, ctx );
     fgViewer.setDisplayedInfoFlags( LF_CAM | LF_HMS );
-    prefBundle( PBID_HZ_COMMON ).prefs().addCollectionChangeListener( ( s, o, i ) -> whenHzCommonAppPrefsChanged() );
+    prefBundle( PBID_HZ_COMMON ).prefs().addCollectionChangeListener( ( s, o, i ) -> whenAppPrefsChanged() );
+    prefBundle( PBID_WELCOME ).prefs().addCollectionChangeListener( ( s, o, i ) -> whenAppPrefsChanged() );
     fgViewer.addTsDoubleClickListener( ( src, sel ) -> {
       if( sel != null ) {
         int start = sel.secNo() > 5 ? sel.secNo() - 4 : 0;
@@ -51,15 +54,31 @@ public class UipartCurrentEpisodeIllustrationsGrid
         psxService().playEpisodeVideo( svin );
       }
     } );
+    whenAppPrefsChanged();
     whenCurrEpisodeChanges();
   }
 
-  private void whenHzCommonAppPrefsChanged() {
+  private void whenAppPrefsChanged() {
+    preloadImages();
     EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    boolean isForceStill = apprefValue( PBID_WELCOME, APPREF_WELCOME_IS_FORCE_STILL ).asBool();
+    fgViewer.setFocreStill( isForceStill );
     fgViewer.thumbSizeManager().setThumbSize( thumbSize );
   }
 
+  private void preloadImages() {
+    IEpisode sel = currentEpisodeService.current();
+    if( sel == null ) {
+      return;
+    }
+    EThumbSize thumbSize = apprefValue( PBID_HZ_COMMON, APPREF_THUMB_SIZE_IN_GRIDS ).asValobj();
+    for( IFrame f : sel.getIllustrations( false ) ) {
+      psxService().findThumb( f, thumbSize );
+    }
+  }
+
   protected void whenCurrEpisodeChanges() {
+    preloadImages();
     IEpisode sel = currentEpisodeService.current();
     String label;
     if( sel != null ) {

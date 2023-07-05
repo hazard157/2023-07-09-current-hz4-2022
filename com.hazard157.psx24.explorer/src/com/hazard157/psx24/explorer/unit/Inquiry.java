@@ -11,7 +11,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.txtproj.lib.sinent.*;
 
 /**
- * Выборка обозревателя - последовательность фильтров, применяемых к эпизодам.
+ * Explorer selection -a sequence of filters applied to episodes.
  *
  * @author hazard157
  */
@@ -25,12 +25,12 @@ public class Inquiry
       new NotifierListEditWrapper<>( new ElemLinkedBundleList<InquiryItem>() );
 
   /**
-   * Конструктор.
+   * Constructor.
    *
-   * @param aId String - идентификатор эпизода
-   * @param aInfo {@link InquiryInfo} - инофрмация об эпизоде
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsValidationFailedRtException неверный идентификатор эпизода
+   * @param aId String - the episode ID
+   * @param aInfo {@link InquiryInfo} - info about inquiry
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsValidationFailedRtException ID is not an IDpath
    */
   public Inquiry( String aId, InquiryInfo aInfo ) {
     super( aId, aInfo );
@@ -38,7 +38,7 @@ public class Inquiry
   }
 
   // ------------------------------------------------------------------------------------
-  // Реализация интерфейса IStridable
+  // IStridable
   //
 
   @Override
@@ -56,17 +56,13 @@ public class Inquiry
   //
 
   /**
-   * Возвращает список параметров фильтров в порядке их применения.
+   * Returns a list of filter parameters in the order they are applied.
    *
-   * @return {@link INotifierListEdit}&lt;{@link InquiryItem}&gt; - редактируемый список параметров фильтров
+   * @return {@link INotifierListEdit}&lt;{@link InquiryItem}&gt; - editable list of filter options
    */
   public INotifierListEdit<InquiryItem> items() {
     return fpList;
   }
-
-  // ------------------------------------------------------------------------------------
-  // Реализация интерфейса Comparable
-  //
 
   // ------------------------------------------------------------------------------------
   // Object

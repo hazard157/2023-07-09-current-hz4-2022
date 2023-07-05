@@ -56,7 +56,7 @@ public class EpisodeInfoKeeper
     aSw.writeSeparatorChar();
     aSw.writeQuotedString( aEntity.notes() );
     aSw.writeSeparatorChar();
-    FrameKeeper.KEEPER.write( aSw, aEntity.frame() );
+    Frame.KEEPER.write( aSw, aEntity.frame() );
     aSw.decNewLine();
     aSw.writeChar( CHAR_SET_END );
   }
@@ -82,7 +82,7 @@ public class EpisodeInfoKeeper
     aSr.ensureSeparatorChar();
     String todoNotes = aSr.readQuotedString();
     aSr.ensureSeparatorChar();
-    IFrame frame = FrameKeeper.KEEPER.read( aSr );
+    IFrame frame = Frame.KEEPER.read( aSr );
     aSr.ensureChar( CHAR_SET_END );
     return new EpisodeInfo( when, name, description, place, duration, actionInterval, defTrailerId, todoNotes, frame );
   }

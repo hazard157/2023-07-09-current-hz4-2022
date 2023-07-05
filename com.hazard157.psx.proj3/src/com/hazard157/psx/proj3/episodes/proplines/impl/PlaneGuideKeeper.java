@@ -33,7 +33,7 @@ public class PlaneGuideKeeper
     aSw.writeSeparatorChar();
     aSw.writeQuotedString( aEntity.name() );
     aSw.writeSeparatorChar();
-    FrameKeeper.KEEPER.write( aSw, aEntity.frame() );
+    Frame.KEEPER.write( aSw, aEntity.frame() );
     aSw.writeSeparatorChar();
     aSw.writeBoolean( aEntity.isNaturallyLong() );
   }
@@ -44,7 +44,7 @@ public class PlaneGuideKeeper
     aSr.ensureSeparatorChar();
     String name = aSr.readQuotedString();
     aSr.ensureSeparatorChar();
-    IFrame frame = FrameKeeper.KEEPER.read( aSr );
+    IFrame frame = Frame.KEEPER.read( aSr );
     aSr.ensureSeparatorChar();
     boolean isLong = aSr.readBoolean();
     return new PlaneGuide( camId, name, frame, isLong );

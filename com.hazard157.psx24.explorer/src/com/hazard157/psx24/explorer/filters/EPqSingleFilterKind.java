@@ -13,7 +13,7 @@ import org.toxsoft.core.tslib.utils.errors.*;
 import com.hazard157.psx.proj3.episodes.*;
 
 /**
- * Вид единицного фильтра выборки из PSX.
+ * The kind of the single PSX filter..
  *
  * @author hazard157
  */
@@ -21,17 +21,17 @@ public enum EPqSingleFilterKind
     implements IStridable {
 
   /**
-   * Поиск текста.
+   * Search text in various places.
    */
   ANY_TEXT( PqFilterAnyText.TYPE_ID, STR_N_ANY_TEXT, STR_D_ANY_TEXT, PqFilterAnyText.FACTORY ),
 
   /**
-   * Пометки ярлыками.
+   * Search for tag marks.
    */
   TAG_IDS( PqFilterTagIds.TYPE_ID, STR_N_TAG_IDS, STR_D_TAG_IDS, PqFilterTagIds.FACTORY ),
 
   /**
-   * Отбор эпизодов.
+   * Select episodes.
    */
   EPISODE_IDS( PqFilterEpisodeIds.TYPE_ID, STR_N_EPISODE_IDS, STR_D_EPISODE_IDS, PqFilterEpisodeIds.FACTORY ),
 
@@ -43,7 +43,7 @@ public enum EPqSingleFilterKind
   public static final String KEEPER_ID = "EPqSingleFilterKind"; //$NON-NLS-1$
 
   /**
-   * Экземпляр-синглтон хранителя.
+   * The keeper singleton.
    */
   public static final IEntityKeeper<EPqSingleFilterKind> KEEPER =
       new StridableEnumKeeper<>( EPqSingleFilterKind.class );
@@ -55,14 +55,6 @@ public enum EPqSingleFilterKind
   private final String                              description;
   private final ITsSingleFilterFactory<SecondSlice> factory;
 
-  /**
-   * Создает константу со всеми инвариантами.
-   *
-   * @param aId String - идентификатор (ИД-путь) константы
-   * @param aName String - краткое удобочитаемое название константы
-   * @param aDescription String - отображаемое описание константы
-   * @param aFactory {@link ITsSingleFilterFactory}&lt;{@link SecondSlice}&gt; - фабрика фильтра
-   */
   EPqSingleFilterKind( String aId, String aName, String aDescription, ITsSingleFilterFactory<SecondSlice> aFactory ) {
     id = aId;
     name = aName;
@@ -71,7 +63,7 @@ public enum EPqSingleFilterKind
   }
 
   // --------------------------------------------------------------------------
-  // Реализация интерфейса IStridable
+  // IStridable
   //
 
   @Override
@@ -94,41 +86,37 @@ public enum EPqSingleFilterKind
   //
 
   /**
-   * Возаращает фабрику фильтра.
+   * Returns the filter factory.
    *
-   * @return {@link ITsSingleFilterFactory}&lt;{@link SecondSlice}&gt; - фабрика фильтра
+   * @return {@link ITsSingleFilterFactory}&lt;{@link SecondSlice}&gt; - the filter factory
    */
   public ITsSingleFilterFactory<SecondSlice> factory() {
     return factory;
   }
 
   /**
-   * Возвращает удобочитаему строку параметров фильтра.
+   * Returns a human-readable string of filter options.
    *
-   * @param aParams {@link ITsSingleFilterParams} - параметры одного из фильтроы
-   * @return String - однострочный текст
-   * @throws TsNullArgumentRtException любой аргумент = null
-   * @throws TsIllegalArgumentRtException параметры не от известного фильтра
+   * @param aParams {@link ITsSingleFilterParams} - the filter parameters
+   * @return String - single-line text
+   * @throws TsNullArgumentRtException any argument = <code>null</code>
+   * @throws TsIllegalArgumentRtException arguemnt is a parameters of an unknown filter
    */
   public static final String makeHumanReadableString( ITsSingleFilterParams aParams ) {
     TsNullArgumentRtException.checkNull( aParams );
     EPqSingleFilterKind kind = asList().getByKey( aParams.typeId() );
-    switch( kind ) {
-      case ANY_TEXT:
-        return PqFilterAnyText.makeHumanReadableString( aParams );
-      case TAG_IDS:
-        return PqFilterTagIds.makeHumanReadableString( aParams );
-      case EPISODE_IDS:
-        return PqFilterEpisodeIds.makeHumanReadableString( aParams );
-      default:
-        throw new TsNotAllEnumsUsedRtException();
-    }
+    return switch( kind ) {
+      case ANY_TEXT -> PqFilterAnyText.makeHumanReadableString( aParams );
+      case TAG_IDS -> PqFilterTagIds.makeHumanReadableString( aParams );
+      case EPISODE_IDS -> PqFilterEpisodeIds.makeHumanReadableString( aParams );
+      default -> throw new TsNotAllEnumsUsedRtException();
+    };
   }
 
   /**
-   * Возвращает все константы в виде списка.
+   * Returns all constant as a list/.
    *
-   * @return {@link IStridablesList}&lt; {@link EPqSingleFilterKind} &gt; - список всех констант
+   * @return {@link IStridablesList}&lt; {@link EPqSingleFilterKind} &gt; - the list of constants.
    */
   public static IStridablesList<EPqSingleFilterKind> asList() {
     if( list == null ) {
@@ -137,62 +125,27 @@ public enum EPqSingleFilterKind
     return list;
   }
 
-  /**
-   * Определяет, существует ли константа перечисления с заданным идентификатором.
-   *
-   * @param aId String - идентификатор искомой константы
-   * @return boolean - признак существования константы <br>
-   *         <b>true</b> - константа с заданным идентификатором существует;<br>
-   *         <b>false</b> - нет константы с таким идентификатором.
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   */
+  @SuppressWarnings( "javadoc" )
   public static boolean isItemById( String aId ) {
     return findById( aId ) != null;
   }
 
-  /**
-   * Находит константу по идентификатору.
-   *
-   * @param aId String - идентификатор искомой константы
-   * @return EPqSingleFilterKind - найденная константа, или <code>null</code> если нет константы с таимк идентификатором
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   */
+  @SuppressWarnings( "javadoc" )
   public static EPqSingleFilterKind findById( String aId ) {
     return asList().findByKey( aId );
   }
 
-  /**
-   * Возвращает константу по идентификатору.
-   *
-   * @param aId String - идентификатор искомой константы
-   * @return EPqSingleFilterKind - найденная константа
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   * @throws TsItemNotFoundRtException нет константы с таким идентификатором
-   */
+  @SuppressWarnings( "javadoc" )
   public static EPqSingleFilterKind getById( String aId ) {
     return asList().getByKey( aId );
   }
 
-  /**
-   * Определяет, существует ли константа перечисления с заданным именем.
-   *
-   * @param aName String - имя (название) искомой константы
-   * @return boolean - признак существования константы <br>
-   *         <b>true</b> - константа с заданным именем существует;<br>
-   *         <b>false</b> - нет константы с таким именем.
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   */
+  @SuppressWarnings( "javadoc" )
   public static boolean isItemByName( String aName ) {
     return findByName( aName ) != null;
   }
 
-  /**
-   * Находит константу по имени.
-   *
-   * @param aName String - имя искомой константы
-   * @return EPqSingleFilterKind - найденная константа, или <code>null</code> если нет константы с таким именем
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   */
+  @SuppressWarnings( "javadoc" )
   public static EPqSingleFilterKind findByName( String aName ) {
     TsNullArgumentRtException.checkNull( aName );
     for( EPqSingleFilterKind item : values() ) {
@@ -203,14 +156,7 @@ public enum EPqSingleFilterKind
     return null;
   }
 
-  /**
-   * Возвращает константу по имени.
-   *
-   * @param aName String - имя искомой константы
-   * @return EPqSingleFilterKind - найденная константа
-   * @throws TsNullArgumentRtException аргумент = <code>null</code>
-   * @throws TsItemNotFoundRtException нет константы с таким именем
-   */
+  @SuppressWarnings( "javadoc" )
   public static EPqSingleFilterKind getByName( String aName ) {
     return TsItemNotFoundRtException.checkNull( findByName( aName ) );
   }

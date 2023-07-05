@@ -216,7 +216,7 @@ public class PrisexService
     }
     // gif-файл hfpvtoftncz рядом с файлом трейлера с тем же именем и расширением ".gif"
     File illimDir = trFile.getParentFile();
-    String illimName = TsFileUtils.extractBareFileName( trFile.getName() ).concat( ANIMATED_FILE_DOT_EXTENSION );
+    String illimName = TsFileUtils.extractBareFileName( trFile.getName() ).concat( GIF_FILE_DOT_EXT );
     File illimFile = new File( illimDir, illimName );
     // если нужно, пересоздадим gif
     if( !illimFile.exists() || aRecreate ) {

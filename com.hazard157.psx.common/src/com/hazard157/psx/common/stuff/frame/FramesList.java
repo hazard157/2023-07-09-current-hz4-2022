@@ -36,12 +36,12 @@ public class FramesList
 
         @Override
         protected void doWrite( IStrioWriter aDw, IFramesList aEntity ) {
-          StrioUtils.writeCollection( aDw, EMPTY_STRING, aEntity, FrameKeeper.KEEPER );
+          StrioUtils.writeCollection( aDw, EMPTY_STRING, aEntity, Frame.KEEPER );
         }
 
         @Override
         protected IFramesList doRead( IStrioReader aDr ) {
-          IList<IFrame> ll = StrioUtils.readCollection( aDr, EMPTY_STRING, FrameKeeper.KEEPER );
+          IList<IFrame> ll = StrioUtils.readCollection( aDr, EMPTY_STRING, Frame.KEEPER );
           return new FramesList( ll );
         }
       };

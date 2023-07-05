@@ -15,16 +15,16 @@ import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.core.tslib.utils.files.*;
 
-import com.hazard157.common.incub.fs.*;
+import com.hazard157.common.incub.opfil.*;
 import com.hazard157.prisex24.*;
 
 /**
- * Gaze media as {@link OptedFile} visuals provider for {@link IPicsGridViewer}.
+ * Gaze media as {@link IOptedFile} visuals provider for {@link IPicsGridViewer}.
  *
  * @author hazard157
  */
 public class GazeMediaFileVisualsProvider
-    implements ITsVisualsProvider<OptedFile>, IPsxGuiContextable {
+    implements ITsVisualsProvider<IOptedFile>, IPsxGuiContextable {
 
   private final ITsGuiContext tsContext;
 
@@ -122,7 +122,7 @@ public class GazeMediaFileVisualsProvider
   //
 
   @Override
-  public TsImage getThumb( OptedFile aEntity, EThumbSize aThumbSize ) {
+  public TsImage getThumb( IOptedFile aEntity, EThumbSize aThumbSize ) {
     File file = aEntity.file();
     String ext = TsFileUtils.extractExtension( aEntity.file().getName() ).toLowerCase();
     // image file
@@ -148,13 +148,13 @@ public class GazeMediaFileVisualsProvider
   }
 
   @Override
-  public String getName( OptedFile aEntity ) {
+  public String getName( IOptedFile aEntity ) {
     String bareName = TsFileUtils.extractBareFileName( aEntity.file().getName() );
     return bareName;
   }
 
   @Override
-  public String getDescription( OptedFile aEntity ) {
+  public String getDescription( IOptedFile aEntity ) {
     return aEntity.file().getAbsolutePath();
   }
 

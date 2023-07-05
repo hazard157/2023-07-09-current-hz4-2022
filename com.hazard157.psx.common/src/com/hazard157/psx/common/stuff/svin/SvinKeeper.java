@@ -53,7 +53,7 @@ public class SvinKeeper
     IFrame frame = IFrame.NONE;
     if( ch == CHAR_ITEM_SEPARATOR ) {
       aSr.ensureSeparatorChar();
-      frame = FrameKeeper.KEEPER.read( aSr );
+      frame = Frame.KEEPER.read( aSr );
     }
     return new Svin( epId, camId, in, frame );
   }
