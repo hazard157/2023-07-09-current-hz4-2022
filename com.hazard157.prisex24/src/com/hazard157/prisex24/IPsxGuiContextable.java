@@ -7,6 +7,7 @@ import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.e4.services.currep.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.prisex24.pdus.snippets.*;
+import com.hazard157.psx.proj3.cameras.*;
 import com.hazard157.psx.proj3.episodes.*;
 import com.hazard157.psx.proj3.sourcevids.*;
 
@@ -49,6 +50,10 @@ public interface IPsxGuiContextable
 
   default IUnitEpisodes unitEpisodes() {
     return tsContext().get( IUnitEpisodes.class );
+  }
+
+  default IUnitCameras unitCameras() {
+    return tsContext().get( IUnitCameras.class );
   }
 
   default IUnitSourceVideos unitSourceVideos() {

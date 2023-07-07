@@ -36,6 +36,8 @@ interface IPsxResources {
   String STR_TMI_BY_PLACE_D       = Messages.getString( "STR_TMI_BY_PLACE_D" );       //$NON-NLS-1$
   String STR_TMI_BY_MONTH         = Messages.getString( "STR_TMI_BY_MONTH" );         //$NON-NLS-1$
   String STR_TMI_BY_MONTH_D       = Messages.getString( "STR_TMI_BY_MONTH_D" );       //$NON-NLS-1$
+  String STR_TMI_BY_YEAR          = Messages.getString( "STR_TMI_BY_YEAR" );          //$NON-NLS-1$
+  String STR_TMI_BY_YEAR_D        = Messages.getString( "STR_TMI_BY_YEAR_D" );        //$NON-NLS-1$
 
   /**
    * {@link SceneM5Model}
@@ -50,6 +52,6 @@ interface IPsxResources {
   /**
    * {@link TreeMakerEpisodeByPlace}
    */
-  String STR_OTHER_PLACES = Messages.getString( "STR_APP_INFO" ); //$NON-NLS-1$
+  String STR_OTHER_PLACES = Messages.getString( "STR_OTHER_PLACES" ); //$NON-NLS-1$
 
 }

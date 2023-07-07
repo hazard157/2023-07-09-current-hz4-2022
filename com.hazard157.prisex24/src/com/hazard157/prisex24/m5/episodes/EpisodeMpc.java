@@ -36,6 +36,9 @@ class EpisodeMpc
     TreeModeInfo<IEpisode> tmi2 = new TreeModeInfo<>( "ByMonth", //$NON-NLS-1$
         STR_TMI_BY_MONTH, STR_TMI_BY_MONTH_D, null, new TreeMakerEpisodeByMonth() );
     treeModeManager().addTreeMode( tmi2 );
+    TreeModeInfo<IEpisode> tmi3 = new TreeModeInfo<>( "ByYear", //$NON-NLS-1$
+        STR_TMI_BY_YEAR, STR_TMI_BY_YEAR_D, null, new TreeMakerEpisodeByYear() );
+    treeModeManager().addTreeMode( tmi3 );
   }
 
   private static ITsGuiContext prepareContext( ITsGuiContext aContext ) {

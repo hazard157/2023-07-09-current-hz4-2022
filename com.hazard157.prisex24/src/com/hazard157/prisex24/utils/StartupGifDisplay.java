@@ -7,7 +7,6 @@ import java.util.*;
 
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.dialogs.*;
-import org.toxsoft.core.tsgui.graphics.image.*;
 import org.toxsoft.core.tslib.bricks.filter.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
@@ -52,7 +51,7 @@ public class StartupGifDisplay
 
   private IList<IFrame> frList = IList.EMPTY;
 
-  private int frameIndex = 0;
+  private int startingFrameIndex = 0;
 
   /**
    * Constructor.
@@ -104,12 +103,26 @@ public class StartupGifDisplay
 
     if( !frList.isEmpty() ) {
       // preload the first GIF image
-      int fIndex = new Random().nextInt( frList.size() );
-      File f = cofsFrames().findFrameFile( frList.get( fIndex ) );
-      if( f != null ) {
-        ITsImageManager imagesManager = tsContext.get( ITsImageManager.class );
-        imagesManager.findImage( f );
+      startingFrameIndex = new Random().nextInt( frList.size() );
+      preloadNextImage( startingFrameIndex );
+    }
+
+  }
+
+  private void preloadNextImage( int aIndex ) {
+    int index = aIndex;
+    if( index >= frList.size() ) {
+      index = 0;
+    }
+    File f = cofsFrames().findFrameFile( frList.get( index ) );
+    if( f != null ) {
+      if( !imageManager().isCached( f ) ) {
+        imageManager().findImage( f );
       }
+    }
+    if( ++index != startingFrameIndex ) {
+      int nextIndex = index;
+      getDisplay().timerExec( 300, () -> preloadNextImage( nextIndex ) );
     }
   }
 
@@ -150,7 +163,7 @@ public class StartupGifDisplay
    */
   public IEpisode show() {
     if( !frList.isEmpty() ) {
-      DialogShowImageFiles.showItemsNonModal( tsContext, frList, frList.get( frameIndex ),
+      DialogShowImageFiles.showItemsNonModal( tsContext, frList, frList.get( startingFrameIndex ),
           new FrameVisualsProvider( tsContext ) );
     }
     else {

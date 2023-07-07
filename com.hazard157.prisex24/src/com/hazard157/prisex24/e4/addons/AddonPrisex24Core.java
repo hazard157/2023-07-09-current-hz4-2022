@@ -28,12 +28,16 @@ import com.hazard157.prisex24.Activator;
 import com.hazard157.prisex24.cofs.*;
 import com.hazard157.prisex24.cofs.impl.*;
 import com.hazard157.prisex24.e4.services.currep.*;
+import com.hazard157.prisex24.e4.services.currpq.*;
 import com.hazard157.prisex24.e4.services.gazes.*;
 import com.hazard157.prisex24.e4.services.mingles.*;
 import com.hazard157.prisex24.e4.services.pleps.*;
 import com.hazard157.prisex24.e4.services.psx.*;
 import com.hazard157.prisex24.e4.services.selsvins.*;
 import com.hazard157.prisex24.e4.uiparts.welcome.*;
+import com.hazard157.prisex24.explorer.m5.*;
+import com.hazard157.prisex24.explorer.pdu.*;
+import com.hazard157.prisex24.explorer.pdu.impl.*;
 import com.hazard157.prisex24.glib.fravisum.*;
 import com.hazard157.prisex24.m5.camera.*;
 import com.hazard157.prisex24.m5.episodes.*;
@@ -97,11 +101,16 @@ public class AddonPrisex24Core
     aAppContext.set( ICurrentTrackService.class, new CurrentTrackService() );
     aAppContext.set( ICurrentGazeService.class, new CurrentGazeService() );
     aAppContext.set( ICurrentMingleService.class, new CurrentMingleService() );
+    aAppContext.set( ICurrentPqResultService.class, new CurrentPqResultService() );
     //
     ITsProject proj = aAppContext.get( ITsProject.class );
     IUnitSnippets unitSnippets = new UnitSnippets();
     proj.registerUnit( ISnippetConstants.UNITID_SNIPPETS, unitSnippets, true );
     aAppContext.set( IUnitSnippets.class, unitSnippets );
+    // the explorer PDU initialization
+    IUnitExplorer explorerUnit = new UnitExplorer();
+    proj.registerUnit( IUnitExplorer.UNITID_EXPLORER, explorerUnit, true );
+    aAppContext.set( IUnitExplorer.class, explorerUnit );
   }
 
   @Override
@@ -130,6 +139,8 @@ public class AddonPrisex24Core
     m5.addModel( new GazeM5Model() );
     m5.addModel( new MingleM5Model() );
     m5.addModel( new SvinM5Model() );
+    m5.addModel( new InquiryM5Model() );
+    m5.addModel( new InquiryItemM5Model() );
     // VALEDs
     IValedControlFactoriesRegistry vcfReg = aWinContext.get( IValedControlFactoriesRegistry.class );
     vcfReg.registerFactory( ValedFrameFactory.FACTORY );

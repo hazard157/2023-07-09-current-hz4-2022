@@ -105,9 +105,23 @@
         </children>
       </children>
     </elements>
+    <elements xsi:type="advanced:Perspective" xmi:id="_h3mtcBvQEe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.persp.explorer" label="%Persp_Explorer" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/explorer.png" tooltip="%Persp_Explorer_D">
+      <children xsi:type="basic:PartSashContainer" xmi:id="_gHMDQBvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.partsashcontainer.6" horizontal="true">
+        <children xsi:type="basic:PartStack" xmi:id="_iMwBkBvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.partstack.12" containerData="1400" selectedElement="_l5qYMBvREe6OO6g7I-LlOQ">
+          <children xsi:type="basic:Part" xmi:id="_lm2w8BvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.part.explorer_direct_query" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.explorer.UipartsExplorerDirectQuery" label="%Uipart_ExplorerDirectQuery" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/explorer-direct-query.png" tooltip="%Uipart_ExplorerDirectQuery_D"/>
+          <children xsi:type="basic:Part" xmi:id="_l5qYMBvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.part.explorer_inquiries" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.explorer.UipartsExplorerInquiries" label="%Uipart_ExplorerInquiries" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/explorer-inquiries.png" tooltip="%Uipart_ExplorerInquiries_D"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_j2ip4BvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.partstack.13" containerData="1400">
+          <children xsi:type="basic:Part" xmi:id="_mXEF4BvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.part.explorer_result_svins" contributionURI="bundleclass://com.hazard157.prisex24/com.hazard157.prisex24.e4.uiparts.explorer.UipartExplorerResults" label="%Uipart_ExplorerQueryResult" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/explorer-query-result.png" tooltip="%Uipart_ExplorerQueryResult_D"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_kp1IABvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.partstack.14" containerData="7200">
+          <children xsi:type="advanced:Placeholder" xmi:id="_nGRVQBvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.placeholder.3" ref="_2Coq4Az_Ee6MCt0KJQBWiw"/>
+        </children>
+      </children>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_ZtJLQAqqEe6kmvIYOJ1hbQ" featurename="children" parentElementId="org.toxsoft.mws.menu.main.perspectives">
-    <elements xsi:type="menu:HandledMenuItem" xmi:id="_MTd-UBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.handledmenuitem.persp_welcome" label="%Persp_Welcome" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/welcome.png" tooltip="%Persp_Welcome_D" mnemonics="" command="_erzlkAilEe6RgN0UorbIgw">
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_MTd-UBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.handledmenuitem.persp_welcome" label="%Persp_Welcome" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/welcome.png" tooltip="%Persp_Welcome_D" type="Radio" mnemonics="" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_S2qlkBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.parameter.4" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.welcome"/>
     </elements>
     <elements xsi:type="menu:MenuSeparator" xmi:id="_KZlrkBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.menuseparator.2"/>
@@ -126,19 +140,22 @@
     <elements xsi:type="menu:HandledMenuItem" xmi:id="_gzMD0BeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.handledmenuitem.persp_planning" label="%Persp_Planning" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Persp_Planning_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_qbhQABeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.parameter.7" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.planning"/>
     </elements>
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_9TkTUBvQEe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.handledmenuitem.persp_explorer" label="%Persp_Explorer" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/explorer.png" tooltip="%Persp_Explorer_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
+      <parameters xmi:id="_NrrKMBvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.parameter.12" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.explorer"/>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Z5OfcAqqEe6kmvIYOJ1hbQ" featurename="children" parentElementId="org.toxsoft.mws.toolbar.perspectives">
-    <elements xsi:type="menu:HandledToolItem" xmi:id="_VL4JcBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.handledtoolitem.persp_welcome" label="%Persp_Welcome" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/welcome.png" tooltip="%Persp_Welcome_D" command="_erzlkAilEe6RgN0UorbIgw">
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_VL4JcBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.handledtoolitem.persp_welcome" label="%Persp_Welcome" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/welcome.png" tooltip="%Persp_Welcome_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_Y15kIBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.parameter.5" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.welcome"/>
     </elements>
     <elements xsi:type="menu:ToolBarSeparator" xmi:id="_UcAywBTEEe6zZuIbQz4mwA" elementId="com.hazard157.prisex24.toolbarseparator.2"/>
     <elements xsi:type="menu:HandledToolItem" xmi:id="_mZe2sAw5Ee6bKYfEj3FUUA" elementId="com.hazard157.prisex24.handledtoolitem.persp_episodes" label="%Persp_Episodes" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incidents-list-episode.png" tooltip="%Persp_Episodes_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_tWbasAw5Ee6bKYfEj3FUUA" elementId="com.hazard157.prisex24.parameter.2" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.episodes"/>
     </elements>
-    <elements xsi:type="menu:HandledToolItem" xmi:id="_X_I18BjPEe6_pb_aM8Q6Gg" elementId="com.hazard157.prisex24.handledtoolitem.persp_gazes" label="%Persp_Gazes" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incidents-list-gaze.png" tooltip="%Persp_Gazes_D" command="_erzlkAilEe6RgN0UorbIgw">
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_X_I18BjPEe6_pb_aM8Q6Gg" elementId="com.hazard157.prisex24.handledtoolitem.persp_gazes" label="%Persp_Gazes" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incidents-list-gaze.png" tooltip="%Persp_Gazes_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_k8vU0BjPEe6_pb_aM8Q6Gg" elementId="com.hazard157.prisex24.parameter.9" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.gazes"/>
     </elements>
-    <elements xsi:type="menu:HandledToolItem" xmi:id="_Yb8twBjPEe6_pb_aM8Q6Gg" elementId="com.hazard157.prisex24.handledtoolitem.persp_mingles" label="%Persp_Mingles" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incidents-list-mingle.png" tooltip="%Persp_Mingles_D" command="_erzlkAilEe6RgN0UorbIgw">
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_Yb8twBjPEe6_pb_aM8Q6Gg" elementId="com.hazard157.prisex24.handledtoolitem.persp_mingles" label="%Persp_Mingles" iconURI="platform:/plugin/com.hazard157.psx.proj3/icons/is24x24/incidents-list-mingle.png" tooltip="%Persp_Mingles_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_ZPRLoBjQEe6_pb_aM8Q6Gg" elementId="com.hazard157.prisex24.parameter.11" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.mingles"/>
     </elements>
     <elements xsi:type="menu:HandledToolItem" xmi:id="_e7h7sAqqEe6kmvIYOJ1hbQ" elementId="com.hazard157.prisex24.handledtoolitem.persp_refbooks" label="%Persp_Refbooks" iconURI="platform:/plugin/com.hazard157.common/icons/is24x24/refbooks-list.png" tooltip="%Persp_Refbooks_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
@@ -146,6 +163,9 @@
     </elements>
     <elements xsi:type="menu:HandledToolItem" xmi:id="_hwxGYBeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.handledtoolitem.persp_planning" label="%Persp_Planning" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/planning.png" tooltip="%Persp_Planning_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
       <parameters xmi:id="_pRLj0BeCEe661Z0SOwydgg" elementId="com.hazard157.prisex24.parameter.6" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.planning"/>
+    </elements>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_AjB48BvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.handledtoolitem.persp_explorer" label="%Persp_Explorer" iconURI="platform:/plugin/com.hazard157.prisex24/icons/is24x24/explorer.png" tooltip="%Persp_Explorer_D" type="Radio" command="_erzlkAilEe6RgN0UorbIgw">
+      <parameters xmi:id="_PJqyMBvREe6OO6g7I-LlOQ" elementId="com.hazard157.prisex24.parameter.13" name="org.toxsoft.mws.cmd.switch_persp.arg.perspId" value="com.hazard157.prisex24.persp.explorer"/>
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yU7DAAz_Ee6MCt0KJQBWiw" featurename="sharedElements" parentElementId="org.toxsoft.mws.window.main">

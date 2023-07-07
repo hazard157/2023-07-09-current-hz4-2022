@@ -15,6 +15,8 @@ import com.hazard157.psx.common.stuff.svin.*;
  */
 public interface IPsxSelectedSvinsService {
 
+  // TODO add ability to set UIpart label, tooltip and icon
+
   /**
    * Returns list of SVINs.
    *

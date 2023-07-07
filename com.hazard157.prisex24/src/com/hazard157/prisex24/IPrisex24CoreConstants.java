@@ -94,6 +94,11 @@ public interface IPrisex24CoreConstants {
   String PARTID_TRACKS        = "com.hazard157.prisex24.part.tracks";        //$NON-NLS-1$
   String PARTID_PEPL_TIMELINE = "com.hazard157.prisex24.part.plep_timeline"; //$NON-NLS-1$
 
+  String PERSPID_EXPLORER             = "com.hazard157.prisex24.persp.explorer";             //$NON-NLS-1$
+  String PARTID_EXPLORER_DIRECT_QUERY = "com.hazard157.prisex24.part.explorer_direct_query"; //$NON-NLS-1$
+  String PARTID_EXPLORER_INQUIRIES    = "com.hazard157.prisex24.part.explorer_inquiries";    //$NON-NLS-1$
+  String PARTID_EXPLORER_RESULT_SVINS = "com.hazard157.prisex24.part.explorer_result_svins"; //$NON-NLS-1$
+
   String PARTID_SHARED_SVINS_FRAMES = "com.hazard157.prisex24.part.shared.svins_frames"; //$NON-NLS-1$
   String PARTID_SHARED_SNIPPETS     = "com.hazard157.prisex24.part.shared.snippets";     //$NON-NLS-1$
   String PARTID_SHARED_             = "com.hazard157.prisex24.part.shared.";             //$NON-NLS-1$
@@ -141,6 +146,10 @@ public interface IPrisex24CoreConstants {
   String ICONID_FILM                         = "film";                         //$NON-NLS-1$
   String ICONID_PLANNING_FULL                = "planning-full";                //$NON-NLS-1$
   String ICONID_PLANNING                     = "planning";                     //$NON-NLS-1$
+  String ICONID_EXPLORER                     = "explorer";                     //$NON-NLS-1$
+  String ICONID_EXPLORER_DIRECT_QUERY        = "explorer-direct-query";        //$NON-NLS-1$
+  String ICONID_EXPLORER_INQUIRIES           = "explorer-inquiries";           //$NON-NLS-1$
+  String ICONID_EXPLORER_QUERY_RESULT        = "explorer-query-result";        //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions

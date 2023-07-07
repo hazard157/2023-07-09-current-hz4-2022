@@ -5,8 +5,12 @@ import static com.hazard157.common.quants.secint.gui.ISecintM5Constants.*;
 import static com.hazard157.prisex24.m5.IPsxM5Constants.*;
 import static com.hazard157.prisex24.m5.svin.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
+import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 
+import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.m5.gui.panels.*;
+import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tsgui.utils.*;
@@ -100,8 +104,43 @@ public class SvinM5Model
   public SvinM5Model() {
     super( MID_SVIN, Svin.class );
     setNameAndDescription( STR_M5M_SVIN, STR_M5M_SVIN_D );
-    addFieldDefs( FRAME, EPISODE_ID, INTERVAL, DURATION, CAM_ID );
-    // TODO Auto-generated constructor stub
+    addFieldDefs(
+        // TODO FRAME, //
+
+        EPISODE_ID, INTERVAL, DURATION, CAM_ID );
+    CAM_ID.removeFlags( M5FF_COLUMN );
+    setPanelCreator( new M5DefaultPanelCreator<Svin>() {
+
+      @Override
+      protected IM5CollectionPanel<Svin> doCreateCollViewerPanel( ITsGuiContext aContext,
+          IM5ItemsProvider<Svin> aItemsProvider ) {
+        OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_FALSE );
+        OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
+        OPDEF_IS_SUMMARY_PANE.setValue( aContext.params(), AV_TRUE );
+        SvinM5Mpc mpc = new SvinM5Mpc( aContext, model(), aItemsProvider, null );
+        return new M5CollectionPanelMpcModownWrapper<>( mpc, true );
+      }
+
+      @Override
+      protected IM5EntityPanel<Svin> doCreateEntityEditorPanel( ITsGuiContext aContext,
+          IM5LifecycleManager<Svin> aLifecycleManager ) {
+        M5EntityPanelWithValeds<Svin> p =
+            new M5EntityPanelWithValeds<>( aContext, model(), false, new SvinM5EntityPanelWithValedsController() );
+        p.setLifecycleManager( aLifecycleManager );
+        return p;
+      }
+
+    } );
+  }
+
+  @Override
+  protected IM5LifecycleManager<Svin> doCreateDefaultLifecycleManager() {
+    return new SvinLifecycleManager( this );
+  }
+
+  @Override
+  protected IM5LifecycleManager<Svin> doCreateLifecycleManager( Object aMaster ) {
+    return getLifecycleManager( null );
   }
 
 }

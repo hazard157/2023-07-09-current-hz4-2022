@@ -20,7 +20,7 @@ public class AddonPsx24Explorer
     extends MwsAbstractAddon {
 
   /**
-   * Ключевое слово компоненты проекта.
+   * Explorer PDU unit ID.
    */
   public static final String UNITID_EXPLORER = "Explorer_ts4"; //$NON-NLS-1$
 
@@ -35,7 +35,7 @@ public class AddonPsx24Explorer
   protected void initApp( IEclipseContext aAppContext ) {
     ICurrentPqResultService pqrs = new CurrentPqResultService();
     aAppContext.set( ICurrentPqResultService.class, pqrs );
-    // инициализация модуля проекта
+    // the explorer PDU initialization
     ITsProject proj = aAppContext.get( ITsProject.class );
     IUnitExplorer explorerUnit = new UnitExplorer();
     proj.registerUnit( UNITID_EXPLORER, explorerUnit, true );
