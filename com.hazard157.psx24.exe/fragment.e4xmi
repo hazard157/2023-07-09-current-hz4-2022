@@ -6,7 +6,7 @@
   </imports>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_c65IoOUNEey-F798x_a69Q" featurename="addons" parentElementId="org.toxsoft.mws.app.main">
     <elements xsi:type="application:Addon" xmi:id="_es540OUNEey-F798x_a69Q" elementId="com.hazard157.psx24.exe.addon.0" contributionURI="bundleclass://com.hazard157.psx24.exe/com.hazard157.psx24.exe.e4.addons.AddonPsx24Exe"/>
-    <elements xsi:type="application:Addon" xmi:id="_5FJd8Aj_Ee663px7KSv2wg" elementId="com.hazard157.psx24.exe.addon.1" contributionURI="bundleclass://com.hazard157.common/com.hazard157.common.e4.addons.AddonMainWindowDebugSize"/>
-    <elements xsi:type="application:Addon" xmi:id="_E33BkAkBEe663px7KSv2wg" elementId="com.hazard157.psx24.exe.addon.2" contributionURI="bundleclass://com.hazard157.common/com.hazard157.common.e4.addons.AddonInitialPerspectiveChooser"/>
+    <elements xsi:type="application:Addon" xmi:id="_5FJd8Aj_Ee663px7KSv2wg" elementId="com.hazard157.psx24.exe.addon.1" contributionURI="bundleclass://org.toxsoft.core.tsgui/org.toxsoft.core.tsgui.mws.e4.addons.AddonMainWindowDebugSize"/>
+    <elements xsi:type="application:Addon" xmi:id="_E33BkAkBEe663px7KSv2wg" elementId="com.hazard157.psx24.exe.addon.2" contributionURI="bundleclass://org.toxsoft.core.tsgui/org.toxsoft.core.tsgui.mws.e4.addons.AddonInitialPerspectiveChooser"/>
   </fragments>
 </fragment:ModelFragments>

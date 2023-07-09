@@ -8,9 +8,7 @@ import org.toxsoft.core.tslib.utils.valobj.*;
 import org.toxsoft.core.txtproj.lib.*;
 
 import com.hazard157.psx24.catnote.*;
-import com.hazard157.psx24.catnote.m5.category.*;
-import com.hazard157.psx24.catnote.m5.note.*;
-import com.hazard157.psx24.catnote.m5.notekind.*;
+import com.hazard157.psx24.catnote.m5.*;
 import com.hazard157.psx24.catnote.main.*;
 import com.hazard157.psx24.catnote.main.impl.*;
 

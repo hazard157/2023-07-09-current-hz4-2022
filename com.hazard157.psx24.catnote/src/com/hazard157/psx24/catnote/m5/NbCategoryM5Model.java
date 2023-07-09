@@ -1,7 +1,7 @@
-package com.hazard157.psx24.catnote.m5.category;
+package com.hazard157.psx24.catnote.m5;
 
 import static com.hazard157.psx24.catnote.m5.INbNotebookM5Constants.*;
-import static com.hazard157.psx24.catnote.m5.category.IPsxResources.*;
+import static com.hazard157.psx24.catnote.m5.IPsxResources.*;
 
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
@@ -30,7 +30,7 @@ public class NbCategoryM5Model
    */
   public NbCategoryM5Model() {
     super( MID_NB_CATEGORY, INbCategory.class );
-    setNameAndDescription( STR_N_M5M_CATEGORY, STR_D_M5M_CATEGORY );
+    setNameAndDescription( STR_M5M_CATEGORY, STR_M5M_CATEGORY_D );
     addFieldDefs( ID, NAME, DESCRIPTION );
   }
 

@@ -1,4 +1,4 @@
-package com.hazard157.psx24.catnote.m5.category;
+package com.hazard157.psx24.catnote.m5;
 
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tslib.av.metainfo.IAvMetaConstants.*;

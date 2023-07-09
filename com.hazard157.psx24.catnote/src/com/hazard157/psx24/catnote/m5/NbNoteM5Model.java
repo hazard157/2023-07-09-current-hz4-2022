@@ -1,7 +1,7 @@
-package com.hazard157.psx24.catnote.m5.note;
+package com.hazard157.psx24.catnote.m5;
 
 import static com.hazard157.psx24.catnote.m5.INbNotebookM5Constants.*;
-import static com.hazard157.psx24.catnote.m5.note.IPsxResources.*;
+import static com.hazard157.psx24.catnote.m5.IPsxResources.*;
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tsgui.valed.api.IValedControlConstants.*;
@@ -18,6 +18,8 @@ import org.toxsoft.core.tsgui.m5.std.fields.*;
 import org.toxsoft.core.tslib.utils.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 
+import com.hazard157.common.quants.visumple.impl.*;
+import com.hazard157.psx.common.stuff.place.*;
 import com.hazard157.psx24.catnote.main.*;
 
 /**
@@ -47,7 +49,7 @@ public class NbNoteM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_NOTE_KIND, STR_D_NOTE_KIND );
+          setNameAndDescription( STR_NOTE_KIND, STR_NOTE_KIND_D );
           setFlags( M5FF_COLUMN );
           setDefaultValue( ENbNoteKind.MISC );
         }
@@ -63,7 +65,7 @@ public class NbNoteM5Model
 
         @Override
         protected void doInit() {
-          setNameAndDescription( STR_N_NOTE_CATEGORY, STR_D_NOTE_CATEGORY );
+          setNameAndDescription( STR_NOTE_CATEGORY, STR_NOTE_CATEGORY_D );
           setFlags( M5FF_COLUMN );
           // FIXME GOGA надо сделать каркас ValedM5LifecycleManagedEntityFieldEditor
           // FIXME setEditorFactory();
@@ -81,13 +83,17 @@ public class NbNoteM5Model
 
       };
 
+  public final IM5AttributeFieldDef<INbNote> PLACE = new PsxPlaceM5FieldDef<>();
+
+  public final IM5AttributeFieldDef<INbNote> VISUMPLES = new VisumplesM5AttributeFieldDef<>();
+
   /**
    * Constructor.
    */
   public NbNoteM5Model() {
     super( MID_NB_NOTE, INbNote.class );
-    setNameAndDescription( STR_N_M5M_NOTE, STR_D_M5M_NOTE );
-    addFieldDefs( ID, KIND, CATEGORY_ID, NAME, DESCRIPTION );
+    setNameAndDescription( STR_M5M_NOTE, STR_M5M_NOTE_D );
+    addFieldDefs( ID, KIND, CATEGORY_ID, NAME, PLACE, DESCRIPTION, VISUMPLES );
     setPanelCreator( new M5DefaultPanelCreator<>() {
 
       protected IM5CollectionPanel<INbNote> doCreateCollEditPanel( ITsGuiContext aContext,

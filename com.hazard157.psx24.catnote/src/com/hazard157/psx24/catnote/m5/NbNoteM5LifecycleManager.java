@@ -1,4 +1,4 @@
-package com.hazard157.psx24.catnote.m5.note;
+package com.hazard157.psx24.catnote.m5;
 
 import static com.hazard157.psx24.catnote.m5.INbNotebookM5Constants.*;
 import static com.hazard157.psx24.catnote.main.INbNotebookConstants.*;
